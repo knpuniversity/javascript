@@ -9,6 +9,7 @@
     <title>{% block title %}Find Something to Lift!{% endblock %}</title>
 
     {% block stylesheets %}
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
         <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" />
     {% endblock %}
 
@@ -39,6 +40,11 @@
         <div class="navbar-collapse collapse">
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{{ path('lift') }}">
+                            Record Lifts
+                        </a>
+                    </li>
                     <li>
                         <a href="{{ path('fos_user_security_logout') }}">
                             {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}

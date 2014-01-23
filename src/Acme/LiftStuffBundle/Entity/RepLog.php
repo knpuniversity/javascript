@@ -3,15 +3,23 @@
 namespace Acme\LiftStuffBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * RepLog
  *
- * @ORM\Table()
+ * @ORM\Table(name="rep_log")
  * @ORM\Entity(repositoryClass="Acme\LiftStuffBundle\Repository\RepLogRepository")
  */
 class RepLog
 {
+    private static $thingsYouCanLift = array(
+        'cat' => '9',
+        'fat_cat' => '18',
+        'laptop' => '4.5',
+        'coffee_cup' => '.5',
+    );
+
     /**
      * @var integer
      *
@@ -25,6 +33,8 @@ class RepLog
      * @var integer
      *
      * @ORM\Column(name="reps", type="integer")
+     * @Assert\NotBlank(message="How many times did you lift this?")
+     * @Assert\GreaterThan(value=0, message="You can certainly life more than just 0!")
      */
     private $reps;
 
@@ -32,6 +42,7 @@ class RepLog
      * @var string
      *
      * @ORM\Column(name="item", type="string", length=50)
+     * @Assert\NotBlank(message="What did you lift?")
      */
     private $item;
 
@@ -63,6 +74,8 @@ class RepLog
     {
         $this->reps = $reps;
 
+        $this->calculateTotalLifted();
+
         return $this;
     }
 
@@ -86,6 +99,8 @@ class RepLog
     {
         $this->item = $item;
 
+        $this->calculateTotalLifted();
+
         return $this;
     }
 
@@ -100,19 +115,6 @@ class RepLog
     }
 
     /**
-     * Set totalWeightLifted
-     *
-     * @param float $totalWeightLifted
-     * @return RepLog
-     */
-    public function setTotalWeightLifted($totalWeightLifted)
-    {
-        $this->totalWeightLifted = $totalWeightLifted;
-
-        return $this;
-    }
-
-    /**
      * Get totalWeightLifted
      *
      * @return float 
@@ -120,5 +122,36 @@ class RepLog
     public function getTotalWeightLifted()
     {
         return $this->totalWeightLifted;
+    }
+
+    /**
+     * Returns an array that an be used in a form drop down
+     *
+     * @return array
+     */
+    public static function getThingsYouCanLiftChoices()
+    {
+        $things = array_keys(self::$thingsYouCanLift);
+        $choices = array();
+        foreach ($things as $thingKey) {
+            $choices[$thingKey] = 'liftable_thing.'.$thingKey;
+        }
+
+        return $choices;
+    }
+
+    /**
+     * Calculates the total weight lifted and sets it on the property
+     */
+    private function calculateTotalLifted()
+    {
+        if (!$this->getItem()) {
+            return;
+        }
+
+        $weight = self::$thingsYouCanLift[$this->getItem()];
+        $totalWeight = $weight * $this->getReps();
+
+        $this->totalWeightLifted = $totalWeight;
     }
 }
