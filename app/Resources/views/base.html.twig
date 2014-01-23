@@ -39,10 +39,13 @@
         </div>
         <div class="navbar-collapse collapse">
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-
-                <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{{ path('fos_user_security_logout') }}">
+                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                        </a>
+                    </li>
+                </ul>
             {% else %}
                 <form class="navbar-form navbar-right" role="form" action="{{ path('fos_user_security_check') }}" method="POST">
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
@@ -55,6 +58,14 @@
                     </div>
                     <button type="submit" class="btn btn-success">Sign in</button>
                 </form>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{{ path('fos_user_registration_register') }}">
+                            Register
+                        </a>
+                    </li>
+                </ul>
             {% endif %}
         </div>
         <!--/.navbar-collapse -->
