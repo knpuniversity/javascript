@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class LiftController extends Controller
 {
@@ -16,12 +17,18 @@ class LiftController extends Controller
      */
     public function indexAction(Request $request)
     {
+        if (!$this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMEBRED')) {
+            throw new AccessDeniedException();
+        }
+
         $form = $this->createForm(new RepLogType());
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $repLog = $form->getData();
+            $repLog->setUser($this->getUser());
+
             $em->persist($repLog);
             $em->flush();
 

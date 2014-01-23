@@ -53,6 +53,15 @@ class RepLog
      */
     private $totalWeightLifted;
 
+    /**
+     * The user who lifted these items
+     *
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     */
+    private $user;
 
     /**
      * Get id
@@ -153,5 +162,21 @@ class RepLog
         $totalWeight = $weight * $this->getReps();
 
         $this->totalWeightLifted = $totalWeight;
+    }
+
+    /**
+     * @return \Acme\LiftStuffBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param \Acme\LiftStuffBundle\Entity\User $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 }
