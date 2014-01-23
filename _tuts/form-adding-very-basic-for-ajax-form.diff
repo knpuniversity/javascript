@@ -1,0 +1,36 @@
+diff --git a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
+index 38ecf76..54b9d91 100644
+--- a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
++++ b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
+@@ -5,7 +5,7 @@
+         <div class="col-md-6">
+             <h2>Record new Lifts</h2>
+ 
+-            <form action="{{ path('lift') }}" method="POST" class="form-inline" novalidate="novalidate">
++            <form action="{{ path('lift') }}" method="POST" class="form-inline rep-log-form" novalidate="novalidate">
+                 {{ form_errors(form) }}
+ 
+                 {{ form_row(form.item, {
+@@ -62,3 +62,21 @@
+         </div>
+     </div>
+ {% endblock %}
++
++{% block javascripts %}
++    {{ parent() }}
++
++    <script>
++        jQuery(document).ready(function() {
++            $('form.rep-log-form').on('submit', function(e) {
++                e.preventDefault();
++
++                $.ajax({
++                    type: 'POST',
++                    url: $(this).attr('action'),
++                    data: $(this).serialize()
++                });
++            });
++        });
++    </script>
++{% endblock %}
+\ No newline at end of file
