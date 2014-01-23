@@ -1,0 +1,61 @@
+diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
+index 14167bc..74df11b 100644
+--- a/app/Resources/views/base.html.twig
++++ b/app/Resources/views/base.html.twig
+@@ -9,7 +9,7 @@
+     <title>{% block title %}Find Something to Lift!{% endblock %}</title>
+ 
+     {% block stylesheets %}
+-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
++        <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.css') }}" />
+         <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" />
+     {% endblock %}
+ 
+@@ -98,6 +98,9 @@
+ </div>
+ <!-- /container -->
+ 
+-{% block javascripts %}{% endblock %}
++{% block javascripts %}
++    <script src="{{ asset('assets/vendor/jquery/jquery.js') }}"></script>
++    <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.js') }}"></script>
++{% endblock %}
+ </body>
+ </html>
+diff --git a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
+index bafd013..54b9d91 100644
+--- a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
++++ b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
+@@ -5,7 +5,7 @@
+         <div class="col-md-6">
+             <h2>Record new Lifts</h2>
+ 
+-            <form action="{{ path('lift') }}" method="POST" class="form-inline" novalidate="novalidate">
++            <form action="{{ path('lift') }}" method="POST" class="form-inline rep-log-form" novalidate="novalidate">
+                 {{ form_errors(form) }}
+ 
+                 {{ form_row(form.item, {
+@@ -61,4 +61,22 @@
+             {{ render(controller('AcmeLiftStuffBundle:Lift:leaderboard')) }}
+         </div>
+     </div>
++{% endblock %}
++
++{% block javascripts %}
++    {{ parent() }}
++
++    <script>
++        jQuery(document).ready(function() {
++            $('form.rep-log-form').on('submit', function(e) {
++                e.preventDefault();
++
++                $.ajax({
++                    type: 'POST',
++                    url: $(this).attr('action'),
++                    data: $(this).serialize()
++                });
++            });
++        });
++    </script>
+ {% endblock %}
+\ No newline at end of file
