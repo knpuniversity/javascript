@@ -13,6 +13,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class RepLog
 {
+    const ITEM_LABEL_PREFIX = 'liftable_thing.';
+
     const WEIGHT_FAT_CAT = 18;
 
     private static $thingsYouCanLift = array(
@@ -125,6 +127,11 @@ class RepLog
         return $this->item;
     }
 
+    public function getItemLabel()
+    {
+        return self::ITEM_LABEL_PREFIX.$this->getItem();
+    }
+
     /**
      * Get totalWeightLifted
      *
@@ -145,7 +152,7 @@ class RepLog
         $things = array_keys(self::$thingsYouCanLift);
         $choices = array();
         foreach ($things as $thingKey) {
-            $choices[$thingKey] = 'liftable_thing.'.$thingKey;
+            $choices[$thingKey] = self::ITEM_LABEL_PREFIX.$thingKey;
         }
 
         return $choices;
