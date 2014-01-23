@@ -72,3 +72,11 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Acme\LiftStuffBundle\Entity\User
+
+# app/config/config.yml
+braincrafted_bootstrap:
+    auto_configure:
+        assetic: false
+        twig: true
+        knp_menu: false
+        knp_paginator: false
