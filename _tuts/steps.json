@@ -14,6 +14,11 @@
             "id": "bower-install-bootstrap-and-jquery",
             "name": "Bower: Install Bootstrap and jQuery",
             "description": null
+        },
+        {
+            "id": "bower-add-to-base-layout",
+            "name": "Bower: Add to base layout",
+            "description": null
         }
     ]
 }
