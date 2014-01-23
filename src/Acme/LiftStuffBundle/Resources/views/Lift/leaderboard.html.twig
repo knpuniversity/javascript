@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Weight lifted</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for leader in leaderboard %}
+        <tr>
+            <td>{{ leader.user.username }}</td>
+            <td style="width: 150px;">
+                {{ leader.weight }}
+
+                <span class="label label-primary pull-right">
+                    (~{{ leader.in_cats|number_format(0) }} fat cats)
+                </span>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

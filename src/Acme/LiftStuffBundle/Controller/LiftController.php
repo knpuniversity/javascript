@@ -2,6 +2,7 @@
 
 namespace Acme\LiftStuffBundle\Controller;
 
+use Acme\LiftStuffBundle\Entity\RepLog;
 use Acme\LiftStuffBundle\Form\Type\RepLogType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -17,7 +18,7 @@ class LiftController extends Controller
      */
     public function indexAction(Request $request)
     {
-        if (!$this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMEBRED')) {
+        if (!$this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             throw new AccessDeniedException();
         }
 
@@ -39,4 +40,28 @@ class LiftController extends Controller
 
         return array('form' => $form->createView());
     }
+
+    /**
+     * @Template
+     * @return array
+     */
+    public function leaderboardAction()
+    {
+        $leaderboardDetails = $this->getDoctrine()->getRepository('AcmeLiftStuffBundle:RepLog')
+            ->getLeaderboardDetails()
+        ;
+
+        $userRepo = $this->getDoctrine()->getRepository('AcmeLiftStuffBundle:User');
+        $leaderboard = array();
+        foreach ($leaderboardDetails as $details) {
+            $leaderboard[] = array(
+                'user' => $userRepo->find($details['user_id']),
+                'weight' => $details['weightSum'],
+                'in_cats' => $details['weightSum']/RepLog::WEIGHT_FAT_CAT,
+            );
+        }
+
+        return array('leaderboard' => $leaderboard);
+    }
+
 }

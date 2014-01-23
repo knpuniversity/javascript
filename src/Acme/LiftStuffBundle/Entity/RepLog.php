@@ -13,9 +13,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class RepLog
 {
+    const WEIGHT_FAT_CAT = 18;
+
     private static $thingsYouCanLift = array(
         'cat' => '9',
-        'fat_cat' => '18',
+        'fat_cat' => self::WEIGHT_FAT_CAT,
         'laptop' => '4.5',
         'coffee_cup' => '.5',
     );
