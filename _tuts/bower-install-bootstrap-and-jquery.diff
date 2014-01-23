@@ -1,0 +1,20 @@
+diff --git a/.gitignore b/.gitignore
+index fa563fa..5805403 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -9,3 +9,4 @@
+ /vendor/
+ /bin/
+ /composer.phar
++/web/assets/vendor
+diff --git a/bower.json b/bower.json
+index 3453c6e..170dc6c 100644
+--- a/bower.json
++++ b/bower.json
+@@ -16,5 +16,6 @@
+     "tests"
+   ],
+   "dependencies": {
++    "bootstrap": "~3.0.3"
+   }
+ }
