@@ -19,6 +19,11 @@
             "id": "bower-add-to-base-layout",
             "name": "Bower: Add to base layout",
             "description": null
+        },
+        {
+            "id": "form-adding-very-basic-for-ajax-form",
+            "name": "Form: Adding very basic for AJAX form",
+            "description": null
         }
     ]
 }
