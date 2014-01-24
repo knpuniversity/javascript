@@ -24,6 +24,26 @@
             "id": "form-adding-very-basic-for-ajax-form",
             "name": "Form: Adding very basic for AJAX form",
             "description": null
+        },
+        {
+            "id": "form-installing-fosrestbundle",
+            "name": "Form: Installing FOSRestBundle",
+            "description": null
+        },
+        {
+            "id": "form-json-form-response",
+            "name": "Form: JSON Form Response",
+            "description": null
+        },
+        {
+            "id": "form-handling-client-side-errors",
+            "name": "Form: Handling client-side errors",
+            "description": null
+        },
+        {
+            "id": "form-adding-error-highlights",
+            "name": "Form: Adding error highlights",
+            "description": null
         }
     ]
 }
