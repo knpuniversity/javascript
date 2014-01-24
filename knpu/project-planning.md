@@ -30,18 +30,54 @@ Start with a basic design and:
 - using .preventDefault()
 - using document.ready
 
-1) Make the reps-entering submit via JavaScript
-* inline JavaScript handling form submit
-* ?? what response should the server have
+#### 4) Installing FOSRestBundle
 
-2) Show a notification on save
-* little listener inline that pushes something into the DOM
+- comp require friendsofsymfony/rest-bundle ~1.2.2
+- comp require jms/serializer-bundle ~0.13.0
+
+#### 5) Form: JSON Form Response
+
+#### 6) Form: Handling client-side errors
+
+#### 7) Form: Adding error highlights
+
+#### 8) Form: Show a notification on save
+
+#### 9) Form: Handling success with a message
+
+- yet more custom code for our errors messaging spot
+Problems:
+- the errorList thing is redundtant and a disaster
+- a lot of work to handle parsing through Symfony errors and fields
+- all this stuff is inline
+Solutions:
+- generic error list object
+- centralized parsing of Symfony error responses
+- get this into its own little module
+
+#### 10) Form: Refactoring into simple object
+
+- not really helpping yet, one gigantic object
+- differences between objects and hashes? :)
+
+#### 11) Form: Adding more methods to the object
+
+- forced to pass $form into the function
+- forced to re-look up for errorList
+- referring to repForm, not this
+
+#### 12) Form: Instantiated object
+
+- created the construct function
+- instantiated the guy
+
+#### 13) Form: Tweak methods in object
+
+- used $.proxy so we could get "this"
+- used self later to keep this
 
 3) Add another form field after submitting
 * introduce delegate events
-
-4) Refactor into a JavaScript object (inline)
-* just point to methods instead of inline functions
 
 5) Introduce constructor
 * prototype model
