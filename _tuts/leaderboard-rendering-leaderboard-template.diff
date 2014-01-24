@@ -1,0 +1,83 @@
+diff --git a/src/Acme/LiftStuffBundle/Controller/LiftController.php b/src/Acme/LiftStuffBundle/Controller/LiftController.php
+index 5625b47..1d1bd9f 100644
+--- a/src/Acme/LiftStuffBundle/Controller/LiftController.php
++++ b/src/Acme/LiftStuffBundle/Controller/LiftController.php
+@@ -48,7 +48,7 @@ class LiftController extends Controller
+             return $this->redirect($this->generateUrl('lift'));
+         }
+ 
+-        $view->setData($form);
++        $view->setData(array('form' => $form, 'leaders' => $this->getLeaders()));
+ 
+         return $handler->handle($view);
+     }
+@@ -66,15 +66,6 @@ class LiftController extends Controller
+     }
+ 
+     /**
+-     * @Template
+-     * @return array
+-     */
+-    public function leaderboardAction()
+-    {
+-        return array('leaderboard' => $this->getLeaders());
+-    }
+-
+-    /**
+      * @return \Doctrine\Common\Persistence\ObjectRepository
+      */
+     private function getUserRepository()
+diff --git a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
+index 455ade3..c493d7a 100644
+--- a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
++++ b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
+@@ -54,6 +54,7 @@
+             var leaderboard = new Leaderboard(
+                 $('#leaderboard'),
+                 $('#js-template-leaderboard').html()
++                {{ leaders|json_encode|raw }}
+             );
+         });
+     </script>
+diff --git a/web/assets/js/Leaderboard.js b/web/assets/js/Leaderboard.js
+index 9def9d6..b311613 100644
+--- a/web/assets/js/Leaderboard.js
++++ b/web/assets/js/Leaderboard.js
+@@ -1,11 +1,12 @@
+ /**
+  * Utility to for handling generic functionality related to a course
+  */
+-window.Leaderboard = (function($, undefined){
++window.Leaderboard = (function($, dust, undefined){
+ 
+-    var Leaderboard = function($wrapper, template) {
++    var Leaderboard = function($wrapper, template, leaders) {
+         this.$wrapper = $wrapper;
+         this.template = template;
++        this.leaders = leaders;
+ 
+         this.initialize();
+     };
+@@ -16,9 +17,20 @@ window.Leaderboard = (function($, undefined){
+         },
+ 
+         render: function() {
+-            this.$wrapper.html(this.template);
++            var self = this;
++
++            var compiled = dust.compile(this.template, 'leaderboard');
++            dust.loadSource(compiled);
++
++            dust.render(
++                'leaderboard',
++                { leaders: this.leaders },
++                function(err, out) {
++                    self.$wrapper.html(out);
++                }
++            );
+         }
+     });
+ 
+     return Leaderboard;
+-})(jQuery);
++})(jQuery, dust);
