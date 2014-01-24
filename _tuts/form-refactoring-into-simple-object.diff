@@ -1,0 +1,63 @@
+diff --git a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
+index 3766f21..6570359 100644
+--- a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
++++ b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
+@@ -42,37 +42,37 @@
+     {{ parent() }}
+ 
+     <script>
+-        jQuery(document).ready(function() {
+-            $('form.rep-log-form').on('submit', function(e) {
++        var repForm = {
++            handleSubmit: function (e) {
+                 e.preventDefault();
+                 var $form = $(this);
+                 var $errorList = $form.find('.error-list');
+ 
+                 $.ajax({
+                     type: 'POST',
+-                    url: $form.attr('action')+'.json',
++                    url: $form.attr('action') + '.json',
+                     data: $form.serialize(),
+-                    error: function(jqXhr) {
++                    error: function (jqXhr) {
+                         // remove any field errors
+                         $form.find('.form-group').removeClass('has-error');
+ 
+                         $errorList.empty();
+ 
+                         var errors = jqXhr.responseJSON.errors.children;
+-                        $.each(errors, function(key, data) {
++                        $.each(errors, function (key, data) {
+                             if (!data.errors) {
+                                 return;
+                             }
+ 
+-                            var $input = $form.find('[name*="['+key+']"]');
++                            var $input = $form.find('[name*="[' + key + ']"]');
+                             $input.closest('.form-group').addClass('has-error');
+ 
+-                            $errorList.append('<li>'+data.errors[0]+'</li>');
++                            $errorList.append('<li>' + data.errors[0] + '</li>');
+                         });
+ 
+                         $errorList.toggleClass('hide', $errorList.html() == '');
+                     },
+-                    success: function() {
++                    success: function () {
+                         var $notifications = $('#js-notifications');
+                         $notifications.empty();
+                         $notifications.append('<div class="alert alert-success">Reps saved! You\'re killing it!</div>');
+@@ -81,7 +81,11 @@
+                         $errorList.addClass('hide');
+                     }
+                 });
+-            });
++            }
++        };
++
++        jQuery(document).ready(function() {
++            $('form.rep-log-form').on('submit', repForm.handleSubmit);
+         });
+     </script>
+ {% endblock %}
