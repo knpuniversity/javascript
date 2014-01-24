@@ -1,0 +1,30 @@
+{% if repLogs is not empty %}
+    <h3>What you've been lifting...</h3>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>What</th>
+            <th>How many times?</th>
+            <th>Weight</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for repLog in repLogs %}
+            <tr>
+                <td>{{ repLog.itemLabel|trans }}</td>
+                <td>{{ repLog.reps }}</td>
+                <td>{{ repLog.totalWeightLifted }}</td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+
+    <div class="alert alert-warning" style="margin-top: 20px;">
+        You're looking a little... wimpy.
+        Better lift something!
+    </div>
+
+{% endif %}

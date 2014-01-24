@@ -38,11 +38,19 @@ class LiftController extends Controller
             return $this->redirect($this->generateUrl('lift'));
         }
 
+        return array('form' => $form->createView());
+    }
+
+    /**
+     * @Template
+     */
+    public function repLogsAction($userId)
+    {
         $repLogs = $this->getDoctrine()->getRepository('AcmeLiftStuffBundle:RepLog')
-            ->findBy(array('user' => $this->getUser()))
+            ->findBy(array('user' => $userId))
         ;
 
-        return array('form' => $form->createView(), 'repLogs' => $repLogs);
+        return array('repLogs' => $repLogs);
     }
 
     /**
