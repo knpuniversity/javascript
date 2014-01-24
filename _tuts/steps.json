@@ -69,6 +69,41 @@
             "id": "form-tweak-methods-in-object",
             "name": "Form: Tweak methods in object",
             "description": null
+        },
+        {
+            "id": "form-use-jquery-extend",
+            "name": "Form: Use jQuery.extend",
+            "description": null
+        },
+        {
+            "id": "form-isolate-to-an-external-file",
+            "name": "Form: Isolate to an external file",
+            "description": null
+        },
+        {
+            "id": "form-isolate-symfony-error-processing",
+            "name": "Form: Isolate Symfony error processing",
+            "description": null
+        },
+        {
+            "id": "form-create-errorlist-utility",
+            "name": "Form: Create ErrorList Utility",
+            "description": null
+        },
+        {
+            "id": "leaderboard-install-dustjs",
+            "name": "Leaderboard: Install dustjs",
+            "description": null
+        },
+        {
+            "id": "leaderboard-external-object-to-start-rendering-leaderboard",
+            "name": "Leaderboard: External object to start rendering leaderboard",
+            "description": null
+        },
+        {
+            "id": "leaderboard-rendering-leaderboard-template",
+            "name": "Leaderboard: Rendering leaderboard template",
+            "description": null
         }
     ]
 }
