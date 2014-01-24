@@ -104,6 +104,26 @@
             "id": "leaderboard-rendering-leaderboard-template",
             "name": "Leaderboard: Rendering leaderboard template",
             "description": null
+        },
+        {
+            "id": "leaderboard-install-fosjsroutingbundle",
+            "name": "Leaderboard: Install FOSJsRoutingBundle",
+            "description": null
+        },
+        {
+            "id": "leaderboard-reloading-leaderboard-via-ajax",
+            "name": "Leaderboard: Reloading Leaderboard via AJAX",
+            "description": null
+        },
+        {
+            "id": "leaderboard-using-promises-to-add-a-fade",
+            "name": "Leaderboard: Using promises to add a fade",
+            "description": null
+        },
+        {
+            "id": "leaderboard-eventemitter-to-load-on-new-reps",
+            "name": "Leaderboard: EventEmitter to load on new reps",
+            "description": null
         }
     ]
 }
