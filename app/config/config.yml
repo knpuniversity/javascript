@@ -72,6 +72,9 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Acme\LiftStuffBundle\Entity\User
+    registration:
+        form:
+            type: lift_stuff_registration
 
 # app/config/config.yml
 braincrafted_bootstrap:

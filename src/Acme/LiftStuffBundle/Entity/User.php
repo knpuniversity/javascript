@@ -4,6 +4,7 @@ namespace Acme\LiftStuffBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -19,11 +20,13 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(name="first_name", type="string", length=255)
      */
     protected $firstName;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(name="last_name", type="string", length=255)
      */
     protected $lastName;
