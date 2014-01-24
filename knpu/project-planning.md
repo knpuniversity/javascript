@@ -109,17 +109,27 @@ Solutions:
 - passing in "dust" into self-executing block
 - once again using self = this;
 
-8) Add an update-leaderboard button
-* Using $.ajax
-* adding the button via JS - delegate selector
-* Routing.generate
+#### 20) Install FOSJsRoutingBundle
 
-9) Add a nice message when the leaderboard updates
-* Create a new Messaging object
-* "Inject" it into each object
+- comp require "friendsofsymfony/jsrouting-bundle" "@stable"
 
-10) Refactor to AJAX-load leaderboard from server
-* move loading logic into its own method. Will cause problems with "this"
+#### 21) Leaderboard: Reloading Leaderboard via AJAX
+
+- using a delegate selector for a js- button
+- using $.proxy on the callback
+- using Routing.generate for the first time
+- adding a button in the dust template
+
+#### 22) Leaderboard: Using promises to add a fade
+
+- using promises - attaching to success and triggering failure at least
+
+#### 23) Leaderboard: EventEmitter to load on new reps
+
+- bower install eventEmitter
+- create a global event emitter
+- use DI to push it into the objects
+- add a listener and trigger an event
 
 11) On hover of .username-info elements, let's pop up a cute-box
 * jQuery plugin
