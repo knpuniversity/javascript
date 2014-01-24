@@ -6,3 +6,7 @@ body {
 .container.main {
     padding-top: 20px;
 }
+/* a styling we'll use for error lists */
+ul.error-list {
+    padding-left: 30px;
+}
