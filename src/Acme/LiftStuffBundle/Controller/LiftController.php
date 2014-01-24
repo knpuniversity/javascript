@@ -42,7 +42,7 @@ class LiftController extends Controller
     }
 
     /**
-     * @Template
+     * @Template()
      */
     public function repLogsAction($userId)
     {
@@ -63,7 +63,7 @@ class LiftController extends Controller
             ->getLeaderboardDetails()
         ;
 
-        $userRepo = $this->getDoctrine()->getRepository('AcmeLiftStuffBundle:User');
+        $userRepo = $this->getUserRepository();
         $leaderboard = array();
         foreach ($leaderboardDetails as $details) {
             $leaderboard[] = array(
@@ -76,4 +76,11 @@ class LiftController extends Controller
         return array('leaderboard' => $leaderboard);
     }
 
+    /**
+     * @return \Doctrine\Common\Persistence\ObjectRepository
+     */
+    private function getUserRepository()
+    {
+        return $this->getDoctrine()->getRepository('AcmeLiftStuffBundle:User');
+    }
 }
