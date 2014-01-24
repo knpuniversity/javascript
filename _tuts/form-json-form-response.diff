@@ -1,0 +1,58 @@
+diff --git a/src/Acme/LiftStuffBundle/Controller/LiftController.php b/src/Acme/LiftStuffBundle/Controller/LiftController.php
+index 56ab5ba..5ac46e1 100644
+--- a/src/Acme/LiftStuffBundle/Controller/LiftController.php
++++ b/src/Acme/LiftStuffBundle/Controller/LiftController.php
+@@ -9,11 +9,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
++use FOS\RestBundle\View\View;
+ 
+ class LiftController extends Controller
+ {
+     /**
+-     * @Route("/lift", name="lift")
++     * @Route(
++     *      "/lift.{_format}",
++     *      name="lift",
++     *      defaults={"_format": "html"},
++     *      requirements={"_format":"html|json"}
++     * )
+      * @Template()
+      */
+     public function indexAction(Request $request)
+@@ -22,6 +28,10 @@ class LiftController extends Controller
+             throw new AccessDeniedException();
+         }
+ 
++        $view = View::create();
++        $view->setTemplate('AcmeLiftStuffBundle:Lift:index.html.twig');
++        $handler = $this->get('fos_rest.view_handler');
++
+         $form = $this->createForm(new RepLogType());
+         $form->handleRequest($request);
+ 
+@@ -38,7 +48,9 @@ class LiftController extends Controller
+             return $this->redirect($this->generateUrl('lift'));
+         }
+ 
+-        return array('form' => $form->createView());
++        $view->setData($form);
++
++        return $handler->handle($view);
+     }
+ 
+     /**
+diff --git a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
+index 3f06f7f..51e29b8 100644
+--- a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
++++ b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
+@@ -47,7 +47,7 @@
+ 
+                 $.ajax({
+                     type: 'POST',
+-                    url: $form.attr('action'),
++                    url: $form.attr('action')+'.json',
+                     data: $form.serialize()
+                 });
+             });
