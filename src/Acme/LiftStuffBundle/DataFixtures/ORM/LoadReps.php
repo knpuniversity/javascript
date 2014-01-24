@@ -30,12 +30,14 @@ class LoadReps implements FixtureInterface
         );
 
         for ($i = 0; $i < 10; $i++) {
+            list($firstName, $lastName) = $names[$i];
+
             $user = new User();
-            $user->setUsername(sprintf('%s_%s', $names[$i][0], $names[$i],[1]));
+            $user->setUsername(sprintf('%s_%s', $firstName, $lastName));
             $user->setEmail('user'.$i.'@gmail.com');
             $user->setPlainPassword('password');
-            $user->setFirstName($names[$i][0]);
-            $user->setLastName($names[$i][1]);
+            $user->setFirstName($firstName);
+            $user->setLastName($lastName);
             $manager->persist($user);
 
             for ($j = 0; $j < rand(1, 5); $j++) {
