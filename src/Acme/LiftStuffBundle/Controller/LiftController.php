@@ -59,21 +59,7 @@ class LiftController extends Controller
      */
     public function leaderboardAction()
     {
-        $leaderboardDetails = $this->getDoctrine()->getRepository('AcmeLiftStuffBundle:RepLog')
-            ->getLeaderboardDetails()
-        ;
-
-        $userRepo = $this->getUserRepository();
-        $leaderboard = array();
-        foreach ($leaderboardDetails as $details) {
-            $leaderboard[] = array(
-                'user' => $userRepo->find($details['user_id']),
-                'weight' => $details['weightSum'],
-                'in_cats' => $details['weightSum']/RepLog::WEIGHT_FAT_CAT,
-            );
-        }
-
-        return array('leaderboard' => $leaderboard);
+        return array('leaderboard' => $this->getLeaders());
     }
 
     /**
@@ -82,5 +68,34 @@ class LiftController extends Controller
     private function getUserRepository()
     {
         return $this->getDoctrine()->getRepository('AcmeLiftStuffBundle:User');
+    }
+
+    /**
+     * Returns an array of leader information
+     *
+     * @return array
+     */
+    private function getLeaders()
+    {
+        $leaderboardDetails = $this->getDoctrine()->getRepository('AcmeLiftStuffBundle:RepLog')
+            ->getLeaderboardDetails()
+        ;
+
+        $userRepo = $this->getUserRepository();
+        $leaderboard = array();
+        foreach ($leaderboardDetails as $details) {
+            if (!$user = $userRepo->find($details['user_id'])) {
+                // interesting, this user is missing...
+                continue;
+            }
+
+            $leaderboard[] = array(
+                'username' => $user->getUsername(),
+                'weight' => $details['weightSum'],
+                'in_cats' => number_format($details['weightSum']/RepLog::WEIGHT_FAT_CAT, 1),
+            );
+        }
+
+        return $leaderboard;
     }
 }
