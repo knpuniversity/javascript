@@ -76,6 +76,23 @@ Solutions:
 - used $.proxy so we could get "this"
 - used self later to keep this
 
+#### 14) Form: Isolate to an external file
+
+- using self-executing function
+- seeing an alias for undefined
+- still need to include the script file manually
+
+#### 15) Form: Isolate Symfony error processing
+
+- this returns an object, not even a function that acts as constructor
+- order including the script files is important
+- need to pass it into self-executing function
+
+### 16)
+
+- Moved creation of the ul error list into JavaScript
+- New ErrorList object has an easy API
+
 3) Add another form field after submitting
 * introduce delegate events
 
