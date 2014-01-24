@@ -23,10 +23,10 @@ index 14167bc..74df11b 100644
  </body>
  </html>
 diff --git a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
-index bafd013..38ecf76 100644
+index 3ae10ae..11f3b4d 100644
 --- a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
 +++ b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
-@@ -61,4 +61,4 @@
+@@ -34,4 +34,4 @@
              {{ render(controller('AcmeLiftStuffBundle:Lift:leaderboard')) }}
          </div>
      </div>
