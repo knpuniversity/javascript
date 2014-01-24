@@ -1,0 +1,152 @@
+diff --git a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
+index a5414e2..334cd03 100644
+--- a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
++++ b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
+@@ -41,69 +41,9 @@
+ {% block javascripts %}
+     {{ parent() }}
+ 
+-    <script>
+-        var RepForm = function($form) {
+-            this.$form = $form;
+-
+-            this.initialize();
+-        };
+-
+-        $.extend(RepForm.prototype, {
+-
+-            initialize: function() {
+-                this.$form.on('submit', $.proxy(this.handleSubmit, this));
+-            },
+-
+-            handleSubmit: function (e) {
+-                e.preventDefault();
+-                var self = this;
+-                var $form = this.$form;
+-                var $errorList = $form.find('.error-list');
+-
+-                $.ajax({
+-                    type: 'POST',
+-                    url: $form.attr('action') + '.json',
+-                    data: $form.serialize(),
+-                    error: function (jqXhr) {
+-                        self.parseErrorResponse(jqXhr.responseJSON);
+-
+-                    },
+-                    success: function () {
+-                        var $notifications = $('#js-notifications');
+-                        $notifications.empty();
+-                        $notifications.append('<div class="alert alert-success">Reps saved! You\'re killing it!</div>');
+-
+-                        $errorList.empty();
+-                        $errorList.addClass('hide');
+-                    }
+-                });
+-            },
+-
+-            parseErrorResponse: function(errorResponse) {
+-                var $form = this.$form;
+-                var $errorList = $form.find('.error-list');
+-
+-                // remove any field errors
+-                $form.find('.form-group').removeClass('has-error');
+-
+-                $errorList.empty();
+-
+-                var errors = errorResponse.errors.children;
+-                $.each(errors, function (key, data) {
+-                    if (!data.errors) {
+-                        return;
+-                    }
+-
+-                    var $input = $form.find('[name*="[' + key + ']"]');
+-                    $input.closest('.form-group').addClass('has-error');
+-
+-                    $errorList.append('<li>' + data.errors[0] + '</li>');
+-                });
+-
+-                $errorList.toggleClass('hide', $errorList.html() == '');
+-            }
+-        });
++    <script src="{{ asset('assets/js/RepForm.js') }}"></script>
+ 
++    <script>
+         jQuery(document).ready(function() {
+             var repForm = new RepForm($('form.rep-log-form'));
+         });
+diff --git a/web/assets/js/RepForm.js b/web/assets/js/RepForm.js
+new file mode 100644
+index 0000000..af4bf4b
+--- /dev/null
++++ b/web/assets/js/RepForm.js
+@@ -0,0 +1,70 @@
++/**
++ * Utility to for handling generic functionality related to a course
++ */
++window.RepForm = (function($, undefined){
++
++    var RepForm = function ($form) {
++        this.$form = $form;
++
++        this.initialize();
++    };
++
++    $.extend(RepForm.prototype, {
++
++        initialize: function () {
++            this.$form.on('submit', $.proxy(this.handleSubmit, this));
++        },
++
++        handleSubmit: function (e) {
++            e.preventDefault();
++            var self = this;
++            var $form = this.$form;
++            var $errorList = $form.find('.error-list');
++
++            $.ajax({
++                type: 'POST',
++                url: $form.attr('action') + '.json',
++                data: $form.serialize(),
++                error: function (jqXhr) {
++                    self.parseErrorResponse(jqXhr.responseJSON);
++
++                },
++                success: function () {
++                    var $notifications = $('#js-notifications');
++                    $notifications.empty();
++                    $notifications.append('<div class="alert alert-success">Reps saved! You\'re killing it!</div>');
++
++                    $errorList.empty();
++                    $errorList.addClass('hide');
++                }
++            });
++        },
++
++        parseErrorResponse: function (errorResponse) {
++            var $form = this.$form;
++            var $errorList = $form.find('.error-list');
++
++            // remove any field errors
++            $form.find('.form-group').removeClass('has-error');
++
++            $errorList.empty();
++
++            var errors = errorResponse.errors.children;
++            $.each(errors, function (key, data) {
++                if (!data.errors) {
++                    return;
++                }
++
++                var $input = $form.find('[name*="[' + key + ']"]');
++                $input.closest('.form-group').addClass('has-error');
++
++                $errorList.append('<li>' + data.errors[0] + '</li>');
++            });
++
++            $errorList.toggleClass('hide', $errorList.html() == '');
++        }
++    });
++
++    return RepForm;
++
++})(jQuery);
