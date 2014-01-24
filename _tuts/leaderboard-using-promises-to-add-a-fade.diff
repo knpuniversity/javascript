@@ -1,0 +1,78 @@
+diff --git a/src/Acme/LiftStuffBundle/Controller/LiftController.php b/src/Acme/LiftStuffBundle/Controller/LiftController.php
+index 750e1d7..eef7386 100644
+--- a/src/Acme/LiftStuffBundle/Controller/LiftController.php
++++ b/src/Acme/LiftStuffBundle/Controller/LiftController.php
+@@ -75,6 +75,8 @@ class LiftController extends Controller
+      */
+     public function leaderboardAction()
+     {
++        // sleep so we can see the animations on the frontend
++        sleep(2);
+         $leaders = $this->getLeaders();
+ 
+         $view = View::create($leaders);
+diff --git a/web/assets/js/Leaderboard.js b/web/assets/js/Leaderboard.js
+index a57ef0a..58fe1a7 100644
+--- a/web/assets/js/Leaderboard.js
++++ b/web/assets/js/Leaderboard.js
+@@ -18,19 +18,39 @@ window.Leaderboard = (function($, dust, Routing, undefined){
+             this.$wrapper.on('click', '.js-leaderboard-update', $.proxy(this._handleUpdateLeaderboard, this));
+         },
+ 
++        /**
++         * Renders based on the current data and returns a promise when it's finished
++         *
++         * @returns {*}
++         */
+         render: function() {
+             var self = this;
+ 
+             var compiled = dust.compile(this.template, 'leaderboard');
+             dust.loadSource(compiled);
+ 
++            var deferred = new $.Deferred();
++
+             dust.render(
+                 'leaderboard',
+                 { leaders: this.leaders },
+                 function(err, out) {
+-                    self.$wrapper.html(out);
++                    if (err) {
++                        deferred.fail();
++                    } else {
++                        deferred.resolve(out);
++                    }
+                 }
+             );
++
++            // write out the HTML
++            deferred.done($.proxy(this._writeHtmlToWrapper, this));
++
++            return deferred.promise();
++        },
++
++        _writeHtmlToWrapper: function(html) {
++            this.$wrapper.html(html);
+         },
+ 
+         /**
+@@ -43,12 +63,18 @@ window.Leaderboard = (function($, dust, Routing, undefined){
+                 '_format': 'json'
+             });
+ 
++            // fade it out
++            this.$wrapper.fadeTo(200, .4);
++
+             $.ajax({
+                 type: 'GET',
+                 url: url,
+                 success: function(data) {
+                     self.leaders = data;
+-                    self.render();
++                    // render it, and attach a function the promise
++                    self.render().done(function() {
++                        self.$wrapper.fadeTo(200, 1);
++                    });
+                 }
+             })
+         },
