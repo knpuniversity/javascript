@@ -7,7 +7,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Acme\LiftStuffBundle\Entity\User;
 use Acme\LiftStuffBundle\Entity\RepLog;
 
-class LoadUserData implements FixtureInterface
+class LoadReps implements FixtureInterface
 {
     /**
      * {@inheritDoc}
