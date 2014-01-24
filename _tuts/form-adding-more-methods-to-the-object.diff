@@ -1,0 +1,60 @@
+diff --git a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
+index 6570359..6c416cb 100644
+--- a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
++++ b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
+@@ -53,24 +53,8 @@
+                     url: $form.attr('action') + '.json',
+                     data: $form.serialize(),
+                     error: function (jqXhr) {
+-                        // remove any field errors
+-                        $form.find('.form-group').removeClass('has-error');
++                        repForm.parseErrorResponse(jqXhr.responseJSON, $form);
+ 
+-                        $errorList.empty();
+-
+-                        var errors = jqXhr.responseJSON.errors.children;
+-                        $.each(errors, function (key, data) {
+-                            if (!data.errors) {
+-                                return;
+-                            }
+-
+-                            var $input = $form.find('[name*="[' + key + ']"]');
+-                            $input.closest('.form-group').addClass('has-error');
+-
+-                            $errorList.append('<li>' + data.errors[0] + '</li>');
+-                        });
+-
+-                        $errorList.toggleClass('hide', $errorList.html() == '');
+                     },
+                     success: function () {
+                         var $notifications = $('#js-notifications');
+@@ -81,6 +65,29 @@
+                         $errorList.addClass('hide');
+                     }
+                 });
++            },
++
++            parseErrorResponse: function(errorResponse, $form) {
++                var $errorList = $form.find('.error-list');
++
++                // remove any field errors
++                $form.find('.form-group').removeClass('has-error');
++
++                $errorList.empty();
++
++                var errors = errorResponse.errors.children;
++                $.each(errors, function (key, data) {
++                    if (!data.errors) {
++                        return;
++                    }
++
++                    var $input = $form.find('[name*="[' + key + ']"]');
++                    $input.closest('.form-group').addClass('has-error');
++
++                    $errorList.append('<li>' + data.errors[0] + '</li>');
++                });
++
++                $errorList.toggleClass('hide', $errorList.html() == '');
+             }
+         };
+ 
