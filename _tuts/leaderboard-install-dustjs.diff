@@ -1,0 +1,13 @@
+diff --git a/bower.json b/bower.json
+index 170dc6c..d7ce684 100644
+--- a/bower.json
++++ b/bower.json
+@@ -16,6 +16,7 @@
+     "tests"
+   ],
+   "dependencies": {
+-    "bootstrap": "~3.0.3"
++    "bootstrap": "~3.0.3",
++    "dustjs-linkedin": "~2.3.1"
+   }
+ }
