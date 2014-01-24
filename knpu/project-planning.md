@@ -30,7 +30,7 @@ Start with a basic design and:
 - using .preventDefault()
 - using document.ready
 
-#### 4) Installing FOSRestBundle
+#### 4) Rep Form: Installing FOSRestBundle
 
 - comp require friendsofsymfony/rest-bundle ~1.2.2
 - comp require jms/serializer-bundle ~0.13.0
