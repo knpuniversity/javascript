@@ -44,6 +44,31 @@
             "id": "form-adding-error-highlights",
             "name": "Form: Adding error highlights",
             "description": null
+        },
+        {
+            "id": "form-handling-success-with-a-message",
+            "name": "Form: Handling success with a message",
+            "description": null
+        },
+        {
+            "id": "form-refactoring-into-simple-object",
+            "name": "Form: Refactoring into simple object",
+            "description": null
+        },
+        {
+            "id": "form-adding-more-methods-to-the-object",
+            "name": "Form: Adding more methods to the object",
+            "description": null
+        },
+        {
+            "id": "form-instantiated-object",
+            "name": "Form: Instantiated object",
+            "description": null
+        },
+        {
+            "id": "form-tweak-methods-in-object",
+            "name": "Form: Tweak methods in object",
+            "description": null
         }
     ]
 }
