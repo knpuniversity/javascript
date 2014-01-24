@@ -88,26 +88,26 @@ Solutions:
 - order including the script files is important
 - need to pass it into self-executing function
 
-### 16)
+### 16) Form: Create Error List Utility
 
 - Moved creation of the ul error list into JavaScript
 - New ErrorList object has an easy API
 
-3) Add another form field after submitting
-* introduce delegate events
+#### 17) Leaderboard: Install dustjs
 
-5) Introduce constructor
-* prototype model
-* keep all the selectors internally to the wrapper
+- bower install  dustjs-linkedin --save
 
-6) Isolate into its own file
-* self-executing function
-* window object
+#### 18) External object to start rendering leaderboard
 
-7) Render the leaderboard clent-side
-* client-side templates
-* dumping JSON into Twig
-* creating another object
+- rendered template just inside a script tag and passed it in
+- nothing too special at this stage
+
+#### 19) Rendering leaderboard template
+
+- rendering data into twig via {{ leaders|json_encode|raw }}
+- compiling and rendering the Dustjs template
+- passing in "dust" into self-executing block
+- once again using self = this;
 
 8) Add an update-leaderboard button
 * Using $.ajax
@@ -142,10 +142,15 @@ to make this plugin even more re-usable
 * add in jshint
 * add in css-min
 
+15.5) Dust Template compiling
+
 16) Less/Sass extra credit?
 * add watch task
 
 17) Refactor entry into AngularJS
+
+3) Add another form field after submitting
+* introduce delegate events
 
 ### Questions
 
@@ -156,3 +161,5 @@ to make this plugin even more re-usable
 
 - you don't need "script type="
 - what is document.ready really?
+- we could also make a FormErrorHighlighter around step 17 to make the
+  error decorating of form fields automatic
