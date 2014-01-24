@@ -28,13 +28,24 @@ index 5625b47..1d1bd9f 100644
       */
      private function getUserRepository()
 diff --git a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
-index 455ade3..c493d7a 100644
+index 455ade3..4d5a39c 100644
 --- a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
 +++ b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
-@@ -54,6 +54,7 @@
+@@ -39,6 +39,8 @@
+ {% block javascripts %}
+     {{ parent() }}
+ 
++    <script src="{{ asset('assets/vendor/dustjs-linkedin/dist/dust-full.js') }}"></script>
++
+     <script type="text/template" id="js-template-leaderboard">
+         {{ include('AcmeLiftStuffBundle:Lift:leaderboard.dust.twig') }}
+     </script>
+@@ -53,7 +55,8 @@
+             var repForm = new RepForm($('form.rep-log-form'));
              var leaderboard = new Leaderboard(
                  $('#leaderboard'),
-                 $('#js-template-leaderboard').html()
+-                $('#js-template-leaderboard').html()
++                $('#js-template-leaderboard').html(),
 +                {{ leaders|json_encode|raw }}
              );
          });
