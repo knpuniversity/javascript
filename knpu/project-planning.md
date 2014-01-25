@@ -131,6 +131,10 @@ Solutions:
 - use DI to push it into the objects
 - add a listener and trigger an event
 
+#### 24) User: Create simple jQuery plugin
+
+- created the new jQuery plugin - very simple so far
+
 11) On hover of .username-info elements, let's pop up a cute-box
 * jQuery plugin
 * Routing.generate, but we could set that on some global config in Core
