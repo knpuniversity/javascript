@@ -124,6 +124,11 @@
             "id": "leaderboard-eventemitter-to-load-on-new-reps",
             "name": "Leaderboard: EventEmitter to load on new reps",
             "description": null
+        },
+        {
+            "id": "user-create-simple-jquery-plugin",
+            "name": "User: Create simple jQuery plugin",
+            "description": null
         }
     ]
 }
