@@ -10,3 +10,6 @@ body {
 ul.error-list {
     padding-left: 30px;
 }
+.user-info-box img {
+    width: 100px;
+}
