@@ -33,7 +33,7 @@ class User extends BaseUser
 
     public function getAvatar()
     {
-        return 'http://thecatapi.com/api/images/get?format=src&type=gif';
+        return 'http://thecatapi.com/api/images/get?format=src&type=gif&r='.rand(100, 999);
     }
 
     /**
