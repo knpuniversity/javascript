@@ -25,7 +25,7 @@ class LoadReps implements FixtureInterface
             array('Hunter S.', 'Thomcat'),
             array('J.R.R', 'Tollkitten'),
             array('Madelion', 'Albright'),
-            array('Meowly,', 'Cyrus'),
+            array('Meowly', 'Cyrus'),
             array('Ron', 'Furgandy'),
         );
 
