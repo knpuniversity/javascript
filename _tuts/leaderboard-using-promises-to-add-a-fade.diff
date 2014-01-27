@@ -12,10 +12,10 @@ index 750e1d7..eef7386 100644
  
          $view = View::create($leaders);
 diff --git a/web/assets/js/Leaderboard.js b/web/assets/js/Leaderboard.js
-index a57ef0a..58fe1a7 100644
+index 2f40756..b05a42f 100644
 --- a/web/assets/js/Leaderboard.js
 +++ b/web/assets/js/Leaderboard.js
-@@ -18,19 +18,39 @@ window.Leaderboard = (function($, dust, Routing, undefined){
+@@ -15,19 +15,39 @@ window.Leaderboard = (function($, dust, Routing, undefined){
              this.$wrapper.on('click', '.js-leaderboard-update', $.proxy(this._handleUpdateLeaderboard, this));
          },
  
@@ -56,7 +56,7 @@ index a57ef0a..58fe1a7 100644
          },
  
          /**
-@@ -43,12 +63,18 @@ window.Leaderboard = (function($, dust, Routing, undefined){
+@@ -40,12 +60,18 @@ window.Leaderboard = (function($, dust, Routing, undefined){
                  '_format': 'json'
              });
  
