@@ -51,13 +51,10 @@ index 455ade3..4d5a39c 100644
          });
      </script>
 diff --git a/web/assets/js/Leaderboard.js b/web/assets/js/Leaderboard.js
-index 9def9d6..b311613 100644
+index 906ac88..69c805d 100644
 --- a/web/assets/js/Leaderboard.js
 +++ b/web/assets/js/Leaderboard.js
-@@ -1,11 +1,12 @@
- /**
-  * Utility to for handling generic functionality related to a course
-  */
+@@ -1,8 +1,9 @@
 -window.Leaderboard = (function($, undefined){
 +window.Leaderboard = (function($, dust, undefined){
  
@@ -69,7 +66,7 @@ index 9def9d6..b311613 100644
  
          this.initialize();
      };
-@@ -16,9 +17,20 @@ window.Leaderboard = (function($, undefined){
+@@ -13,9 +14,20 @@ window.Leaderboard = (function($, undefined){
          },
  
          render: function() {
