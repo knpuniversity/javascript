@@ -1,0 +1,138 @@
+diff --git a/bower.json b/bower.json
+index c86c477..18a2878 100644
+--- a/bower.json
++++ b/bower.json
+@@ -19,6 +19,7 @@
+     "bootstrap": "~3.0.3",
+     "dustjs-linkedin": "~2.3.1",
+     "eventEmitter": "~4.2.7",
+-    "requirejs": "~2.1.10"
++    "requirejs": "~2.1.10",
++    "requirejs-text": "~2.0.10"
+   }
+ }
+diff --git a/src/Acme/LiftStuffBundle/Resources/views/Lift/leaderboard.dust.twig b/src/Acme/LiftStuffBundle/Resources/views/Lift/leaderboard.dust.twig
+deleted file mode 100644
+index 3bab7c1..0000000
+--- a/src/Acme/LiftStuffBundle/Resources/views/Lift/leaderboard.dust.twig
++++ /dev/null
+@@ -1,24 +0,0 @@
+-<button class="js-leaderboard-update btn btn-primary pull-right">Update Leaderboard</button>
+-
+-<table class="table table-striped">
+-    <thead>
+-    <tr>
+-        <th>Username</th>
+-        <th>Weight lifted</th>
+-    </tr>
+-    </thead>
+-    <tbody>
+-    {{ '{#leaders}' }}
+-        <tr>
+-            <td><span class="js-username">{username}</span></td>
+-            <td style="width: 175px;">
+-                {weight}lbs
+-
+-                <span class="label label-primary pull-right">
+-                    (~{in_cats} fat cats)
+-                </span>
+-            </td>
+-        </tr>
+-    {/leaders}
+-    </tbody>
+-</table>
+diff --git a/web/assets/js/app/lift.js b/web/assets/js/app/lift.js
+index b4b75a0..26671ff 100644
+--- a/web/assets/js/app/lift.js
++++ b/web/assets/js/app/lift.js
+@@ -9,7 +9,6 @@ define(['jquery', 'eventEmitter', 'modules/RepForm', 'modules/Leaderboard'], fun
+ 
+         var leaderboard = new Leaderboard(
+             $('#leaderboard'),
+-            $('#js-template-leaderboard').html(),
+             {},
+             emitter
+         );
+diff --git a/web/assets/js/common.js b/web/assets/js/common.js
+index 0619f72..ac90468 100644
+--- a/web/assets/js/common.js
++++ b/web/assets/js/common.js
+@@ -16,7 +16,8 @@ requirejs.config({
+         jquery: '../vendor/jquery/jquery',
+         bootstrap: '../vendor/bootstrap/dist/js/bootstrap',
+         eventEmitter: '../vendor/eventEmitter/EventEmitter',
+-        dust: '../vendor/dustjs-linkedin/dist/dust-full'
++        dust: '../vendor/dustjs-linkedin/dist/dust-full',
++        text: '../vendor/requirejs-text/text'
+     },
+     shim: {
+         /**
+diff --git a/web/assets/js/modules/Leaderboard.js b/web/assets/js/modules/Leaderboard.js
+index 8c0d0ad..c22a9cc 100644
+--- a/web/assets/js/modules/Leaderboard.js
++++ b/web/assets/js/modules/Leaderboard.js
+@@ -1,8 +1,7 @@
+-define(['jquery', 'dust'], function ($, dust) {
++define(['jquery', 'dust', 'text!templates/leaderboard.dust'], function ($, dust, leaderboardTemplate) {
+ 
+-    var Leaderboard = function($wrapper, template, leaders, eventEmitter) {
++    var Leaderboard = function($wrapper, leaders, eventEmitter) {
+         this.$wrapper = $wrapper;
+-        this.template = template;
+         this.leaders = leaders;
+         this.eventEmitter = eventEmitter;
+ 
+@@ -16,10 +15,10 @@ define(['jquery', 'dust'], function ($, dust) {
+             this.$wrapper.on('click', '.js-leaderboard-update', $.proxy(this._handleUpdateLeaderboard, this));
+             this.eventEmitter.addListener('reps.update', $.proxy(this._handleRepsUpdate, this));
+ 
+-            // trigger the userInfoBox behavior
+-            this.$wrapper.userInfoPopup({
+-                selector: '.js-username'
+-            });
++//            // trigger the userInfoBox behavior
++//            this.$wrapper.userInfoPopup({
++//                selector: '.js-username'
++//            });
+         },
+ 
+         /**
+@@ -30,7 +29,7 @@ define(['jquery', 'dust'], function ($, dust) {
+         render: function() {
+             var self = this;
+ 
+-            var compiled = dust.compile(this.template, 'leaderboard');
++            var compiled = dust.compile(leaderboardTemplate, 'leaderboard');
+             dust.loadSource(compiled);
+ 
+             var deferred = new $.Deferred();
+diff --git a/web/assets/js/templates/leaderboard.dust b/web/assets/js/templates/leaderboard.dust
+new file mode 100644
+index 0000000..83b91a1
+--- /dev/null
++++ b/web/assets/js/templates/leaderboard.dust
+@@ -0,0 +1,24 @@
++<button class="js-leaderboard-update btn btn-primary pull-right">Update Leaderboard</button>
++
++<table class="table table-striped">
++    <thead>
++    <tr>
++        <th>Username</th>
++        <th>Weight lifted</th>
++    </tr>
++    </thead>
++    <tbody>
++    {#leaders}
++        <tr>
++            <td><span class="js-username">{username}</span></td>
++            <td style="width: 175px;">
++                {weight}lbs
++
++                <span class="label label-primary pull-right">
++                    (~{in_cats} fat cats)
++                </span>
++            </td>
++        </tr>
++    {/leaders}
++    </tbody>
++</table>
