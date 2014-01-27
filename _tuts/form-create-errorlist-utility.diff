@@ -21,13 +21,10 @@ index 1c795e9..a0f69c8 100644
      <script>
 diff --git a/web/assets/js/ErrorList.js b/web/assets/js/ErrorList.js
 new file mode 100644
-index 0000000..51c7723
+index 0000000..5fc805a
 --- /dev/null
 +++ b/web/assets/js/ErrorList.js
-@@ -0,0 +1,39 @@
-+/**
-+ * Utility to for handling generic functionality related to a course
-+ */
+@@ -0,0 +1,36 @@
 +window.ErrorList = (function($, undefined){
 +
 +    var ErrorList = function($wrapper) {
@@ -65,19 +62,16 @@ index 0000000..51c7723
 +    return ErrorList;
 +})(jQuery);
 diff --git a/web/assets/js/RepForm.js b/web/assets/js/RepForm.js
-index 3093cac..4440981 100644
+index 252b63d..32a1b81 100644
 --- a/web/assets/js/RepForm.js
 +++ b/web/assets/js/RepForm.js
-@@ -1,7 +1,7 @@
- /**
-  * Utility to for handling generic functionality related to a course
-  */
+@@ -1,4 +1,4 @@
 -window.RepForm = (function($, SymfonyErrorUtil, undefined){
 +window.RepForm = (function($, SymfonyErrorUtil, ErrorList, undefined){
  
      var RepForm = function ($form) {
          this.$form = $form;
-@@ -11,15 +11,20 @@ window.RepForm = (function($, SymfonyErrorUtil, undefined){
+@@ -8,15 +8,20 @@ window.RepForm = (function($, SymfonyErrorUtil, undefined){
  
      $.extend(RepForm.prototype, {
  
@@ -99,7 +93,7 @@ index 3093cac..4440981 100644
  
              $.ajax({
                  type: 'POST',
-@@ -34,34 +39,31 @@ window.RepForm = (function($, SymfonyErrorUtil, undefined){
+@@ -31,34 +36,31 @@ window.RepForm = (function($, SymfonyErrorUtil, undefined){
                      $notifications.empty();
                      $notifications.append('<div class="alert alert-success">Reps saved! You\'re killing it!</div>');
  
