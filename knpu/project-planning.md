@@ -145,10 +145,7 @@ Solutions:
 - merged the options together
 - filled in the missing mouseover/mouseout listeners
 
-11) On hover of .username-info elements, let's pop up a cute-box
-* jQuery plugin
-* Routing.generate, but we could set that on some global config in Core
-to make this plugin even more re-usable
+
 
 12) On homepage, include the leaderboard
 * breaks because no leaderboard object
