@@ -188,11 +188,22 @@ Solutions:
 - setup path for dust
 - add a shim for exports dust
 
+#### 34) RequireJS: Include Template
 
+- bower install requirejs-text --save
+- move the dust template into assets/templates
+- include the text!templates/leaderboard.dust template
+- setup the text path
+- comment out the userInfoPopup
+
+#### 35) RequireJS: Include Routing
 
 - dynamically adding a "routes" path in require.js.html.twig
 - requiring routing and routes from Leaderboard
 - adding a path for routing
+- add a shim so routes requires routing
+- add shim for routing to export
+
 
 12) On homepage, include the leaderboard
 * breaks because no leaderboard object
