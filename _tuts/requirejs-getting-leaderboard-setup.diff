@@ -1,0 +1,260 @@
+diff --git a/web/assets/js/Leaderboard.js b/web/assets/js/Leaderboard.js
+deleted file mode 100644
+index e255b45..0000000
+--- a/web/assets/js/Leaderboard.js
++++ /dev/null
+@@ -1,98 +0,0 @@
+-window.Leaderboard = (function($, dust, Routing, undefined){
+-
+-    var Leaderboard = function($wrapper, template, leaders, eventEmitter) {
+-        this.$wrapper = $wrapper;
+-        this.template = template;
+-        this.leaders = leaders;
+-        this.eventEmitter = eventEmitter;
+-
+-        this.initialize();
+-    };
+-
+-    $.extend(Leaderboard.prototype, {
+-        initialize: function() {
+-            this.render();
+-
+-            this.$wrapper.on('click', '.js-leaderboard-update', $.proxy(this._handleUpdateLeaderboard, this));
+-            this.eventEmitter.addListener('reps.update', $.proxy(this._handleRepsUpdate, this));
+-
+-            // trigger the userInfoBox behavior
+-            this.$wrapper.userInfoPopup({
+-                selector: '.js-username'
+-            });
+-        },
+-
+-        /**
+-         * Renders based on the current data and returns a promise when it's finished
+-         *
+-         * @returns {*}
+-         */
+-        render: function() {
+-            var self = this;
+-
+-            var compiled = dust.compile(this.template, 'leaderboard');
+-            dust.loadSource(compiled);
+-
+-            var deferred = new $.Deferred();
+-
+-            dust.render(
+-                'leaderboard',
+-                { leaders: this.leaders },
+-                function(err, out) {
+-                    if (err) {
+-                        deferred.fail();
+-                    } else {
+-                        deferred.resolve(out);
+-                    }
+-                }
+-            );
+-
+-            // write out the HTML
+-            deferred.done($.proxy(this._writeHtmlToWrapper, this));
+-
+-            return deferred.promise();
+-        },
+-
+-        _writeHtmlToWrapper: function(html) {
+-            this.$wrapper.html(html);
+-        },
+-
+-        /**
+-         * Loads fresh leaders data from the server and re-draws the leaderboard
+-         */
+-        refreshFromServer: function() {
+-            var self = this;
+-
+-            var url = Routing.generate('leaderboard', {
+-                '_format': 'json'
+-            });
+-
+-            // fade it out
+-            this.$wrapper.fadeTo(200, .4);
+-
+-            $.ajax({
+-                type: 'GET',
+-                url: url,
+-                success: function(data) {
+-                    self.leaders = data;
+-                    // render it, and attach a function the promise
+-                    self.render().done(function() {
+-                        self.$wrapper.fadeTo(200, 1);
+-                    });
+-                }
+-            })
+-        },
+-
+-        _handleUpdateLeaderboard: function(e) {
+-            e.preventDefault();
+-
+-            this.refreshFromServer();
+-        },
+-
+-        _handleRepsUpdate: function() {
+-            this.refreshFromServer();
+-        }
+-    });
+-
+-    return Leaderboard;
+-})(jQuery, dust, Routing);
+diff --git a/web/assets/js/app/lift.js b/web/assets/js/app/lift.js
+index 7a75450..b4b75a0 100644
+--- a/web/assets/js/app/lift.js
++++ b/web/assets/js/app/lift.js
+@@ -1,18 +1,17 @@
+ /**
+  * Default module that's used on every page
+  */
+-define(['jquery', 'eventEmitter', 'modules/RepForm'], function ($, EventEmitter, RepForm) {
++define(['jquery', 'eventEmitter', 'modules/RepForm', 'modules/Leaderboard'], function ($, EventEmitter, RepForm, Leaderboard) {
+     var emitter = new EventEmitter();
+ 
+     jQuery(document).ready(function() {
+         var repForm = new RepForm($('form.rep-log-form'), emitter);
+-        /*
++
+         var leaderboard = new Leaderboard(
+             $('#leaderboard'),
+             $('#js-template-leaderboard').html(),
+             {},
+             emitter
+         );
+-        */
+     });
+ });
+\ No newline at end of file
+diff --git a/web/assets/js/common.js b/web/assets/js/common.js
+index da1ad4f..0619f72 100644
+--- a/web/assets/js/common.js
++++ b/web/assets/js/common.js
+@@ -15,7 +15,8 @@ requirejs.config({
+          */
+         jquery: '../vendor/jquery/jquery',
+         bootstrap: '../vendor/bootstrap/dist/js/bootstrap',
+-        eventEmitter: '../vendor/eventEmitter/EventEmitter'
++        eventEmitter: '../vendor/eventEmitter/EventEmitter',
++        dust: '../vendor/dustjs-linkedin/dist/dust-full'
+     },
+     shim: {
+         /**
+@@ -30,6 +31,10 @@ requirejs.config({
+          * except that it fortunately supports AMD), we would need to do
+          * a little more work here.
+          */
+-        bootstrap: ['jquery']
++        bootstrap: ['jquery'],
++
++        dust: {
++            exports: 'dust'
++        }
+     }
+ });
+diff --git a/web/assets/js/modules/Leaderboard.js b/web/assets/js/modules/Leaderboard.js
+new file mode 100644
+index 0000000..8c0d0ad
+--- /dev/null
++++ b/web/assets/js/modules/Leaderboard.js
+@@ -0,0 +1,98 @@
++define(['jquery', 'dust'], function ($, dust) {
++
++    var Leaderboard = function($wrapper, template, leaders, eventEmitter) {
++        this.$wrapper = $wrapper;
++        this.template = template;
++        this.leaders = leaders;
++        this.eventEmitter = eventEmitter;
++
++        this.initialize();
++    };
++
++    $.extend(Leaderboard.prototype, {
++        initialize: function() {
++            this.render();
++
++            this.$wrapper.on('click', '.js-leaderboard-update', $.proxy(this._handleUpdateLeaderboard, this));
++            this.eventEmitter.addListener('reps.update', $.proxy(this._handleRepsUpdate, this));
++
++            // trigger the userInfoBox behavior
++            this.$wrapper.userInfoPopup({
++                selector: '.js-username'
++            });
++        },
++
++        /**
++         * Renders based on the current data and returns a promise when it's finished
++         *
++         * @returns {*}
++         */
++        render: function() {
++            var self = this;
++
++            var compiled = dust.compile(this.template, 'leaderboard');
++            dust.loadSource(compiled);
++
++            var deferred = new $.Deferred();
++
++            dust.render(
++                'leaderboard',
++                { leaders: this.leaders },
++                function(err, out) {
++                    if (err) {
++                        deferred.fail();
++                    } else {
++                        deferred.resolve(out);
++                    }
++                }
++            );
++
++            // write out the HTML
++            deferred.done($.proxy(this._writeHtmlToWrapper, this));
++
++            return deferred.promise();
++        },
++
++        _writeHtmlToWrapper: function(html) {
++            this.$wrapper.html(html);
++        },
++
++        /**
++         * Loads fresh leaders data from the server and re-draws the leaderboard
++         */
++        refreshFromServer: function() {
++            var self = this;
++
++            var url = Routing.generate('leaderboard', {
++                '_format': 'json'
++            });
++
++            // fade it out
++            this.$wrapper.fadeTo(200, .4);
++
++            $.ajax({
++                type: 'GET',
++                url: url,
++                success: function(data) {
++                    self.leaders = data;
++                    // render it, and attach a function the promise
++                    self.render().done(function() {
++                        self.$wrapper.fadeTo(200, 1);
++                    });
++                }
++            })
++        },
++
++        _handleUpdateLeaderboard: function(e) {
++            e.preventDefault();
++
++            this.refreshFromServer();
++        },
++
++        _handleRepsUpdate: function() {
++            this.refreshFromServer();
++        }
++    });
++
++    return Leaderboard;
++});
