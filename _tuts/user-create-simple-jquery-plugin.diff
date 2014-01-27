@@ -11,7 +11,7 @@ index c3fbde3..7f9c992 100644
      <script>
          jQuery(document).ready(function() {
 diff --git a/src/Acme/LiftStuffBundle/Resources/views/Lift/leaderboard.dust.twig b/src/Acme/LiftStuffBundle/Resources/views/Lift/leaderboard.dust.twig
-index 6025732..7a2c413 100644
+index 6025732..3bab7c1 100644
 --- a/src/Acme/LiftStuffBundle/Resources/views/Lift/leaderboard.dust.twig
 +++ b/src/Acme/LiftStuffBundle/Resources/views/Lift/leaderboard.dust.twig
 @@ -10,7 +10,7 @@
@@ -19,7 +19,7 @@ index 6025732..7a2c413 100644
      {{ '{#leaders}' }}
          <tr>
 -            <td>{username}</td>
-+            <td class="js-username">{username}</td>
++            <td><span class="js-username">{username}</span></td>
              <td style="width: 175px;">
                  {weight}lbs
  
@@ -41,18 +41,15 @@ index 2278f86..db29a37 100644
          /**
 diff --git a/web/assets/js/jquery/jquery.userinfopopup.js b/web/assets/js/jquery/jquery.userinfopopup.js
 new file mode 100644
-index 0000000..80822a3
+index 0000000..4997c8a
 --- /dev/null
 +++ b/web/assets/js/jquery/jquery.userinfopopup.js
-@@ -0,0 +1,21 @@
+@@ -0,0 +1,18 @@
 +(function($, Routing, undefined) {
 +
-+    $.fn.userInfoPopup = function() {
++    $.fn.userInfoPopup = function(option) {
 +
-+        this.each( function() {
-+            var self = this;
-+            var username = $.trim($(this).text());
-+
++        this.each(function() {
 +            $(this).on('mouseover', function() {
 +                $(this).data('original', $(this).html());
 +
