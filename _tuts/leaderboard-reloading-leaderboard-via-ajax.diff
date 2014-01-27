@@ -37,19 +37,16 @@ index 9af9407..6025732 100644
  <table class="table table-striped">
      <thead>
 diff --git a/web/assets/js/Leaderboard.js b/web/assets/js/Leaderboard.js
-index b311613..a57ef0a 100644
+index 69c805d..2f40756 100644
 --- a/web/assets/js/Leaderboard.js
 +++ b/web/assets/js/Leaderboard.js
-@@ -1,7 +1,7 @@
- /**
-  * Utility to for handling generic functionality related to a course
-  */
+@@ -1,4 +1,4 @@
 -window.Leaderboard = (function($, dust, undefined){
 +window.Leaderboard = (function($, dust, Routing, undefined){
  
      var Leaderboard = function($wrapper, template, leaders) {
          this.$wrapper = $wrapper;
-@@ -14,6 +14,8 @@ window.Leaderboard = (function($, dust, undefined){
+@@ -11,6 +11,8 @@ window.Leaderboard = (function($, dust, undefined){
      $.extend(Leaderboard.prototype, {
          initialize: function() {
              this.render();
@@ -58,7 +55,7 @@ index b311613..a57ef0a 100644
          },
  
          render: function() {
-@@ -29,8 +31,34 @@ window.Leaderboard = (function($, dust, undefined){
+@@ -26,8 +28,34 @@ window.Leaderboard = (function($, dust, undefined){
                      self.$wrapper.html(out);
                  }
              );
