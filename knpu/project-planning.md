@@ -145,7 +145,54 @@ Solutions:
 - merged the options together
 - filled in the missing mouseover/mouseout listeners
 
+#### 27) RequireJS: Install via Bower
 
+- bower install requirejs --save
+
+#### 28) RequireJS: Initial implementation
+
+- added the include('::requirejs.html.twig') block to base.html.twig
+- added the _requirejs.html.twig file
+- added the common.js file
+- added the default.js basic module
+- error is:
+    Mismatched anonymous define() module: function () {
+-> often means that you're loading something manually
+
+#### 29) RequireJS: Removing all normal JS
+
+- commenting out all old JS so we can get the homepage to work
+- removing the javascripts block even
+
+#### 30) RequireJS: Beginning of the lift module
+
+- creating the lift.js module with the old inline code
+- don't load any leaders by default (removes that issue)
+- require eventEmitter and just create one globally on this page
+- including the requirejs.html.twig template with the new module
+
+#### 31) RequireJS: Setting the eventEmitter path
+
+- setting the eventEmitter path custom
+
+#### 32) RequireJS: Getting RepForm working
+
+- requireing RepForm in lift
+- moving RepForm, SymfonyErrorUtil and ErrorList into a modules directory
+- changing first line of each with the define (and removing callable on last line)
+- commented out leaderboard
+
+#### 33) RequireJS: Getting Leaderboard setup
+
+- convert Leaderboard to a module
+- setup path for dust
+- add a shim for exports dust
+
+
+
+- dynamically adding a "routes" path in require.js.html.twig
+- requiring routing and routes from Leaderboard
+- adding a path for routing
 
 12) On homepage, include the leaderboard
 * breaks because no leaderboard object
