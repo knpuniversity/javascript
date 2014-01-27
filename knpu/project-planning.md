@@ -135,6 +135,16 @@ Solutions:
 
 - created the new jQuery plugin - very simple so far
 
+#### 25) User: Finishing Simple User Plugin
+
+- new jQuery plugin behavior that constructs an object
+- show/hide functionality
+
+#### 26) User: Filling in the missing pieces of the plugin
+
+- merged the options together
+- filled in the missing mouseover/mouseout listeners
+
 11) On hover of .username-info elements, let's pop up a cute-box
 * jQuery plugin
 * Routing.generate, but we could set that on some global config in Core
@@ -169,7 +179,7 @@ to make this plugin even more re-usable
 ### Questions
 
 - what is the bower.json ignore section?
-
+- maybe fix the sticky problem with the popups
 
 ### Random Notes
 
@@ -177,3 +187,9 @@ to make this plugin even more re-usable
 - what is document.ready really?
 - we could also make a FormErrorHighlighter around step 17 to make the
   error decorating of form fields automatic
+- return this from jQuery plugins to allow chaining!
+- Constructor trick in bootstrap is just a way to expose the private
+  construct method
+- the extra dot selectors (click.tooltip) used in Bootstrap are just namespaced
+  events: have no affect, except you can unbind them all later
+- first argument to $.extend is modified
