@@ -129,6 +129,16 @@
             "id": "user-create-simple-jquery-plugin",
             "name": "User: Create simple jQuery plugin",
             "description": null
+        },
+        {
+            "id": "user-finishing-simple-user-plugin",
+            "name": "User: Finishing simple user plugin",
+            "description": null
+        },
+        {
+            "id": "user-filling-in-the-missing-pieces-of-the-plugin",
+            "name": "User: Filling in the missing pieces of the plugin",
+            "description": null
         }
     ]
 }
