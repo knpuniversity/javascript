@@ -24,10 +24,10 @@ index 6025732..3bab7c1 100644
                  {weight}lbs
  
 diff --git a/web/assets/js/Leaderboard.js b/web/assets/js/Leaderboard.js
-index 2278f86..db29a37 100644
+index a46c9b1..295924a 100644
 --- a/web/assets/js/Leaderboard.js
 +++ b/web/assets/js/Leaderboard.js
-@@ -17,8 +17,10 @@ window.Leaderboard = (function($, dust, Routing, undefined){
+@@ -14,8 +14,10 @@ window.Leaderboard = (function($, dust, Routing, undefined){
              this.render();
  
              this.$wrapper.on('click', '.js-leaderboard-update', $.proxy(this._handleUpdateLeaderboard, this));
