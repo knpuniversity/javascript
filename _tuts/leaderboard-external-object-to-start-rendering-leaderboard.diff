@@ -93,13 +93,10 @@ index b08f335..0000000
 -</table>
 diff --git a/web/assets/js/Leaderboard.js b/web/assets/js/Leaderboard.js
 new file mode 100644
-index 0000000..9def9d6
+index 0000000..906ac88
 --- /dev/null
 +++ b/web/assets/js/Leaderboard.js
-@@ -0,0 +1,24 @@
-+/**
-+ * Utility to for handling generic functionality related to a course
-+ */
+@@ -0,0 +1,21 @@
 +window.Leaderboard = (function($, undefined){
 +
 +    var Leaderboard = function($wrapper, template) {
