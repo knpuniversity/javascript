@@ -11,19 +11,16 @@ index 334cd03..1c795e9 100644
  
      <script>
 diff --git a/web/assets/js/RepForm.js b/web/assets/js/RepForm.js
-index af4bf4b..3093cac 100644
+index 91b8641..252b63d 100644
 --- a/web/assets/js/RepForm.js
 +++ b/web/assets/js/RepForm.js
-@@ -1,7 +1,7 @@
- /**
-  * Utility to for handling generic functionality related to a course
-  */
+@@ -1,4 +1,4 @@
 -window.RepForm = (function($, undefined){
 +window.RepForm = (function($, SymfonyErrorUtil, undefined){
  
      var RepForm = function ($form) {
          this.$form = $form;
-@@ -41,6 +41,8 @@ window.RepForm = (function($, undefined){
+@@ -38,6 +38,8 @@ window.RepForm = (function($, undefined){
          },
  
          parseErrorResponse: function (errorResponse) {
@@ -32,7 +29,7 @@ index af4bf4b..3093cac 100644
              var $form = this.$form;
              var $errorList = $form.find('.error-list');
  
-@@ -49,16 +51,11 @@ window.RepForm = (function($, undefined){
+@@ -46,16 +48,11 @@ window.RepForm = (function($, undefined){
  
              $errorList.empty();
  
@@ -51,7 +48,7 @@ index af4bf4b..3093cac 100644
              });
  
              $errorList.toggleClass('hide', $errorList.html() == '');
-@@ -67,4 +64,4 @@ window.RepForm = (function($, undefined){
+@@ -64,4 +61,4 @@ window.RepForm = (function($, undefined){
  
      return RepForm;
  
@@ -59,13 +56,10 @@ index af4bf4b..3093cac 100644
 +})(jQuery, SymfonyErrorUtil);
 diff --git a/web/assets/js/SymfonyErrorUtil.js b/web/assets/js/SymfonyErrorUtil.js
 new file mode 100644
-index 0000000..6d30f77
+index 0000000..e02920d
 --- /dev/null
 +++ b/web/assets/js/SymfonyErrorUtil.js
-@@ -0,0 +1,39 @@
-+/**
-+ * Utility to for handling generic functionality related to a course
-+ */
+@@ -0,0 +1,36 @@
 +window.SymfonyErrorUtil = (function($, undefined){
 +
 +    return {
