@@ -1,0 +1,54 @@
+diff --git a/app/Resources/views/_requirejs.html.twig b/app/Resources/views/_requirejs.html.twig
+index 669b2f5..078a1e3 100644
+--- a/app/Resources/views/_requirejs.html.twig
++++ b/app/Resources/views/_requirejs.html.twig
+@@ -1,7 +1,10 @@
+ <script src="{{ asset('assets/vendor/requirejs/require.js') }}"></script>
+ <script>
+     requirejs.config({
+-        baseUrl: '/assets/js'
++        baseUrl: '/assets/js',
++        paths: {
++            routes: '{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}'
++        }
+     });
+ 
+     /**
+diff --git a/web/assets/js/common.js b/web/assets/js/common.js
+index ac90468..2dee683 100644
+--- a/web/assets/js/common.js
++++ b/web/assets/js/common.js
+@@ -17,7 +17,8 @@ requirejs.config({
+         bootstrap: '../vendor/bootstrap/dist/js/bootstrap',
+         eventEmitter: '../vendor/eventEmitter/EventEmitter',
+         dust: '../vendor/dustjs-linkedin/dist/dust-full',
+-        text: '../vendor/requirejs-text/text'
++        text: '../vendor/requirejs-text/text',
++        routing: '../../bundles/fosjsrouting/js/router'
+     },
+     shim: {
+         /**
+@@ -36,6 +37,12 @@ requirejs.config({
+ 
+         dust: {
+             exports: 'dust'
+-        }
++        },
++
++        routing: {
++            exports: 'Routing'
++        },
++
++        routes: ['routing']
+     }
+ });
+diff --git a/web/assets/js/modules/Leaderboard.js b/web/assets/js/modules/Leaderboard.js
+index c22a9cc..36b4064 100644
+--- a/web/assets/js/modules/Leaderboard.js
++++ b/web/assets/js/modules/Leaderboard.js
+@@ -1,4 +1,4 @@
+-define(['jquery', 'dust', 'text!templates/leaderboard.dust'], function ($, dust, leaderboardTemplate) {
++define(['jquery', 'dust', 'text!templates/leaderboard.dust', 'routing', 'routes'], function ($, dust, leaderboardTemplate, Routing) {
+ 
+     var Leaderboard = function($wrapper, leaders, eventEmitter) {
+         this.$wrapper = $wrapper;
