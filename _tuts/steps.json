@@ -139,6 +139,51 @@
             "id": "user-filling-in-the-missing-pieces-of-the-plugin",
             "name": "User: Filling in the missing pieces of the plugin",
             "description": null
+        },
+        {
+            "id": "requirejs-install-via-bower",
+            "name": "RequireJS: Install via bower",
+            "description": null
+        },
+        {
+            "id": "requirejs-initial-implementation",
+            "name": "RequireJS: Initial implementation",
+            "description": null
+        },
+        {
+            "id": "requirejs-removing-all-normal-js",
+            "name": "RequireJS: Removing all normal JS",
+            "description": null
+        },
+        {
+            "id": "requirejs-beginning-of-the-lift-module",
+            "name": "RequireJS: Beginning of the lift module",
+            "description": null
+        },
+        {
+            "id": "requirejs-setting-the-eventemitter-path",
+            "name": "RequireJS: Setting the eventEmitter path",
+            "description": null
+        },
+        {
+            "id": "requirejs-first-modules-to-repform-functionality",
+            "name": "RequireJS: First modules to RepForm functionality",
+            "description": null
+        },
+        {
+            "id": "requirejs-getting-leaderboard-setup",
+            "name": "RequireJS: Getting Leaderboard setup",
+            "description": null
+        },
+        {
+            "id": "requirejs-including-a-template",
+            "name": "RequireJS: Including a template",
+            "description": null
+        },
+        {
+            "id": "requirejs-include-routing",
+            "name": "RequireJS: Include routing",
+            "description": null
         }
     ]
 }
