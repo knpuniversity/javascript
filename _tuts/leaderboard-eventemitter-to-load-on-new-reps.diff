@@ -51,11 +51,10 @@ index 4d5a39c..c3fbde3 100644
          });
      </script>
 diff --git a/web/assets/js/Leaderboard.js b/web/assets/js/Leaderboard.js
-index 58fe1a7..2278f86 100644
+index b05a42f..a46c9b1 100644
 --- a/web/assets/js/Leaderboard.js
 +++ b/web/assets/js/Leaderboard.js
-@@ -3,10 +3,11 @@
-  */
+@@ -1,9 +1,10 @@
  window.Leaderboard = (function($, dust, Routing, undefined){
  
 -    var Leaderboard = function($wrapper, template, leaders) {
@@ -67,7 +66,7 @@ index 58fe1a7..2278f86 100644
  
          this.initialize();
      };
-@@ -16,6 +17,8 @@ window.Leaderboard = (function($, dust, Routing, undefined){
+@@ -13,6 +14,8 @@ window.Leaderboard = (function($, dust, Routing, undefined){
              this.render();
  
              this.$wrapper.on('click', '.js-leaderboard-update', $.proxy(this._handleUpdateLeaderboard, this));
@@ -76,7 +75,7 @@ index 58fe1a7..2278f86 100644
          },
  
          /**
-@@ -83,6 +86,10 @@ window.Leaderboard = (function($, dust, Routing, undefined){
+@@ -80,6 +83,10 @@ window.Leaderboard = (function($, dust, Routing, undefined){
              e.preventDefault();
  
              this.refreshFromServer();
@@ -88,11 +87,10 @@ index 58fe1a7..2278f86 100644
      });
  
 diff --git a/web/assets/js/RepForm.js b/web/assets/js/RepForm.js
-index 4440981..0948554 100644
+index 32a1b81..1e56fb7 100644
 --- a/web/assets/js/RepForm.js
 +++ b/web/assets/js/RepForm.js
-@@ -3,8 +3,9 @@
-  */
+@@ -1,7 +1,8 @@
  window.RepForm = (function($, SymfonyErrorUtil, ErrorList, undefined){
  
 -    var RepForm = function ($form) {
@@ -102,7 +100,7 @@ index 4440981..0948554 100644
  
          this.initialize();
      };
-@@ -40,6 +41,9 @@ window.RepForm = (function($, SymfonyErrorUtil, ErrorList, undefined){
+@@ -37,6 +38,9 @@ window.RepForm = (function($, SymfonyErrorUtil, ErrorList, undefined){
                      $notifications.append('<div class="alert alert-success">Reps saved! You\'re killing it!</div>');
  
                      self.errorList.clear();
