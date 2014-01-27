@@ -76,13 +76,10 @@ index a5414e2..334cd03 100644
          });
 diff --git a/web/assets/js/RepForm.js b/web/assets/js/RepForm.js
 new file mode 100644
-index 0000000..af4bf4b
+index 0000000..91b8641
 --- /dev/null
 +++ b/web/assets/js/RepForm.js
-@@ -0,0 +1,70 @@
-+/**
-+ * Utility to for handling generic functionality related to a course
-+ */
+@@ -0,0 +1,67 @@
 +window.RepForm = (function($, undefined){
 +
 +    var RepForm = function ($form) {
