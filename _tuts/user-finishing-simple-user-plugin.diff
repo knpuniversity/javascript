@@ -1,8 +1,8 @@
 diff --git a/web/assets/js/Leaderboard.js b/web/assets/js/Leaderboard.js
-index db29a37..6476330 100644
+index 295924a..e255b45 100644
 --- a/web/assets/js/Leaderboard.js
 +++ b/web/assets/js/Leaderboard.js
-@@ -20,7 +20,9 @@ window.Leaderboard = (function($, dust, Routing, undefined){
+@@ -17,7 +17,9 @@ window.Leaderboard = (function($, dust, Routing, undefined){
              this.eventEmitter.addListener('reps.update', $.proxy(this._handleRepsUpdate, this));
  
              // trigger the userInfoBox behavior
