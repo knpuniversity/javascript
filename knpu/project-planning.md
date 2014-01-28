@@ -204,14 +204,32 @@ Solutions:
 - add a shim so routes requires routing
 - add shim for routing to export
 
+#### 36) Include initial data
 
-12) On homepage, include the leaderboard
-* breaks because no leaderboard object
-* breaks again because no Messaging object
+- included nifty function for moduleDatea
+- used it to pass in leaders
 
-13) Introduce RequireJS
-* basic setup
-* roll out to each page
+#### 37) Fixing the jQuery plugin
+
+- rename jquery to plugins
+- add a shim
+- require it AND bootstrap
+- uncomment code
+
+#### 38) Fixing router duplication
+
+- renaming routing -> vendor/routing
+- create a new modules/Routing
+- include it
+
+#### 39) RequireJS: EventEmitter
+
+- rename eventEmitter to vendor/eventEmitter
+- remove it as a dep to lift.js
+- add it as a direct dep (not constructor anymore!) of RepForm and Leaderboard
+- create the new module that returns a new instance
+
+
 
 14) RequireJS Optimizer
 * do we move assets out of web?
