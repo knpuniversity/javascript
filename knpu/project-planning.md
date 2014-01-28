@@ -204,7 +204,7 @@ Solutions:
 - add a shim so routes requires routing
 - add shim for routing to export
 
-#### 36) Include initial data
+#### 36) RequireJS: Starting data
 
 - included nifty function for moduleDatea
 - used it to pass in leaders
@@ -245,6 +245,29 @@ Solutions:
         reporter: require('jshint-stylish')
     },
 
+#### 50) Grunt: Copy
+
+- npm install grunt-sync --save-dev
+- load the grunt tasks
+- add the basic config
+--> make sure we're pointing at assets-built exclusively
+
+#### 51) Grunt: Setup default and production tasks
+
+- add default and production tasks
+
+#### 51) Grunt: Watch
+
+- npm install grunt-contrib-watch --save-dev
+- add the watch config and import the task
+
+#### 52) Grunt dust
+
+- npm install grunt-dustjs --save-dev
+- grunt.loadNpmTasks("grunt-dustjs");
+- basic configuration
+- adding shim for template
+- including the template directly and not compiling
 
 14) RequireJS Optimizer
 * do we move assets out of web?
