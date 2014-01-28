@@ -229,7 +229,45 @@ Solutions:
 - add it as a direct dep (not constructor anymore!) of RepForm and Leaderboard
 - create the new module that returns a new instance
 
+#### 40) Optimizer: Install RequireJS
 
+- npm init
+- npm install requirejs --save-dev
+
+#### 41) Optimizer: Basic Configuration
+
+- start with build.js
+- ./node_modules/.bin/r.js -o build.js
+- add paths: { scripts: 'empty:' } to fix external issue
+- optimize: none
+- .gitignore for web/assets-built
+
+
+#### 42) Optimizer: assets-built path
+
+- add a global variable that's set to a parameter and vary on it
+
+#### 43) Grunt install
+
+- the assets-built is sucky
+- we want to do other things
+- sudo npm install -g grunt-cli
+- grab package.json devDependencies and run "npm install"
+
+#### 44) Grunt: Basic Configuration
+
+- Put in the basic Gruntfile.js
+
+#### 45) Grunt: RequireJS
+
+- requirejs configuration. copied from build file
+- run it! 
+
+#### 46) Grunt: Uglify
+
+- uglify config - should be key-value pair in file
+- use "expand" notation with src: 'js/**/*.js'
+- Grunt: Configuring tasks: Building the files object dynamically
 
 #### 47) Grunt: Use variables
 
@@ -291,6 +329,8 @@ Solutions:
 
 - what is the bower.json ignore section?
 - maybe fix the sticky problem with the popups
+- excludeShallow
+- cache busting
 
 ### Random Notes
 
@@ -306,4 +346,3 @@ Solutions:
 - first argument to $.extend is modified
 - Grunt: configuring Tasks: Globbing patterns (**)
 - maybe put leaderboard on the homepage at the end?
-
