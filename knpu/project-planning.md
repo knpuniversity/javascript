@@ -231,6 +231,21 @@ Solutions:
 
 
 
+#### 47) Grunt: Use variables
+
+#### 48) Grunt jshint
+
+- jshint configuration!
+
+#### 49) Grunt: jshint stylish
+
+- npm install 'jshint-stylish' --save-dev
+- add
+    options: {
+        reporter: require('jshint-stylish')
+    },
+
+
 14) RequireJS Optimizer
 * do we move assets out of web?
 
@@ -266,3 +281,6 @@ Solutions:
 - the extra dot selectors (click.tooltip) used in Bootstrap are just namespaced
   events: have no affect, except you can unbind them all later
 - first argument to $.extend is modified
+- Grunt: configuring Tasks: Globbing patterns (**)
+- maybe put leaderboard on the homepage at the end?
+
