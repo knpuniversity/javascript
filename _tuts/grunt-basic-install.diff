@@ -1,0 +1,16 @@
+diff --git a/package.json b/package.json
+index 9da1ca6..465bb69 100644
+--- a/package.json
++++ b/package.json
+@@ -9,6 +9,10 @@
+   "author": "",
+   "license": "ISC",
+   "devDependencies": {
+-    "requirejs": "~2.1.9"
++    "requirejs": "~2.1.9",
++    "grunt": "~0.4.2",
++    "grunt-contrib-jshint": "~0.6.3",
++    "grunt-contrib-uglify": "~0.2.2",
++    "grunt-contrib-requirejs": "~0.4.1"
+   }
+ }
