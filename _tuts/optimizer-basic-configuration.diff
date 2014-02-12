@@ -1,0 +1,36 @@
+diff --git a/.gitignore b/.gitignore
+index 06dc0c3..9dcae40 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -11,3 +11,4 @@
+ /composer.phar
+ /web/assets/vendor
+ /node_modules
++/web/assets-built
+diff --git a/build.js b/build.js
+new file mode 100644
+index 0000000..156280d
+--- /dev/null
++++ b/build.js
+@@ -0,0 +1,21 @@
++({
++    mainConfigFile: 'web/assets/js/common.js',
++    baseUrl: './js',
++    appDir: 'web/assets',
++    dir: 'web/assets-built',
++    paths: {
++        // prevent routes from being loaded dynamically
++        'routes': 'empty:'
++    },
++    modules: [
++        {
++            name: 'common',
++            include: ['jquery', 'bootstrap']
++        },
++        {
++            name: 'app/lift',
++            exclude: ['common']
++        }
++    ],
++    optimize: "none"
++})
