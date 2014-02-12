@@ -1,0 +1,104 @@
+diff --git a/Gruntfile.js b/Gruntfile.js
+index 540b086..735fb4f 100644
+--- a/Gruntfile.js
++++ b/Gruntfile.js
+@@ -80,6 +80,20 @@ module.exports = function (grunt) {
+                     spawn: false
+                 }
+             }
++        },
++
++        dustjs: {
++            compile: {
++                files: [
++                    {
++                      expand: true,
++                      cwd: "<%= targetDir %>",
++                      src: "js/templates/*.dust",
++                      dest: "<%= targetDir %>",
++                      ext: ".js"
++                    }
++                ]
++            }
+         }
+     });
+ 
+@@ -88,6 +102,7 @@ module.exports = function (grunt) {
+     grunt.loadNpmTasks('grunt-contrib-requirejs');
+     grunt.loadNpmTasks('grunt-contrib-watch');
+     grunt.loadNpmTasks('grunt-sync');
++    grunt.loadNpmTasks("grunt-dustjs");
+ 
+     grunt.registerTask('default', ['jshint', 'sync']);
+     grunt.registerTask('production', ['jshint', 'sync', 'requirejs', 'uglify']);
+diff --git a/knpu/project-planning.md b/knpu/project-planning.md
+index bbb7c8b..6a08523 100644
+--- a/knpu/project-planning.md
++++ b/knpu/project-planning.md
+@@ -294,12 +294,12 @@ Solutions:
+ 
+ - add default and production tasks
+ 
+-#### 51) Grunt: Watch
++#### 52) Grunt: Watch
+ 
+ - npm install grunt-contrib-watch --save-dev
+ - add the watch config and import the task
+ 
+-#### 52) Grunt dust
++#### 53) Grunt dust
+ 
+ - npm install grunt-dustjs --save-dev
+ - grunt.loadNpmTasks("grunt-dustjs");
+@@ -346,3 +346,5 @@ Solutions:
+ - first argument to $.extend is modified
+ - Grunt: configuring Tasks: Globbing patterns (**)
+ - maybe put leaderboard on the homepage at the end?
++- registration AJAX page
++- add global messaging object
+diff --git a/package.json b/package.json
+index 5ae2f93..68e75cc 100644
+--- a/package.json
++++ b/package.json
+@@ -16,6 +16,7 @@
+     "grunt-contrib-requirejs": "~0.4.1",
+     "jshint-stylish": "~0.1.4",
+     "grunt-sync": "0.0.5",
+-    "grunt-contrib-watch": "~0.5.3"
++    "grunt-contrib-watch": "~0.5.3",
++    "grunt-dustjs": "~1.2.0"
+   }
+ }
+diff --git a/web/assets/js/common.js b/web/assets/js/common.js
+index d35a4b2..2f6b24f 100644
+--- a/web/assets/js/common.js
++++ b/web/assets/js/common.js
+@@ -45,6 +45,7 @@ requirejs.config({
+ 
+         routes: ['vendor/routing'],
+ 
+-        'plugins/jquery.userinfopopup': ['jquery', 'routes']
++        'plugins/jquery.userinfopopup': ['jquery', 'routes'],
++        'templates/leaderboard': ['dust']
+     }
+ });
+diff --git a/web/assets/js/modules/Leaderboard.js b/web/assets/js/modules/Leaderboard.js
+index 1079584..da8f005 100644
+--- a/web/assets/js/modules/Leaderboard.js
++++ b/web/assets/js/modules/Leaderboard.js
+@@ -1,4 +1,4 @@
+-define(['jquery', 'dust', 'text!templates/leaderboard.dust', 'modules/Routing', 'modules/EventEmitter', 'plugins/jquery.userinfopopup', 'bootstrap'], function ($, dust, leaderboardTemplate, Routing, eventEmitter) {
++define(['jquery', 'dust', 'templates/leaderboard', 'modules/Routing', 'modules/EventEmitter', 'plugins/jquery.userinfopopup', 'bootstrap'], function ($, dust, leaderboardTemplate, Routing, eventEmitter) {
+     var Leaderboard = function($wrapper, leaders) {
+         this.$wrapper = $wrapper;
+         this.leaders = leaders;
+@@ -27,9 +27,6 @@ define(['jquery', 'dust', 'text!templates/leaderboard.dust', 'modules/Routing',
+         render: function() {
+             var self = this;
+ 
+-            var compiled = dust.compile(leaderboardTemplate, 'leaderboard');
+-            dust.loadSource(compiled);
+-
+             var deferred = new $.Deferred();
+ 
+             dust.render(
