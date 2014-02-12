@@ -1,0 +1,75 @@
+diff --git a/app/Resources/views/_requirejs.html.twig b/app/Resources/views/_requirejs.html.twig
+index 078a1e3..f8c281c 100644
+--- a/app/Resources/views/_requirejs.html.twig
++++ b/app/Resources/views/_requirejs.html.twig
+@@ -7,6 +7,32 @@
+         }
+     });
+ 
++    {#
++        Allows you to pass in a moduleConfig Twig array that will be exposed
++        as configuration in your app module. Simply require a special module
++        called 'module' and call the .config() function on it:
++
++            // in Twig
++            {{ include('::_requirejs.html.twig', {
++                module: 'app/someModule',
++                moduleConfig: {
++                    'foo': 'bar'
++                }
++            }) }}
++
++            // in JS
++            define(['jquery', 'module'], function ($, module) {
++                module.config().foo
++            });
++    #}
++    {% if moduleConfig is defined %}
++        requirejs.config({
++            config: {
++                '{{ module }}': {{ moduleConfig|json_encode|raw }}
++            }
++        });
++    {% endif %}
++
+     /**
+      * The heart of our require.js setup!
+      *
+diff --git a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
+index a0ea72d..a97d213 100644
+--- a/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
++++ b/src/Acme/LiftStuffBundle/Resources/views/Lift/index.html.twig
+@@ -38,6 +38,9 @@
+ 
+ {% block requirejs %}
+     {{ include('::_requirejs.html.twig', {
+-        module: 'app/lift'
++        module: 'app/lift',
++        moduleConfig: {
++            'leaders': leaders
++        }
+     }) }}
+ {% endblock %}
+diff --git a/web/assets/js/app/lift.js b/web/assets/js/app/lift.js
+index 26671ff..254a1c2 100644
+--- a/web/assets/js/app/lift.js
++++ b/web/assets/js/app/lift.js
+@@ -1,15 +1,16 @@
+ /**
+  * Default module that's used on every page
+  */
+-define(['jquery', 'eventEmitter', 'modules/RepForm', 'modules/Leaderboard'], function ($, EventEmitter, RepForm, Leaderboard) {
++define(['jquery', 'eventEmitter', 'modules/RepForm', 'modules/Leaderboard', 'module'], function ($, EventEmitter, RepForm, Leaderboard, module) {
+     var emitter = new EventEmitter();
++    var leaders = module.config().leaders;
+ 
+     jQuery(document).ready(function() {
+         var repForm = new RepForm($('form.rep-log-form'), emitter);
+ 
+         var leaderboard = new Leaderboard(
+             $('#leaderboard'),
+-            {},
++            leaders,
+             emitter
+         );
+     });
