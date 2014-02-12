@@ -1,0 +1,27 @@
+diff --git a/Gruntfile.js b/Gruntfile.js
+index 37772f2..f05180b 100644
+--- a/Gruntfile.js
++++ b/Gruntfile.js
+@@ -43,6 +43,9 @@ module.exports = function (grunt) {
+         },
+ 
+         jshint: {
++            options: {
++                reporter: require('jshint-stylish')
++            },
+             all: [
+                 'Gruntfile.js',
+                 '<%= sourceDir %>/js/**/*.js'
+diff --git a/package.json b/package.json
+index 465bb69..9b6466a 100644
+--- a/package.json
++++ b/package.json
+@@ -13,6 +13,7 @@
+     "grunt": "~0.4.2",
+     "grunt-contrib-jshint": "~0.6.3",
+     "grunt-contrib-uglify": "~0.2.2",
+-    "grunt-contrib-requirejs": "~0.4.1"
++    "grunt-contrib-requirejs": "~0.4.1",
++    "jshint-stylish": "~0.1.4"
+   }
+ }
