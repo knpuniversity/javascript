@@ -1,0 +1,32 @@
+diff --git a/Gruntfile.js b/Gruntfile.js
+index 3421fd6..b498c8b 100644
+--- a/Gruntfile.js
++++ b/Gruntfile.js
+@@ -1,12 +1,14 @@
+ module.exports = function (grunt) {
+     grunt.initConfig({
++        targetDir: 'web/assets-built',
++
+         requirejs: {
+             main: {
+                 options: {
+                     mainConfigFile: 'web/assets/js/common.js',
+                     baseUrl: './js',
+                     appDir: 'web/assets',
+-                    dir: 'web/assets-built',
++                    dir: '<%= targetDir %>',
+                     paths: {
+                         // prevent routes from being loaded dynamically
+                         'routes': 'empty:'
+@@ -31,9 +33,9 @@ module.exports = function (grunt) {
+                 files: [
+                     {
+                         expand: true,
+-                        cwd: 'web/assets-built',
++                        cwd: '<%= targetDir %>',
+                         src: 'js/**/*.js',
+-                        dest: 'web/assets-built'
++                        dest: '<%= targetDir %>'
+                     }
+                 ]
+             }
