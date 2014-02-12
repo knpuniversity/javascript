@@ -1,0 +1,25 @@
+diff --git a/Gruntfile.js b/Gruntfile.js
+index b498c8b..37772f2 100644
+--- a/Gruntfile.js
++++ b/Gruntfile.js
+@@ -1,5 +1,6 @@
+ module.exports = function (grunt) {
+     grunt.initConfig({
++        sourceDir: 'web/assets',
+         targetDir: 'web/assets-built',
+ 
+         requirejs: {
+@@ -39,6 +40,13 @@ module.exports = function (grunt) {
+                     }
+                 ]
+             }
++        },
++
++        jshint: {
++            all: [
++                'Gruntfile.js',
++                '<%= sourceDir %>/js/**/*.js'
++            ]
+         }
+     });
+ 
