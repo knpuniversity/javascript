@@ -24,6 +24,7 @@ illustration: javascript.png
 priority: 0
 tags:
     - { name: php }
+    - { name: javascript }
 status: upcoming
 
 chapters: []
