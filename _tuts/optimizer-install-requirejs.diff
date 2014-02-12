@@ -1,0 +1,29 @@
+diff --git a/.gitignore b/.gitignore
+index 5805403..06dc0c3 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -10,3 +10,4 @@
+ /bin/
+ /composer.phar
+ /web/assets/vendor
++/node_modules
+diff --git a/package.json b/package.json
+new file mode 100644
+index 0000000..9da1ca6
+--- /dev/null
++++ b/package.json
+@@ -0,0 +1,14 @@
++{
++  "name": "javascript",
++  "version": "0.0.0",
++  "description": "",
++  "main": "index.js",
++  "scripts": {
++    "test": "echo \"Error: no test specified\" && exit 1"
++  },
++  "author": "",
++  "license": "ISC",
++  "devDependencies": {
++    "requirejs": "~2.1.9"
++  }
++}
