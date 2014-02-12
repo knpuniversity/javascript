@@ -1,0 +1,341 @@
+diff --git a/web/assets/js/common.js b/web/assets/js/common.js
+index 2dee683..c527717 100644
+--- a/web/assets/js/common.js
++++ b/web/assets/js/common.js
+@@ -43,6 +43,8 @@ requirejs.config({
+             exports: 'Routing'
+         },
+ 
+-        routes: ['routing']
++        routes: ['routing'],
++
++        'plugins/jquery.userinfopopup': ['jquery', 'routes']
+     }
+ });
+diff --git a/web/assets/js/jquery/jquery.userinfopopup.js b/web/assets/js/jquery/jquery.userinfopopup.js
+deleted file mode 100644
+index ffcfdfc..0000000
+--- a/web/assets/js/jquery/jquery.userinfopopup.js
++++ /dev/null
+@@ -1,144 +0,0 @@
+-(function($, Routing, undefined) {
+-
+-    $.fn.userInfoPopup = function(option) {
+-        return this.each(function() {
+-            var $this   = $(this);
+-            var data    = $this.data('userInfoPopup');
+-            var options = typeof option == 'object' && option;
+-
+-            // force that there is one app object created for each element
+-            if (!data) $this.data('userInfoPopup', (data = new app(this, options)));
+-            // if the form is $('.ele').userInfoPopup('method'), call the method() function
+-            if (typeof option == 'string') data[option]();
+-        });
+-    };
+-
+-    // just a defaults array - by putting it here, we're exposing the defaults globally
+-    $.fn.userInfoPopup.defaults = {
+-        selector: null,
+-        template: '<div class="user-info-box"><img src="__avatar__" alt="__username__" class="pull-right img-thumbnail" /><dl><dt>Name</dt><dd>__firstName__ __lastName__</dd></dl></div>'
+-    };
+-
+-    /**
+-     * Constructor for the object representing one instance of the userInfoPopup functionality
+-     *
+-     * @param element
+-     * @param options
+-     */
+-    var app = function(element, options) {
+-        this.$element = $(element);
+-        this.options = $.extend({}, $.fn.userInfoPopup.defaults, options);
+-
+-        this.initialize();
+-    };
+-
+-    $.extend(app.prototype, {
+-        initialize: function() {
+-            this.$element.on('mouseover', this.options.selector, $.proxy(this._handleMouseOver, this));
+-            this.$element.on('mouseout', this.options.selector, $.proxy(this._handleMouseOut, this));
+-
+-            this.$element.on('shown.bs.popover', this.options.selector, $.proxy(this._handlePopoverShown, this));
+-            this.$element.on('hidden.bs.popover', this.options.selector, $.proxy(this._handlePopoverHidden, this));
+-        },
+-
+-        /**
+-         * Dispalys the popup for this $el
+-         *
+-         * @param $el
+-         */
+-        show: function($el) {
+-            var self = this;
+-
+-            $el.popover({
+-                trigger: 'manual',
+-                html: true,
+-                title: $el.text(),
+-                animation: false,
+-                content: function() {
+-                    return self._calculateContent($el);
+-                }
+-            });
+-            $el.popover('show');
+-        },
+-
+-        /**
+-         * Hides the popup for this $el
+-         *
+-         * @param $el
+-         */
+-        hide: function($el) {
+-            $el.popover('hide');
+-        },
+-
+-        /**
+-         * Find (or AJAX out) to get the content for this $el
+-         *
+-         * @param $el
+-         * @returns {*}
+-         * @private
+-         */
+-        _calculateContent: function($el) {
+-            var self = this;
+-
+-            var username = $.trim($el.text());
+-
+-            var html = $el.data('userinfo.html');
+-            if (html) {
+-                return html;
+-            }
+-
+-            $.ajax({
+-                type: 'GET',
+-                // todo - urlencode username
+-                url: Routing.generate('user_show', {
+-                    username: username,
+-                    _format: 'json'
+-                }),
+-                success: function (data) {
+-                    var html = self.options.template.replace(/__username__/g, data.username);
+-                    html = html.replace(/__firstName__/g, data.firstName);
+-                    html = html.replace(/__lastName__/g, data.lastName);
+-                    html = html.replace(/__avatar__/g, data.avatar);
+-
+-                    // set the data
+-                    $el.data('userinfo.html', html);
+-
+-                    // re-triger the show, will grab the new html
+-                    // but only trigger it if it's visible (what if we have gone off hover since starting?)
+-                    if ($el.data('bs.popover.visible')) {
+-                        $el.popover('show');
+-                    }
+-                }
+-            });
+-
+-            return 'Loading...';
+-        },
+-
+-        _handleMouseOver: function(e) {
+-            var $target = $(e.currentTarget);
+-            this.show($target);
+-        },
+-
+-        _handleMouseOut: function(e) {
+-            var $target = $(e.currentTarget);
+-            this.hide($target);
+-        },
+-
+-        /**
+-         * Just listens to popover so we know later if we're in a "shown" state or not
+-         */
+-        _handlePopoverShown: function(e) {
+-            var $target = $(e.currentTarget);
+-            $target.data('bs.popover.visible', true);
+-        },
+-
+-        /**
+-         * See notes on _handlePopoverShown
+-         */
+-        _handlePopoverHidden: function(e) {
+-            var $target = $(e.currentTarget);
+-            $target.data('bs.popover.visible', false);
+-        }
+-    });
+-
+-}(jQuery, Routing));
+\ No newline at end of file
+diff --git a/web/assets/js/modules/Leaderboard.js b/web/assets/js/modules/Leaderboard.js
+index 36b4064..dc6108b 100644
+--- a/web/assets/js/modules/Leaderboard.js
++++ b/web/assets/js/modules/Leaderboard.js
+@@ -1,4 +1,4 @@
+-define(['jquery', 'dust', 'text!templates/leaderboard.dust', 'routing', 'routes'], function ($, dust, leaderboardTemplate, Routing) {
++define(['jquery', 'dust', 'text!templates/leaderboard.dust', 'routing', 'routes', 'plugins/jquery.userinfopopup', 'bootstrap'], function ($, dust, leaderboardTemplate, Routing) {
+ 
+     var Leaderboard = function($wrapper, leaders, eventEmitter) {
+         this.$wrapper = $wrapper;
+@@ -15,10 +15,10 @@ define(['jquery', 'dust', 'text!templates/leaderboard.dust', 'routing', 'routes'
+             this.$wrapper.on('click', '.js-leaderboard-update', $.proxy(this._handleUpdateLeaderboard, this));
+             this.eventEmitter.addListener('reps.update', $.proxy(this._handleRepsUpdate, this));
+ 
+-//            // trigger the userInfoBox behavior
+-//            this.$wrapper.userInfoPopup({
+-//                selector: '.js-username'
+-//            });
++            // trigger the userInfoBox behavior
++            this.$wrapper.userInfoPopup({
++                selector: '.js-username'
++            });
+         },
+ 
+         /**
+diff --git a/web/assets/js/plugins/jquery.userinfopopup.js b/web/assets/js/plugins/jquery.userinfopopup.js
+new file mode 100644
+index 0000000..ffcfdfc
+--- /dev/null
++++ b/web/assets/js/plugins/jquery.userinfopopup.js
+@@ -0,0 +1,144 @@
++(function($, Routing, undefined) {
++
++    $.fn.userInfoPopup = function(option) {
++        return this.each(function() {
++            var $this   = $(this);
++            var data    = $this.data('userInfoPopup');
++            var options = typeof option == 'object' && option;
++
++            // force that there is one app object created for each element
++            if (!data) $this.data('userInfoPopup', (data = new app(this, options)));
++            // if the form is $('.ele').userInfoPopup('method'), call the method() function
++            if (typeof option == 'string') data[option]();
++        });
++    };
++
++    // just a defaults array - by putting it here, we're exposing the defaults globally
++    $.fn.userInfoPopup.defaults = {
++        selector: null,
++        template: '<div class="user-info-box"><img src="__avatar__" alt="__username__" class="pull-right img-thumbnail" /><dl><dt>Name</dt><dd>__firstName__ __lastName__</dd></dl></div>'
++    };
++
++    /**
++     * Constructor for the object representing one instance of the userInfoPopup functionality
++     *
++     * @param element
++     * @param options
++     */
++    var app = function(element, options) {
++        this.$element = $(element);
++        this.options = $.extend({}, $.fn.userInfoPopup.defaults, options);
++
++        this.initialize();
++    };
++
++    $.extend(app.prototype, {
++        initialize: function() {
++            this.$element.on('mouseover', this.options.selector, $.proxy(this._handleMouseOver, this));
++            this.$element.on('mouseout', this.options.selector, $.proxy(this._handleMouseOut, this));
++
++            this.$element.on('shown.bs.popover', this.options.selector, $.proxy(this._handlePopoverShown, this));
++            this.$element.on('hidden.bs.popover', this.options.selector, $.proxy(this._handlePopoverHidden, this));
++        },
++
++        /**
++         * Dispalys the popup for this $el
++         *
++         * @param $el
++         */
++        show: function($el) {
++            var self = this;
++
++            $el.popover({
++                trigger: 'manual',
++                html: true,
++                title: $el.text(),
++                animation: false,
++                content: function() {
++                    return self._calculateContent($el);
++                }
++            });
++            $el.popover('show');
++        },
++
++        /**
++         * Hides the popup for this $el
++         *
++         * @param $el
++         */
++        hide: function($el) {
++            $el.popover('hide');
++        },
++
++        /**
++         * Find (or AJAX out) to get the content for this $el
++         *
++         * @param $el
++         * @returns {*}
++         * @private
++         */
++        _calculateContent: function($el) {
++            var self = this;
++
++            var username = $.trim($el.text());
++
++            var html = $el.data('userinfo.html');
++            if (html) {
++                return html;
++            }
++
++            $.ajax({
++                type: 'GET',
++                // todo - urlencode username
++                url: Routing.generate('user_show', {
++                    username: username,
++                    _format: 'json'
++                }),
++                success: function (data) {
++                    var html = self.options.template.replace(/__username__/g, data.username);
++                    html = html.replace(/__firstName__/g, data.firstName);
++                    html = html.replace(/__lastName__/g, data.lastName);
++                    html = html.replace(/__avatar__/g, data.avatar);
++
++                    // set the data
++                    $el.data('userinfo.html', html);
++
++                    // re-triger the show, will grab the new html
++                    // but only trigger it if it's visible (what if we have gone off hover since starting?)
++                    if ($el.data('bs.popover.visible')) {
++                        $el.popover('show');
++                    }
++                }
++            });
++
++            return 'Loading...';
++        },
++
++        _handleMouseOver: function(e) {
++            var $target = $(e.currentTarget);
++            this.show($target);
++        },
++
++        _handleMouseOut: function(e) {
++            var $target = $(e.currentTarget);
++            this.hide($target);
++        },
++
++        /**
++         * Just listens to popover so we know later if we're in a "shown" state or not
++         */
++        _handlePopoverShown: function(e) {
++            var $target = $(e.currentTarget);
++            $target.data('bs.popover.visible', true);
++        },
++
++        /**
++         * See notes on _handlePopoverShown
++         */
++        _handlePopoverHidden: function(e) {
++            var $target = $(e.currentTarget);
++            $target.data('bs.popover.visible', false);
++        }
++    });
++
++}(jQuery, Routing));
+\ No newline at end of file
