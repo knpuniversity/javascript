@@ -184,6 +184,96 @@
             "id": "requirejs-include-routing",
             "name": "RequireJS: Include routing",
             "description": null
+        },
+        {
+            "id": "requirejs-include-initial-data",
+            "name": "RequireJS: Include initial data",
+            "description": null
+        },
+        {
+            "id": "requirejs-jquery-plugin",
+            "name": "RequireJS: jQuery plugin",
+            "description": null
+        },
+        {
+            "id": "requirejs-fixing-router-duplication",
+            "name": "RequireJS: Fixing Router duplication",
+            "description": null
+        },
+        {
+            "id": "requirejs-eventemitter",
+            "name": "RequireJS: EventEmitter",
+            "description": null
+        },
+        {
+            "id": "optimizer-install-requirejs",
+            "name": "Optimizer: Install RequireJS",
+            "description": null
+        },
+        {
+            "id": "optimizer-basic-configuration",
+            "name": "Optimizer: Basic Configuration",
+            "description": null
+        },
+        {
+            "id": "optimizer-assets-built-path",
+            "name": "Optimizer: assets-built path",
+            "description": null
+        },
+        {
+            "id": "grunt-basic-install",
+            "name": "Grunt: Basic Install",
+            "description": null
+        },
+        {
+            "id": "grunt-basic-configuration",
+            "name": "Grunt: Basic Configuration",
+            "description": null
+        },
+        {
+            "id": "grunt-requirejs-setup",
+            "name": "Grunt: RequireJS setup",
+            "description": null
+        },
+        {
+            "id": "grunt-uglify",
+            "name": "Grunt: Uglify",
+            "description": null
+        },
+        {
+            "id": "grunt-using-variables",
+            "name": "Grunt: Using variables",
+            "description": null
+        },
+        {
+            "id": "grunt-jshint",
+            "name": "Grunt: jshint",
+            "description": null
+        },
+        {
+            "id": "grunt-jshint-stylish",
+            "name": "Grunt: jshint stylish",
+            "description": null
+        },
+        {
+            "id": "grunt-sync",
+            "name": "Grunt: sync",
+            "description": null
+        },
+        {
+            "id": "grunt-setup-default-and-production-tasks",
+            "name": "Grunt: Setup default and production tasks",
+            "description": null
+        },
+        {
+            "id": "grunt-watch",
+            "name": "Grunt: watch",
+            "description": null
+        },
+        {
+            "id": "grunt-dustjs",
+            "name": "Grunt: dustjs",
+            "description": null
         }
     ]
 }
