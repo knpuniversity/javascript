@@ -346,3 +346,5 @@ Solutions:
 - first argument to $.extend is modified
 - Grunt: configuring Tasks: Globbing patterns (**)
 - maybe put leaderboard on the homepage at the end?
+- push-state
+- unit testing
