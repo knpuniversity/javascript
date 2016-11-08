@@ -1,6 +1,5 @@
 title:  JavaScript for PHP Geeks
-price:  0
-length: ~
+
 summary: |
     You already know and write JavaScript... or really jQuery. But as JavaScript
     takes on more of your life, it's time to take your game to the next level!
@@ -21,10 +20,9 @@ summary: |
     Subscribe for updates, and write great JavaScript
 
 illustration: javascript.png
-priority: 0
-tags:
-    - { name: php }
-    - { name: javascript }
-status: upcoming
+
+tuts_hero:
+    # start_step: start
+    finish_step: start
 
 chapters: []
