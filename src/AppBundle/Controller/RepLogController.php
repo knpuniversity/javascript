@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 class RepLogController extends Controller
 {
     /**
-     * @Route("/reps/{id}", name="reps_delete")
+     * @Route("/reps/{id}", name="rep_log_delete")
      * @Method("DELETE")
      */
     public function deleteRepLogAction(RepLog $repLog)
