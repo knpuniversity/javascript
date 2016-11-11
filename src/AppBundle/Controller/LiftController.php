@@ -36,11 +36,16 @@ class LiftController extends Controller
         $repLogs = $this->getDoctrine()->getRepository('AppBundle:RepLog')
             ->findBy(array('user' => $this->getUser()))
         ;
+        $totalWeight = 0;
+        foreach ($repLogs as $repLog) {
+            $totalWeight += $repLog->getTotalWeightLifted();
+        }
 
         return $this->render('lift/index.html.twig', array(
             'form' => $form->createView(),
             'repLogs' => $repLogs,
             'leaderboard' => $this->getLeaders(),
+            'totalWeight' => $totalWeight,
         ));
     }
 
