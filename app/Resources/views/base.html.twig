@@ -36,7 +36,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="{{ path('lift') }}">
-                            Record Lifts
+                            Lift Stuff!
                         </a>
                     </li>
                     <li>
@@ -71,17 +71,17 @@
     </div>
 </div>
 
-{% for type, messages in app.session.flashbag.all() %}
-    {% for message in messages %}
-        <div class="flash-{{ type }} alert alert-info">
-            {{ message }}
-        </div>
-    {% endfor %}
-{% endfor %}
-
 {% block hero %}{% endblock %}
 
-<div class="container main">
+<div class="container main-content">
+    {% for type, messages in app.session.flashbag.all() %}
+        {% for message in messages %}
+            <div class="flash-{{ type }} alert alert-info">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
     {% block body %}{% endblock %}
 
     <hr />

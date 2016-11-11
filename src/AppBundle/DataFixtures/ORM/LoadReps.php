@@ -40,7 +40,7 @@ class LoadReps implements FixtureInterface
             $username = str_replace('.', '', $username);
             $user->setUsername($username);
             $user->setEmail($user->getUsername().'@example.com');
-            $user->setPlainPassword('password');
+            $user->setPlainPassword('pumpup');
             $user->setFirstName($firstName);
             $user->setLastName($lastName);
             $user->setEnabled(true);
