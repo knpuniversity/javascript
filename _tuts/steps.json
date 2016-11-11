@@ -129,7 +129,27 @@
             "id": "data-attribute-update-total-weight",
             "name": "data Attribute: Update total weight",
             "description": null
+        },
+        {
+            "id": "basic-object-refactor-to-basic-replogtable",
+            "name": "Basic Object: Refactor to basic RepLogTable",
+            "description": null
+        },
+        {
+            "id": "basic-object-hitting-the-this-trap",
+            "name": "Basic Object: Hitting the this trap",
+            "description": null
+        },
+        {
+            "id": "basic-object-using-static-syntax",
+            "name": "Basic Object: Using \"static\" syntax",
+            "description": null
+        },
+        {
+            "id": "basic-object-more-helper-methods",
+            "name": "Basic Object: More helper methods",
+            "description": null
         }
     ],
-    "sha": "443230b6656a36b02f471b9271dae07a6995f91e"
+    "sha": "946aa27bb94f9337795ffca134bc034f5997ff6c"
 }

@@ -1,0 +1,44 @@
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index 0b91604..3dc46df 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -80,10 +80,15 @@
+     {{ parent() }}
+ 
+     <script>
+-        $(document).ready(function() {
+-            var $table = $('.js-rep-log-table');
++        var RepLogTable = {
++            initialize: function($table) {
++                this.$wrapper = $table;
++
++                this.$wrapper.find('.js-delete-rep-log').on('click', this.handleRepLogDelete);
++                this.$wrapper.find('tbody tr').on('click', this.handleRowClick);
++            },
+ 
+-            $table.find('.js-delete-rep-log').on('click', function (e) {
++            handleRepLogDelete: function(e) {
+                 e.preventDefault();
+ 
+                 $(this).addClass('text-danger');
+@@ -104,11 +109,16 @@
+                         $totalWeightContainer.html(newWeight);
+                     }
+                 });
+-            });
++            },
+ 
+-            $table.find('tbody tr').on('click', function() {
++            handleRowClick: function() {
+                 console.log('row clicked!');
+-            });
++            }
++        };
++
++        $(document).ready(function() {
++            var $table = $('.js-rep-log-table');
++            RepLogTable.initialize($table);
+         });
+     </script>
+ {% endblock %}
+\ No newline at end of file
