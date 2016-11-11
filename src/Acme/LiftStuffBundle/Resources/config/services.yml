@@ -1,7 +1,0 @@
-services:
-
-    acme.list_stuff.form.type.registration_type:
-        class: Acme\LiftStuffBundle\Form\Type\RegistrationType
-        arguments: [%fos_user.model.user.class%]
-        tags:
-            - { name: form.type, alias: lift_stuff_registration }

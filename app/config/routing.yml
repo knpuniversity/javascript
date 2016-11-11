@@ -1,5 +1,5 @@
-acme_lift_stuff:
-    resource: "@AcmeLiftStuffBundle/Controller/"
+app:
+    resource: "@AppBundle/Controller/"
     type:     annotation
     prefix:   /
 
