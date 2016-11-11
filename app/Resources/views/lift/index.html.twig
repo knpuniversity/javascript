@@ -26,7 +26,35 @@
                 <button type="submit" class="btn btn-primary">I Lifted it!</button>
             </form>
 
-            {{ include('lift/_repLogs.html.twig') }}
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>What</th>
+                    <th>How many times?</th>
+                    <th>Weight</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for repLog in repLogs %}
+                    <tr>
+                        <td>{{ repLog.itemLabel|trans }}</td>
+                        <td>{{ repLog.reps }}</td>
+                        <td>{{ repLog.totalWeightLifted }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">Get liftin'!</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <th>Total</th>
+                        <th>{{ totalWeight }}</th>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
         <div class="col-md-6">
             <h2>Leaderboard</h2>
