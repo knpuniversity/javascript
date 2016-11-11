@@ -6,23 +6,18 @@ use AppBundle\Entity\RepLog;
 use AppBundle\Form\Type\RepLogType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class LiftController extends Controller
 {
     /**
      * @Route("/lift", name="lift")
-     * @Template()
      */
     public function indexAction(Request $request)
     {
-        if (!$this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            throw new AccessDeniedException();
-        }
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
 
-        $form = $this->createForm(new RepLogType());
+        $form = $this->createForm(RepLogType::class);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -33,41 +28,20 @@ class LiftController extends Controller
             $em->persist($repLog);
             $em->flush();
 
-            $request->getSession()->getFlashbag()->add('notice', 'Reps crunched!');
+            $this->addFlash('notice', 'Reps crunched!');
 
-            return $this->redirect($this->generateUrl('lift'));
+            return $this->redirectToRoute('lift');
         }
 
-        return array('form' => $form->createView());
-    }
-
-    /**
-     * @Template()
-     */
-    public function repLogsAction($userId)
-    {
-        $repLogs = $this->getDoctrine()->getRepository('AcmeLiftStuffBundle:RepLog')
-            ->findBy(array('user' => $userId))
+        $repLogs = $this->getDoctrine()->getRepository('AppBundle:RepLog')
+            ->findBy(array('user' => $this->getUser()))
         ;
 
-        return array('repLogs' => $repLogs);
-    }
-
-    /**
-     * @Template
-     * @return array
-     */
-    public function leaderboardAction()
-    {
-        return array('leaderboard' => $this->getLeaders());
-    }
-
-    /**
-     * @return \Doctrine\Common\Persistence\ObjectRepository
-     */
-    private function getUserRepository()
-    {
-        return $this->getDoctrine()->getRepository('AcmeLiftStuffBundle:User');
+        return $this->render('lift/index.html.twig', array(
+            'form' => $form->createView(),
+            'repLogs' => $repLogs,
+            'leaderboard' => $this->getLeaders(),
+        ));
     }
 
     /**
@@ -77,11 +51,11 @@ class LiftController extends Controller
      */
     private function getLeaders()
     {
-        $leaderboardDetails = $this->getDoctrine()->getRepository('AcmeLiftStuffBundle:RepLog')
+        $leaderboardDetails = $this->getDoctrine()->getRepository('AppBundle:RepLog')
             ->getLeaderboardDetails()
         ;
 
-        $userRepo = $this->getUserRepository();
+        $userRepo = $this->getDoctrine()->getRepository('AppBundle:User');
         $leaderboard = array();
         foreach ($leaderboardDetails as $details) {
             if (!$user = $userRepo->find($details['user_id'])) {

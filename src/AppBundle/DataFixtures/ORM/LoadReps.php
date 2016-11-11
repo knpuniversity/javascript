@@ -29,15 +29,21 @@ class LoadReps implements FixtureInterface
             array('Ron', 'Furgandy'),
         );
 
-        for ($i = 0; $i < 10; $i++) {
-            list($firstName, $lastName) = $names[$i];
+        foreach ($names as $name) {
+            $firstName = $name[0];
+            $lastName = $name[1];
 
             $user = new User();
-            $user->setUsername(sprintf('%s_%s', $firstName, $lastName));
-            $user->setEmail('user'.$i.'@gmail.com');
+            $username = sprintf('%s_%s', $firstName, $lastName);
+            $username = strtolower($username);
+            $username = str_replace(' ', '', $username);
+            $username = str_replace('.', '', $username);
+            $user->setUsername($username);
+            $user->setEmail($user->getUsername().'@example.com');
             $user->setPlainPassword('password');
             $user->setFirstName($firstName);
             $user->setLastName($lastName);
+            $user->setEnabled(true);
             $manager->persist($user);
 
             for ($j = 0; $j < rand(1, 5); $j++) {

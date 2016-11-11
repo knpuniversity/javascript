@@ -152,7 +152,7 @@ class RepLog
         $things = array_keys(self::$thingsYouCanLift);
         $choices = array();
         foreach ($things as $thingKey) {
-            $choices[$thingKey] = self::ITEM_LABEL_PREFIX.$thingKey;
+            $choices[self::ITEM_LABEL_PREFIX.$thingKey] = $thingKey;
         }
 
         return $choices;

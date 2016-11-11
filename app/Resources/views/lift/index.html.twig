@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
     <div class="row">
@@ -24,14 +24,12 @@
                 <button type="submit" class="btn btn-primary">I Lifted it!</button>
             </form>
 
-            {{ render(controller('AcmeLiftStuffBundle:Lift:repLogs', {
-                'userId': app.user.id
-            })) }}
+            {{ include('lift/_repLogs.html.twig') }}
         </div>
         <div class="col-md-6">
             <h2>Leaderboard</h2>
 
-            {{ render(controller('AcmeLiftStuffBundle:Lift:leaderboard')) }}
+            {{ include('lift/_leaderboard.html.twig') }}
         </div>
     </div>
 {% endblock %}

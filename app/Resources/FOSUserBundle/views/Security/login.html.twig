@@ -3,8 +3,10 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
+
+    <br/><br/><br/><br/><br/><br/><br/><br/>
 {% if error %}
-    <div>{{ error|trans }}</div>
+    <div>{{ error.messageKey|trans }}</div>
 {% endif %}
 
 <form action="{{ path("fos_user_security_check") }}" method="post">
