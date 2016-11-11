@@ -16,6 +16,7 @@
                     <th>What</th>
                     <th>How many times?</th>
                     <th>Weight</th>
+                    <th>&nbsp;</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -24,10 +25,13 @@
                         <td>{{ repLog.itemLabel|trans }}</td>
                         <td>{{ repLog.reps }}</td>
                         <td>{{ repLog.totalWeightLifted }}</td>
+                        <td>
+                            &nbsp;
+                        </td>
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="3">Get liftin'!</td>
+                        <td colspan="4">Get liftin'!</td>
                     </tr>
                 {% endfor %}
                 </tbody>
