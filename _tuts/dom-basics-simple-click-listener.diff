@@ -1,0 +1,31 @@
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index cdd0af2..2194595 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -26,7 +26,9 @@
+                         <td>{{ repLog.reps }}</td>
+                         <td>{{ repLog.totalWeightLifted }}</td>
+                         <td>
+-                            &nbsp;
++                            <a href="#" class="js-delete-rep-log">
++                                <span class="fa fa-trash"></span>
++                            </a>
+                         </td>
+                     </tr>
+                 {% else %}
+@@ -69,4 +71,14 @@
+             {{ include('lift/_leaderboard.html.twig') }}
+         </div>
+     </div>
++{% endblock %}
++
++{% block javascripts %}
++    {{ parent() }}
++
++    <script>
++        $('.js-delete-rep-log').on('click', function() {
++            console.log('todo delete!');
++        });
++    </script>
+ {% endblock %}
+\ No newline at end of file

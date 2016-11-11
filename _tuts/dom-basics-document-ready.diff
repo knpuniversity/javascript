@@ -1,0 +1,18 @@
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index 2194595..ea4a06d 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -77,8 +77,10 @@
+     {{ parent() }}
+ 
+     <script>
+-        $('.js-delete-rep-log').on('click', function() {
+-            console.log('todo delete!');
++        $(document).ready(function() {
++            $('.js-delete-rep-log').on('click', function () {
++                console.log('todo delete!');
++            });
+         });
+     </script>
+ {% endblock %}
+\ No newline at end of file

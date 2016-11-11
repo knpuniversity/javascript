@@ -1,0 +1,20 @@
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index 770e128..da5a1ab 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -78,11 +78,13 @@
+ 
+     <script>
+         $(document).ready(function() {
+-            $('.js-delete-rep-log').on('click', function () {
++            var $table = $('.js-rep-log-table');
++
++            $table.find('.js-delete-rep-log').on('click', function () {
+                 console.log('todo delete!');
+             });
+ 
+-            $('.js-rep-log-table tbody tr').on('click', function() {
++            $table.find('tbody tr').on('click', function() {
+                 console.log('row clicked!');
+             });
+         });

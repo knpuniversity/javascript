@@ -1,0 +1,95 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "dom-basics-simple-click-listener",
+            "name": "DOM Basics: Simple click listener",
+            "description": null
+        },
+        {
+            "id": "dom-basics-scripts-in-header",
+            "name": "DOM Basics: Scripts in header",
+            "description": null
+        },
+        {
+            "id": "dom-basics-document-ready",
+            "name": "DOM Basics: document.ready()",
+            "description": null
+        },
+        {
+            "id": "dom-basics-script-in-middle-of-page",
+            "name": "DOM Basics: script in middle of page",
+            "description": null
+        },
+        {
+            "id": "dom-basics-js-back-to-footer",
+            "name": "DOM Basics: JS back to footer",
+            "description": null
+        },
+        {
+            "id": "dom-basics-our-js-back-into-footer",
+            "name": "DOM Basics: Our JS back into footer",
+            "description": null
+        },
+        {
+            "id": "event-bubbling-add-2nd-listener",
+            "name": "Event Bubbling: Add 2nd listener",
+            "description": null
+        },
+        {
+            "id": "event-bubbling-find-table-for-performance",
+            "name": "Event Bubbling: Find $table for performance",
+            "description": null
+        },
+        {
+            "id": "event-bubbling-returning-false",
+            "name": "Event Bubbling: Returning false",
+            "description": null
+        },
+        {
+            "id": "event-bubbling-event-argument",
+            "name": "Event Bubbling: event argument",
+            "description": null
+        },
+        {
+            "id": "event-bubbling-remove-stoppropagation",
+            "name": "Event Bubbling: Remove stopPropagation()",
+            "description": null
+        },
+        {
+            "id": "event-target-using-event-target",
+            "name": "Event.target: Using event.target",
+            "description": null
+        },
+        {
+            "id": "event-target-console-log-dom-element-object",
+            "name": "Event.target: console.log() DOM Element Object",
+            "description": null
+        },
+        {
+            "id": "event-target-holds-a-collection-of-elements",
+            "name": "Event.target: $ holds a collection of elements",
+            "description": null
+        },
+        {
+            "id": "event-target-show-another-collection-example",
+            "name": "Event.target: Show another $ collection example",
+            "description": null
+        },
+        {
+            "id": "event-target-using-dom-element-directly",
+            "name": "Event.target: Using DOM Element directly",
+            "description": null
+        },
+        {
+            "id": "event-this-using-jquery-again",
+            "name": "Event & this: Using jQuery again",
+            "description": null
+        }
+    ],
+    "sha": "0a4d8cf7776613c36b3acdfc03025631196e368f"
+}

@@ -1,0 +1,19 @@
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index 87f9eb4..34f5df3 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -80,10 +80,11 @@
+         $(document).ready(function() {
+             var $table = $('.js-rep-log-table');
+ 
+-            $table.find('.js-delete-rep-log').on('click', function () {
+-                console.log('todo delete!');
++            $table.find('.js-delete-rep-log').on('click', function (e) {
++                e.preventDefault();
++                e.stopPropagation();
+ 
+-                return false;
++                console.log('todo delete!');
+             });
+ 
+             $table.find('tbody tr').on('click', function() {
