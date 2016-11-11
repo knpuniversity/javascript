@@ -1,0 +1,36 @@
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index 61d9ecf..eff1eb7 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -29,6 +29,7 @@
+                             <a href="#"
+                                class="js-delete-rep-log"
+                                data-url="{{ path('rep_log_delete', {id: repLog.id}) }}"
++                               data-weight="{{ repLog.totalWeightLifted }}"
+                             >
+                                 <span class="fa fa-trash"></span>
+                             </a>
+@@ -44,7 +45,7 @@
+                     <tr>
+                         <td>&nbsp;</td>
+                         <th>Total</th>
+-                        <th>{{ totalWeight }}</th>
++                        <th class="js-total-weight">{{ totalWeight }}</th>
+                     </tr>
+                 </tfoot>
+             </table>
+@@ -94,11 +95,14 @@
+ 
+                 var deleteUrl = $(this).data('url');
+                 var $row = $(this).closest('tr');
++                var $totalWeightContainer = $table.find('.js-total-weight');
++                var newWeight = $totalWeightContainer.html() - $(this).data('weight');
+                 $.ajax({
+                     url: deleteUrl,
+                     method: 'DELETE',
+                     success: function() {
+                         $row.fadeOut();
++                        $totalWeightContainer.html(newWeight);
+                     }
+                 });
+             });

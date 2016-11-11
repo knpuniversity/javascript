@@ -1,0 +1,13 @@
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index fb8cc53..e364df5 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -85,7 +85,7 @@
+                 e.preventDefault();
+ 
+                 $(e.target).addClass('text-danger');
+-                console.log(e.target);
++                console.log(e.currentTarget);
+             });
+ 
+             $table.find('tbody tr').on('click', function() {

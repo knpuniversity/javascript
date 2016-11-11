@@ -86,10 +86,50 @@
             "description": null
         },
         {
-            "id": "event-this-using-jquery-again",
-            "name": "Event & this: Using jQuery again",
+            "id": "event-target-using-jquery-again",
+            "name": "Event.target: Using jQuery again",
+            "description": null
+        },
+        {
+            "id": "currenttarget-this-logging-e-target",
+            "name": "currentTarget & this: logging e.target",
+            "description": null
+        },
+        {
+            "id": "currenttarget-this-logging-e-currenttarget",
+            "name": "currentTarget & this: logging e.currentTarget",
+            "description": null
+        },
+        {
+            "id": "currenttarget-this-show-identical",
+            "name": "currentTarget & this: Show identical",
+            "description": null
+        },
+        {
+            "id": "currenttarget-this-use-this",
+            "name": "currentTarget & this: Use this",
+            "description": null
+        },
+        {
+            "id": "currenttarget-this-confidently-use-this",
+            "name": "currentTarget & this: Confidently use this",
+            "description": null
+        },
+        {
+            "id": "currenttarget-this-remove-delete-text",
+            "name": "currentTarget & this: Remove delete text",
+            "description": null
+        },
+        {
+            "id": "data-attribute-data-url-ajax-call",
+            "name": "data Attribute: data-url & AJAX call",
+            "description": null
+        },
+        {
+            "id": "data-attribute-update-total-weight",
+            "name": "data Attribute: Update total weight",
             "description": null
         }
     ],
-    "sha": "0a4d8cf7776613c36b3acdfc03025631196e368f"
+    "sha": "443230b6656a36b02f471b9271dae07a6995f91e"
 }

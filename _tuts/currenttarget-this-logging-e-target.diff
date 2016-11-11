@@ -1,0 +1,20 @@
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index b9ea45a..fb8cc53 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -28,6 +28,7 @@
+                         <td>
+                             <a href="#" class="js-delete-rep-log">
+                                 <span class="fa fa-trash"></span>
++                                Delete
+                             </a>
+                         </td>
+                     </tr>
+@@ -84,6 +85,7 @@
+                 e.preventDefault();
+ 
+                 $(e.target).addClass('text-danger');
++                console.log(e.target);
+             });
+ 
+             $table.find('tbody tr').on('click', function() {
