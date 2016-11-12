@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 0b91604..3dc46df 100644
+index 0b91604..3340f7f 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -80,10 +80,15 @@
+@@ -80,10 +80,21 @@
      {{ parent() }}
  
      <script>
@@ -12,8 +12,14 @@ index 0b91604..3dc46df 100644
 +            initialize: function($table) {
 +                this.$wrapper = $table;
 +
-+                this.$wrapper.find('.js-delete-rep-log').on('click', this.handleRepLogDelete);
-+                this.$wrapper.find('tbody tr').on('click', this.handleRowClick);
++                this.$wrapper.find('.js-delete-rep-log').on(
++                    'click',
++                    this.handleRepLogDelete
++                );
++                this.$wrapper.find('tbody tr').on(
++                    'click',
++                    this.handleRowClick
++                );
 +            },
  
 -            $table.find('.js-delete-rep-log').on('click', function (e) {
@@ -21,7 +27,7 @@ index 0b91604..3dc46df 100644
                  e.preventDefault();
  
                  $(this).addClass('text-danger');
-@@ -104,11 +109,16 @@
+@@ -104,11 +115,16 @@
                          $totalWeightContainer.html(newWeight);
                      }
                  });

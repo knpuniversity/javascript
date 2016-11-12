@@ -1,9 +1,9 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 7e971e8..fd59952 100644
+index b830966..181c3cf 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -88,6 +88,15 @@
-                 this.$wrapper.find('tbody tr').on('click', this.handleRowClick);
+@@ -94,6 +94,15 @@
+                 );
              },
  
 +            updateTotalWeightLifted: function() {
@@ -18,7 +18,7 @@ index 7e971e8..fd59952 100644
              handleRepLogDelete: function(e) {
                  e.preventDefault();
  
-@@ -99,14 +108,14 @@
+@@ -105,14 +114,14 @@
  
                  var deleteUrl = $(this).data('url');
                  var $row = $(this).closest('tr');

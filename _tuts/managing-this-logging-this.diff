@@ -1,0 +1,17 @@
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index dc59f90..909fb2f 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -92,6 +92,12 @@
+                     'click',
+                     this.handleRowClick
+                 );
++
++                this.whatIsThis('hello');
++            },
++
++            whatIsThis: function(greeting) {
++                console.log(this, greeting);
+             },
+ 
+             updateTotalWeightLifted: function() {

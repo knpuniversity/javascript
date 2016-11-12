@@ -1,0 +1,23 @@
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index 4ea3653..a160603 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -82,7 +82,6 @@
+     <script src="{{ asset('assets/js/RepLogTable.js') }}"></script>
+ 
+     <script>
+-        console.log(helper);
+         $(document).ready(function() {
+             var $table = $('.js-rep-log-table');
+             RepLogTable.initialize($table);
+diff --git a/web/assets/js/RepLogTable.js b/web/assets/js/RepLogTable.js
+index c6727cf..4a79db0 100644
+--- a/web/assets/js/RepLogTable.js
++++ b/web/assets/js/RepLogTable.js
+@@ -1,5 +1,5 @@
+ (function() {
+-    var RepLogTable = {
++    window.RepLogTable = {
+         initialize: function ($table) {
+             this.$wrapper = $table;
+             helper.initialize(this.$wrapper);

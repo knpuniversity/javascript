@@ -1,0 +1,14 @@
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index 7dfc0b8..89d1d89 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -94,7 +94,8 @@
+                 );
+ 
+                 var newThis = {cat: 'meow', dog: 'woof'};
+-                this.whatIsThis.call(newThis, 'hello');
++                var boundWhatIsThis = this.whatIsThis.bind(this);
++                boundWhatIsThis.call(newThis, 'hello');
+             },
+ 
+             whatIsThis: function(greeting) {

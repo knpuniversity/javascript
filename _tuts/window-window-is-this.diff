@@ -1,0 +1,13 @@
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index 1bfb565..66bb4a0 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -82,7 +82,7 @@
+     <script src="{{ asset('assets/js/RepLogTable.js') }}"></script>
+ 
+     <script>
+-        console.log(window);
++        console.log(window === this);
+         $(document).ready(function() {
+             var $table = $('.js-rep-log-table');
+             RepLogTable.initialize($table);

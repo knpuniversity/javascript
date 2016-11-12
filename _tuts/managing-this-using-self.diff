@@ -1,0 +1,20 @@
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index 5ba5f22..9ec4521 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -115,13 +115,14 @@
+ 
+                 var deleteUrl = $link.data('url');
+                 var $row = $link.closest('tr');
++                var self = this;
+                 $.ajax({
+                     url: deleteUrl,
+                     method: 'DELETE',
+                     success: function() {
+                         $row.fadeOut('normal', function() {
+                             $(this).remove();
+-                            RepLogTable.updateTotalWeightLifted();
++                            self.updateTotalWeightLifted();
+                         });
+                     }
+                 });

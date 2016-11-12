@@ -1,0 +1,13 @@
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index 181c3cf..dc59f90 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -119,7 +119,7 @@
+                     method: 'DELETE',
+                     success: function() {
+                         $row.fadeOut('normal', function() {
+-                            $row.remove();
++                            $(this).remove();
+                             RepLogTable.updateTotalWeightLifted();
+                         });
+                     }

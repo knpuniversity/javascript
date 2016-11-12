@@ -149,7 +149,97 @@
             "id": "basic-object-more-helper-methods",
             "name": "Basic Object: More helper methods",
             "description": null
+        },
+        {
+            "id": "managing-this-using-this-in-callback",
+            "name": "Managing this: Using this in callback",
+            "description": null
+        },
+        {
+            "id": "managing-this-logging-this",
+            "name": "Managing this: logging this",
+            "description": null
+        },
+        {
+            "id": "managing-this-changing-this-via-call",
+            "name": "Managing this: changing this via .call",
+            "description": null
+        },
+        {
+            "id": "managing-this-fixing-with-bind",
+            "name": "Managing this: Fixing with .bind",
+            "description": null
+        },
+        {
+            "id": "managing-this-using-bind-on-callbacks",
+            "name": "Managing this: Using .bind on callbacks",
+            "description": null
+        },
+        {
+            "id": "managing-this-using-self",
+            "name": "Managing this: Using self",
+            "description": null
+        },
+        {
+            "id": "iife-refactor-to-external-js",
+            "name": "IIFE: Refactor to external JS",
+            "description": null
+        },
+        {
+            "id": "iife-refactor-to-faux-private-method",
+            "name": "IIFE: Refactor to \"faux\" private method",
+            "description": null
+        },
+        {
+            "id": "iife-refactor-into-private-helper-object",
+            "name": "IIFE: Refactor into private helper object",
+            "description": null
+        },
+        {
+            "id": "iife-i-can-access-helper",
+            "name": "IIFE: I can access helper",
+            "description": null
+        },
+        {
+            "id": "iife-wrap-in-iife",
+            "name": "IIFE: Wrap in IIFE",
+            "description": null
+        },
+        {
+            "id": "window-setting-our-var-on-window",
+            "name": "Window: Setting our var on window",
+            "description": null
+        },
+        {
+            "id": "iife-passing-in-vars",
+            "name": "IIFE: Passing in vars",
+            "description": null
+        },
+        {
+            "id": "window-forget-var",
+            "name": "Window: Forget var",
+            "description": null
+        },
+        {
+            "id": "window-window-is-this",
+            "name": "Window: window is this",
+            "description": null
+        },
+        {
+            "id": "window-use-strict",
+            "name": "Window: use strict",
+            "description": null
+        },
+        {
+            "id": "window-re-add-var",
+            "name": "Window: re-add var",
+            "description": null
+        },
+        {
+            "id": "real-object-refactor-helper-syntax",
+            "name": "Real Object: Refactor helper syntax",
+            "description": null
         }
     ],
-    "sha": "946aa27bb94f9337795ffca134bc034f5997ff6c"
+    "sha": "7515eeb7a8412f111cd2440660d13fb9eff71e70"
 }
