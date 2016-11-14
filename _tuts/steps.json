@@ -239,7 +239,47 @@
             "id": "real-object-refactor-helper-syntax",
             "name": "Real Object: Refactor helper syntax",
             "description": null
+        },
+        {
+            "id": "real-object-create-the-object-no-prototype",
+            "name": "Real Object: Create the object, no prototype",
+            "description": null
+        },
+        {
+            "id": "real-object-printing-object-vs-instance",
+            "name": "Real Object: Printing Object vs instance",
+            "description": null
+        },
+        {
+            "id": "real-object-use-prototype",
+            "name": "Real Object: Use prototype",
+            "description": null
+        },
+        {
+            "id": "real-object-playing-with-proto",
+            "name": "Real Object: Playing with __proto__",
+            "description": null
+        },
+        {
+            "id": "real-object-string-array-proto",
+            "name": "Real Object: String & Array proto",
+            "description": null
+        },
+        {
+            "id": "real-object-create-2-instances",
+            "name": "Real Object: Create 2 instances",
+            "description": null
+        },
+        {
+            "id": "real-object-remove-debug-code",
+            "name": "Real Object: Remove debug code",
+            "description": null
+        },
+        {
+            "id": "real-object-use-extend",
+            "name": "Real Object: Use $.extend",
+            "description": null
         }
     ],
-    "sha": "7515eeb7a8412f111cd2440660d13fb9eff71e70"
+    "sha": "ddcb12ed9963b653a33c27d47582cd032f9ef580"
 }

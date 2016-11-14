@@ -11,7 +11,7 @@ index 66bb4a0..a160603 100644
              var $table = $('.js-rep-log-table');
              RepLogTable.initialize($table);
 diff --git a/web/assets/js/RepLogTable.js b/web/assets/js/RepLogTable.js
-index aa6f281..a228abe 100644
+index 249d9a9..4b369ac 100644
 --- a/web/assets/js/RepLogTable.js
 +++ b/web/assets/js/RepLogTable.js
 @@ -1,3 +1,5 @@

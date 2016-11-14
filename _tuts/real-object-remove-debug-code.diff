@@ -1,0 +1,16 @@
+diff --git a/web/assets/js/RepLogTable.js b/web/assets/js/RepLogTable.js
+index da5322a..4b15987 100644
+--- a/web/assets/js/RepLogTable.js
++++ b/web/assets/js/RepLogTable.js
+@@ -5,11 +5,6 @@
+         initialize: function ($table) {
+             this.$wrapper = $table;
+             this.helper = new Helper(this.$wrapper);
+-            var helper2 = new Helper($('footer'));
+-            console.log(
+-                this.helper.calculateTotalWeight(),
+-                helper2.calculateTotalWeight()
+-            );
+ 
+             this.$wrapper.find('.js-delete-rep-log').on(
+                 'click',

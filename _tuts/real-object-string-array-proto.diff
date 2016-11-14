@@ -1,0 +1,25 @@
+diff --git a/web/assets/js/RepLogTable.js b/web/assets/js/RepLogTable.js
+index 928ab1a..09410b2 100644
+--- a/web/assets/js/RepLogTable.js
++++ b/web/assets/js/RepLogTable.js
+@@ -5,15 +5,11 @@
+         initialize: function ($table) {
+             this.$wrapper = $table;
+             this.helper = new Helper(this.$wrapper);
+-            console.log(this.helper, Object.keys(this.helper));
+-            console.log(Helper, Object.keys(Helper));
+-            console.log(this.helper.calculateTotalWeight());
+-
+-            var playObject = {
+-                lift: 'stuff'
+-            };
+-            playObject.__proto__.cat = 'meow';
+-            console.log(playObject.lift, playObject.cat);
++            console.log(
++                'foo'.__proto__,
++                [].__proto__,
++                (new Date()).__proto__
++            );
+ 
+             this.$wrapper.find('.js-delete-rep-log').on(
+                 'click',

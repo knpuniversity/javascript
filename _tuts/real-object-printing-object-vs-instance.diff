@@ -1,0 +1,13 @@
+diff --git a/web/assets/js/RepLogTable.js b/web/assets/js/RepLogTable.js
+index d39ca84..e0b52cd 100644
+--- a/web/assets/js/RepLogTable.js
++++ b/web/assets/js/RepLogTable.js
+@@ -5,6 +5,8 @@
+         initialize: function ($table) {
+             this.$wrapper = $table;
+             this.helper = new Helper(this.$wrapper);
++            console.log(this.helper, Object.keys(this.helper));
++            console.log(Helper, Object.keys(Helper));
+ 
+             this.$wrapper.find('.js-delete-rep-log').on(
+                 'click',

@@ -1,0 +1,27 @@
+diff --git a/web/assets/js/RepLogTable.js b/web/assets/js/RepLogTable.js
+index 4b15987..0022437 100644
+--- a/web/assets/js/RepLogTable.js
++++ b/web/assets/js/RepLogTable.js
+@@ -58,13 +58,15 @@
+     var Helper = function ($wrapper) {
+         this.$wrapper = $wrapper;
+     };
+-    Helper.prototype.calculateTotalWeight = function() {
+-        var totalWeight = 0;
+-        this.$wrapper.find('tbody tr').each(function () {
+-            totalWeight += $(this).data('weight');
+-        });
++    $.extend(Helper.prototype, {
++        calculateTotalWeight: function() {
++            var totalWeight = 0;
++            this.$wrapper.find('tbody tr').each(function () {
++                totalWeight += $(this).data('weight');
++            });
+ 
+-        return totalWeight;
+-    };
++            return totalWeight;
++        }
++    });
+ 
+ })(window, jQuery);

@@ -1,12 +1,12 @@
 diff --git a/web/assets/js/RepLogTable.js b/web/assets/js/RepLogTable.js
-index d0f99f4..1e4be40 100644
+index d0f99f4..cf9227b 100644
 --- a/web/assets/js/RepLogTable.js
 +++ b/web/assets/js/RepLogTable.js
 @@ -1,6 +1,7 @@
  var RepLogTable = {
      initialize: function ($table) {
          this.$wrapper = $table;
-+        helper.initialize(this.$wrapper);
++        Helper.initialize(this.$wrapper);
  
          this.$wrapper.find('.js-delete-rep-log').on(
              'click',
@@ -15,7 +15,7 @@ index d0f99f4..1e4be40 100644
      updateTotalWeightLifted: function () {
          this.$wrapper.find('.js-total-weight').html(
 -            this._calculateTotalWeight()
-+            helper.calculateTotalWeight()
++            Helper.calculateTotalWeight()
          );
      },
  
@@ -29,7 +29,7 @@ index d0f99f4..1e4be40 100644
 +/**
 + * A "private" object
 + */
-+var helper = {
++var Helper = {
 +    initialize: function ($wrapper) {
 +        this.$wrapper = $wrapper;
      },

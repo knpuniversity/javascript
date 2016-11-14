@@ -1,13 +1,13 @@
 diff --git a/web/assets/js/RepLogTable.js b/web/assets/js/RepLogTable.js
-index a228abe..7d99c19 100644
+index 4b369ac..e91b5b9 100644
 --- a/web/assets/js/RepLogTable.js
 +++ b/web/assets/js/RepLogTable.js
 @@ -55,7 +55,7 @@
      /**
       * A "private" object
       */
--    helper = {
-+    var helper = {
+-    Helper = {
++    var Helper = {
          initialize: function ($wrapper) {
              this.$wrapper = $wrapper;
          },
