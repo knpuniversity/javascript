@@ -45,7 +45,12 @@
                 </tfoot>
             </table>
 
-            <form action="{{ path('lift') }}" method="POST" class="form-inline" novalidate="novalidate" id="list-stuff-form">
+            {{ form_start(form, {
+                'attr': {
+                    'class': 'form-inline',
+                    'novalidate': 'novalidate'
+                }
+            }) }}
                 {{ form_errors(form) }}
 
                 {{ form_row(form.item, {
@@ -59,10 +64,8 @@
                     'attr': {'placeholder': 'How many times?'}
                 }) }}
 
-                {{ form_rest(form) }}
-
                 <button type="submit" class="btn btn-primary">I Lifted it!</button>
-            </form>
+            {{ form_end(form) }}
         </div>
         <div class="col-md-4 col-md-offset-2">
             <h2>Leaderboard</h2>
