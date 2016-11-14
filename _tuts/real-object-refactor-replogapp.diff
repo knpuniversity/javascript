@@ -13,7 +13,7 @@ index 79e099a..3b16c1d 100644
  {% endblock %}
 \ No newline at end of file
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index 52104b8..c350544 100644
+index 52104b8..2ffc230 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -1,20 +1,21 @@
@@ -47,7 +47,7 @@ index 52104b8..c350544 100644
 +        );
 +    };
 +
-+    $.extend(window.RepLogTable.prototype, {
++    $.extend(window.RepLogApp.prototype, {
          updateTotalWeightLifted: function () {
              this.$wrapper.find('.js-total-weight').html(
                  this.helper.calculateTotalWeight()

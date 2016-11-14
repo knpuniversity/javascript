@@ -131,8 +131,8 @@
             "description": null
         },
         {
-            "id": "basic-object-refactor-to-basic-replogtable",
-            "name": "Basic Object: Refactor to basic RepLogTable",
+            "id": "basic-object-refactor-to-basic-replogapp",
+            "name": "Basic Object: Refactor to basic RepLogApp",
             "description": null
         },
         {
@@ -281,15 +281,20 @@
             "description": null
         },
         {
-            "id": "real-object-refactor-replogtable",
-            "name": "Real Object: Refactor RepLogTable",
+            "id": "real-object-refactor-replogapp",
+            "name": "Real Object: Refactor RepLogApp",
             "description": null
         },
         {
             "id": "new-form-setup-making-wrapper-bigger",
             "name": "New Form: Setup & Making $wrapper bigger",
             "description": null
+        },
+        {
+            "id": "new-form-simple-ajax-submit",
+            "name": "New Form: Simple AJAX submit",
+            "description": null
         }
     ],
-    "sha": "9c04cd2e64dbf4bfb6ff4c20d6dfe049d1cd3e5f"
+    "sha": "0897ab32d100b1c529cb4c9e3d396b6adac38773"
 }

@@ -42,7 +42,7 @@ index 3b16c1d..8260b26 100644
  {% endblock %}
 \ No newline at end of file
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index c350544..6bf501b 100644
+index 2ffc230..723ec8f 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -13,6 +13,10 @@
@@ -55,7 +55,7 @@ index c350544..6bf501b 100644
 +        );
      };
  
-     $.extend(window.RepLogTable.prototype, {
+     $.extend(window.RepLogApp.prototype, {
 @@ -50,6 +54,11 @@
  
          handleRowClick: function () {
