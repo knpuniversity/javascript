@@ -4,11 +4,10 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\RepLog;
 use AppBundle\Form\Type\RepLogType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-class LiftController extends Controller
+class LiftController extends BaseController
 {
     /**
      * @Route("/lift", name="lift")
