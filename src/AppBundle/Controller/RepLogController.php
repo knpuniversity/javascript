@@ -18,6 +18,7 @@ class RepLogController extends BaseController
      */
     public function deleteRepLogAction(RepLog $repLog)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         $em = $this->getDoctrine()->getManager();
         $em->remove($repLog);
         $em->flush();
@@ -31,6 +32,7 @@ class RepLogController extends BaseController
      */
     public function editRepLogAction(RepLog $repLog, Request $request)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         $data = json_decode($request->getContent(), true);
         if ($data === null) {
             throw new BadRequestHttpException('Invalid JSON');
