@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 66024a4..7cf677b 100644
+index 486c377..7cf677b 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -119,13 +119,14 @@
@@ -13,7 +13,7 @@ index 66024a4..7cf677b 100644
                      success: function() {
                          $row.fadeOut('normal', function() {
                              $(this).remove();
--                            RepLogTable.updateTotalWeightLifted();
+-                            RepLogApp.updateTotalWeightLifted();
 +                            self.updateTotalWeightLifted();
                          });
                      }

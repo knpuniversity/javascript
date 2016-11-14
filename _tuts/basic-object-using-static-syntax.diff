@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 8107d4d..ad0c6c9 100644
+index 8107d4d..6d271ec 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -109,7 +109,7 @@
@@ -7,7 +7,7 @@ index 8107d4d..ad0c6c9 100644
                  var deleteUrl = $(this).data('url');
                  var $row = $(this).closest('tr');
 -                var $totalWeightContainer = this.$wrapper.find('.js-total-weight');
-+                var $totalWeightContainer = RepLogTable.$wrapper.find('.js-total-weight');
++                var $totalWeightContainer = RepLogApp.$wrapper.find('.js-total-weight');
                  var newWeight = $totalWeightContainer.html() - $row.data('weight');
                  $.ajax({
                      url: deleteUrl,
