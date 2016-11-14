@@ -1,0 +1,21 @@
+{{ form_start(form, {
+    'attr': {
+        'class': 'form-inline',
+        'novalidate': 'novalidate'
+    }
+}) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.item, {
+        'label': 'What did you lift?',
+        'label_attr': {'class': 'sr-only'}
+    }) }}
+
+    {{ form_row(form.reps, {
+        'label': 'How many times?',
+        'label_attr': {'class': 'sr-only'},
+        'attr': {'placeholder': 'How many times?'}
+    }) }}
+
+    <button type="submit" class="btn btn-primary">I Lifted it!</button>
+{{ form_end(form) }}
