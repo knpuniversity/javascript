@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index dc59f90..909fb2f 100644
+index eddddb5..0d6d4bc 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -92,6 +92,12 @@
+@@ -96,6 +96,12 @@
                      'click',
                      this.handleRowClick
                  );

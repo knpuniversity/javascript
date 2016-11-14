@@ -1,13 +1,13 @@
-diff --git a/web/assets/js/RepLogTable.js b/web/assets/js/RepLogTable.js
-index 6282c98..c0baa18 100644
---- a/web/assets/js/RepLogTable.js
-+++ b/web/assets/js/RepLogTable.js
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 68c58aa..1af351a 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
 @@ -1,4 +1,4 @@
 -(function() {
 +(function(window, $) {
-     window.RepLogTable = {
-         initialize: function ($table) {
-             this.$wrapper = $table;
+     window.RepLogApp = {
+         initialize: function ($wrapper) {
+             this.$wrapper = $wrapper;
 @@ -67,4 +67,4 @@
              return totalWeight;
          }

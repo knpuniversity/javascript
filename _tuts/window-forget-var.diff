@@ -1,19 +1,19 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index a160603..1bfb565 100644
+index 79e099a..2626354 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -82,6 +82,7 @@
-     <script src="{{ asset('assets/js/RepLogTable.js') }}"></script>
+@@ -86,6 +86,7 @@
+     <script src="{{ asset('assets/js/RepLogApp.js') }}"></script>
  
      <script>
 +        console.log(window);
          $(document).ready(function() {
              var $table = $('.js-rep-log-table');
-             RepLogTable.initialize($table);
-diff --git a/web/assets/js/RepLogTable.js b/web/assets/js/RepLogTable.js
-index c0baa18..249d9a9 100644
---- a/web/assets/js/RepLogTable.js
-+++ b/web/assets/js/RepLogTable.js
+             RepLogApp.initialize($table);
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 1af351a..565dd21 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
 @@ -53,7 +53,7 @@
      /**
       * A "private" object

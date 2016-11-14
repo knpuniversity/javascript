@@ -1,0 +1,62 @@
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index 79e099a..3b16c1d 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -88,7 +88,7 @@
+     <script>
+         $(document).ready(function() {
+             var $table = $('.js-rep-log-table');
+-            RepLogApp.initialize($table);
++            var repLogApp = new RepLogApp($table);
+         });
+     </script>
+ {% endblock %}
+\ No newline at end of file
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 52104b8..c350544 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -1,20 +1,21 @@
+ 'use strict';
+ 
+ (function(window, $) {
+-    window.RepLogApp = {
+-        initialize: function ($wrapper) {
+-            this.$wrapper = $wrapper;
+-            this.helper = new Helper(this.$wrapper);
++    window.RepLogApp = function ($wrapper) {
++        this.$wrapper = $wrapper;
++        this.helper = new Helper(this.$wrapper);
+ 
+-            this.$wrapper.find('.js-delete-rep-log').on(
+-                'click',
+-                this.handleRepLogDelete.bind(this)
+-            );
+-            this.$wrapper.find('tbody tr').on(
+-                'click',
+-                this.handleRowClick.bind(this)
+-            );
+-        },
++        this.$wrapper.find('.js-delete-rep-log').on(
++            'click',
++            this.handleRepLogDelete.bind(this)
++        );
++        this.$wrapper.find('tbody tr').on(
++            'click',
++            this.handleRowClick.bind(this)
++        );
++    };
++
++    $.extend(window.RepLogTable.prototype, {
+         updateTotalWeightLifted: function () {
+             this.$wrapper.find('.js-total-weight').html(
+                 this.helper.calculateTotalWeight()
+@@ -50,7 +51,7 @@
+         handleRowClick: function () {
+             console.log('row clicked!');
+         }
+-    };
++    });
+ 
+     /**
+      * A "private" object

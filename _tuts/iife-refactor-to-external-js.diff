@@ -1,15 +1,15 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 9ec4521..a160603 100644
+index 7cf677b..79e099a 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -79,60 +79,9 @@
+@@ -83,60 +83,9 @@
  {% block javascripts %}
      {{ parent() }}
  
 -    <script>
--        var RepLogTable = {
--            initialize: function($table) {
--                this.$wrapper = $table;
+-        var RepLogApp = {
+-            initialize: function($wrapper) {
+-                this.$wrapper = $wrapper;
 -
 -                this.$wrapper.find('.js-delete-rep-log').on(
 -                    'click',
@@ -59,21 +59,21 @@ index 9ec4521..a160603 100644
 -                console.log('row clicked!');
 -            }
 -        };
-+    <script src="{{ asset('assets/js/RepLogTable.js') }}"></script>
++    <script src="{{ asset('assets/js/RepLogApp.js') }}"></script>
  
 +    <script>
          $(document).ready(function() {
              var $table = $('.js-rep-log-table');
-             RepLogTable.initialize($table);
-diff --git a/web/assets/js/RepLogTable.js b/web/assets/js/RepLogTable.js
+             RepLogApp.initialize($table);
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
 new file mode 100644
-index 0000000..8a16b49
+index 0000000..c94b499
 --- /dev/null
-+++ b/web/assets/js/RepLogTable.js
++++ b/web/assets/js/RepLogApp.js
 @@ -0,0 +1,52 @@
-+var RepLogTable = {
-+    initialize: function ($table) {
-+        this.$wrapper = $table;
++var RepLogApp = {
++    initialize: function ($wrapper) {
++        this.$wrapper = $wrapper;
 +
 +        this.$wrapper.find('.js-delete-rep-log').on(
 +            'click',

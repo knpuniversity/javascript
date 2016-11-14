@@ -1,0 +1,70 @@
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index 3b16c1d..8260b26 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -2,7 +2,7 @@
+ 
+ {% block body %}
+     <div class="row">
+-        <div class="col-md-6">
++        <div class="col-md-6 js-rep-log-table">
+             <h2>
+                 Record new Lifts
+                 <a href="#list-stuff-form" class="btn btn-link pull-right">
+@@ -10,7 +10,7 @@
+                 </a>
+             </h2>
+ 
+-            <table class="table table-striped js-rep-log-table">
++            <table class="table table-striped">
+                 <thead>
+                 <tr>
+                     <th>What</th>
+@@ -52,7 +52,7 @@
+ 
+             {{ form_start(form, {
+                 'attr': {
+-                    'class': 'form-inline',
++                    'class': 'form-inline js-new-rep-log-form',
+                     'novalidate': 'novalidate'
+                 }
+             }) }}
+@@ -87,8 +87,8 @@
+ 
+     <script>
+         $(document).ready(function() {
+-            var $table = $('.js-rep-log-table');
+-            var repLogApp = new RepLogApp($table);
++            var $wrapper = $('.js-rep-log-table');
++            var repLogApp = new RepLogApp($wrapper);
+         });
+     </script>
+ {% endblock %}
+\ No newline at end of file
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index c350544..6bf501b 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -13,6 +13,10 @@
+             'click',
+             this.handleRowClick.bind(this)
+         );
++        this.$wrapper.find('.js-new-rep-log-form').on(
++            'submit',
++            this.handleNewFormSubmit.bind(this)
++        );
+     };
+ 
+     $.extend(window.RepLogTable.prototype, {
+@@ -50,6 +54,11 @@
+ 
+         handleRowClick: function () {
+             console.log('row clicked!');
++        },
++
++        handleNewFormSubmit: function(e) {
++            e.preventDefault();
++            console.log('submitting!');
+         }
+     });
+ 

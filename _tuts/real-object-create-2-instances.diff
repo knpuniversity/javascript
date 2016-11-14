@@ -1,10 +1,10 @@
-diff --git a/web/assets/js/RepLogTable.js b/web/assets/js/RepLogTable.js
-index 09410b2..da5322a 100644
---- a/web/assets/js/RepLogTable.js
-+++ b/web/assets/js/RepLogTable.js
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index d622ae5..e55d963 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
 @@ -5,10 +5,10 @@
-         initialize: function ($table) {
-             this.$wrapper = $table;
+         initialize: function ($wrapper) {
+             this.$wrapper = $wrapper;
              this.helper = new Helper(this.$wrapper);
 +            var helper2 = new Helper($('footer'));
              console.log(

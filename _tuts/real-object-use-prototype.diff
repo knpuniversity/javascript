@@ -1,7 +1,7 @@
-diff --git a/web/assets/js/RepLogTable.js b/web/assets/js/RepLogTable.js
-index e0b52cd..db0927f 100644
---- a/web/assets/js/RepLogTable.js
-+++ b/web/assets/js/RepLogTable.js
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index e2c73b4..213b6a7 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
 @@ -7,6 +7,7 @@
              this.helper = new Helper(this.$wrapper);
              console.log(this.helper, Object.keys(this.helper));

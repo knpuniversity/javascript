@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 61d9ecf..0b91604 100644
+index 1d5c036..5dda0b4 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -21,7 +21,7 @@
@@ -17,10 +17,10 @@ index 61d9ecf..0b91604 100644
                          <th>Total</th>
 -                        <th>{{ totalWeight }}</th>
 +                        <th class="js-total-weight">{{ totalWeight }}</th>
+                         <td>&nbsp;</td>
                      </tr>
                  </tfoot>
-             </table>
-@@ -94,11 +94,14 @@
+@@ -98,11 +98,14 @@
  
                  var deleteUrl = $(this).data('url');
                  var $row = $(this).closest('tr');

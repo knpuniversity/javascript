@@ -279,7 +279,17 @@
             "id": "real-object-use-extend",
             "name": "Real Object: Use $.extend",
             "description": null
+        },
+        {
+            "id": "real-object-refactor-replogtable",
+            "name": "Real Object: Refactor RepLogTable",
+            "description": null
+        },
+        {
+            "id": "new-form-setup-making-wrapper-bigger",
+            "name": "New Form: Setup & Making $wrapper bigger",
+            "description": null
         }
     ],
-    "sha": "ddcb12ed9963b653a33c27d47582cd032f9ef580"
+    "sha": "9c04cd2e64dbf4bfb6ff4c20d6dfe049d1cd3e5f"
 }

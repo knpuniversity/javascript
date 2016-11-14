@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index c537706..ea4a06d 100644
+index 0d9b6a7..8f06fba 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -46,14 +46,6 @@
+@@ -47,14 +47,6 @@
                  </tfoot>
              </table>
  
@@ -14,10 +14,10 @@ index c537706..ea4a06d 100644
 -                });
 -            </script>
 -
-             <form action="{{ path('lift') }}" method="POST" class="form-inline" novalidate="novalidate" id="list-stuff-form">
-                 {{ form_errors(form) }}
- 
-@@ -84,4 +76,11 @@
+             {{ form_start(form, {
+                 'attr': {
+                     'class': 'form-inline',
+@@ -88,4 +80,11 @@
  {% block javascripts %}
      {{ parent() }}
  

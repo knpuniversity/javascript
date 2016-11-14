@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 89d1d89..5ba5f22 100644
+index 81c4a6a..66024a4 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -86,22 +86,13 @@
+@@ -90,22 +90,13 @@
  
                  this.$wrapper.find('.js-delete-rep-log').on(
                      'click',
@@ -27,7 +27,7 @@ index 89d1d89..5ba5f22 100644
              updateTotalWeightLifted: function() {
                  var totalWeight = 0;
                  this.$wrapper.find('tbody tr').each(function() {
-@@ -114,14 +105,16 @@
+@@ -118,14 +109,16 @@
              handleRepLogDelete: function(e) {
                  e.preventDefault();
  
