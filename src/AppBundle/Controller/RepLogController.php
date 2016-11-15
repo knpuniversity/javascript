@@ -34,6 +34,17 @@ class RepLogController extends BaseController
     }
 
     /**
+     * @Route("/reps/{id}", name="rep_log_get")
+     * @Method("GET")
+     */
+    public function getRepLogAction(RepLog $repLog)
+    {
+        $apiModel = $this->createRepLogApiModel($repLog);
+
+        return $this->createApiResponse($apiModel);
+    }
+
+    /**
      * @Route("/reps/{id}", name="rep_log_delete")
      * @Method("DELETE")
      */
@@ -102,10 +113,7 @@ class RepLogController extends BaseController
         $model->totalWeightLifted = $repLog->getTotalWeightLifted();
 
         $selfUrl = $this->generateUrl(
-            // in theory, this would be to a "GET" endpoint
-            // but we don't have that currently, and this will be
-            // the same URL as the GET endpoint
-            'rep_log_delete',
+            'rep_log_get',
             ['id' => $repLog->getId()]
         );
         $model->addLink('_self', $selfUrl);
