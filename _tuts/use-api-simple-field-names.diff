@@ -1,0 +1,22 @@
+diff --git a/app/Resources/views/lift/_form.html.twig b/app/Resources/views/lift/_form.html.twig
+index b0f12f6..92993e5 100644
+--- a/app/Resources/views/lift/_form.html.twig
++++ b/app/Resources/views/lift/_form.html.twig
+@@ -4,7 +4,7 @@
+             What did you lift?
+         </label>
+         <select id="rep_log_item"
+-                name="rep_log[item]"
++                name="item"
+                 required="required"
+                 class="form-control">
+             <option value="" selected="selected">What did you lift?</option>
+@@ -19,7 +19,7 @@
+             How many times?
+         </label>
+         <input type="number" id="rep_log_reps"
+-               name="rep_log[reps]" required="required"
++               name="reps" required="required"
+                placeholder="How many times?"
+                class="form-control"/>
+     </div>

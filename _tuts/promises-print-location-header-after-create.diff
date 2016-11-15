@@ -1,0 +1,27 @@
+diff --git a/src/AppBundle/Controller/RepLogController.php b/src/AppBundle/Controller/RepLogController.php
+index 2d01311..bf552ef 100644
+--- a/src/AppBundle/Controller/RepLogController.php
++++ b/src/AppBundle/Controller/RepLogController.php
+@@ -91,7 +91,8 @@ class RepLogController extends BaseController
+ 
+         $apiModel = $this->createRepLogApiModel($repLog);
+ 
+-        $response = $this->createApiResponse($apiModel);
++        //$response = $this->createApiResponse($apiModel);
++        $response = new Response(null, 204);
+         // setting the Location header... it's a best-practice
+         $response->headers->set(
+             'Location',
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 8ab8aee..845aeb0 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -98,6 +98,8 @@
+                 url: Routing.generate('rep_log_new'),
+                 method: 'POST',
+                 data: JSON.stringify(data)
++            }).done(function(data, textStatus, jqXHR) {
++                console.log(jqXHR.getResponseHeader('Location'))
+             });
+         },
+ 

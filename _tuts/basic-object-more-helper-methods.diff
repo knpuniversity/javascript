@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 6d271ec..6c79ca7 100644
+index 0e1b733..71330f2 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -98,6 +98,15 @@
+@@ -78,6 +78,15 @@
                  );
              },
  
@@ -18,7 +18,7 @@ index 6d271ec..6c79ca7 100644
              handleRepLogDelete: function(e) {
                  e.preventDefault();
  
-@@ -109,14 +118,14 @@
+@@ -89,14 +98,14 @@
  
                  var deleteUrl = $(this).data('url');
                  var $row = $(this).closest('tr');

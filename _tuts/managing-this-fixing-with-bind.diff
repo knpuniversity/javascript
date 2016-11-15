@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 01f7294..ca35dc3 100644
+index 65cfffe..2f931c8 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -98,7 +98,8 @@
+@@ -78,7 +78,8 @@
                  );
  
                  var newThis = {cat: 'meow', dog: 'woof'};

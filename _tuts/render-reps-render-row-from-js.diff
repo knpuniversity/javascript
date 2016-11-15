@@ -1,0 +1,92 @@
+diff --git a/app/Resources/views/lift/_repoRow.html.twig b/app/Resources/views/lift/_repoRow.html.twig
+deleted file mode 100644
+index f7ea867..0000000
+--- a/app/Resources/views/lift/_repoRow.html.twig
++++ /dev/null
+@@ -1,13 +0,0 @@
+-<tr data-weight="{{ repLog.totalWeightLifted }}">
+-    <td>{{ repLog.itemLabel|trans }}</td>
+-    <td>{{ repLog.reps }}</td>
+-    <td>{{ repLog.totalWeightLifted }}</td>
+-    <td>
+-        <a href="#"
+-           class="js-delete-rep-log"
+-           data-url="{{ path('rep_log_delete', {id: repLog.id}) }}"
+-        >
+-            <span class="fa fa-trash"></span>
+-        </a>
+-    </td>
+-</tr>
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index 7846f4d..a570fe0 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -20,19 +20,12 @@
+                 </tr>
+                 </thead>
+                 <tbody>
+-                {% for repLog in repLogs %}
+-                    {{ include('lift/_repoRow.html.twig') }}
+-                {% else %}
+-                    <tr>
+-                        <td colspan="4">Get liftin'!</td>
+-                    </tr>
+-                {% endfor %}
+                 </tbody>
+                 <tfoot>
+                     <tr>
+                         <td>&nbsp;</td>
+                         <th>Total</th>
+-                        <th class="js-total-weight">{{ totalWeight }}</th>
++                        <th class="js-total-weight"></th>
+                         <td>&nbsp;</td>
+                     </tr>
+                 </tfoot>
+diff --git a/src/AppBundle/Controller/LiftController.php b/src/AppBundle/Controller/LiftController.php
+index eec5df6..4828a1a 100644
+--- a/src/AppBundle/Controller/LiftController.php
++++ b/src/AppBundle/Controller/LiftController.php
+@@ -40,14 +40,6 @@ class LiftController extends BaseController
+             return $this->redirectToRoute('lift');
+         }
+ 
+-        $repLogs = $this->getDoctrine()->getRepository('AppBundle:RepLog')
+-            ->findBy(array('user' => $this->getUser()))
+-        ;
+-        $totalWeight = 0;
+-        foreach ($repLogs as $repLog) {
+-            $totalWeight += $repLog->getTotalWeightLifted();
+-        }
+-
+         // render just the form for AJAX, there is a validation error
+         if ($request->isXmlHttpRequest()) {
+             $html = $this->renderView('lift/_form.html.twig', [
+@@ -59,9 +51,7 @@ class LiftController extends BaseController
+ 
+         return $this->render('lift/index.html.twig', array(
+             'form' => $form->createView(),
+-            'repLogs' => $repLogs,
+             'leaderboard' => $this->getLeaders(),
+-            'totalWeight' => $totalWeight,
+         ));
+     }
+ 
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index b209b36..33156a3 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -30,10 +30,13 @@
+         },
+ 
+         loadRepLogs: function() {
++            var self = this;
+             $.ajax({
+                 url: Routing.generate('rep_log_list'),
+                 success: function(data) {
+-                    console.log(data);
++                    $.each(data.items, function(key, repLog) {
++                        self._addRow(repLog);
++                    });
+                 }
+             });
+         },

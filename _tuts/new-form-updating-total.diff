@@ -1,0 +1,19 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 4265be8..4cfed01 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -61,12 +61,14 @@
+ 
+             var $form = $(e.currentTarget);
+             var $tbody = this.$wrapper.find('tbody');
++            var self = this;
+             $.ajax({
+                 url: $form.attr('action'),
+                 method: 'POST',
+                 data: $form.serialize(),
+                 success: function(data) {
+                     $tbody.append(data);
++                    self.updateTotalWeightLifted();
+                 },
+                 error: function(jqXHR) {
+                     $form.closest('.js-new-rep-log-form-wrapper')

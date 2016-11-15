@@ -1,5 +1,17 @@
+diff --git a/app/Resources/views/lift/_form.html.twig b/app/Resources/views/lift/_form.html.twig
+index 6cb6ddc..a980408 100644
+--- a/app/Resources/views/lift/_form.html.twig
++++ b/app/Resources/views/lift/_form.html.twig
+@@ -1,6 +1,6 @@
+ {{ form_start(form, {
+     'attr': {
+-        'class': 'form-inline',
++        'class': 'form-inline js-new-rep-log-form',
+         'novalidate': 'novalidate'
+     }
+ }) }}
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 3b16c1d..8260b26 100644
+index 0c7a7e1..8943f4e 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -2,7 +2,7 @@
@@ -20,16 +32,7 @@ index 3b16c1d..8260b26 100644
                  <thead>
                  <tr>
                      <th>What</th>
-@@ -52,7 +52,7 @@
- 
-             {{ form_start(form, {
-                 'attr': {
--                    'class': 'form-inline',
-+                    'class': 'form-inline js-new-rep-log-form',
-                     'novalidate': 'novalidate'
-                 }
-             }) }}
-@@ -87,8 +87,8 @@
+@@ -67,8 +67,8 @@
  
      <script>
          $(document).ready(function() {

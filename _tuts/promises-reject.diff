@@ -1,0 +1,25 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index cc146c6..4084c18 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -87,8 +87,7 @@
+             }).done(function(data) {
+                 self._clearForm();
+                 self._addRow(data);
+-            }).fail(function(jqXHR) {
+-                var errorData = JSON.parse(jqXHR.responseText);
++            }).fail(function(errorData) {
+                 self._mapErrorsToForm(errorData.errors);
+             });
+         },
+@@ -107,6 +106,10 @@
+                     // we're finally done!
+                     dfd.resolve(data);
+                 });
++            }).fail(function(jqXHR) {
++                var errorData = JSON.parse(jqXHR.responseText);
++
++                dfd.reject(errorData);
+             });
+ 
+             return dfd.promise();

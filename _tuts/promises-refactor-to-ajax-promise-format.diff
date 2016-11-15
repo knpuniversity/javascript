@@ -1,0 +1,67 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 33156a3..68dbbc9 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -33,12 +33,11 @@
+             var self = this;
+             $.ajax({
+                 url: Routing.generate('rep_log_list'),
+-                success: function(data) {
+-                    $.each(data.items, function(key, repLog) {
+-                        self._addRow(repLog);
+-                    });
+-                }
+-            });
++            }).done(function(data) {
++                $.each(data.items, function(key, repLog) {
++                    self._addRow(repLog);
++                });
++            })
+         },
+ 
+         updateTotalWeightLifted: function () {
+@@ -63,14 +62,13 @@
+             var self = this;
+             $.ajax({
+                 url: deleteUrl,
+-                method: 'DELETE',
+-                success: function () {
+-                    $row.fadeOut('normal', function () {
+-                        $(this).remove();
+-                        self.updateTotalWeightLifted();
+-                    });
+-                }
+-            });
++                method: 'DELETE'
++            }).done(function() {
++                $row.fadeOut('normal', function () {
++                    $(this).remove();
++                    self.updateTotalWeightLifted();
++                });
++            })
+         },
+ 
+         handleRowClick: function () {
+@@ -89,15 +87,13 @@
+                 data: JSON.stringify({
+                     item: $form.find('[name="item"]').val(),
+                     reps: $form.find('[name="reps"]').val()
+-                }),
+-                success: function(data) {
+-                    self._clearForm();
+-                    self._addRow(data);
+-                },
+-                error: function(jqXHR) {
+-                    var errorData = JSON.parse(jqXHR.responseText);
+-                    self._mapErrorsToForm(errorData.errors);
+-                }
++                })
++            }).done(function(data) {
++                self._clearForm();
++                self._addRow(data);
++            }).fail(function(jqXHR) {
++                var errorData = JSON.parse(jqXHR.responseText);
++                self._mapErrorsToForm(errorData.errors);
+             });
+         },
+ 

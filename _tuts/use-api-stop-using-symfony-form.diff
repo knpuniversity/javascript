@@ -1,0 +1,51 @@
+diff --git a/app/Resources/views/lift/_form.html.twig b/app/Resources/views/lift/_form.html.twig
+index a980408..b0f12f6 100644
+--- a/app/Resources/views/lift/_form.html.twig
++++ b/app/Resources/views/lift/_form.html.twig
+@@ -1,21 +1,28 @@
+-{{ form_start(form, {
+-    'attr': {
+-        'class': 'form-inline js-new-rep-log-form',
+-        'novalidate': 'novalidate'
+-    }
+-}) }}
+-    {{ form_errors(form) }}
++<form class="form-inline js-new-rep-log-form" novalidate>
++    <div class="form-group">
++        <label class="sr-only control-label required" for="rep_log_item">
++            What did you lift?
++        </label>
++        <select id="rep_log_item"
++                name="rep_log[item]"
++                required="required"
++                class="form-control">
++            <option value="" selected="selected">What did you lift?</option>
++            <option value="cat">Cat</option>
++            <option value="fat_cat">Big Fat Cat</option>
++            <option value="laptop">My Laptop</option>
++            <option value="coffee_cup">Coffee Cup</option>
++        </select></div>
+ 
+-    {{ form_row(form.item, {
+-        'label': 'What did you lift?',
+-        'label_attr': {'class': 'sr-only'}
+-    }) }}
+-
+-    {{ form_row(form.reps, {
+-        'label': 'How many times?',
+-        'label_attr': {'class': 'sr-only'},
+-        'attr': {'placeholder': 'How many times?'}
+-    }) }}
++    <div class="form-group">
++        <label class="sr-only control-label required" for="rep_log_reps">
++            How many times?
++        </label>
++        <input type="number" id="rep_log_reps"
++               name="rep_log[reps]" required="required"
++               placeholder="How many times?"
++               class="form-control"/>
++    </div>
+ 
+     <button type="submit" class="btn btn-primary">I Lifted it!</button>
+-{{ form_end(form) }}
++</form>

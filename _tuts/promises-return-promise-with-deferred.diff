@@ -1,0 +1,30 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index c8f2399..cc146c6 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -94,7 +94,9 @@
+         },
+ 
+         _saveRepLog: function(data) {
+-            return $.ajax({
++            var dfd = jQuery.Deferred();
++
++            $.ajax({
+                 url: Routing.generate('rep_log_new'),
+                 method: 'POST',
+                 data: JSON.stringify(data)
+@@ -102,10 +104,12 @@
+                 $.ajax({
+                     url: jqXHR.getResponseHeader('Location')
+                 }).done(function(data) {
+-                    console.log('now we are REALLY done');
+-                    console.log(data);
++                    // we're finally done!
++                    dfd.resolve(data);
+                 });
+             });
++
++            return dfd.promise();
+         },
+ 
+         _mapErrorsToForm: function(errorData) {

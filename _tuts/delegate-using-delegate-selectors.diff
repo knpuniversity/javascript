@@ -1,0 +1,27 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 4cfed01..ce9b134 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -5,16 +5,19 @@
+         this.$wrapper = $wrapper;
+         this.helper = new Helper(this.$wrapper);
+ 
+-        this.$wrapper.find('.js-delete-rep-log').on(
++        this.$wrapper.on(
+             'click',
++            '.js-delete-rep-log',
+             this.handleRepLogDelete.bind(this)
+         );
+-        this.$wrapper.find('tbody tr').on(
++        this.$wrapper.on(
+             'click',
++            'tbody tr',
+             this.handleRowClick.bind(this)
+         );
+-        this.$wrapper.find('.js-new-rep-log-form').on(
++        this.$wrapper.on(
+             'submit',
++            '.js-new-rep-log-form',
+             this.handleNewFormSubmit.bind(this)
+         );
+     };

@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 0d9b6a7..8f06fba 100644
+index 714e7dc..dcfe3d7 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -47,14 +47,6 @@
@@ -14,10 +14,10 @@ index 0d9b6a7..8f06fba 100644
 -                });
 -            </script>
 -
-             {{ form_start(form, {
-                 'attr': {
-                     'class': 'form-inline',
-@@ -88,4 +80,11 @@
+             {{ include('lift/_form.html.twig') }}
+         </div>
+         <div class="col-md-4 col-md-offset-2">
+@@ -68,4 +60,11 @@
  {% block javascripts %}
      {{ parent() }}
  

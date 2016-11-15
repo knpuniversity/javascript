@@ -294,7 +294,117 @@
             "id": "new-form-simple-ajax-submit",
             "name": "New Form: Simple AJAX submit",
             "description": null
+        },
+        {
+            "id": "new-form-return-html-on-ajax",
+            "name": "New Form: Return HTML on AJAX",
+            "description": null
+        },
+        {
+            "id": "new-form-appending-row-on-success",
+            "name": "New Form: Appending row on success",
+            "description": null
+        },
+        {
+            "id": "new-form-updating-total",
+            "name": "New Form: Updating total",
+            "description": null
+        },
+        {
+            "id": "delegate-using-delegate-selectors",
+            "name": "Delegate: Using delegate selectors",
+            "description": null
+        },
+        {
+            "id": "use-api-stop-using-symfony-form",
+            "name": "Use API: Stop using Symfony form",
+            "description": null
+        },
+        {
+            "id": "use-api-simple-field-names",
+            "name": "Use API: Simple field names",
+            "description": null
+        },
+        {
+            "id": "use-api-send-json-form-submit",
+            "name": "Use API: Send JSON Form Submit",
+            "description": null
+        },
+        {
+            "id": "use-api-starting-to-handle-errors",
+            "name": "Use API: Starting to handle errors",
+            "description": null
+        },
+        {
+            "id": "use-api-mapping-errors-onto-form",
+            "name": "Use API: Mapping errors onto form",
+            "description": null
+        },
+        {
+            "id": "use-api-resetting-form-on-success",
+            "name": "Use API: Resetting form on success",
+            "description": null
+        },
+        {
+            "id": "use-api-print-data-back-from-success",
+            "name": "Use API: Print data back from success",
+            "description": null
+        },
+        {
+            "id": "use-api-render-template",
+            "name": "Use API: Render _ template",
+            "description": null
+        },
+        {
+            "id": "render-reps-install-fosjsroutingbundle",
+            "name": "Render Reps: Install FOSJSRoutingBundle",
+            "description": null
+        },
+        {
+            "id": "render-reps-render-row-from-js",
+            "name": "Render Reps: Render row from JS",
+            "description": null
+        },
+        {
+            "id": "promises-refactor-to-ajax-promise-format",
+            "name": "Promises: Refactor to $.ajax promise format",
+            "description": null
+        },
+        {
+            "id": "promises-refactor-to-save-method",
+            "name": "Promises: Refactor to save method",
+            "description": null
+        },
+        {
+            "id": "promises-print-location-header-after-create",
+            "name": "Promises: Print Location header after create",
+            "description": null
+        },
+        {
+            "id": "promises-ajax-to-fetch-one-replog",
+            "name": "Promises: AJAX to fetch one RepLog",
+            "description": null
+        },
+        {
+            "id": "promises-return-promise-with-deferred",
+            "name": "Promises: Return Promise with Deferred",
+            "description": null
+        },
+        {
+            "id": "promises-reject",
+            "name": "Promises: Reject",
+            "description": null
+        },
+        {
+            "id": "promises-sweetalert2",
+            "name": "Promises: SweetAlert2",
+            "description": null
+        },
+        {
+            "id": "promises-preconfirm-with-real-promise",
+            "name": "Promises: preConfirm with real Promise",
+            "description": null
         }
     ],
-    "sha": "424c782891e1c04ffecbe5681bed68203d435ad9"
+    "sha": "e9f2f428c784a6a9b3a84e411e8003df1149d4d7"
 }
