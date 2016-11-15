@@ -38,7 +38,9 @@ class RepLogController extends BaseController
             throw new BadRequestHttpException('Invalid JSON');
         }
 
-        $form = $this->createForm(RepLogType::class);
+        $form = $this->createForm(RepLogType::class, null, [
+            'csrf_protection' => false,
+        ]);
         $form->submit($data);
         if (!$form->isValid()) {
             $errors = $this->getErrorsFromForm($form);
