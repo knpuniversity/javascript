@@ -15,6 +15,7 @@ class RepLogController extends BaseController
 {
     /**
      * @Route("/reps", name="rep_log_list")
+     * @Method("GET")
      */
     public function getRepLogsAction()
     {
