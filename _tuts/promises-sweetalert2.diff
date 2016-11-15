@@ -20,14 +20,14 @@ index a570fe0..a574476 100644
  
      <script>
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index 4084c18..4996ec5 100644
+index 5376ed0..272a0b7 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -1,6 +1,6 @@
  'use strict';
  
--(function(window, $) {
-+(function(window, $, swal) {
+-(function(window, $, Routing) {
++(function(window, $, Routing, swal) {
      window.RepLogApp = function ($wrapper) {
          this.$wrapper = $wrapper;
          this.helper = new Helper(this.$wrapper);
@@ -54,9 +54,10 @@ index 4084c18..4996ec5 100644
              $link.addClass('text-danger');
              $link.find('.fa')
                  .removeClass('fa-trash')
-@@ -175,4 +191,4 @@
+@@ -174,5 +190,4 @@
+             return totalWeight;
          }
      });
- 
--})(window, jQuery);
-+})(window, jQuery, swal);
+-
+-})(window, jQuery, Routing);
++})(window, jQuery, Routing, swal);

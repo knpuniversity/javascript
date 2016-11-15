@@ -43,10 +43,10 @@ index 7846f4d..a570fe0 100644
                      </tr>
                  </tfoot>
 diff --git a/src/AppBundle/Controller/LiftController.php b/src/AppBundle/Controller/LiftController.php
-index eec5df6..4828a1a 100644
+index 5b91d2d..2e9e4e9 100644
 --- a/src/AppBundle/Controller/LiftController.php
 +++ b/src/AppBundle/Controller/LiftController.php
-@@ -40,14 +40,6 @@ class LiftController extends BaseController
+@@ -33,19 +33,9 @@ class LiftController extends BaseController
              return $this->redirectToRoute('lift');
          }
  
@@ -58,11 +58,6 @@ index eec5df6..4828a1a 100644
 -            $totalWeight += $repLog->getTotalWeightLifted();
 -        }
 -
-         // render just the form for AJAX, there is a validation error
-         if ($request->isXmlHttpRequest()) {
-             $html = $this->renderView('lift/_form.html.twig', [
-@@ -59,9 +51,7 @@ class LiftController extends BaseController
- 
          return $this->render('lift/index.html.twig', array(
              'form' => $form->createView(),
 -            'repLogs' => $repLogs,
@@ -72,7 +67,7 @@ index eec5df6..4828a1a 100644
      }
  
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index b209b36..33156a3 100644
+index 16b3cbc..f01de39 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -30,10 +30,13 @@

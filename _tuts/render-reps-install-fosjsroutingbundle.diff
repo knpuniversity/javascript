@@ -24,16 +24,13 @@ index 8b13acc..8d2dea6 100644
  
  </body>
 diff --git a/app/config/routing.yml b/app/config/routing.yml
-index 996f1a4..3aeb3d3 100644
+index d8a07cb..aed8f22 100644
 --- a/app/config/routing.yml
 +++ b/app/config/routing.yml
-@@ -21,4 +21,7 @@ fos_user_resetting:
- 
- fos_user_change_password:
-     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
--    prefix: /profile
-\ No newline at end of file
-+    prefix: /profile
+@@ -10,3 +10,6 @@ fos_user_security:
+ fos_user_register:
+     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+     prefix: /register
 +
 +fos_js_routing:
 +    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
@@ -167,10 +164,15 @@ index 4c6908c..cbd4957 100644
       */
      public function getRepLogsAction()
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index e5a473e..b209b36 100644
+index e5a473e..16b3cbc 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
-@@ -5,6 +5,8 @@
+@@ -1,10 +1,12 @@
+ 'use strict';
+ 
+-(function(window, $) {
++(function(window, $, Routing) {
+     window.RepLogApp = function ($wrapper) {
          this.$wrapper = $wrapper;
          this.helper = new Helper(this.$wrapper);
  
@@ -195,3 +197,9 @@ index e5a473e..b209b36 100644
          updateTotalWeightLifted: function () {
              this.$wrapper.find('.js-total-weight').html(
                  this.helper.calculateTotalWeight()
+@@ -147,4 +158,4 @@
+         }
+     });
+ 
+-})(window, jQuery);
++})(window, jQuery, Routing);
