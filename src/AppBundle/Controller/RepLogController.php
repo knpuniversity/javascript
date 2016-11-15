@@ -27,7 +27,9 @@ class RepLogController extends BaseController
             $models[] = $this->createRepLogApiModel($repLog);
         }
 
-        return $this->createApiResponse($models);
+        return $this->createApiResponse([
+            'items' => $models
+        ]);
     }
 
     /**
