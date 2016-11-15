@@ -28,30 +28,35 @@ class BaseController extends Controller
 
     /**
      * Returns an associative array of validation errors
-     * (which could be multi-level):
      *
-     * [
-     *     'firstName': [
-     *         0: 'This value is required'
-     *     ]
-     * ]
+     * {
+     *     'firstName': 'This value is required',
+     *     'subForm': {
+     *         'someField': 'Invalid value'
+     *     }
+     * }
      *
      * @param FormInterface $form
-     * @return array
+     * @return array|string
      */
     protected function getErrorsFromForm(FormInterface $form)
     {
-        $errors = array();
         foreach ($form->getErrors() as $error) {
-            $errors[] = $error->getMessage();
+            // only supporting 1 error per field
+            // and not supporting a "field" with errors, that has more
+            // fields with errors below it
+            return $error->getMessage();
         }
+
+        $errors = array();
         foreach ($form->all() as $childForm) {
             if ($childForm instanceof FormInterface) {
-                if ($childErrors = $this->getErrorsFromForm($childForm)) {
-                    $errors[$childForm->getName()] = $childErrors;
+                if ($childError = $this->getErrorsFromForm($childForm)) {
+                    $errors[$childForm->getName()] = $childError;
                 }
             }
         }
+
         return $errors;
     }
 }
