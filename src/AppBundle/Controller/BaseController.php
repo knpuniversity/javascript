@@ -16,12 +16,7 @@ class BaseController extends Controller
     protected function createApiResponse($data, $statusCode = 200)
     {
         $json = $this->get('serializer')
-            ->serialize($data, 'json', [
-                // we always serialize the "Default" group
-                // so, you need to add the @Groups annotation in
-                // order to have a property serialized
-                'groups' => 'Default'
-            ]);
+            ->serialize($data, 'json');
 
         return new JsonResponse($json, $statusCode, [], true);
     }

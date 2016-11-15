@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Api\RepLogApiModel;
 use AppBundle\Entity\RepLog;
 use AppBundle\Form\Type\RepLogType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -57,6 +58,38 @@ class RepLogController extends BaseController
         $em->persist($repLog);
         $em->flush();
 
-        return $this->createApiResponse($repLog);
+        $apiModel = $this->createRepLogApiModel($repLog);
+
+        return $this->createApiResponse($apiModel);
+    }
+
+    /**
+     * Turns a RepLog into a RepLogApiModel for the API.
+     *
+     * This could be moved into a service if it needed to be
+     * re-used elsewhere.
+     *
+     * @param RepLog $repLog
+     * @return RepLogApiModel
+     */
+    private function createRepLogApiModel(RepLog $repLog)
+    {
+        $model = new RepLogApiModel();
+        $model->id = $repLog->getId();
+        $model->reps = $repLog->getReps();
+        $model->itemLabel = $this->get('translator')
+            ->trans($repLog->getItemLabel());
+        $model->totalWeightLifted = $repLog->getTotalWeightLifted();
+
+        $selfUrl = $this->generateUrl(
+            // in theory, this would be to a "GET" endpoint
+            // but we don't have that currently, and this will be
+            // the same URL as the GET endpoint
+            'rep_log_delete',
+            ['id' => $repLog->getId()]
+        );
+        $model->addLink('_self', $selfUrl);
+
+        return $model;
     }
 }
