@@ -52,6 +52,10 @@ class RepLogController extends BaseController
 
         /** @var RepLog $repLog */
         $repLog = $form->getData();
+        $repLog->setUser($this->getUser());
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($repLog);
+        $em->flush();
 
         return $this->createApiResponse($repLog);
     }

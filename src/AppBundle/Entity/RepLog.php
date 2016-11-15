@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -27,6 +28,7 @@ class RepLog
     /**
      * @var integer
      *
+     * @Serializer\Groups({"Default"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -36,6 +38,7 @@ class RepLog
     /**
      * @var integer
      *
+     * @Serializer\Groups({"Default"})
      * @ORM\Column(name="reps", type="integer")
      * @Assert\NotBlank(message="How many times did you lift this?")
      * @Assert\GreaterThan(value=0, message="You can certainly life more than just 0!")
@@ -45,6 +48,7 @@ class RepLog
     /**
      * @var string
      *
+     * @Serializer\Groups({"Default"})
      * @ORM\Column(name="item", type="string", length=50)
      * @Assert\NotBlank(message="What did you lift?")
      */
@@ -53,6 +57,7 @@ class RepLog
     /**
      * @var float
      *
+     * @Serializer\Groups({"Default"})
      * @ORM\Column(name="totalWeightLifted", type="float")
      */
     private $totalWeightLifted;
