@@ -3,7 +3,7 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Form\Test\FormInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class BaseController extends Controller
@@ -23,7 +23,7 @@ class BaseController extends Controller
                 'groups' => 'Default'
             ]);
 
-        return new JsonResponse($json, 200, [], true);
+        return new JsonResponse($json, $statusCode, [], true);
     }
 
     /**
