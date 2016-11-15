@@ -25,4 +25,32 @@ class RepLogController extends BaseController
 
         return new Response(null, 204);
     }
+
+    /**
+     * @Route("/reps", name="rep_log_new")
+     * @Method("POST")
+     */
+    public function newRepLogAction(Request $request)
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
+        $data = json_decode($request->getContent(), true);
+        if ($data === null) {
+            throw new BadRequestHttpException('Invalid JSON');
+        }
+
+        $form = $this->createForm(RepLogType::class);
+        $form->submit($data);
+        if (!$form->isValid()) {
+            $errors = $this->getErrorsFromForm($form);
+
+            return $this->createApiResponse([
+                'errors' => $errors
+            ], 400);
+        }
+
+        /** @var RepLog $repLog */
+        $repLog = $form->getData();
+
+        return $this->createApiResponse($repLog);
+    }
 }
