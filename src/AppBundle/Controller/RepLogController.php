@@ -91,7 +91,14 @@ class RepLogController extends BaseController
 
         $apiModel = $this->createRepLogApiModel($repLog);
 
-        return $this->createApiResponse($apiModel);
+        $response = $this->createApiResponse($apiModel);
+        // setting the Location header... it's a best-practice
+        $response->headers->set(
+            'Location',
+            $this->generateUrl('rep_log_get', ['id' => $repLog->getId()])
+        );
+
+        return $response;
     }
 
     /**
