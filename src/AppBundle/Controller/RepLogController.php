@@ -14,6 +14,23 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 class RepLogController extends BaseController
 {
     /**
+     * @Route("/reps", name="rep_log_list")
+     */
+    public function getRepLogsAction()
+    {
+        $repLogs = $this->getDoctrine()->getRepository('AppBundle:RepLog')
+            ->findBy(array('user' => $this->getUser()))
+        ;
+
+        $models = [];
+        foreach ($repLogs as $repLog) {
+            $models[] = $this->createRepLogApiModel($repLog);
+        }
+
+        return $this->createApiResponse($models);
+    }
+
+    /**
      * @Route("/reps/{id}", name="rep_log_delete")
      * @Method("DELETE")
      */
