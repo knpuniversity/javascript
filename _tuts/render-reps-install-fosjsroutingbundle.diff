@@ -1,9 +1,9 @@
 diff --git a/app/AppKernel.php b/app/AppKernel.php
-index bc4cea8..a4a72d8 100644
+index c1756e1..cee04bd 100644
 --- a/app/AppKernel.php
 +++ b/app/AppKernel.php
-@@ -18,6 +18,7 @@ class AppKernel extends Kernel
- 
+@@ -19,6 +19,7 @@ class AppKernel extends Kernel
+             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
              new FOS\UserBundle\FOSUserBundle(),
              new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
 +            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
@@ -38,21 +38,10 @@ index 996f1a4..3aeb3d3 100644
 +fos_js_routing:
 +    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 diff --git a/composer.lock b/composer.lock
-index 788374f..fbb442c 100644
+index d3f40fa..c630a80 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -4,8 +4,8 @@
-         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
-         "This file is @generated automatically"
-     ],
--    "hash": "e1e58aa1dea8d484e5551748e3ad319c",
--    "content-hash": "cb79d5bc074584a29f3e0a63167bcfae",
-+    "hash": "b57f15dcb24065bd63bb3108b1ed767c",
-+    "content-hash": "01fedf64ca4a1142c287f8405c72d53a",
-     "packages": [
-         {
-             "name": "doctrine/annotations",
-@@ -892,6 +892,64 @@
+@@ -1026,6 +1026,64 @@
              "time": "2016-09-10 18:51:13"
          },
          {
@@ -117,12 +106,10 @@ index 788374f..fbb442c 100644
              "name": "friendsofsymfony/user-bundle",
              "version": "dev-master",
              "source": {
-@@ -2156,6 +2214,46 @@
-                 "templating"
-             ],
+@@ -2355,6 +2413,46 @@
              "time": "2016-10-25 19:17:17"
-+        },
-+        {
+         },
+         {
 +            "name": "willdurand/jsonp-callback-validator",
 +            "version": "v1.1.0",
 +            "source": {
@@ -161,9 +148,11 @@ index 788374f..fbb442c 100644
 +            ],
 +            "description": "JSONP callback validator.",
 +            "time": "2014-01-20 22:35:06"
-         }
-     ],
-     "packages-dev": [
++        },
++        {
+             "name": "zendframework/zend-code",
+             "version": "2.6.3",
+             "source": {
 diff --git a/src/AppBundle/Controller/RepLogController.php b/src/AppBundle/Controller/RepLogController.php
 index 4c6908c..cbd4957 100644
 --- a/src/AppBundle/Controller/RepLogController.php
