@@ -5,9 +5,9 @@ footer.footer {
     margin-top: 100px;
 }
 
-/*NAV*/
-.dumbbell-mini {
-    background-image: image(src="{{ asset('assets/images/dumbbell.png') }}");
+.mini-dumbbell {
+    width: 13px;
+    height: auto;
 }
 
 /*LOGIN*/
