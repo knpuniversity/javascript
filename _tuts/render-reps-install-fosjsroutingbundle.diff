@@ -11,10 +11,10 @@ index c1756e1..cee04bd 100644
              new AppBundle\AppBundle(),
          ];
 diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
-index 8b13acc..8d2dea6 100644
+index f061071..35014d5 100644
 --- a/app/Resources/views/base.html.twig
 +++ b/app/Resources/views/base.html.twig
-@@ -104,6 +104,8 @@
+@@ -92,6 +92,8 @@
      <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>

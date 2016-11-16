@@ -11,17 +11,17 @@ index 6cb6ddc..a980408 100644
      }
  }) }}
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 0c7a7e1..8943f4e 100644
+index 1718c26..0868840 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -2,7 +2,7 @@
  
  {% block body %}
      <div class="row">
--        <div class="col-md-6">
-+        <div class="col-md-6 js-rep-log-table">
+-        <div class="col-md-8">
++        <div class="col-md-8 js-rep-log-table">
              <h2>
-                 Record new Lifts
+                 Record New Lifts
                  <a href="#list-stuff-form" class="btn btn-link pull-right">
 @@ -10,7 +10,7 @@
                  </a>

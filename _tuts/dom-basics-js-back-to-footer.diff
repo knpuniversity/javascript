@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
-index 80ba57a..73d6071 100644
+index f2c829d..6243f72 100644
 --- a/app/Resources/views/base.html.twig
 +++ b/app/Resources/views/base.html.twig
 @@ -14,11 +14,6 @@
@@ -14,7 +14,7 @@ index 80ba57a..73d6071 100644
      <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
  </head>
  
-@@ -105,5 +100,10 @@
+@@ -93,5 +88,10 @@
  </div>
  <!-- /container -->
  

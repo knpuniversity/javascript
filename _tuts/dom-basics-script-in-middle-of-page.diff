@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 7faccf7..714e7dc 100644
+index f3d78a9..39a4ca7 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -47,8 +47,15 @@
@@ -17,7 +17,7 @@ index 7faccf7..714e7dc 100644
  
 +            {{ include('lift/_form.html.twig') }}
          </div>
-         <div class="col-md-4 col-md-offset-2">
+         <div class="col-md-4">
              <h2>Leaderboard</h2>
 @@ -61,11 +68,4 @@
  {% block javascripts %}

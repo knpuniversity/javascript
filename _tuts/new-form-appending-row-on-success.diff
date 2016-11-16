@@ -18,7 +18,7 @@ index 0000000..f7ea867
 +    </td>
 +</tr>
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 77a46ed..2adef27 100644
+index 87ffb62..3b0287c 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -21,19 +21,7 @@
