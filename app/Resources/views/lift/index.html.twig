@@ -2,10 +2,10 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-7">
             <h2>
-                Record New Lifts
-                <a href="#list-stuff-form" class="btn btn-link pull-right">
+                Lift History
+                <a href="#list-stuff-form" class="btn btn-md btn-success pull-right">
                     <span class="fa fa-plus"></span> Add
                 </a>
             </h2>
@@ -48,10 +48,12 @@
             {{ include('lift/_form.html.twig') }}
 
         </div>
-        <div class="col-md-4">
-            <h2>Leaderboard</h2>
+        <div class="col-md-5">
+            <div class="leaderboard">
+                <h2 class="text-center"><img class="dumbbell" src="{{ asset('assets/images/dumbbell.png') }}">Leaderboard</h2>
 
-            {{ include('lift/_leaderboard.html.twig') }}
+                {{ include('lift/_leaderboard.html.twig') }}
+            </div>
         </div>
     </div>
 {% endblock %}
