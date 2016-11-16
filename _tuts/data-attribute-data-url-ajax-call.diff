@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 6987a65..97e0ba6 100644
+index a41dc70..b159da5 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -26,7 +26,10 @@
@@ -14,7 +14,7 @@ index 6987a65..97e0ba6 100644
                                  <span class="fa fa-trash"></span>
                              </a>
                          </td>
-@@ -72,6 +75,16 @@
+@@ -74,6 +77,16 @@
                      .removeClass('fa-trash')
                      .addClass('fa-spinner')
                      .addClass('fa-spin');

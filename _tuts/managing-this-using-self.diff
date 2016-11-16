@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 2f50079..3df3ed7 100644
+index abce8d0..d7525a5 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -99,13 +99,14 @@
+@@ -101,13 +101,14 @@
  
                  var deleteUrl = $link.data('url');
                  var $row = $link.closest('tr');

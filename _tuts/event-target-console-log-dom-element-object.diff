@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index d7b204a..268183a 100644
+index 564cdb3..156fd41 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -68,6 +68,7 @@
+@@ -70,6 +70,7 @@
                  e.preventDefault();
  
                  $(e.target).addClass('text-danger');

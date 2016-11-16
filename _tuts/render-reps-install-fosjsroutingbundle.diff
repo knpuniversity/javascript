@@ -11,7 +11,7 @@ index c1756e1..cee04bd 100644
              new AppBundle\AppBundle(),
          ];
 diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
-index f061071..35014d5 100644
+index e94e1f9..f1eaafb 100644
 --- a/app/Resources/views/base.html.twig
 +++ b/app/Resources/views/base.html.twig
 @@ -92,6 +92,8 @@

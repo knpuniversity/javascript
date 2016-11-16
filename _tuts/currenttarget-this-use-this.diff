@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 1716236..5f267b8 100644
+index 862cc4c..70e8046 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -68,8 +68,7 @@
+@@ -70,8 +70,7 @@
              $table.find('.js-delete-rep-log').on('click', function (e) {
                  e.preventDefault();
  

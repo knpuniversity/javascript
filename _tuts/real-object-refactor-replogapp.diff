@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 3723933..1718c26 100644
+index 5ca6f1c..a793806 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -68,7 +68,7 @@
+@@ -70,7 +70,7 @@
      <script>
          $(document).ready(function() {
              var $table = $('.js-rep-log-table');
@@ -11,7 +11,6 @@ index 3723933..1718c26 100644
          });
      </script>
  {% endblock %}
-\ No newline at end of file
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
 index 52104b8..2ffc230 100644
 --- a/web/assets/js/RepLogApp.js

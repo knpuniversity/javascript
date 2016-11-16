@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 0da8eee..9fc6bd3 100644
+index 1202c76..ef861cb 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -10,7 +10,7 @@
@@ -11,7 +11,7 @@ index 0da8eee..9fc6bd3 100644
                  <thead>
                  <tr>
                      <th>What</th>
-@@ -65,6 +65,10 @@
+@@ -67,6 +67,10 @@
              $('.js-delete-rep-log').on('click', function () {
                  console.log('todo delete!');
              });
@@ -22,4 +22,3 @@ index 0da8eee..9fc6bd3 100644
          });
      </script>
  {% endblock %}
-\ No newline at end of file

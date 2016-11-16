@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 21f2741..215b803 100644
+index 27af7f4..45d896d 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -103,7 +103,7 @@
+@@ -105,7 +105,7 @@
                      method: 'DELETE',
                      success: function() {
                          $row.fadeOut('normal', function() {

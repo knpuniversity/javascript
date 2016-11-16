@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 8821d7c..87ab01f 100644
+index 02c5773..47e7ae2 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -64,10 +64,21 @@
+@@ -66,10 +66,21 @@
      {{ parent() }}
  
      <script>
@@ -27,7 +27,7 @@ index 8821d7c..87ab01f 100644
                  e.preventDefault();
  
                  $(this).addClass('text-danger');
-@@ -88,11 +99,16 @@
+@@ -90,11 +101,16 @@
                          $totalWeightContainer.html(newWeight);
                      }
                  });
@@ -47,4 +47,3 @@ index 8821d7c..87ab01f 100644
          });
      </script>
  {% endblock %}
-\ No newline at end of file

@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index bc60726..9925cf2 100644
+index 73c1981..e913dd5 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -26,7 +26,9 @@
@@ -13,11 +13,10 @@ index bc60726..9925cf2 100644
                          </td>
                      </tr>
                  {% else %}
-@@ -54,4 +56,14 @@
-             {{ include('lift/_leaderboard.html.twig') }}
+@@ -57,3 +59,13 @@
          </div>
      </div>
-+{% endblock %}
+ {% endblock %}
 +
 +{% block javascripts %}
 +    {{ parent() }}
@@ -27,5 +26,4 @@ index bc60726..9925cf2 100644
 +            console.log('todo delete!');
 +        });
 +    </script>
- {% endblock %}
-\ No newline at end of file
++{% endblock %}

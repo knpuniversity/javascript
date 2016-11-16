@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index f3d78a9..39a4ca7 100644
+index 6d36e70..f3aee0f 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -47,8 +47,15 @@
@@ -17,9 +17,9 @@ index f3d78a9..39a4ca7 100644
  
 +            {{ include('lift/_form.html.twig') }}
          </div>
-         <div class="col-md-4">
-             <h2>Leaderboard</h2>
-@@ -61,11 +68,4 @@
+         <div class="col-md-5">
+             <div class="leaderboard">
+@@ -63,11 +70,4 @@
  {% block javascripts %}
      {{ parent() }}
  
@@ -31,4 +31,3 @@ index f3d78a9..39a4ca7 100644
 -        });
 -    </script>
  {% endblock %}
-\ No newline at end of file

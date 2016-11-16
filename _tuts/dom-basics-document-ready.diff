@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 9925cf2..f3d78a9 100644
+index e913dd5..6d36e70 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -62,8 +62,10 @@
+@@ -64,8 +64,10 @@
      {{ parent() }}
  
      <script>
@@ -15,4 +15,3 @@ index 9925cf2..f3d78a9 100644
          });
      </script>
  {% endblock %}
-\ No newline at end of file

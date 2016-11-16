@@ -11,18 +11,18 @@ index 6cb6ddc..a980408 100644
      }
  }) }}
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 1718c26..0868840 100644
+index a793806..b448ace 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -2,7 +2,7 @@
  
  {% block body %}
      <div class="row">
--        <div class="col-md-8">
-+        <div class="col-md-8 js-rep-log-table">
+-        <div class="col-md-7">
++        <div class="col-md-7 js-rep-log-table">
              <h2>
-                 Record New Lifts
-                 <a href="#list-stuff-form" class="btn btn-link pull-right">
+                 Lift History
+                 <a href="#list-stuff-form" class="btn btn-md btn-success pull-right">
 @@ -10,7 +10,7 @@
                  </a>
              </h2>
@@ -32,7 +32,7 @@ index 1718c26..0868840 100644
                  <thead>
                  <tr>
                      <th>What</th>
-@@ -67,8 +67,8 @@
+@@ -69,8 +69,8 @@
  
      <script>
          $(document).ready(function() {
@@ -43,7 +43,6 @@ index 1718c26..0868840 100644
          });
      </script>
  {% endblock %}
-\ No newline at end of file
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
 index 2ffc230..723ec8f 100644
 --- a/web/assets/js/RepLogApp.js
