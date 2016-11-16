@@ -2,23 +2,36 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}" />
+{% endblock %}
+
 {% block fos_user_content %}
-{% if error %}
-    <div>{{ error.messageKey|trans }}</div>
-{% endif %}
+    <div class="container">
+        <div class="wrapper">
+            <form action="{{ path("fos_user_security_check") }}" method="post" class="form-signin">
+                <h3><img class="dumbbell" src="{{ asset('assets/images/dumbbell.png') }}">Login! Start Lifting!</h3>
 
-<form action="{{ path("fos_user_security_check") }}" method="post">
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                <hr class="colorgraph" />
 
-    <label for="username">{{ 'security.login.username'|trans }}</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                <br/>
 
-    <label for="password">{{ 'security.login.password'|trans }}</label>
-    <input type="password" id="password" name="_password" required="required" />
+                {% if error %}
+                    <div class="alert alert-block alert-danger">{{ error.messageKey|trans }}</div>
+                {% endif %}
 
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                <input type="text" class="form-control" name="_username" value="{{ last_username }}" required="required" placeholder="{{ 'security.login.username'|trans }}" />
+                <input type="password" class="form-control" name="_password" required="required" placeholder="{{ 'security.login.password'|trans }}" />
 
-    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-primary" />
-</form>
+                <input type="checkbox" name="_remember_me" checked style="display: none;" />
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                    Login
+                </button>
+            </form>
+        </div>
+    </div>
 {% endblock fos_user_content %}
