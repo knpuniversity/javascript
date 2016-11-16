@@ -14,7 +14,7 @@ class LoadReps implements FixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $items = RepLog::getThingsYouCanLiftChoices();
+        $items = array_flip(RepLog::getThingsYouCanLiftChoices());
 
         $names = array(
             array('Brad', 'Kitt'),

@@ -115,8 +115,11 @@ class RepLog
      */
     public function setItem($item)
     {
-        $this->item = $item;
+        if (!isset(self::$thingsYouCanLift[$item])) {
+            throw new \InvalidArgumentException(sprintf('You can\'t lift a "%s"!', $item));
+        }
 
+        $this->item = $item;
         $this->calculateTotalLifted();
 
         return $this;
