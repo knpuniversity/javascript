@@ -64,10 +64,12 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
+    # hardcoding values to avoid them needing to be filled in
+    # in parameters.yml in this tutorial!
+    transport: "smtp"
+    host:      "localhost"
+    username:  "foo"
+    password:  "bar"
     spool:     { type: memory }
 
 fos_user:
