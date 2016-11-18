@@ -71,6 +71,11 @@
             "description": null
         },
         {
+            "id": "event-target-console-dir-dom-element-object",
+            "name": "Event.target: console.dir() DOM Element Object",
+            "description": null
+        },
+        {
             "id": "event-target-holds-a-collection-of-elements",
             "name": "Event.target: $ holds a collection of elements",
             "description": null
@@ -411,5 +416,5 @@
             "description": null
         }
     ],
-    "sha": "6fce1d925785f8a7dc7cdadd39554ece958106ea"
+    "sha": "8e924c1d3722f3ce48a81104df76a64898a07e40"
 }

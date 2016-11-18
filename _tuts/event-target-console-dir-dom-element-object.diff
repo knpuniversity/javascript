@@ -1,15 +1,13 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index a17cca1..8ec5814 100644
+index 156fd41..a17cca1 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -70,7 +70,9 @@
+@@ -70,7 +70,7 @@
                  e.preventDefault();
  
                  $(e.target).addClass('text-danger');
--                console.dir(e.target);
-+                console.log(
-+                    $(e.target)[0] === e.target
-+                );
+-                console.log(e.target);
++                console.dir(e.target);
              });
  
              $table.find('tbody tr').on('click', function() {
