@@ -1,0 +1,19 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index f3dfc7b..c990f8b 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -98,7 +98,13 @@
+                     var errorData = JSON.parse(jqXHR.responseText);
+                     self._mapErrorsToForm(errorData.errors);
+                 }
+-            });
++            }).done(function(data) {
++                console.log('I am successful!');
++                console.log(data);
++            }).done(function(data) {
++                console.log('another handler!');
++                console.log(data);
++            })
+         },
+ 
+         _mapErrorsToForm: function(errorData) {

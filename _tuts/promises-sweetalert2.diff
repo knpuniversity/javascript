@@ -20,7 +20,7 @@ index 03ffb31..cec6a25 100644
  
      <script>
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index 5376ed0..272a0b7 100644
+index fcfb320..3039c3b 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -1,6 +1,6 @@
@@ -31,14 +31,15 @@ index 5376ed0..272a0b7 100644
      window.RepLogApp = function ($wrapper) {
          this.$wrapper = $wrapper;
          this.helper = new Helper(this.$wrapper);
-@@ -51,6 +51,22 @@
+@@ -51,6 +51,23 @@
  
              var $link = $(e.currentTarget);
  
 +            var self = this;
 +            swal({
 +                title: 'Delete this log?',
-+                text: 'What? Did you not actually lift this?'
++                text: 'What? Did you not actually lift this?',
++                showCancelButton: true
 +            }).then(
 +                function () {
 +                    self._deleteRepLog($link);
@@ -54,7 +55,7 @@ index 5376ed0..272a0b7 100644
              $link.addClass('text-danger');
              $link.find('.fa')
                  .removeClass('fa-trash')
-@@ -174,5 +190,4 @@
+@@ -173,5 +190,4 @@
              return totalWeight;
          }
      });

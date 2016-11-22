@@ -1,0 +1,44 @@
+diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
+index f1eaafb..dc52def 100644
+--- a/app/Resources/views/base.html.twig
++++ b/app/Resources/views/base.html.twig
+@@ -94,6 +94,7 @@
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
++    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.0.5/es6-promise.auto.min.js"></script>
+ {% endblock %}
+ 
+ </body>
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index febb2f2..58cbfe6 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -95,16 +95,18 @@
+         },
+ 
+         _saveRepLog: function(data) {
+-            return $.ajax({
+-                url: Routing.generate('rep_log_new'),
+-                method: 'POST',
+-                data: JSON.stringify(data)
+-            }).then(function(data, textStatus, jqXHR) {
++            return new Promise(function(resolve, reject) {
+                 $.ajax({
+-                    url: jqXHR.getResponseHeader('Location')
+-                }).then(function(data) {
+-                    console.log('now we are REALLY done');
+-                    console.log(data);
++                    url: Routing.generate('rep_log_new'),
++                    method: 'POST',
++                    data: JSON.stringify(data)
++                }).then(function(data, textStatus, jqXHR) {
++                    $.ajax({
++                        url: jqXHR.getResponseHeader('Location')
++                    }).then(function(data) {
++                        // we're finally done!
++                        resolve(data);
++                    });
+                 });
+             });
+         },

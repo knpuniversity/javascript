@@ -1,13 +1,13 @@
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index 272a0b7..dfe672a 100644
+index c095611..3c97c1e 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
-@@ -54,7 +54,15 @@
-             var self = this;
+@@ -55,7 +55,15 @@
              swal({
                  title: 'Delete this log?',
--                text: 'What? Did you not actually lift this?'
-+                text: 'What? Did you not actually lift this?',
+                 text: 'What? Did you not actually lift this?',
+-                showCancelButton: true
++                showCancelButton: true,
 +                showLoaderOnConfirm: true,
 +                preConfirm: function() {
 +                    return new Promise(function(resolve, reject) {
@@ -16,6 +16,6 @@ index 272a0b7..dfe672a 100644
 +                        }, 1000);
 +                    });
 +                }
-             }).then(
-                 function () {
-                     self._deleteRepLog($link);
+             }).then(function (bar) {
+                 console.log(bar);
+                 self._deleteRepLog($link);

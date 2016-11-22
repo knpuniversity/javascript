@@ -1,0 +1,25 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 9931e06..fcfb320 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -88,8 +88,7 @@
+             .then(function(data) {
+                 self._clearForm();
+                 self._addRow(data);
+-            }).catch(function(jqXHR) {
+-                var errorData = JSON.parse(jqXHR.responseText);
++            }).catch(function(errorData) {
+                 self._mapErrorsToForm(errorData.errors);
+             });
+         },
+@@ -108,7 +107,9 @@
+                         resolve(data);
+                     });
+                 }).catch(function(jqXHR) {
+-                    reject(jqXHR);
++                    var errorData = JSON.parse(jqXHR.responseText);
++
++                    reject(errorData);
+                 });
+             });
+         },

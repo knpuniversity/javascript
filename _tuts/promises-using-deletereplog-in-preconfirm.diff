@@ -1,0 +1,34 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 3c97c1e..05e48d4 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -58,17 +58,10 @@
+                 showCancelButton: true,
+                 showLoaderOnConfirm: true,
+                 preConfirm: function() {
+-                    return new Promise(function(resolve, reject) {
+-                        setTimeout(function() {
+-                            resolve();
+-                        }, 1000);
+-                    });
++                    return self._deleteRepLog($link);
+                 }
+-            }).then(function (bar) {
+-                console.log(bar);
+-                self._deleteRepLog($link);
+             }).catch(function(arg) {
+-                console.log('canceled', arg);
++                // canceling is cool!
+             });
+         },
+ 
+@@ -82,7 +75,8 @@
+             var deleteUrl = $link.data('url');
+             var $row = $link.closest('tr');
+             var self = this;
+-            $.ajax({
++
++            return $.ajax({
+                 url: deleteUrl,
+                 method: 'DELETE'
+             }).then(function() {

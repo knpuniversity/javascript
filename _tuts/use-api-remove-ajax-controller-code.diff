@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Controller/LiftController.php b/src/AppBundle/Controller/LiftController.php
-index eec5df6..5b91d2d 100644
+index a072228..5b91d2d 100644
 --- a/src/AppBundle/Controller/LiftController.php
 +++ b/src/AppBundle/Controller/LiftController.php
 @@ -28,13 +28,6 @@ class LiftController extends BaseController
@@ -8,7 +8,7 @@ index eec5df6..5b91d2d 100644
  
 -            // return a blank form after success
 -            if ($request->isXmlHttpRequest()) {
--                return $this->render('lift/_repoRow.html.twig', [
+-                return $this->render('lift/_repRow.html.twig', [
 -                    'repLog' => $repLog
 -                ]);
 -            }

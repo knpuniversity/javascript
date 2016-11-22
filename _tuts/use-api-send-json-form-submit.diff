@@ -9,7 +9,7 @@ index 92993e5..a98b268 100644
          <label class="sr-only control-label required" for="rep_log_item">
              What did you lift?
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index ce9b134..92e4476 100644
+index ce9b134..05ba124 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -63,19 +63,21 @@
@@ -18,16 +18,16 @@ index ce9b134..92e4476 100644
              var $form = $(e.currentTarget);
 -            var $tbody = this.$wrapper.find('tbody');
 -            var self = this;
-+
++            var formData = {};
++            $.each($form.serializeArray(), function(key, fieldData) {
++                formData[fieldData.name] = fieldData.value
++            });
              $.ajax({
 -                url: $form.attr('action'),
 +                url: $form.data('url'),
                  method: 'POST',
 -                data: $form.serialize(),
-+                data: JSON.stringify({
-+                    item: $form.find('[name="item"]').val(),
-+                    reps: $form.find('[name="reps"]').val()
-+                }),
++                data: JSON.stringify(formData),
                  success: function(data) {
 -                    $tbody.append(data);
 -                    self.updateTotalWeightLifted();

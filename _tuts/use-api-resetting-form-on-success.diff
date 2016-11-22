@@ -1,10 +1,10 @@
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index a49e7a6..e75475c 100644
+index 01ac6aa..0668af5 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -77,8 +77,7 @@
-                     reps: $form.find('[name="reps"]').val()
-                 }),
+                 method: 'POST',
+                 data: JSON.stringify(formData),
                  success: function(data) {
 -                    // todo
 -                    console.log('success!');

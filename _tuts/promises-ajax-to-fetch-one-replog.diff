@@ -1,15 +1,15 @@
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index d7486e7..24bbcb6 100644
+index 8029144..febb2f2 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
-@@ -99,7 +99,12 @@
+@@ -100,7 +100,12 @@
                  method: 'POST',
                  data: JSON.stringify(data)
-             }).done(function(data, textStatus, jqXHR) {
--                console.log(jqXHR.getResponseHeader('Location'))
+             }).then(function(data, textStatus, jqXHR) {
+-                console.log(jqXHR.getResponseHeader('Location'));
 +                $.ajax({
 +                    url: jqXHR.getResponseHeader('Location')
-+                }).done(function(data) {
++                }).then(function(data) {
 +                    console.log('now we are REALLY done');
 +                    console.log(data);
 +                });

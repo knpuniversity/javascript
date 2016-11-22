@@ -1,13 +1,14 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index b4076b5..c4d43f1 100644
+index 5aff244..c4d43f1 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -69,11 +69,8 @@
+@@ -69,12 +69,8 @@
              $table.find('.js-delete-rep-log').on('click', function (e) {
                  e.preventDefault();
  
 -                $(e.target).addClass('text-danger');
 -                console.log(
+-                    e.target,
 -                    $(e.target)[0] === e.target,
 -                    $('.fa-trash')[5] === e.target
 -                );

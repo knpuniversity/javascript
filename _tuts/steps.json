@@ -376,6 +376,36 @@
             "description": null
         },
         {
+            "id": "promises-using-done-as-an-example",
+            "name": "Promises: Using .done as an example",
+            "description": null
+        },
+        {
+            "id": "promises-changing-to-then",
+            "name": "Promises: Changing to .then",
+            "description": null
+        },
+        {
+            "id": "promises-returning-in-then",
+            "name": "Promises: Returning in .then",
+            "description": null
+        },
+        {
+            "id": "promises-using-rejected-2nd-then-arg",
+            "name": "Promises: Using rejected 2nd .then arg",
+            "description": null
+        },
+        {
+            "id": "promises-using-catch-instead",
+            "name": "Promises: Using .catch instead",
+            "description": null
+        },
+        {
+            "id": "promises-putting-then-all-first",
+            "name": "Promises: Putting .then all first",
+            "description": null
+        },
+        {
             "id": "promises-refactor-to-ajax-promise-format",
             "name": "Promises: Refactor to $.ajax promise format",
             "description": null
@@ -391,13 +421,33 @@
             "description": null
         },
         {
+            "id": "promises-logging-data-throw-arg",
+            "name": "Promises: Logging data & throw arg",
+            "description": null
+        },
+        {
+            "id": "promises-checking-error-instanceof",
+            "name": "Promises: Checking error instanceof",
+            "description": null
+        },
+        {
+            "id": "promises-re-throw-and-2nd-catch",
+            "name": "Promises: Re-throw and 2nd catch",
+            "description": null
+        },
+        {
+            "id": "promises-printing-location-header",
+            "name": "Promises: Printing Location header",
+            "description": null
+        },
+        {
             "id": "promises-ajax-to-fetch-one-replog",
             "name": "Promises: AJAX to fetch one RepLog",
             "description": null
         },
         {
-            "id": "promises-return-promise-with-deferred",
-            "name": "Promises: Return Promise with Deferred",
+            "id": "promises-return-our-own-promise",
+            "name": "Promises: Return our own Promise",
             "description": null
         },
         {
@@ -406,15 +456,30 @@
             "description": null
         },
         {
+            "id": "promises-massage-reject-value",
+            "name": "Promises: Massage reject value",
+            "description": null
+        },
+        {
             "id": "promises-sweetalert2",
             "name": "Promises: SweetAlert2",
+            "description": null
+        },
+        {
+            "id": "promises-using-catch",
+            "name": "Promises: Using catch",
             "description": null
         },
         {
             "id": "promises-preconfirm-with-real-promise",
             "name": "Promises: preConfirm with real Promise",
             "description": null
+        },
+        {
+            "id": "promises-using-deletereplog-in-preconfirm",
+            "name": "Promises: using _deleteRepLog in preConfirm",
+            "description": null
         }
     ],
-    "sha": "8e924c1d3722f3ce48a81104df76a64898a07e40"
+    "sha": "f644c982e3c44048992c0ad7e820b09f4f57ac75"
 }

@@ -1,5 +1,5 @@
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index f01de39..0a25ba9 100644
+index 34e5a05..8e9a68f 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -33,12 +33,11 @@
@@ -12,7 +12,7 @@ index f01de39..0a25ba9 100644
 -                    });
 -                }
 -            });
-+            }).done(function(data) {
++            }).then(function(data) {
 +                $.each(data.items, function(key, repLog) {
 +                    self._addRow(repLog);
 +                });
@@ -33,7 +33,7 @@ index f01de39..0a25ba9 100644
 -                }
 -            });
 +                method: 'DELETE'
-+            }).done(function() {
++            }).then(function() {
 +                $row.fadeOut('normal', function () {
 +                    $(this).remove();
 +                    self.updateTotalWeightLifted();
@@ -42,11 +42,11 @@ index f01de39..0a25ba9 100644
          },
  
          handleRowClick: function () {
-@@ -89,15 +87,13 @@
-                 data: JSON.stringify({
-                     item: $form.find('[name="item"]').val(),
-                     reps: $form.find('[name="reps"]').val()
--                }),
+@@ -89,26 +87,13 @@
+             $.ajax({
+                 url: $form.data('url'),
+                 method: 'POST',
+-                data: JSON.stringify(formData),
 -                success: function(data) {
 -                    self._clearForm();
 -                    self._addRow(data);
@@ -55,11 +55,20 @@ index f01de39..0a25ba9 100644
 -                    var errorData = JSON.parse(jqXHR.responseText);
 -                    self._mapErrorsToForm(errorData.errors);
 -                }
-+                })
-+            }).done(function(data) {
+-            }).then(function(data) {
+-                console.log('I am successful!');
+-                console.log(data);
+-
+-                return data;
++                data: JSON.stringify(formData)
+             }).then(function(data) {
+-                console.log('another handler!');
+-                console.log(data);
 +                self._clearForm();
 +                self._addRow(data);
-+            }).fail(function(jqXHR) {
+             }).catch(function(jqXHR) {
+-                console.log('failed!');
+-                console.log(jqXHR.responseText);
 +                var errorData = JSON.parse(jqXHR.responseText);
 +                self._mapErrorsToForm(errorData.errors);
              });

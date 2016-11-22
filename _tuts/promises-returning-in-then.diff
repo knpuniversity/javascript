@@ -1,0 +1,13 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index b824503..b2478c3 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -101,6 +101,8 @@
+             }).then(function(data) {
+                 console.log('I am successful!');
+                 console.log(data);
++
++                return data;
+             }).then(function(data) {
+                 console.log('another handler!');
+                 console.log(data);

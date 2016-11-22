@@ -164,7 +164,7 @@ index 4c6908c..cbd4957 100644
       */
      public function getRepLogsAction()
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index e5a473e..16b3cbc 100644
+index 6a3ef10..a9d1c8b 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -1,10 +1,12 @@

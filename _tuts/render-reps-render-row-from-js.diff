@@ -1,7 +1,7 @@
-diff --git a/app/Resources/views/lift/_repoRow.html.twig b/app/Resources/views/lift/_repoRow.html.twig
+diff --git a/app/Resources/views/lift/_repRow.html.twig b/app/Resources/views/lift/_repRow.html.twig
 deleted file mode 100644
 index f7ea867..0000000
---- a/app/Resources/views/lift/_repoRow.html.twig
+--- a/app/Resources/views/lift/_repRow.html.twig
 +++ /dev/null
 @@ -1,13 +0,0 @@
 -<tr data-weight="{{ repLog.totalWeightLifted }}">
@@ -18,7 +18,7 @@ index f7ea867..0000000
 -    </td>
 -</tr>
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 073a313..03ffb31 100644
+index 3784ee0..03ffb31 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -20,19 +20,12 @@
@@ -26,7 +26,7 @@ index 073a313..03ffb31 100644
                  </thead>
                  <tbody>
 -                {% for repLog in repLogs %}
--                    {{ include('lift/_repoRow.html.twig') }}
+-                    {{ include('lift/_repRow.html.twig') }}
 -                {% else %}
 -                    <tr>
 -                        <td colspan="4">Get liftin'!</td>
@@ -67,7 +67,7 @@ index 5b91d2d..2e9e4e9 100644
      }
  
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index 16b3cbc..f01de39 100644
+index a9d1c8b..f3dfc7b 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -30,10 +30,13 @@
