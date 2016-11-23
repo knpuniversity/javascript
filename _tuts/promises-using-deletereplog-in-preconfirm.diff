@@ -1,8 +1,8 @@
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index 3c97c1e..05e48d4 100644
+index 1f49938..05e48d4 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
-@@ -58,17 +58,10 @@
+@@ -58,16 +58,10 @@
                  showCancelButton: true,
                  showLoaderOnConfirm: true,
                  preConfirm: function() {
@@ -13,8 +13,7 @@ index 3c97c1e..05e48d4 100644
 -                    });
 +                    return self._deleteRepLog($link);
                  }
--            }).then(function (bar) {
--                console.log(bar);
+-            }).then(function () {
 -                self._deleteRepLog($link);
              }).catch(function(arg) {
 -                console.log('canceled', arg);
@@ -22,7 +21,7 @@ index 3c97c1e..05e48d4 100644
              });
          },
  
-@@ -82,7 +75,8 @@
+@@ -81,7 +75,8 @@
              var deleteUrl = $link.data('url');
              var $row = $link.closest('tr');
              var self = this;
