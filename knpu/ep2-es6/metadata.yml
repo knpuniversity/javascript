@@ -1,0 +1,32 @@
+title:  JavaScript for PHP Geeks: ES6/ES2015 (New JavaScript)
+
+summary: |
+    Guess what? JavaScript has evolved, in a *big* way. Did you know a new major
+    version of JavaScript was released... in 2015!? Yep, and it's packed with *so*
+    many new features and syntaxes, when you see code written in "new" JavaScript,
+    it can be barely recognizable at first. But these new features are taking over
+    the web. Let's embrace them!
+
+    * Babel! Because you need to *compile* new JavaScript
+    * ES6/ECMAScript2015/Harmony: Good things have many names
+    * var versus let
+    * New Object-Oriented Classes!!?
+    * The mysterious (amazing) new "arrow" callback syntax
+    * The ...spread Operator
+    * Object.assign
+    * var, let and const
+    * Object literal shorthand
+    * Computed Property Names
+    * Default function argument values
+    * Destructuring Assignment
+    * Modules  
+
+    let yourSkills = (currentSkills) => currentSkills + 1000;
+
+# illustration: javascript.png
+
+tuts_hero:
+    # start_step: start
+    finish_step: start
+
+chapters: []

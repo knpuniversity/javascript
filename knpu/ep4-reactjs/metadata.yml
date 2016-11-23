@@ -1,0 +1,30 @@
+title:  JavaScript for PHP Geeks: ReactJS & Symfony
+
+summary: |
+    ReactJS! Woohoo! With ES6 and webpack behind us, we can finally have some *serious*
+    fun! In this course, we'll introduce ReactJS, get it working through Webpack
+    and starting building a real application. We'll talk about some of the best
+    ways to get your React app to talk to Symfony, including authentication!
+
+    * Components & React Architecture
+    * Jumping into JSX!
+    * Getting used to props vs state
+    * Server-side ReactJS Rendering
+    * Authentication With Symfony
+    * Making API Calls back to Symfony
+    * Returning JSON and massaging it in React
+    * Handling collections in React
+    * Modifying state in a parent component
+    * Using refs
+
+    return (
+        <ReactJSSymfonyTutorial onWatch={this.handleMadNewSkills}
+    )
+
+# illustration: javascript.png
+
+tuts_hero:
+    # start_step: start
+    finish_step: start
+
+chapters: []

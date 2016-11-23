@@ -1,0 +1,32 @@
+title:  JavaScript for PHP Geeks: Webpack for Module Loading Awesomeness
+
+summary: |
+    In JavaScript, if you're still manually including each JavaScript file you depend
+    on with a `<script>` tag... there's a better way! ES6 introduced the concept
+    of *modules*: the ability (finally!) to isolate our JavaScript into small components
+    that live in different files (like we do with classes in JavaScript).
+    
+    But, to get this to work on the web, we need some help. We need something that's
+    able to *read* our imports and aggregate everything we need into a single JavaScript
+    file. We need webpack:
+
+    * Using npm... and then yarn for package management
+    * Webpack setup: package all modules into a single file
+    * Calling Babel from webpack via a loader
+    * Webpack dev tools for fast development
+    * Webpack Hot Reloading!?
+    * Handling multiple files ("entry points")
+    * Using Uglify and prepping for production
+    * Cache-busting with hashed filenames
+    * CommonsChunkPlugin: package common modules together
+    * Loading & Packaging CSS/SCSS & images form JavaScript!?
+
+    And most importantly: become empowered to (finally) write organized JavaScript!
+
+# illustration: javascript.png
+
+tuts_hero:
+    # start_step: start
+    finish_step: start
+
+chapters: []
