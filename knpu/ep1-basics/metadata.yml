@@ -16,7 +16,7 @@ summary: |
     * Dependency injection
     * Unit testing
     * Client-side templating
-    
+
     Subscribe for updates, and write great JavaScript
 
 illustration: javascript.png
@@ -25,4 +25,70 @@ tuts_hero:
     # start_step: start
     finish_step: start
 
-chapters: []
+chapters:
+    js-class-prefix:
+        is_finished: false
+        video_key: ~
+    document-ready-ordering:
+        is_finished: false
+        video_key: ~
+    event-bubbling-propagation:
+        is_finished: false
+        video_key: ~
+    dom-element-object:
+        is_finished: false
+        video_key: ~
+    this-current-target:
+        is_finished: false
+        video_key: ~
+    data-attribute:
+        is_finished: false
+        video_key: ~
+    javascript-objects:
+        is_finished: false
+        video_key: ~
+    fixing-this-variable:
+        is_finished: false
+        video_key: ~
+    immediately-invoked-function-expression:
+        is_finished: false
+        video_key: ~
+    window-global-vars:
+        is_finished: false
+        video_key: ~
+    instantiatable-prototype-objects:
+        is_finished: false
+        video_key: ~
+    extend-prototype:
+        is_finished: false
+        video_key: ~
+    ajax-form-submit:
+        is_finished: false
+        video_key: ~
+    old-school-ajax-html:
+        is_finished: false
+        video_key: ~
+    delegate-selectors-ftw:
+        is_finished: false
+        video_key: ~
+    post-proper-api-endpoint:
+        is_finished: false
+        video_key: ~
+    js-validation-error-handling:
+        is_finished: false
+        video_key: ~
+    client-side-templating:
+        is_finished: false
+        video_key: ~
+    js-rendering-fosjsroutingbundle:
+        is_finished: false
+        video_key: ~
+    all-about-promises:
+        is_finished: false
+        video_key: ~
+    create-your-own-promise:
+        is_finished: false
+        video_key: ~
+    sweet-alert-more-promises:
+        is_finished: false
+        video_key: ~
