@@ -59,7 +59,7 @@ route: `rep_log_new`.
 
 Bam! Now, back in `RepLogApp`, before we use that, let's clear out *all* the code
 that actually updates our DOM: all the stuff related to updating the form with the
-form errors or adding the new row. That's all a TODO for later.
+form errors or adding the new row. That's all a todo for later.
 
 But, *do* add a `console.log('success')` and `console.log('error')` so we can see
 if this stuff is working! Finally, update the `url` to `$form.data('url')`.
