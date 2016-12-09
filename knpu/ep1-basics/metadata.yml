@@ -3,27 +3,27 @@ title:  JavaScript for PHP Geeks
 summary: |
     You already know and write JavaScript... or really jQuery. But as JavaScript
     takes on more of your life, it's time to take your game to the next level!
-    In this tutorial, we'll do just that by learning more about JavaScript
-    itself and how to do things in a maintainable and organized way. This
-    will include
+    In this tutorial, we'll do just that by diving into a *bunch* of pieces of
+    JavaScript you may "kinda" understand, or which might be new to you altogether! 
+    This includes:
 
-    * Bower
-    * DOM Events and propagation
-    * Objects
-    * Instantiating objects and the prototype model
-    * Callbacks and understanding "this"
-    * Code organization
-    * Dependency injection
-    * Unit testing
+    * Event Bubbling & DOM Events
+    * The DOM Element Object
+    * JavaScript Objects
+    * Instantiating objects with the prototype
+    * Understanding the mystical "this" & .bind
+    * Understanding Self-Executing Functions
+    * Delegate Selectors will save your Life
     * Client-side templating
+    * PROMISES!
 
-    Subscribe for updates, and write great JavaScript
+    Let's not just write JavaScript, let's understand what's going on!
 
 illustration: javascript.png
 
 tuts_hero:
-    # start_step: start
-    finish_step: start
+    start_step: start
+    finish_step: promises-using-deletereplog-in-preconfirm
 
 chapters:
     js-class-prefix:
