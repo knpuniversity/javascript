@@ -1,19 +1,67 @@
-# Data Attribute
+# A Great Place to Hide Things! The data- Attributes
 
-Time to finally hook up the AJAX and actually delete one of these rows. I already took care of the server side for us. If you want to look at it, it's inside of the source app under controller directory, repLogController. I have a number of different restful API endpoints and one of them is called, deleteRepLogAction. We pass a /reps/the ID of the rep and then it deletes it from the database and returns a blank response. Pretty simple. As long as we hit this endpoint with the right ID with a delete method we'll be fine.
+Time to *finally* hook up the AJAX and actually delete one of these rows! As an early
+birthday gift, I already took care of the server side for us. If you want to check
+it out, it's inside of the `src/AppBundle/Controller` directory: `RepLogController`.
+I have a bunch of different RESTful API endpoints and one is called, `deleteRepLogAction`.
+As long as we make a `DELETE` request to `/reps/ID-of-the-rep`, it'll delete it and
+return a blank response. Happy birthday!
 
-In index.html.twig, inside of a listener, how can we get the URL to this particular row? For example, what is the ID of this particular repLog? Well, we don't really know. We know that this link is being clicked, but this link doesn't give us any information about which repLog is being clicked or what it's URL to the delete endpoint is. This is a really common thing. When you want to attach extra meta data to your DOM, so that in JavaScript, you can read it and take action. There actually a proper way to attach extra information to your DOM, and it's via the data attribute. It's not something invented. The rule actually says you are allowed to add data attributes that start with data- and then lowercase letters afterwards. In this case, we'll set one to data-URL equals and I'll use the symphony way of linking, which is to say repLog delete the name of that endpoint and then pass it ID and then repLog.ID. We now have the URL to that endpoint on the anchor tag itself.
+Back in `index.html.twig`, inside of our listener function, how can we get figure
+out the DELETE URL for *this* row? Or, even more simply, what's the ID of *this*
+particular RepLog? Well, I have no idea! Yay!
 
-Now down below to fetch it, we can simply say var delete URL equals this, which we now know is the link, the anchor, .dataURL. That's a little bit of JQuery magic. It allows you to read any of your data attributes by using this nice data function. Awesome. Then the AJAX call is really simple. I'll use $.AJAX, set URL to delete URL, method to delete, and we'll set up a success function down here. Now with the success function what we probably want to have happen is that entire row should probably disappear.
+We know that this link is being clicked, but it doesn't give us any information about
+the RepLog itself, like its ID or delete URL. 
 
-To find the row, I'll say var $row equals this, again the link, .closest TR. So the closest function starts with your link and actually goes up until it finds an element matching that, so that will find our TR element. Notice again I'm using $row, because this is going to be a Jquery object. Inside the success, we'll say row.fadeout for a little bit of fancy.
+## Adding a data-url Attribute
 
-Cool, try that out. Refresh, delete my coffee cup and life is good. If I refresh, everything is still gone. The only problem is, you'll notice if I delete my coffee cup here, the total weight doesn't change on the bottom. It doesn't change until we actually refresh the page and that's kind of lame. I'll re add my coffee cup and let's fix that.
+This is a *really* common problem: when you want to attach extra metadata to your DOM,
+so that you can read it in JavaScript. And guess what! There's an official, standard,
+proper way to do this! It's via a data attribute. Yep, according to the silly "rules"
+of the web, you're not really supposed to invent new attributes for your elements.
+Well, unless the attribute starts with `data-`, followed by lowercase letters. That's
+*totally* allowed!
 
-There are a few different ways to do this. If we ... Somehow knew what the weight was for this specific row then we could read the total weight and just subtract the weight that's being deleted right now. It'd be a very easy JavaScript way of doing it, but when we're inside of this function here, we don't really know what the weight is of our particular row. Sure, we could, I guess read the HTML of the third column, but that's not a good solution because what if the weight becomes the fourth column? There's a better way to do it. Again, it goes back to that data attribute.
+For example, add an attribute called `data-url` and set it equal to the DELETE URL
+for *this* RepLog. The Symfony way of generating this is with `path()`, the name
+of the route - `rep_log_delete` - and the id: `repLog.id`.
 
-A better way is to go up to our row and add a data-weight. So hey, anybody needs to read the weight for this particular row, we'll just print it right here with repLog.TotalWeightLifted. Also, so we know which TH down here to update, I'll add a JS class js-total-weight. Now we can read this number and we can read this number for the one that was deleted. We can subtract them. Damn it ...
+## Reading data- Attributes
 
-Let's do it. Before the AJAX call and this is actually important and we'll talk about why later. Let's find the total weight container. The TH that contains the total weight. We'll say table.find js-total-weight. Next we can say var.NewWeight. We know this is going to be totalweight.container.html, kind of a lazy way to get the current number of the total weight minus row.data and we can read the new data-weight attribute.
+Sweet! To read that in JavaScript, simply say `var deleteUrl = $(this)`, which we
+know is the link, `.data('url')`. 
 
-Finally, inside success here, we can say totalweightcontainer.html equals the new weight. Let's give this fanciness a try. Go back refresh. 459? Hit delete, it's gone. 454, we got it.
+That's a little bit of jQuery magic: it's a shortcut that allows you to read any
+of your data attributes. Finally, the AJAX call is really simple! I'll use `$.ajax`,
+set `url` to `deleteUrl`, method to `DELETE`, and add a `success` function.
+
+Hmm, so after this finishes, we probably want the *entire* row to disappear. Above
+the AJAX call, find the row with `$row = $(this).closest('tr')`. In other words,
+start with the link, and go up the DOM tree until you find a `tr` element. Oh, and
+reminder, this is `$row` because this is a jQuery object! Inside `success`, say
+`$row.fadeOut()` for just a *little* bit of fancy.
+
+Ok, try that out! Refresh, delete my coffee cup and life is good. And if I refresh,
+it's truly gone. Oh, but dang, if I delete my cup of coffee record, the total weight
+at the bottom does *not* change. I need to refresh the page to do that. LAME! I'll
+re-add my coffee cup. Now, let's fix that!
+
+## Adding data-weight metadata
+
+If we somehow knew what the weight was for *this* specific row, we could read the
+total weight and just subtract it when it's deleted. So how can we figure out the
+weight of the row? Well, we could just read the HTML of the third column... but that's
+not a *great* solution. Instead, why not use another `data-` attribute?
+
+On the `<tr>` element, add a `data-weight` attribute set to `repLog.totalWeightLifted`.
+Also, so that we know *which* `th` to update add a class: `js-total-weight`
+
+Let's hook this up! *Before* the AJAX call - that's important, we'll find out why
+soon - find the total weight container by saying `$table.find('js-total-weight')`.
+Next add `var newWeight` set to `$totalWeightContainer.html() - $row.data('weight')`.
+
+Use that inside `success`: `$totalWeightContainer.html(newWeight)`.
+
+Let's give this fanciness a try. Go back refresh. 459? Hit delete, it's gone. 454.
+We got it!

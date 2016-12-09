@@ -1,13 +1,68 @@
-# Document Ready Ordering
+# (document).ready() & Ordering
 
-The way this Javascripts block thing works is that it puts our Javascript right after the Javascript that's in our base layout. If you view the source, just to prove that. Down at the bottom of the page ... You'll see jQuary was dropped, and then our Javascript. Cool. I put this at the bottom of the page for performance reasons, so that downloading these scripts doesn't block the loading on the page.
+When we use this `javascripts` block thing, it adds our new JavaScript right *after*
+the main JavaScript in the base layout. View the HTML source and scroll to the bottom
+see that in action. Yep, jQuery and *then* our JavaScript.
 
-There's some argument on whether putting something in the bottom of the page or the top of the page is better, but it should work either place. Right? If I actually move this block Javascripts up into my header, that should still work just fine. Right? If I go over here and refresh, we still see Javascript, Javascript, and then our Javascript right there. Let's try it out. Refresh the page, click delete, and it doesn't work. For a lot of you, this is probably obvious why, but I want to point it out.
+Cool! I added my JavaScript to the bottom of the page for performance: unless you
+add an `async` attribute, when your browser sees a `script` tag, it stops, waits
+while that file is downloaded, executes it, and *then* continues.
 
-Since our Javascript is running in the header of the page, it means that at this exact moment, it looks for all elements with the js-delete-rep-log class. Well, at this point, the rest of the html page is not loaded yet, so it finds exactly zero items. This is the reason why you are already always using the famous document.ready block. We move our coding inside of it, and refresh. Now, the delete link works again.
+But not everyone agrees that putting JS in the footer is the best. After all, if
+your page is *heavily* dependent on JS, your user might see a blank page for a second
+before your JavaScript has the chance to be executed and put cool stuff there.
 
-You already know you need to use this, but don't take it for granted. This is what it does. Document.ready is fired after the dom fully loads. It's approximately equal to putting your Javascript code at the absolute bottom of the page. It means that our Javascript code will work no mater where it lives. For example, if we wanted to, we could take the script tag, delete it from there, and actually stick it right in the middle of our page.
+Ok, so there might be a performance difference between putting JavaScript in the
+header versus the footer. But, or code should work either place, right? If I move
+the block `javascripts` up into my header, this should *probably* still work? We
+still have 3 script tags, just in a different spot.
 
-At this point in the source, we have our script tags up top, but then our Javascript actually sits right in the middle of the page. Time for your refresh, that still works just fine. Of course, the only problem with that is if someone comes along and decides, Hey, you know what? We should really put our Javascripts in the footer. Now, we have a different problem. Our Javascripts are not in the top, or the head, anymore. They're now down here at the absolute bottom. We refresh the page, we immediately get the error dollar sign is not defined.
+Well, let's find out. Refresh! Then click delete. We broke it! What happened!
 
-That's when we run our code. Again, this makes perfect sense. As it loads the page, it sees this dollar sign, but it hasn't actually downloaded the jQuary library. That strip tag is still further down on the page. The two things that you have to think about is, I need any Javascript that I depend on to be before me., but then when I actually go and start doing my code that selects elements on the page, that needs to happen at the bottom of the page. Which we can always guarantee will happen by doing document.ready. Let's put our Javascripts back, and this now says, Whether my Javascripter is at the bottom of the page, or at the top of the page, let's always put our Javascript right after it. Go back, refresh, and life is good again.
+## Running JavaScript Before the DOM
+
+This may or may not be obvious to you, but it's worth mentioning: our browser executes
+JavaScript as soon as it sees it... which might be before some or all of the page has
+actually rendered. Our code is looking for all elements with the `js-delete-rep-log`
+class. Well, at this point, *none* of the HTML body has rendered yet, so it finds
+exactly zero items.
+
+This is the reason why you probably already always use the famous `$(document).ready()`
+block. Move our code inside of it, and refresh again. Yes!
+
+Very simply, jQuery calls your `$(document).ready()` function once the DOM has fully
+loaded. But it's nothing fancy: it's approximately equal to putting your JavaScript
+code at the absolute bottom of the page. It's just nice because it makes our code
+portable: it'll work like we expect no matter *where* it lives.
+
+For example, we could take the `script` tag, delete it from the layer, and actually
+put it right in the middle of our page.
+
+Now in the HTML, the external `script` tags are still on top, but our `JavaScript`
+lives right, mack in the middle of the page. And when we refresh, it still works
+fine.
+
+## Thinking out JavaScript Ordering
+
+Of course, the *only* problem with this is that if someone comes along and decides:
+
+> Hey, you know what? We should really put our JavaScript in the footer!
+
+Then we have a different problem. In the source, jQuery once again lives at the
+absolute bottom. And when we refresh the page, error! Our browser immediately tells
+us that `$` is not defined.
+
+That's from *our* code in the middle of the page. And yea, it makes sense: as our
+browser loads the page, it sees the `$`, but hasn't *yet* downloaded `jQuery`: that
+script tag is still further down on the page.
+
+So there are *two* things we need to worry about. First, any JavaScript that I depend
+on needs to be included on the page before me. And actually, this will *stop* being
+true when we talk about module loaders in a future tutorial.
+
+Second, before I try to select any elements with jQuery, I better make sure the DOM
+has loaded, which we can always guarantee with a `$(document).ready() block`.
+
+Let's put our JavaScript back into the block so that it's always included *after*
+jQuery, whether that's in the header of footer. Go back, refresh, and life is good
+again.

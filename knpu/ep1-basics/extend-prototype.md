@@ -1,9 +1,32 @@
-# Extend Prototype
+# Extending the Prototype
 
-Now if we want to create proper objects that we can instantiate, we're going to set your object to a function which is a constructor and then every method and property is going to go under prototype. Now, it does get a little bit annoying that below this we always have to say helper dot prototype dot something equals helper dot prototype dot something equals. It gets a little long.
+From now on, we'll pretty much be adding *everything* to the `prototype` key. But,
+it *does* get a little bit annoying to always need to say `Helper.prototype.something =`
+for every method.
 
-Commonly you'll see a little bit of a shortcut which is to use an array merge function. For example, you can use dollar sign dot extend from j Query and say helper dot prototype which is already an object and then pass any number of properties that you want to merge into that object. In other words, we would move our calculate total weight function inside of here and then update it to be calculate total weight colon and then at the bottom we don't need the semi-colon and that's it. If we had more properties we would just add them here below calculate total weight and then we don't have to worry about the prototype stuff.
+We can shorten this with a shortcut that's similar to PHP's `array_merge()` function.
+Use `$.extend()` and pass it `Helper.prototype` and then a second object containing
+all of the properties you want to merge into that object. In other words, move our
+`calculateTotalWeight()` function into this and update it to be
+`calculateTotalWeight: function`. At the bottom, we don't need the semicolon anymore.
+If we had more properties, we'd add them right below `calculateTotalWeight`: no need
+to worry about writing `prototype` every time.
 
-All of these keys will get merged into the prototype. There are other ways to do this, to merge an array into an object, dollar sign dot extend is a convenient one if you have j Query. That is enough to make us be able to change our rep log app object very easily into a proper object that we can extantiate.
+There's nothing special about `$.extend`, it's just a handy `array_merge`-esque
+function that we have available. You may see other functions from other libraries
+used to do the exact same thing.
 
-First, we'll set rep log app itself equal to our function which is going to be our constructor. Then I'll un-indent everything and do semi-colon. Now, we can say dollar sign dot extend, open parenthesis, window dot rep log app dot prototype, comma, curly brace and then we'll fit in there just perfect. He only thing we need to do is add an extra closing parenthesis at the end. Now as soon as we do this, we don't use it like this anymore. Now we're actually going to instantiate it so we can say var rep log app equals new rep log app just like that. We're not going to call any methods on the rep log app object here but we could if we wanted to, we could actually after this or later, call additional methods on our rep log app object or we could create multiple rep log app objects in here. Pretty cool.
+## Making RepLogApp an Instantiatable Object
+
+With this trick, it's *so* easy to make `RepLogApp` and instantiatable object.
+First, set `RepLogApp` itself to the former `initialize()` function. Constructor
+done! Then, I'll un-indent everything and finish it with a semicolon.
+
+Next, add `$.extend()` with `window.RepLogApp.prototype` with `{`. The existing keys
+fit right into this perfectly! Winning! At the end, add an extra `)`.
+
+Yay! In our template, we *won't* use `RepLogApp` like this anymore. Instead, say
+`var repLogApp = new RepLogApp($table)`. We won't call any methods on that new
+`repLogApp` variable, but we could if we wanted to. We could also create *multiple*
+`RepLogApp` objects if we had multiple tables on this page, or loaded a table via
+AJAX. Our JavaScript is starting to be controlled!

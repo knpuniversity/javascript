@@ -1,17 +1,99 @@
-# Old School AJAX HTML
+# Old-School AJAX HTML
 
-When we use Ajax to submit this form, there’s two possible responses. We could have an error response or we could have a successful response. If we have an error response, what we want to send back is the html for this form with the error styling and messages included in it. If you go back to your project you can open up WrapLog controller, which is in the SOC app on the controller directory. Go to you your project and open the lift controller. The index action is what is currently processing this form and doing all the magic. Now down here at the bottom is, where we normally render the entire page and this action also handles the firm submit, so if we submit the form it also calls this code.
+When we use AJAX to submit this form, there are two possible responses: one when
+there was a form validation error and one on success.
 
-Now at the bottom here, if this is an Ajax request we know the only way that we could get here if it’s an Ajax request, is if we just submitted the form via Ajax but there were validation errors. Instead of returning the entire page which is what's happening right now on the Ajax call, we‘re going to return just this little fragment of the form. You can say return this error render, lift slash underscore form.html to pass that form, form create view. Instead of index this is exactly the template that holds just the part that we want to refreshen the page. Just by doing that the next Ajax endpoint has just that form stuff. What we’re going to do is replace the form, the form.
+If we have an error response, for now, we need to return the HTML for this form,
+but with the validation error and styling messages included in it.
 
-JavaScript will add a success function and that data is the html that we want to put inside of our page. Now the only problem is we want to replace all of this code, and so we need to target a parent element that’s just around the form itself. Enter new data class equals just new WrapLog form wrapper. We can find that and we’ll note it with the new form, that we got from Ajax into exactly that element. I’ll copy that class and down at success we’ll say form.closest, find the element and say .html data. Cool. I’ll still back refresh and it works beautifully. If you try to submit multiple times it doesn’t work, but we’ll talk about that in a second.
+In our project, find the `LiftController` in `src/AppBundle/Controller`. The `indexAction`
+method is responsible for both initially rendering the form on page load, and for
+handling the form submit.
 
-What about success, one success is one actually dynamically add a new row to the table. That means on success we want to return an html fragment, which is a single row. In other words, we want to include this row right here. Now we can't really include just this row from the controller, because there’s no way to get at just this row. Let’s copy this, delete it and the in our app resources views directory we’re creating new underscore wrap row.html twig file and paste it there and then we can just include that from our main page. The advantage is now in lift controller on success, which is inside this form is validblock instead of re-directing to another page, we’ll use the old if this is X …
+If you're not too familiar with Symfony, don't worry. But, at the bottom, at an
+if statement: if this is an AJAX request, then - at this point - we know we've
+failed form validation. Instead of returning the entire HTML page - which you can
+see it's doing right now - let's render *just* the form HTML. Do that with
+`return $this->render('lift/_form.html.twig')` passing that a `form` variable set
+to `$form->createView()`. Remember, the `_form.html.twig` template is included
+from index, and holds *just* the form.
 
-If this is Ajax then return is there a render warp around that html twig, and pass it Wraplog the one variable it needs, set up your new WrapLog. Just by doing that quick thought successfully now, our Ajax standpoint has just that tr. The last tricky part of this is that we need to figure out in our success function, whether or not the response we’re getting back is a validation error or if it’s a new successful row, because we’ll handle that data differently. Although the way to figure this out is to do something smarter than what I’ve been doing, and it’s to return an error status code when we have an error on a page. Down here when we have validation error, this is currently coming back as a 200 status code and that means it activates J codes success function.
+So just like that! When we submit, we *now* get that HTML fragment.
 
-That’s not really proper, we should return something like a 400 status code, so it changes to html equals this error render view. All that does is instead of returning a response object that returns the string html inside of this template, and then we can return a new response manually with the html and a 400 status code. AS soon as we do that, the success function won't be called anymore, the error function will be called. Instead of being passed the data as its first argument, it’s passed this jqXHR object. That’s good enough for us because the response is stored on jqXHR.response text. Now the success function we can actually add tr into our tbody, so before the Ajax call to avoid any problems with this variable, we’ll say tbody equals this.wrapper.find tbody, and then success will say tbody.append data. Thinking about that should do it.
+## Adding AJAX Success
 
-If submit with errors we get the errors. If we go back and submit with something correct it gets added to our page. Now the only problem is it didn’t actually update our total dynamically, so I’ll need to refresh to see that, but that’s really effects for us. Inside success we just need to call our update total weight lifted function. First add a val self equals this, to avoid this problem since we’re in a success call back, then say self.updatetotalweightlifted. Now when we refresh it updates perfectly. The only problem with this approach is it’s a little bit old school, because we really want to start treating out backend like a true API.
+Back in `RepLogApp`, add a `success` key to the AJAX call with a `data` argument:
+that will be the HTML we want to put on the page.
 
-That’s what we’re going to do, but even before we get there we have bigger problem, which is that if I submit the form once it works, but if I submit it again receive the form successfully I can do it over and over again, but then a validation error … by the way this, it’s only showing up because I need to actually to fully refresh the page correctly. Now it should be good, but if we have a validation error and so that a second time it actually does a full page refresh, so something is going wrong with our selector. You know what else, if we do add a new row and hit delete that doesn’t work, year-longs do, but maybe if it’s newly dynamically added to the page it’s Java Script isn’t working yet. Lt’s find out why.
+We need to replace *all* of this form code. I'll surround the form with a new element
+and give it a `js-new-rep-log-form-wrapper` class.
+
+Back in `success`, use `$form.closest()` to find that, then replace its HTML with
+`data`.
+
+***TIP
+We could have also used the `replaceWith` jQuery function instead of targeting
+a parent element.
+***
+
+Sweet! Let's enjoy our work! Refresh and submit! Nice! But if I put 5 into the box
+and hit enter to submit a second time... it doesn't work!? What the heck? We'll
+tackle that in a minute.
+
+## Handling Form Success
+
+What about when we *don't* fail validation? In that case, we'll want to dynamically
+add a new row to the table. In other words, the AJAX call should once again return
+an HTML fragment: this time for a single `<tr>` row: this row right here.
+
+To do that, we need to isolate it into its own template. Copy it, delete it, and
+create a new template: `_repRow.html.twig`. Paste the contents here. Back in the
+main template, include this: `lift/_repRow.html.twig`.
+
+Now that we've done this, we can rendering it directly in `LiftController`. We know
+that the form was submitted successfully if we get inside the `$form->isValid()`
+block. Instead of redirecting to another page, if this is AJAX, then return
+`$this->render('lift/_rowRow.html.twig')` and pass it the one variable it needs:
+`repLog` set to `repLog`.
+
+And just by doing that, when we submit successfully, our AJAX endpoint returns the
+new `<tr>`. 
+
+## Distinguishing Between Success and Error
+
+But, our JavaScript code is already confused! It thought the new `<tr>` code was
+the error response, and replaced the form with it. Lame! Our JavaScript code needs
+to be able to distinguish between a successful request and one that failed with
+validation errors.
+
+There's a *perfectly* standard way of doing this... and I was being lazy until now!
+On error, we should *not* return a 200 status code, and that's what the `render`
+function gives us by default. When you return a 200 status code, it activates jQuery's
+`success` handler.
+
+Instead, we should return a 400 status code, or really, anything that starts with
+a 4. To do that, add `$html =` and then change `render` to `renderView`. This new
+method simply gives us the string HTML for the page. Next, return a `new Response`
+manually and pass it the content - `$html` - and status code - `400`.
+
+As soon as we do that, the `success` function will *not* be called on errors. Instead,
+the `error` function will be called. And instead of being passed the data as its
+first argument, it's passed a `jqXHR` object. That's fine for us, because the response
+is stored on `jqXHR.responseText`.
+
+*Now* we can use the `success` function to add the new `tr` to the table. Before
+the AJAX call - to avoid any problems with the `this` variable - add
+`$tbody = this.$wrapper.find'tbody')`. And in `success`, add `$tbody.append(data)`.
+That should do it!
+
+Try it! Refresh the page! If we submit with errors, we get the errors! If we submit
+with something correct, a new row is added to the table. The only problem is that
+it doesn't update the *total* dynamically - that still requires a refresh.
+
+But that's easy to fix! Above the AJAX call, add `var self = this`. And then inside
+`success`, call `self.updateTotalWeightLifted()`. And now, it's all updating and
+working perfectly.
+
+Except... if you try to submit the form twice in a row... it refreshes fully. It's
+like our JavaScript stops working. And you know what else? If you try to delete
+on a dynamically-added row, *it* doesn't work either! Let's find out why!

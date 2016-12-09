@@ -1,19 +1,102 @@
-# Immediately Invoked Function Expression
+# Immediately Invoked Function Expression!
 
-We're starting to get a little more sophisticated. It's time to really move our rep log app into its own external JavaScript file. For now, we're going to keep this real simple. I'm going to go to web, which is my public document group, assets, and I'll create a new JS directory, and inside I'll create a replogapp.js file. We'll copy all of our rep log app, paste it here and then include ... grab that with a script tag.
+Our code is growing up! And to keep going, it's really time to move our `RepLogApp`
+into its own external JavaScript file. For now, let's keep this real simple: inside
+the `web/` directory - which is the public document root for the project - and in
+`assets/`, I'll create a new `js/` directory. Then, create a new file:
+`RepLogApp.js`. Copy *all* of our `RepLogApp` object and paste it here.
 
-Ignore the asset function. That doesn't do anything special. If we go back and refresh, let's add a couple of items to our list. We delete one, it works. No changes, right? One of the advantages of having objects is the possibility of having private functions. There really isn't private functions in JavaScript. Everything is a public function, meaning anybody could call any of these functions, even if we don't want them to. It's not the end of the world, but in a perfect world, we would be able to, if we wanted, to make some of these functions private. It actually is possible, but you need to do it in a different way than you might normally think of in PHP.
+Add a good old-fashioned `script` tag to bring this in. If you don't normally use
+Symfony, ignore the `asset()` function: it doesn't do anything special.
 
-First, let's create a function down at the bottom of this class called underscore calculate total weight. Its job will be to handle this logic up here and update total weight lifted. It will figure out what the current total weight should be and return that. Kind of a classic, nice, private function. Of course, this isn't private. All functions are public. You'll commonly see when a function is meant to be private, it will be prefixed with underscore. It's a nice convention, but it doesn't enforce anything. Anybody could still call this from outside of this object.
+To make sure we didn't mess anything up, refresh! Let's add a few items to our list.
+Then, delete one. It works!
 
-[inaudible 00:03:17] We can call this with this dot underscore calculate total weight. Simple. How could we make this actually private? You can't make functions in an object private, but you can make objects private. You can make variables private. What I mean is, if I have access to rep log app object, I can call any of the functions inside of it. If I didn't have access to a variable, then of course I can't call any methods on it. I know that sounds a little weird, but let me show you what I'm talking about.
+# Private Functions in JavaScript
 
-Down at the bottom of this function, we're going to create another object called bar helper equals open curly close curly. Normally, we're going to want to keep one object inside of one file the same way we do as PHP, but this variable eventually won't be public. It's just a helper variable for inside of this file, so it's okay that it's inside of here. At the bottom, I'll put PHP doc that says a private object, not meant to be called from outside. Just like before, I'll put in initialize, function with a wrapper argument, say this dot wrapper equals wrapper. Then I'll move the calculate total weight function into here. Now, I'll take off the underscore. Technically, if you have access to the helper function, then you're allowed to call calculate total weight.
+One of the advantages of having objects in PHP is the possibility of having *private*
+functions and properties. But, that doesn't exist in JavaScript: everything is publicly
+accessible! That means that anyone could call any of these functions, even if we
+don't intend for them to be used outside of the object.
 
-Up in the initialize function above, we will call helper dot initialize, pass it wrapper, and now it's ready to be used. Down here, we can call helper dot calculate total weight. If you go back and refresh, everything should still work. It does. Even more than that, this is still not a private object or a private function. What I mean is we can still console that log helper, and created a helper variable in that function up there. We have access to a helper variable down here. That is kind of a problem. Basically, we don't have any privacy inside of this file. Whatever variables we create inside of this file, anyone has access to that includes this file. What I would rather have is an ability for me to choose that inside this file I want rep log app to be accessible from the outside, but I don't want our helper variable to be accessible from the outside. I want that to be private.
+That's not the end of the world, but it's a bummer! Fortunately, by being clever,
+we *can* create private functions and variables. You just need to think different
+than you would in PHP.
 
-The way you do that is with dun dun dun, an immediately invoked function expression, also known as a self executing function. Basically wrap everything inside this file inside of a function that calls itself. I know it's weird, but watch this. Open parenthesis, function, open parenthesis, close parenthesis, open curly brace, indent everything. At the bottom I'll put the closing tags. Then open parenthesis, close parenthesis. What?
+## Creating a Faux-Private MEthod
 
-Check this out. Two things. First, notice all we're doing is creating a function. We have a function and the function ends right there, but by having the open parenthesis, close parenthesis, we are immediately executing that function. We're creating a function and then we're calling it a function. Why on earth would we do this? Scope, variable scope in JavaScript is function based. If you create a variable then that's accessible wherever you are plus inside of any functions that you call. When you create a variable, that's only accessible from inside of the function where you created it. If you have functions inside of that function, they have access to it, but ultimately, that function is its home. Before, when we didn't have any function, our two variables were effectively global. We could access them from anywhere else. Now that we're inside of a function, the rep log app variable and the helper variables, they are only accessible from inside of this self executing function. It means that when we refresh, we get helper is not defined. We have made the helper variable private.
+First, create a function at the bottom of this object called `_calculateTotalWeight`.
+Its job will be to handle the total weight calculation logic that's currently inside
+`updateTotalWeightLifted`, and return it. We're doing this *purely* for organization:
+my intension is that we *only* use this method from inside of this object. In other
+words, I want it to be private!
 
-Unfortunately we have also made our rep log app private. This code isn't going to work down here. We still need to somehow make rep log app available publicly, but not helper. How? By taking advantage of the window object.
+But since *everything* is public in JavaScript, a common standard is to prefix methods
+that should be treated as private with an underscore. It's a nice convention, but
+it doesn't enforce anything. Anybody could still call this from outside of the object.
+
+Back in `updateTotalWeightLifted`, call this method: `this._calculateTotalWeight()`.
+
+## Creating a Private Object
+
+So how could we make this *truly* private? Well, you *can't* make methods or properties
+in an object private. BUT, you can make *variables* private, by taking advantage
+of variable *scope*. What I mean is, if I have access to the `RepLogApp` object,
+then I can call any methods on it. But if I *didn't* have access to this, or some
+other object, then of course I *wouldn't* be able to call any methods on it. I know
+that sounds weird, so let's do it!
+
+At the bottom of this file, create another object called: `var Helper = {}`. Commonly,
+we'll organize our code so that each file has just one object, like in PHP. But
+ultimately, this variable *won't* be public - it's just a helper variable meant
+to be used only inside of this file.
+
+I'll even add some documentation: this is private, not meant to be called from
+outside! Just like before, give this an initialize, function with a `$wrapper` argument.
+And then say: `this.$wrapper = $wrapperl`. Move the `calculateTotalWeight()` function
+into *this* object, but take off the underscore. Technically, if you have access
+to the helper function, then you're allowed to call calculate total weight. Again,
+that whole `_` thing is just a convention.
+
+Back in our original object, let's setup our new object: `Helper.initialize()` and
+pass it `$wrapper`. And then down below, call this: `Helper.calculateTotalWeight()`.
+
+Double-check that everything still works: refresh! It does!
+
+But, this `Helper` object is *still* public. What I mean is, we *still* have access
+to it *outside* of this file. If we try to `console.log(Helper)` from our template,
+it works just fine. What I *really* want is the ability for me to choose *which*
+variables I want to make available to the outside world - like `RepLogApp` - and
+which I *don't*, like `Helper`.
+
+## The Self-Executing Function
+
+The way you do that is with - dun dun dun - an immediately invoked function
+expression. Also known by his friends as a self-executing function. Basically, that
+means we'll wrap all of our code inside a function... that calls itself. It's weird,
+but check it out: `(function() {`, then indent everything. At the bottom, add the
+`})` and then `()`.
+
+What?
+
+There are two things to check out. First, all we're doing is creating a function:
+it starts on top, and ends at the bottom with the `}`. But by adding the `()`, we
+are immediately executing that function. We're creating a function and then calling
+it!
+
+Why on earth would we do this? Because! Variable scope in JavaScript is function
+based. When create a variable with `var`, it's only accessible from inside of the
+function where you created it. If you have functions inside of that function, they
+have access to it too, but ultimately, that function is its home.
+
+Before, when we weren't inside of *any* function, our two variables effectively
+became global: we could access them from *anywhere*. But now that we're inside of
+a function, the `RepLogApp` and `Helper` variables are *only* accessible from inside
+of this self-executing function.
+
+This means that when we refresh, we get `Helper` is not defined. We just made the
+`Helper` variable private!
+
+Unfortunately... we also made our `RepLogApp` private, which means the code in our
+template will *not* work. We still need to somehow make `RepLogApp` available
+publicly, but not `Helper`. How? By taking advantage of the magical `window` object.

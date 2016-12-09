@@ -1,23 +1,77 @@
-# Ajax Form Submit
+# AJAX Form Submit: The Lazy Way
 
-Let's keep going and adding more JavaScript functionality to our form. Down here at the bottom when we add new rep logs, this is a very traditional server-side form submit, nothing fancy. I want to update this to happen all client-side with no refreshes. There are generally two ways to do this. There's the old school way, which is where we submit this form via AJAX, and the server returns with HTML. For example, if you forget to actually select and item to lift, the AJAX would return the form HTML with the error in it or maybe on success, it would return a new row that we can insert into the table. That's generally an easier approach because you don't need to be as good with JavaScript, but it's just kind of outdated.
+I'm feeling pretty awesome about all our new skills. So let's turn to a new goal
+that'll uncover some new cool stuff. Below the RepLog table, we have a very traditional
+form. When we fill it out, it submits to the server: no AJAX, no fanciness.
 
-The second approach, the more modern approach, is to actually treat your backend application like an API, which means sending JSON back and forth. The trick with that is that it means you have to do more work on the client side. If the server sends you back JSON, you might need to actually build the new row and put it in the table in JavaScript.
+And no fun! Let's update this form to submit via AJAX. Of course, that comes with
+a few other challenges, like dynamically adding a new row to the table afterwards.
 
-The more modern way is definitely the better way to go, but we're actually going to work through the old school way first, then refactor to the modern way on our way to getting things more and more complicated. Either way, the first thing we need to do is we need to add a listener on submit of our form. Inside of our main template ... the form itself has actually included via another template called _form.html@twig, which is over here in app resources view is lit _form.html@twig.
+## AJAXify the Form
 
-This is a simponi forum, but it just renders a form tag. Let's add another class of form tag called js-new-rep-log-form. Then we can copy that, and we can go attach a listener inside of a rep log app. Now, the only problem is that the [donnerson] wrapper here is actually this table element, and the form actually lives outside of the table element. When you create little JavaScript applications like a rep log app, you want the wrapper to be an element that goes around everything inside of your application.
+In general, there are two ways to AJAXify this form submit. First, there's the simple,
+traditional, easy, and lazy way! That is, we submit the form via AJAX and the server
+returns HTML. For example, if we forget to select and item to lift, the AJAX would
+return the form HTML with the error in it so we can render it on the page. Or, if
+it's successful, it would probably return the new `<tr>` HTML so we can put it into
+the table. This is easier... because you don't need to do *all* that much in JavaScript.
+But, this approach is quickly getting really outdated.
 
-What I'm actually going to do is move our js rep log table class from the table itself, and I'm going to put it up here on this dib that surrounds our entire application. Down at the bottom, I don't need to change anything down here. I'm actually going to rename this variable to wrapper because it's not really a table anymore.
+The second approach, the more modern approach, is to actually treat your backend
+application like an API. This means that we'll only send JSON back and forth. But
+this means we'll need to do more work in JavaScript! Like, we might need to actually
+build the new `<tr>` row by hand with the JSON data!
 
-Okay. Now, we can very easily add our listener with this.wrapper.find. We're looking for .js-new-rep-log-form.on. We'll follow the exact same pattern as before. This time, we're going to be on submit. We'll say this.handlenewformsubmit ... don't forget your .bindthis.
+Obviously, *that* is where we need to get to! But we'll start with the old-school
+way first, and then refactor to the modern way as we learn more and more cool stuff.
 
-Down below ... we'll add that new function, give the event argument, to [inaudible 00:04:03] prevent the faults so that the form doesn't actually try to submit. Now, cancel that log just for now. Submit it. Perfect.
+## Making $wrapper Wrap Everything
 
-To go back and refresh, clean it out, the form doesn't submit, you have to cancel that log. Select is good. Now, actually submitting this is going to be really, really easy. The form is already set up on the server-side, as we know because it works under 'hit submit'. We can literally just send that same exact request up, but the AJAX.
+In both situations, step one is the same: we need attach a listener on submit of
+the form. Head over to our template. The form itself lives in another template that's
+included here: `_form.html.twig` inside `app/Resources/views/lift`.
 
-First, let's find the form itself. Put the form as an e.currenttarget. Then I'm going to use [inaudible 00:04:53] AJAX. We can set the URL to form.attraction, but the action attribute is of the form. Method, we'll set to post. Then, for the data that we want to send up, we'll use the j query form .serialize. A really lazy way to get all the fields in the form and put them in the exact format that the server is used to seeing when you submit things. That should be enough to get this to work.
+This is a Symfony form, but all this fanciness ultimately renders a good, old-fashioned
+`form` tag. Give the form another class: `js-new-rep-log-form`. Copy that and head
+into `RepLogApp` so we can attach a new listener. But wait... there *is* one problem:
+the `$wrapper` is actually the `<table>` element... and the form does *not* live
+inside of the `<table>`.
 
-Hit 'submit'. You can see the AJAX [inaudible 00:05:29] code. Of course, it doesn't refresh, and we don't see the new rows added to the page, but if we refresh the page ... you can see all of our entries being added to it.
+When you create little JavaScript applications like `RepLogApp`, you want the wrapper
+to be an element that goes around *everything* that you want to manipulate.
 
-This was easy, but the real work is going to be to actually show the validation errors down here and actually dynamically add the new row inside of this. Let's do that next, at first by returning HTML.
+Ok, no problem: let's movethe `js-rep-log-table` class from the table itself, and
+instead add it to the `div` that surrounds *everything*. Down below, I don't need
+to change anything here, but let's rename `$table` to `$wrapper` for clarity.
+
+## The Form Submit Listener
+
+*Now* adding our listener is simple: `this.$wrapper.find()` and look for
+`.js-new-rep-log-form`. Then, `.on('submit')`, have this call a new method:
+`this.handleNewFormSubmit`. And don't forget the all-important `.bind(this)`.
+
+Down below, add that function - `handleNewFormSubmit` - and give it the event argument.
+This time, calling `e.preventDefault()` will prevent the form from *actually* submitting,
+which is good. For now, just `console.log('submitting')`.
+
+Ok, let's try it! Head back, refresh, and try the form. Yes! We get the log, but
+the form doesn't submit.
+
+## Adding AJAX
+
+Turning this form into an AJAX call will be really easy... because we already know
+that this form works if we submit it in the traditional way. So let's just literally
+send that *exact* same request, but via AJAX.
+
+First, get the form with `$form = $(e.currentTarget)`. Next, add `$.ajax()`, set
+the `url` to `$form.attr('action')` and the `method` to `POST`. For the `data`, use
+`$form.serialize()`. That's a really lazy way to get all the values for all the fields
+in the form and put them in the exact format that the server is accustomed to seeing
+for a form submit.
+
+That's already enough to work! Submit that form! Yea, you can see the AJAX calls
+in the console and web debug toolbar. Of course, we don't see any new rows until
+we manually refresh the page...
+
+So that's where the real work starts: showing the validation errors on the form
+on error and dynamically inserting new rows on success. Let's do it!

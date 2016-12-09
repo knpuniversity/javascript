@@ -1,17 +1,89 @@
-# JS Validation Error Handling
+# Handling JSON Validation Errors
 
-The first thing we need to do is actually handle the error, the validation error that comes from our API endpoint and actually print out the errors on the form. We just saw a second ago when I filled it out with no rep number, then I got back an error structure that looked like this. There's an errors key, then it has the field code, so our API is built well. Here we get that error data by using json.parse to parse the jqxhr.responsetext. That would be the raw json that's sent back from the server.
+Our first goal is to read the JSON validation errors and add them visually to the
+form. A moment ago, when I filled out the form with no rep number, the endpoint sent
+back an error structure that looked like this: with an `errors` key and a key-value
+array of errors below that.
 
-To actually map that error data onto our forms, let's create a new function down here called mapErrorsToForm. We'll pass it the error data. For now, let's just print that. To call this up here, of course we can't use the This variable because we're in a callback, so above the $.ajax, we'll do our classic var self = This and then Self._mapErrorsToForm(errorData.errors). Since there's an errors key on our response, we really want to pass it just this array here.
+## Parsing the Error JSON
 
-Cool, if we refresh that, leave this empty and this is printing out our errors, awesome. How do we turn that json into actually some html changes inside of here? There are generally two different ways to do this. There's the simple way, where we parse that json by hand and then we look inside of the jquery and we actually add some elements and add some classes. It's simpler for simple things, but if you have to make a lot of changes, it can be a lot of ugly work. The second way is to use a client side template. We're actually going to do that in a second. Actually, there's a third way, which is to use a full front end framework like Reactjs, but we'll save that for the future.
+For errors, we need to parse the JSON manually with
+`var errorData = JSON.parse(jqXHR.responseText)` - that'sthe raw JSON that's sent
+back from the server.
 
-In mapErrorsToForm, we're just going to look at the error data and actually add a little error span below each field. Obviously, we're going to need the actual form. We'll need to find the form element which has our js.newRepLogForm. But, you remember way back in our constructor, we already kind of looked for this. We already referenced this class name. It's not a big deal, but I would like to not duplicate that class name in multiple places in case we change it. One option is you can add an _Selectors property to your object. Say something like newRepForm, its selector is this string right here. Then whenever you need to reference it, you can say This._Selectors.newRepForm. Then down below in our function, we'll say var form = This.wrapper.find(This._Selectors.newRepForm).
+To actually map the `errorData` onto our fields, let's create a new function below
+called `_mapErrorsToForm` with an `errorData` argument. For now, just log that.
 
-Next, the operation we're going to do in here is gong to be very straightforward, very manual. We're going to loop over every single field, see if that field's name is present in the error data, and if it is, add an error message html element below the field. We'll say form.find:input, which is a special jquery way to find all your form elements. .each and then we'll do our callback function. We know inside this callback function, this is the actual input element, form element that we're looping over right now. We can say var fieldname = $(this.attrname). I'm also going to find the wrapper that's around the entire element. You'll notice that every element is surrounded by a form-group. I want to find this because in bootstrap, we also need to add a class to this so that it will make everything look read. Var$wrapper=this.closest.form-group. Perfect.
+Above, to call this, we know we can't use `this` because we're in a callback. So
+add the classic `var self = this;`, and *then* call `self._mapErrorsToForm(errorData.errors)`.
+All the important stuff is under an `errors` key, so we'll pass it just the goodies.
 
-Then if no error data.[fieldname], then no error for this particular field and we'll just return. If there is an error, we need to actually add html to the page. The easy, simple way to do that is to build a new jquery element by saying $( and actually putting html right inside. Say span class =js-field-error, we've given a js class so we can find it in a second, you'll see why. And then help-block. Then just put the closing span tag. Don't forget your closing quotes. If var error = and then actually create your span.
+Ok, refresh that! Lave the form empty, and submit! Hey, beautiful error data!
 
-I left it empty because it's easier on the next line to say error.html errordata.fieldname instead of concatenating on that one field. This is cool, this is a proper jquery object, it just doesn't live on the page yet, which is totally fine. Put it on the page with wrapper.pend error and then we also need to say wrapper.addclass has-error. Beautiful. That should be enough to actually get this to work.
+## Mapping Data into HTML
 
-If we refresh, submit, there it is. Of course the only problem is, once I actually type the field in correct, it doesn't clear this out and it puts a second error message here. We need to actually reset the error message beforehand, which is pretty simple. We'll just reset things at the very top. The simplest way is do form.find all of your js.field error elements, which is why we used that js class .remove and form.find(form-group.removeclass haserror). Refresh that now, resubmit. Errors, fill in one, beautiful. We still submit this empty. We can still submit this successfully. Of course, it's not showing up here yet and the form isn't resetting, so it's time to get to work on that.
+So how can we turn that into actual HTML changes to the form? There are generally
+two different ways to do this. First, the simple way: parse the data by hand and manually
+use jQuery to add the necessary elements and classes. This is quick to do, but doesn't
+scale when things are more complex. The second way is to use a client-side template.
+We'll do the simple way first, but then use a client-side template for a more complex
+spot.
+
+And actually, there's a third way: which is to use a full front-end framework like
+ReactJS. We'll save that for the future.
+
+## Creating a Selectors Map
+
+In `_mapErrorsToForm`, let's look at the error data and use it to add an error `span`
+below that field. Obviously, we need to use jQuery to find our `.js-new-repo-log-form`
+form element.
+
+But wait! Way up in our constructor, we're already referencing this selector. It's
+no big deal, but I would like to *not* duplicate that class name in multiple places.
+Instead, add a `_selectors` property to our object. Give it a `newRepForm` key that's
+set to its selector.
+
+Now, reference that with `this._selectors.newRepForm`.
+
+Down below in our function, do the same: `var form =tThis.$wrapper.find(this._selectors.newRepForm)`.
+
+## Mapping the Data Manually
+
+Now what? Simple: loop over every field, see if that field's `name` is present in
+the `errorData`, and if it is, add an error message span element below the field.
+To find all the fields, use `$form.find(':input')` - that's jQuery magic to find
+all form elements. Then, `.each()` and pass it a callback function.
+
+Inside, we know that `this` is actually the form element. So we can say
+`var fieldName = $(this).attr('name')`.
+
+I'm also going to find the wrapper that's around the entire form field. What I mean
+is, each field is surrounded by a `.form-group` element. Since we're using Bootstrap,
+we also need to add a class to this. Find it with `var $wrapper = $(this).closest('.form-group')`.
+
+Perfect!
+
+Then, if there is *not* any `data[fieldName]`, then the field doesn't have an error.
+Just return.
+
+If there *is* an error, we need to add some HTML to the page. The easy, way to do
+that is by creating a new jQuery element. Set `var $error` to `$()` and then the
+HTML you want: a span with a `js-field-error` class and a `help-block` class.
+
+I left the span blank because it's cleaner to fill in the text on the next line:
+`$error.html(errorsData[fieldName])`.
+
+This jQuery object is now done! But it's not on the page yet. Add it with
+`$wrapper.append($error)`. Also call `$wrapper.addClass('has-error')`.
+
+Yes! Let's try it! Refresh and submit! There it is!
+
+The only problem is that, once I finally fill in the field, the error message stays!
+AND, I get a second error message! Man, we gotta get this thing cleaned up!
+
+No problem: at the top, use `$form.find()` to find all the `.js-field-error` elements.
+And, remove those. Next, find all the `form-group` elements and remove the `has-error`
+class. Refresh now, and re-submit! Errors! Fill in one... beautiful!
+
+And if we fill in *both* fields, the AJAX call is successful, but nothing updates.
+Time to tackle that.

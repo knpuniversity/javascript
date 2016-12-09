@@ -32,7 +32,10 @@ chapters:
     document-ready-ordering:
         is_finished: false
         video_key: ~
-    event-bubbling-propagation:
+    event-bubbling:
+        is_finished: false
+        video_key: ~
+    event-propagation:
         is_finished: false
         video_key: ~
     dom-element-object:
@@ -47,7 +50,13 @@ chapters:
     javascript-objects:
         is_finished: false
         video_key: ~
-    fixing-this-variable:
+    static-objects-this:
+        is_finished: false
+        video_key: ~
+    understanding-this-magic:
+        is_finished: false
+        video_key: ~
+    fixing-this-bind:
         is_finished: false
         video_key: ~
     immediately-invoked-function-expression:
@@ -56,7 +65,13 @@ chapters:
     window-global-vars:
         is_finished: false
         video_key: ~
-    instantiatable-prototype-objects:
+    instantiatable-objects-constructor:
+        is_finished: false
+        video_key: ~
+    object-prototype:
+        is_finished: false
+        video_key: ~
+    prototype-proto:
         is_finished: false
         video_key: ~
     extend-prototype:
@@ -74,10 +89,16 @@ chapters:
     post-proper-api-endpoint:
         is_finished: false
         video_key: ~
+    api-endpoint-post:
+        is_finished: false
+        video_key: ~
     js-validation-error-handling:
         is_finished: false
         video_key: ~
-    client-side-templating:
+    clear-form-prep-template:
+        is_finished: false
+        video_key: ~
+    javascript-templating:
         is_finished: false
         video_key: ~
     js-rendering-fosjsroutingbundle:
@@ -86,7 +107,16 @@ chapters:
     all-about-promises:
         is_finished: false
         video_key: ~
+    promises-catch:
+        is_finished: false
+        video_key: ~
+    promise-catch-error:
+        is_finished: false
+        video_key: ~
     create-your-own-promise:
+        is_finished: false
+        video_key: ~
+    promise-chaining:
         is_finished: false
         video_key: ~
     sweet-alert-more-promises:
