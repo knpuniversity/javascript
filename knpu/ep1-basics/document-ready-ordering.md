@@ -11,10 +11,10 @@ while that file is downloaded, executes it, and *then* continues.
 But not everyone agrees that putting JS in the footer is the best thing since Chuck
 Norris. After all, if your page is *heavily* dependent on JS, your user might see
 a blank page for a second before your JavaScript has the chance to execute and put
-cool stuff there, like a photo of Check Norris.
+cool stuff there, like a photo of Chuck Norris.
 
 So, there might be some performance differences between putting JavaScript in the
-header versus the footer. But, our code should work equally in either place, right?
+header versus the footer. But, our code should work equally well in either place, right?
 If I move the block `javascripts` up into my header, this should *probably* still
 work? We still have 3 script tags, in the same order, just in a different spot.
 
@@ -34,20 +34,20 @@ block. Move our code inside of it, and refresh again. Yes!
 Very simply, jQuery calls your `$(document).ready()` function once the DOM has fully
 loaded. But it's nothing fancy: it's approximately equal to putting your JavaScript
 code at the absolute bottom of the page. It's nice because it makes our code portable:
-it willll work no matter *where* it lives.
+it will work no matter *where* it lives.
 
-We could event take the `script` tag, delete it from the block, and put it *right*
+We could even take the `script` tag, delete it from the block, and put it *right*
 in the middle of the page.
 
 Now in the HTML, the external `script` tags are still on top, but our `JavaScript`
 lives right, smack in the middle of the page. And when we refresh, it still works
-super.
+super well.
 
 ## Thinking out JavaScript Ordering
 
 Of course, the *only* problem is if someone comes along and decides:
 
-> Hey, you know what? We should really put our JavaScript in the footer! Check
+> Hey, you know what? We should really put our JavaScript in the footer! Chuck
 > Norris told me it's better for performance.
 
 Now, we have a different problem. In the source, jQuery once again lives at the

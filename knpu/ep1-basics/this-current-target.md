@@ -4,7 +4,7 @@ Turning the icon red is jolly good and all, but since we'll soon make an AJAX ca
 it would be *way* jollier if we could turn that icon into a spinning loader icon.
 But, there's a problem.
 
-After the trash icon, type delete. Bow we have a trash icon with the word delete
+After the trash icon, type delete. Now we have a trash icon with the word delete
 next to it. Back in our JavaScript, once again, `console.log()` the actual element
 that was clicked: `e.target`.
 
@@ -40,8 +40,8 @@ on the delete link. It's *always* true.
 
 There's a good chance that you've been using the `this` variable for years inside
 of your listener functions to find the element that was clicked. And now we know the
-true and dramatic story behind it! `this` is equivalent to `e.target`, the DOM Element
-that we originally attached our listener to.
+true and dramatic story behind it! `this` is equivalent to `e.currentTarget`, the
+DOM Element that we originally attached our listener to.
 
 Ultimately that means that we can say, `$(this).addClass('text-danger')`. That will
 always add the `text-danger` link to the anchor tag.

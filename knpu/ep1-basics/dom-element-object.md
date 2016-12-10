@@ -10,7 +10,7 @@ But don't! Wait on that - we'll talk about the infamous `this` variable later.
 ## Using e.target
 
 Because there's another way to find out *which* element was clicked... a better way,
-and it involves our magical `e` event argument. Just say `$(e.target)`. `e.target`
+and it involves our magical `e` event argument. Just say `$(e.target)`. `target`
 is a property on the event object that points to the *actual* element that was clicked.
 Then, `.addClass('text-danger')`.
 
@@ -77,4 +77,4 @@ Try that out! Refresh. It works too!
 It's not as elegant as using jQuery... and jQuery also helps handle browser incompatibilities,
 but feel empowered! Go tell a co-worker that you just learned how the Internet works!
 
-Then remove that new code and go back to using jQuery.
+Then come back, remove that new code and go back to using jQuery.

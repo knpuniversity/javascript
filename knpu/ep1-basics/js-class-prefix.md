@@ -63,7 +63,7 @@ weight.
 ## Adding the Delete link and js- class
 
 To add the delete link, inside the last `<td>` add a new anchor tag. Set the `href`
-to `#`, since we plan to let JavaScript to the work. And then, give it a class:
+to `#`, since we plan to let JavaScript do the work. And then, give it a class:
 `js-delete-rep-log`. Inside, add our cute little delete icon.
 
 Adorable! Ok, first! Why did we add this `js-delete-rep-log` class? Well, there are
@@ -78,8 +78,8 @@ for styling and which are for JavaScript. Future you will... thank you.
 Copy that class and head to the bottom of the template. Add a block `javascripts`,
 `endblock` and call the `parent()` function. This is Symfony's way of adding JavaScript
 to a page. Inside, add a `<script>` tag and then, use jQuery to find all
-`.js-delete-rep-log`, and then `.on('click')`, call this function. For now, just
-`console.log('todo delete!')`.
+`.js-delete-rep-log` elements, and then `.on('click')`, call this function. For now,
+just `console.log('todo delete!')`.
 
 ## Resolving External JS in PHPStorm
 
@@ -96,10 +96,10 @@ Et voilà! The error is gone, and we'll start getting at least *some* auto-compl
 ## Using .on() versus .click()
 
 Oh, and I want you to notice one other thing: we're using `.on('click')` instead
-of the `.click()` function. Why? Well, they both do the * same thing. But, there
+of the `.click()` function. Why? Well, they both do the same thing. But, there
 are an *infinite* number of events you could listen to on any element: click, change,
 keyup, mouseover or even custom, invented events. By using `.on()`, we have one
 consistent way to add a listener to *any* event.
 
 It's a small start, but already when we refresh, open the console, and click delete,
-it's works! Now, let's follow the rabbit hole deeper.
+it works! Now, let's follow the rabbit hole deeper.

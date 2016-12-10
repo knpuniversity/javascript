@@ -19,7 +19,7 @@ and some functions. The most important is `e.preventDefault()`. Another is
 `e.stopPropagation()`. It turns out that when you return `false` from a listener
 function, it is equivalent to calling `e.preventDefault()` *and* `e.stopPropagation()`.
 To prove it, remove the `return false` and refresh. Yep, same behavior: no `#` sign,
-but still now "row clicked" when we click the delete icon.
+but still no "row clicked" when we click the delete icon.
 
 ## e.preventDefault() versus e.stopPropagation()
 

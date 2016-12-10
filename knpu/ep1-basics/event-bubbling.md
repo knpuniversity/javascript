@@ -26,7 +26,7 @@ the icon. Cool! So, your browser goes to that `span` element and says:
 > Top of the morning! I'd like to trigger a *click* event on you!
 
 Then, if there are any listener functions attached on `click`, those are called.
-Next, your browser goes up on level to the anchor and says:
+Next, your browser goes up one level to the anchor and says:
 
 > Ahoy Matey! I'd like to trigger a *click* event on you!
 
@@ -43,7 +43,7 @@ the link element and *then* bubles up and notifies the `tr`.
 Cool! Let's play with this! First, let's clean up our code a bit and make a minor
 performance improvement. Add `var $table = $('.js-rep-log-table')`. Then below, instead
 of searching the entire page for these delete links, use `$table.find()` to *only*
-look insode that table. Do the same below: `$table.find()` and look for the `tbody tr`
+look inside that table. Do the same below: `$table.find()` and look for the `tbody tr`
 elements in that.
 
 If you refresh now, it still works great. But some of you might be wondering about
