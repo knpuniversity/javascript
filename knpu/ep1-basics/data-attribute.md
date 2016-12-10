@@ -1,11 +1,12 @@
 # A Great Place to Hide Things! The data- Attributes
 
-Time to *finally* hook up the AJAX and actually delete one of these rows! As an early
-birthday gift, I already took care of the server side for us. If you want to check
-it out, it's inside of the `src/AppBundle/Controller` directory: `RepLogController`.
-I have a bunch of different RESTful API endpoints and one is called, `deleteRepLogAction`.
-As long as we make a `DELETE` request to `/reps/ID-of-the-rep`, it'll delete it and
-return a blank response. Happy birthday!
+Time to *finally* hook up the AJAX and delete one of these rows! Woohoo!
+
+As an early birthday gift, I already took care of the server-side work for us. If
+you want to check it out, it's inside of the `src/AppBundle/Controller` directory:
+`RepLogController`. I have a bunch of different RESTful API endpoints and one is
+called, `deleteRepLogAction`. As long as we make a `DELETE` request to `/reps/ID-of-the-rep`,
+it'll delete it and return a blank response. Happy birthday!
 
 Back in `index.html.twig`, inside of our listener function, how can we get figure
 out the DELETE URL for *this* row? Or, even more simply, what's the ID of *this*
