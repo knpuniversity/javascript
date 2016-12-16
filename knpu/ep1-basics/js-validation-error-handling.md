@@ -7,30 +7,30 @@ array of errors below that.
 
 ## Parsing the Error JSON
 
-For errors, we need to parse the JSON manually with
-`var errorData = JSON.parse(jqXHR.responseText)` - that'sthe raw JSON that's sent
+To get this data, we need to parse the JSON manually with
+`var errorData = JSON.parse(jqXHR.responseText)` - that's the raw JSON that's sent
 back from the server.
 
 To actually map the `errorData` onto our fields, let's create a new function below
-called `_mapErrorsToForm` with an `errorData` argument. For now, just log that.
+called `_mapErrorsToForm` with an `errorData` argument. To start, just log that.
 
 Above, to call this, we know we can't use `this` because we're in a callback. So
 add the classic `var self = this;`, and *then* call `self._mapErrorsToForm(errorData.errors)`.
-All the important stuff is under an `errors` key, so we'll pass it just the goodies.
+All the important stuff is under the `errors` key, so we'll pass *just* that.
 
-Ok, refresh that! Lave the form empty, and submit! Hey, beautiful error data!
+Ok, refresh that! Leave the form empty, and submit! Hey, beautiful error data!
 
 ## Mapping Data into HTML
 
-So how can we turn that into actual HTML changes to the form? There are generally
-two different ways to do this. First, the simple way: parse the data by hand and manually
+So how can we use this data to make actual HTML changes to the form? There are generally
+two different approaches. First, the simple way: parse the data by hand and manually
 use jQuery to add the necessary elements and classes. This is quick to do, but doesn't
-scale when things are more complex. The second way is to use a client-side template.
+scale when things get really complex. The second way is to use a client-side template.
 We'll do the simple way first, but then use a client-side template for a more complex
-spot.
+problem later.
 
 And actually, there's a third way: which is to use a full front-end framework like
-ReactJS. We'll save that for the future.
+ReactJS. We'll save that for a future tutorial.
 
 ## Creating a Selectors Map
 
@@ -40,17 +40,17 @@ form element.
 
 But wait! Way up in our constructor, we're already referencing this selector. It's
 no big deal, but I would like to *not* duplicate that class name in multiple places.
-Instead, add a `_selectors` property to our object. Give it a `newRepForm` key that's
+Instead, add an `_selectors` property to our object. Give it a `newRepForm` key that's
 set to its selector.
 
 Now, reference that with `this._selectors.newRepForm`.
 
-Down below in our function, do the same: `var form =tThis.$wrapper.find(this._selectors.newRepForm)`.
+Below in our function, do the same: `var form = this.$wrapper.find(this._selectors.newRepForm)`.
 
 ## Mapping the Data Manually
 
-Now what? Simple: loop over every field, see if that field's `name` is present in
-the `errorData`, and if it is, add an error message span element below the field.
+Now what? Simple: loop over every field see if that field's `name` is present in
+the `errorData`. And if it is, add an error message span element below the field.
 To find all the fields, use `$form.find(':input')` - that's jQuery magic to find
 all form elements. Then, `.each()` and pass it a callback function.
 
@@ -63,14 +63,14 @@ we also need to add a class to this. Find it with `var $wrapper = $(this).closes
 
 Perfect!
 
-Then, if there is *not* any `data[fieldName]`, then the field doesn't have an error.
+Then, if there is *not* any `data[fieldName]`, the field doesn't have an error.
 Just return.
 
-If there *is* an error, we need to add some HTML to the page. The easy, way to do
+If there *is* an error, we need to add some HTML to the page. The easy way to do
 that is by creating a new jQuery element. Set `var $error` to `$()` and then the
 HTML you want: a span with a `js-field-error` class and a `help-block` class.
 
-I left the span blank because it's cleaner to fill in the text on the next line:
+I left the span blank because it's cleaner to add the text on the next line:
 `$error.html(errorsData[fieldName])`.
 
 This jQuery object is now done! But it's not on the page yet. Add it with

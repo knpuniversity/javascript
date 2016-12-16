@@ -5,7 +5,7 @@ Now that we're using this fancy self-executing function, we don't have access to
 say `window.RepLogApp`.
 
 Back in the template, I'll delete the `console.log()` for Helper, and then go back
-and refresh. It works! No error in the console, and delete still works.
+and refresh. It works! No error in the console, and delete does its job!
 
 ## What is this window?
 
@@ -37,23 +37,23 @@ the global objects directly, we're referencing those arguments.
 Why the heck would you do this? There are two reasons, and neither are *huge*. First,
 you can alias global variables. At the bottom, we reference the `jQuery` global variable,
 which is even better than referencing `$` because sometimes people setup `jQuery`
-to in no conflict more, where it does *not* create a `$` variable. But then above,
+in no conflict mode, where it does *not* create a `$` variable. But then above,
 we alias this to `$`, meaning it's safe inside for us to use that shortcut. You probably
 don't have this problem, but you'll see stuff like this in third-party libraries.
 
 Second, when you pass in a global variable as an argument, it protects you from
 making a really silly mistake in your code, like accidentally setting `$ = null`.
-If you do that now, it'll set `$` to `null` only inside this file. But before, you
-would have overwritten that variable *globally*. It's yet another way that self-executing
+If you do that now, it'll set `$` to `null` only inside this function. But before,
+you would have overwritten that variable *globally*. It's yet another way that self-executing
 blocks help to sandbox us.
 
 ## Fun with window
 
 Ok, back to this mysterious `window` variable. Inside `index.html.twig`, `console.log()`
-the `window` variable. This is pretty cool, because it will show us *all* global
-variables that are available.
+`window`. This is pretty cool, because it will show us *all* global variables that
+are available.
 
-And Boom! This is a *huge* object, and include the `$` variable, `jQuery`, and eventually,
+And Boom! This is a *huge* object, and includes the `$` variable, `jQuery`, and eventually,
 `RepLogApp`.
 
 But notice what's *not* here. As expected, there is no `Helper`. 
@@ -77,7 +77,7 @@ refresh, this expression returns true. Oh JavaScript!
 
 Back in `RepLogApp`, forgetting `var` is actually a mistake, but JavaScript is friendly,
 and it allows us to make mistakes. In real life, friendly and forgiving people are
-awesome. In programming, it means more bugs!
+great friends! In programming, friendly and forgiving languages mean more bugs!
 
 To tell JavaScript to *stop* being such a pushover, at the top of the `RepLogApp.js`
 file, inside quotes, say `"use strict"`.

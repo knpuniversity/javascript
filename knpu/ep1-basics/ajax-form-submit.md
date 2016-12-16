@@ -1,29 +1,30 @@
 # AJAX Form Submit: The Lazy Way
 
 I'm feeling pretty awesome about all our new skills. So let's turn to a new goal
-that'll uncover some new cool stuff. Below the RepLog table, we have a very traditional
-form. When we fill it out, it submits to the server: no AJAX, no fanciness.
+and some new challenges. Below the RepLog table, we have a very traditional form.
+When we fill it out, it submits to the server: no AJAX, no fanciness.
 
-And no fun! Let's update this form to submit via AJAX. Of course, that comes with
-a few other challenges, like dynamically adding a new row to the table afterwards.
+And no fun! Let's update this to submit via AJAX. Of course, that comes with a few
+other challenges, like needing to dynamically add a new row to the table afterwards.
 
 ## AJAXify the Form
 
 In general, there are two ways to AJAXify this form submit. First, there's the simple,
 traditional, easy, and lazy way! That is, we submit the form via AJAX and the server
-returns HTML. For example, if we forget to select and item to lift, the AJAX would
+returns HTML. For example, if we forget to select an item to lift, the AJAX would
 return the form HTML with the error in it so we can render it on the page. Or, if
 it's successful, it would probably return the new `<tr>` HTML so we can put it into
 the table. This is easier... because you don't need to do *all* that much in JavaScript.
-But, this approach is quickly getting really outdated.
+But, this approach is also a bit outdated.
 
 The second approach, the more modern approach, is to actually treat your backend
-application like an API. This means that we'll only send JSON back and forth. But
-this means we'll need to do more work in JavaScript! Like, we might need to actually
-build the new `<tr>` row by hand with the JSON data!
+like an API. This means that we'll only send JSON back and forth. But this also
+means that we'll need to do more work in JavaScript! Like, we need to actually
+build the new `<tr>` HTML row by hand from the JSON data!
 
 Obviously, *that* is where we need to get to! But we'll start with the old-school
-way first, and then refactor to the modern way as we learn more and more cool stuff.
+way first, and then refactor to the modern approach as we learn more and more cool
+stuff.
 
 ## Making $wrapper Wrap Everything
 
@@ -35,14 +36,14 @@ This is a Symfony form, but all this fanciness ultimately renders a good, old-fa
 `form` tag. Give the form another class: `js-new-rep-log-form`. Copy that and head
 into `RepLogApp` so we can attach a new listener. But wait... there *is* one problem:
 the `$wrapper` is actually the `<table>` element... and the form does *not* live
-inside of the `<table>`.
+inside of the `<table>`!
 
 When you create little JavaScript applications like `RepLogApp`, you want the wrapper
-to be an element that goes around *everything* that you want to manipulate.
+to be an element that goes around *everything* you need to manipulate.
 
-Ok, no problem: let's movethe `js-rep-log-table` class from the table itself, and
-instead add it to the `div` that surrounds *everything*. Down below, I don't need
-to change anything here, but let's rename `$table` to `$wrapper` for clarity.
+Ok, no problem: let's move the `js-rep-log-table` class from the table itself to
+the `div` that surrounds *everything*. Down below, I don't need to change anything
+here, but let's rename `$table` to `$wrapper` for clarity.
 
 ## The Form Submit Listener
 
@@ -54,8 +55,8 @@ Down below, add that function - `handleNewFormSubmit` - and give it the event ar
 This time, calling `e.preventDefault()` will prevent the form from *actually* submitting,
 which is good. For now, just `console.log('submitting')`.
 
-Ok, let's try it! Head back, refresh, and try the form. Yes! We get the log, but
-the form doesn't submit.
+Ok, test time! Head back, refresh, and try the form. Yes! We get the log, but the
+form doesn't submit.
 
 ## Adding AJAX
 
@@ -74,4 +75,4 @@ in the console and web debug toolbar. Of course, we don't see any new rows until
 we manually refresh the page...
 
 So that's where the real work starts: showing the validation errors on the form
-on error and dynamically inserting new rows on success. Let's do it!
+on error and dynamically inserting a new row on success. Let's do it!

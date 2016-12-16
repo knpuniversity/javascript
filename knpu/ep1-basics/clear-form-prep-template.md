@@ -8,9 +8,9 @@ called `_removeFormErrors`. Call that from our map function.
 
 The *other* thing we should do is empty, or reset the fields after submit. Let's
 create another function that does that *and* removes the form's errors. Call it
-`_clearForm`. First call `this._removeFormErrors`. To "reset" the form, get the DOM
-Element itself - there will be only one - by using `[0]` and call `reset()` on it.
-I love that this `[0]` thing isn't a mystery anymore!
+`_clearForm`. First call `this._removeFormErrors()`. To "reset" the form, get the
+DOM Element itself - there will be only one - by using `[0]` and calling `reset()`
+on it. I love that this `[0]` thing isn't a mystery anymore!
 
 Call this from up in success: `self._clearForm()`.
 
@@ -20,9 +20,9 @@ Boom!
 ## Client-Side Templating??
 
 Ok, back to the main task: on success, we need to add a new row to the table.
-We *could* do this the easy way, by manually parsing the JSON and building the
+We *could* do this the easy way: by manually parsing the JSON and building the
 table. But there's one big problem: I do *not* want to duplicate the row markup
-in my template AND in JavaScript. Instead, we're going to use client-side templates.
+in Twig AND in JavaScript. Instead, we're going to use client-side templates.
 
 Let's start off simple: at the bottom of our object, add a new function: `_addRow`
 that has a `repLog` argument. For now just log that: this will be the RepLog data
@@ -30,22 +30,22 @@ that the AJAX call sends back.
 
 Call this from up in the `success` callback: `self._addRow(data)`.
 
-Let's make sure things and working so far: refresh and add a new element. Yes!
+Let's make sure things are working so far: refresh and add a new element. Yes!
 The data has `id`, `itemLabel` and even a `links` key with a URL for this RepLog.
-We're ready to template!
+We are ready to template!
 
 In a nutshell, a client-side, or JavaScript templating engine is like having Twig,
 but in JavaScript. There are a lot of different JavaScript templating libraries,
 but they all work the same: write a template - a mixture of HTML and dynamic code -
 and then render it, passing in variables that are used inside. Again, it's *just*
-like using Twig.
+like using Twig... but in JavaScript!
 
-One simple templating engine comes from a library called Underscore. This is basically
-a bunch of nice nice, utility functions for arrays, strings and other things. It
-also happens to have a templating engine.
+One simple templating engine comes from a library called Underscore.js. This is basically
+a bunch of nice, utility functions for arrays, strings and other things. It also
+happens to have a templating engine.
 
 Google for Underscore CDN so we can be lazy and include it externally. Copy the
 minified version and then go back and open `app/Resources/view/base.html.twig`.
 Add the new script tag at the bottom.
 
-Ok, let's start templating!
+Now, let's start templating!

@@ -8,8 +8,8 @@ you want to check it out, it's inside of the `src/AppBundle/Controller` director
 called, `deleteRepLogAction`. As long as we make a `DELETE` request to `/reps/ID-of-the-rep`,
 it'll delete it and return a blank response. Happy birthday!
 
-Back in `index.html.twig`, inside of our listener function, how can we get figure
-out the DELETE URL for *this* row? Or, even more bassic, what's the ID of *this*
+Back in `index.html.twig`, inside of our listener function, how can we figure
+out the DELETE URL for *this* row? Or, even more basic, what's the ID of *this*
 specific RepLog? I have no idea! Yay!
 
 We know that *this* link is being clicked, but it doesn't give us any information

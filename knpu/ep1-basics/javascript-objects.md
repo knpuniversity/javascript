@@ -16,7 +16,7 @@ future tutorial.
 ## Adding a Method
 
 Anyways, let's give our object a new method: an `initialize` key set to a `function()`.
-We'll call when the page loads, and its job will be to attach all the event handlers
+We'll call this when the page loads, and its job will be to attach all the event handlers
 for all the events that we need on our table. Give it a `$wrapper` argument.
 
 ## Setting a Property

@@ -19,23 +19,23 @@ functions and properties. But, that doesn't exist in JavaScript: everything is p
 accessible! That means that anyone could call any of these functions, even if we
 don't intend for them to be used outside of the object.
 
-That's not the end of the world, but it's a bummer! Fortunately, by being clever,
-we *can* create private functions and variables. You just need to think different
+That's not the end of the world, but it *is* a bummer! Fortunately, by being clever,
+we *can* create private functions and variables. You just need to think differently
 than you would in PHP.
 
 ## Creating a Faux-Private MEthod
 
 First, create a function at the bottom of this object called `_calculateTotalWeight`.
 Its job will be to handle the total weight calculation logic that's currently inside
-`updateTotalWeightLifted`, and return it. We're doing this *purely* for organization:
-my intension is that we *only* use this method from inside of this object. In other
-words, I want it to be private!
+`updateTotalWeightLifted`. We're making this change *purely* for organization: my
+intention is that we will *only* use this method from inside of this object. In other
+words, ideally, `calculateTotalWeight` would be private!
 
 But since *everything* is public in JavaScript, a common standard is to prefix methods
 that should be treated as private with an underscore. It's a nice convention, but
 it doesn't enforce anything. Anybody could still call this from outside of the object.
 
-Back in `updateTotalWeightLifted`, call this method: `this._calculateTotalWeight()`.
+Back in `updateTotalWeightLifted`, call it: `this._calculateTotalWeight()`.
 
 ## Creating a Private Object
 
@@ -48,18 +48,18 @@ that sounds weird, so let's do it!
 
 At the bottom of this file, create another object called: `var Helper = {}`. Commonly,
 we'll organize our code so that each file has just one object, like in PHP. But
-ultimately, this variable *won't* be public - it's just a helper variable meant
-to be used only inside of this file.
+eventually, this variable *won't* be public - it's just a helper meant to be used
+only inside of this file.
 
 I'll even add some documentation: this is private, not meant to be called from
 outside! Just like before, give this an initialize, function with a `$wrapper` argument.
-And then say: `this.$wrapper = $wrapperl`. Move the `calculateTotalWeight()` function
+And then say: `this.$wrapper = $wrapper`. Move the `calculateTotalWeight()` function
 into *this* object, but take off the underscore. Technically, if you have access
-to the helper function, then you're allowed to call calculate total weight. Again,
+to the `Helper` variable, then you're allowed to call `calculateTotalWeight`. Again,
 that whole `_` thing is just a convention.
 
-Back in our original object, let's setup our new object: `Helper.initialize()` and
-pass it `$wrapper`. And then down below, call this: `Helper.calculateTotalWeight()`.
+Back in our original object, let's set this up: call `Helper.initialize()` and
+pass it `$wrapper`. Down below, call this: `Helper.calculateTotalWeight()`.
 
 Double-check that everything still works: refresh! It does!
 
@@ -72,7 +72,7 @@ which I *don't*, like `Helper`.
 ## The Self-Executing Function
 
 The way you do that is with - dun dun dun - an immediately invoked function
-expression. Also known by his friends as a self-executing function. Basically, that
+expression. Also known by its friends as a self-executing function. Basically, that
 means we'll wrap all of our code inside a function... that calls itself. It's weird,
 but check it out: `(function() {`, then indent everything. At the bottom, add the
 `})` and then `()`.
@@ -97,6 +97,6 @@ of this self-executing function.
 This means that when we refresh, we get `Helper` is not defined. We just made the
 `Helper` variable private!
 
-Unfortunately... we also made our `RepLogApp` private, which means the code in our
-template will *not* work. We still need to somehow make `RepLogApp` available
+Unfortunately... we also made our `RepLogApp` variable private, which means the code
+in our template will *not* work. We still need to somehow make `RepLogApp` available
 publicly, but not `Helper`. How? By taking advantage of the magical `window` object.

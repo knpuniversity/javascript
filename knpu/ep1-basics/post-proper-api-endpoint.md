@@ -1,12 +1,11 @@
 # Proper JSON API Endpoint Setup
 
-It's time to graduate from this old-school AJAX approach where the server sends
-us back JSON! Its still super easy to do, but it's going the way of the dinosaurs.
-Instead, let's treat our server like a true API that sends and receives JSON.
+It's time to graduate from this old-school AJAX approach where the server sends us
+HTML, to one where the server sends us ice cream! I mean, JSON!
 
 First, in `LiftController::indexAction`, let's remove the two AJAX if statements
 from before: we won't use them anymore. In fact, we're not going to use this endpoint
-at all anymore. So, close this file.
+at all. So, close this file.
 
 Next, head to your browser, refresh, and view the source. Find the `<form>` element
 and copy the entire thing. Then back in your editor, find `_form.html.twig` and
@@ -17,7 +16,7 @@ completely replace this file with that.
 In short, we are *not* going to use the Symfony Form component to render the form.
 It's not because we *can't*, but this will give us a bit more transparency on how
 our form looks. If you like writing HTML forms by hand, then write your code like
-I just did. If you're using Symfony and like to have *it* do the work for you,
+I just did. If you *are* using Symfony and like to have *it* do the work for you,
 awesome, use Symfony forms.
 
 We need to make two adjustments. First, get rid of the CSRF `_token` field. Protecting
@@ -43,17 +42,16 @@ can be used to *create* a new RepLog.
 I want you to notice a few things. First, the server expects us to send it the data
 as JSON. Next, if you *are* a Symfony user, you'll notice that I'm still handling
 the data through Symfony's form system like normal. If it fails form validation,
-we're returning a JSON collection of those error.s The `createApiResponse()` method
+we're returning a JSON collection of those errors. The `createApiResponse()` method
 uses Symfony's serializer, which is a fancy way of returning JSON.
 
-On success, it does the same thing. You're welcome to open up these classes if you'd
-like, but ultimately, this returns JSON data that describes the newly-added RepLog.
+On success, it does the same thing: returns JSON containing the new RepLog's data.
 We'll see *exactly* what it looks like in a second.
 
 ## Updating the AJAX Call
 
 Ok! Let's update our AJAX call to go to *this* endpoint. In `RepLogApp`, down in
-`handleNewFormSubmit`, we somehow need to get that URL. No problem! Find the form
+`handleNewFormSubmit`, we need to somehow get that URL. No problem! Find the form
 and add a fancy new `data-url` attribute set to `path()`, then the name of that
 route: `rep_log_new`.
 
@@ -64,4 +62,4 @@ form errors or adding the new row. That's all a todo for later.
 But, *do* add a `console.log('success')` and `console.log('error')` so we can see
 if this stuff is working! Finally, update the `url` to `$form.data('url')`.
 
-Next, our `data` format needs to change.
+Next, our `data` format needs to change - I'll show you exactly how.

@@ -1,7 +1,7 @@
 # Old-School AJAX HTML
 
-When we use AJAX to submit this form, there are two possible responses: one when
-there was a form validation error and one on success.
+When we use AJAX to submit this form, there are two possible responses: one if
+there was a form validation error and one if the submit was successful.
 
 If we have an error response, for now, we need to return the HTML for this form,
 but with the validation error and styling messages included in it.
@@ -10,7 +10,7 @@ In our project, find the `LiftController` in `src/AppBundle/Controller`. The `in
 method is responsible for both initially rendering the form on page load, and for
 handling the form submit.
 
-If you're not too familiar with Symfony, don't worry. But, at the bottom, at an
+If you're not too familiar with Symfony, don't worry. But, at the bottom, add an
 if statement: if this is an AJAX request, then - at this point - we know we've
 failed form validation. Instead of returning the entire HTML page - which you can
 see it's doing right now - let's render *just* the form HTML. Do that with
@@ -18,7 +18,7 @@ see it's doing right now - let's render *just* the form HTML. Do that with
 to `$form->createView()`. Remember, the `_form.html.twig` template is included
 from index, and holds *just* the form.
 
-So just like that! When we submit, we *now* get that HTML fragment.
+And just like that! When we submit, we *now* get that HTML fragment.
 
 ## Adding AJAX Success
 
@@ -38,7 +38,7 @@ a parent element.
 
 Sweet! Let's enjoy our work! Refresh and submit! Nice! But if I put 5 into the box
 and hit enter to submit a second time... it doesn't work!? What the heck? We'll
-tackle that in a minute.
+fix that in a minute.
 
 ## Handling Form Success
 
@@ -51,10 +51,10 @@ create a new template: `_repRow.html.twig`. Paste the contents here. Back in the
 main template, include this: `lift/_repRow.html.twig`.
 
 Now that we've done this, we can rendering it directly in `LiftController`. We know
-that the form was submitted successfully if we get inside the `$form->isValid()`
-block. Instead of redirecting to another page, if this is AJAX, then return
-`$this->render('lift/_rowRow.html.twig')` and pass it the one variable it needs:
-`repLog` set to `repLog`.
+that the form was submitted successfully if the code inside the `$form->isValid()`
+block is executed. Instead of redirecting to another page, if this is AJAX, then
+return `$this->render('lift/_rowRow.html.twig')` and pass it the one variable it
+needs: `repLog` set to `repLog`.
 
 And just by doing that, when we submit successfully, our AJAX endpoint returns the
 new `<tr>`. 
@@ -77,9 +77,9 @@ method simply gives us the string HTML for the page. Next, return a `new Respons
 manually and pass it the content - `$html` - and status code - `400`.
 
 As soon as we do that, the `success` function will *not* be called on errors. Instead,
-the `error` function will be called. And instead of being passed the data as its
-first argument, it's passed a `jqXHR` object. That's fine for us, because the response
-is stored on `jqXHR.responseText`.
+the `error` function will be called. For an `error` callback, the first argument
+is *not* the data from the response, it's a `jqXHR` object. That's fine, because
+the response content is stored on `jqXHR.responseText`.
 
 *Now* we can use the `success` function to add the new `tr` to the table. Before
 the AJAX call - to avoid any problems with the `this` variable - add
@@ -95,5 +95,6 @@ But that's easy to fix! Above the AJAX call, add `var self = this`. And then ins
 working perfectly.
 
 Except... if you try to submit the form twice in a row... it refreshes fully. It's
-like our JavaScript stops working. And you know what else? If you try to delete
-on a dynamically-added row, *it* doesn't work either! Let's find out why!
+like our JavaScript stops working after one submit. And you know what else? If you
+try to delete a row that was just added via JavaScript, *it* doesn't work either!
+Ok, let's find out why!

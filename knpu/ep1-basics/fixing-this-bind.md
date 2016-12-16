@@ -1,10 +1,8 @@
-# Fixing this with bind
-
 # Fixing "this" with bind()
 
 So how can we fix this? If we're going to be fancy and use objects in JavaScript,
 I don't want to have to worry about whether or not `this` is *actually* `this` in
-each of my functions! That's no way to live! Nope, I want to know *confidently* that
+each of function! That's no way to live! Nope, I want to know *confidently* that
 inside of my `whatIsThis` function, `this` is my `RepLogApp` object... not an random
 array of pets and their noises.
 
@@ -25,16 +23,16 @@ Try it out: refresh! Yes! Now `this` is `this` again!
 ## Binding all of our Listener Functions
 
 Delete that debug code. Now that we have a way to *guarantee* the value of `this`,
-all we need to do is repeat this trick on any listener functions. In practice, that
-means that whenever you have register an event handling function, you should call
-`.bind(this)`. I'll add this to both event listeners.
+all we need to do is repeat the trick on any listener functions. In practice, that
+means that whenever you register an event handling function, you should call
+`.bind(this)`. Add it to both event listeners.
 
 ## Replacing this in Event Listeners
 
 But wait! That's going to totally mess up our function: we're *relying* on `this`:
 expecting it to be the DOM Element object that was clicked! Dang! But no problem,
-because we already learned that `this` is equal to `e.currentTarget`. Fix this by
-adding `var $link = $(e.currentTarget)`. Now just change the `$(this)` to `$link`.
+because we already learned that `this` is equal to `e.currentTarget`. Fix the problem
+by adding `var $link = $(e.currentTarget)`. Now just change the `$(this)` to `$link`.
 And life is good!
 
 Try it out! Refresh, click, and winning!
@@ -52,7 +50,7 @@ objects. For example, we could have *five* tables on our page and instantiate fi
 separate `RepLogApp` objects, one for each table. Once we do that, we won't be able
 to simply reference our object with `RepLogApp` anymore, because we might have five
 of them. But if we always reference our object internally with `this`, it'll be
-*future* proof: working now, and also after we make things more fancy.
+*future* proof: working now, and also after we make things fancier.
 
 Of course, the problem is that inside of the callback, `this` won't be our `RepLogApp`
 object anymore. How could we fix this? There are two options. First, we could `bind`
@@ -61,14 +59,16 @@ of `success`, we could also bind our `fadeOut` callback to `this`. *Finally*, th
 would let us call `this.updateTotalWeightLifted()`.
 
 But wow, that's a lot of work, and it'll be a bit ugly! Instead, there's a simpler
-way. But first, realize that whenever you have an anonymous function like these,
-you *could* refactor them into individual methods in your object. If we did that,
-then I recommend binding them to guarantee that `this` is the `RepLogApp` object.
+way. First, realize that whenever you have an anonymous function. you *could* refactor
+it into an individual method on your object. If we did that, then I would recommend
+binding that function so that `this` is the `RepLogApp` object inside.
+
 But if that feels like overkill and you want to keep using anonymous functions,
-then go above the callback and add `var self = this`. The variable `self` is not
-important in any way - I just made that up. So, it doesn't change inside of callback
-functions, which means we can say `self.updateTotalWeightLifted()`. Try that! Ah,
-it works *great*.
+then simply go above the callback and add `var self = this`. The variable `self`
+is *not* important in any way - I just made that up. So, it doesn't change inside
+of callback functions, which means we can say `self.updateTotalWeightLifted()`.
+
+Try that! Ah, it works *great*.
 
 So there are two important takeaways:
 
