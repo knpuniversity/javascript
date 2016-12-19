@@ -84,7 +84,7 @@ file, inside quotes, say `"use strict"`.
 
 I know, weird. This is a special JavaScript directive that tells your browser to
 activate a more strict parsing mode. Now, certain things that *were* allowed before,
-will cause legit errors. And sure enough, when we refresh, we got:
+will cause legit errors. And sure enough, when we refresh, we get:
 
 > Uncaught reference: Helper is not defined
 

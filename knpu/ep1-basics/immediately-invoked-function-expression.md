@@ -23,7 +23,7 @@ That's not the end of the world, but it *is* a bummer! Fortunately, by being cle
 we *can* create private functions and variables. You just need to think differently
 than you would in PHP.
 
-## Creating a Faux-Private MEthod
+## Creating a Faux-Private Method
 
 First, create a function at the bottom of this object called `_calculateTotalWeight`.
 Its job will be to handle the total weight calculation logic that's currently inside
@@ -85,7 +85,7 @@ are immediately executing that function. We're creating a function and then call
 it!
 
 Why on earth would we do this? Because! Variable scope in JavaScript is function
-based. When create a variable with `var`, it's only accessible from inside of the
+based. When you create a variable with `var`, it's only accessible from inside of the
 function where you created it. If you have functions inside of that function, they
 have access to it too, but ultimately, that function is its home.
 

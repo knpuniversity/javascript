@@ -17,7 +17,7 @@ This didn't change anything: it's just a different way of putting keys onto an o
 
 Ok, in JavaScript, *everything* is an object, and this is quite different than PHP.
 Obviously, `Helper` is an object. But we already saw earlier that functions are
-*also* objects. This means when we say `this.handleRepLogDelete` - which reference
+*also* objects. This means when we say `this.handleRepLogDelete` - which references
 a function - we can call some method on it called `bind()`.
 
 Heck, even *strings* are objects: we'll see that in a moment. The only downside with
@@ -54,7 +54,7 @@ point, we could create *multiple* Helper instances, each with their *own*
 Now, instead of using `Helper` in a static kind of way, we use its instance:
 `this.helper`.
 
-Before we keep celeberating, let's try this. Go back, refresh, and delete one of
+Before we keep celebrating, let's try this. Go back, refresh, and delete one of
 our items! Huh, it worked... but the total didn't update. And, we have an error:
 
 > this.helper.calculateTotalWeight is not a function

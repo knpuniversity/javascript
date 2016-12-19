@@ -2,8 +2,8 @@
 
 So how can we fix this? If we're going to be fancy and use objects in JavaScript,
 I don't want to have to worry about whether or not `this` is *actually* `this` in
-each of function! That's no way to live! Nope, I want to know *confidently* that
-inside of my `whatIsThis` function, `this` is my `RepLogApp` object... not an random
+each function! That's no way to live! Nope, I want to know *confidently* that
+inside of my `whatIsThis` function, `this` is my `RepLogApp` object... not a random
 array of pets and their noises.
 
 More importantly, I want that same guarantee down in each callback function: I want
@@ -12,7 +12,7 @@ methods to work.
 
 And yes! This is possible: we can take back control! Create a new variable:
 `var boundWhatIsThis = this.whatIsThis.bind(this)`. Just like `call()`, `bind()`
-is method you can call on functions. You pass it what you want `this` to be - in
+is a method you can call on functions. You pass it what you want `this` to be - in
 this case our `RepLogApp` object - and it returns a *new* function that, when called,
 will *always* have `this` set to whatever you passed to `bind()`. Now, when we say
 `boundWhatIsThis.call()` and *try* to pass it an alternative `this` object, that
@@ -54,12 +54,12 @@ of them. But if we always reference our object internally with `this`, it'll be
 
 Of course, the problem is that inside of the callback, `this` won't be our `RepLogApp`
 object anymore. How could we fix this? There are two options. First, we could `bind`
-our success function to `this`. Then, now that `this` is our `RepLogObject` inside
+our success function to `this`. Then, now that `this` is our `RepLogApp` object inside
 of `success`, we could also bind our `fadeOut` callback to `this`. *Finally*, that
 would let us call `this.updateTotalWeightLifted()`.
 
 But wow, that's a lot of work, and it'll be a bit ugly! Instead, there's a simpler
-way. First, realize that whenever you have an anonymous function. you *could* refactor
+way. First, realize that whenever you have an anonymous function, you *could* refactor
 it into an individual method on your object. If we did that, then I would recommend
 binding that function so that `this` is the `RepLogApp` object inside.
 

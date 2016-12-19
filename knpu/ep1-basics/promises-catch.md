@@ -1,6 +1,6 @@
 # Catching a Failed Promise
 
-What about handling failures? As you can see on the `Promise` documentation, the
+What about handling failures? As you can see in the `Promise` documentation, the
 `.then` function has an optional second argument: a function that will be called
 on failure. In other words, we can go to the end of `.then` and add a `function`.
 We know that the *value* passed to jQuery failures is the `jqXHR`. Let's

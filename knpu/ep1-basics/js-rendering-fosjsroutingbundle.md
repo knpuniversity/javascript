@@ -1,11 +1,11 @@
 # Full-JavaScript Rendering & FOSjsRoutingBundle
 
 When you try to render *some* things on the server, but then also want to update them
-dynamically in JavaScript, you're going to run into this problem of template duplication.
+dynamically in JavaScript, you're going to run into our new problem: template duplication.
 There are *kind of* two ways to fix it. First, if you use Twig like I do, there is
 a library called twig.js for JavaScript. In theory, you can write *one* Twig template
 and then use it on your server, and *also* in JavaScript. I've done this before and
-know of other companies that do it as well.
+know of other companies that do it also.
 
 My only warning is to keep these shared templates very simple: render simple variables -
 like `categoryName` instead of `product.category.name` - and try to avoid using many
@@ -22,10 +22,10 @@ constructor.
 
 Because here's the goal: when our object is created, I want to make an AJAX call
 to and endpoint that returns *all* of my current RepLogs. We'll then use that to
-build *all* of the rows with our template.
+build *all* of the rows by using our template.
 
-I already created the endpoint: `/reps`. We'll look at what this returns exactly
-in a second.
+I already created the endpoint: `/reps`. We'll look at exactly what this returns
+in a moment.
 
 ## Getting the /reps URL
 
@@ -36,20 +36,25 @@ three ways:
 1. We could add a `data-` attribute to something, like on the `$wrapper` element
    in index.html.twig.
 
-2. Or, we could pass the URL *into* our `RepLogApp` object via a second argument
+2. We could pass the URL *into* our `RepLogApp` object via a second argument
    to the constructor, just like we're doing with `$wrapper`.
 
-3. *OR*, if you're in Symfony, you could cheat and use a cool library called FOSJsRoutingBundle.
+3. If you're in Symfony, you could cheat and use a cool library called FOSJsRoutingBundle.
 
 ## Using FOSJsRoutingBundle
 
 Google for that, and click the link on the
 [Symfony.com documentation](https://symfony.com/doc/master/bundles/FOSJsRoutingBundle/index.html).
 This allows you to expose some of your URLs in JavaScript. Copy the composer require
-line, open up a new tab, paste that and hit enter. While Jordi is wrapping our package
-with a bow, let's finish the install instructions. Copy the new bundle line, and
-add that to `app/AppKernel`. We also need to import some routes: paste this into
-`app/config/routing.yml`. 
+line, open up a new tab, paste that and hit enter:
+
+```terminal
+composer require friendsofsymfony/jsrouting-bundle
+```
+
+While Jordi is wrapping our package with a bow, let's finish the install instructions.
+Copy the new bundle line, and add that to `app/AppKernel`. We also need to import
+some routes: paste this into `app/config/routing.yml`. 
 
 Finally, we need to add two script tags to our page. Open `base.html.twig` and paste
 them at the bottom.
@@ -60,12 +65,12 @@ templates: just pass it the route name and parameters.
 
 Check the install process. Ding!
 
-Now, head to `RepLogController`. In order to expose make this route available to
-that `Routing` JavaScript variable, we need to add `options={"expose" = true}`.
+Now, head to `RepLogController`. In order to make this route available to that `Routing`
+JavaScript variable, we need to add `options={"expose" = true}`.
 
 Back in `RepLogApp`, remember that this library gives us a *global* `Routing` object.
 And of course, inside of our self-executing function, we *do* have access to global
-variables. But as a best practice, we prefer to pass ourselves any global variables
+variables. But as a best practice, we prefer to *pass* ourselves any global variables
 that we end up using. So at the bottom, pass in the global `Routing` object, and
 then add `Routing` as an argument on top.
 
@@ -81,21 +86,21 @@ And adding a new row of course still works.
 But look at the data sent back from the server: it has an `items` key with 24 entries.
 Inside, each has the *exact* same keys that the server sends us after creating
 a *new* RepLog. This is *huge*: these are all the variables we need to pass into
-our `_addRow` function!
+our template!
 
 ## Rendering All the Rows in JavaScript
 
 In other words, we're ready to go! Back in `index.html.twig`, find the `<tbody>`
-empty it entirely: we do *not* need to render this stuff on the server anymore.
+and empty it entirely: we do *not* need to render this stuff on the server anymore.
 In fact, we can even delete our `_repRow.html.twig` template entirely!
 
 Let's keep celebrating: inside of `LiftController` - which renders `index.html.twig` -
 we don't need to pass in the `repLogs` or `totalWeight` variables to Twig: these
 will be filled in via JavaScript. Delete the `totalWeight` variable from Twig.
 
-If you refresh the page now, we've got a totally table. Perfect. Back in `loadRepLogs`,
+If you refresh the page now, we've got a totally empty table. Perfect. Back in `loadRepLogs`,
 use `$.each()` to loop over `data.items`. Give the function `key` and `repLog` arguments.
 Finally, above the AJAX call, add `var self = this`. And inside, say `self._addRow(repLog)`.
 
 And that should do it! Refres the page! Slight delay... boom! All the rows load
-dynamically, we can delete them and add more. Mission accomplished!
+dynamically: we can delete them and add more. Mission accomplished!
