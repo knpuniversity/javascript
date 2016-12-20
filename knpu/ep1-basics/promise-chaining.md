@@ -2,7 +2,7 @@
 
 Oh, but now we can get *even* cooler! The `.catch` handler above reads the `responseText`
 off of the `jqXHR` object and uses its error data. If we want, we could simplify
-the code in this handler by doing that *before* we reject our Promise.
+the code in the handler by doing that *before* we reject our Promise.
 
 ## Controlling Resolved Values
 
@@ -24,7 +24,7 @@ functions to do something once they *all* finish.
 
 Now, there *was* an easier way to do this. Sometimes, inside a handler - like `.then`,
 you'll want to make *another* asynchronous action. That's exactly what's happening
-in `_saveRepLog()`. In this case, you can return a `Promise` from your handler.
+in `_saveRepLog()`. In this case, you can actually return a `Promise` from your handler.
 
 Here's a simpler version of how our code could have looked to solve this same problem.
 Well, simpler at least in terms of the number of lines.
@@ -34,13 +34,12 @@ to it. From inside of *that* `.then`, we return *another* `Promise`. When you do
 this, any *other* chained handlers will not be called until *that* `Promise`, meaning,
 the second AJAX call, has completed.
 
-Let me say it a different way. First, because we're chaining the `.then` onto the
-`$.ajax`, the return value of `_saveRepLog` is actually whatever the `.then` function
-returns. Second, the handler functions - i.e. `.then` or `.catch` - return a `Promise`
-object. That makes sense: that allows us to call `.then` or `.catch` on it.
+Let me say it a different way. First, because we're chaining `.then` onto the `$.ajax`,
+the return value of `_saveRepLog` is actually whatever the `.then` function returns.
+And what is that? Both `.then` and `.catch` always return a *Promise* object.
 
 And, up until now, the *value* used by the `Promise` returned by `.then` or `.catch`
-would be whatever value the function inside returned. But! *if* that function returns
+would be whatever value the function inside returned. But! *If* that function returns
 a *Promise*, then effectively, *that* `Promise` is what is ultimately returned
 by `.then` or `.catch`.
 

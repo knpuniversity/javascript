@@ -5,9 +5,9 @@ Yay! Let's complicate things!
 Our AJAX call works really well, because when we make an AJAX call to create
 a new `RepLog`, our server returns all the data for that new `RepLog`. That means
 that when we call `.then()` on the AJAX promise, we have all the data we need to
-call `_addRow()` and get that new row inserted.
+call `_addRow()` and get that new row inserted!
 
-Too easy: let's make it harder!
+Too easy: so let's make it harder!
 
 ## Making our Endpoint Less Friendly
 
@@ -18,14 +18,14 @@ different status code used for empty responses - that part doesn't make any diff
 
 Now head over and fill out the form successfully. Whoa!
 
-Yep, it blew up - that's no too surprising: we get an error that says:
+Yep, it blew up - that's not too surprising: we get an error that says:
 
 > totalWeightLifted is not defined.
 
 And if you look closely, that's coming from `underscore.js`. This is almost definitely
-an error in our template. We pass the response data - which is now empty into `_addRow`.
+an error in our template. We pass the response data - which is now empty - into `_addRow`.
 And that eventually becomes the variables for the template. An empty response means
-that *no* templates are being passed. Hence, `totalWeightLifted` is not defined.
+that *no* variables are being passed. Hence, `totalWeightLifted` is not defined.
 
 But check this out: there's a *second* error:
 
@@ -36,7 +36,7 @@ But check this out: there's a *second* error:
 This is coming from `RepLogApp.js`, line 94. Woh, it's coming from inside our `.catch`
 handler. Now, as we understand it, our `catch` should only be called when our
 `Promise` fails, in other words, when we have an AJAX error. But in this case, the
-server returns it a 204 status code - that is a *successful* status code. So why
+server returns a 204 status code - that is a *successful* status code. So why
 is our `catch` being called?
 
 Here's the deal: in reality, `.catch` will be called if your `Promise` is rejected,
@@ -68,14 +68,14 @@ if you want, you can code for this: `if jqXHR instanceof ReferenceError`, then
 Let's see if that hits! Refresh, lift some laptops and, there it is!
 
 What JavaScript *doesn't* have is the ability to do more intelligent try-catch
-block, where you catch only *certain* types of errors. Instead. `.catch` handles
-*all* errors, but then, you write your code to be a bit smarter.
+block, where you catch only *certain* types of errors. Instead, `.catch` handles
+*all* errors, but then, you can write *your* code to be a bit smarter.
 
 Since we *really* only want to catch `jqXHR` errors, we could check to see if the
 `jqXHR` value is what we're expecting. One way is to check if
-`jqXHR.responseText === 'undefined`. If this *is* undefined, this is not the error
+`jqXHR.responseText === 'undefined'`. If this *is* undefined, this is not the error
 we intended to handle. To *not* handle it, and make that error uncaught, just
-`throw jXHR`.
+`throw jqXHR`.
 
 Now, if you wanted to, you could add another `.catch` on the bottom, and inside its
 function, log the `e` value. You see, because the first `catch` throws the error,

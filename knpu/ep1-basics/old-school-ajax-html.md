@@ -50,10 +50,10 @@ To do that, we need to isolate it into its own template. Copy it, delete it, and
 create a new template: `_repRow.html.twig`. Paste the contents here. Back in the
 main template, include this: `lift/_repRow.html.twig`.
 
-Now that we've done this, we can rendering it directly in `LiftController`. We know
+Now that we've done this, we can render it directly in `LiftController`. We know
 that the form was submitted successfully if the code inside the `$form->isValid()`
 block is executed. Instead of redirecting to another page, if this is AJAX, then
-return `$this->render('lift/_rowRow.html.twig')` and pass it the one variable it
+return `$this->render('lift/_repRow.html.twig')` and pass it the one variable it
 needs: `repLog` set to `repLog`.
 
 And just by doing that, when we submit successfully, our AJAX endpoint returns the
@@ -83,7 +83,7 @@ the response content is stored on `jqXHR.responseText`.
 
 *Now* we can use the `success` function to add the new `tr` to the table. Before
 the AJAX call - to avoid any problems with the `this` variable - add
-`$tbody = this.$wrapper.find'tbody')`. And in `success`, add `$tbody.append(data)`.
+`$tbody = this.$wrapper.find('tbody')`. And in `success`, add `$tbody.append(data)`.
 That should do it!
 
 Try it! Refresh the page! If we submit with errors, we get the errors! If we submit

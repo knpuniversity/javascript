@@ -122,3 +122,6 @@ chapters:
     sweet-alert-more-promises:
         is_finished: false
         video_key: ~
+    sweet-alert-create-promise:
+        is_finished: false
+        video_key: ~

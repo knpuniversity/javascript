@@ -1,9 +1,9 @@
 # Making (and Keeping) a Promise
 
-Ignore the error we're getting for a second and go down to the AJAX call. We know
-that this method returns a`Promise`, and then we call `.then` on it. But, our handler
-expects that the Promise's *value* will be the `RepLogData`. But now, it's null
-because that's what the server is returning!
+Ignore the error for a second and go down to the AJAX call. We know that this method
+returns a `Promise`, and then we call `.then` on it. But, our handler expects that
+the Promise's *value* will be the `RepLog` data. But now, it's null because that's
+what the server is returning!
 
 Somehow, I want to fix this method so that it *once again* returns a Promise whose
 value is the `RepLog` data.
@@ -46,11 +46,11 @@ when it's resolved and what value is passed back.
 
 If you look at the `Promise` documentation, you'll find an example of how to do
 this: `new Promise()` with one argument: a function that has `resolve` and `reject`
-arguments. I know, it looks funny at first.
+arguments. I know, it looks a little weird.
 
-Inside of that function, you'll do your asynchronous code. As soon as that's done,
-call the `resolve` function and pass it whatever *value* should be passed to the
-handlers. If something goes wrong, call the `reject` function. This is effectively
+Inside of that function, you'll put your asynchronous code. And as soon as it's done,
+you'll call the `resolve` function and pass it whatever *value* should be passed
+to the handlers. If something goes wrong, call the `reject` function. This is effectively
 what jQuery is doing right now inside of its `$.ajax` function.
 
 ## Browser Compatability!? Polyfill
@@ -62,11 +62,11 @@ A polyfill is a library that gives you functionality that's normally only availa
 in a newer version of your language, JavaScript in this case. PHP also has polyfills:
 small PHP libraries that backport newer PHP functionality.
 
-This polyfill guarantees that the `Promise` object exists in JavaScript. If it's
+This polyfill guarantees that the `Promise` object will exist in JavaScript. If it's
 already supported by the browser it uses that. But if *not*, it adds it.
 
 Copy the `es6-promise.auto.min.js` path. In the next tutorial, we'll talk *all*
-about what that es6 part means. Then, go into `app/Resources/views/base.html.twig`
+about what that es6 part means. Next, go into `app/Resources/views/base.html.twig`
 and add a `script` tag with `src=""` and this path. Now our `Promise` object is
 guaranteed!
 
@@ -78,21 +78,21 @@ code inside.
 
 Now, all we need to do is call `resolve()` when our asynchronous work is *finally*
 resolved. This happens after the *second* AJAX call. Great! Just call `resolve()`
-and pass it `data`. Once again, the `RepLog` data should be passed to the success
-handlers!
+and pass it `data`. Finally, the `RepLog` data should once again be passed to the
+success handlers!
 
 Go back now and refresh. Watch the total at the bottom: lift the big fat cat 10
 times and... boom! The new row was added *and* the total was updated. It worked!
 
-This is huge.! Our `_saveRepLog` function *previously* returned a `jqXHR` object,
+This is huge! Our `_saveRepLog` function *previously* returned a `jqXHR` object,
 which implements the `Promise` interface. Now, we've changed that to a *real* `Promise`,
 and our code that calls this function didn't need to change at all. The `.then()`
 and `.catch()` work exactly like before. Ultimately, before *and* after this change,
-`_saveRepLog` returned a promise whose value was the `RepLog` data.
+`_saveRepLog` returns a promise whose value is the `RepLog` data.
 
 ## Handling the Reject
 
-Of course, we also need to the `reject`, which should happen if the original AJAX
+Of course, we also need to call `reject`, which should happen if the original AJAX
 call has a validation error. If you fill out the form blank now, we can see the 400
 error, but it doesn't call our `.catch` handler.
 
