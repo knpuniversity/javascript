@@ -22,7 +22,7 @@ So temporarily, we are *totally* going to have duplication between our Twig, ser
 template and our Underscore.js, client-side template. Copy all the `<tr>` code, then
 paste it into the new `script` tag.
 
-Now, pdate things to use the Underscore.js templating format. So, `<%= totalWeightLifted %>`.
+Now, update things to use the Underscore.js templating format. So, `<%= totalWeightLifted %>`.
 
 This is the print syntax, and I'm using a `totalWeightLifted` variable because eventually
 we're going to pass these keys to the template as variables: `totalWeightLifted`, `reps`,

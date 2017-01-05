@@ -4,7 +4,7 @@ Ok, let's talk promises: JavaScript promises. These are a *hugely* important con
 in modern JavaScript, and if you haven't seen them yet, you will soon.
 
 We all know that in JavaScript, a lot of things can happen asynchronously. For example,
-Ajax calls happen asynchronously and even fading out en element happens asynchronously:
+Ajax calls happen asynchronously and even fading out an element happens asynchronously:
 we call the `fadeOut()` function, but it doesn't finish until later. This is *so*
 common that JavaScript has created an interface to standardize how this is handled.
 If you understand how it works, you will have a huge advantage.

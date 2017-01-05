@@ -102,5 +102,5 @@ If you refresh the page now, we've got a totally empty table. Perfect. Back in `
 use `$.each()` to loop over `data.items`. Give the function `key` and `repLog` arguments.
 Finally, above the AJAX call, add `var self = this`. And inside, say `self._addRow(repLog)`.
 
-And that should do it! Refres the page! Slight delay... boom! All the rows load
+And that should do it! Refresh the page! Slight delay... boom! All the rows load
 dynamically: we can delete them and add more. Mission accomplished!

@@ -46,7 +46,7 @@ To do that, just copy our code from `success` into `.then`. I'm not worried abou
 returning anything because we're not chaining our "then"s. Remove the second `.then`
 and move the `error` callback code into `.catch`.
 
-With any luck, that will worth *exactly* like before. Yea! The error looks good.
+With any luck, that will work *exactly* like before. Yea! The error looks good.
 And adding a new one works too.
 
 Let's find our two other `$.ajax` spots. Do the same thing there: Move the `success`

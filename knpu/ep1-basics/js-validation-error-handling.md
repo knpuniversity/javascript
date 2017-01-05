@@ -35,7 +35,7 @@ ReactJS. We'll save that for a future tutorial.
 ## Creating a Selectors Map
 
 In `_mapErrorsToForm`, let's look at the error data and use it to add an error `span`
-below that field. Obviously, we need to use jQuery to find our `.js-new-repo-log-form`
+below that field. Obviously, we need to use jQuery to find our `.js-new-rep-log-form`
 form element.
 
 But wait! Way up in our constructor, we're already referencing this selector. It's
@@ -45,7 +45,7 @@ set to its selector.
 
 Now, reference that with `this._selectors.newRepForm`.
 
-Below in our function, do the same: `var form = this.$wrapper.find(this._selectors.newRepForm)`.
+Below in our function, do the same: `var $form = this.$wrapper.find(this._selectors.newRepForm)`.
 
 ## Mapping the Data Manually
 
