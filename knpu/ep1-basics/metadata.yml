@@ -30,24 +30,33 @@ chapters:
         is_free: true
         video_key: 198210067
     document-ready-ordering:
+        is_free: true
         video_key: 198209940
     event-bubbling:
+        is_free: true
         video_key: 198206660
     event-propagation:
         video_key: 198203064
     dom-element-object:
+        is_finished: false
         video_key: 198209206
     this-current-target:
+        is_finished: false
         video_key: 198219734
     data-attribute:
+        is_finished: false
         video_key: 198221885
     javascript-objects:
+        is_finished: false
         video_key: 198221335
     static-objects-this:
+        is_finished: false
         video_key: 198240124
     understanding-this-magic:
+        is_finished: false
         video_key: 198239651
     fixing-this-bind:
+        is_finished: false
         video_key: 198239711
     immediately-invoked-function-expression:
         is_finished: false
