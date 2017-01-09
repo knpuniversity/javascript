@@ -26,7 +26,7 @@ The last step will be to open a terminal, move into your project and do 50 pushu
 I mean, run:
 
 ```terminal
-php bin/console server:run
+./bin/console server:run
 ```
 
 to start the built-in PHP web server. Now, this *is* a Symfony project but we're not
@@ -53,18 +53,31 @@ to delete that from the database, remove the row entirely from the page, and upd
 the total at the bottom.
 
 Right now, this entire page is rendered on the server, and the template lives at
-`app/Resources/views/lift/index.html.twig`
+`app/Resources/views/lift/index.html.twig`:
 
-Inside, we're looping over something I call a `repLog` to build the table. Each `repLog`
-represents one item we've lifted, and it's the only important table in the database.
-It has an `id`, the *number* of reps that we lifted, what we lifted and the total
-weight.
+[[[ code('b50679b6c4') ]]]
+
+Inside, we're looping over something I call a `repLog` to build the table:
+
+[[[ code('dd1cac1a92') ]]]
+
+Each `repLog` represents one item we've lifted, and it's the only important table
+in the database. It has an `id`, the *number* of reps that we lifted and the total
+weight:
+
+[[[ code('805a3b9f9e') ]]]
 
 ## Adding the Delete link and js- class
 
 To add the delete link, inside the last `<td>` add a new anchor tag. Set the `href`
 to `#`, since we plan to let JavaScript do the work. And then, give it a class:
-`js-delete-rep-log`. Inside, add our cute little delete icon.
+`js-delete-rep-log`:
+
+[[[ code('4ab8316daa') ]]]
+
+Inside, add our cute little delete icon:
+
+[[[ code('2df5ea2290') ]]]
 
 Adorable! Ok, first! Why did we add this `js-delete-rep-log` class? Well, there are
 only ever two reasons to add a class: to style that element, or because you want
@@ -76,20 +89,28 @@ give it a `js-` prefix so that future you doesn't need to wonder which classes a
 for styling and which are for JavaScript. Future you will... thank you.
 
 Copy that class and head to the bottom of the template. Add a block `javascripts`,
-`endblock` and call the `parent()` function. This is Symfony's way of adding JavaScript
-to a page. Inside, add a `<script>` tag and then, use jQuery to find all
-`.js-delete-rep-log` elements, and then `.on('click')`, call this function. For now,
-just `console.log('todo delete!')`.
+`endblock` and call the `parent()` function:
+
+[[[ code('e99b97738d') ]]]
+
+This is Symfony's way of adding JavaScript to a page. Inside, add a `<script>` tag
+and then, use jQuery to find all `.js-delete-rep-log` elements, and then `.on('click')`,
+call this function. For now, just `console.log('todo delete!')`:
+
+[[[ code('c5128fd69f') ]]]
 
 ## Resolving External JS in PHPStorm
 
 But hmm, PhpStorm says that `$` is an unresolved function or method. Come on! I *do*
 have jQuery on the page. Open the base layout file - `base.html.twig` - and scroll
-to the bottom: both jQuery and Bootstrap should be coming in from a CDN. Oh, but
-this note says that there is no locally stored library for the http link. Aha! Tell
-PhpStorm to download and learn all about the library by pressing `option+enter` on
-a Mac - or `alt+enter` on Linux or Windows - and choosing "Download Library". Do
-the same thing for Bootstrap.
+to the bottom:
+
+[[[ code('41fc83e784') ]]]
+
+Both jQuery and Bootstrap should be coming in from a CDN. Oh, but this note says that
+there is no locally stored library for the http link. Aha! Tell PhpStorm to download
+and learn all about the library by pressing `Option`+`Enter` on a Mac - or `Alt`+`Enter`
+on Linux or Windows - and choosing "Download Library". Do the same thing for Bootstrap.
 
 Et voilà! The error is gone, and we'll start getting at least *some* auto-completion.
 
