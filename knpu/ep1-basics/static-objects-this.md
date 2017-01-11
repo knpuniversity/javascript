@@ -1,10 +1,12 @@
 # "Static" Objects & the this Variable
 
+We just found out that, *somehow*, `this.$wrapper` is *not* our jQuery object,
+it's undefined!
+
 [[[ code('eca06bf261') ]]]
 
-We just found out that, *somehow*, `this.$wrapper` is *not* our jQuery object,
-it's undefined! Rude! How is that even possible! The answer! Because JavaScript is
-weird, *especially* when it comes to the crazy `this` variable!
+Rude! How is that even possible! The answer! Because JavaScript is weird, *especially*
+when it comes to the crazy `this` variable!
 
 ## When this is not this
 
