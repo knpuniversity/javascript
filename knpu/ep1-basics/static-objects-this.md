@@ -65,7 +65,7 @@ Add `var totalWeight = 0`:
 
 Then I'll say, `this.$wrapper`, which I can do because we're *not* in a callback
 function: `this` is our object. Then, `.find` to look for all `tbody tr` elements,
-and `.each` to loop over them:
+and `.each()` to loop over them:
 
 [[[ code('3e8d21d4de') ]]]
 
