@@ -4,9 +4,14 @@ I'm feeling so good about our first click listener, let's add another! When I cl
 *anywhere* on a row, I also want to log a message.
 
 Back in the template, give the entire table a `js` class so we can select it. How
-about `js-rep-log-table`. Down below, find that and look inside for the `tbody tr`
-elements. Then, `.on('click')` add a function that prints some fascinating text:
-`console.log('row clicked')`.
+about `js-rep-log-table`:
+
+[[[ code('f49f8cc3cb') ]]]
+
+Down below, find that and look inside for the `tbody tr` elements. Then, `.on('click')`
+add a function that prints some fascinating text: `console.log('row clicked')`:
+
+[[[ code('642b07b670') ]]]
 
 Beautiful! Refresh and click the row. No surprises: we see "row clicked". But check
 this out: click the delete link. Hot diggity - *two* log messages! Of course it would
@@ -43,8 +48,13 @@ the link element and *then* bubles up and notifies the `tr`.
 Cool! Let's play with this! First, let's clean up our code a bit and make a minor
 performance improvement. Add `var $table = $('.js-rep-log-table')`. Then below, instead
 of searching the entire page for these delete links, use `$table.find()` to *only*
-look inside that table. Do the same below: `$table.find()` and look for the `tbody tr`
-elements in that.
+look inside that table:
+
+[[[ code('111689648d') ]]]
+
+Do the same below: `$table.find()` and look for the `tbody tr` elements in that:
+
+[[[ code('ed5d7b309a') ]]]
 
 If you refresh now, it still works great. But some of you might be wondering about
 my variable name: `$table`? For PHP developers, that looks weird... because, ya know,
