@@ -11,12 +11,17 @@ to be absolutely sure that `this` is *this* object, exactly how we'd expect our
 methods to work.
 
 And yes! This is possible: we can take back control! Create a new variable:
-`var boundWhatIsThis = this.whatIsThis.bind(this)`. Just like `call()`, `bind()`
-is a method you can call on functions. You pass it what you want `this` to be - in
-this case our `RepLogApp` object - and it returns a *new* function that, when called,
-will *always* have `this` set to whatever you passed to `bind()`. Now, when we say
-`boundWhatIsThis.call()` and *try* to pass it an alternative `this` object, that
-will be ignored.
+`var boundWhatIsThis = this.whatIsThis.bind(this)`:
+
+[[[ code('18bf5e2a33') ]]]
+
+Just like `call()`, `bind()` is a method you can call on functions. You pass it what
+you want `this` to be - in this case our `RepLogApp` object - and it returns a *new*
+function that, when called, will *always* have `this` set to whatever you passed
+to `bind()`. Now, when we say `boundWhatIsThis.call()` and *try* to pass it an alternative
+`this` object, that will be ignored:
+
+[[[ code('77b665b433') ]]]
 
 Try it out: refresh! Yes! Now `this` is `this` again!
 
@@ -25,14 +30,23 @@ Try it out: refresh! Yes! Now `this` is `this` again!
 Delete that debug code. Now that we have a way to *guarantee* the value of `this`,
 all we need to do is repeat the trick on any listener functions. In practice, that
 means that whenever you register an event handling function, you should call
-`.bind(this)`. Add it to both event listeners.
+`.bind(this)`. Add it to both event listeners:
+
+[[[ code('2c2b9c7616') ]]]
 
 ## Replacing this in Event Listeners
 
 But wait! That's going to totally mess up our function: we're *relying* on `this`:
 expecting it to be the DOM Element object that was clicked! Dang! But no problem,
 because we already learned that `this` is equal to `e.currentTarget`. Fix the problem
-by adding `var $link = $(e.currentTarget)`. Now just change the `$(this)` to `$link`.
+by adding `var $link = $(e.currentTarget)`:
+
+[[[ code('cb0b94b874') ]]]
+
+Now just change the `$(this)` to `$link`:
+
+[[[ code('f5ead8d032') ]]]
+
 And life is good!
 
 Try it out! Refresh, click, and winning!
@@ -64,15 +78,20 @@ it into an individual method on your object. If we did that, then I would recomm
 binding that function so that `this` is the `RepLogApp` object inside.
 
 But if that feels like overkill and you want to keep using anonymous functions,
-then simply go above the callback and add `var self = this`. The variable `self`
-is *not* important in any way - I just made that up. So, it doesn't change inside
-of callback functions, which means we can say `self.updateTotalWeightLifted()`.
+then simply go above the callback and add `var self = this`:
+
+[[[ code('6f0869421d') ]]]
+
+The variable `self` is *not* important in any way - I just made that up. So, it doesn't
+change inside of callback functions, which means we can say `self.updateTotalWeightLifted()`:
+
+[[[ code('c1bee18006') ]]]
 
 Try that! Ah, it works *great*.
 
 So there are two important takeaways:
 
-1. Use bind() to make sure that `this` is always `this` inside any methods in your object.
-1. Make sure to reference your object with `this`, instead of your object's name.
+1. Use `bind()` to make sure that `this` is always `this` inside any methods in your object.
+2. Make sure to reference your object with `this`, instead of your object's name.
    This isn't an absolute rule, but unless you know what you're doing, this will
    give you more flexibility in the long-run.
