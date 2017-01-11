@@ -38,10 +38,10 @@ chapters:
     event-propagation:
         video_key: 198203064
     dom-element-object:
-        is_finished: false
+        is_finished: true
         video_key: 198209206
     this-current-target:
-        is_finished: false
+        is_finished: true
         video_key: 198219734
     data-attribute:
         is_finished: false
