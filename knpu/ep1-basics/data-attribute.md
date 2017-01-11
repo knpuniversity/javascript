@@ -24,6 +24,10 @@ Yep, according to those silly "rules" of the web, you're not really supposed to 
 new attributes for your elements. Well, unless the attribute starts with `data-`,
 followed by lowercase letters. That's *totally* allowed!
 
+***SEEALSO
+You can actually read the "data attributes" spec here: http://bit.ly/dry-spec-about-data-attributes
+***
+
 So, add an attribute called `data-url` and set it equal to the DELETE URL for *this*
 RepLog. The Symfony way of generating this is with `path()`, the name of the route -
 `rep_log_delete` - and the id: `repLog.id`.
@@ -32,6 +36,15 @@ RepLog. The Symfony way of generating this is with `path()`, the name of the rou
 
 Sweet! To read that in JavaScript, simply say `var deleteUrl = $(this)`, which we
 know is the link, `.data('url')`. 
+
+***TIP
+`.data()` is a wrapper around core JS functionality: the `data-*` attributes are
+also accessible directly on the DOM Element object:
+
+```js
+var deleteUrl = $(this)[0].dataset.url
+```
+***
 
 That's a little bit of jQuery magic: `.data()` is a shortcut to read a data attribute.
 Finally, the AJAX call is really simple! I'll use `$.ajax`, set `url` to `deleteUrl`,

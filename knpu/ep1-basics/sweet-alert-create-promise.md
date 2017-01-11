@@ -1,7 +1,7 @@
 # Sweet Alert: Create a Promise!
 
 And we also *also* know that both functions are passed a value, and what that value
-is depends on the library. And an `arg` arg to `.catch` and log it. Ok, refresh,
+is depends on the library. Add an `arg` to `.catch` and log it. Ok, refresh,
 hit delete and hit cancel. Oh, it's a string: "cancel". Try it again, but hit escape
 this time to close the alert. Now it's `esc`. Interesting! If you search for "Promise"
 on its docs, you'll find a spot called "Handling Dismissals". Ah, it basically says:
