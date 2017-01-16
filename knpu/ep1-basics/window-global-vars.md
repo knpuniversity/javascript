@@ -1,11 +1,20 @@
 # The window Object & Global Variables
 
 Now that we're using this fancy self-executing function, we don't have access to
-`RepLogApp` anymore. How can we fix that? Very simple. Instead of `var RepLogApp`,
-say `window.RepLogApp`.
+`RepLogApp` anymore:
 
-Back in the template, I'll delete the `console.log()` for Helper, and then go back
-and refresh. It works! No error in the console, and delete does its job!
+[[[ code('4f060a5d7c') ]]]
+
+How can we fix that? Very simple. Instead of `var RepLogApp`, say `window.RepLogApp`:
+
+[[[ code('bc4b09aa4e') ]]]
+
+Back in the template, I'll delete the `console.log()` for Helper:
+
+[[[ code('608f3dce22') ]]]
+
+And then go back and refresh. It works! No error in the console, and delete does
+its job!
 
 ## What is this window?
 
@@ -25,11 +34,15 @@ global variables, you'll often see people *pass* those variables *into* the func
 It's a little weird, so let's see it.
 
 Right now, inside of our self-executing function, we're using two global variables:
-`window` and `$`, for `$.ajax`, for example.
+`window` and `$`, for `$.ajax`, for example:
+
+[[[ code('64599cc046') ]]]
 
 At the bottom of the file, between the parentheses, reference the global `window`
 and `jQuery` variables and pass them as *arguments* to our function. On top, add
-those arguments: `window` and `$`.
+those arguments: `window` and `$`:
+
+[[[ code('13bd267582') ]]]
 
 Now, when we reference `window` and `$` in our code, we're no longer referencing
 the global objects directly, we're referencing those arguments.
@@ -44,14 +57,17 @@ don't have this problem, but you'll see stuff like this in third-party libraries
 Second, when you pass in a global variable as an argument, it protects you from
 making a really silly mistake in your code, like accidentally setting `$ = null`.
 If you do that now, it'll set `$` to `null` only inside this function. But before,
-you would have overwritten that variable *globally*. It's yet another way that self-executing
-blocks help to sandbox us.
+you would have overwritten that variable *globally*. It's yet another way that
+self-executing blocks help to sandbox us.
 
 ## Fun with window
 
 Ok, back to this mysterious `window` variable. Inside `index.html.twig`, `console.log()`
-`window`. This is pretty cool, because it will show us *all* global variables that
-are available.
+`window`:
+
+[[[ code('8a41386dc1') ]]]
+
+This is pretty cool, because it will show us *all* global variables that are available.
 
 And Boom! This is a *huge* object, and includes the `$` variable, `jQuery`, and eventually,
 `RepLogApp`.
@@ -60,9 +76,12 @@ But notice what's *not* here. As expected, there is no `Helper`.
 
 ## Forget var? It goes Global!
 
-Now, go back into `RepLogApp`, find `Helper`, and remove the `var`. You've probably been
-taught to *never* do this. And that's right! But you may not realize exactly what
-happens if you do.
+Now, go back into `RepLogApp`, find `Helper`, and remove the `var`:
+
+[[[ code('6ffc55d013') ]]]
+
+You've probably been taught to *never* do this. And that's right! But you may not
+realize exactly what happens if you do.
 
 Refresh again and open the `window` variable. Check this out! It's a little hard
 to find, but all of a sudden, there *is* a global `Helper` variable! So if you
@@ -70,8 +89,11 @@ forget to say `var` - which you shouldn't - it makes that variable a global obje
 which means it's set on `window`.
 
 There's one other curious thing about `window`: if you're in a global context where
-there is no `this` variable... then `this` is actually equal to `window`. If you
-refresh, this expression returns true. Oh JavaScript!
+there is no `this` variable... then `this` is actually equal to `window`:
+
+[[[ code('f43457f4eb') ]]]
+
+If you refresh, this expression returns true. Oh JavaScript!
 
 ## Be Better: use strict
 
@@ -80,7 +102,9 @@ and it allows us to make mistakes. In real life, friendly and forgiving people a
 great friends! In programming, friendly and forgiving languages mean more bugs!
 
 To tell JavaScript to *stop* being such a pushover, at the top of the `RepLogApp.js`
-file, inside quotes, say `"use strict"`.
+file, inside quotes, say `'use strict'`:
+
+[[[ code('a26af1496d') ]]]
 
 I know, weird. This is a special JavaScript directive that tells your browser to
 activate a more strict parsing mode. Now, certain things that *were* allowed before,
@@ -93,3 +117,5 @@ Sweeeet! Even PhpStorm isn't fooled anymore, it's reporting an:
 > Unresolved variable or type Helper
 
 Re-add `var`, and life is good!
+
+[[[ code('81017de9f8') ]]]
