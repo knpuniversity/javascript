@@ -4,10 +4,16 @@ Our code is growing up! And to keep going, it's really time to move our `RepLogA
 into its own external JavaScript file. For now, let's keep this real simple: inside
 the `web/` directory - which is the public document root for the project - and in
 `assets/`, I'll create a new `js/` directory. Then, create a new file:
-`RepLogApp.js`. Copy *all* of our `RepLogApp` object and paste it here.
+`RepLogApp.js`. Copy *all* of our `RepLogApp` object and paste it here:
 
-Add a good old-fashioned `script` tag to bring this in. If you don't normally use
-Symfony, ignore the `asset()` function: it doesn't do anything special.
+[[[ code('fedec743c4') ]]]
+
+Add a good old-fashioned `script` tag to bring this in:
+
+[[[ code('0e49b73bcc') ]]]
+
+If you don't normally use Symfony, ignore the `asset()` function: it doesn't do
+anything special.
 
 To make sure we didn't mess anything up, refresh! Let's add a few items to our list.
 Then, delete one. It works!
@@ -25,17 +31,26 @@ than you would in PHP.
 
 ## Creating a Faux-Private Method
 
-First, create a function at the bottom of this object called `_calculateTotalWeight`.
+First, create a function at the bottom of this object called `_calculateTotalWeight`:
+
+[[[ code('49f03157da') ]]]
+
 Its job will be to handle the total weight calculation logic that's currently inside
-`updateTotalWeightLifted`. We're making this change *purely* for organization: my
-intention is that we will *only* use this method from inside of this object. In other
-words, ideally, `calculateTotalWeight` would be private!
+`updateTotalWeightLifted`:
+
+[[[ code('1472bf4529') ]]]
+
+We're making this change *purely* for organization: my intention is that we will *only*
+use this method from inside of this object. In other words, ideally, `calculateTotalWeight`
+would be private!
 
 But since *everything* is public in JavaScript, a common standard is to prefix methods
 that should be treated as private with an underscore. It's a nice convention, but
 it doesn't enforce anything. Anybody could still call this from outside of the object.
 
-Back in `updateTotalWeightLifted`, call it: `this._calculateTotalWeight()`.
+Back in `updateTotalWeightLifted`, call it: `this._calculateTotalWeight()`:
+
+[[[ code('9eee09312e') ]]]
 
 ## Creating a Private Object
 
@@ -46,36 +61,61 @@ then I can call any methods on it. But if I *didn't* have access to this, or som
 other object, then of course I *wouldn't* be able to call any methods on it. I know
 that sounds weird, so let's do it!
 
-At the bottom of this file, create another object called: `var Helper = {}`. Commonly,
-we'll organize our code so that each file has just one object, like in PHP. But
-eventually, this variable *won't* be public - it's just a helper meant to be used
+At the bottom of this file, create another object called: `var Helper = {}`:
+
+[[[ code('2d04eaf58f') ]]]
+
+Commonly, we'll organize our code so that each file has just one object, like in PHP.
+But eventually, this variable *won't* be public - it's just a helper meant to be used
 only inside of this file.
 
 I'll even add some documentation: this is private, not meant to be called from
-outside! Just like before, give this an initialize, function with a `$wrapper` argument.
-And then say: `this.$wrapper = $wrapper`. Move the `calculateTotalWeight()` function
-into *this* object, but take off the underscore. Technically, if you have access
-to the `Helper` variable, then you're allowed to call `calculateTotalWeight`. Again,
-that whole `_` thing is just a convention.
+outside!
+
+[[[ code('a47447f656') ]]]
+
+Just like before, give this an initialize, function with a `$wrapper` argument.
+And then say: `this.$wrapper = $wrapper`:
+
+[[[ code('f0fef3d429') ]]]
+
+Move the `calculateTotalWeight()` function into *this* object, but take off the
+underscore:
+
+[[[ code('2f88dd3f58') ]]]
+
+Technically, if you have access to the `Helper` variable, then you're allowed
+to call `calculateTotalWeight`. Again, that whole `_` thing is just a convention.
 
 Back in our original object, let's set this up: call `Helper.initialize()` and
-pass it `$wrapper`. Down below, call this: `Helper.calculateTotalWeight()`.
+pass it `$wrapper`:
+
+[[[ code('8b738c777f') ]]]
+
+Down below, call this: `Helper.calculateTotalWeight()`:
+
+[[[ code('26191a95a4') ]]]
 
 Double-check that everything still works: refresh! It does!
 
 But, this `Helper` object is *still* public. What I mean is, we *still* have access
 to it *outside* of this file. If we try to `console.log(Helper)` from our template,
-it works just fine. What I *really* want is the ability for me to choose *which*
-variables I want to make available to the outside world - like `RepLogApp` - and
-which I *don't*, like `Helper`.
+it works just fine:
+
+[[[ code('2fdff99dde') ]]]
+
+What I *really* want is the ability for me to choose *which* variables I want to make
+available to the outside world - like `RepLogApp` - and which I *don't*, like `Helper`.
 
 ## The Self-Executing Function
 
-The way you do that is with - dun dun dun - an immediately invoked function
-expression. Also known by its friends as a self-executing function. Basically, that
+The way you do that is with - dun dun dun - an *immediately invoked function
+expression*. Also known by its friends as a *self-executing function*. Basically, that
 means we'll wrap all of our code inside a function... that calls itself. It's weird,
 but check it out: `(function() {`, then indent everything. At the bottom, add the
-`})` and then `()`.
+`})` and then `()`:
+
+[[[ code('356902578e') ]]]
 
 What?
 
