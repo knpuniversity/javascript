@@ -53,7 +53,7 @@ chapters:
         is_finished: true
         video_key: 198240124
     understanding-this-magic:
-        is_finished: false
+        is_finished: true
         video_key: 198239651
     fixing-this-bind:
         is_finished: false
