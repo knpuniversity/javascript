@@ -35,11 +35,11 @@ index d8a07cb..aed8f22 100644
 +fos_js_routing:
 +    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 diff --git a/composer.lock b/composer.lock
-index d3f40fa..c630a80 100644
+index 68c4f0f..d21e462 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -1026,6 +1026,64 @@
-             "time": "2016-09-10 18:51:13"
+@@ -1025,6 +1025,64 @@
+             "time": "2016-09-10T18:51:13+00:00"
          },
          {
 +            "name": "friendsofsymfony/jsrouting-bundle",
@@ -103,8 +103,8 @@ index d3f40fa..c630a80 100644
              "name": "friendsofsymfony/user-bundle",
              "version": "dev-master",
              "source": {
-@@ -2355,6 +2413,46 @@
-             "time": "2016-10-25 19:17:17"
+@@ -2353,6 +2411,46 @@
+             "time": "2016-10-25T19:17:17+00:00"
          },
          {
 +            "name": "willdurand/jsonp-callback-validator",
