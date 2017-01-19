@@ -69,8 +69,14 @@ that you can call on them, like `.call()`. The first argument to `call()` is the
 that should be used for `this`, followed by any arguments that should be passed to
 the function itself.
 
+[[[ code('7a0bb4888e') ]]]
+
 Refresh now and check this out! `this` is now our thoughtful cat, meow, dog, woof
 object. That is what is happening behind the scenes with your callback functions.
+
+***TIP
+A new tip!
+***
 
 Now that we understand the magic behind `this`, how can we fix it? How can we guarantee
 that `this` is always our `RepLogApp` object when we're inside of it?
