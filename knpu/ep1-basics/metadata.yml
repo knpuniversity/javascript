@@ -56,13 +56,13 @@ chapters:
         is_finished: true
         video_key: 198239651
     fixing-this-bind:
-        is_finished: false
+        is_finished: true
         video_key: 198239711
     immediately-invoked-function-expression:
-        is_finished: false
+        is_finished: true
         video_key: 199171152
     window-global-vars:
-        is_finished: false
+        is_finished: true
         video_key: 199171396
     instantiatable-objects-constructor:
         is_finished: false
