@@ -85,8 +85,14 @@ So there are *two* things we need to worry about. First, any JavaScript that I d
 on needs to be included on the page before me. And actually, this will *stop* being
 true when we talk about module loaders in a future tutorial.
 
+[[[ code('bdf4416cd5') ]]]
+
 Second, before I try to select any elements with jQuery, I better make sure the DOM
 has loaded, which we can always guarantee with a `$(document).ready()` block.
+
+***TIP
+A new tip!
+***
 
 Let's put our JavaScript back into the block so that it's always included *after*
 jQuery, whether that's in the header of footer:
