@@ -77,6 +77,10 @@ This comes from *our* code, which still lives in the middle of the page. And yea
 it makes sense: as our browser loads the page, it sees the `$`, but has *not* yet
 downloaded `jQuery`: that script tag lives further down.
 
+***TIP
+A new tip!
+***
+
 So there are *two* things we need to worry about. First, any JavaScript that I depend
 on needs to be included on the page before me. And actually, this will *stop* being
 true when we talk about module loaders in a future tutorial.

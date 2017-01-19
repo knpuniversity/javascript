@@ -56,12 +56,20 @@ find out. Refresh! Expand the logged object. Yea, it's `RepLogApp`! Cool!
 But now, let's get tricky! Create a new variable called `newThis` and set it to
 an object with important stuff like `cat` set to `meow` and `dog` set to `woof`:
 
+***TIP
+A new tip!
+***
+
 [[[ code('dc536abbc4') ]]]
 
 To force `newThis` to be `this` inside our function, call the function *indirectly* with
 `this.whatIsThis.call()` and pass it `newThis` and the greeting, `hello`:
 
 [[[ code('7a0bb4888e') ]]]
+
+***TIP
+A new tip!
+***
 
 Oh, and quick note: `this.whatIsThis` is, obviously, a function. But in JavaScript,
 functions are actually *objects* themselves! And there are a number of different methods
