@@ -48,15 +48,6 @@ know is the link, `.data('url')`:
 
 [[[ code('f2589bd963') ]]]
 
-***TIP
-`.data()` is a wrapper around core JS functionality: the `data-*` attributes are
-also accessible directly on the DOM Element object:
-
-```js
-var deleteUrl = $(this)[0].dataset.url
-```
-***
-
 That's a little bit of jQuery magic: `.data()` is a shortcut to read a data attribute.
 
 ***TIP
