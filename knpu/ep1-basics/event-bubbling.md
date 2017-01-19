@@ -63,10 +63,16 @@ In fact, it's *so* not special that - if you want - you can even start a variabl
 name with it. Madness! So the `$` in `$table` isn't doing anything special, but it
 *is* a fairly common convention to denote a variable that is a `jQuery` object.
 
+[[[ code('642b07b670') ]]]
+
 It's nice because when I see `$table`, I think:
 
 > Oh! This starts with a `$`! Good show! I bet it's a jQuery object, and I can call
 > find() or any other fancy jQuery method on it. Jolly good!
+
+***TIP
+A cool tip!
+***
 
 Now that we understand event bubbling, let's mess with it! Yes, we can actually
 *stop* the bubbling process... which is probably *not* something you want to do...
