@@ -49,6 +49,7 @@ chapters:
     javascript-objects:
         is_finished: true
         video_key: 198221335
+    new_chapter: ~
     static-objects-this:
         is_finished: true
         video_key: 198240124
@@ -116,11 +117,5 @@ chapters:
         is_finished: false
         video_key: ~
     promise-chaining:
-        is_finished: false
-        video_key: ~
-    sweet-alert-more-promises:
-        is_finished: false
-        video_key: ~
-    sweet-alert-create-promise:
         is_finished: false
         video_key: ~
