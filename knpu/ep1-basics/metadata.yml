@@ -1,126 +1,34 @@
-title:  JavaScript for PHP Geeks
-
-summary: |
-    You already know and write JavaScript... or really jQuery. But as JavaScript
-    takes on more of your life, it's time to take your game to the next level!
-    In this tutorial, we'll do just that by diving into a *bunch* of pieces of
-    JavaScript you may "kinda" understand, or which might be new to you altogether! 
-    This includes:
-
-    * Event Bubbling & DOM Events
-    * The DOM Element Object
-    * JavaScript Objects
-    * Instantiating objects with the prototype
-    * Understanding the mystical "this" & .bind
-    * Understanding Self-Executing Functions
-    * Delegate Selectors will save your Life
-    * Client-side templating
-    * PROMISES!
-
-    Let's not just write JavaScript, let's understand what's going on!
-
-illustration: javascript.png
-
-tuts_hero:
-    start_step: start
-    finish_step: promises-using-deletereplog-in-preconfirm
-
 chapters:
-    js-class-prefix:
-        is_free: true
-        video_key: 198210067
-    document-ready-ordering:
-        is_free: true
-        video_key: 198209940
-    event-bubbling:
-        is_free: true
-        video_key: 198206660
-    event-propagation:
-        video_key: 198203064
-    dom-element-object:
-        is_finished: true
-        video_key: 198209206
-    this-current-target:
-        is_finished: true
-        video_key: 198219734
-    data-attribute:
-        is_finished: true
-        video_key: 198221885
-    javascript-objects:
-        is_finished: true
-        video_key: 198221335
-    static-objects-this:
-        is_finished: true
-        video_key: 198240124
-    understanding-this-magic:
-        is_finished: true
-        video_key: 198239651
-    fixing-this-bind:
-        is_finished: true
-        video_key: 198239711
-    immediately-invoked-function-expression:
-        is_finished: true
-        video_key: 199171152
-    window-global-vars:
-        is_finished: true
-        video_key: 199171396
-    instantiatable-objects-constructor:
-        is_finished: false
-        video_key: ~
-    object-prototype:
-        is_finished: false
-        video_key: ~
-    prototype-proto:
-        is_finished: false
-        video_key: ~
-    extend-prototype:
-        is_finished: false
-        video_key: ~
-    ajax-form-submit:
-        is_finished: false
-        video_key: ~
-    old-school-ajax-html:
-        is_finished: false
-        video_key: ~
-    delegate-selectors-ftw:
-        is_finished: false
-        video_key: ~
-    post-proper-api-endpoint:
-        is_finished: false
-        video_key: ~
-    api-endpoint-post:
-        is_finished: false
-        video_key: ~
-    js-validation-error-handling:
-        is_finished: false
-        video_key: ~
-    clear-form-prep-template:
-        is_finished: false
-        video_key: ~
-    javascript-templating:
-        is_finished: false
-        video_key: ~
-    js-rendering-fosjsroutingbundle:
-        is_finished: false
-        video_key: ~
-    all-about-promises:
-        is_finished: false
-        video_key: ~
-    promises-catch:
-        is_finished: false
-        video_key: ~
-    promise-catch-error:
-        is_finished: false
-        video_key: ~
-    create-your-own-promise:
-        is_finished: false
-        video_key: ~
-    promise-chaining:
-        is_finished: false
-        video_key: ~
-    sweet-alert-more-promises:
-        is_finished: false
-        video_key: ~
-    sweet-alert-create-promise:
-        is_finished: false
-        video_key: ~
+    - js-class-prefix
+    - document-ready-ordering
+    - event-bubbling
+    - event-propagation
+    - dom-element-object
+    - this-current-target
+    - data-attribute
+    - javascript-objects
+    - static-objects-this
+    - understanding-this-magic
+    - fixing-this-bind
+    - immediately-invoked-function-expression
+    - window-global-vars
+    - instantiatable-objects-constructor
+    - object-prototype
+    - prototype-proto
+    - extend-prototype
+    - ajax-form-submit
+    - old-school-ajax-html
+    - delegate-selectors-ftw
+    - post-proper-api-endpoint
+    - api-endpoint-post
+    - js-validation-error-handling
+    - clear-form-prep-template
+    - javascript-templating
+    - js-rendering-fosjsroutingbundle
+    - all-about-promises
+    - promises-catch
+    - promise-catch-error
+    - create-your-own-promise
+    - promise-chaining
+    - sweet-alert-more-promises
+    - sweet-alert-create-promise
