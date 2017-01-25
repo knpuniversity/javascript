@@ -3,18 +3,27 @@
 In `RepLogApp`, when we try to call `this.helper.calculateTotalWeight`, for some
 reason, it doesn't think this is a function!
 
+[[[ code('698420622c') ]]]
+
 But down below, we can plainly see: `calculateTotalWeight` *is* a function! What
 the heck is going on?
 
 To find out, in `initialize`, let's log a few things: `console.log(this.helper)`
-and then `Object.keys(this.helper)`. The `Object.keys` method is an easy way to
-print the properties and methods *inside* an object.
+and then `Object.keys(this.helper)`:
+
+[[[ code('2d0321b3f2') ]]]
+
+The `Object.keys` method is an easy way to print the properties and methods *inside*
+an object.
 
 ## Comparing the Helper object and new Helper instance
 
-Do the same thing for `Helper` and `Object.keys(Helper)`. Let's look at what
-the difference is between our *instance* of the `Helper` object and the `Helper`
-object itself.
+Do the same thing for `Helper` and `Object.keys(Helper)`:
+
+[[[ code('0ecb4cba80') ]]]
+
+Let's look at what the difference is between our *instance* of the `Helper` object
+and the `Helper` object itself.
 
 Ok, find your browser, refresh, and check this out! There's the `helper` *instance*
 object, but check out the *methods* and properties on it: it has `$wrapper`. Wait,
@@ -37,8 +46,15 @@ It just doesn't work!
 ## Introducing the Prototype
 
 To fix this, instead of adding the method via `Helper.calculateTotalWeight`, we
-need to say `Helper.prototype.calculateTotalWeight`. That weird little trick fixes
-everything. To test it easily, back up in `initialize()`, let's try calling `this.helper.calculateTotalWeight()`.
+need to say `Helper.prototype.calculateTotalWeight`:
+
+[[[ code('2a282e6cbb') ]]]
+
+That weird little trick fixes everything. To test it easily, back up in `initialize()`,
+let's try calling `this.helper.calculateTotalWeight()`:
+
+[[[ code('2c3d5426c0') ]]]
+
 This did not work before, but refresh! 157.5 - it works now!
 
 The short explanation is that when you create objects that need to be instantiated,
