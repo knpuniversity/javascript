@@ -14,13 +14,13 @@ Here's the deal: when you call a method or access a property on an object, JavaS
 first looks for it on the object itself. But if it doesn't find it there, it looks
 at the `__proto__` property to see if it exists on *that* object. If it does, JavaScript
 uses it. If it does not exist, it actually keeps going to the next `__proto__` property
-*inside* of the original ``__proto__`` and tries to look for it there. It repeats
+*inside* of the original `__proto__` and tries to look for it there. It repeats
 that until it gets to the top level. What you are seeing here is the top-level
 `__proto__` that *every* object shares. In other words, these methods
 and properties exist on *every* object in JavaScript.
 
-Boy, if you think about it, this is a lot like class inheritance, where each ``__proto__``
-acts like a class we extend. And this last ``__proto__`` is like some base class
+Boy, if you think about it, this is a lot like class inheritance, where each `__proto__`
+acts like a class we extend. And this last `__proto__` is like some base class
 that *everything* extends.
 
 ## __proto__ and prototype?
