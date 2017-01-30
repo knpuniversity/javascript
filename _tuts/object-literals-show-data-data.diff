@@ -1,0 +1,16 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 5637614..99d8178 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -106,8 +106,10 @@
+ 
+         _saveRepLog: function(data) {
+             return new Promise((resolve, reject) => {
++                const url = Routing.generate('rep_log_new');
++
+                 $.ajax({
+-                    url: Routing.generate('rep_log_new'),
++                    url: url,
+                     method: 'POST',
+                     data: JSON.stringify(data)
+                 }).then((data, textStatus, jqXHR) => {

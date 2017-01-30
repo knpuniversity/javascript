@@ -1,0 +1,17 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 0f93162..84d7205 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -176,10 +176,11 @@
+     };
+     $.extend(Helper.prototype, {
+         calculateTotalWeight: function() {
+-            var totalWeight = 0;
++            let totalWeight = 0;
+             this.$wrapper.find('tbody tr').each((index, element) => {
+                 totalWeight += $(element).data('weight');
+             });
++            console.log(totalWeight);
+ 
+             return totalWeight;
+         }

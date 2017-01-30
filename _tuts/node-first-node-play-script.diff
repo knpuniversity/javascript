@@ -1,0 +1,7 @@
+diff --git a/play.js b/play.js
+new file mode 100644
+index 0000000..b991ba9
+--- /dev/null
++++ b/play.js
+@@ -0,0 +1 @@
++console.log('OMG! Node is JS on the server!');

@@ -1,0 +1,13 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 05e48d4..f8e6bc4 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -33,7 +33,7 @@
+             var self = this;
+             $.ajax({
+                 url: Routing.generate('rep_log_list'),
+-            }).then(function(data) {
++            }).then((data) => {
+                 $.each(data.items, function(key, repLog) {
+                     self._addRow(repLog);
+                 });

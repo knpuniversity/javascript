@@ -1,0 +1,44 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index a8fb819..8e3fccb 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -50,16 +50,15 @@
+ 
+             var $link = $(e.currentTarget);
+ 
+-            var self = this;
+             swal({
+                 title: 'Delete this log?',
+                 text: 'What? Did you not actually lift this?',
+                 showCancelButton: true,
+                 showLoaderOnConfirm: true,
+-                preConfirm: function() {
+-                    return self._deleteRepLog($link);
++                preConfirm: () => {
++                    return this._deleteRepLog($link);
+                 }
+-            }).catch(function(arg) {
++            }).catch((arg) => {
+                 // canceling is cool!
+             });
+         },
+@@ -73,15 +72,14 @@
+ 
+             var deleteUrl = $link.data('url');
+             var $row = $link.closest('tr');
+-            var self = this;
+ 
+             return $.ajax({
+                 url: deleteUrl,
+                 method: 'DELETE'
+-            }).then(function() {
+-                $row.fadeOut('normal', function () {
+-                    $(this).remove();
+-                    self.updateTotalWeightLifted();
++            }).then(() => {
++                $row.fadeOut('normal', () => {
++                    $row.remove();
++                    this.updateTotalWeightLifted();
+                 });
+             })
+         },

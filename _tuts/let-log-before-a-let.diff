@@ -1,0 +1,10 @@
+diff --git a/play.js b/play.js
+index d7d9843..c03c185 100644
+--- a/play.js
++++ b/play.js
+@@ -1,4 +1,4 @@
+-console.log(bar);
++console.log(aGreatNumber);
+ let aGreatNumber = 10;
+ 
+ if (true) {

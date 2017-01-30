@@ -1,0 +1,20 @@
+diff --git a/play.js b/play.js
+index 7a8ff74..ab4a96d 100644
+--- a/play.js
++++ b/play.js
+@@ -1,4 +1,7 @@
+ const aGreatNumber = 10;
++const aGreatObject = { withGreatKeys: true };
++
++aGreatObject.withGreatKeys = false;
+ 
+ if (true) {
+     //aGreatNumber = 42;
+@@ -6,6 +9,7 @@ if (true) {
+ 
+ setTimeout(() => {
+     console.log(aGreatNumber);
++    console.log(aGreatObject)
+ }, 1000);
+ 
+ console.log('waiting...');

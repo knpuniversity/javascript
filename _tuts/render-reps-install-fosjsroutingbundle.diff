@@ -34,10 +34,33 @@ index d8a07cb..aed8f22 100644
 +
 +fos_js_routing:
 +    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+diff --git a/composer.json b/composer.json
+index 119b9be..59778e0 100644
+--- a/composer.json
++++ b/composer.json
+@@ -30,7 +30,8 @@
+         "incenteev/composer-parameter-handler": "^2.0",
+         "friendsofsymfony/user-bundle": "~2.0@dev",
+         "doctrine/doctrine-fixtures-bundle": "~2.3",
+-        "doctrine/doctrine-migrations-bundle": "^1.2"
++        "doctrine/doctrine-migrations-bundle": "^1.2",
++        "friendsofsymfony/jsrouting-bundle": "^1.6"
+     },
+     "require-dev": {
+         "sensio/generator-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index 68c4f0f..d21e462 100644
+index 68c4f0f..85c55e1 100644
 --- a/composer.lock
 +++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "0401723570fd53ac57b8e1c19fade918",
++    "content-hash": "bc60b4b28f505533b5875aa24d2d784a",
+     "packages": [
+         {
+             "name": "doctrine/annotations",
 @@ -1025,6 +1025,64 @@
              "time": "2016-09-10T18:51:13+00:00"
          },
@@ -97,7 +120,7 @@ index 68c4f0f..d21e462 100644
 +                "javascript",
 +                "routing"
 +            ],
-+            "time": "2015-10-28 15:08:39"
++            "time": "2015-10-28T15:08:39+00:00"
 +        },
 +        {
              "name": "friendsofsymfony/user-bundle",
@@ -144,7 +167,7 @@ index 68c4f0f..d21e462 100644
 +                }
 +            ],
 +            "description": "JSONP callback validator.",
-+            "time": "2014-01-20 22:35:06"
++            "time": "2014-01-20T22:35:06+00:00"
 +        },
 +        {
              "name": "zendframework/zend-code",

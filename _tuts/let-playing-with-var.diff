@@ -1,0 +1,26 @@
+diff --git a/play.js b/play.js
+index a92ea77..e708486 100644
+--- a/play.js
++++ b/play.js
+@@ -1,5 +1,9 @@
+ var aGreatNumber = 10;
+ 
++if (true) {
++    aGreatNumber = 42;
++}
++
+ setTimeout(() => {
+     console.log(aGreatNumber);
+ }, 1000);
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 84d7205..9021a20 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -180,7 +180,6 @@
+             this.$wrapper.find('tbody tr').each((index, element) => {
+                 totalWeight += $(element).data('weight');
+             });
+-            console.log(totalWeight);
+ 
+             return totalWeight;
+         }

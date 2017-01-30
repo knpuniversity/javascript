@@ -1,0 +1,22 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index e531465..46307f1 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -41,7 +41,7 @@
+ 
+         updateTotalWeightLifted() {
+             this.$wrapper.find('.js-total-weight').html(
+-                this.helper.getTotalWeightString(500)
++                this.helper.getTotalWeightString()
+             );
+         },
+ 
+@@ -186,7 +186,7 @@
+             return totalWeight;
+         },
+ 
+-        getTotalWeightString(maxWeight) {
++        getTotalWeightString(maxWeight = 500) {
+             let weight = this.calculateTotalWeight();
+ 
+             if (weight > maxWeight) {

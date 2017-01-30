@@ -1,0 +1,13 @@
+diff --git a/play.js b/play.js
+index b991ba9..a92ea77 100644
+--- a/play.js
++++ b/play.js
+@@ -1 +1,7 @@
+-console.log('OMG! Node is JS on the server!');
++var aGreatNumber = 10;
++
++setTimeout(() => {
++    console.log(aGreatNumber);
++}, 1000);
++
++console.log('waiting...');

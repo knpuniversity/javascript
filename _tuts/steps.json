@@ -479,7 +479,152 @@
             "id": "promises-using-deletereplog-in-preconfirm",
             "name": "Promises: using _deleteRepLog in preConfirm",
             "description": null
+        },
+        {
+            "id": "ep2-prep-upgrade-deps",
+            "name": "Ep2 Prep: Upgrade deps",
+            "description": null
+        },
+        {
+            "id": "arrow-functions-full-body",
+            "name": "Arrow Functions: Full body",
+            "description": null
+        },
+        {
+            "id": "arrow-functions-no-around-arg",
+            "name": "Arrow Functions: No () around arg",
+            "description": null
+        },
+        {
+            "id": "arrow-functions-this-preserved",
+            "name": "Arrow Functions: this preserved",
+            "description": null
+        },
+        {
+            "id": "arrow-functions-no-more-self",
+            "name": "Arrow Functions: no more self",
+            "description": null
+        },
+        {
+            "id": "arrow-functions-use-them-on-delete-ops",
+            "name": "Arrow Functions: Use them on delete ops",
+            "description": null
+        },
+        {
+            "id": "arrow-functions-convert-the-rest",
+            "name": "Arrow Functions Convert the rest",
+            "description": null
+        },
+        {
+            "id": "arrow-functions-return-without-a-body",
+            "name": "Arrow Functions: Return without a body",
+            "description": null
+        },
+        {
+            "id": "node-first-node-play-script",
+            "name": "Node: first node play script",
+            "description": null
+        },
+        {
+            "id": "node-playing-with-arrow-functions",
+            "name": "Node: Playing with arrow functions",
+            "description": null
+        },
+        {
+            "id": "let-trying-it-once",
+            "name": "let: Trying it once",
+            "description": null
+        },
+        {
+            "id": "let-playing-with-var",
+            "name": "let: Playing with var",
+            "description": null
+        },
+        {
+            "id": "let-using-var-multiple-times",
+            "name": "let: Using var multiple times",
+            "description": null
+        },
+        {
+            "id": "let-change-to-let-show-scoping",
+            "name": "let: change to let, show scoping",
+            "description": null
+        },
+        {
+            "id": "let-without-another-let-same-var",
+            "name": "let: without another let, same var",
+            "description": null
+        },
+        {
+            "id": "let-log-a-completely-undefined-var",
+            "name": "let: log a completely undefined var",
+            "description": null
+        },
+        {
+            "id": "let-log-before-a-let",
+            "name": "let: log before a let",
+            "description": null
+        },
+        {
+            "id": "let-show-var-hoisting",
+            "name": "let: show var hoisting",
+            "description": null
+        },
+        {
+            "id": "let-change-to-all-let",
+            "name": "let: Change to all let",
+            "description": null
+        },
+        {
+            "id": "const-try-it-out",
+            "name": "const: Try it out",
+            "description": null
+        },
+        {
+            "id": "const-removing-assignment",
+            "name": "const: Removing assignment",
+            "description": null
+        },
+        {
+            "id": "const-object-keys-not-protected",
+            "name": "const: Object keys not protected",
+            "description": null
+        },
+        {
+            "id": "const-using-const-everywhere",
+            "name": "const: Using const everywhere",
+            "description": null
+        },
+        {
+            "id": "object-literals-show-data-data",
+            "name": "Object Literals: Show data: data",
+            "description": null
+        },
+        {
+            "id": "object-literals-use-value-as-key-val",
+            "name": "Object Literals: use value as key+val",
+            "description": null
+        },
+        {
+            "id": "object-literals-funtion-key-shorthand",
+            "name": "Object Literals: funtion key shorthand",
+            "description": null
+        },
+        {
+            "id": "default-args-new-gettotalweightstring-func",
+            "name": "Default args: New getTotalWeightString func",
+            "description": null
+        },
+        {
+            "id": "default-args-add-arg-to-method",
+            "name": "Default args: add arg to method",
+            "description": null
+        },
+        {
+            "id": "default-args-use-default-arg",
+            "name": "Default args: use default arg",
+            "description": null
         }
     ],
-    "sha": "6e2e39311f10a77269bc9d988668022b0c1a69e0"
+    "sha": "f338a93c78d6481e7780c71018ae4a428d938225"
 }
