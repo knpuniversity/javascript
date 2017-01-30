@@ -624,7 +624,87 @@
             "id": "default-args-use-default-arg",
             "name": "Default args: use default arg",
             "description": null
+        },
+        {
+            "id": "classes-basic-class-syntax",
+            "name": "Classes: Basic Class syntax",
+            "description": null
+        },
+        {
+            "id": "classes-fully-convert-helper",
+            "name": "Classes: Fully convert Helper",
+            "description": null
+        },
+        {
+            "id": "classes-start-to-move-replogapp",
+            "name": "Classes: Start to move RepLogApp",
+            "description": null
+        },
+        {
+            "id": "classes-change-selectors-prop-to-method",
+            "name": "Classes: Change _selectors prop to method",
+            "description": null
+        },
+        {
+            "id": "classes-moving-rest-of-replogapp-to-class",
+            "name": "Classes: Moving rest of RepLogApp to class",
+            "description": null
+        },
+        {
+            "id": "classes-showing-get-syntax",
+            "name": "Classes: Showing get syntax",
+            "description": null
+        },
+        {
+            "id": "classes-export-replogapp-to-window",
+            "name": "Classes: export RepLogApp to Window",
+            "description": null
+        },
+        {
+            "id": "classes-static-method",
+            "name": "Classes: static method",
+            "description": null
+        },
+        {
+            "id": "classes-referencing-it-statically",
+            "name": "Classes: Referencing it statically",
+            "description": null
+        },
+        {
+            "id": "classes-a-helper-static-method-example",
+            "name": "Classes: A Helper static method example",
+            "description": null
+        },
+        {
+            "id": "extends-create-a-simple-class",
+            "name": "Extends: Create a simple class",
+            "description": null
+        },
+        {
+            "id": "extends-extend-with-a-new-class",
+            "name": "Extends: Extend with a new class",
+            "description": null
+        },
+        {
+            "id": "extends-override-method",
+            "name": "Extends: Override method",
+            "description": null
+        },
+        {
+            "id": "extends-call-super-method",
+            "name": "Extends: Call super method",
+            "description": null
+        },
+        {
+            "id": "extends-override-constructor",
+            "name": "Extends: Override constructor",
+            "description": null
+        },
+        {
+            "id": "extends-calling-super",
+            "name": "Extends: Calling super()",
+            "description": null
         }
     ],
-    "sha": "f338a93c78d6481e7780c71018ae4a428d938225"
+    "sha": "368bae2670d4ec3bef07482589d358c71f2dcf20"
 }

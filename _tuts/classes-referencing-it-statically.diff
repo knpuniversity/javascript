@@ -1,0 +1,40 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 5a27d7c..d665a86 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -20,7 +20,7 @@
+             );
+             this.$wrapper.on(
+                 'submit',
+-                this._selectors.newRepForm,
++                RepLogApp._selectors.newRepForm,
+                 this.handleNewFormSubmit.bind(this)
+             );
+         }
+@@ -134,7 +134,7 @@
+ 
+         _mapErrorsToForm(errorData) {
+             this._removeFormErrors();
+-            const $form = this.$wrapper.find(this._selectors.newRepForm);
++            const $form = this.$wrapper.find(RepLogApp._selectors.newRepForm);
+ 
+             $form.find(':input').each((index, element) => {
+                 const fieldName = $(element).attr('name');
+@@ -152,7 +152,7 @@
+         }
+ 
+         _removeFormErrors() {
+-            const $form = this.$wrapper.find(this._selectors.newRepForm);
++            const $form = this.$wrapper.find(RepLogApp._selectors.newRepForm);
+             $form.find('.js-field-error').remove();
+             $form.find('.form-group').removeClass('has-error');
+         }
+@@ -160,7 +160,7 @@
+         _clearForm() {
+             this._removeFormErrors();
+ 
+-            const $form = this.$wrapper.find(this._selectors.newRepForm);
++            const $form = this.$wrapper.find(RepLogApp._selectors.newRepForm);
+             $form[0].reset();
+         }
+ 

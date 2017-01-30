@@ -1,0 +1,24 @@
+diff --git a/play.js b/play.js
+index b507c09..4b6ee5d 100644
+--- a/play.js
++++ b/play.js
+@@ -10,7 +10,9 @@ class AGreatClass {
+ }
+ 
+ class AnotherGreatClass extends AGreatClass{
+-    constructor(greatWord) {
++    constructor(greatNumber, greatWord) {
++        super(greatNumber);
++
+         this.greatWord = greatWord;
+     }
+ 
+@@ -21,7 +23,7 @@ class AnotherGreatClass extends AGreatClass{
+     }
+ }
+ 
+-const aGreatObject = new AnotherGreatClass(42);
++const aGreatObject = new AnotherGreatClass(42, 'adventure');
+ console.log(
+     aGreatObject.returnGreatThings()
+ );

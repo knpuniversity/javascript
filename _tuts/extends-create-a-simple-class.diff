@@ -1,0 +1,31 @@
+diff --git a/play.js b/play.js
+index ab4a96d..4053392 100644
+--- a/play.js
++++ b/play.js
+@@ -1,15 +1,15 @@
+-const aGreatNumber = 10;
+-const aGreatObject = { withGreatKeys: true };
+ 
+-aGreatObject.withGreatKeys = false;
++class AGreatClass {
++    constructor(greatNumber) {
++        this.greatNumber = greatNumber;
++    }
+ 
+-if (true) {
+-    //aGreatNumber = 42;
++    returnGreatThings() {
++        return this.greatNumber;
++    }
+ }
+ 
+-setTimeout(() => {
+-    console.log(aGreatNumber);
+-    console.log(aGreatObject)
+-}, 1000);
+-
+-console.log('waiting...');
++const aGreatObject = new AGreatClass(42);
++console.log(
++    aGreatObject.returnGreatThings()
++);

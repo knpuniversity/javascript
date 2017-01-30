@@ -1,0 +1,13 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index d719f3c..5a27d7c 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -28,7 +28,7 @@
+         /**
+          * Call like this.selectors
+          */
+-        get _selectors() {
++        static get _selectors() {
+             return {
+                 newRepForm: '.js-new-rep-log-form'
+             }

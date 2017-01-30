@@ -1,0 +1,15 @@
+diff --git a/play.js b/play.js
+index 9b58e28..efac54f 100644
+--- a/play.js
++++ b/play.js
+@@ -11,7 +11,9 @@ class AGreatClass {
+ 
+ class AnotherGreatClass extends AGreatClass{
+     returnGreatThings() {
+-        return 'adventure';
++        let greatNumber = super.returnGreatThings();
++
++        return [greatNumber, 'adventure'];
+     }
+ }
+ 

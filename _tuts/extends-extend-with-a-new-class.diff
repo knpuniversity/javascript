@@ -1,0 +1,17 @@
+diff --git a/play.js b/play.js
+index 4053392..ff9415a 100644
+--- a/play.js
++++ b/play.js
+@@ -9,7 +9,11 @@ class AGreatClass {
+     }
+ }
+ 
+-const aGreatObject = new AGreatClass(42);
++class AnotherGreatClass extends AGreatClass{
++
++}
++
++const aGreatObject = new AnotherGreatClass(42);
+ console.log(
+     aGreatObject.returnGreatThings()
+ );

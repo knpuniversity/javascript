@@ -1,0 +1,11 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 1bf3a15..d719f3c 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -202,4 +202,6 @@
+             return weight + ' lbs';
+         }
+     }
++
++    window.RepLogApp = RepLogApp;
+ })(window, jQuery, Routing, swal);
