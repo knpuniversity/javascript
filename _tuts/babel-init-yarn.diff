@@ -1,0 +1,14 @@
+diff --git a/package.json b/package.json
+new file mode 100644
+index 0000000..f5d0db3
+--- /dev/null
++++ b/package.json
+@@ -0,0 +1,8 @@
++{
++  "name": "javascript",
++  "version": "1.0.0",
++  "main": "index.js",
++  "repository": "git@github.com:knpuniversity/javascript.git",
++  "author": "Ryan Weaver <ryan@thatsquality.com>",
++  "license": "MIT"
++}

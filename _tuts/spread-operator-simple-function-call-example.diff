@@ -1,0 +1,55 @@
+diff --git a/play.js b/play.js
+index 4b6ee5d..548a19b 100644
+--- a/play.js
++++ b/play.js
+@@ -1,29 +1,7 @@
++let printThreeThings = function(thing1, thing2, thing3) {
++    console.log(thing1, thing2, thing3);
++};
+ 
+-class AGreatClass {
+-    constructor(greatNumber) {
+-        this.greatNumber = greatNumber;
+-    }
++let yummyThings = ['pizza', 'gelato', 'sushi'];
+ 
+-    returnGreatThings() {
+-        return this.greatNumber;
+-    }
+-}
+-
+-class AnotherGreatClass extends AGreatClass{
+-    constructor(greatNumber, greatWord) {
+-        super(greatNumber);
+-
+-        this.greatWord = greatWord;
+-    }
+-
+-    returnGreatThings() {
+-        let greatNumber = super.returnGreatThings();
+-
+-        return [greatNumber, this.greatWord];
+-    }
+-}
+-
+-const aGreatObject = new AnotherGreatClass(42, 'adventure');
+-console.log(
+-    aGreatObject.returnGreatThings()
+-);
++printThreeThings(...yummyThings);
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 12ad8c9..cd14d90 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -165,8 +165,9 @@
+         }
+ 
+         _addRow(repLog) {
+-            let {id, itemLabel, reps, totallyMadeUpKey = 'whatever!'} = repLog;
+-            console.log(id, itemLabel, reps, totallyMadeUpKey);
++            // destructuring example
++            // let {id, itemLabel, reps, totallyMadeUpKey = 'whatever!'} = repLog;
++            // console.log(id, itemLabel, reps, totallyMadeUpKey);
+ 
+             const tplText = $('#js-rep-log-row-template').html();
+             const tpl = _.template(tplText);

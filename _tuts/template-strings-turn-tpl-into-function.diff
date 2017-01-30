@@ -1,0 +1,25 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 71d497b..1998b33 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -170,10 +170,7 @@
+             // let {id, itemLabel, reps, totallyMadeUpKey = 'whatever!'} = repLog;
+             // console.log(id, itemLabel, reps, totallyMadeUpKey);
+ 
+-            const tplText = rowTemplate;
+-            const tpl = _.template(tplText);
+-
+-            const html = tpl(repLog);
++            const html = rowTemplate(repLog);
+             this.$wrapper.find('tbody').append($.parseHTML(html));
+ 
+             this.updateTotalWeightLifted();
+@@ -214,7 +211,7 @@
+         }
+     }
+ 
+-    const rowTemplate = `
++    const rowTemplate = (repLog) => `
+ <tr data-weight="${repLog.totalWeightLifted}">
+     <td>${repLog.itemLabel}</td>
+     <td>${repLog.reps}</td>

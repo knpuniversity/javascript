@@ -704,7 +704,192 @@
             "id": "extends-calling-super",
             "name": "Extends: Calling super()",
             "description": null
+        },
+        {
+            "id": "destructuring-logging-replog",
+            "name": "Destructuring: logging repLog",
+            "description": null
+        },
+        {
+            "id": "destructuring-setting-local-vars-from-replog",
+            "name": "Destructuring: setting local vars from repLog",
+            "description": null
+        },
+        {
+            "id": "destructuring-using-a-bad-key",
+            "name": "Destructuring: Using a bad key",
+            "description": null
+        },
+        {
+            "id": "destructuring-default-for-bad-key",
+            "name": "Destructuring: default for bad key",
+            "description": null
+        },
+        {
+            "id": "spread-operator-simple-function-call-example",
+            "name": "Spread Operator: Simple function call example",
+            "description": null
+        },
+        {
+            "id": "spread-operator-passing-4th-item",
+            "name": "Spread Operator: Passing 4th item",
+            "description": null
+        },
+        {
+            "id": "spread-operator-combining-arrays",
+            "name": "Spread Operator: Combining arrays",
+            "description": null
+        },
+        {
+            "id": "spread-operator-bad-copy-of-array",
+            "name": "Spread Operator: Bad copy of array",
+            "description": null
+        },
+        {
+            "id": "spread-operator-copy-via-spread-op",
+            "name": "Spread Operator: Copy via spread op",
+            "description": null
+        },
+        {
+            "id": "template-strings-simple-example-no-ticks",
+            "name": "Template Strings: Simple example, no ticks",
+            "description": null
+        },
+        {
+            "id": "template-strings-add-expressions",
+            "name": "Template Strings: Add expressions",
+            "description": null
+        },
+        {
+            "id": "template-strings-moving-template-with-single-quotes",
+            "name": "Template Strings: Moving template with single quotes",
+            "description": null
+        },
+        {
+            "id": "template-strings-using-ticks",
+            "name": "Template Strings: Using ticks!",
+            "description": null
+        },
+        {
+            "id": "template-strings-expressions-with-undefined-vars",
+            "name": "Template Strings: Expressions with undefined vars",
+            "description": null
+        },
+        {
+            "id": "template-strings-turn-tpl-into-function",
+            "name": "Template Strings: turn tpl into function",
+            "description": null
+        },
+        {
+            "id": "template-strings-tagged-template-for-upper",
+            "name": "Template Strings: Tagged template for upper",
+            "description": null
+        },
+        {
+            "id": "template-strings-removed-tagged-template",
+            "name": "Template Strings: Removed tagged template",
+            "description": null
+        },
+        {
+            "id": "for-of-use-for-of-everywhere",
+            "name": "For of: Use for of everywhere!",
+            "description": null
+        },
+        {
+            "id": "maps-creating-an-old-hash",
+            "name": "Maps: Creating an old hash",
+            "description": null
+        },
+        {
+            "id": "maps-use-a-nice-map",
+            "name": "Maps: Use a nice map",
+            "description": null
+        },
+        {
+            "id": "maps-map-prototype-has",
+            "name": "Maps: Map.prototype.has",
+            "description": null
+        },
+        {
+            "id": "maps-use-an-array-key",
+            "name": "Maps: Use an Array key",
+            "description": null
+        },
+        {
+            "id": "maps-use-array-prorotype-size",
+            "name": "Maps: Use Array.prorotype.size",
+            "description": null
+        },
+        {
+            "id": "weakmap-change-to-weakmap",
+            "name": "WeakMap: Change to WeakMap",
+            "description": null
+        },
+        {
+            "id": "weakmap-use-only-object-keys",
+            "name": "WeakMap: Use only object keys",
+            "description": null
+        },
+        {
+            "id": "weakmap-set-ussouthernstates-to-null",
+            "name": "WeakMap: Set usSouthernStates to null",
+            "description": null
+        },
+        {
+            "id": "weakmap-make-helper-truly-private",
+            "name": "WeakMap: Make Helper truly private",
+            "description": null
+        },
+        {
+            "id": "weakmap-use-map-for-multiple-instances",
+            "name": "WeakMap: Use map for multiple instances",
+            "description": null
+        },
+        {
+            "id": "weakmap-gc-experiment-with-map",
+            "name": "WeakMap: GC experiment with Map",
+            "description": null
+        },
+        {
+            "id": "weakmap-using-weakmap-for-gc",
+            "name": "WeakMap: Using WeakMap for GC",
+            "description": null
+        },
+        {
+            "id": "weakmap-removing-debug-code",
+            "name": "WeakMap: Removing debug code",
+            "description": null
+        },
+        {
+            "id": "set-use-a-set-for-replogs",
+            "name": "Set: Use a set for repLogs",
+            "description": null
+        },
+        {
+            "id": "set-pass-set-into-helper",
+            "name": "Set: Pass set into Helper",
+            "description": null
+        },
+        {
+            "id": "babel-init-yarn",
+            "name": "Babel: Init yarn",
+            "description": null
+        },
+        {
+            "id": "babel-install-babel-cli",
+            "name": "Babel: Install babel-cli",
+            "description": null
+        },
+        {
+            "id": "babel-transpile-replogapp-js",
+            "name": "Babel: Transpile RepLogApp.js",
+            "description": null
+        },
+        {
+            "id": "babel-install-use-env-preset",
+            "name": "Babel: Install & use env preset",
+            "description": null
         }
     ],
-    "sha": "368bae2670d4ec3bef07482589d358c71f2dcf20"
+    "sha": "38ca4e188e6fca4342bb005c06bd22b301d05b1b"
 }

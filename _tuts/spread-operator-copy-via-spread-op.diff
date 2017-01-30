@@ -1,0 +1,13 @@
+diff --git a/play.js b/play.js
+index ea7da28..a1997da 100644
+--- a/play.js
++++ b/play.js
+@@ -2,7 +2,7 @@ let yummyThings = ['pizza', 'gelato', 'sushi', 'cheeseburger'];
+ 
+ let greatThings = ['swimming', 'sunsets', ...yummyThings, 'New Orleans'];
+ 
+-let copyOfGreatThings = greatThings;
++let copyOfGreatThings = [...greatThings];
+ copyOfGreatThings.push('summer');
+ 
+ console.log(greatThings);

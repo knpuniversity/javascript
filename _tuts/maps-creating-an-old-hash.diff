@@ -1,0 +1,14 @@
+diff --git a/play.js b/play.js
+index 34cfca4..547f6f0 100644
+--- a/play.js
++++ b/play.js
+@@ -1,4 +1,6 @@
+-const favoriteFood = 'gelato';
+-const iLoveFood = `The year is ${(new Date()).getFullYear()} and my favorite food is ${favoriteFood}`;
++let foods = {};
++foods.italian = 'gelato';
++foods.mexican = 'tortas';
++foods.canadian = 'poutine';
+ 
+-console.log(iLoveFood);
++console.log(foods.italian);

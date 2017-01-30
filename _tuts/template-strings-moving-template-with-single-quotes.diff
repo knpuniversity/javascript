@@ -1,0 +1,26 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index cd14d90..9ca8a8f 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -213,5 +213,21 @@
+         }
+     }
+ 
++    const rowTemplate = '
++<tr data-weight="<%= totalWeightLifted %>">
++    <td><%= itemLabel %></td>
++    <td><%= reps %></td>
++    <td><%= totalWeightLifted %></td>
++    <td>
++        <a href="#"
++           class="js-delete-rep-log"
++           data-url="<%= links._self %>"
++        >
++            <span class="fa fa-trash"></span>
++        </a>
++    </td>
++</tr>
++';
++
+     window.RepLogApp = RepLogApp;
+ })(window, jQuery, Routing, swal);

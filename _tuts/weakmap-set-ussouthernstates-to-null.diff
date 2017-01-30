@@ -1,0 +1,12 @@
+diff --git a/play.js b/play.js
+index e50c2d3..96c132c 100644
+--- a/play.js
++++ b/play.js
+@@ -5,6 +5,7 @@ foods.set(['canadian'], 'poutine');
+ 
+ let southernUsStates = ['Tennessee', 'Kentucky', 'Texas'];
+ foods.set(southernUsStates, 'hot chicken');
++southernUsStates = null;
+ 
+ console.log(
+     foods.get(['italian']),

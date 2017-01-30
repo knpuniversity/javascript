@@ -1,0 +1,13 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 591cf30..12ad8c9 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -165,7 +165,7 @@
+         }
+ 
+         _addRow(repLog) {
+-            let {id, itemLabel, reps, totallyMadeUpKey} = repLog;
++            let {id, itemLabel, reps, totallyMadeUpKey = 'whatever!'} = repLog;
+             console.log(id, itemLabel, reps, totallyMadeUpKey);
+ 
+             const tplText = $('#js-rep-log-row-template').html();

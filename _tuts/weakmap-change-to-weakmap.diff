@@ -1,0 +1,10 @@
+diff --git a/play.js b/play.js
+index e009479..e03faf0 100644
+--- a/play.js
++++ b/play.js
+@@ -1,4 +1,4 @@
+-let foods = new Map();
++let foods = new WeakMap();
+ foods.set('italian', 'gelato');
+ foods.set('mexican', 'tortas');
+ foods.set('canadian', 'poutine');

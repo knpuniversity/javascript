@@ -1,0 +1,12 @@
+diff --git a/play.js b/play.js
+index 8d69190..e009479 100644
+--- a/play.js
++++ b/play.js
+@@ -8,5 +8,6 @@ foods.set(southernUsStates, 'hot chicken');
+ 
+ console.log(
+     foods.get('italian'),
+-    foods.get(southernUsStates)
++    foods.get(southernUsStates),
++    foods.size
+ );

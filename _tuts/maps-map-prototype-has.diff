@@ -1,0 +1,13 @@
+diff --git a/play.js b/play.js
+index e41439b..1bff962 100644
+--- a/play.js
++++ b/play.js
+@@ -3,4 +3,7 @@ foods.set('italian', 'gelato');
+ foods.set('mexican', 'tortas');
+ foods.set('canadian', 'poutine');
+ 
+-console.log(foods.get('italian'));
++console.log(
++    foods.get('italian'),
++    foods.has('french')
++);
