@@ -20,18 +20,30 @@ I wanted to show this because we are *not* going to send data in this format. Re
 our endpoint expects pure JSON. So `$form.serialize()` is not going to work anymore.
 
 Instead, above the AJAX call, create a new `formData` variable set to an associative
-array, or an object. Next, use `$.each($form.serializeArray())`. If you Google for
-that function - jQuery `serializeArray` - you'll see that it finds all the fields
-in a form and returns a big array with keys `name` and `value` for each field.
+array, or an object:
+
+[[[ code('ebcd7c9ec1') ]]]
+
+Next, use `$.each($form.serializeArray())`:
+
+[[[ code('dc5e1eaf20') ]]]
+
+If you Google for that function - jQuery `serializeArray()` - you'll see that it finds
+all the fields in a form and returns a big array with keys `name` and `value` for each
+field.
 
 This is not exactly what we want: we want an array where the `name` is the array key
 and that field's value is its value. No problem, because we can loop over this and
 turn it into that format. Add a function with `key` and `fieldData` arguments. Then
-inside, simply say, `formData[fieldData.name] = fieldData.value`.
+inside, simply say, `formData[fieldData.name] = fieldData.value`:
 
-Now that `formData` has the right format, turn it into JSON with `JSON.stringify(formData)`.
+[[[ code('f5f8306321') ]]]
 
-Remember, we're doing this because that's what our endpoint expects: it will `json_decode`
+Now that `formData` has the right format, turn it into JSON with `JSON.stringify(formData)`:
+
+[[[ code('8c54eada62') ]]]
+
+Remember, we're doing this because that's what our endpoint expects: it will `json_decode()`
 the request body.
 
 Ok, moment of truth. Refresh! Let's lift our laptop 10 times. Submit! Of course,
