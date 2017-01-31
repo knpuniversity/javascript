@@ -29,31 +29,53 @@ stuff.
 ## Making $wrapper Wrap Everything
 
 In both situations, step one is the same: we need attach a listener on submit of
-the form. Head over to our template. The form itself lives in another template that's
-included here: `_form.html.twig` inside `app/Resources/views/lift`.
+the form. Head over to our template:
+
+[[[ code('934c218f68') ]]]
+
+The form itself lives in another template that's included here: `_form.html.twig`
+inside `app/Resources/views/lift`:
+
+[[[ code('79d70629fe') ]]]
 
 This is a Symfony form, but all this fanciness ultimately renders a good, old-fashioned
-`form` tag. Give the form another class: `js-new-rep-log-form`. Copy that and head
-into `RepLogApp` so we can attach a new listener. But wait... there *is* one problem:
-the `$wrapper` is actually the `<table>` element... and the form does *not* live
-inside of the `<table>`!
+`form` tag. Give the form another class: `js-new-rep-log-form`:
+
+[[[ code('02aca3552c') ]]]
+
+Copy that and head into `RepLogApp` so we can attach a new listener. But wait...
+there *is* one problem: the `$wrapper` is actually the `<table>` element:
+
+[[[ code('4e3f92131b') ]]]
+
+And the form does *not* live inside of the `<table>`!
 
 When you create little JavaScript applications like `RepLogApp`, you want the wrapper
 to be an element that goes around *everything* you need to manipulate.
 
 Ok, no problem: let's move the `js-rep-log-table` class from the table itself to
-the `div` that surrounds *everything*. Down below, I don't need to change anything
-here, but let's rename `$table` to `$wrapper` for clarity.
+the `div` that surrounds *everything*:
+
+[[[ code('997e37966c') ]]]
+
+Down below, I don't need to change anything here, but let's rename `$table` to `$wrapper`
+for clarity:
+
+[[[ code('2e699e109c') ]]]
 
 ## The Form Submit Listener
 
 *Now* adding our listener is simple: `this.$wrapper.find()` and look for
 `.js-new-rep-log-form`. Then, `.on('submit')`, have this call a new method:
-`this.handleNewFormSubmit`. And don't forget the all-important `.bind(this)`.
+`this.handleNewFormSubmit`. And don't forget the all-important `.bind(this)`:
+
+[[[ code('a1e20b17da') ]]]
 
 Down below, add that function - `handleNewFormSubmit` - and give it the event argument.
 This time, calling `e.preventDefault()` will prevent the form from *actually* submitting,
-which is good. For now, just `console.log('submitting')`.
+which is good. For now, just `console.log('submitting')`:
+
+[[[ code('701fec31cc') ]]]
 
 Ok, test time! Head back, refresh, and try the form. Yes! We get the log, but the
 form doesn't submit.
@@ -64,11 +86,17 @@ Turning this form into an AJAX call will be really easy... because we already kn
 that this form works if we submit it in the traditional way. So let's just literally
 send that *exact* same request, but via AJAX.
 
-First, get the form with `$form = $(e.currentTarget)`. Next, add `$.ajax()`, set
-the `url` to `$form.attr('action')` and the `method` to `POST`. For the `data`, use
-`$form.serialize()`. That's a really lazy way to get all the values for all the fields
-in the form and put them in the exact format that the server is accustomed to seeing
-for a form submit.
+First, get the form with `$form = $(e.currentTarget)`:
+
+[[[ code('4334f88975') ]]]
+
+Next, add `$.ajax()`, set the `url` to `$form.attr('action')` and the `method` to `POST`.
+For the `data`, use `$form.serialize()`:
+
+[[[ code('f9daea6ca5') ]]]
+
+That's a really lazy way to get all the values for all the fields in the form and put
+them in the exact format that the server is accustomed to seeing for a form submit.
 
 That's already enough to work! Submit that form! Yea, you can see the AJAX calls
 in the console and web debug toolbar. Of course, we don't see any new rows until
