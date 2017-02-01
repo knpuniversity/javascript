@@ -106,6 +106,16 @@ file, inside quotes, say `'use strict'`:
 
 [[[ code('a26af1496d') ]]]
 
+***TIP
+Even better! Put `'use strict'` inside the self-executing function. Adding `'use strict'`
+applies to the function its inside of and any functions inside of that (just like
+creating a variable with `var`). If you add it outside of a function (like we did),
+it affects the entire file. In this case, both locations are effectively identical.
+But, if you use a tool that concatenates your JS files into a single file, it's safer
+to place `'use strict'` inside the self-executing function, to ensure it doesn't affect
+those other concatenated files!
+***
+
 I know, weird. This is a special JavaScript directive that tells your browser to
 activate a more strict parsing mode. Now, certain things that *were* allowed before,
 will cause legit errors. And sure enough, when we refresh, we get:
