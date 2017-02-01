@@ -546,6 +546,11 @@
             "description": null
         },
         {
+            "id": "let-putting-second-var-in-new-function",
+            "name": "let: Putting second var in new function",
+            "description": null
+        },
+        {
             "id": "let-change-to-let-show-scoping",
             "name": "let: change to let, show scoping",
             "description": null
@@ -891,5 +896,5 @@
             "description": null
         }
     ],
-    "sha": "38ca4e188e6fca4342bb005c06bd22b301d05b1b"
+    "sha": "02b79f2099a69c0bba95a5a1e908411493ac2a9b"
 }

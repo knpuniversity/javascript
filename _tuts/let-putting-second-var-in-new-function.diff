@@ -1,0 +1,15 @@
+diff --git a/play.js b/play.js
+index 4bad8ec..d669f40 100644
+--- a/play.js
++++ b/play.js
+@@ -1,7 +1,9 @@
+ var aGreatNumber = 10;
+ 
+ if (true) {
+-    var aGreatNumber = 42;
++    (() => {
++        var aGreatNumber = 42;
++    })();
+ }
+ 
+ setTimeout(() => {
