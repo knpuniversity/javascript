@@ -70,7 +70,7 @@ class LiftController extends BaseController
             $leaderboard[] = array(
                 'username' => $user->getUsername(),
                 'weight' => $details['weightSum'],
-                'in_cats' => number_format($details['weightSum']/RepLog::WEIGHT_FAT_CAT, 1),
+                'in_cats' => number_format($details['weightSum']/RepLog::WEIGHT_FAT_CAT),
             );
         }
 
