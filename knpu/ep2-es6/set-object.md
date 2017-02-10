@@ -1,0 +1,13 @@
+# Set Object
+
+We've got map object, which is fun. We've got week map, which is used for these kinds of edge case of private scope. There's another one called set. A set is a way, is a new object that just helps you with simple arrays. For example, right now when the page loads, we call it load rep log. This gets back a bunch of rep log data. These are used inside the add row to actually add the TR elements to our page, which is what we see here.
+
+We don't actually keep track of these rep log objects. We use them to build a page, but then we just let go of them. I'm going to start actually keeping track of that array of rep logs. You'll see why in a second. At the top of this, let's actually initialize a new ... This dot rep logs equals new set. Then down here, inside of add row, we'll say this dot rep logs, which is the set, dot add rep log. You can see it's not a keyed array, it's just something that you add items to you.
+
+Like map, it has a lot of really helpful methods on it, so it's just easier to work with rather than a normal Java script array. Back up top, inside the load rep logs, after the four loop, let's just see how this looks. Let's do counsel dot log on this dot rep logs, and also we'll use one of those helpful methods. This dot rep logs dot has, and we will see if it has one of the rep logs that we know will be in this data items array.
+
+We'll say it should have data dot items left stroke bracket zero. We'll check and make sure that the first rep log in there is inside of our set. Sure enough, when we refresh, we get this great new set here, and we have true. That's awesome. The nice thing about keeping track of our rep logs in this way is that before a helper function would pass a wrapper, and then it looped over the TR elements to read the weight on them. We can totally simplify this now. I'm actually going to pass it our set.
+
+Down at the bottom of this file, this will now be rep logs. Set that on your rep logs properly. Down to calculate total weight, instead of using the wrapper to find all of our TR elements, we're just going to pass it this dot rep log. We'll pass the set into our static function down here. Here I'll say rep log set. Now previously, calculate total weight would loop over the elements and read the data-weight attribute on it.
+
+Now, instead, we're going to say let rep log of rep log set. Even though this is an object, it acts like an array, which means that we can loop over it. Now here we can replace this with rep log dot total weight lifted, which is one of the keys that we have on our rep log object. With all that, we're going to refresh now. Still get the list, and we still get the total on the bottom. Sets, it's arrays with some nice new stuff.
