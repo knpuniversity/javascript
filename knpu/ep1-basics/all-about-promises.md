@@ -33,11 +33,9 @@ Whenever something asynchronous happen, there are two possible outcomes: either
 the asynchronous call finished successfully, or it failed. In Promise language, we
 say that the Promise was fulfilled or the Promise was rejected.
 
-Look at the code block, but ignore the creation of the Promise - that's the part
-we normally don't need to worry about. Here's the basic idea: if something happens
-asynchronously - like an AJAX call - that code should return a Promise object. If
-it does, we can call `.then()` on it, and pass it the function that should be executed
-when the operation finishes successfully.
+Here's the basic idea: if something happens asynchronously - like an AJAX call -
+that code should return a Promise object. If it does, we can call `.then()` on it,
+and pass it the function that should be executed when the operation finishes successfully.
 
 Now that we know that, Google for "jQuery Ajax" to find the
 [$.ajax documentation](http://api.jquery.com/jquery.ajax/). Check this out: normally

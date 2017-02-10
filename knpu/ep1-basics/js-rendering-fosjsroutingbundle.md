@@ -1,4 +1,4 @@
-# Full-JavaScript Rendering & FOSjsRoutingBundle
+# Full-JavaScript Rendering & FOSJsRoutingBundle
 
 When you try to render *some* things on the server, but then also want to update them
 dynamically in JavaScript, you're going to run into our new problem: template duplication.

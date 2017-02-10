@@ -17,7 +17,7 @@ that to make a *second* AJAX call to get the data we need.
 Start simple: add another `.then` to this, with 3 arguments: `data`, `textStatus`
 and `jqXHR`. Normally, promise handlers are only passed 1 argument, but in this
 case jQuery cheats and passes us 3. To fetch the `Location` header, say
-`console.log(jqXHR.responseHeader.location)`.
+`console.log(jqXHR.getResponseHeader('Location'))`.
 
 Go see if that works: we still get the errors, but hey! It prints `/reps/76`! Cool!
 Let's make an AJAX call to that: copy the `jqXHR` line. Then, add our favorite

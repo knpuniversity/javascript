@@ -79,8 +79,7 @@ we intended to handle. To *not* handle it, and make that error uncaught, just
 
 Now, if you wanted to, you could add another `.catch` on the bottom, and inside its
 function, log the `e` value. You see, because the first `catch` throws the error,
-the second one will catch it. It's just like having multiple catches in a try-catch
-block.
+the second one will catch it.
 
 And when we try it now, the error prints *two* times - jQuery's Promise logs a
 warning each time an error is thrown inside a Promise. And then at the bottom,
