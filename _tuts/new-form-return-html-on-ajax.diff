@@ -14,7 +14,7 @@ index b448ace..17cbc18 100644
          <div class="col-md-5">
              <div class="leaderboard">
 diff --git a/src/AppBundle/Controller/LiftController.php b/src/AppBundle/Controller/LiftController.php
-index 90780c4..6273589 100644
+index 4a7f017..654f3bb 100644
 --- a/src/AppBundle/Controller/LiftController.php
 +++ b/src/AppBundle/Controller/LiftController.php
 @@ -40,6 +40,13 @@ class LiftController extends BaseController
