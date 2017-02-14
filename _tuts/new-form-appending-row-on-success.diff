@@ -43,7 +43,7 @@ index 17cbc18..c77dc6b 100644
                      <tr>
                          <td colspan="4">Get liftin'!</td>
 diff --git a/src/AppBundle/Controller/LiftController.php b/src/AppBundle/Controller/LiftController.php
-index 6273589..a072228 100644
+index 654f3bb..31a9f43 100644
 --- a/src/AppBundle/Controller/LiftController.php
 +++ b/src/AppBundle/Controller/LiftController.php
 @@ -6,6 +6,7 @@ use AppBundle\Entity\RepLog;

@@ -43,7 +43,7 @@ index 3784ee0..03ffb31 100644
                      </tr>
                  </tfoot>
 diff --git a/src/AppBundle/Controller/LiftController.php b/src/AppBundle/Controller/LiftController.php
-index 5b91d2d..2e9e4e9 100644
+index 4ba1d5b..86c0f86 100644
 --- a/src/AppBundle/Controller/LiftController.php
 +++ b/src/AppBundle/Controller/LiftController.php
 @@ -33,19 +33,9 @@ class LiftController extends BaseController

@@ -59,6 +59,12 @@ php bin/console server:run
 
 Now check out the site at `http://localhost:8000`
 
+**For convenience**
+
+If you are using PhpStorm you may install and enable
+the [Symfony Plugin](https://plugins.jetbrains.com/idea/plugin/7219-symfony-plugin)
+via the preferences which provides more auto-completion for Symfony projects.  
+
 Have fun!
 
 ## Have some Ideas or Feedback?
