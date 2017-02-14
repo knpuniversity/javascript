@@ -1,51 +1,110 @@
 # Arrow Functions
 
-The first big feature that you will see everywhere with modern JavaScript is the arrow function. Which, at first seems like just a little bit of syntax sugar. The arrow function replaces anonymous functions. So for example, in our "dot then" here, we have an anonymous function.
+You will see the *first* big feature or ES 2015 used *everywhere*... and at first,
+it looks *weird*. Very simply, there is a new, shorter syntax for creating anonymous
+functions.
 
-So very simply, instead of having to use the word "function", we can simply just list the arguments, and then say "equal arrow". And that will do the exact same thing as before. Now ignore for a second that PhpStorm is very, very angry with me, and let's go try this out.
+For example, in our `.then()`, we have an anonymous function. In ES 2015, we can
+remove the word `function`, and add an "equal arrow" (`=>`) after the arguments.
 
-So this "loadRepLogs" is called on page load and it loads this big list. So I'm gonna refresh, it works perfectly. And our console has no errors.
+That's it! That will do the exact same thing as before. Well, PhpStorm is *really*
+angry about this, but ignore it for a second. Let's try it! This `loadRepLogs`
+function is called on page-load to populate the table. Refresh!
 
-So before we talk more about the arrow function, clearly PhpStorm is totally angry and confused and that's because it's set up to only recognize old JavaScript ES5.
+It works: no errors.
 
-So let me go to my settings. PhpStorm. Preferences. Search for "ES6". And you'll find "Languages & Frameworks", "JavaScript", and you can choose what version you want inside of your application. So let's go "ECMASript 6". Hit "OK". And then once it's done indexing, it should be happy with our format.
+## Make PhpStorm Less Angry
 
-So this is nothing earth shattering, but since you're going to see this, you need to start to train your eyes to recognize that this is just an anonymous function.
+But, apparently PhpStorm hates the arrow function! That's because it's setup to
+only recognize *old*, ES5 JavaScript.
 
-Now if you get a warning up here about a "File Watcher to transpile using Babel", ignore that for now. We're going to talk about that at the end of the tutorial.
+Go into your settings and search for ES6. Under "Languages & Frameworks", "JavaScript",
+you can choose what version it should use. Let's go with "ECMAScript 6". Hit ok...
+and once it's done indexing... ding! It's happy! And I'm happy too!
 
-So cool. So what else are we going to see with this arrow function? Well, actually these parentheses around the arguments are even optional. As you can see, because the page still works. I usually put them there because I like to keep some structure with my functions but you're going to see it without those parentheses.
+If you see a bubble about a "File Watcher to transpile using Babel", ignore that!
+But, we will talk about that "Babel" thing later, it's more than just a cool-sounding
+word. Babel.
 
-Now if this is all the arrow function did, I wouldn't be very happy with it because it's just another way to do something that we could already do before. But, it has one very, very amazing super power.
+## Different Arrow Syntaxes
 
-To show it off, inside of the anonymous function, I want you to "console dot log", "this" and "self". Now remember inside of anonymous functions, "this" always changes to be something different. Which is why we set up "self" up here, so that it would actually point to our "RepLogApp" object.
+So the arrow syntax is nothing Earth-shattering. But it's used a lot, so you need
+to train your eyes to recognize that it's just an anonymous function.
 
-Let's go back. Refresh the page. And check this out. This appears to be our "RepLogApp" object. The exact same thing as "self". And in fact, it is. The big difference between true anonymous functions and this arrow syntax is that the "this" variable is preserved. And that's why I use this everywhere now for anonymous functions.
+And sometimes, it can look a bit different. For example, the parentheses around
+the arguments? Totally optional! Without them, everything still works. *I* like
+the parentheses: I feel like it gives my arrow functions a bit more structure. But
+other code might not have them.
 
-Because it means I can remove this silly "var equals self" thing. And instead down here I can just use "this". Of course "this" is inside of its own anonymous function, so once again we're gonna use an arrow function to get that working. And when we refresh, it still works.
+## The Arrow Function's (Secret) Superpower (this)
 
-So let's keep going with this. Down here we're using Sweet Alert. Same thing we have "var self equals this". So let's get rid of that. Down in "preConfirm" we have an anonymous function. We'll do empty arguments, equal arrow. And we can change this to "this". I'm going to do the same thing down here, even though we're not doing anything. I like to stay consistent and use the arrow function everywhere if I'm going to use it at all.
+Now if this were *all* the arrow function did, I would be pretty disappointed. After
+all, did we *really* need a new syntax, *just* to save us from typing the word function?
+Well don't worry, because the arrow function has one, very amazing super power.
 
-And then the method right below it, same exact thing, "var self equals this", you are gone. Replaced with our arrow function. And do the same thing on "FadeOut". Now here we're using "this" and previously when we were using a true anonymous function, "this" pointed to the element that was fading out right now. So we can't use that anymore but that's fine because we know it's this row that is fading out. So we're gonna just remove it with "row dot remove" and then "this.updateTotalWeight".
+To show it off, inside of the anonymous function, `console.log(this, self)`. We
+know that inside of an anonymous functions, `this` always changes to be something
+different. And that's why we added the `self` variable: it allows us to refer to
+our `RepLogApp` object from inside the callback.
 
-So let's double check that. We'll refresh. Delete one of my things. Perfect.
+Ok, find your browser and refresh! Woh, check this out: `this` *appears* to be our
+`RepLogApp` object! Yea, `this` and `self` are the same thing! What!?
 
-And now let's just convert everything else that we didn't have inside of here. So I'll search for "function open parentheses" so we can find everything  and the only functions we want are true methods on our objects itself, we don't want anything anonymous. So we'll get rid of the word "function" here. Add our arrow. Same thing down here. And we can get rid of another "var self equals this". Which is awesome. Update these "selfs" to "this" and get rid of one more "function" on the "catch".
+It turns out, a classic anonymous function and the new arrow function *do* have
+one difference: when you use an arrow function, the `this` variable is *preserved*.
+That's *awesome* news, and it's why I now use the arrow function everywhere in my
+code.
 
-Perfect. Keep going. Even the "Promise" can change. The "dot then" will definitely change. And we'll just finish up here with converting everything else. And in this case there was no "self" so we don't need to update anything else. And we'll change just the last few spots that we have here.
+We can finally remove this silly `var = self` thing. And instead, below, use `this`.
+But because we're inside of *another* anonymous function, replace it with the new
+arrow syntax to get things work. Try that out! It still works!
 
-Now if you're watching closely you're actually going to see that I created a problem for myself. Because previously with "dot each", "this" was the element that we were iterating over at that exact time.
+## Arrow Functions Everywhere!
 
-So if we're gonna use the arrow function, obviously we can't use "this" anymore. But that's fine because when you use "dot each", it actually gives you the element that you'll be programming just like that. So we can say "element" instead. If we search for "dot each", there is one other spot where we have this exact same problem. We'll say "key", "index", "element". We want to use that instead of "this".
+Let's use the arrow syntax everywhere! Below, when we use SweetAlert, remove the
+`self` variable and - in `preConfirm` - use `()` for empty arguments, then add the
+arrow. Inside, we can use `this`! Use the arrow function again below. Here, we're
+not using `this`, but I like to stay consistent and use the arrow function *everywhere*.
 
-So it made our life easier in some cases because we actually don't have to use the "var self equals this" thing. It did make our life a little bit more complicated in some other spots, but in a real app I would do this from the very, very beginning.
+Keep going! Inside the next method, remove `self`, and add our arrow function. Do
+the same for `fadeOut`. But here, we *were* using `this`, which previously pointed
+to the DOM Element object that was fading out. We can't use `this` anymore, but that's
+fine! Replace it with `$row.remove()` and then `this.updateTotalWeight()`.
 
-And honestly the "dot each" function is gonna go away in a few minutes, replaced by a new core JavaScript function.
+Double-check that things work. Refresh! Delete one of the items and... perfect!
 
-Now there's just one other little thing that you're gonna see with the arrow function and it's another syntax option that you can do.
+Since we're going to use arrow functions for *all* anonymous functions, search for
+`function()`. Yep, we're going to replace *everything*, except for the methods
+in our objects. Remove `function()`, and add the arrow. Repeat it again, and remove
+*another* `self` variable: just use `this`. I'll fast-forward through the rest
+of the changes.
 
-Up near the top where we have our Sweet Alert, you notice that this "preConfirm" is an anonymous function but all we do is return something. When you have that situation you can actually get rid of your method body entirely. So when you don't have the curly braces it implies that this value is going to be returned. It looks weird at first but you're going to see it a lot. And you don't have to use it.
+## Looping without Using this
 
-So with all these changes, let's refresh. Make sure a few things still work. Looks good to me.
+If you were watching *really* closely, you may have noticed a problem. Before,
+inside the `$.each` callback, `this` was the element that we were iterating over
+at that exact time.
 
-All right let's keep going and we're actually going to dive into "Node.js" and use it to help us test out a few of these features.
+But now that we're using the arrow function, obviously, that won't work. No worries!
+Just give your arrow function two arguments: `index` and `element`. Use `element`
+instead of `this`.
+
+If we search for `.each`, there is one other spot with the same problem. Same solution:
+add `index, element` and use `element` inside.
+
+## Arrow Function without a Body
+
+Now that we're using the arrow function everywhere, there's *one* more variation
+that you'll see. Scroll back up and find the `preConfirm` option on SweetAlert.
+In this case, the arrow function is nothing more than a single `return` statement.
+In this situation, to be extra fancy, you can *remove* the function body and return
+statement entirely.
+
+When you don't have the curly braces, it means that this value will be returned.
+It looks weird at first, but it *means* the same thing that we had before. You *will*
+see this kind of stuff in code examples.
+
+Phew! After making *all* these changes, let's refresh and try them. The list loads,
+we can delete, and the form still validates. Bananas!
+
+Next, I think we should write some Node.js!

@@ -2,9 +2,12 @@ chapters:
     - ecmascript-es6-harmony
     - arrow-functions
     - rock-some-nodejs
-    - var-let-const
+    - var-let-scope
+    - var-let-hosting
+    - const
     - object-literals-optional-args
     - class-syntax
+    - static-class-methods
     - extends-super-calls
     - destructuring-spread-operator
     - template-strings

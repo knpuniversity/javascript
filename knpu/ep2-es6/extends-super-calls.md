@@ -1,11 +1,69 @@
-# Extends Super Calls
+# Class Inheritance and super Calls
 
-So in PHP, obviously another thing that we can do with our classes is we can extend classes. Can we do that with the new syntax, and if so, how does it look? Well, the answer is of course. And how does it look? It looks almost exactly like PHP. Let's go to play.js for this. I'm going to create a new class called AGreatClass, because it is going to be a great class. I'll give it a constructor. We'll take in a greatNumber, and we'll set that on a new greatNumber property. Down below we'll create a new method called returnGreatThings, which it will, because it's going to return our greatNumber. Down below we'll create a new constant, aGreatObject, set to new AGreatClass. We'll pass it a great number, which is 42. Let's console.log aGreatObject.returnGreatThings. No mysteries here what this is going to return. We execute the file. It does 42. Awesome.
+In PHP, one class can extend another. So, can we do that in JavaScript? Totally!
+And once again, you're going to *love* it.
 
-Now let's create another class, class AnotherGreatClass, because we're on a roll. This time, I want this class to extend a great class, so we do the exact same thing we do in PHP, the exact same words, extends AGreatClass, and that's it. We're not overriding anything yet. We're not making any changes, we're just extending that, so if we change our variable now to be a new instance of AnotherGreatClass, and then we run the file, we get the exact same thing back. From here, pretty much all the rules of extending things in PHP work in JavaScript with just a little bit of different syntax in some cases. For example, if we want to, we can override returnGreatThings. We'll return something else that's great, which is adventure. By doing this, it should override the parent class method and it does.
+To try this out, let's go back to the `play.js` file. Create a new class: `AGreatClass`,
+because, it's going to be a great class. Give it a `constructor` with a `greatNumber`
+arg and set that on a property.
 
-Okay, so what if we want to call the parent method, which in PHP we'd normally say parent::returnGreatThings? Well, in JavaScript, we do that not with the word parent but with the word super: let greatNumber = super.returnGreatThings, and now we're going to return an array of great things, like a greatNumber and then something else that's great, like adventure. This time, we get both of them. Okay, so what about over in the constructor? Because really I should be able to pass in the greatNumber and the great thing, adventure, into this class. Let's change the constructor. We'll pass in a greatWord and say this.greatWord = greatWord. What do you think's going to happen here? We're setting the greatWord. We're not calling the parent constructor, so maybe greatNumber would be undefined on the parent structure. I'm not exactly sure, so let's find out.
+Below, add one new method: `returnGreatThings`, which it will, because it's going
+to return our `greatNumber`.
 
-When we run it this time, we actually get an error right when our constructor's run. It says, "this is not defined." It's actually right here. It says this is not defined, right there. If you hover over the PhpStorm error, it says, "Missed superclass's constructor invocation." Unlike PHP, where calling the parent constructor is usually a good idea but ultimately optional, in JavaScript, it's required. You must call the parent's constructor. Let's actually give this two arguments, which will be greatNumber and then greatWord, and then to call the parent's constructor, it's not what you'd think it was. It's not super.constructor. You actually treat super like a function, so super and pass in that greatNumber.
+Finally, create a new constant, `aGreatObject`, set to `new AGreatClass(42)`. Let's
+`console.log(aGreatObject.returnGreatThings())`.
 
-Now down here we can actually print out this.greatWord, and we'll pass in 42 and adventure. After all these changes, run it, and it works. You use the same extends tag. You can override methods the same way. The only difference is that we used super instead of parent, and you must call the parent constructor if you override it, by using super as a function.
+There's no mystery about what this is going to return. Run the file! Yep, 42, awesome!
+
+## Extending a Class
+
+Now, let's create another class, `class AnotherGreatClass`, because we're on a roll.
+But, I want this to be a *sub class* of `AGreatClass`. Do that *just* like we would
+in PHP: `extends AGreatClass`.
+
+That is it. We're not overriding anything yet, but this should work. Change the varaible
+to be a new `AnotherGreatClass`, and then run the file! It works!
+
+## Overriding a Method and Calling super
+
+From here, pretty much all the rules of extending things in PHP work in JavaScript,
+with just a *little* bit of a different syntax. For example, we can override `returnGreatThings`.
+Let's return something else that's great: `adventure`! This completely overrides the
+parent class method.
+
+Okay, but what if we want to call the *parent* method. In PHP, we would say
+`parent::returnGreatThings()`. Well, in JavaScript, the magic word is `super`:
+`let greatNumber = super.returnGreatThings()`. Let's return an array of great things,
+like `greatNumber` and `adventure`. This time, it prints both. Love it!
+
+## Overriding the constructor
+
+Can we override the `constructor` in the same way? Because really, I should be
+able to pass the `greatNumber` and the great thing, `adventure`, into this class.
+
+Override the `constructor` and give it just one argument: `greatWord`. Then, set
+`this.greatWord = greatWord`. What do you think will happen when we run this? We're
+setting the `greatWord` property... but we're not calling the parent constructor.
+So maybe `this.greatNumber` will be undefined? I don't know! Let's find out!
+
+Run it! Ah, we get an error in the `constructor`!
+
+> this is not defined
+
+Interesting! Inside `construct()`, there is no `this` variable! And PhpStorm is
+trying to tell us why:
+
+> Missed superclass's constructor invocation
+
+Unlike PHP - where calling the parent constructor is usually a good idea, but ultimately
+optional - in JavaScript, it's required. You must call the parent's constructor.
+
+So let's give this two arguments: `greatNumber` and `greatWord`. To call the parent
+constructor... it's  *not* what you might think: `super.constructor()`. You actually
+treat `super` like a *function*: `super(greatNumber)`.
+
+Below, let's print out `this.greatWord` and pass in `42` and `adventure`. Ok, try
+it out!
+
+Yes! it works! Oh man, are you feeling like an JavaScript class pro or what? Now
+let's talk about something kinda weird: destructuring!

@@ -1,17 +1,90 @@
-# ecmascript es6 harmony
+# ECMAScript 2015 / ES6 / Harmony / Cookies
 
-Well, hello, guys. In our first episode of JavaScript, we dove into a lot of really deep things in the way that JavaScript works. I ignored a huge, big, gigantic ting in the JavaScript world. There is a new JavaScript version with lots of new stuff in it. In fact, it's not even new anymore, which is all the more reason that we need to understand what it brings to the table so that we can ultimately do cool things like use Front-end frameworks, like React JS.
+Welcome back! Oh man am I super excited about  this tutorial. In the first episode,
+we dug deep into JavaScript: its great features, its weird features, and ultimately,
+enough good stuff to start getting our code organized.
 
-First before we start, as always, code along with me. Use the download button on this page to download the course code. When you unzip it, there'll be a start directory which has the same cole that I have here. Check out the Read Me to get set up.
+But, uh, I ignored a gigantic thing in the JavaScript world. I mean, *really* big,
+like trying to stay cool when Godzilla is stomping on cars all around you! JavaScript...
+has a new version... with a *ton* of new features and *significant* changes to the
+language! And guess what? It's not even new anymore - it came out in *2015*! That's
+all the more reason that it's time for us to understand what it brings. Because if
+you eventually want to use a frontend framework like ReactJS, you *need* to know
+this stuff!
 
-Last up will be to open a terminal, go into the directory and run PHP bin/console server:run to load up the built in web server. Let's go over here and go to local host:8000. To log in, use Ron Fergundy, password pump up. As a reminder, this is our application, lift stuff, a way for us to keep track of all the things that we're lifting during the day so we can track our exercise. For our purposes, this is a symphony app, but everything that we've been doing lives inside a single Java Script file called Rep Log App.
+## Project Setup
 
-Let's get back to this brand new Java Script version. As you probably know, PHP came out with a new major version, version seven, a couple years ago. This was a really big deal because they gave us new functions but also new language constructs like typed return arguments. Obviously, every language has new versions and Java Script is no different. Actually, Java Script is totally different. When a new version of PHP comes out, the creators of PHP, they write the code. They release PHP. We all download it. We put it on our servers and we happily use it. Done. When a new version of Java Script comes out, well, what does that mean? The Chrome browser, it writes its own Java Script engine. Internet Explorer writes its own Java Script engine. Of course, there's node JS which is it's own Java Script engine. There's not one Java Script engine.
+Before we dive in and meet Godzilla, you should *totally* code along with me. To do
+that, use the download button on this page to get the course code. When you unzip
+it, there will be a `start/` directory which will have the same code that I have
+here. Check out the `README.md` file for witty banter and setup instructions.
 
-In reality, Java Script is nothing more than a standard. When they release a new version of Java Script, it's actually an agreed upon rule set that says, "Here are the functions and language constructs that we think Java Script should have. Now, quick, everyone go and implement these." In fact, what I'm talking about is not Java Script. The official name for it is  ECMAScript, which is a group that gets together and agrees on these standards.
+The last step will be to open a terminal, go into the directory and run:
 
-Now in 2015, after a really long hiatus, it had been five years since they released the last major version, Java Script came out with a new version with a lot of stuff. What is it called? Yeah, that's complicated. It has at least three names. The first is ES6. The second is ECMAScript 2015. It's also called Harmony. Some of its friends call it Larry. The official, correct name of it is ECMAScript 2015, though you'll even hear me call it ES6 because it's the sixth version of ECMAScript.
+```terminal
+php bin/console server:run
+```
 
-As we're going to see in this tutorial, it gives us, of course, lots of new functions and cool stuff. Most importantly, it gives us new language constructs. In fact, so many that if you look at a ... at Java Script that uses all the new features, it might not even look like Java Script to you. It might be totally unrecognizable. That's not okay because you and I, we need to be able to understand and write modern Java Script. In fact, speaking about new versions, after ECMAScript 2015 came out, there's already ECMAScript 2016. The Java Script Language keeps moving forward.
+to start the built-in PHP web server. Find your browser and open `http://localhost:8000`.
+You can login with `ron_furgandy`, password `pumpup`. Welcome back to `LiftStuff`.
+Our app for keeping track of everything we lift during the day to stay in top shape.
+This is a Symfony application, but that's not really important: almost everything
+we've been doing lives inside a single JavaScript file called `RepLogApp.js`.
 
-Our goal is to dive into that important stuff so that we can ultimately not be intimidated by the new ECMAScript. Now, of course, we are going to have some browser compatibility problems because when they come out with a new version of Java Script, not all of our users might be using the latest version of their browsers that have the latest version of ECMAScript. More on that at the end of this tutorial. Let's start with my first absolute favorite game changing feature of ECMAScript 2015: arrow functions.
+## New Shiny JavaScript Version?
+
+Now, about this new JavaScript version. From time to time, *every* language comes
+out with new versions. In our world, the PHP core team dreams up some new ideas,
+writes a bunch of code, and then releases it. We all happily install the new version
+on our servers and use the cool new stuff!
+
+JavaScript is no different. Wait, that's not right! JavaScript is *totally* different.
+When a new version of JavaScript comes out, well, what does that even mean? Because
+there isn't just *one* JavaScript, there are many: Chrome has a JavaScript engine,
+Internet Explorer maintains its own... crappy one, and of course, Node.js is *another*
+JavaScript engine. So when the JavaScript community decides it wants to add a new
+function... well, it can't! All it can *really* do is *recommend* that the new function
+be added... and then wait for all the browsers to add it!
+
+## There is only ECMAScript
+
+Ok, the situation isn't *that* bad. But, JavaScript is not a language like PHP that
+has one core code. In reality, JavaScript is nothing more than a *standard*. When
+a new version of JavaScript is released, it simply means that the core group has said:
+
+> Here are some functions and language changes that we think would make JavaScript
+> more hipster. Now, quick, everyone go and implement these!
+
+And guess what? The *language* isn't even called JavaScript! It's called ECMAScript.
+And there is a group of smart people that work on new versions of ECMAScript. But
+unlike PHP, that doesn't mean they're writing code: they're simply deciding *what*
+should be included in the next version. Then, it's up to each browser and JavaScript
+engine to implement that. But as we will learn later... some smart people in the JS
+world have found a way *around* needing to wait for browser support...
+
+## ECMAScript 2015?
+
+Back to the story: in 2015 - after over *5* years of work - ECMAScript released a
+new version. What's it called? Um, yea, it has a *bunch* of names: ES6, ECMAScript 6,
+ECMAScript 2015, Harmony, or, to its closest friends, Larry. Ok, maybe nobody calls
+it Larry.
+
+The *official* name is ECMASCript 2015, though you'll even hear me call it ES6 because
+it's the sixth version of ECMAScript.
+
+As we'll learn, ES 2015 comes with a lot of new functions and tools. But, more importantly,
+it comes with new *language* constructs - new syntaxes that weren't allowed before.
+In fact, it comes with *so* many new syntaxes, that if you look at a JavaScript file
+that uses everything, you might not even recognize it as JavaScript. 
+
+And that's not okay: because you and I, we need to be able to understand and write
+modern JavaScript.
+
+***TIP
+There is already *another* new version of ECMAScript: ECMAScript 2016. But it only
+contains a few, minor features.
+***
+
+So here's our mission: jump into the important stuff of ES 2015 that will let us
+understand, and *write* truly, modern JavaScript. Let's start with my absolute
+favorite, game-changing feature of ES 2015: arrow functions.

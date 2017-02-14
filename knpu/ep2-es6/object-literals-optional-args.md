@@ -1,11 +1,59 @@
-# Object Literals Optional Args
+# Object Literals & Optional Args
 
-ECMAScript 2015 also comes with a few changes to how you can create functions and array keys. Basically these are just things you're going to love. Well, once you learn to look at them correctly. At first, they may look a little strange. Let's start up in _saveRepLog. Right now we're passing AJAX a URL method and data keys, and of course if we wanted to do, we could break this up into multiple lines. I could create a new variable called url, set that to the variable, and then down below of course we'll say url: url. We know that that would work exactly the same. Well, in ECMAScript 2015, if your key and your value are the same, you can just leave it off. That means the same thing as before. If you suddenly see an associative array or a hash and one of the keys is missing it's key, that is the key.
+When it comes to functions and arrays, ECMAScript 2015 has a couple of things you
+are going to love! Well, some of this stuff might look weird at first... but then
+you'll love them!
 
-Second, you can do something similar with functions themselves. Remember, all of these functions that we have are inside a big array. We have a loadRepLogs key which is assigned to this function. Well, thanks to ECMAScript 2015, we can just shorten that to loadRepLogs(). This one I love because it just shortens everything, so let's change this everywhere. I'll actually search for function because we'll do this for almost every other function that we have inside of our file right now. We'll change all of them to the shorter format, and ultimately the only functions we have left are the self-executing function, which we could actually change to use the arrow syntax if we wanted to, and the two constructor functions for our objects, so pretty cool.
+## Object Keys... without the Key
 
-All right, the last cool thing they introduced is, finally, true optional function arguments. As PHP developers, we already understand how this works, but let's see it in action. Suppose we have a new method down here, not calculateTotalWeight, but getTotalWeightString. We'll use the new shorthand, and this basically returns this.calculateTotalWeight and then adds pounds on it. Perfect. Then up here, for updateTotalWeightLifted, instead of calling calculateTotalWeight and passing that to HTML, we'll pass getTotalWeightString. If everything's working correctly, we should be able to refresh. Down all the way at the bottom, yep, there's our pounds.
+Start in `_saveRepLog`. Right now, we're passing `$.ajax` some options: `url`, `method`
+and `data`. Above that line, let's create a new `url` variable set to the URL. Then,
+use that variable below.
 
-Simple enough, but now suppose that we want to have some sort of limit on that. What I mean is, if we are over a certain number of pounds, maybe 500 pounds, instead of printing the actual total, it'll just print 500-plus, so over 500 pounds. We will add a new argument here called maxWeight, and we'll say let weight = this.calculateTotalWeight and if weight > maxWeight, then we'll say that weight = maxWeight plus a little plus symbol. Then down at the bottom we'll return weight and pounds. Now up top to try this, when we call getTotalWeightString, I'm actually going to pass this, 500. Then of course it works perfectly. You can see where I'm going with this.
+Obviously, this will work *exactly* like before: nothing interesting yet. Well, in
+ECMAScript 2015, if your key and your value are the same, you can just leave off
+the key.
 
-What if I wanted to make it so that this was an optional argument, meaning it defaulted to 500 and we could change it? Previously in JavaScript you couldn't do this. Well, you could, but you needed a check to see if maxWeight was undefined, and it was a little ugly and it didn't read very well. But now we're going to say = 500, the exact same way that we do in JavaScript. This allows me to take off my argument down here, and it still works perfectly. So small changes, but they make things look simpler, they keep our life simpler, and now that we know what these shorter syntaxes area, like the shorter function syntax and the key value syntax ...
+Yep, this means the same thing as before. So if you suddenly see an associative array
+or object where one of its keys is missing... well, it *is* the key... and the value.
+
+## Short Method Syntax
+
+Next, you can do something similar with methods inside an object. The `loadRepLogs()`
+method is just a `loadRepLogs` key assigned to a function. Simple, but too much work!
+In ES2015, we can shorten this to `loadRepLogs()`.
+
+Oh man, that's so much cooler! let's change it everywhere! Search for the word `function`,
+because almost everything is about to change. Ultimately, the *only* function keywords
+left are the self-executing function - which could be an arrow function - and the
+two constructors. Nice!
+
+## Optional Args
+
+Ready for one more cool thing? This one is easy. Suppose we have a new method, not
+`calculateTotalWeight`, but `getTotalWeightString`. Use the new shorthand syntax
+and return `this.calculateTotalWeight()` and then add "pounds" to it.
+
+Perfect! Then above, in `updateTotalWeightLifted`, instead of calling `calculateTotalWeight`
+and passing that to HTML,pass `getTotalWeightString`.
+
+Ok, nothing too crazy so far: when we refresh, at the bottom, yep, "pounds".
+
+But now suppose that we want to have set a *max* weight on that. What I mean is,
+if we are over a certain weight - maybe 500 - instead of printing the actual total,
+we want to print "500+"
+
+First, add a new argument called `maxWeight`. Then say `let weight = this.calculateTotalWeight()`.
+And if `weight > maxWeight`, add `weight = maxWeight + '+'`. At the bottom, return
+`weight` and "pounds". Head up top to try this: when we call `getTotalWeightString`,
+pass this 500.
+
+Refresh! Ok course, it still works perfect.
+
+But what if I wanted to make this argument optional with a default value of 500?
+Previously in JavaScript, you couldn't do this. Well, you could, but it was ugly.
+Now, thanks to ES 2015, we can say `maxWeight = 500` - the same way we do in PHP.
+Thanks to this, we can remove the argument and everything is still happy!
+
+So, yes, finally, JavaScript has optional function arguments! Ok, we're ready for
+perhaps the *biggest* change in ES2015: JavaScript *classes*,

@@ -1,31 +1,89 @@
-# Class Syntax
+# True Class Syntax
 
-Alright, in the first episode we talked about objects, real objects and we learned that you can actually create real objects in JavaScript by actually creating a function which acts as the constructor. Then adding all of the real methods and properties to the prototype. This uses JavaScripts' prototypical inheritance.
+In the first JavaScript tutorial, we learned about object. I mean, *real* objects:
+the kind you can instantiate by creating a constructor function, and then adding
+all the methods via the prototype. This object stuff looks a lot different in PHP
+than in does in JavaScript, in large part because PHP has *classes* and JavaScript
+doesn't. Well... that's a big fat lie! ES 2015 introduces *classes*, true classes.
 
-Mentioned in the first episode that, this means that there aren't any classes like there are in PHP. Well, that's not actually true. Ecmescript 2015 introduces one of the most important and big features of classes, true classes. So lets actually see what they look like.
+## Creating a new class
 
-If you're a PHP developer like I am, you're actually going to love what classes look like. Cause, if we want to create a helper class we say, class helper. And then we say open curly, close curly. That is a class in Java Script. Just like it's a class in PHP.
+As a PHP developer, you're going to *love* what classes look like... because they're
+nearly identical to PHP! If you want to create a `Helper` class... just say,
+`class Helper {}`.
 
-Now like PHP we have constructors. In JavaScript the constructors actually called just constructor. So I'll move our old constructor function up here and we are gonna rename this to simply constructor. Then we can get rid of the semicolon afterwards because now this is just a method. And now we can very easily move everything else into it by getting rid of $.extend helper.prototype and just adding all these as methods inside of here. And congratulations we have created a new Ecmescript 2015 class. Wasn't that easy?
+That's it! With this syntax, the constructor is called, just, `constructor`. Move
+the old constructor function into the class and rename it: `constructor`. You can
+also remove the semicolon after the method, just like in PHP.
 
-In fact it works the exact same way as before. So everything still works still calculates the total. Everything is exactly the same. In fact the reason it's exactly the same is this new class setup is just a new syntax. Behind the scenes JavaScript still follows the prototypical object oriented model. This is just a nice wrapper around it. So that you don't have to worry about setting the prototype, this sets all that for you behind the scenes. So especially for us PHP developers, this is a whole lot more familiar, but ultimately nothing has changed behind the scenes.
+Move everything else into the new class syntax is *easy*: remove `$.extend(helper.prototype)`
+and move all of the methods inside of the class. And congratulations! We just created
+a new ES 2015 class. Wasn't that easy?
 
-So let's do the same thing up here with our RepLogApp. So now, I'll say class RepLogApp, open curly, and then I'll make this right here, of course our constructor. Which you'll want to make sure that you actually spell correctly. I'll indent everything and that will add the closing curly brace. Cool? So there is our constructor. And then we just need to move in all the other methods.
+To make things sweeter, it all works just like before: nothing is broken. And that's
+no an accident: behind the scenes, JavaScript still follows the prototypical object
+oriented model. This new syntax is just a nice wrapper around it. It's great: we
+don't need to worry about the `prototype`, but ultimately, that is set behind the
+scenes.
 
-But, before we do that, I'm actually just gonna start with this selectors property here. Let's go up here, paste that and immediately you can see that it is super angry. It says: "types are not supported by current JavaScript version." What it's trying to tell you is, to tell us is ... When you use this class syntax, properties aren't supported. Only methods are supported, and that's actually on purpose. Properties are actually a bit frowned upon inside of classes and objects. Instead we should use methods. So I mean is very simply were just going to change this to a method called GIT. Underscore GIT selectors. And if we do that, and then add a return, if we do that everything is happy. Well everything except for the couple places where we used the selectors. So you can see this._selectors, that's not gonna work, because we changed that to be a method. But I'm actually not gonna fix that now. We are gonna coma back and fix that in a second.
+Let's make the same change at the top with `RepLogApp`: `class RepLogApp {` and
+then move the old constructor function inside. But, make sure to spell that correctly!
+I'll indent everything and add the closing curly brace.
 
-First, once I'm actually finish converting everything else to methods instead of a object. So, let's move down up here, we can get rid of the comas after all the methods. But other than that, nothing really changes.
+Cool! Now we just need to move all the methods inside!
 
-So just make sure we didn't totally messed something up. And everything looks fine. I mean, it's just that simple. So now let's go back and worry about this, getSelectors thing because of course we have all of our broken calls to this._selectors. So, I would say the easiest thing to do would be to just change this and anything else that uses this old property names, to this ._getselectors.
+## Classes do *not* have Properties
 
-But instead, check this out. And in front of ... I actually want you to change this back to _selectors and then in front of it type "get" space. And you can see instantly that PHP Storm is not angry because that is a valid syntax. And when you search for _selectors, you can see that PHP Storm is not longer unhappy about this. So this "get" syntax, is a special thing from Ecmescript 2015, which allows you to define a method that should be called, when somebody tries to get the _selectors property. And there's also a "set" version of this. That if somebody, so somebody can set a _selectors property. So even though are classes don't support properties, we can actually create things so that people can use what looks like properties on us, but internally is gonna called this get instead of methods.
+Start by *only* moving the `_selectors` property. Paste it inside the class and...
+woh! PhpStorm is *super* angry:
 
-All right, so after all these changes, let's go back and try this. And actually you'll see that it won't work. The reason is we get RepLogApp is not defined, coming from our actual template itself. Resources app, resources views, index.html.twig. Down here at the bottom. So this is where we [inaudible 00:07:20] our RepLogApp object. The problem is, that this class only lives within this self executing function. So it's actually the same problem we had earlier with scope, and we are solving it the same way we did earlier which is we need to re-export this to the global scope by saying window.RepLogApp equals RepLogApp. Now, life is good again.
+> types are not supported by current JavaScript version
 
-So taking it back now at that new get_selectors, and if you see PHP Storm has it highlighted like there's something wrong. If you hove over it, it says method can't be static. So when we talk about objects in the first episode, I talked about how when you use prototypical inheritance, it's like creating true methods on objects. Because you can create new instances of those objects. And every instance of an object is gonna have its own internal data. And I also said, if you decided not to put a method on the prototype, that's legal but it affectively becomes static. Now, if this didn't make a lot of sense it's okay because it's a little bit weird for us as PHP developers to try to think about static vs non-static, and also how this works into prototypical object model.
+Rude! PhpStorm is *trying* to tell us that properties are *not* supported inside
+classes: only methods are allowed. That may seem weird - but it'll be more clear
+why in a minute. For now, change this to be a method: `_getSelectors()`. Add a
+return statement, and everything is happy.
 
-Well, the good news is, with this new format, JavaScript has made the idea of static and non-static much easier. PHP Storm has simply set, telling us that this method can be static because it is not using the "this" variable. So that's the same thing in PHP. If a method doesn't use the "this" variable it could be made static if we wanted to. So, this is fine either way. Let's actually make the static by saying "static", get selectors. And as soon as we do that, we can't say this._selectors anymore. Now we are going to say RepLogApp._selectors. Same way in PHP that we were referenced static methods by the class name, not actually by the object itself. So we'll change it in few other places.Perfect.
+Well, everything *except* for the couple of places where we reference the `_selectors`
+property. Yea, `this._selectors`, that's not going to work. But *don't* fix it!
+Let's come back here in a minute.
 
-It's time to go back and refresh. Still loads up just fine. So, let's actually see one more example of a static variable on a normal method. Let's go all the way down here, down the bottom on our helper class. And I'm going to create a new method here called static_calculateweight which is going to take elements ... Array. And what I do, is basically I'm going to have a new utility method, who's job is to loop over whatever elements I pass it, look for their weight data [inaudible 00:10:36], add the map and return the total weight. So we don't need to do this because we are not going use this in multiple places, but this is a valid thing to do.
+Let's move the rest of the methods inside: just delete the `}` and the prototype
+line to do it. And we can remove the comma after each method. Other than that,
+nothing should change.
 
-Now [inaudible 00:10:46] in calculated total weight, we can simply say, return Helper, cause we need to reference the static method by our class name, ._calculatetotalweight, and It'll pass it the elements that we wanted to find, which this.wrapper.find tbody tr. Okay, try that out and now we're still getting the correct total down here. [inaudible 00:11:32] For PHP developers this is huge because I can explain this 10 times faster, than I can be prototypical inheritance behind JavaScript. Now, the reason we went through that in the first tutorial, is ultimately JavaScript does still use prototypical inheritance, so you still need to understand that. But, now we can use this nice wrapper on top of it and it looks a lot cleaner to us.
+## Magic get Methods
+
+Time to go back and fix this `_getSelectors()` problem. The easiest thing to do
+would be to update `this._selectors` to `this._getSelectors()`. But, there's a cooler
+way.
+
+Rename the method *back* to `_selectors`, and then add a "get space" in front of
+it.
+
+Woh! Instantly, PhpStorm is happy: this is a *valid* syntax. And when you search
+for `_selectors`, PhpStorm is happy about these calls too!
+
+This is the new "get" syntax: a special new feature from ES 2015 that allows you
+to define a method that should be called whenever someone tries to access a property,
+like `_selectors`. There's of course also a "set" version of this, which would be
+called when someone tries to *set* the `_selectors` property.
+
+So even though classes don't *techncially* support properties, you can *effectively*
+create properties by using these get and set methods.
+
+Oh, and btw, just to be clear: even though you can't *define* a property on a class,
+you can still set whatever properties you want on the object, after it's instantiated.
+That hasn't changed.
+
+Ok team! Let's try out our app! Refresh! It works! Wait, no, an error! Blast!
+It says `RepLogApp` is not defined, and the error is from our template:
+`app/Resources/views/index.html.twig`. Ah, *this* code is fine: the problem is that
+the `RepLogApp` class *only* lives within this self executing function. It's the
+same problem we had in the first episode with scope.
+
+Solve it the same way: export the class to the global scope by saying
+`window.RepLogApp = RepLogApp`.
+
+Try it now! And life is good! So what else can we do with classes? What about
+static methods?

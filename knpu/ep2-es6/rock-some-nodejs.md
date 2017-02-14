@@ -1,7 +1,39 @@
-# Rock Some NodeJS
+# Rocking Some NodeJS
 
-All right, so I realize that this is a JavaScript, ECMAScript 2015 course aimed at mostly backend PHP developers, but we need to talk about Node.js, which undoubtedly you've heard of. There's a good chance you've played with it. If you haven't, very simply, Node.js is JavaScript on the server. In the same way that we can write PHP files and then execute them on the server, and get whatever they print out or whatever they do, we can do the same thing in JavaScript: write a JavaScript file and not execute it in a browser, but actually execute it right on our server. This is something that, if you want to get serious with front-end JavaScript for your browser, you're going to need to know a little bit of Node.js, because it comes in critically handy when we start doing more complex things with our JavaScript like module loaders, which we're going to do in the next episode.
+Look, I realize that this course is aimed at using JavaScript in a *browser*. But
+even so, we still need to talk about Node.js! In case you haven't used it before,
+Node.js is JavaScript that you execute on your server. We all know that we can write
+a PHP file, execute it on our server, and see whatever it prints out. Well, you can
+do the same things with Node.js: write a JavaScript file, execute it from the command
+line, and see some output!
 
-Step one for you is to install Node.js. You can do however you want. In my case, since I'm on a Mac, I used Brew. I already have it installed, so I can say node dash V and it gives me the version. To see how this all works, in the root of our directory, let's just create a new file called play.js, because of course this is JavaScript. We can use the familiar console.log and say, "Oh my god! Node is JS on the server!" How do we run that? Same way we run things with PHP from the command line: node play.js and that's it.
+So why are we talking about it? For this tutorial, it's going to be a handy way to
+test out some new features. But in the *next* tutorial on Webpack, we'll be working
+even more with Node.js.
 
-In this tutorial I've done this because it's going to be really handy just being able to test some of these new features right in a JavaScript file. For example, we can play with the arrow functions. I'll create a new variable called a great number. We'll set it to 10, and then we'll use the set timeout function, which of course accepts a function. We use the new anonymous function, arrow syntax, and we'll console.log our number. We'll delay that for one second. At the bottom, we'll just say "waiting". If you try this out, it waits, and there it is. Nothing earth-shattering, but I want to make sure you guys have Node.js set up because we are going to put it to work.
+## Creating a Simple Node.js Script
+
+Step one for you is to install Node.js. Because I'm on a Mac, I've already installed
+it using [Brew](http://brew.sh/). If you don't have it installed, just check out
+their docs.
+
+One you're ready, you should be able to execute `node -v` from the command line.
+Ok, let's experiment! At the root of your project, create a new file called `play.js`...
+because of course, Node.js code is JavaScript!
+
+Inside, use the familiar `console.log('OMG! Node is JS on the server!')`.
+
+How do we run that? Simple:
+
+```terminal
+node play.js
+```
+
+Boom! And now we can easily start experimenting with new ES6 features... without
+needing to constantly refresh the browser. Let's play a bit more with our arrow
+functions. I'll create a new variable called `aGreatNumber` set to 10. Then, call
+`setTimeout` and pass it an arrow function. Inside, `console.log(aGreatNumber)`.
+Delay that call for 1 second. At the bottom, just log `waiting`.
+
+Head back to the terminal and try it out! It prints, waits and then prints! That
+proves Node.js is all setup. So let's go learn about let and const!
