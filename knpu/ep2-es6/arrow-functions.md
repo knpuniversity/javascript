@@ -43,7 +43,7 @@ all, did we *really* need a new syntax, *just* to save us from typing the word f
 Well don't worry, because the arrow function has one, very amazing super power.
 
 To show it off, inside of the anonymous function, `console.log(this, self)`. We
-know that inside of an anonymous functions, `this` always changes to be something
+know that inside of an anonymous function, `this` always changes to be something
 different. And that's why we added the `self` variable: it allows us to refer to
 our `RepLogApp` object from inside the callback.
 

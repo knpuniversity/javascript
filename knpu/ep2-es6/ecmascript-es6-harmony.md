@@ -69,7 +69,7 @@ new version. What's it called? Um, yea, it has a *bunch* of names: ES6, ECMAScri
 ECMAScript 2015, Harmony, or, to its closest friends, Larry. Ok, maybe nobody calls
 it Larry.
 
-The *official* name is ECMASCript 2015, though you'll even hear me call it ES6 because
+The *official* name is ECMAScript 2015, though you'll even hear me call it ES6 because
 it's the sixth version of ECMAScript.
 
 As we'll learn, ES 2015 comes with a lot of new functions and tools. But, more importantly,
