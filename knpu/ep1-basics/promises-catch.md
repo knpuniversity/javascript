@@ -85,7 +85,7 @@ And for the `url`, we can replace this with `Routing.generate('rep_log_new')`:
 
 In the controller, make sure to expose that route to JavaScript:
 
-[[[ code('7432b635bb') ]]]
+[[[ code('250a9c535d') ]]]
 
 Here's the point: above, replace the AJAX call with simply `this._saveRepLog()` and
 pass it `formData`:
