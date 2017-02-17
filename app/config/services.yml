@@ -7,6 +7,6 @@ services:
 
     app.form.type.registration_type:
         class: AppBundle\Form\Type\RegistrationType
-        arguments: [%fos_user.model.user.class%]
+        arguments: ['%fos_user.model.user.class%']
         tags:
             - { name: form.type }
