@@ -65,6 +65,6 @@ Of course, if we remove the extra `let` statement and try it, *now* we get 42. T
 is because without the `let`, we're no longer creating a new variable: we're simply
 changing the existing variable to 42.
 
-If this is makes your head spin, me too! In practice, there are *very* few situations
+If this makes your head spin, me too! In practice, there are *very* few situations
 where `var` and `let` behave different. So, use your favorite. But there is *one*
 other tiny thing that makes me like `let`, and it deals with variable hoisting.

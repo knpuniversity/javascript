@@ -38,7 +38,7 @@ and passing that to `.html()`, pass `getTotalWeightString()`.
 
 Ok, nothing too crazy so far: when we refresh, at the bottom, yep, "pounds".
 
-But now suppose that we want to have set a *max* weight on that. What I mean is,
+But now suppose that we want to set a *max* weight on that. What I mean is,
 if we are over a certain weight - maybe 500 - instead of printing the actual total,
 we want to print "500+"
 
@@ -47,7 +47,7 @@ And if `weight > maxWeight`, add `weight = maxWeight + '+'`. At the bottom, retu
 `weight` and "pounds". Head up top to try this: when we call `getTotalWeightString`,
 pass 500.
 
-Refresh! It works! WE see the 500+ at the bottom.
+Refresh! It works! We see the 500+ at the bottom.
 
 But what if I wanted to make this argument optional with a default value of 500?
 You *could* do this before in JavaScript, but it was ugly. Now, thanks to our new

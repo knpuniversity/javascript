@@ -16,7 +16,7 @@ Step one for you is to install Node.js. Because I'm on a Mac, I've already insta
 it using [Brew](http://brew.sh/). If you don't have it installed, just check out
 their docs - it's a bit different on every system.
 
-One you're ready, you should be able to execute `node -v` from the command line.
+Once you're ready, you should be able to execute `node -v` from the command line.
 Ok, let's experiment! At the root of your project, create a new file called `play.js`...
 because of course, Node.js is JavaScript!
 
@@ -28,7 +28,7 @@ Now, how do we run that? Simple:
 node play.js
 ```
 
-And boom! And now we can start experimenting with new ES6 features... without
+Boom! And now we can start experimenting with new ES2015 features... without
 needing to constantly refresh the browser. Let's play a bit more with our arrow
 functions. Create a new variable called `aGreatNumber` set to 10. Then, call
 `setTimeout` and pass it an arrow function. Inside, `console.log(aGreatNumber)`.

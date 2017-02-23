@@ -3,7 +3,7 @@ chapters:
     - arrow-functions
     - rock-some-nodejs
     - var-let-scope
-    - var-let-hosting
+    - var-let-hoisting
     - const
     - object-literals-optional-args
     - class-syntax
