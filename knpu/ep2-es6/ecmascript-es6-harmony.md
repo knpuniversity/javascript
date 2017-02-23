@@ -72,7 +72,7 @@ it Larry.
 The *official* name is ECMAScript 2015, though you'll even hear me call it ES6 because
 it's the sixth version of ECMAScript.
 
-As we'll learn, ES 2015 comes with a lot of new functions and tools. But, more importantly,
+As we'll learn, ES2015 comes with a lot of new functions and tools. But, more importantly,
 it comes with new *language* constructs - new syntaxes that weren't allowed before.
 In fact, it comes with *so* many new syntaxes, that if you look at a JavaScript file
 that uses everything, you might not even recognize it as JavaScript. 
@@ -85,6 +85,6 @@ There is already *another* new version of ECMAScript: ECMAScript 2016. But it on
 contains a few, minor features.
 ***
 
-So here's our mission: jump into the important stuff of ES 2015 that will let us
+So here's our mission: jump into the important stuff of ES2015 that will let us
 understand, and *write* truly, modern JavaScript. Let's start with my absolute
-favorite, game-changing feature of ES 2015: arrow functions.
+favorite, game-changing feature of ES2015: arrow functions.

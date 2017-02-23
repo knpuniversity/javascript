@@ -9,7 +9,8 @@ chapters:
     - class-syntax
     - static-class-methods
     - extends-super-calls
-    - destructuring-spread-operator
+    - destructuring
+    - spread-operator
     - template-strings
     - for-of-loop
     - map-weak-map

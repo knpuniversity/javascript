@@ -1,10 +1,10 @@
 # Arrow Functions
 
-You will see the *first* big feature or ES 2015 used *everywhere*... and at first,
+You will see the *first* big feature or ES2015 used *everywhere*... and at first,
 it looks *weird*. Very simply, there is a new, shorter syntax for creating anonymous
 functions.
 
-For example, in our `.then()`, we have an anonymous function. In ES 2015, we can
+For example, in our `.then()`, we have an anonymous function. In ES2015, we can
 remove the word `function`, and add an "equal arrow" (`=>`) after the arguments.
 
 That's it! That will do the exact same thing as before. Well, PhpStorm is *really*

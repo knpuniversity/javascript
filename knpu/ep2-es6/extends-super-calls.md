@@ -1,6 +1,6 @@
 # Class Inheritance and super Calls
 
-In PHP, one class can extend another. So, can we do that in JavaScript? Totally!
+In PHP, a class can extend another class. So, can we do that in JavaScript? Totally!
 And once again, you're going to *love* it.
 
 To try this out, let's go back to the `play.js` file. Create a new class: `AGreatClass`,
@@ -8,21 +8,21 @@ because, it's going to be a great class. Give it a `constructor` with a `greatNu
 arg and set that on a property.
 
 Below, add one new method: `returnGreatThings`, which it will, because it's going
-to return our `greatNumber`.
+to return our `greatNumber`!
 
 Finally, create a new constant, `aGreatObject`, set to `new AGreatClass(42)`. Let's
 `console.log(aGreatObject.returnGreatThings())`.
 
-There's no mystery about what this is going to return. Run the file! Yep, 42, awesome!
+There's no mystery about what this is going to return. Run the file! Yep, 42!
 
 ## Extending a Class
 
 Now, let's create another class, `class AnotherGreatClass`, because we're on a roll.
-But, I want this to be a *sub class* of `AGreatClass`. Do that *just* like we would
+But, I want this to be a *sub class* of `AGreatClass`. How? The same way we do it
 in PHP: `extends AGreatClass`.
 
-That is it. We're not overriding anything yet, but this should work. Change the varaible
-to be a new `AnotherGreatClass`, and then run the file! It works!
+That is it. We're not overriding anything yet, but this should work. Change the variable
+to be a `new AnotherGreatClass`, and then run the file! Success!
 
 ## Overriding a Method and Calling super
 
@@ -62,8 +62,8 @@ So let's give this two arguments: `greatNumber` and `greatWord`. To call the par
 constructor... it's  *not* what you might think: `super.constructor()`. You actually
 treat `super` like a *function*: `super(greatNumber)`.
 
-Below, let's print out `this.greatWord` and pass in `42` and `adventure`. Ok, try
-it out!
+Below, let's print out `this.greatWord` and pass in `42` and `adventure`. Try
+this out!
 
-Yes! it works! Oh man, are you feeling like an JavaScript class pro or what? Now
+Yes! It works! Oh man, are you feeling like a JavaScript class pro or what? Now
 let's talk about something kinda weird: destructuring!
