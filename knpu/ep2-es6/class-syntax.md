@@ -30,7 +30,7 @@ Let's make the same change at the top with `RepLogApp`: `class RepLogApp {` and
 then move the old constructor function inside. But, make sure to spell that correctly!
 I'll indent everything and add the closing curly brace.
 
-Cool! Now we all we need need to di os move the methods inside!
+Cool! Now we all we need to do is move the methods inside!
 
 ## Classes do *not* have Properties
 

@@ -1,8 +1,8 @@
 # Array Destructuring
 
-Let's talk about two kinda *weird* things. At first, these next two things may not
-seem *all* that useful. But even if that *were* true, you're going to start to see
-them *a lot*, even in PHP, so we need to understand them!
+Next, we're going to talk about two kinda *weird* things. At first, neither or these
+will seem *all* that useful. But even if that *were* true, you're going to start
+to see them in use, even in PHP! So we need to understand them!
 
 ## Destructuring
 
@@ -15,23 +15,23 @@ allows us to do this weird thing: `let {id, itemLabel, reps} = repLog`. Below, l
 `id`, `itemLabel` and `reps`.
 
 Yep, this weird line is actually going to create three *new* variables - `id`,
-`itemLabel`, and `reps` - set to the value of the `id`, `itemLabel` and `reps`
+`itemLabel`, and `reps` - set to the values of the `id`, `itemLabel` and `reps`
 keys in `repLog`.
 
 Let's see it in action: refresh! Got it! This is called destructuring, and you can
-even do it with true arrays, which looks even stranger. In that case, the variables
+even do it with arrays, which looks even stranger. In that case, the variables
 are assigned by position, instead of by name. Oh, and side-note, PHP7 introduced
-destructuring - so this also exists in PHP!
+destructuring - so this exists in PHP!
 
 ## Destructuring & Default Values
 
 What if we try to create a variable that does *not* match a key, like, I don't know,
-`totallyMadeUpKey`. Try to print that. What will happen now?
+`totallyMadeUpKey`. Try to print that. What do you think will happen?
 
-It's not an error: it just prints as undefined. Destructuring is friendly: if something
-goes wrong, it doesn't kill your code: it just assigs undefined. If you think this
-might be possible, you can give that variable a default, like `whatever`. Now, if
-the key doesn't exist, it'll get set to `whatever`.
+It's not an error: it just prints as undefined. So destructuring is friendly: if
+something goes wrong, it doesn't kill your code: it just assigns undefined. If you
+think this might be possible, you can give that variable a default, like `whatever`.
+Now, if the key doesn't exist, it'll get set to `whatever`.
 
-So, this is destructuring. It may or may not be useful for you, but you *will* see
-it in code: don't let it surprise you!
+So, this is destructuring. It may or may not be useful to you, but you *will* see
+it! Don't let it surprise you!

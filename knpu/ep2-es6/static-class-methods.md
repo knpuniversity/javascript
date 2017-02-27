@@ -26,7 +26,7 @@ other places. Perfect!
 Time to try things! Refresh! Yes! No errors!
 
 Let's see one more example: scroll *all* the way down to the `Helper` class. Create
-a new method: `static _calculateweight()` with an `$elements` argument. This will
+a new method: `static _calculateWeight()` with an `$elements` argument. This will
 be a new static utility method whose job is to loop over whatever elements I pass,
 look for their `weight` data attribute, and then return the total weight. We don't
 really *need* to make this change, but it's valid.

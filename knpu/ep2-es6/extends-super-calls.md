@@ -42,11 +42,11 @@ Can we override the `constructor` in the same way? Because really, I should be
 able to pass the `greatNumber` and the great thing, `adventure`, into this class.
 
 Override the `constructor` and give it just one argument: `greatWord`. Then, set
-`this.greatWord = greatWord`. What do you think will happen when we run this? We're
-setting the `greatWord` property... but we're not calling the parent constructor.
-So maybe `this.greatNumber` will be undefined? I don't know! Let's find out!
+`this.greatWord = greatWord`. Before we try to print that below, what do you think
+will happen when we run this? We're setting the `greatWord` property... but we're
+not calling the parent constructor. Actually, try to run it!
 
-Run it! Ah, we get an error in the `constructor`!
+Ah, we get an error in the `constructor`!
 
 > this is not defined
 
