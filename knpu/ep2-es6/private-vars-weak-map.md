@@ -1,27 +1,99 @@
-# Private VARS Weak Map
+# Private Variables & WeakMap
 
-To show you the importance of WeakMap, lets go back into RepLogApp and scroll all the way up to the top.  And remember this file holds two classes; RepLogApp, and also at the bottom it has Helper. And the purpose of Helper was for it to be a private object that we couldn't reference from outside of our self executing function. It's a way for us to say "Don't worry about this Helper thing."
+To see a real-world `WeakMap` use-case, go back into `RepLogApp` and scroll to the
+top. Remember, this file holds two classes: `RepLogApp` and, at the bottom, `Helper`.
+The purpose of `Helper` is to be a private object that we can *only* reference from
+inside of this self-executing function.
 
-But you noticed in the constructor RepLogApp, we actually set Helper onto a Helper property. And we do this so that we can use it later, inside of updateTotalWeightLifted. Here's the problem; the Helper property is not private. What I mean is inside of our template if I wanted to I could now say: repLogApp.Helper.calculateTotalWeight.  So we went through all of this trouble to create a private Helper class or object and its not actually private.
+## Making Helper a Private Object
 
-So getting around to some java script, there are a number of different strategies. Heres one; above the class lets say: let HelperInstance = null;. And then down here instead of setting it on a property, which is accessible from outside, lets just say: HelperInstance = new Helper. Because this HelperInstance variable is not going to be available outside of our self executing function. And of course down here an update to WeightLifted we'll say: HelperInstance. getTotalWeightString. And just like that we have made Helper truly private.
+But check out the constructor for `RepLogApp`: we set `Helper` onto a `helper` property.
+We do this so that we can use it later, inside of `updateTotalWeightLifted`. Here's
+the problem: the `helper` property is *not* private. I mean, inside of our template,
+if we wanted, we could say: `repLogApp.helper.calculateTotalWeight()`.
 
-While some of you might already see a problem here, because its legal even if we're not using it in this application, to create multiple RepLogApp objects.  And if we did create two RepLogApp objects for now, well the second one would replace the first HelperInstance. We can only ever have one HelperInstance even if we have multiple RepLogApps so this is a bad design.
+Dang! We went to *all* of that trouble to create a private `Helper` object... and
+it's not actually private! Lame!
 
-So one way to fix this is actually to change this to: let HelperInstances = new Map. Actually store all the HelperInstances in the Map. Down here you'll actually say: HelperInstances.set. And for the key, and this looks a little bit weird, you'll actually use this., in other words we'll key that HelperInstance to ourself, our instance. That means later when we'll want to use it, we'll say HelperInstances.get(this).GetTotalWeightString. So the Helper is still private and now each instance of RepLogApp is going to have its own HelperInstance inside of our Map.
+How can we fix this? Here's an idea: above the class, create a new `HelperInstance`
+set to `null`.
 
-So just to prove this is not breaking everything, we refresh, everything still loads just fine.
+Then, instead of setting the `new Helper` onto a property - which is accessible from
+outside, say: `HelperInstance = new Helper()`.
 
-So let's do a little experiment here. Once you go all the way to the bottom of this file, the first human crate for new RepLogApp objects, we'll just point them at the 'body' tag. And you'll notice that these are not being used, I'm not setting them to a variable so they are sort of created, and they're gone. And below that, and this won't make sense at first, [inaudible 00:03:56] setTimeout [inaudible 00:04:01] function inside here we're going to say console.log(HelperInstances). And we'll set that to run five seconds after we load the page.
+And that's it! The `HelperInstance` variable is *not* available outside our self-executing
+function. And of course down below, in `updateTotalWeightLifted()`, the code will
+now read: `HelperInstance.getTotalWeightString()`.
 
-Now when we do this and refresh, we wait our five seconds, we should see the Map printed out with five Helpers in it. And that makes sense, we've created five RepLogApp instances, every RepLogApp creates its own Helper, and those all go into the Map.
+And just like that, we've made `Helper` truly private.
 
-But now I want you to, actually after we set the HelperInstance, simply return. So this is a little bit weird but at this point, since we're returning here, when we create a new RepLogApp object, it's not attaching any listeners or doing anything like that. So ultimately this object is not attached or referenced anywhere in memory, at least not for the ... We just create the object, and the object does nothing. So these objects including their HelperInstances, should be available for garbage collection.
+## Multiple Instances with Map!
 
-Now garbage collection is something that happens randomly based on your browser, but if you're using chrome you can actually force it. And you do that by going to the timeline tab, you should have a little garbage icon here. So I'm going to do this quickly.  I'm going to refresh, I'm going to hit the collect garbage, we're going to go to the console. And when it comes up it still has the five HelperInstances, but now go back up here and change this to a WeakMap instead.
+Well... you might already see the problem! Even though we're not doing it here,
+it *is* legal to create *multiple* `RepLogApp` objects. And if we *did* create two
+`RepLogApp` objects, well the second would replace the `HelperInstance` from the
+first!. We can only ever have one `HelperInstance`... even though we may have
+*multiple* `RepLogApp` objects. Bad design Ryan!
 
-Now go back to the timeline tab, refresh, hit the garbage icon, go to console, and check this out. That weak Map just come back empty, and that is the use case for a WeakMap. A WeakMap is perfect for situations like this where you want to hide something in a private way, like our Helper object. But the problem is if you use a Map its possible that once you're done with that Helper object, because the Map is still referencing it in memory, garbage collection can't take over and remove that Helper.
+Ok, so why not use our cool new `Map` object to store a *collection* of `Helper`
+objects? `let HelperInstances = new Map()`. In the `constructor()`, set the new
+object into that map: `HelperInstances.set()`...and for the key - this may look
+a little weird - use `this`.
 
-Now this may or may not be a problem or a use case in your situation, but that's when you're going to see the WeakMap used instead of the Map. So for us it means that we're going to use the Map in day to day kind of stuff, but if we do have a situation like this we're going to use the WeakMap. So let's get rid of all our debug code here. And our page should be happy again.
+In other words, we key this `HelperInstance` to *ourselves*, our instance. That
+means that later, to use it, say `HelperInstances.get(this).getTotalWeightString()`.
 
-So in addition to Map ...
+This is awesome! `Helper` is still private, but now each `RepLogApp` instance will
+have its own instance of `Helper` in the `Map`.
+
+Just to prove this is not breaking everything, refresh! Woohoo!
+
+## Playing with Garbage Collection
+
+Time for an experiment! Go all the way to the bottom of the file. Create a new `RepLogApp`
+object... and just pass in the `body` tag. Copy this and repeat it three other times.
+
+Notice that these are *not* being used: I'm not setting them to a variable. In other
+words, they are created, and then they're gone: no longer referenced by anything.
+Below that - and this won't make sense yet, call `setTimeout()`, pass it an arrow
+function, and inside, `console.log(HelperInstances)`. Set that to run five seconds
+after we load the page.
+
+Mysterious!?
+
+Ok, refresh! And then wait a few seconds... we should see the `Map` printed with
+*five* `Helper` objects inside. Yep, we do! One `Helper` for each `RepLogApp` we
+created.
+
+But now, back in `RepLogApp`, after we set the `HelperInstance`, simply return.
+This is a temporary hack to show off garbage collection. Now that we're returning
+immediately, when we create a new `RepLogApp` object, it's not attaching any listeners
+or adding itself as a reference to *anything* in the code. In other words, this object
+is *not* attached or referenced *anywhere* in memory. Because of that, `RepLogApp`
+objects - and their `Helper` objects - should be eligible for garbage collection.
+
+Now, garbage collection isn't an instant process - it takes places at intervals,
+and it's up to your JavaScript engine to worry about that. But if you're using Chrome,
+you can *force* garbage collection! On the timeline tab, you should see a little
+garbage icon. Try this: refresh! Quickly click the "collect garbage" button, and
+then see what prints in the console.
+
+Ok, so `HelperInstances` *still* has 5 objects inside. In other words, the Helper
+objects were *not* garbage collected. Why? Because they are still being referenced
+in the code... by the `Map` itself!
+
+Now, change the `Map` to a `WeakMap`.
+
+Go back and repeat the dance: refresh, hit the garbage icon, and then go to the
+console. Woh! Check this out! The `WeakMap` is *empty*. Remember, this is its
+superpower! Since none of the `RepLogApp` objects are being referenced in memory
+anymore, both those *and* their `Helper` instances are eligible for garbage collection.
+When you use `Map`, it prevents this: simply being *inside* of the `Map` counts as
+a reference. With `WeakMap` that doesn't happen.
+
+Ok, I know, this was still pretty darn advanced. So you may or may not have this use
+case. But this is when you will see `WeakMap` used instead of `Map`. For us it means
+we should use `Map` in normal situations... and `WeakMap` only if we find ourselves
+with this problem.
+
+Get rid of all our debug code here. And our page is happy again!

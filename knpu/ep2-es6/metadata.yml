@@ -16,4 +16,5 @@ chapters:
     - map-weak-map
     - private-vars-weak-map
     - set-object
+    - npm-yarn
     - babel

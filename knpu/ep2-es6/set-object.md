@@ -1,13 +1,46 @@
-# Set Object
+# The Set Object
 
-We've got map object, which is fun. We've got week map, which is used for these kinds of edge case of private scope. There's another one called set. A set is a way, is a new object that just helps you with simple arrays. For example, right now when the page loads, we call it load rep log. This gets back a bunch of rep log data. These are used inside the add row to actually add the TR elements to our page, which is what we see here.
+The `Map` object is perfect for maps, or associative arrays as we call them in the
+PHP biz. ES2015 gives us another object called `Set`. This new fancy object replaces
+using true, indexed arrays. 
 
-We don't actually keep track of these rep log objects. We use them to build a page, but then we just let go of them. I'm going to start actually keeping track of that array of rep logs. You'll see why in a second. At the top of this, let's actually initialize a new ... This dot rep logs equals new set. Then down here, inside of add row, we'll say this dot rep logs, which is the set, dot add rep log. You can see it's not a keyed array, it's just something that you add items to you.
+For example, when the page loads, we call `loadRepLogs()`. This fetches an array of
+`repLog` data via AJAX and then calls `_addRow()` on each to add the `<tr>` elements
+to the table.
 
-Like map, it has a lot of really helpful methods on it, so it's just easier to work with rather than a normal Java script array. Back up top, inside the load rep logs, after the four loop, let's just see how this looks. Let's do counsel dot log on this dot rep logs, and also we'll use one of those helpful methods. This dot rep logs dot has, and we will see if it has one of the rep logs that we know will be in this data items array.
+But once we add the table rows... we don't actually store those `repLog` objects
+anywhere. Yep, we use them to build the page... then say: Adios!
 
-We'll say it should have data dot items left stroke bracket zero. We'll check and make sure that the first rep log in there is inside of our set. Sure enough, when we refresh, we get this great new set here, and we have true. That's awesome. The nice thing about keeping track of our rep logs in this way is that before a helper function would pass a wrapper, and then it looped over the TR elements to read the weight on them. We can totally simplify this now. I'm actually going to pass it our set.
+Now, I *do* want to start storing this data on my object, and you'll see why in a
+minute. Up in the `constructor`, create a `repLogs` property set to `new Set()`.
+Then, down in `_addRow()`, say `this.repLogs` - which is the `Set` object -
+`this.repLogs.add(repLog)`.
 
-Down at the bottom of this file, this will now be rep logs. Set that on your rep logs properly. Down to calculate total weight, instead of using the wrapper to find all of our TR elements, we're just going to pass it this dot rep log. We'll pass the set into our static function down here. Here I'll say rep log set. Now previously, calculate total weight would loop over the elements and read the data-weight attribute on it.
+Yep - the `Set` object is just like an array, but with some helper methods! Back
+up in `loadRepLogs`, after the `for` loop, let's see how this looks: `console.log(this.repLogs)`.
+Oh, and let's also use one of its helper methods: `this.repLogs.has(data.items[0])`.
+Obviously, this item *should* have been added to the `Set`!
 
-Now, instead, we're going to say let rep log of rep log set. Even though this is an object, it acts like an array, which means that we can loop over it. Now here we can replace this with rep log dot total weight lifted, which is one of the keys that we have on our rep log object. With all that, we're going to refresh now. Still get the list, and we still get the total on the bottom. Sets, it's arrays with some nice new stuff.
+Refresh! Yea! We see the new fancy `Set` and the word `true`. Awesome!
+
+But... why are we keeping track of the `repLogs`? Because now, we can more easily
+calculate the total weight. Before, we passed the `Helper` object the `$wrapper`
+element so that it could find all the `tr` elements and read the weight from them.
+We can simplify this! Instead, pass it our `Set`: `this.repLogs`.
+
+At the bottom of this file, change the `constructor` for `Helper` to have a `repLogs`
+argument. Set that on a `repLogs` property.
+
+Below in `calculateTotalWeight`, instead of using the `$wrapper` to find all the
+`tr` elements, just pass `this.repLogs` to the static function. Inside of that, update
+the argument to `repLogSet`. 
+
+Previously, `_calculateTotalWeight` would loop over the `$elements` and read the
+`data-weight` attribute on each. Now, loop over `repLog of repLogSet`. Inside,
+set `totalWeight += repLog.totalWeightLifted`. It's nice to calculate the total
+weight from our source data, rather than reading it from somewhere on the DOM.
+
+Okay! Try that out! The table still loads... and the total still prints! Say hello
+to `Set`: an array with extra stuff. Oh, and there is also a `WeakSet`, which has
+the same super powers of `WeakMap`. But, I haven't seen any decent use-case for it.
+Just use `Set`!

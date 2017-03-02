@@ -1,59 +1,120 @@
-# Babel
+# Babel: Transliterating to Old JavaScript
 
-At the beginning of this tutorial, we talked about how when PHP releases a new version, the creators make it available for download. We all download it, we put it on our servers, we high-five, we're done.
+Time to use Babel! How? At your terminal, type
 
-Well the JavaScript [inaudible 00:00:13] it's not the same. When they release a new version of ECMAScript, it's just a standard. Unfortunately, we as developers then need to wait for all of the browsers to support those features, and for all of our lazy users to update their browsers. This is a huge problem in the JavaScript community, because it means they can't update and iterate very quickly.
+```terminal
+./node_modules/.bin/babel
+```
 
-So, they solved it with an amazing tool called Babel. Now before we get there, we need to do a little bit of installation. Now in the Node.js world, they have a package manager called NPM. You've probably heard of it before. It comes installed when you install Node. NPM is the composer for Node.js.
+***TIP
+On some systems, you may need to type `node node_modules/.bin/babel`.
+***
 
-Now there's another package manager called Yarn, which you probably don't have installed yet. Yarn is a competitor to NPM. It would be as if somebody came and wrote a different library that competed with Composer. The really cool thing is they both use the same file to track their dependencies, so in PHP we have composer.json, in NPM, in Node, they have packages.json. Both Yarn and NPM use that same file.
+That is the path to the executable for Babel. Next, point to our source file:
+`web/assets/js/RepLogApp.js` and then pass `-o` and the path to where the final,
+compiled, output file should live: `web/assets/dist/RepLogApp.js`.
 
-This is a long way of saying that NPM and Yarn can both be used as a Node package manager, and you can use whichever one you want, and they effectively work the same. You could even have different people on your team using one, and other people using the other one.
+Before you run that, go into `web/assets`, and create that new `dist` directory.
+Now, hold your breath and... run that command!
 
-We're gonna use Yarn, because it's a little bit more sophisticated, which means you need to install it. I'm on a Mac, so I already installed it via brew. Now in our project, in order to install Babel, we're gonna actually install it via Yarn right into our project, which means we need to have a packages.json file. We don't have one right now.
+```terminal
+./node_modules/.bin/babel web/assets/js/RepLogApp.js -o web/assets/dist/RepLogApp.js
+```
 
-To create one, we're gonna say yarn init. It'll ask you a bunch of questions. You're gonna answer those however you want, and afterwards we magically have a package.json. Awesome.
+And boom! Suddenly, we have a new `RepLogApp.js` file.
 
-The wonderful tool that is gonna fix all of our problems with browser compatibility is called Babel. Google for Babel and find babeljs.io.
+Before we look at it, go into `index.html.twig` and update the `script` tag to
+point to the new `dist` version of `RepLogApp.js` that Babel just created.
 
-Now of course we have been successfully using all of these new features in the latest Chrome version, but we can't trust that our users all have the latest Chrome version. Enter Babel.
+Ok, refresh! It still works!
 
-Basically, Babel is able to look at new JavaScript, like ECMAScript 2015, and recompile it to old JavaScript, so that all browsers can understand it.
+So what did Babel do? What are the differences between those two files? Let's find out!
+Open the new file. Hmm, it actually doesn't look *any* different. And, that's right!
+To prove it, use the `diff` utility to compare the files:
 
-Let's go to Setup. In our case, for showing this off, we're gonna use the CLI, which means we'll be able to run Babel from the command line. Now check this out, in order to install Babel CLI, it says npm install --save-dev babel-cli. This is the name of the library.
+```terminal
+diff -u web/assets/js/RepLogApp.js web/assets/dist/RepLogApp.js
+```
 
-Instead, since we're using Yarn, we'll use yarn add babel-cli --dev. That does its thing. Awesome.
+Wait, so there are *some* differences... but they're superficial: just a few space
+differences here and there. Babel did *not* actually convert the code to the *old*
+JavaScript format! We can still see the arrow functions!
 
-This made a few changes to our project. Most importantly, added this dev dependencies, babel-cli. Yarn also includes a yarn.lock file. That's like the composer.lock file. The end result of running that command is that it added a node_modules directory, where it downloaded a bunch of stuff. That's the vendor directory for Node.
+Here's the reason. As crazy as it sounds, by default, Babel does... nothing! Babel is
+called a transpiler, which other than being a cool word, means that it reads source
+code and converts it to other source code. In this case, it parses JavaScript, makes
+some changes to it, and outputs JavaScript. Except that... out-of-the-box, Babel
+doesn't actually make *any* changes!
 
-Actually, I'm gonna go into my .gitignore file right now, and down here I'm gonna ignore node_modules, because we don't need to commit that because with have the package.json and the yarn.lock file.
+## Adding babel-preset-env
 
-Okay, so let's use Babel. The way you use it is you can say ./node_modules/.bin/babel. That's the path to the executable for Babel. What you'll do is you'll just point that at our source file. Then we'll say -d and we'll tell it to put the finished file inside of a new web/assets/dist directory.
+We need a little bit of configuration to tell Babel to do the ES2015 to ES5 transformation.
+In other words, to turn our new JavaScript into old JavaScript.
 
-You can see that wrote a new ... Oh that's out of date. Damn it. It's -f isn't it? [inaudible 00:05:43]. Oh.
+And they mention it right on the installation page! At the bottom, they tell you
+that you probably need something called `babel-preset-env`. In Babel language, a
+*preset* is a transformation. If we want Babel to make the ES2015 transformation,
+we need to install a *preset* that does that. The `env` preset is one that does that.
+And there are *other* presets, like CoffeeScript, ActionScript and one for ReactJS
+that we'll cover in the future!
 
-You'll have to use it by saying ./node_modules/.bin/babel, which is the path to the Babel executable. Then we'll pass the path to our source file, web/assets/js/RepLogApp.js, and then -o for output. Then we'll say put it in a new web/assets/dist/RepLogApp.js.
+Let's install the preset with yarn:
 
-Before you run that command, go in your web_assets directory, make sure you create that new dist directory. Then you can run that, and boom. There is our new RepLogApp.js file.
+```terminal
+yarn add babel-preset-env --dev
+```
 
-Now before we look at it, let's go into our index.html.twig, and we're actually gonna point at our new dist version of that instead of our original one. We go over and refresh. It still works.
+Perfect! To tell Babel to use that preset, at the root of the project, create a
+`.babelrc` file. Babel will automatically read this configuration file, as long
+as we execute Babel from this directory. Inside, add `"presets":["env"]`.
 
-What's the difference between those two files? Let's actually look at the new version of it. If you look, it actually doesn't look any different. In fact, you can prove this by saying diff -u web/assets/js/RepLogApp.js. Let's compare that to web/assets/dist/RepLogApp.js.
+This comes straight from the docs. And... we're done!
 
-As you can see, the differences are all very superficial. It's all just little coding standards. Little spaces here and not spaces there, but it didn't actually convert this to old JavaScript. You can see it's still using the arrow functions. Nothing significant actually changed. Here's the reason. As crazy as it sounds, by default, Babel does nothing. Babel actually is called a transpiler, which means it reads source code, and then actually dumps source code. Out of the box it doesn't make any transformations. We actually need to add a little bit of configuration to tell Babel to do the ECMAScript 2015 transformation to convert our code to old JavaScript.
+Try the command again! Run that diff command now:
 
-This is actually something that they mention right on the installation page. Down at the bottom they tell you that you probably need something called the babel-preset-env. In Babel language, a preset is a transformation. If we want Babel to make the ECMAScript 2015 transformation, we need to install a preset that does that. The env preset is one of those that do that. There are actually other presets that can make other transformations, and we'll talk about that in the future.
+```terminal
+diff -u web/assets/js/RepLogApp.js web/assets/dist/RepLogApp.js
+```
 
-Let's install this with Yarn. So yarn add babel-preset-env --dev. Perfect. Then in order for Babel to know to use that preset, at the [inaudible 00:09:18] project, we'll create a new .babelrc file. Babel will automatically read that file from whatever, as long as we run the commands in that directory. Inside here we can just say "presets":["env"], and that's it. This is taken right from their documentation here.
+Woh! Now there are *big* differences! In fact, it looks like almost *every* line
+changed. Let's go look at the new `RepLogApp.js` file in `dist/` - it's really interesting.
 
-All right, so now let's try our command again. Then go back to our diff. Now there are big differences between these files. In fact, it looks almost like every single line changed. A better way is actually now to go look at the dist RepLogApp, and it's really interesting.
+Cool! First, Babel adds a few utility functions at the top. Below, instead of using
+the new class syntax, it calls one of those functions - `_createClass` - which helps
+to mimic that new functionality. Our arrow functions are also gone, replaced with
+classic anonymous functions.
 
-First at top it adds a couple of utility functions that it's gonna use down inside of our code. Then you can see instead of actually using the new class queuer, it calls its _createClass function, which is something that imitates the new class syntax. You can also see that our arrow functions are gone, and it's replaced them with classic anonymous functions.
+There's a lot of cool, but complex stuff happening here. And fortunately, we don't
+need to worry about any of this! It just works! Now, even an older browser can enjoy
+our awesome, *new* code.
 
-There's a lot of really cool complexity going on, but we don't have to worry about any of this. It's done all the work for us to convert new JavaScript to old JavaScript. Now even if we did have an old browser, our code would work.
+***TIP
+The purpose of the babel-preset-env is for you to configure exactly *what* versions
+of what browsers you need to support. It then takes care of converting everything
+necessary for those browsers.
+***
 
-The one interesting thing you'll see in here, is notice it did not change our WeakMap. WeakMap is an object that's only available in ECMAScript 2015. It turns out that Babel's job is to change all of the language constructs to the old version. If there are new features like this, like new objects or new functions that you want to use, then you're gonna need to use something called a polyfill. Specifically, babel-polyfill. This is another JavaScript library that adds missing functionality, like our WeakMap, into JavaScript if it doesn't exist. We actually did this in the first episode, when we started using promises, we used a polyfill library for the promise.
+## Babel and the Polyfill
 
-Now in order to use this though, we're gonna need to go a little bit further and learn about something called webpack. That's the topic of our next tutorial, where we really take things to a big next level.
+But wait... it did *not* change our `WeakMap`! But... isn't that only available in
+ES2015? Yep! Babel's job is to convert all the new language constructs and syntaxes
+to the old version. But if there are new objects or functions, it leaves those. Instead,
+you should use something called a polyfill. Specifically, `babel-polyfill`. This
+is another JavaScript library that adds missing functionality, like `WeakMap`, if
+it doesn't exist in whatever browser is running our code.
 
-All right guys, I hope you learned tons about ECMAScript 2015. You can already start using it by using Babel, or if your users all have brand-new browsers, then you don't even have to worry about it. All right guys, I'll see you next time.
+We actually did something *just* like this in the first episode. Remember when we
+were playing with the `Promise` object? Guess what? That object is only available
+in ES2015. To prevent browser issues, we used a polyfill.
+
+To use *this* Polyfill correctly, we need to go a little bit further and learn about
+Webpack. That's the topic of our next tutorial... where we're going to take a *huge*
+step forward with how we write JavaScript. With webpack, we'll be able to do cool
+stuff like importing JavaScript files from inside of each other. Heck, you can even
+import CSS from inside of JavaScript. It's bananas.
+
+Ok guys! I hope you learned tons about ES2015/ES6/Harmony/Larry! You can already
+start using it by using Babel. Or, if your users all have brand-new browsers, then
+lucky you!
+
+All right guys, I'll seeya next time.

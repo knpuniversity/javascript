@@ -87,10 +87,10 @@ works: all of these rows are built from that template.
 Before we move on, there's *one* other strange thing you might see with template
 strings.
 
-In your project, you should have a `tutorial` directory with an `upper.js` file
-inside. Copy that function. And then, at the bottom of `RepLogApp.js`, paste it
-before template. Just follow me on this: right before the tick that starts the
-template string, add the function's name: `upper`.
+If you downloaded the start code for this project, you should have a `tutorial` directory
+with an `upper.js` file inside. Copy that function. And then, at the bottom of
+`RepLogApp.js`, paste it before the template. Just follow me on this: right before
+the tick that starts the template string, add the function's name: `upper`.
 
 So literally `upper`, then without *any* spaces, the opening tick. This is called
 a tagged template. And by doing this, the string and its embedded expressions will
@@ -99,7 +99,8 @@ it'll upper case all the words.
 
 Other *possible* uses for tagged templates might be to escape variables. But honestly,
 the web seems to be filled mostly with *possible* use-cases, without too many real-world
-examples. And also, these functions are really complex to write and even hard to read!
+examples. And also, these functions are really complex to write and even harder to
+read!
 
 Oh, btw, the `upper` function uses the spread operator in a different way: to allow
 the function to have a variable number of arguments!

@@ -6,7 +6,7 @@ new function called `printThreeThings(thingOne, thingTwo, thingThree)`. Inside,
 `console.log` our three things. Easy enough!
 
 Below that, create a new array called `yummyThings`, which of course naturally
-will include pizza, gelato, and sushi. All delicious, maybe not if you eat them
+will include pizza, gelato, and sushi. All delicious, but maybe not if you eat them
 all at the same time.
 
 Here's the question: 
@@ -31,9 +31,9 @@ US, my `yummyThings` should probably have a cheeseburger.
 What will happen now? The array has *4* things, but we only have 3 arguments?
 Let's find out! Run the script!
 
-It's the *same* results! Thanks to the spread operator, `pizza` is passed as the
-first argument, then `gelato`, `sushi` and finally, hamburger is passed as the 4th
-argument. Since the function doesn't have a 4th argument, it's juts ignored!
+It's the *same* result! Thanks to the spread operator, `pizza` is passed as the
+first argument, then `gelato`, `sushi` and finally, cheeseburger is passed as the 4th
+argument. Since the function doesn't have a 4th argument, it's just ignored!
 
 ## Spread Operator as an Array Merge
 
@@ -70,7 +70,7 @@ use `copyOfGreatThings.push()` to add something that we *all* know is great: `su
 At the bottom, `console.log(copyOfGreatThings)`.
 
 Here's the question: we know `summer` now lives in `copyOfGreatThings`. But does
-it also now live inside of `greatThings`? Try it! it *does*! Summer lives in *both*
+it also now live inside of `greatThings`? Try it! It *does*! Summer lives in *both*
 arrays! And this makes sense: arrays are *objects* in JavaScript, and just like
 in PHP, objects are passed by reference. In reality, `greatThings` and `copyOfGreatThings`
 are *identical*: they both point to the same array in memory.
@@ -88,4 +88,4 @@ into it, one-by-one.
 Try it! Yes! We can see summer in the copy, but we did *not* modify the original
 array.
 
-Ok, let's move into something that's *instantly* useful: template strings!
+Ok, let's move on something that's *instantly* useful: template strings!

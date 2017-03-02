@@ -20,10 +20,10 @@ for `let fieldData of $form.serializeArray()`. Before, the anonymous function
 received a key and *then* the `fieldData`. But, we didn't actually need the key:
 the `$.each` function just forced us to add it. Now, things are cleaner!
 
-Make this same change in two more places: for `element of $form.find(':input')`.
+Make this same change in two more places: for `$element of $form.find(':input')`.
 Ah, don't forget your `let` or `var`.
 
-Then, one more below: for `let element of $elements`.
+Then, one more below: for `let $element of $elements`.
 
 Oh, and PhpStorm is warning me because I forgot to remove one of my closing parentheses!
 And, we don't need that semicolon! Yay!
@@ -32,9 +32,9 @@ So, use the `for of` loop for everything! Well actually, that's not 100% true. `
 is perfect when you want to loop over a collection of items. But, if you want to
 loop over an *associative* array... or object, and you need to know the *key* for
 each item, then you'll use `for in`. This is the one limitation of `for of`: it gives
-you the *value* of the item you're looping over, but not its key, or index. So if
-you ever need to do the equivalent of `foreach ($items as $key => $val)` from PHP,
-use `for in`. 
+you the *value* of the item you're looping over, but not its key, or index. In fact,
+if try to use `for of` with an object, you'll get an error. So if you ever need to
+do the equivalent of `foreach ($items as $key => $val)` from PHP, use `for in`. 
 
 I know, I know, not *quite* as easy as PHP, but just remember these two things and
 you'll be unstoppable!
