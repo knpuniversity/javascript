@@ -34,7 +34,7 @@ Boom! And now we can start experimenting with new ES2015 features... without
 needing to constantly refresh the browser. Let's play a bit more with our arrow
 functions. Create a new variable called `aGreatNumber` set to 10:
 
-[[[ code('9ec62c1c94') ]]]
+[[[ code('e3afd03eac') ]]]
 
 Then, call `setTimeout()` and pass it an arrow function. Inside, `console.log(aGreatNumber)`:
 
