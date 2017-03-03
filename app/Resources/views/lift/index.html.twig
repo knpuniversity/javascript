@@ -20,19 +20,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for repLog in repLogs %}
-                    {{ include('lift/_repRow.html.twig') }}
-                {% else %}
-                    <tr>
-                        <td colspan="4">Get liftin'!</td>
-                    </tr>
-                {% endfor %}
                 </tbody>
                 <tfoot>
                     <tr>
                         <td>&nbsp;</td>
                         <th>Total</th>
-                        <th class="js-total-weight">{{ totalWeight }}</th>
+                        <th class="js-total-weight"></th>
                         <td>&nbsp;</td>
                     </tr>
                 </tfoot>
