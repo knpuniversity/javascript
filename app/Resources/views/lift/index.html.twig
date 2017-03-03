@@ -80,7 +80,8 @@
                 );
 
                 var newThis = {cat: 'meow', dog: 'woof'};
-                this.whatIsThis.call(newThis, 'hello');
+                var boundWhatIsThis = this.whatIsThis.bind(this);
+                boundWhatIsThis.call(newThis, 'hello');
             },
 
             whatIsThis: function(greeting) {
