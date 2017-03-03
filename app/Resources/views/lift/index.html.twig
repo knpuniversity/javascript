@@ -101,13 +101,14 @@
 
                 var deleteUrl = $link.data('url');
                 var $row = $link.closest('tr');
+                var self = this;
                 $.ajax({
                     url: deleteUrl,
                     method: 'DELETE',
                     success: function() {
                         $row.fadeOut('normal', function() {
                             $(this).remove();
-                            RepLogApp.updateTotalWeightLifted();
+                            self.updateTotalWeightLifted();
                         });
                     }
                 });
