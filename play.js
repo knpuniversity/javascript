@@ -1,5 +1,4 @@
-console.log(aGreatNumber);
-var aGreatNumber = 10;
+const aGreatNumber = 10;
 
 if (true) {
     aGreatNumber = 42;
