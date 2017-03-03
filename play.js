@@ -1,6 +1,6 @@
-let foods = {};
-foods.italian = 'gelato';
-foods.mexican = 'tortas';
-foods.canadian = 'poutine';
+let foods = new Map();
+foods.set('italian', 'gelato');
+foods.set('mexican', 'tortas');
+foods.set('canadian', 'poutine');
 
-console.log(foods.italian);
+console.log(foods.get('italian'));
