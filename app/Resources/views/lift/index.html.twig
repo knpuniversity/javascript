@@ -71,6 +71,10 @@
                 e.preventDefault();
 
                 $(this).addClass('text-danger');
+                $(this).find('.fa')
+                    .removeClass('fa-trash')
+                    .addClass('fa-spinner')
+                    .addClass('fa-spin');
             });
 
             $table.find('tbody tr').on('click', function() {
