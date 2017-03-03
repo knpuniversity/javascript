@@ -1,7 +1,7 @@
 let aGreatNumber = 10;
 
 if (true) {
-    let aGreatNumber = 42;
+    aGreatNumber = 42;
 }
 
 setTimeout(() => {
