@@ -84,16 +84,21 @@
                 formData[fieldData.name] = fieldData.value
             });
             var self = this;
-            $.ajax({
-                url: $form.data('url'),
-                method: 'POST',
-                data: JSON.stringify(formData)
-            }).then(function(data) {
+            this._saveRepLog(formData)
+            .then(function(data) {
                 self._clearForm();
                 self._addRow(data);
             }).catch(function(jqXHR) {
                 var errorData = JSON.parse(jqXHR.responseText);
                 self._mapErrorsToForm(errorData.errors);
+            });
+        },
+
+        _saveRepLog: function(data) {
+            return $.ajax({
+                url: Routing.generate('rep_log_new'),
+                method: 'POST',
+                data: JSON.stringify(data)
             });
         },
 

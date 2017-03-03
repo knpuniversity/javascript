@@ -59,7 +59,7 @@ class RepLogController extends BaseController
     }
 
     /**
-     * @Route("/reps", name="rep_log_new")
+     * @Route("/reps", name="rep_log_new", options={"expose" = true})
      * @Method("POST")
      */
     public function newRepLogAction(Request $request)
