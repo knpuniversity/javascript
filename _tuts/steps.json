@@ -866,13 +866,28 @@
             "description": null
         },
         {
-            "id": "set-use-a-set-for-replogs",
-            "name": "Set: Use a set for repLogs",
+            "id": "array-use-array-with-includes",
+            "name": "Array: Use array with includes",
             "description": null
         },
         {
-            "id": "set-pass-set-into-helper",
-            "name": "Set: Pass set into Helper",
+            "id": "array-create-in-normal-way",
+            "name": "Array: Create in normal way",
+            "description": null
+        },
+        {
+            "id": "array-pass-array-into-helper",
+            "name": "Array: Pass array into Helper",
+            "description": null
+        },
+        {
+            "id": "set-create-array-of-foods",
+            "name": "Set: Create array of foods",
+            "description": null
+        },
+        {
+            "id": "set-use-set-items-are-unique",
+            "name": "Set: Use Set, items are unique",
             "description": null
         },
         {
@@ -896,5 +911,5 @@
             "description": null
         }
     ],
-    "sha": "fafe62f55e01ac101e8a1b67b5a251ae91a05623"
+    "sha": "c0162cb5a09aee994639ad6c5059b5fa3c0fd2a9"
 }

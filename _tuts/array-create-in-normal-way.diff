@@ -1,0 +1,13 @@
+diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
+index 7518247..87f0659 100644
+--- a/web/assets/js/RepLogApp.js
++++ b/web/assets/js/RepLogApp.js
+@@ -7,7 +7,7 @@
+     class RepLogApp {
+         constructor($wrapper) {
+             this.$wrapper = $wrapper;
+-            this.repLogs = new Array();
++            this.repLogs = [];
+ 
+             HelperInstances.set(this, new Helper($wrapper));
+ 

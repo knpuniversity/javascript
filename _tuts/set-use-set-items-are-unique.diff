@@ -1,0 +1,15 @@
+diff --git a/play.js b/play.js
+index d99562c..c97b3b7 100644
+--- a/play.js
++++ b/play.js
+@@ -1,6 +1,6 @@
+-let foods = [];
+-foods.push('gelato');
+-foods.push('tortas');
+-foods.push('gelato');
++let foods = new Set();
++foods.add('gelato');
++foods.add('tortas');
++foods.add('gelato');
+ 
+ console.log(foods);

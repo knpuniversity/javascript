@@ -1,0 +1,24 @@
+diff --git a/play.js b/play.js
+index 96c132c..d99562c 100644
+--- a/play.js
++++ b/play.js
+@@ -1,14 +1,6 @@
+-let foods = new WeakMap();
+-foods.set(['italian'], 'gelato');
+-foods.set(['mexican'], 'tortas');
+-foods.set(['canadian'], 'poutine');
++let foods = [];
++foods.push('gelato');
++foods.push('tortas');
++foods.push('gelato');
+ 
+-let southernUsStates = ['Tennessee', 'Kentucky', 'Texas'];
+-foods.set(southernUsStates, 'hot chicken');
+-southernUsStates = null;
+-
+-console.log(
+-    foods.get(['italian']),
+-    foods.get(southernUsStates),
+-    foods.size
+-);
++console.log(foods);

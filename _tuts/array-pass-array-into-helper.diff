@@ -1,10 +1,10 @@
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index 817a8bc..45d7e4c 100644
+index 87f0659..d5bcaaf 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -9,7 +9,7 @@
              this.$wrapper = $wrapper;
-             this.repLogs = new Set();
+             this.repLogs = [];
  
 -            HelperInstances.set(this, new Helper($wrapper));
 +            HelperInstances.set(this, new Helper(this.repLogs));
@@ -15,7 +15,7 @@ index 817a8bc..45d7e4c 100644
                  for (let repLog of data.items) {
                      this._addRow(repLog);
                  }
--                console.log(this.repLogs, this.repLogs.has(data.items[0]));
+-                console.log(this.repLogs, this.repLogs.includes(data.items[0]));
              })
          }
  
@@ -25,14 +25,14 @@ index 817a8bc..45d7e4c 100644
      class Helper {
 -        constructor($wrapper) {
 -            this.$wrapper = $wrapper;
-+        constructor(repLogSet) {
-+            this.repLogSet = repLogSet;
++        constructor(repLogs) {
++            this.repLogs = repLogs;
          }
  
          calculateTotalWeight() {
              return Helper._calculateWeights(
 -                this.$wrapper.find('tbody tr')
-+                this.repLogSet
++                this.repLogs
              );
          }
  
@@ -41,11 +41,11 @@ index 817a8bc..45d7e4c 100644
          }
  
 -        static _calculateWeights($elements) {
-+        static _calculateWeights(repLogSet) {
++        static _calculateWeights(repLogs) {
              let totalWeight = 0;
 -            for (let element of $elements) {
 -                totalWeight += $(element).data('weight');
-+            for (let repLog of repLogSet) {
++            for (let repLog of repLogs) {
 +                totalWeight += repLog.totalWeightLifted;
              }
  
