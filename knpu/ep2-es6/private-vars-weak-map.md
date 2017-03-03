@@ -16,7 +16,7 @@ Dang! We went to *all* of that trouble to create a private `Helper` object... an
 it's not actually private! Lame!
 
 How can we fix this? Here's an idea: above the class, create a new `HelperInstance`
-set to `null`.
+variable set to `null`.
 
 Then, instead of setting the `new Helper` onto a property - which is accessible from
 outside, say: `HelperInstance = new Helper()`.
@@ -32,7 +32,7 @@ And just like that, we've made `Helper` truly private.
 Well... you might already see the problem! Even though we're not doing it here,
 it *is* legal to create *multiple* `RepLogApp` objects. And if we *did* create two
 `RepLogApp` objects, well the second would replace the `HelperInstance` from the
-first!. We can only ever have one `HelperInstance`... even though we may have
+first! We can only ever have one `HelperInstance`... even though we may have
 *multiple* `RepLogApp` objects. Bad design Ryan!
 
 Ok, so why not use our cool new `Map` object to store a *collection* of `Helper`

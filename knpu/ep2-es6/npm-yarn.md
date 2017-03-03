@@ -52,14 +52,14 @@ To install Babel CLI, it wants us to run `npm install --save-dev babel-cli`.
 But don't do it! Since we're using Yarn, run:
 
 ```terminal
-yan add babel-cli --dev
+yarn add babel-cli --dev
 ```
 
 That does the same thing, but with more exciting output!
 
 This made a few changes to our project. Most importantly, it added this `devDependencies`
 section to `package.json` with `babel-cli` inside. It also created a `yarn.lock`
-file: which works like `composer.lock`. And most importantly, the command added
+file: which works like `composer.lock`. And finally, the command added
 a new `node_modules` directory, where it downloaded `babel-cli` and all of its
 friends, um, dependencies. That is the `vendor/` directory for Node.
 

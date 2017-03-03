@@ -79,7 +79,7 @@ and pass it the `italian` array.
 
 *Now* when I run it, it works fine. Wait, or, does it?
 
-Two interesting: this prints `undefined`, `hot chicken`, `undefined`. First,
+Two interesting things: this prints `undefined`, `hot chicken`, `undefined`. First,
 even though the `['italian']` array in `get` is equal to the `['italian']` array
 used in set, they are not the *same* object in memory. These are two distinct objects,
 so it looks like a different key to `WeakMap`. That's why it prints `undefined`.
