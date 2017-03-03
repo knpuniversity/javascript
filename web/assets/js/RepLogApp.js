@@ -7,6 +7,8 @@
     class RepLogApp {
         constructor($wrapper) {
             this.$wrapper = $wrapper;
+            this.repLogs = new Array();
+
             HelperInstances.set(this, new Helper($wrapper));
 
             this.loadRepLogs();
@@ -44,6 +46,7 @@
                 for (let repLog of data.items) {
                     this._addRow(repLog);
                 }
+                console.log(this.repLogs, this.repLogs.includes(data.items[0]));
             })
         }
 
@@ -169,6 +172,7 @@
         }
 
         _addRow(repLog) {
+            this.repLogs.push(repLog);
             // destructuring example
             // let {id, itemLabel, reps, totallyMadeUpKey = 'whatever!'} = repLog;
             // console.log(id, itemLabel, reps, totallyMadeUpKey);
