@@ -10,10 +10,14 @@ class AGreatClass {
 }
 
 class AnotherGreatClass extends AGreatClass{
+    constructor(greatWord) {
+        this.greatWord = greatWord;
+    }
+
     returnGreatThings() {
         let greatNumber = super.returnGreatThings();
 
-        return [greatNumber, 'adventure'];
+        return [greatNumber, this.greatWord];
     }
 }
 
