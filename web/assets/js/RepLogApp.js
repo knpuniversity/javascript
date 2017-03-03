@@ -184,12 +184,9 @@
         }
 
         calculateTotalWeight() {
-            let totalWeight = 0;
-            this.$wrapper.find('tbody tr').each((index, element) => {
-                totalWeight += $(element).data('weight');
-            });
-
-            return totalWeight;
+            return Helper._calculateWeights(
+                this.$wrapper.find('tbody tr')
+            );
         }
 
         getTotalWeightString(maxWeight = 500) {
@@ -200,6 +197,15 @@
             }
 
             return weight + ' lbs';
+        }
+
+        static _calculateWeights($elements) {
+            let totalWeight = 0;
+            $elements.each((index, element) => {
+                totalWeight += $(element).data('weight');
+            });
+
+            return totalWeight;
         }
     }
 
