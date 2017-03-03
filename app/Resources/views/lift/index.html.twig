@@ -72,22 +72,13 @@
 
                 this.$wrapper.find('.js-delete-rep-log').on(
                     'click',
-                    this.handleRepLogDelete
+                    this.handleRepLogDelete.bind(this)
                 );
                 this.$wrapper.find('tbody tr').on(
                     'click',
-                    this.handleRowClick
+                    this.handleRowClick.bind(this)
                 );
-
-                var newThis = {cat: 'meow', dog: 'woof'};
-                var boundWhatIsThis = this.whatIsThis.bind(this);
-                boundWhatIsThis.call(newThis, 'hello');
             },
-
-            whatIsThis: function(greeting) {
-                console.log(this, greeting);
-            },
-
             updateTotalWeightLifted: function() {
                 var totalWeight = 0;
                 this.$wrapper.find('tbody tr').each(function() {
@@ -100,14 +91,16 @@
             handleRepLogDelete: function(e) {
                 e.preventDefault();
 
-                $(this).addClass('text-danger');
-                $(this).find('.fa')
+                var $link = $(e.currentTarget);
+
+                $link.addClass('text-danger');
+                $link.find('.fa')
                     .removeClass('fa-trash')
                     .addClass('fa-spinner')
                     .addClass('fa-spin');
 
-                var deleteUrl = $(this).data('url');
-                var $row = $(this).closest('tr');
+                var deleteUrl = $link.data('url');
+                var $row = $link.closest('tr');
                 $.ajax({
                     url: deleteUrl,
                     method: 'DELETE',
