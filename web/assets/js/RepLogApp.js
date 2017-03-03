@@ -180,7 +180,6 @@
             this.$wrapper.find('tbody tr').each((index, element) => {
                 totalWeight += $(element).data('weight');
             });
-            console.log(totalWeight);
 
             return totalWeight;
         }
