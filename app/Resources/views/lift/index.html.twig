@@ -64,8 +64,10 @@
     {{ parent() }}
 
     <script>
-        $('.js-delete-rep-log').on('click', function() {
-            console.log('todo delete!');
+        $(document).ready(function() {
+            $('.js-delete-rep-log').on('click', function () {
+                console.log('todo delete!');
+            });
         });
     </script>
 {% endblock %}
