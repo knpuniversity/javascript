@@ -71,7 +71,7 @@
                 e.preventDefault();
 
                 $(e.target).addClass('text-danger');
-                console.log(e.currentTarget);
+                console.log(e.currentTarget === this);
             });
 
             $table.find('tbody tr').on('click', function() {
