@@ -59,6 +59,21 @@ If you're wondering *when* this would be useful... stay tuned. Oh, and there's o
 other property you should definitely know about: `foods.size`. That will print 4.
 Say hello to the new `Map` object!
 
+***TIP
+You can also loop over a `Map` using our new friend - the `for of` loop and a
+beautiful method on `Map` called `entries`:
+
+```javascript
+for (let [countryKey, foodValue] of foods.entries()) {
+    console.log(countryKey, foodValue); // e.g. italian gelato
+}
+```
+
+Behind the scenes, this uses [destructuring](http://knpuniversity.com/screencast/javascript-es6/destructuring)
+to assign each returned by `entries()` to the `countryKey` and `foodValue` variables.
+It's all coming together!
+***
+
 ## Introducing WeakMap... a worse Map?
 
 ES2015 also gives us a very *similar* new object: `WeakMap`. And this is where
