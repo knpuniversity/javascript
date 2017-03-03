@@ -102,7 +102,7 @@ so it looks like a different key to `WeakMap`. That's why it prints `undefined`.
 Second, with `WeakMap`, you can't call `foods.size`. That's just not something that
 works with `WeakMap`.
 
-## WeakMap and Garage Collection
+## WeakMap and Garbage Collection
 
 Let me show you one *other* crazy thing, which will start to show you the purpose
 of `WeakMap`. After we set the `southernUSStates` onto the array, I'm going to set
