@@ -7,7 +7,7 @@
     class RepLogApp {
         constructor($wrapper) {
             this.$wrapper = $wrapper;
-            this.repLogs = new Array();
+            this.repLogs = [];
 
             HelperInstances.set(this, new Helper($wrapper));
 
