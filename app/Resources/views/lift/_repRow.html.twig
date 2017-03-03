@@ -1,0 +1,13 @@
+<tr data-weight="{{ repLog.totalWeightLifted }}">
+    <td>{{ repLog.itemLabel|trans }}</td>
+    <td>{{ repLog.reps }}</td>
+    <td>{{ repLog.totalWeightLifted }}</td>
+    <td>
+        <a href="#"
+           class="js-delete-rep-log"
+           data-url="{{ path('rep_log_delete', {id: repLog.id}) }}"
+        >
+            <span class="fa fa-trash"></span>
+        </a>
+    </td>
+</tr>
