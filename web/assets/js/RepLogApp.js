@@ -103,13 +103,13 @@
                 console.log(data);
 
                 return data;
-            }).catch(function(jqXHR) {
-                console.log('failed!');
-                console.log(jqXHR.responseText);
             }).then(function(data) {
                 console.log('another handler!');
                 console.log(data);
-            })
+            }).catch(function(jqXHR) {
+                console.log('failed!');
+                console.log(jqXHR.responseText);
+            });
         },
 
         _mapErrorsToForm: function(errorData) {
