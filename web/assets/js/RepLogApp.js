@@ -12,12 +12,9 @@ var RepLogApp = {
         );
     },
     updateTotalWeightLifted: function () {
-        var totalWeight = 0;
-        this.$wrapper.find('tbody tr').each(function () {
-            totalWeight += $(this).data('weight');
-        });
-
-        this.$wrapper.find('.js-total-weight').html(totalWeight);
+        this.$wrapper.find('.js-total-weight').html(
+            this._calculateTotalWeight()
+        );
     },
 
     handleRepLogDelete: function (e) {
@@ -48,5 +45,14 @@ var RepLogApp = {
 
     handleRowClick: function () {
         console.log('row clicked!');
+    },
+
+    _calculateTotalWeight: function() {
+        var totalWeight = 0;
+        this.$wrapper.find('tbody tr').each(function () {
+            totalWeight += $(this).data('weight');
+        });
+
+        return totalWeight;
     }
 };
