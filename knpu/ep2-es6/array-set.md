@@ -22,11 +22,11 @@ Back up in `loadRepLogs`, after the `for` loop, let's see how this looks: `conso
 Oh, and let's also use one of its helper methods: `this.repLogs.includes(data.items[0])`.
 Obviously, this item *should* have been added to the `Array`!
 
-Refresh! Yea! We see the new fancy `Array` and the word `true`. Awesome!
+Refresh! Yea! We see the fancy `Array` and the word `true`. Awesome!
 
 But hold on! The `Array` object may not be new, but the `includes` function *is*
 new. In fact, it's *really* new - it wasn't added in ES2015, it was added in *ES2016*!
-ES2015 came wit ha *ton* of new features. And now, new ECMAScript releases happen
+ES2015 came with a *ton* of new features. And now, new ECMAScript releases happen
 yearly, but with many fewer new things. The `Array` `includes` function is one of
 those few things in ES2016. Cool!
 
