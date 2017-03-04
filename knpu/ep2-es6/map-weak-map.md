@@ -60,17 +60,28 @@ other property you should definitely know about: `foods.size`. That will print 4
 Say hello to the new `Map` object!
 
 ***TIP
-You can also loop over a `Map` using our new friend - the `for of` loop and a
-beautiful method on `Map` called `entries`:
+You can also loop over a `Map` using our new friend - the `for of` loop. You can
+loop over the values, keys, or both!
 
 ```javascript
-for (let [countryKey, foodValue] of foods.entries()) {
-    console.log(countryKey, foodValue); // e.g. italian gelato
+// loop over the values (e.g. gelato)
+for (let food of foods) {
+    console.log(food);
+}
+
+// loop over the keys (e.g. italian)
+for (let countryKey of foods.keys()) {
+    console.log(countryKey);
+}
+
+// loop over the keys *and* values
+for (let [countryKey, food] of foods.entries()) {
+    console.log(countryKey, food); // e.g. italian gelato
 }
 ```
 
-Behind the scenes, this uses [destructuring](http://knpuniversity.com/screencast/javascript-es6/destructuring)
-to assign each returned by `entries()` to the `countryKey` and `foodValue` variables.
+Behind the scenes, the last example uses [destructuring](http://knpuniversity.com/screencast/javascript-es6/destructuring)
+to assign each returned by `entries()` to the `countryKey` and `food` variables.
 It's all coming together!
 ***
 
