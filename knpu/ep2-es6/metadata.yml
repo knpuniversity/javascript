@@ -15,6 +15,6 @@ chapters:
     - for-of-loop
     - map-weak-map
     - private-vars-weak-map
-    - set-object
+    - array-set
     - npm-yarn
     - babel
