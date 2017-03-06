@@ -1,4 +1,4 @@
-# var vs let: Scope!
+# var Versus let: Scope!
 
 When you look at ES2015 code, one thing tends to jump out immediately: suddenly
 instead of seeing `var` everywhere... you see something called `let`! In our JS

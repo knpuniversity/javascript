@@ -1,4 +1,4 @@
-# Static Class Metods
+# Static Class Methods
 
 Go back and look at the new `get _selectors()` method. Interesting: PhpStorm is
 highlighting it like something is wrong! If you hover over it, it says:
