@@ -5,13 +5,16 @@ instead of seeing `var` everywhere... you see something called `let`! In our JS
 file, if you scroll down to the bottom, PhpStorm has highlighted my `var` with a
 warning:
 
-> var used instead of let or const
+> `var` used instead of `let` or `const`
 
 What's going on?
 
-To find out, change `var` to `let` and then `console.log(totalWeight)`. Now, go
-refresh. This function is called a *bunch* of times as the table is loading. And...
-it looks like everything works fine. It looks like `var` and `let` are equivalent?
+To find out, change `var` to `let` and then `console.log(totalWeight)`:
+
+[[[ code('cfc043e9c9') ]]]
+
+Now, go refresh. This function is called a *bunch* of times as the table is loading.
+And... it looks like everything works fine. It looks like `var` and `let` are equivalent?
 
 In most cases, that's true! `let` is a new way to initialize a variable that's
 *almost* the same as `var`. 99% of the time, you can use either one, and it won't
@@ -21,18 +24,28 @@ make a difference.
 
 So... what about that last 1%? Well, it has to do with variable *scope*. To understand,
 go back to `play.js`. At the top, add something silly: `if (true)` then `aGreatNumber = 42`,
-which of course, *is* a great number.
+which of course, *is* a great number:
+
+[[[ code('997da96c9b') ]]]
 
 When we run it, it re-assigns the variable to 42. No surprises. But what if we added
-`var aGreatNumber = 42`? I shouldn't need to say `var` again: the variable has already
-been initialized. But, will this give us an error? Or change anything?
+`var aGreatNumber = 42`?
 
-Let's find out! No! We still see 42. When we use the second var, it re-declares
+[[[ code('25d97028a1') ]]]
+
+I shouldn't need to say `var` again: the variable has already been initialized.
+But, will this give us an error? Or change anything?
+
+Let's find out! No! We still see 42. When we use the second `var`, it re-declares
 a *new* variable called `aGreatNumber`. But that doesn't make any real difference:
 down below, it prints the new variable's value: 42.
 
 But now, wrap this *same* code in a self-executing function. Use the new arrow syntax
-to be trendy, then execute it immediately. Will this change anything? Try it!
+to be trendy, then execute it immediately:
+
+[[[ code('1ad1b94a65') ]]]
+
+Will this change anything? Try it!
 
 Woh! It prints as *10*! Why!?
 
@@ -45,11 +58,14 @@ it's still set to 10. Since we're printing it from *outside* the function, we se
 10.
 
 Okay okay, I know, this can be confusing. And most of the time... this subtle scope
-stuff doesn't make any difference. But, this is *exactly* where `var` and `let` differ.
+stuff doesn't make any difference. But, this is *exactly* where `var` and `let` different.
 
 ## The "Block" Scope of let
 
-Let me show you. Remove the self-executing function and change each `var` to `let`.
+Let me show you. Remove the self-executing function and change each `var` to `let`:
+
+[[[ code('94b7d16362') ]]]
+
 *If* `let` and `var` behaved exactly the same, we would expect this - just like
 before - to print 42. Try it.
 
@@ -61,9 +77,12 @@ or `for` loop - you've entered a new scope for `let`. In this case, `let` is equ
 to 42, *only* inside of the `if` statement. Outside, it's a completely different
 variable, which is set to 10.
 
-Of course, if we remove the extra `let` statement and try it, *now* we get 42. This
-is because without the `let`, we're no longer creating a new variable: we're simply
-changing the existing variable to 42.
+Of course, if we remove the extra `let` statement and try it, *now* we get 42:
+
+[[[ code('0a3ba77bf7') ]]]
+
+This is because without the `let`, we're no longer creating a new variable: we're
+simply changing the existing variable to 42.
 
 If this makes your head spin, me too! In practice, there are *very* few situations
 where `var` and `let` behave different. So, use your favorite. But there is *one*
