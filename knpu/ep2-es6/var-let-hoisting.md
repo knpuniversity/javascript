@@ -15,7 +15,7 @@ When we try it, we get:
 
 No surprise! If we try to log `aGreatNumber`, the same thing happens!
 
-[[[ code('d9bc24d670') ]]]
+[[[ code('57ee06786a') ]]]
 
 The variable has not been initialized yet.
 
