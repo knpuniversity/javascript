@@ -75,7 +75,7 @@ And if `weight > maxWeight`, add `weight = maxWeight + '+'`. At the bottom, retu
 
 [[[ code('a06effe811') ]]]
 
-Head up top to try this: when we call `getTotalWeightString`, pass 500:
+Head up top to try this: when we call `getTotalWeightString()`, pass 500:
 
 [[[ code('9d5837294d') ]]]
 
