@@ -38,10 +38,11 @@ Try to print that. What do you think will happen?
 
 It's not an error: it just prints as undefined. So destructuring is friendly: if
 something goes wrong, it doesn't kill your code: it just assigns undefined. If you
-think this might be possible, you can give that variable a default, like `whatever`.
-Now, if the key doesn't exist, it'll get set to `whatever`:
+think this might be possible, you can give that variable a default, like `whatever`:
 
 [[[ code('280320e2ff') ]]]
+
+Now, if the key doesn't exist, it'll get set to `whatever`.
 
 So, this is destructuring. It may or may not be useful to you, but you *will* see
 it! Don't let it surprise you!
