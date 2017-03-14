@@ -4,17 +4,26 @@ There's one other reason to use `let` instead of `var`. To understand it, we nee
 to get really nerdy and talk about something with a cool name: variable ahoy-sting.
 I mean, variable hoisting.
 
-At the top of the play file, do something terrible: `console.log(bar)`. I know!
-This doesn't even make sense - there is *no* variable called `bar`! When we try it,
-we get:
+At the top of the play file, do something terrible: `console.log(bar)`:
 
-> ReferenceError: "bar is not defined."
+[[[ code('d9bc24d670') ]]]
 
-No surprise! If we try to log `aGreatNumber`, the same thing happens! The variable
-has not been initialized yet.
+I know! This doesn't even make sense - there is *no* variable called `bar`!
+When we try it, we get:
 
-Ready for things to get weird? Change the `let` to `var`. And all of a sudden, it
-does *not* break. It simply says that that value is `undefined`.
+> ReferenceError: `bar` is not defined
+
+No surprise! If we try to log `aGreatNumber`, the same thing happens!
+
+[[[ code('57ee06786a') ]]]
+
+The variable has not been initialized yet.
+
+Ready for things to get weird? Change the `let` to `var`:
+
+[[[ code('331f959179') ]]]
+
+And all of a sudden, it does *not* break. It simply says that that value is `undefined`.
 
 ## Hello Mr Variable Hoisting
 
@@ -46,7 +55,10 @@ but thanks to something called the "temporal dead zone" - also an awesome name -
 `let` acts normal: as if its variables were *not* hoisted.
 
 Since `let` seems to behave more predictably, let's go into `RepLogApp` and change
-all of these "vars" to `let`. Find all "var space" and replace with "let space".
+all of these "vars" to `let`. Find all "var space" and replace with "let space":
+
+[[[ code('37199bb235') ]]]
+
 And just to make sure that our code doesn't have any edge cases where `var` and `let`
 behave differently, try out the page! Yay! Everything looks like it's still working
 great.
