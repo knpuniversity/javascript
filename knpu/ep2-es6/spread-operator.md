@@ -5,7 +5,7 @@ called the *spread operator*. Open up `play.js` and clear everything out. Create
 new function called `printThreeThings(thing1, thing2, thing3)`. Inside,
 `console.log()` our three things:
 
-[[[ code('0c9df2b1f4') ]]]
+[[[ code('78bf4b791a') ]]]
 
 Easy enough!
 
@@ -63,7 +63,7 @@ In JavaScript, one option is the spread operator. Add a comma - as *if* we were 
 to add another entry - and then say `...yummyThings`. We could even keep going and add
 something else great, like `New Orleans`. Because `New Orleans` is a really great place:
 
-[[[ code('2f46fceec9') ]]]
+[[[ code('da1cf27983') ]]]
 
 ***TIP
 There are often many ways to do the same thing in JavaScript, especially with
@@ -71,8 +71,11 @@ arrays and objects. In this case, `greatThings.concat(yummyThings)` is also an
 option.
 ***
 
-Ok, `console.log(greatThings)` to see if it works! It does: `swimming`, `sunset`,
-4 yummy things, and `New Orleans` at the bottom.
+Ok, `console.log(greatThings)` to see if it works!
+
+[[[ code('2f46fceec9') ]]]
+
+It does: `swimming`, `sunset`, 4 yummy things, and `New Orleans` at the bottom.
 
 ## Spread Operator for Creating a new Array
 
