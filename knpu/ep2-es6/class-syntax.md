@@ -78,7 +78,7 @@ That hasn't changed.
 
 Ok team! Try out our app! Refresh! It works! Wait, no, an error! Blast! It says
 `RepLogApp` is not defined, and the error is from our template:
-`app/Resources/views/index.html.twig`. Ah, *this* code is fine: the problem is that
+`app/Resources/views/lift/index.html.twig`. Ah, *this* code is fine: the problem is that
 the `RepLogApp` class *only* lives within this self executing function. It's the
 same problem we had in the first episode with scope.
 

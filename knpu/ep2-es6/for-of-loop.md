@@ -1,4 +1,4 @@
-# The For of Loop
+# The for of Loop
 
 One of the *crazy* things about JavaScript... is that there's not *one* good way
 to loop over a collection! In PHP, we have `foreach`, and it works perfectly. But

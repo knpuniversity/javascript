@@ -1,4 +1,4 @@
-# Array Destructuring
+# Destructuring
 
 Next, we're going to talk about two kinda *weird* things. At first, neither or these
 will seem *all* that useful. But even if that *were* true, you're going to start
@@ -10,7 +10,7 @@ The first has a cool name: destructuring! In `RepLogApp`, find `_addRow()`. To s
 just dump the `repLog` variable.
 
 Now, refresh! This is called a *bunch* of times, and each `repLog` has the same
-keys: `id`, `itemLabel`, `_links`, `reps` and `totalWeightLifted`. Destructuring
+keys: `id`, `itemLabel`, `links`, `reps` and `totalWeightLifted`. Destructuring
 allows us to do this weird thing: `let {id, itemLabel, reps} = repLog`. Below, log
 `id`, `itemLabel` and `reps`.
 
