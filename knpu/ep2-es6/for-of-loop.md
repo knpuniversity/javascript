@@ -31,10 +31,27 @@ And, we don't need that semicolon! Yay!
 So, use the `for of` loop for everything! Well actually, that's not 100% true. `for of`
 is perfect when you want to loop over a collection of items. But, if you want to
 loop over an *associative* array... or object, and you need to know the *key* for
-each item, then you'll use `for in`. This is the one limitation of `for of`: it gives
-you the *value* of the item you're looping over, but not its key, or index. In fact,
-if try to use `for of` with an object, you'll get an error. So if you ever need to
-do the equivalent of `foreach ($items as $key => $val)` from PHP, use `for in`. 
+each item, then you'll use `for in`.
 
-I know, I know, not *quite* as easy as PHP, but just remember these two things and
-you'll be unstoppable!
+***TIP
+Actually, you *can* use `for of` with an object, with a clever combination of
+`Object.entries` and array destructuring!
+
+```js
+let pets = {
+  beagle: 'Bark Twain',
+  poodle: 'Snuffles'
+};
+
+for (let [petKey, petName] of Object.entries(pets)) {
+  console.log(petKey, petName);
+}
+```
+
+BUT, the `Object.entries()` method is still experimental, and *may* be
+included in ES2017.
+***
+
+This is the one limitation of `for of`: it gives you the *value* of the
+item you're looping over, but not its key, or index. In fact, if try to
+use `for of` with an object, you'll get an error.
