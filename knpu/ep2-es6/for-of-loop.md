@@ -47,7 +47,7 @@ each item, then you'll use `for in`.
 
 ***TIP
 Actually, you *can* use `for of` with an object, with a clever combination of
-`Object.entries*()` and array destructuring!
+`Object.entries()` and array destructuring!
 
 ```js
 let pets = {
