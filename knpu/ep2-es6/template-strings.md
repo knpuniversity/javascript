@@ -113,7 +113,7 @@ being a string, set it to an arrow function with a `repLog` argument:
 And suddenly, the template string *will* have access to a `repLog` variable.
 
 Back in `_addRow()`, remove all this stuff and very simply say
-`html = _rowTemplate(repLog)`:
+`html = rowTemplate(repLog)`:
 
 [[[ code('281c616e8c') ]]]
 
