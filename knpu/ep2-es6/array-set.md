@@ -48,7 +48,7 @@ Below in `calculateTotalWeight`, instead of using the `$wrapper` to find all the
 `tr` elements, just pass `this.repLogs` to the static function. Inside of that, update
 the argument to `repLogs`. 
 
-Previously, `_calculateTotalWeight` would loop over the `$elements` and read the
+Previously, `_calculateWeights` would loop over the `$elements` and read the
 `data-weight` attribute on each. Now, loop over `repLog of repLogs`. Inside,
 set `totalWeight += repLog.totalWeightLifted`. It's nice to calculate the total
 weight from our source data, rather than reading it from somewhere on the DOM.
