@@ -7,7 +7,11 @@ Time to use Babel! How? At your terminal, type
 ```
 
 ***TIP
-On some systems, you may need to type `node ./node_modules/.bin/babel`.
+On some systems, you may need to type:
+
+```terminal
+node ./node_modules/.bin/babel
+```
 ***
 
 That is the path to the executable for Babel. Next, point to our source file:
