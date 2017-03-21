@@ -86,22 +86,17 @@ That will print 4. Say hello to the new `Map` object!
 
 ***TIP
 You can also loop over a `Map` using our new friend - the `for of` loop. You can
-loop over the values, keys, or both!
+loop over the values or the keys!
 
 ```js
-// loop over the values (e.g. gelato)
-for (let food of foods) {
-    console.log(food);
+// loop over the keys *and* values
+for (let [countryKey, food] of foods.entries()) {
+    console.log(countryKey, food); // e.g. italian gelato
 }
 
 // loop over the keys (e.g. italian)
 for (let countryKey of foods.keys()) {
     console.log(countryKey);
-}
-
-// loop over the keys *and* values
-for (let [countryKey, food] of foods.entries()) {
-    console.log(countryKey, food); // e.g. italian gelato
 }
 ```
 
