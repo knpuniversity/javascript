@@ -79,6 +79,14 @@ templates: just pass it the route name and parameters.
 
 Check the install process. Ding!
 
+***TIP
+If you have a JavaScript error where `Routing` is not defined, you may need to run:
+
+```terminal
+php bin/console assets:install
+```
+***
+
 Now, head to `RepLogController`. In order to make this route available to that `Routing`
 JavaScript variable, we need to add `options={"expose" = true}`:
 
