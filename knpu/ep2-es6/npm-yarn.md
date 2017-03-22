@@ -22,7 +22,7 @@ You could even have some people on your team using `npm`, and others using `yarn
 
 We're going to use Yarn... because it's a bit more sophisticated. But, that means
 you need to install it! I'm on a Mac, so I already installed it via Brew. Check
-[Yarn's Docs](https://yarnpkg.com/lang/en/docs/install/) for your install details.
+[Yarn's Docs][install_yarn] for your install details.
 
 ## Creating a package.json
 
@@ -34,7 +34,11 @@ yarn init
 ```
 
 It'll ask a bunch of questions - none are too important - and you can always
-update your new `package.json` file by hand later. Awesome!
+update your new `package.json` file by hand later:
+
+[[[ code('9d632b624b') ]]]
+
+Awesome!
 
 ## Installing Babel
 
@@ -45,9 +49,9 @@ In a nut shell, Babel reads *new* JavaScript code, i.e. ES2015 code, and recompi
 it to *old* JavaScript so that all browsers can understand it. Yea, it literally
 reads source code and converts it to *different* source code. It's wild!
 
-Go to [Setup](http://babeljs.io/docs/setup/). In our case, to see how it works,
-we're going to use the CLI, which means we will run Babel from the command line.
-To install Babel CLI, it wants us to run `npm install --save-dev babel-cli`.
+Go to [Setup][setup_babel]. In our case, to see how it works, we're going to use the CLI,
+which means we will run Babel from the command line. To install Babel CLI, it wants us
+to run `npm install --save-dev babel-cli`.
 
 But don't do it! Since we're using Yarn, run:
 
@@ -58,13 +62,23 @@ yarn add babel-cli --dev
 That does the same thing, but with more exciting output!
 
 This made a few changes to our project. Most importantly, it added this `devDependencies`
-section to `package.json` with `babel-cli` inside. It also created a `yarn.lock`
-file: which works like `composer.lock`. And finally, the command added
-a new `node_modules` directory, where it downloaded `babel-cli` and all of its
-friends, um, dependencies. That is the `vendor/` directory for Node.
+section to `package.json` with `babel-cli` inside:
 
-Open up your `.gitignore` file. At the bottom, let's ignore `/node_modules/`. We
-don't need to commit that directory because - thanks to the `package.json` and `yarn.lock`
-files - anyone else can run `yarn install` to download everything they need.
+[[[ code('5d84c406df') ]]]
+
+It also created a `yarn.lock` file: which works like `composer.lock`. And finally,
+the command added a new `node_modules/` directory, where it downloaded `babel-cli`
+and all of its friends, um, dependencies. That is the `vendor/` directory for Node.
+
+Open up your `.gitignore` file. At the bottom, let's ignore `/node_modules/`:
+
+[[[ code('ed719b6543') ]]]
+
+We don't need to commit that directory because - thanks to the `package.json` and
+`yarn.lock` files - anyone else can run `yarn install` to download everything they need.
 
 Okay, enough setup! Let's use Babel!
+
+
+[install_yarn]: https://yarnpkg.com/lang/en/docs/install/
+[setup_babel]: http://babeljs.io/docs/setup/
