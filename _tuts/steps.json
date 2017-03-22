@@ -881,6 +881,11 @@
             "description": null
         },
         {
+            "id": "array-fix-removing-replogs",
+            "name": "Array: Fix removing replogs",
+            "description": null
+        },
+        {
             "id": "set-create-array-of-foods",
             "name": "Set: Create array of foods",
             "description": null
@@ -911,5 +916,5 @@
             "description": null
         }
     ],
-    "sha": "c0162cb5a09aee994639ad6c5059b5fa3c0fd2a9"
+    "sha": "f7ad6da4532ae4db3c9564d8b09f3f476d746737"
 }
