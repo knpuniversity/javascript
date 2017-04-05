@@ -80,6 +80,16 @@ from somewhere on the DOM.
 
 Okay! Try that out! The table still loads... and the total still prints!
 
+> Actually, we made a mistake! When you delete a rep log, the total weight will no
+> longer update! That's because we now need to *remove* the deleted `repLog` from
+> the `this.repLogs` array.
+> 
+> No problem! The fix is kinda cool: it involves adding a reference to the `$row` element:
+> the `index` on the `this.repLogs` array that the row corresponds to. This follows
+> a pattern that's somewhat similar to what you'll see in ReactJS.
+>
+> [[[ code('1cb71dfcf3') ]]]
+
 ## Introducing Set
 
 But, ES2015 added *one* more new object that's related to all of this: `Set`. It's
