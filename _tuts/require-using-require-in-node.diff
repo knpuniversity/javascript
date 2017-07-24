@@ -1,0 +1,24 @@
+diff --git a/foods.js b/foods.js
+new file mode 100644
+index 0000000..2d7ef38
+--- /dev/null
++++ b/foods.js
+@@ -0,0 +1,6 @@
++let foods = new Set();
++foods.add('gelato');
++foods.add('tortas');
++foods.add('gelato');
++
++module.exports = foods;
+diff --git a/play.js b/play.js
+index c97b3b7..bc10600 100644
+--- a/play.js
++++ b/play.js
+@@ -1,6 +1,3 @@
+-let foods = new Set();
+-foods.add('gelato');
+-foods.add('tortas');
+-foods.add('gelato');
++const foods = require('./foods');
+ 
+ console.log(foods);

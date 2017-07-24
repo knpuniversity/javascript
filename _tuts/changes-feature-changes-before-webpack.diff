@@ -108,6 +108,20 @@ index dc52def..7d6993a 100644
  {% endblock %}
  
  </body>
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index 6afad07..da33099 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -5,9 +5,6 @@
+         <div class="col-md-7 js-rep-log-table">
+             <h2>
+                 Lift History
+-                <a href="#list-stuff-form" class="btn btn-md btn-success pull-right">
+-                    <span class="fa fa-plus"></span> Add
+-                </a>
+             </h2>
+ 
+             <table class="table table-striped">
 diff --git a/web/assets/css/login.css b/web/assets/css/login.css
 index 7391c87..988b6e6 100644
 --- a/web/assets/css/login.css
@@ -164,16 +178,15 @@ HcmV?d00001
 
 diff --git a/web/assets/js/layout.js b/web/assets/js/layout.js
 new file mode 100644
-index 0000000..14f0070
+index 0000000..881633d
 --- /dev/null
 +++ b/web/assets/js/layout.js
-@@ -0,0 +1,8 @@
+@@ -0,0 +1,7 @@
 +'use strict';
 +
 +(function(window, $) {
 +    $(document).ready(function() {
-+        $('[data-toggle="tooltip"]').tooltip()
-+        console.log($('[data-toggle="tooltip"]').length);
++        $('[data-toggle="tooltip"]').tooltip();
 +    });
 +})(window, jQuery);
 diff --git a/web/assets/js/login.js b/web/assets/js/login.js

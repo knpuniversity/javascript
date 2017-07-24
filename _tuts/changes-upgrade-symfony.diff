@@ -1,3 +1,15 @@
+diff --git a/app/AppKernel.php b/app/AppKernel.php
+index cee04bd..b4269cf 100644
+--- a/app/AppKernel.php
++++ b/app/AppKernel.php
+@@ -29,6 +29,7 @@ class AppKernel extends Kernel
+             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
+             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
+             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
++            $bundles[] = new Symfony\Bundle\WebServerBundle\WebServerBundle();
+         }
+ 
+         return $bundles;
 diff --git a/app/config/config.yml b/app/config/config.yml
 index 4d12f1b..20d4525 100644
 --- a/app/config/config.yml

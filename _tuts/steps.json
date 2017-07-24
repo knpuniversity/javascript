@@ -924,7 +924,77 @@
             "id": "changes-upgrade-symfony",
             "name": "Changes: Upgrade Symfony",
             "description": null
+        },
+        {
+            "id": "require-using-require-in-node",
+            "name": "require: Using require in Node",
+            "description": null
+        },
+        {
+            "id": "require-stop-using-dist-file",
+            "name": "require: Stop using dist file",
+            "description": null
+        },
+        {
+            "id": "require-extract-helper-to-its-own-class",
+            "name": "require: Extract Helper to its own class",
+            "description": null
+        },
+        {
+            "id": "webpack-uninstall-babel",
+            "name": "Webpack: Uninstall babel",
+            "description": null
+        },
+        {
+            "id": "webpack-install-cli-use",
+            "name": "Webpack: Install & cli use",
+            "description": null
+        },
+        {
+            "id": "webpack-initial-webpack-config-js",
+            "name": "Webpack: Initial webpack.config.js",
+            "description": null
+        },
+        {
+            "id": "webpack-try-to-use-path",
+            "name": "Webpack: Try to use path",
+            "description": null
+        },
+        {
+            "id": "webpack-require-path",
+            "name": "Webpack: require path",
+            "description": null
+        },
+        {
+            "id": "watch-use-watch-make-a-change",
+            "name": "Watch: Use watch, make a change",
+            "description": null
+        },
+        {
+            "id": "npm-add-use-jquery",
+            "name": "npm: Add & use jquery",
+            "description": null
+        },
+        {
+            "id": "npm-add-sweetalert2",
+            "name": "npm: Add sweetalert2",
+            "description": null
+        },
+        {
+            "id": "modules-remove-self-executing-function",
+            "name": "modules: Remove self-executing function",
+            "description": null
+        },
+        {
+            "id": "modules-refactoring-to-rep-log-js-entry",
+            "name": "modules: Refactoring to rep_log.js entry",
+            "description": null
+        },
+        {
+            "id": "modules-organize-into-components",
+            "name": "modules: Organize into Components",
+            "description": null
         }
     ],
-    "sha": "580c961f73279e4a07a5574b1ac130ea8a951950"
+    "sha": "83d76efc73a483e65de7e947113947d31b15caed"
 }

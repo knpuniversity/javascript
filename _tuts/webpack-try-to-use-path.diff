@@ -1,0 +1,13 @@
+diff --git a/webpack.config.js b/webpack.config.js
+index b1df334..faaacf7 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -1,7 +1,7 @@
+ module.exports = {
+     entry: './web/assets/js/RepLogApp.js',
+     output: {
+-        path: __dirname+'/web/build',
++        path: path.resolve(__dirname, 'web', 'build'),
+         filename: 'rep_log.js',
+     }
+ };
