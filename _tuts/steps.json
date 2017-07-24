@@ -994,7 +994,117 @@
             "id": "modules-organize-into-components",
             "name": "modules: Organize into Components",
             "description": null
+        },
+        {
+            "id": "multipage-refactor-login-js-to-be-a-module",
+            "name": "Multipage: refactor login.js to be a module",
+            "description": null
+        },
+        {
+            "id": "multipage-multiple-entries",
+            "name": "Multipage: multiple entries",
+            "description": null
+        },
+        {
+            "id": "multipage-add-layout-entry",
+            "name": "Multipage: Add layout entry",
+            "description": null
+        },
+        {
+            "id": "bootstrap-js-refactor-layout-entry",
+            "name": "Bootstrap.js: refactor layout entry",
+            "description": null
+        },
+        {
+            "id": "bootstrap-js-require-bootstrap",
+            "name": "Bootstrap.js: require bootstrap",
+            "description": null
+        },
+        {
+            "id": "bootstrap-js-remove-jquery-bs-from-layout",
+            "name": "Bootstrap.js: Remove jQuery\/BS from layout",
+            "description": null
+        },
+        {
+            "id": "bootstrap-js-use-provideplugin",
+            "name": "Bootstrap.js: use ProvidePlugin",
+            "description": null
+        },
+        {
+            "id": "babel-install-basic-usage",
+            "name": "Babel: Install & basic usage",
+            "description": null
+        },
+        {
+            "id": "babel-using-proper-loader",
+            "name": "Babel: Using proper loader",
+            "description": null
+        },
+        {
+            "id": "babel-exclude-cachedirectory-option",
+            "name": "Babel: exclude & cacheDirectory option",
+            "description": null
+        },
+        {
+            "id": "css-try-to-include-login-css",
+            "name": "CSS: Try to include login.css",
+            "description": null
+        },
+        {
+            "id": "css-add-css-loader-only-print",
+            "name": "CSS: Add css-loader only & print",
+            "description": null
+        },
+        {
+            "id": "css-add-style-loader",
+            "name": "CSS: Add style-loader",
+            "description": null
+        },
+        {
+            "id": "css-include-sweetalert2-css",
+            "name": "CSS: Include sweetalert2 CSS",
+            "description": null
+        },
+        {
+            "id": "images-try-to-require-main-css",
+            "name": "Images: Try to require main.css",
+            "description": null
+        },
+        {
+            "id": "images-add-file-loader-for-images",
+            "name": "Images: Add file-loader for images",
+            "description": null
+        },
+        {
+            "id": "images-adding-publicpath",
+            "name": "Images: Adding publicPath",
+            "description": null
+        },
+        {
+            "id": "fonts-include-bootstrap-css",
+            "name": "Fonts: Include bootstrap.css",
+            "description": null
+        },
+        {
+            "id": "fonts-adding-fontawesome",
+            "name": "Fonts: Adding FontAwesome",
+            "description": null
+        },
+        {
+            "id": "fonts-controlling-file-loader-name",
+            "name": "Fonts: Controlling file-loader name",
+            "description": null
+        },
+        {
+            "id": "organization-move-assets-to-root",
+            "name": "Organization: Move assets to root",
+            "description": null
+        },
+        {
+            "id": "organization-use-copywebpackplugin",
+            "name": "Organization: Use CopyWebpackPlugin",
+            "description": null
         }
     ],
-    "sha": "83d76efc73a483e65de7e947113947d31b15caed"
+    "sha": "f1999e63c2f54b70502b9035340db731ef11faf7"
 }

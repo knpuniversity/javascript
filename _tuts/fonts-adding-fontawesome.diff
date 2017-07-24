@@ -1,0 +1,54 @@
+diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
+index eeebdf3e..8c3dcb68 100644
+--- a/app/Resources/views/base.html.twig
++++ b/app/Resources/views/base.html.twig
+@@ -8,9 +8,7 @@
+ 
+     <title>{% block title %}Find Something to Lift!{% endblock %}</title>
+ 
+-    {% block stylesheets %}
+-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+-    {% endblock %}
++    {% block stylesheets %}{% endblock %}
+ 
+     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+ </head>
+diff --git a/package.json b/package.json
+index 4267b6dd..6cf65a31 100644
+--- a/package.json
++++ b/package.json
+@@ -12,6 +12,7 @@
+     "bootstrap": "^3.3.7",
+     "css-loader": "^0.28.4",
+     "file-loader": "^0.11.2",
++    "font-awesome": "^4.7.0",
+     "jquery": "^3.2.1",
+     "style-loader": "^0.18.2",
+     "sweetalert2": "^6.6.6",
+diff --git a/web/assets/js/layout.js b/web/assets/js/layout.js
+index 7a326891..40529aef 100644
+--- a/web/assets/js/layout.js
++++ b/web/assets/js/layout.js
+@@ -3,6 +3,7 @@
+ const $ = require('jquery');
+ require('bootstrap');
+ require('bootstrap/dist/css/bootstrap.css');
++require('font-awesome/css/font-awesome.css');
+ require('../css/main.css');
+ 
+ $(document).ready(function() {
+diff --git a/yarn.lock b/yarn.lock
+index 9050ba95..90948c59 100644
+--- a/yarn.lock
++++ b/yarn.lock
+@@ -1396,6 +1396,10 @@ flatten@^1.0.2:
+   version "1.0.2"
+   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
+ 
++font-awesome@^4.7.0:
++  version "4.7.0"
++  resolved "https://registry.yarnpkg.com/font-awesome/-/font-awesome-4.7.0.tgz#8fa8cf0411a1a31afd07b06d2902bb9fc815a133"
++
+ for-in@^1.0.1:
+   version "1.0.2"
+   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"

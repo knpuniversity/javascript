@@ -1,0 +1,29 @@
+diff --git a/app/Resources/FOSUserBundle/views/Security/login.html.twig b/app/Resources/FOSUserBundle/views/Security/login.html.twig
+index 1e2ce3ca..e982bbd7 100644
+--- a/app/Resources/FOSUserBundle/views/Security/login.html.twig
++++ b/app/Resources/FOSUserBundle/views/Security/login.html.twig
+@@ -2,12 +2,6 @@
+ 
+ {% trans_default_domain 'FOSUserBundle' %}
+ 
+-{% block stylesheets %}
+-    {{ parent() }}
+-
+-    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}" />
+-{% endblock %}
+-
+ {% block javascripts %}
+     {{ parent() }}
+ 
+diff --git a/web/assets/js/login.js b/web/assets/js/login.js
+index 22486e26..d867bde0 100644
+--- a/web/assets/js/login.js
++++ b/web/assets/js/login.js
+@@ -1,6 +1,7 @@
+ 'use strict';
+ 
+ const $ = require('jquery');
++require('../css/login.css');
+ 
+ $(document).ready(function() {
+     $('.js-recommended-login').on('click', '.js-show-login', function(e) {

@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index d7525a5..5ca6f1c 100644
+index d7525a5a..5ca6f1ca 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -65,60 +65,9 @@
@@ -67,7 +67,7 @@ index d7525a5..5ca6f1c 100644
              RepLogApp.initialize($table);
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
 new file mode 100644
-index 0000000..c94b499
+index 00000000..c94b499e
 --- /dev/null
 +++ b/web/assets/js/RepLogApp.js
 @@ -0,0 +1,52 @@

@@ -1,0 +1,29 @@
+diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
+index 3fbbfc08..5989bdc5 100644
+--- a/app/Resources/views/lift/index.html.twig
++++ b/app/Resources/views/lift/index.html.twig
+@@ -42,12 +42,6 @@
+     </div>
+ {% endblock %}
+ 
+-{% block stylesheets %}
+-    {{ parent() }}
+-
+-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/6.6.0/sweetalert2.min.css" />
+-{% endblock %}
+-
+ {% block javascripts %}
+     {{ parent() }}
+ 
+diff --git a/web/assets/js/Components/RepLogApp.js b/web/assets/js/Components/RepLogApp.js
+index 6085e4b9..9a9c224b 100644
+--- a/web/assets/js/Components/RepLogApp.js
++++ b/web/assets/js/Components/RepLogApp.js
+@@ -3,6 +3,7 @@
+ const Helper = require('./RepLogHelper');
+ const $ = require('jquery');
+ const swal = require('sweetalert2');
++require('sweetalert2/dist/sweetalert2.css');
+ 
+ let HelperInstances = new WeakMap();
+ 

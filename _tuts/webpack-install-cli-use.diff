@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index 0654fa2..899a9de 100644
+index 0654fa26..899a9de9 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -15,3 +15,4 @@
@@ -8,7 +8,7 @@ index 0654fa2..899a9de 100644
  /node_modules
 +/web/build/*
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 7c14099..2d4de69 100644
+index 7c140993..2d4de693 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -52,7 +52,7 @@
@@ -21,7 +21,7 @@ index 7c14099..2d4de69 100644
      <script>
          $(document).ready(function() {
 diff --git a/package.json b/package.json
-index 68a4720..de8998c 100644
+index 68a4720c..de8998c7 100644
 --- a/package.json
 +++ b/package.json
 @@ -5,5 +5,7 @@
@@ -34,7 +34,7 @@ index 68a4720..de8998c 100644
 +  }
  }
 diff --git a/yarn.lock b/yarn.lock
-index fb57ccd..b7a6d3a 100644
+index fb57ccd1..b7a6d3a7 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -2,3 +2,1859 @@

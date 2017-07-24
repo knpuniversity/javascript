@@ -1,0 +1,41 @@
+diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
+index 89f12d79..eeebdf3e 100644
+--- a/app/Resources/views/base.html.twig
++++ b/app/Resources/views/base.html.twig
+@@ -9,7 +9,6 @@
+     <title>{% block title %}Find Something to Lift!{% endblock %}</title>
+ 
+     {% block stylesheets %}
+-        <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+     {% endblock %}
+ 
+diff --git a/web/assets/js/layout.js b/web/assets/js/layout.js
+index 7c3bb5c3..7a326891 100644
+--- a/web/assets/js/layout.js
++++ b/web/assets/js/layout.js
+@@ -2,6 +2,7 @@
+ 
+ const $ = require('jquery');
+ require('bootstrap');
++require('bootstrap/dist/css/bootstrap.css');
+ require('../css/main.css');
+ 
+ $(document).ready(function() {
+diff --git a/webpack.config.js b/webpack.config.js
+index 11651abc..4b6c235d 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -36,6 +36,12 @@ module.exports = {
+                 use: [
+                     'file-loader'
+                 ]
++            },
++            {
++                test: /\.(woff|woff2|eot|ttf|otf)$/,
++                use: [
++                    'file-loader'
++                ]
+             }
+         ]
+     },

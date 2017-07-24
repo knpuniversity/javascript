@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 5ca6f1c..31e3ba4 100644
+index 5ca6f1ca..31e3ba42 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -68,6 +68,7 @@
@@ -11,7 +11,7 @@ index 5ca6f1c..31e3ba4 100644
              var $table = $('.js-rep-log-table');
              RepLogApp.initialize($table);
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index 1af351a..565dd21 100644
+index 1af351a1..565dd212 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -53,7 +53,7 @@

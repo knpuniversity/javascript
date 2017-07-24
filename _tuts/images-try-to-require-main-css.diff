@@ -1,0 +1,24 @@
+diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
+index 385bf770..89f12d79 100644
+--- a/app/Resources/views/base.html.twig
++++ b/app/Resources/views/base.html.twig
+@@ -11,7 +11,6 @@
+     {% block stylesheets %}
+         <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+-        <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" />
+     {% endblock %}
+ 
+     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+diff --git a/web/assets/js/layout.js b/web/assets/js/layout.js
+index e9d87b70..7c3bb5c3 100644
+--- a/web/assets/js/layout.js
++++ b/web/assets/js/layout.js
+@@ -2,6 +2,7 @@
+ 
+ const $ = require('jquery');
+ require('bootstrap');
++require('../css/main.css');
+ 
+ $(document).ready(function() {
+     $('[data-toggle="tooltip"]').tooltip();
