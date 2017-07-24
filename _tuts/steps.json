@@ -914,7 +914,17 @@
             "id": "babel-install-use-env-preset",
             "name": "Babel: Install & use env preset",
             "description": null
+        },
+        {
+            "id": "changes-feature-changes-before-webpack",
+            "name": "Changes: Feature changes before webpack",
+            "description": null
+        },
+        {
+            "id": "changes-upgrade-symfony",
+            "name": "Changes: Upgrade Symfony",
+            "description": null
         }
     ],
-    "sha": "f7ad6da4532ae4db3c9564d8b09f3f476d746737"
+    "sha": "580c961f73279e4a07a5574b1ac130ea8a951950"
 }
