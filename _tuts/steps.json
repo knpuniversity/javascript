@@ -1046,6 +1046,11 @@
             "description": null
         },
         {
+            "id": "babel-add-require-polyfill",
+            "name": "Babel: Add & require polyfill",
+            "description": null
+        },
+        {
             "id": "css-try-to-include-login-css",
             "name": "CSS: Try to include login.css",
             "description": null
@@ -1104,7 +1109,52 @@
             "id": "organization-use-copywebpackplugin",
             "name": "Organization: Use CopyWebpackPlugin",
             "description": null
+        },
+        {
+            "id": "sass-try-using-scss-file",
+            "name": "Sass: Try using .scss file",
+            "description": null
+        },
+        {
+            "id": "sass-add-sass-loader",
+            "name": "Sass: Add sass-loader",
+            "description": null
+        },
+        {
+            "id": "sass-use-bootstrap-sass",
+            "name": "Sass: Use bootstrap-sass",
+            "description": null
+        },
+        {
+            "id": "sass-use-import-for-vendor-sass",
+            "name": "Sass: Use @import for vendor sass",
+            "description": null
+        },
+        {
+            "id": "sass-add-resolve-url-loader",
+            "name": "Sass: Add resolve-url-loader",
+            "description": null
+        },
+        {
+            "id": "sass-set-a-bootstrap-variable",
+            "name": "Sass: Set a bootstrap variable",
+            "description": null
+        },
+        {
+            "id": "sass-only-import-part-of-bootstrap",
+            "name": "Sass: Only import part of bootstrap",
+            "description": null
+        },
+        {
+            "id": "sourcemaps-add-devtool-for-js",
+            "name": "Sourcemaps: Add devtool for js",
+            "description": null
+        },
+        {
+            "id": "sourcemaps-add-for-css-sass",
+            "name": "Sourcemaps: add for css\/sass",
+            "description": null
         }
     ],
-    "sha": "f1999e63c2f54b70502b9035340db731ef11faf7"
+    "sha": "432a61d8d580420312e31541d5e23f4700c13309"
 }

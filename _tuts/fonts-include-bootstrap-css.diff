@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
-index 89f12d79..eeebdf3e 100644
+index e7f5b116..9c3869ee 100644
 --- a/app/Resources/views/base.html.twig
 +++ b/app/Resources/views/base.html.twig
 @@ -9,7 +9,6 @@
@@ -11,13 +11,14 @@ index 89f12d79..eeebdf3e 100644
      {% endblock %}
  
 diff --git a/web/assets/js/layout.js b/web/assets/js/layout.js
-index 7c3bb5c3..7a326891 100644
+index 0768baec..9c611a83 100644
 --- a/web/assets/js/layout.js
 +++ b/web/assets/js/layout.js
-@@ -2,6 +2,7 @@
- 
- const $ = require('jquery');
+@@ -4,6 +4,8 @@ const $ = require('jquery');
  require('bootstrap');
+ // make sure the polyfill library is loaded in this main entry
+ require('babel-polyfill');
++
 +require('bootstrap/dist/css/bootstrap.css');
  require('../css/main.css');
  

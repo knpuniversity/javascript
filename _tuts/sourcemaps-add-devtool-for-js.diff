@@ -1,0 +1,12 @@
+diff --git a/webpack.config.js b/webpack.config.js
+index daaae342..ddc1d2aa 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -75,5 +75,6 @@ module.exports = {
+             // copies to {output}/static
+             { from: './assets/static', to: 'static' }
+         ]),
+-    ]
++    ],
++    devtool: 'inline-source-map'
+ };

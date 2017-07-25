@@ -141,7 +141,7 @@ index 7391c87b..988b6e69 100644
 +}
 \ No newline at end of file
 diff --git a/web/assets/css/main.css b/web/assets/css/main.css
-index 4ba120d2..0c2daf82 100644
+index 070ff0ff..c1c072b1 100644
 --- a/web/assets/css/main.css
 +++ b/web/assets/css/main.css
 @@ -7,7 +7,9 @@ footer.footer {

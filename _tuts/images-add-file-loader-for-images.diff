@@ -1,8 +1,8 @@
 diff --git a/package.json b/package.json
-index 83c73f5f..4267b6dd 100644
+index 11c5d84c..661cb94a 100644
 --- a/package.json
 +++ b/package.json
-@@ -11,6 +11,7 @@
+@@ -12,6 +12,7 @@
      "babel-preset-env": "^1.6.0",
      "bootstrap": "^3.3.7",
      "css-loader": "^0.28.4",
@@ -28,10 +28,10 @@ index ebb88965..897e3225 100644
          ]
      },
 diff --git a/yarn.lock b/yarn.lock
-index 94637dc0..9050ba95 100644
+index e0ea4c3e..00b5ba8d 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -1351,6 +1351,12 @@ fastparse@^1.1.1:
+@@ -1359,6 +1359,12 @@ fastparse@^1.1.1:
    version "1.1.1"
    resolved "https://registry.yarnpkg.com/fastparse/-/fastparse-1.1.1.tgz#d1e2643b38a94d7583b479060e6c4affc94071f8"
  
