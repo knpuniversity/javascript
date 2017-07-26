@@ -19,14 +19,7 @@ class RepLogController extends BaseController
      */
     public function getRepLogsAction()
     {
-        $repLogs = $this->getDoctrine()->getRepository('AppBundle:RepLog')
-            ->findBy(array('user' => $this->getUser()))
-        ;
-
-        $models = [];
-        foreach ($repLogs as $repLog) {
-            $models[] = $this->createRepLogApiModel($repLog);
-        }
+        $models = $this->findAllUsersRepLogModels();
 
         return $this->createApiResponse([
             'items' => $models
@@ -126,5 +119,22 @@ class RepLogController extends BaseController
         $model->addLink('_self', $selfUrl);
 
         return $model;
+    }
+
+    /**
+     * @return RepLogApiModel[]
+     */
+    private function findAllUsersRepLogModels()
+    {
+        $repLogs = $this->getDoctrine()->getRepository('AppBundle:RepLog')
+            ->findBy(array('user' => $this->getUser()))
+        ;
+
+        $models = [];
+        foreach ($repLogs as $repLog) {
+            $models[] = $this->createRepLogApiModel($repLog);
+        }
+
+        return $models;
     }
 }
