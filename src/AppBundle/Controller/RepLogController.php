@@ -93,48 +93,4 @@ class RepLogController extends BaseController
 
         return $response;
     }
-
-    /**
-     * Turns a RepLog into a RepLogApiModel for the API.
-     *
-     * This could be moved into a service if it needed to be
-     * re-used elsewhere.
-     *
-     * @param RepLog $repLog
-     * @return RepLogApiModel
-     */
-    private function createRepLogApiModel(RepLog $repLog)
-    {
-        $model = new RepLogApiModel();
-        $model->id = $repLog->getId();
-        $model->reps = $repLog->getReps();
-        $model->itemLabel = $this->get('translator')
-            ->trans($repLog->getItemLabel());
-        $model->totalWeightLifted = $repLog->getTotalWeightLifted();
-
-        $selfUrl = $this->generateUrl(
-            'rep_log_get',
-            ['id' => $repLog->getId()]
-        );
-        $model->addLink('_self', $selfUrl);
-
-        return $model;
-    }
-
-    /**
-     * @return RepLogApiModel[]
-     */
-    private function findAllUsersRepLogModels()
-    {
-        $repLogs = $this->getDoctrine()->getRepository('AppBundle:RepLog')
-            ->findBy(array('user' => $this->getUser()))
-        ;
-
-        $models = [];
-        foreach ($repLogs as $repLog) {
-            $models[] = $this->createRepLogApiModel($repLog);
-        }
-
-        return $models;
-    }
 }
