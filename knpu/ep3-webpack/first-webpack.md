@@ -14,7 +14,7 @@ yarn remove babel-cli babel-preset-env
 ```
 
 After this, we have absolutely *nothing* in our app: `package.json` is empty and
-so is `node_modules.`. We're starting from scratch.
+so is `node_modules/`. We're starting from scratch.
 
 Now, add webpack:
 

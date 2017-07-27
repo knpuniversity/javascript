@@ -60,7 +60,7 @@ the old foods code from `play.js`, delete it, and paste it in `foods.js`.
 ## Modules & module.exports
 
 Now, as you're probably expecting, we're going to `require` `foods.js` from `play.js`.
-We are! But there is one *really* important difference between the way `require`
+But there is one *really* important difference between the way `require`
 works in PHP versus Node. In PHP, when you require a file, you magically have access
 to all functions, classes or variables inside. But in Node, that's not true: you
 need to explicitly export a value from the required file.
