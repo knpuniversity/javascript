@@ -1,12 +1,13 @@
 diff --git a/webpack.config.js b/webpack.config.js
-index f19249e6..3922895c 100644
+index f19249e6..96971d29 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
-@@ -5,29 +5,30 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
+@@ -5,29 +5,31 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
  
  const useDevServer = false;
  const publicPath = useDevServer ? 'http://localhost:8080/build/' : '/build/';
-+const useSourcemaps = process.env.NODE_ENV !== 'production';
++const isProduction = process.env.NODE_ENV === 'production';
++const useSourcemaps = !isProduction;
  
  const styleLoader = {
      loader: 'style-loader',
@@ -37,7 +38,7 @@ index f19249e6..3922895c 100644
      }
  };
  
-@@ -124,7 +125,7 @@ const webpackConfig = {
+@@ -124,14 +126,14 @@ const webpackConfig = {
  
          new ExtractTextPlugin('[name].css'),
      ],
@@ -46,3 +47,11 @@ index f19249e6..3922895c 100644
      devServer: {
          contentBase: './web',
          headers: { 'Access-Control-Allow-Origin': '*' },
+     }
+ };
+ 
+-if (process.env.NODE_ENV === 'production') {
++if (isProduction) {
+     webpackConfig.plugins.push(
+         new webpack.optimize.UglifyJsPlugin()
+     );

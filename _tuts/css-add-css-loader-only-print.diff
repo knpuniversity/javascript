@@ -13,7 +13,7 @@ index 39dd53ba..7526c9ad 100644
      "webpack": "^3.4.1"
    }
 diff --git a/web/assets/js/login.js b/web/assets/js/login.js
-index d867bde0..bea9144a 100644
+index 479c6e39..e92448ba 100644
 --- a/web/assets/js/login.js
 +++ b/web/assets/js/login.js
 @@ -1,7 +1,8 @@

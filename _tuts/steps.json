@@ -1309,7 +1309,42 @@
             "id": "production-pass-minimize-directly-to-css-loader",
             "name": "Production: Pass minimize directly to css-loader",
             "description": null
+        },
+        {
+            "id": "production-add-defineplugin",
+            "name": "Production: Add DefinePlugin",
+            "description": null
+        },
+        {
+            "id": "versioning-add-hash",
+            "name": "Versioning: Add [hash]",
+            "description": null
+        },
+        {
+            "id": "versioning-add-manifestplugin",
+            "name": "Versioning: Add ManifestPlugin",
+            "description": null
+        },
+        {
+            "id": "versioning-add-version-strategy",
+            "name": "Versioning: Add version_strategy",
+            "description": null
+        },
+        {
+            "id": "versioning-adding-chunkhashplugin",
+            "name": "Versioning: Adding ChunkHashPlugin",
+            "description": null
+        },
+        {
+            "id": "versioning-hashedidsplugin",
+            "name": "Versioning: HashedIdsPlugin",
+            "description": null
+        },
+        {
+            "id": "versioning-clean-between-builds",
+            "name": "Versioning: clean between builds",
+            "description": null
         }
     ],
-    "sha": "84902f6fd0842464b00fd136d0022d7df27dba81"
+    "sha": "31c95bdd9fb11bd5682f379d5252ba37296b018b"
 }

@@ -1,0 +1,15 @@
+diff --git a/webpack.config.js b/webpack.config.js
+index e29663e8..facd7d6a 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -138,6 +138,10 @@ const webpackConfig = {
+ 
+         // allows for [chunkhash]
+         new WebpackChunkHash(),
++
++        // keep module ids consistent between builds
++        // so that hashes doesn't suddenly change
++        isProduction ? new webpack.HashedModuleIdsPlugin() : new webpack.NamedModulesPlugin()
+     ],
+     devtool: useSourcemaps ? 'inline-source-map' : false,
+     devServer: {

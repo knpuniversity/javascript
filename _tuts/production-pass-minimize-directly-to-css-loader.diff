@@ -1,8 +1,8 @@
 diff --git a/webpack.config.js b/webpack.config.js
-index 3922895c..f4088092 100644
+index 96971d29..08041c8d 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
-@@ -16,7 +16,8 @@ const styleLoader = {
+@@ -17,7 +17,8 @@ const styleLoader = {
  const cssLoader = {
      loader: 'css-loader',
      options: {

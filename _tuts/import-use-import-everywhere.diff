@@ -38,7 +38,7 @@ index d0cd1118..68b87f5a 100644
  $(document).ready(function() {
      $('[data-toggle="tooltip"]').tooltip();
 diff --git a/assets/js/login.js b/assets/js/login.js
-index d867bde0..cc1d866f 100644
+index 479c6e39..afb516d4 100644
 --- a/assets/js/login.js
 +++ b/assets/js/login.js
 @@ -1,7 +1,7 @@

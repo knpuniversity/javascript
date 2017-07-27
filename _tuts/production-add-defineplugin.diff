@@ -1,0 +1,20 @@
+diff --git a/webpack.config.js b/webpack.config.js
+index 08041c8d..77ab143b 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -147,6 +147,14 @@ if (isProduction) {
+             debug: false
+         })
+     );
++
++    webpackConfig.plugins.push(
++        new webpack.DefinePlugin({
++            'process.env': {
++                'NODE_ENV': JSON.stringify('production')
++            }
++        }),
++    );
+ }
+ 
+ module.exports = webpackConfig;
+\ No newline at end of file
