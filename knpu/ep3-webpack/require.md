@@ -1,20 +1,135 @@
-# Require
+# The Power of require
 
-Hey, guys. Welcome, finally, to our tutorial on Webpack. We've packed a ton of stuff into this. Seriously, Webpack is a game-changing tool for the front-end Javascript world. It's also one of the most difficult to learn tools that I've tackled in years, and I don't want you to go through that same process. So we are going to learn Webpack from the bottom up and then, you are going to have an amazing, earth-shattering new tool at your fingertips.
+Yo friends! I am *ecstatic* about this tutorial on Webpack... because *we've*
+packed a *ton* of great stuff into it. But it's more than that! Webpack is going
+to *change* the way you develop front-end code, big time. And that's the *real*
+reason I'm so pumped!
 
-What does Webpack do? Well, I'll show you in a second. But, I will tell you that it will change the way that you write Javascript, finally allowing you to write truly modular, professional code, just like you would in PHP.
+But... Webpack is tough! And sometimes, it's weird and it mis-behaves and it's frustrating.
+Huh, it's kind of a like baby - super great and all... but with a mind of its own.
 
-Like always, code along with me by downloading the [inaudible 00:01:08] from this page. When you unzip the file, you should find a start directory that has the same code that you see here. If you've been coding along so far, use the new code because I've made a few tweaks since the last tutorial to help make our examples better. Then, follow the Read Me file for all the setup instructions to get your project going. The last step will be to find your terminal, move into the project, and run ./bin/console server:run to start the built-in PHP web server.
+Anyways, that's why we're here: to unpack this beast from beginner to pro. In just
+a little while, you're going to have new super-powers that you never dreamed of.
 
-Then, we pull that it up on our browser as localhost:8000. Our app is, of course, Pump Lift Stuff. Log in with Ron Furgundy, password pumpup. This is our amazing app to keep track of all of the heavy things that we've been lifting throughout the day, so we can stay in shape. We've a fairly fancy front-end section that we've been working on in the previous two tutorials and now we're going to revolutionize the way that we wrote the code that runs this page.
+Oh, what does Webpack actually do? Did I not mention that? I'll show you soon.
 
-In the last tutorial, in addition to running Javascript for the browser, we actually wrote a bit of Javascript that is actually node.js code. We had a little play.js file where we were using to try out different things, in this case, the set feature from ES6. Whenever you want to execute a node.js script, you can just say node play.js. Awesome. One of the most common things that you see when you use node.js code is the require key, which is at first very similar to the require key in PHP. It allows you to separate your code into files, check this out. At the root of your project, create a new foods.js, then, I'm going to copy in the foods code, delete it, put it in foods.js.
+## Grab the Code!
 
-Now as you're probably expecting, we're going to require foods.js from play.js, and that's true. One important difference between the way it works in node and PHP is that in node, you need to explicitly export a value from a file. Whereas in PHP, we simply require a file, and whatever functions or classes are in that file, we automatically get. Instead of that happening automatically, in node.js, we would use a special keyword called "module.exports = foods." So when someone requires this file, the value that they're going to get is actually our foods set. In play.js, we can say, "const foods = require./foods." Now a couple of interesting things. Before we talk about it, let's try it.
+Like always, JavaScript is best written together, so download the course code from
+this page to code along with me. When you unzip the file, you'll find a `start/`
+directory inside that has the same code you see here. Oh, and if you've been coding
+along with the first two JavaScript tutorials - you're amazing! But also, make sure
+to download the new code: I've made a few tweaks since the last tutorial to make
+things more interesting.
 
-Head back over, and it still works perfectly. Now notice I don't need a .js on the end of here, that's assumed. You can put a .js, but if you don't, it looks for a foods.js. The other thing is this dot slash is important. When you start with a dot ... node knows that you're looking for a file relative to this directory. If we just said foods without a dot slash, that means something different. We'll talk about that later. This is an awesome feature. The question is, can we get this in the browser Javascript world? Because this would be amazing. We could actually write many Javascript files, and use the require statement to pull them all together, and truly organize our code. The answer is no, but with Webpack, yes. First, I'm going to open up the template that runs our main page here. And at the end of the last tutorial, we actually started generating a dist file. We used a tool called Babble that read our source file, replogapp.js, and then transpiled it to this dist file. We're going to do that again, but for now, I want to delete the dist file, and point back to our source file.
+Then, open the `README.md` file for *fascinating* instructions on how to get the
+project setup. The last step will be to find your favorite terminal, move into the
+app, and run:
 
-We're now reading just our normal source file right here. Inside our replogapp, we actually have two classes. Near the bottom, we created a class called helper. For organization, I'm now going to separate this into its own file. In the same directory as replogapp, operate a new replogapphelper.js. [inaudible 00:06:32] use strict on top. Paste the class. Then at the bottom say, "module.exports = helper." Then in replogapp, now that that helper variable is gone, obviously we're not going to have a good time. You can see on line 10, element is not exported, which is a funny way of saying the variable does not exist. At the top, I'll say, "const Helper = require./replogapphelper." The error goes away. Based on what we just saw in node.js, this should work, and it makes perfect sense. Of course if I do inspect element, go into my console, and refresh, as you're probably guessing, we get a different store. Require is not defined.
+```terminal
+php bin/console server:run
+```
 
-Browsers support almost all features in the ... this is not just because browsers haven't caught up. Browsers can't define the require key. It just doesn't make sense. In PHP, when we use the require key, we're reading a file from a file system, which is practically instant. That file is read synchronously. In the web world, the only way for our browser to get weblogapphelper would be to make an ajax call, which is asynchronous. If the browser waited for that file to be downloaded, our page would take forever to load. Can you imagine our page loading, then one Javascript file downloading five other Javascript files, then waiting for those Javascript files to load more Javascript files? It would be a disaster. The require key is just not possible to implement in a browser. That's where Webpack comes in.
+to start the built-in PHP web server.
 
+Pull up the site in your browser: `http://localhost:8000`. Welcome to Lift Stuff!
+Log in as `ron_furgundy`, password `pumpup`. Over the past 2 courses, we've lovingly
+built this activity-tracker-for-programmers into a nice, JavaScript-powered front-end.
+Now, we're going to revolutionize the way that code is organized.
+
+## Node and require
+
+What am I talking about? Well, in the last tutorial, in addition to running JavaScript
+in the browser, we actually wrote a bit of Node.js - aka JavaScript that runs right
+on your server. Open up `play.js`: we used this as a simple way to test out new ES6
+features.
+
+To exectue this, open a new terminal tab and run:
+
+```terminal
+node play.js
+```
+
+Awesome! If you look at most `Node.js` code, one thing will jump out *immediately*:
+the `require()` function. On the surface, it's a lot like PHP's `require` statement:
+it allows you to separate code into multiple files.
+
+Try it out: at the root of our project, create a new `foods.js` file. Then, copy
+the old foods code from `play.js`, delete it, and paste it in `foods.js`.
+
+## Modules & module.exports
+
+Now, as you're probably expecting, we're going to `require` `foods.js` from `play.js`.
+We are! But there is one *really* important difference between the way `require`
+works in PHP versus Node. In PHP, when you require a file, you magically have access
+to all functions, classes or variables inside. But in Node, that's not true: you
+need to explicitly export a value from the required file.
+
+How? By saying `module.exports = foods`. By the way, in JavaScript, each file is
+known as a *module* and is executed in isolation. Nothing is returned from this
+file *other* than what we export.
+
+Ok! Back in `play.js`, we can *now* say, `const foods = require('./foods')`.
+
+Before I say more, try it! Head back to your terminal and re-run the code:
+
+```terminal-silent
+node play.js
+```
+
+It still works! Back in the code, notice that we do *not* need the `.js` on the end
+of the filename. We *can* add it - that would totally work. But if it's not there,
+Node knows to look for `foods.js`.
+
+Also, that `./` before `foods` is no accident: that's *super* important. When a path
+starts with a `.`, Node knows to look for that file relative to *this* file. If we
+just said `foods` *without* the `./`, well, that means something very different.
+More on that later.
+
+## Using require in the Browser
+
+So the `require` function is an *awesome* feature. The question is: can we use this
+in the browser JavaScript world? Because if we could, just *imagine* how easy it
+would be to organize our JavaScript!
+
+And yes! We can totally get it working... otherwise this would be a really short
+tutorial.
+
+But first, a little bit of cleanup: open `app/Resources/views/lift/index.html.twig`.
+This is the template for the main page. And at the end of the last tutorial, we
+used a library called Babel to "transpile" our source `RepLogApp.js` into a `dist/RepLogApp.js`
+file. We *are* going to use Babel again, but for now, delete the `dist` file. Then,
+point our page back to the source `RepLogApp.js`.
+
+This file contains two classes: `RepLogApp` and, near the bottom, another called
+`Helper`. Hey! For organization, let's move this class into its own file. In that
+same directory, create a new `RepLogAppHelper.js` file. I'll add the `'use strict';`
+on top and then paste the class. At the bottom, add `module.exports = Helper`.
+
+You can export anything you want from a module - a value, like we did earlier -
+a class, a function, an object - whatever!
+
+Back in `RepLogApp.js`, now that the `Helper` class is gone... well, we're not
+going to have a good time. On line 10, PhpStorm is giving me a cryptic error:
+element is not exported... a funny way of saying "Variable undefined"!
+
+Fix this: at the top, add `const Helper = require('./RepLogAppHelper')`. My editor
+is happy!
+
+Based on what we saw in Node... this should just work! Back in my browser, I'll
+open the console and then, refresh. Yep, we somehow *knew* life wouldn't be so simple.
+We get an error:
+
+> require is not defined
+
+Here's the deal: the `require` function does not work in any browser. And it's not
+that browsers are behind... it's just not *possible* to make it work!
+
+Think about it: in PHP, when we use the `require` statement, we're reading a file
+from our file system... which is basically instant. But on the web, a browser would
+need to go *download* that file. Imagine if we waited while it downloaded this file...
+then this file required 5 other files.... so we waited for those... then those files
+required 10 *other* files... so we finally decide to go have lunch while the web page
+loads. It just doesn't work!
+
+Enter Webpack.

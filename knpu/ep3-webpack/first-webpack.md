@@ -1,16 +1,69 @@
-# First Webpack
+# Your First Webpack
 
-Since the require key doesn't work in a browser, we're going to use Webpac to bring all of this together. I'll explain as we go. First, in the last tutorial, we installed Babel, which we used to transfile our new JavaScript to JavaScript compatible in the older browsers. We do still need to do that, but we're going to worry about it a little bit later. So I'm actually going to remove these two libraries by running yarn remove Babel dash CLI, space, Babel dash present dash end. And when you do that, you can see that we have absolutely nothing in our application. In fact, the node modules directory is actually empty. So we're starting from scratch. So let's now install Webpac. Yarn add Webpac dash, dash dev, so it goes in our dev dependencies. As it's going, let's talk about the strategy. Basically, we're gonna point Webpac, which is a executable, at our rep log app dot JS file. It is amazing because it is actually going to read our require functions. Go and open rec rep log app helper and finally dump one file that contains both of these put back together.
+Since the `require` key doesn't work in a browser, we're going to use Webpack to...
+pack it all together! Let's jump straight in to see how it works!
 
-So it means that we can write nice modulant code and Webpac repackages that all into a final file. I'm gonna put that final file into a new build directory in my web folder, so I'll start there by saying ... in fact, let's go to New Directory inside Web and make Build. At first, it's really simple. So Webpac did install successfully and since the Webpac library ... and now you can see in node modules, we have lots of new tools. Since Webpac comes with a binary, it means we can dot slash node module dot bin Webpac. Here, we're gonna point it at our input file, Web slash Assets slash rep log app dot JS, and our output file, Web slash Build slash, how about, rep underscore log dot JS, so we can differentiate the source file from the final file. No errors. It looks like it worked and check this out. There is our rep underscore log dot JS file, so let's try it. In Index dot HTML twig, I'm gonna replace our script tag with Build slash Rep Log App dot JS, Rep underscore Log dot JS. Then refresh. It works.
+## Installing webpack
 
-Everything seems to be working just fine. If you don't believe it, open the file. First, you're gonna see a bunch of Webpac bootstrap code on the top. It's code that help Webpac do its job and below that, you see our code. You see our Rep Log App and if we scroll down far enough, you will see our helper class. So it just patches everything into one file. It's actually much, much more powerful than that. But that is already huge. Now this Build directory is not something that we need to commit to the repository 'cause we can just rebuild these files whenever we want to. So I'm gonna open my dot [get 00:04:04] ignore file at the bottom. I am going to ignore Web slash Build slash star. Now instead of actually passing these command line options, what you usually do is create a Webpac dot Config dot JS file. So at the root of your project, add that, Webpac dot Config dot JS. If you make a file with exactly that name when you run Webpac, it looks for it. Guess what this file looks like.
+In the last tutorial, we installed Babel. We're going to use Babel again. But for
+now, let's remove it. In your terminal, run `yarn remove babel-cli` then
+`babel-preset-env`:
 
-It starts with a module dot exports set to a configuration array and inside of here we're gonna have two major things. In entry, set to, not slash Web, slash Assets slash JS slash Rep Log App dot JS. Entry is Webpac's name for your input file. The main one file that it should start looking into. Then, of course, we need to tell it the output and here I'm actually gonna set this to a hash with a path, underscore underscore Dirname plus slash Web slash Build. So this will be the directory where we want files to be built and underscore underscore Dirname is a special variable that's available when you're inside of node. Then we'll set file name to Re underscore Log dot JS. That now allows us to run things a little bit easier, so we're here and instead of this long thing here, we can just say dot slash Node Modules dot Bin Webpac. We get the same result. Actually, if you go to Webpac dot JS dot org, and make sure you're on Webpac dot JS dot org. They had a different website, Webpac dot GetHub dot org for the Webpac version one.
+```terminal-silent
+yarn remove babel-cli babel-preset-env
+```
 
-We are using Webpac version three and under the Main Concepts page, they're gonna a little bit about this configuration format. You'll notice that for their path, they actually use this weird path dot Resolve things. This is a minor detail on Node dot JS that I want you guys to see. In Node dot JS, you never see strings concatenated together like this. To keep things portable between Unix and Windows, they instead use a function called Path dot Resolve or Path dot something to concatenate, in this case, the directory name and Dist. So we're gonna do the same things here. We're gonna say Path dot Resolve, then we'll say Dirname and we'll actually pass it to String Web. Then we'll actually pass it to String Build, so we can pass as many arguments as we want. It's just going to concatenate those together and return the file path, but when we try it, it's going to blow up. Path is not defined. Here's an important distinction to make. When this file is being executed, when Webpac dot Config dot JS, this is a Node JS file. This will never be run in our browser.
+After this, we have absolutely *nothing* in our app: `package.json` is empty and
+so is `node_modules.`. We're starting from scratch.
 
-It will only be run on our machine to create our final packages and that means that we have all of the tools that you normally have in Node dot JS. Node dot JS actually comes with many core packages. You can see up here at the top, there's a [Const 00:08:02] paths equals Require path. That's actually what we need and when we put it there, everything's happy again. Now notice this is does not dot slash path. Dot slash tells Node to look for things relative to this file, but when you don't have a dot slash, it looks for either core modules in node dot JS itself, path is one of those, or it actually looks in your node module directory to import one of those. So if you don't start with a dot, it's going to look for a core module or a module in your node modules directory. Now one that little thing here. You'll see when I hover over path, it looks like there's an error and it says, "Node dot JS coding assistance is disabled."
+Now, add webpack:
 
-If you go to your Peachpit Storm settings, which is command comma on a Mac, and search for Node dot JS, There's [inaudible 00:09:08] here called Node dot JS and NPM and you can see it highlighted, "Node dot JS core library's not enabled." Make sure you hit Enable on that and then hit Okay. You can see instantly, everything is happy and this is actually gonna give you auto complete on all the core Node dot JS features. All right. Next, let's make our setup more interesting by using the Launch command.
+```terminal
+yarn add webpack --dev
+```
 
+As it's downloading, let's talk strategy. Webpack is an executable, and we will point
+it at `RepLogApp.js`. Webpack is amazing because it will actually *read* the `require()`
+call inside that, open `RepLogAppHelper.js`, and finally dump one big file with *both*
+modules inside. Yes, this means *we* will get to use the `require` function and our
+*browser* will still get one, streamlined, simple, beautiful JS file.
+
+Create a new directory in `web/` called `build/`: we'll put our finished file here.
+
+## Running webpack
+
+Back in our terminal, awesome! Yarn finished its work... and now `node_modules/`
+is *filled* with goodies. To run Webpack, use `./node_modules/.bin/webpack`. This
+needs 2 arguments: the input file - so `web/assets/RepLogApp.js` - and the output
+file - `web/build/rep_log.js` - a different filename to avoid confusion.
+
+Deep breath. Run webpack:
+
+```terminal-silent
+./node_modules/.bin/webpack web/assets/RepLogApp.js web/build/rep_log.js
+```
+
+Yes! No errors... and it looks like it did something. Check the `web/build` directory...
+we *do* have a `rep_log.js` file. In `index.html.twig`, update the script `src`
+to point here: `build/rep_log.js`.
+
+Now, refresh! Everything works! Holy cats Batman! We just unlocked the `require`
+function for front-end JavaScript. Game. Changer.
+
+## Checking out the Compiled File
+
+Check out the compiled file. Webpack adds some bootstrap code at the top: this helps
+it do its job internally. Then, below that, you see our code: `RepLogApp` first and
+then, the `Helper` class.
+
+Yep, webpack, um, packs all our modules into one file. Well, it's actually much,
+much more powerful than that. But this is already *huge*.
+
+## Ignore the build Directory
+
+Now, the `build/` directory is not something we need to commit to the repository:
+we can always rebuild this file whenever we need to. So, in `.gitignore`, ignore
+it: `/web/build/*`.
+
+Next, we'll create the all-important `webpack.config.js` file: they key to unlocking
+Webpack's full potential.
