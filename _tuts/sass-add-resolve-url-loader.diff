@@ -11,7 +11,7 @@ index b0a80442..343ea932 100644
      "style-loader": "^0.18.2",
      "sweetalert2": "^6.6.6",
 diff --git a/webpack.config.js b/webpack.config.js
-index e5ec4021..daaae342 100644
+index 92b1f38e..e84f5728 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -37,7 +37,8 @@ module.exports = {

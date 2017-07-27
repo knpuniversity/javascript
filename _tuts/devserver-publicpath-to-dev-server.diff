@@ -1,0 +1,30 @@
+diff --git a/webpack.config.js b/webpack.config.js
+index 3612f9e9..f8de0948 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -2,6 +2,9 @@ const path = require('path');
+ const webpack = require('webpack');
+ const CopyWebpackPlugin = require('copy-webpack-plugin');
+ 
++const useDevServer = true;
++const publicPath = useDevServer ? 'http://localhost:8080/build/' : '/build/';
++
+ module.exports = {
+     entry: {
+         rep_log: './assets/js/rep_log.js',
+@@ -11,7 +14,7 @@ module.exports = {
+     output: {
+         path: path.resolve(__dirname, 'web', 'build'),
+         filename: '[name].js',
+-        publicPath: '/build/'
++        publicPath: publicPath,
+     },
+     module: {
+         rules: [
+@@ -91,5 +94,6 @@ module.exports = {
+     devtool: 'inline-source-map',
+     devServer: {
+         contentBase: './web',
++        headers: { 'Access-Control-Allow-Origin': '*' },
+     }
+ };

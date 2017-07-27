@@ -1,0 +1,13 @@
+diff --git a/webpack.config.js b/webpack.config.js
+index ab7c8469..72ee0a3f 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -6,6 +6,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
+ const useDevServer = false;
+ const publicPath = useDevServer ? 'http://localhost:8080/build/' : '/build/';
+ 
++console.log(process.env.NODE_ENV);
++
+ module.exports = {
+     entry: {
+         rep_log: './assets/js/rep_log.js',

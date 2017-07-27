@@ -12,7 +12,7 @@ index bbaaa09d..9bdfc1da 100644
  $(document).ready(function() {
      var $wrapper = $('.js-rep-log-table');
 diff --git a/webpack.config.js b/webpack.config.js
-index 7609e941..3af7796f 100644
+index d40a90eb..69398840 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -70,7 +70,6 @@ module.exports = {

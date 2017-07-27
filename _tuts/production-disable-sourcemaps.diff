@@ -1,0 +1,51 @@
+diff --git a/webpack.config.js b/webpack.config.js
+index d094e84e..d01184f1 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -6,6 +6,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
+ const useDevServer = false;
+ const publicPath = useDevServer ? 'http://localhost:8080/build/' : '/build/';
+ 
++const dumpSourcemaps = process.env.NODE_ENV !== 'production';
++const sourceMapString = dumpSourcemaps ? '?sourceMap' : '?sourceMap=false';
++
+ const webpackConfig = {
+     entry: {
+         rep_log: './assets/js/rep_log.js',
+@@ -33,21 +36,21 @@ const webpackConfig = {
+                 test: /\.css$/,
+                 use: ExtractTextPlugin.extract({
+                     use: [
+-                        'css-loader?sourceMap',
++                        'css-loader'+sourceMapString,
+                     ],
+                     // use this, if CSS isn't extracted
+-                    fallback: 'style-loader?sourceMap'
++                    fallback: 'style-loader'+sourceMapString
+                 }),
+             },
+             {
+                 test: /\.scss$/,
+                 use: ExtractTextPlugin.extract({
+                     use: [
+-                        'css-loader?sourceMap',
+-                        'resolve-url-loader?sourceMap',
+-                        'sass-loader?sourceMap',
++                        'css-loader'+sourceMapString,
++                        'resolve-url-loader'+sourceMapString,
++                        'sass-loader'+sourceMapString,
+                     ],
+-                    fallback: 'style-loader?sourceMap'
++                    fallback: 'style-loader'+sourceMapString
+                 }),
+             },
+             {
+@@ -99,7 +102,7 @@ const webpackConfig = {
+ 
+         new ExtractTextPlugin('[name].css'),
+     ],
+-    devtool: 'inline-source-map',
++    devtool: dumpSourcemaps ? 'inline-source-map' : false,
+     devServer: {
+         contentBase: './web',
+         headers: { 'Access-Control-Allow-Origin': '*' },

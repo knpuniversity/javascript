@@ -41,7 +41,7 @@ index 8f43701a..bd4a1e1a 100644
      "file-loader": "^0.11.2",
      "font-awesome": "^4.7.0",
 diff --git a/webpack.config.js b/webpack.config.js
-index c522c07e..c10b202c 100644
+index 67b2e313..503d9c96 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -1,5 +1,6 @@

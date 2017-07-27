@@ -9,10 +9,10 @@ index 3af117cd..c2b5d05b 100644
 -module.exports = RepLogApp;
 +export default RepLogApp;
 diff --git a/assets/js/Components/RepLogHelper.js b/assets/js/Components/RepLogHelper.js
-index fc1fcf07..a2b4a27b 100644
+index bb2d5c93..2e5ae3a4 100644
 --- a/assets/js/Components/RepLogHelper.js
 +++ b/assets/js/Components/RepLogHelper.js
-@@ -32,4 +32,4 @@ class Helper {
+@@ -34,4 +34,4 @@ class Helper {
      }
  }
  

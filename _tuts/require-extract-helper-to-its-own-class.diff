@@ -53,10 +53,12 @@ index 24ffa0d8..adc1760e 100644
      <td>${repLog.itemLabel}</td>
 diff --git a/web/assets/js/RepLogHelper.js b/web/assets/js/RepLogHelper.js
 new file mode 100644
-index 00000000..fc1fcf07
+index 00000000..bb2d5c93
 --- /dev/null
 +++ b/web/assets/js/RepLogHelper.js
-@@ -0,0 +1,35 @@
+@@ -0,0 +1,37 @@
++'use strict';
++
 +/**
 + * A "private" object
 + */

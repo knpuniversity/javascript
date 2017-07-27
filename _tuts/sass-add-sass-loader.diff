@@ -12,7 +12,7 @@ index bd4a1e1a..e95b4dca 100644
      "sweetalert2": "^6.6.6",
      "webpack": "^3.3.0"
 diff --git a/webpack.config.js b/webpack.config.js
-index c10b202c..e5ec4021 100644
+index 503d9c96..92b1f38e 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -33,6 +33,14 @@ module.exports = {

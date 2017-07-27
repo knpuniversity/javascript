@@ -1,0 +1,16 @@
+diff --git a/package.json b/package.json
+index abdea4a8..f4517c53 100644
+--- a/package.json
++++ b/package.json
+@@ -5,6 +5,11 @@
+   "repository": "git@github.com:knpuniversity/javascript.git",
+   "author": "Ryan Weaver <ryan@thatsquality.com>",
+   "license": "MIT",
++  "scripts": {
++    "dev": "NODE_ENV=dev webpack",
++    "watch": "NODE_ENV=dev webpack --watch",
++    "production": "NODE_ENV=production webpack"
++  },
+   "devDependencies": {
+     "babel-core": "^6.25.0",
+     "babel-loader": "^7.1.1",

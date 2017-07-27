@@ -24,7 +24,7 @@ index 0768baec..9c611a83 100644
  
  $(document).ready(function() {
 diff --git a/webpack.config.js b/webpack.config.js
-index 11651abc..4b6c235d 100644
+index d60f8b8d..24c81521 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -36,6 +36,12 @@ module.exports = {

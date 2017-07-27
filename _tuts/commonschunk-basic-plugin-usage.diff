@@ -11,7 +11,7 @@ index 1205992a..a3cb3dc3 100644
  {% endblock %}
  
 diff --git a/webpack.config.js b/webpack.config.js
-index 3af7796f..ad31bb8a 100644
+index 69398840..29874df2 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -76,6 +76,11 @@ module.exports = {

@@ -1249,7 +1249,57 @@
             "id": "commonschunk-dumping-manifest-js",
             "name": "CommonsChunk: Dumping manifest.js",
             "description": null
+        },
+        {
+            "id": "devserver-install-use-it",
+            "name": "DevServer: Install & use it",
+            "description": null
+        },
+        {
+            "id": "devserver-add-contentbase",
+            "name": "DevServer: Add contentBase",
+            "description": null
+        },
+        {
+            "id": "devserver-publicpath-to-dev-server",
+            "name": "DevServer: publicPath to dev-server",
+            "description": null
+        },
+        {
+            "id": "extracttext-install-use-it",
+            "name": "ExtractText: Install & use it",
+            "description": null
+        },
+        {
+            "id": "extracttext-stop-using-dev-server",
+            "name": "ExtractText: stop using dev-server",
+            "description": null
+        },
+        {
+            "id": "production-set-print-node-env",
+            "name": "Production: Set & print NODE_ENV",
+            "description": null
+        },
+        {
+            "id": "production-conditionally-add-uglify",
+            "name": "Production: Conditionally add uglify",
+            "description": null
+        },
+        {
+            "id": "production-adding-scripts-to-package-json",
+            "name": "Production: Adding scripts to package.json",
+            "description": null
+        },
+        {
+            "id": "production-add-loaderoptionsplugin",
+            "name": "Production: Add LoaderOptionsPlugin",
+            "description": null
+        },
+        {
+            "id": "production-disable-sourcemaps",
+            "name": "Production: Disable sourcemaps",
+            "description": null
         }
     ],
-    "sha": "1ae4bc0026d048251ecc43e71bff370bcb7af9fc"
+    "sha": "2b11778bdd64d3a3ed1f6514c33e59a54290a449"
 }

@@ -1,0 +1,28 @@
+diff --git a/webpack.config.js b/webpack.config.js
+index 72ee0a3f..a94cbc67 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -6,9 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
+ const useDevServer = false;
+ const publicPath = useDevServer ? 'http://localhost:8080/build/' : '/build/';
+ 
+-console.log(process.env.NODE_ENV);
+-
+-module.exports = {
++const webpackConfig = {
+     entry: {
+         rep_log: './assets/js/rep_log.js',
+         login: './assets/js/login.js',
+@@ -107,3 +105,11 @@ module.exports = {
+         headers: { 'Access-Control-Allow-Origin': '*' },
+     }
+ };
++
++if (process.env.NODE_ENV === 'production') {
++    webpackConfig.plugins.push(
++        new webpack.optimize.UglifyJsPlugin()
++    );
++}
++
++module.exports = webpackConfig;
+\ No newline at end of file
