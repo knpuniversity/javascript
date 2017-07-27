@@ -1,8 +1,8 @@
 diff --git a/src/AppBundle/Controller/RepLogController.php b/src/AppBundle/Controller/RepLogController.php
-index cbd4957d..2d013116 100644
+index 44cc485d..f93e19f4 100644
 --- a/src/AppBundle/Controller/RepLogController.php
 +++ b/src/AppBundle/Controller/RepLogController.php
-@@ -59,7 +59,7 @@ class RepLogController extends BaseController
+@@ -52,7 +52,7 @@ class RepLogController extends BaseController
      }
  
      /**

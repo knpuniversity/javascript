@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 3fbbfc08..5989bdc5 100644
+index a8f2a3c4..2c1fe8a8 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -42,12 +42,6 @@
+@@ -45,12 +45,6 @@
      </div>
  {% endblock %}
  

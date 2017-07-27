@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index be015a28..5ca6f1ca 100644
+index 4a3e9b09..42136580 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -68,7 +68,6 @@
+@@ -71,7 +71,6 @@
      <script src="{{ asset('assets/js/RepLogApp.js') }}"></script>
  
      <script>

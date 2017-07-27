@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index a7ad0828..6afad071 100644
+index a4a3e165..1d0cb59e 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -55,7 +55,7 @@
+@@ -58,7 +58,7 @@
      {{ parent() }}
  
      <script src="https://cdn.jsdelivr.net/sweetalert2/6.1.0/sweetalert2.min.js"></script>

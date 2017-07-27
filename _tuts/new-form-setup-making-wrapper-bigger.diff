@@ -11,7 +11,7 @@ index 6cb6ddc7..a9804089 100644
      }
  }) }}
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index a7938062..b448ace6 100644
+index 47b5c596..e2dee2db 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -2,7 +2,7 @@
@@ -32,7 +32,7 @@ index a7938062..b448ace6 100644
                  <thead>
                  <tr>
                      <th>What</th>
-@@ -69,8 +69,8 @@
+@@ -72,8 +72,8 @@
  
      <script>
          $(document).ready(function() {

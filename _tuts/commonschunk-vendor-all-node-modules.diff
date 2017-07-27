@@ -1,0 +1,15 @@
+diff --git a/webpack.config.js b/webpack.config.js
+index ad31bb8a..420b6914 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -79,7 +79,9 @@ module.exports = {
+ 
+         new webpack.optimize.CommonsChunkPlugin({
+             name: 'vendor',
+-            minChunks: 2,
++            minChunks: function (module) {
++                return module.context && module.context.indexOf("node_modules") !== -1;
++            }
+         })
+     ],
+     devtool: 'inline-source-map'

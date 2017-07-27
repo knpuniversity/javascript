@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 1202c76f..ef861cbd 100644
+index 65fc78a1..4570fc6a 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -10,7 +10,7 @@
@@ -11,7 +11,7 @@ index 1202c76f..ef861cbd 100644
                  <thead>
                  <tr>
                      <th>What</th>
-@@ -67,6 +67,10 @@
+@@ -70,6 +70,10 @@
              $('.js-delete-rep-log').on('click', function () {
                  console.log('todo delete!');
              });

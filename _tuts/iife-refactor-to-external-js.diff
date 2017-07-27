@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index d7525a5a..5ca6f1ca 100644
+index e3d9e90f..42136580 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -65,60 +65,9 @@
+@@ -68,60 +68,9 @@
  {% block javascripts %}
      {{ parent() }}
  

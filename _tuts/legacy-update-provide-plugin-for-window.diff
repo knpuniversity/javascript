@@ -1,0 +1,15 @@
+diff --git a/webpack.config.js b/webpack.config.js
+index 0ae481c9..7609e941 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -68,7 +68,9 @@ module.exports = {
+     plugins: [
+         new webpack.ProvidePlugin({
+             jQuery: 'jquery',
+-            $: 'jquery'
++            $: 'jquery',
++            'window.jQuery': 'jquery',
++            'window.$': 'jquery',
+         }),
+ 
+         new CopyWebpackPlugin([

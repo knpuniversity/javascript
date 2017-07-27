@@ -109,7 +109,7 @@ index dc52defb..7d6993ad 100644
  
  </body>
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 6afad071..da33099f 100644
+index 1d0cb59e..508eb8f9 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -5,9 +5,6 @@

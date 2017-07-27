@@ -1,0 +1,25 @@
+diff --git a/assets/js/rep_log.js b/assets/js/rep_log.js
+index bbaaa09d..9bdfc1da 100644
+--- a/assets/js/rep_log.js
++++ b/assets/js/rep_log.js
+@@ -4,7 +4,7 @@ const RepLogApp = require('./Components/RepLogApp');
+ 
+ // expose $ globally so I can use it in the template
+ // ... even though I should put all my code here!
+-window.$ = $;
++global.$ = $;
+ 
+ $(document).ready(function() {
+     var $wrapper = $('.js-rep-log-table');
+diff --git a/webpack.config.js b/webpack.config.js
+index 7609e941..3af7796f 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -70,7 +70,6 @@ module.exports = {
+             jQuery: 'jquery',
+             $: 'jquery',
+             'window.jQuery': 'jquery',
+-            'window.$': 'jquery',
+         }),
+ 
+         new CopyWebpackPlugin([

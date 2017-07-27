@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 963e79fa..5c5bf8c7 100644
+index 365e0344..eae7493f 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -66,10 +66,11 @@
+@@ -69,10 +69,11 @@
          $(document).ready(function() {
              var $table = $('.js-rep-log-table');
  

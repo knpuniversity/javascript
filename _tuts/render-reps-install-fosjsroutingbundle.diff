@@ -174,7 +174,7 @@ index 68c4f0fa..85c55e13 100644
              "version": "2.6.3",
              "source": {
 diff --git a/src/AppBundle/Controller/RepLogController.php b/src/AppBundle/Controller/RepLogController.php
-index 4c6908c8..cbd4957d 100644
+index c1335f99..44cc485d 100644
 --- a/src/AppBundle/Controller/RepLogController.php
 +++ b/src/AppBundle/Controller/RepLogController.php
 @@ -14,7 +14,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;

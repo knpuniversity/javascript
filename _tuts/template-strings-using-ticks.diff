@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index cec6a257..a7ad0828 100644
+index b6f8cbc4..a4a3e165 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -63,20 +63,4 @@
+@@ -66,20 +66,4 @@
              var repLogApp = new RepLogApp($wrapper);
          });
      </script>

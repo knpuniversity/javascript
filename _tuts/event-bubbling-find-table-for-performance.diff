@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index ef861cbd..1a1ae5f0 100644
+index 4570fc6a..f2f99951 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -64,11 +64,13 @@
+@@ -67,11 +67,13 @@
  
      <script>
          $(document).ready(function() {

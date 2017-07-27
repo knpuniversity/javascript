@@ -1154,7 +1154,102 @@
             "id": "sourcemaps-add-for-css-sass",
             "name": "Sourcemaps: add for css\/sass",
             "description": null
+        },
+        {
+            "id": "legacy-use-in-a-template",
+            "name": "Legacy: Use $ in a template",
+            "description": null
+        },
+        {
+            "id": "legacy-expose-globally",
+            "name": "Legacy: Expose $ globally",
+            "description": null
+        },
+        {
+            "id": "legacy-update-provide-plugin-for-window",
+            "name": "Legacy: Update provide plugin for window.$",
+            "description": null
+        },
+        {
+            "id": "legacy-use-global",
+            "name": "Legacy: Use global.$",
+            "description": null
+        },
+        {
+            "id": "pass-data-pass-initial-rep-logs-manually",
+            "name": "Pass Data: Pass initial rep logs manually",
+            "description": null
+        },
+        {
+            "id": "pass-data-use-data-attribute",
+            "name": "Pass Data: Use data- attribute",
+            "description": null
+        },
+        {
+            "id": "fosjsroutingbundle-try-to-require",
+            "name": "FOSJsRoutingBundle: Try to require",
+            "description": null
+        },
+        {
+            "id": "fosjsroutingbundle-use-fake-routing-module",
+            "name": "FOSJsRoutingBundle: Use fake Routing module",
+            "description": null
+        },
+        {
+            "id": "import-use-use",
+            "name": "Import: Use & use _",
+            "description": null
+        },
+        {
+            "id": "import-require-specific-file",
+            "name": "Import: Require specific file",
+            "description": null
+        },
+        {
+            "id": "import-use-import",
+            "name": "Import: Use import",
+            "description": null
+        },
+        {
+            "id": "import-import-only-one-library",
+            "name": "Import: Import only one library",
+            "description": null
+        },
+        {
+            "id": "import-use-import-everywhere",
+            "name": "Import: Use import everywhere",
+            "description": null
+        },
+        {
+            "id": "export-use-export-default-everywhere",
+            "name": "Export: Use export default everywhere",
+            "description": null
+        },
+        {
+            "id": "commonschunk-basic-plugin-usage",
+            "name": "CommonsChunk: Basic plugin usage",
+            "description": null
+        },
+        {
+            "id": "commonschunk-vendor-all-node-modules",
+            "name": "CommonsChunk: vendor all node_modules",
+            "description": null
+        },
+        {
+            "id": "commonschunk-use-layout-entry",
+            "name": "CommonsChunk: Use layout entry",
+            "description": null
+        },
+        {
+            "id": "commonschunk-fix-tree-shaking",
+            "name": "CommonsChunk: Fix tree shaking",
+            "description": null
+        },
+        {
+            "id": "commonschunk-dumping-manifest-js",
+            "name": "CommonsChunk: Dumping manifest.js",
+            "description": null
         }
     ],
-    "sha": "432a61d8d580420312e31541d5e23f4700c13309"
+    "sha": "1ae4bc0026d048251ecc43e71bff370bcb7af9fc"
 }

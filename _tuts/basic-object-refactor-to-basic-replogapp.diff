@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 02c5773d..47e7ae2b 100644
+index 238d648a..d24f8966 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -66,10 +66,21 @@
+@@ -69,10 +69,21 @@
      {{ parent() }}
  
      <script>
@@ -27,7 +27,7 @@ index 02c5773d..47e7ae2b 100644
                  e.preventDefault();
  
                  $(this).addClass('text-danger');
-@@ -90,11 +101,16 @@
+@@ -93,11 +104,16 @@
                          $totalWeightContainer.html(newWeight);
                      }
                  });

@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 6fa9daaf..3fbbfc08 100644
+index 27022741..a8f2a3c4 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -52,11 +52,4 @@
+@@ -55,11 +55,4 @@
      {{ parent() }}
  
      <script src="{{ asset('build/rep_log.js') }}"></script>

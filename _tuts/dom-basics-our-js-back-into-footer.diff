@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index f3aee0f2..1202c76f 100644
+index ca7451e2..65fc78a1 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -47,14 +47,6 @@
@@ -17,7 +17,7 @@ index f3aee0f2..1202c76f 100644
              {{ include('lift/_form.html.twig') }}
          </div>
          <div class="col-md-5">
-@@ -70,4 +62,11 @@
+@@ -73,4 +65,11 @@
  {% block javascripts %}
      {{ parent() }}
  

@@ -1,0 +1,67 @@
+diff --git a/assets/js/Components/RepLogApp.js b/assets/js/Components/RepLogApp.js
+index a38f50e3..3af117cd 100644
+--- a/assets/js/Components/RepLogApp.js
++++ b/assets/js/Components/RepLogApp.js
+@@ -1,10 +1,10 @@
+ 'use strict';
+ 
+-const Helper = require('./RepLogHelper');
+-const $ = require('jquery');
+-const swal = require('sweetalert2');
+-require('sweetalert2/dist/sweetalert2.css');
+-const Routing = require('./Routing');
++import Helper from './RepLogHelper';
++import $ from 'jquery';
++import swal from 'sweetalert2';
++import 'sweetalert2/dist/sweetalert2.css';
++import Routing from './Routing';
+ import { random } from 'lodash';
+ 
+ let HelperInstances = new WeakMap();
+diff --git a/assets/js/layout.js b/assets/js/layout.js
+index d0cd1118..68b87f5a 100644
+--- a/assets/js/layout.js
++++ b/assets/js/layout.js
+@@ -1,10 +1,10 @@
+ 'use strict';
+ 
+-const $ = require('jquery');
+-require('bootstrap-sass');
++import $ from 'jquery';
++import 'bootstrap-sass';
+ // make sure the polyfill library is loaded in this main entry
+-require('babel-polyfill');
+-require('../css/main.scss');
++import 'babel-polyfill';
++import '../css/main.scss';
+ 
+ $(document).ready(function() {
+     $('[data-toggle="tooltip"]').tooltip();
+diff --git a/assets/js/login.js b/assets/js/login.js
+index d867bde0..cc1d866f 100644
+--- a/assets/js/login.js
++++ b/assets/js/login.js
+@@ -1,7 +1,7 @@
+ 'use strict';
+ 
+-const $ = require('jquery');
+-require('../css/login.css');
++import $ from 'jquery';
++import '../css/login.css';
+ 
+ $(document).ready(function() {
+     $('.js-recommended-login').on('click', '.js-show-login', function(e) {
+diff --git a/assets/js/rep_log.js b/assets/js/rep_log.js
+index be2c3d29..54e470b7 100644
+--- a/assets/js/rep_log.js
++++ b/assets/js/rep_log.js
+@@ -1,6 +1,6 @@
+-const $ = require('jquery');
+-require('bootstrap-sass');
+-const RepLogApp = require('./Components/RepLogApp');
++import $ from 'jquery';
++import 'bootstrap-sass';
++import RepLogApp from './Components/RepLogApp';
+ 
+ // expose $ globally so I can use it in the template
+ // ... even though I should put all my code here!

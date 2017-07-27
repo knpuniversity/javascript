@@ -11,10 +11,10 @@ index 10e722ab..e94e1f96 100644
  
  </body>
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index c77dc6b5..3784ee03 100644
+index 7b403e9b..99ab4753 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -63,4 +63,20 @@
+@@ -66,4 +66,20 @@
              var repLogApp = new RepLogApp($wrapper);
          });
      </script>

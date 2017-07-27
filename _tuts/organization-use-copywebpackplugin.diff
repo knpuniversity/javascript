@@ -12,18 +12,18 @@ index e982bbd7..88951e6a 100644
                      <a href="#" class="js-show-login">Don't know the login?</a>
                      <div class="js-recommended-login-details" style="display: none;">
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 5989bdc5..5767ce6e 100644
+index 2c1fe8a8..8ead14ac 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -34,7 +34,7 @@
-         </div>
+@@ -35,7 +35,7 @@
          <div class="col-md-5">
              <div class="leaderboard">
--                <h2 class="text-center"><img class="dumbbell" src="{{ asset('assets/images/dumbbell.png') }}">Leaderboard</h2>
-+                <h2 class="text-center"><img class="dumbbell" src="{{ asset('build/static/dumbbell.png') }}">Leaderboard</h2>
+                 <h2 class="text-center">
+-                    <img class="dumbbell" src="{{ asset('assets/images/dumbbell.png') }}" />
++                    <img class="dumbbell" src="{{ asset('build/static/dumbbell.png') }}" />
+                     Leaderboard
+                 </h2>
  
-                 {{ include('lift/_leaderboard.html.twig') }}
-             </div>
 diff --git a/assets/images/dumbbell.png b/assets/static/dumbbell.png
 similarity index 100%
 rename from assets/images/dumbbell.png

@@ -8,10 +8,10 @@ index 0654fa26..899a9de9 100644
  /node_modules
 +/web/build/*
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 7c140993..2d4de693 100644
+index 739833b3..585d1bf5 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
-@@ -52,7 +52,7 @@
+@@ -55,7 +55,7 @@
      {{ parent() }}
  
      <script src="https://cdn.jsdelivr.net/sweetalert2/6.1.0/sweetalert2.min.js"></script>
