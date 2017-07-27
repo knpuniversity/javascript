@@ -17,28 +17,28 @@ index 9817410b..997dc3d8 100644
  require('../css/main.scss');
  
 diff --git a/package.json b/package.json
-index e95b4dca..b0a80442 100644
+index 770aa53a..37cd4b05 100644
 --- a/package.json
 +++ b/package.json
-@@ -10,7 +10,6 @@
+@@ -10,7 +10,7 @@
      "babel-loader": "^7.1.1",
      "babel-polyfill": "^6.23.0",
      "babel-preset-env": "^1.6.0",
 -    "bootstrap": "^3.3.7",
++    "bootstrap-sass": "^3.3.7",
      "copy-webpack-plugin": "^4.0.1",
      "css-loader": "^0.28.4",
      "file-loader": "^0.11.2",
-@@ -21,5 +20,8 @@
+@@ -21,5 +21,6 @@
      "style-loader": "^0.18.2",
      "sweetalert2": "^6.6.6",
-     "webpack": "^3.3.0"
+     "webpack": "^3.4.1"
+-  }
 +  },
-+  "dependencies": {
-+    "bootstrap-sass": "^3.3.7"
-   }
++  "dependencies": {}
  }
 diff --git a/yarn.lock b/yarn.lock
-index 2d6c3ac0..331d034c 100644
+index 781b75c3..2a9b04db 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -699,9 +699,9 @@ boom@2.x.x:

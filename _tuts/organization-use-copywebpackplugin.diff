@@ -29,7 +29,7 @@ similarity index 100%
 rename from assets/images/dumbbell.png
 rename to assets/static/dumbbell.png
 diff --git a/package.json b/package.json
-index 8f43701a..bd4a1e1a 100644
+index 3ebe96c0..564f7d70 100644
 --- a/package.json
 +++ b/package.json
 @@ -11,6 +11,7 @@
@@ -65,7 +65,7 @@ index 67b2e313..503d9c96 100644
      ]
  };
 diff --git a/yarn.lock b/yarn.lock
-index 99e1ff60..b27906dd 100644
+index 32022398..26d26437 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -673,6 +673,10 @@ block-stream@*:
@@ -99,7 +99,7 @@ index 99e1ff60..b27906dd 100644
  core-js@^2.4.0:
    version "2.4.1"
    resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.4.1.tgz#4de911e667b0eae9124e34254b53aea6fc618d3e"
-@@ -1430,6 +1447,16 @@ form-data@~2.1.1:
+@@ -1443,6 +1460,16 @@ form-data@~2.1.1:
      combined-stream "^1.0.5"
      mime-types "^2.1.12"
  
@@ -116,7 +116,7 @@ index 99e1ff60..b27906dd 100644
  fs.realpath@^1.0.0:
    version "1.0.0"
    resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
-@@ -1498,6 +1525,16 @@ glob-parent@^2.0.0:
+@@ -1515,6 +1542,16 @@ glob-parent@^2.0.0:
    dependencies:
      is-glob "^2.0.0"
  
@@ -133,7 +133,7 @@ index 99e1ff60..b27906dd 100644
  glob@^7.0.5:
    version "7.1.2"
    resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.2.tgz#c19c9df9a028702d678612384a6552404c636d15"
-@@ -1513,7 +1550,7 @@ globals@^9.0.0:
+@@ -1530,7 +1567,7 @@ globals@^9.0.0:
    version "9.18.0"
    resolved "https://registry.yarnpkg.com/globals/-/globals-9.18.0.tgz#aa3896b3e69b487f17e31ed2143d69a8e30c2d8a"
  
@@ -142,7 +142,7 @@ index 99e1ff60..b27906dd 100644
    version "4.1.11"
    resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
  
-@@ -1710,6 +1747,10 @@ is-extglob@^1.0.0:
+@@ -1727,6 +1764,10 @@ is-extglob@^1.0.0:
    version "1.0.0"
    resolved "https://registry.yarnpkg.com/is-extglob/-/is-extglob-1.0.0.tgz#ac468177c4943405a092fc8f29760c6ffc6206c0"
  
@@ -153,7 +153,7 @@ index 99e1ff60..b27906dd 100644
  is-finite@^1.0.0:
    version "1.0.2"
    resolved "https://registry.yarnpkg.com/is-finite/-/is-finite-1.0.2.tgz#cc6677695602be550ef11e8b4aa6305342b6d0aa"
-@@ -1728,6 +1769,12 @@ is-glob@^2.0.0, is-glob@^2.0.1:
+@@ -1749,6 +1790,12 @@ is-glob@^2.0.0, is-glob@^2.0.1:
    dependencies:
      is-extglob "^1.0.0"
  
@@ -166,7 +166,7 @@ index 99e1ff60..b27906dd 100644
  is-number@^2.1.0:
    version "2.1.0"
    resolved "https://registry.yarnpkg.com/is-number/-/is-number-2.1.0.tgz#01fcbbb393463a548f2f466cce16dece49db908f"
-@@ -1837,6 +1884,12 @@ json5@^0.5.0, json5@^0.5.1:
+@@ -1862,6 +1909,12 @@ json5@^0.5.0, json5@^0.5.1:
    version "0.5.1"
    resolved "https://registry.yarnpkg.com/json5/-/json5-0.5.1.tgz#1eade7acc012034ad84e2396767ead9fa5495821"
  
@@ -179,7 +179,7 @@ index 99e1ff60..b27906dd 100644
  jsonify@~0.0.0:
    version "0.0.0"
    resolved "https://registry.yarnpkg.com/jsonify/-/jsonify-0.0.0.tgz#2c74b6ee41d93ca51b7b5aaee8f503631d252a73"
-@@ -1862,6 +1915,12 @@ kind-of@^4.0.0:
+@@ -1887,6 +1940,12 @@ kind-of@^4.0.0:
    dependencies:
      is-buffer "^1.1.5"
  
@@ -192,7 +192,7 @@ index 99e1ff60..b27906dd 100644
  lazy-cache@^1.0.3:
    version "1.0.4"
    resolved "https://registry.yarnpkg.com/lazy-cache/-/lazy-cache-1.0.4.tgz#a1d78fc3a50474cb80845d3b3b6e1da49a446e8e"
-@@ -1886,6 +1945,15 @@ loader-runner@^2.3.0:
+@@ -1910,6 +1969,15 @@ loader-runner@^2.3.0:
    version "2.3.0"
    resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-2.3.0.tgz#f482aea82d543e07921700d5a46ef26fdac6b8a2"
  
@@ -208,7 +208,7 @@ index 99e1ff60..b27906dd 100644
  loader-utils@^1.0.2, loader-utils@^1.1.0:
    version "1.1.0"
    resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-1.1.0.tgz#c98aef488bcceda2ffb5e2de646d6a754429f5cd"
-@@ -1913,7 +1981,7 @@ lodash.uniq@^4.5.0:
+@@ -1937,7 +2005,7 @@ lodash.uniq@^4.5.0:
    version "4.5.0"
    resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
  
@@ -217,7 +217,7 @@ index 99e1ff60..b27906dd 100644
    version "4.17.4"
    resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
  
-@@ -1991,7 +2059,7 @@ minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
+@@ -2032,7 +2100,7 @@ minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
    version "1.0.1"
    resolved "https://registry.yarnpkg.com/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
  
@@ -226,7 +226,7 @@ index 99e1ff60..b27906dd 100644
    version "3.0.4"
    resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
    dependencies:
-@@ -2019,6 +2087,12 @@ nan@^2.3.0:
+@@ -2060,6 +2128,12 @@ nan@^2.3.0:
    version "2.6.2"
    resolved "https://registry.yarnpkg.com/nan/-/nan-2.6.2.tgz#e4ff34e6c95fdfb5aecc08de6596f43605a7db45"
  
@@ -239,7 +239,7 @@ index 99e1ff60..b27906dd 100644
  node-libs-browser@^2.0.0:
    version "2.0.0"
    resolved "https://registry.yarnpkg.com/node-libs-browser/-/node-libs-browser-2.0.0.tgz#a3a59ec97024985b46e958379646f96c4b616646"
-@@ -2749,7 +2823,7 @@ right-align@^0.1.1:
+@@ -2792,7 +2866,7 @@ right-align@^0.1.1:
    dependencies:
      align-text "^0.1.1"
  

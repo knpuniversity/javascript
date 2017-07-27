@@ -1,8 +1,8 @@
 diff --git a/webpack.config.js b/webpack.config.js
-index e84f5728..ccd294b9 100644
+index f9358b50..cd764201 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
-@@ -75,5 +75,6 @@ module.exports = {
+@@ -95,5 +95,6 @@ module.exports = {
              // copies to {output}/static
              { from: './assets/static', to: 'static' }
          ]),

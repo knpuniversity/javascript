@@ -14,7 +14,7 @@ index 588916ff..d9608bc5 100644
  web_profiler:
      toolbar: true
 diff --git a/webpack.config.js b/webpack.config.js
-index 2f2de679..ab7c8469 100644
+index e90ab4f0..cf26af27 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -3,7 +3,7 @@ const webpack = require('webpack');
@@ -25,4 +25,4 @@ index 2f2de679..ab7c8469 100644
 +const useDevServer = false;
  const publicPath = useDevServer ? 'http://localhost:8080/build/' : '/build/';
  
- module.exports = {
+ const styleLoader = {

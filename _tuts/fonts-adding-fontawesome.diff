@@ -14,7 +14,7 @@ index 9c3869ee..1205992a 100644
      <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
  </head>
 diff --git a/package.json b/package.json
-index 661cb94a..8f43701a 100644
+index e4d51afe..3ebe96c0 100644
 --- a/package.json
 +++ b/package.json
 @@ -13,6 +13,7 @@
@@ -38,10 +38,10 @@ index 9c611a83..83bb08c9 100644
  
  $(document).ready(function() {
 diff --git a/yarn.lock b/yarn.lock
-index 00b5ba8d..99e1ff60 100644
+index 46d3d8df..32022398 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -1404,6 +1404,10 @@ flatten@^1.0.2:
+@@ -1417,6 +1417,10 @@ flatten@^1.0.2:
    version "1.0.2"
    resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
  

@@ -11,10 +11,10 @@ index 1205992a..a3cb3dc3 100644
  {% endblock %}
  
 diff --git a/webpack.config.js b/webpack.config.js
-index 69398840..29874df2 100644
+index ef77a49b..65db612e 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
-@@ -76,6 +76,11 @@ module.exports = {
+@@ -102,6 +102,11 @@ module.exports = {
              // copies to {output}/static
              { from: './assets/static', to: 'static' }
          ]),

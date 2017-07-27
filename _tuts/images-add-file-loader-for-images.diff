@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 11c5d84c..661cb94a 100644
+index 7526c9ad..e4d51afe 100644
 --- a/package.json
 +++ b/package.json
 @@ -12,6 +12,7 @@
@@ -28,10 +28,10 @@ index ebb88965..897e3225 100644
          ]
      },
 diff --git a/yarn.lock b/yarn.lock
-index e0ea4c3e..00b5ba8d 100644
+index 05c8de37..46d3d8df 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -1359,6 +1359,12 @@ fastparse@^1.1.1:
+@@ -1379,6 +1379,12 @@ fastparse@^1.1.1:
    version "1.1.1"
    resolved "https://registry.yarnpkg.com/fastparse/-/fastparse-1.1.1.tgz#d1e2643b38a94d7583b479060e6c4affc94071f8"
  

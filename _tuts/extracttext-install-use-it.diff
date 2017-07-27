@@ -45,11 +45,11 @@ index ef5c18e2..8815d3b3 100644
 +    <link rel="stylesheet" href="{{ asset('build/rep_log.css') }}">
 +{% endblock %}
 diff --git a/package.json b/package.json
-index ee32eb97..abdea4a8 100644
+index 9fea5ac1..2f781c38 100644
 --- a/package.json
 +++ b/package.json
-@@ -12,6 +12,7 @@
-     "babel-preset-env": "^1.6.0",
+@@ -13,6 +13,7 @@
+     "bootstrap-sass": "^3.3.7",
      "copy-webpack-plugin": "^4.0.1",
      "css-loader": "^0.28.4",
 +    "extract-text-webpack-plugin": "^3.0.0",
@@ -57,7 +57,7 @@ index ee32eb97..abdea4a8 100644
      "font-awesome": "^4.7.0",
      "jquery": "^3.2.1",
 diff --git a/webpack.config.js b/webpack.config.js
-index f8de0948..2f2de679 100644
+index df2a104f..e90ab4f0 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -1,6 +1,7 @@
@@ -68,42 +68,42 @@ index f8de0948..2f2de679 100644
  
  const useDevServer = true;
  const publicPath = useDevServer ? 'http://localhost:8080/build/' : '/build/';
-@@ -30,19 +31,24 @@ module.exports = {
+@@ -55,19 +56,24 @@ module.exports = {
              },
              {
                  test: /\.css$/,
 -                use: [
--                    'style-loader?sourceMap',
--                    'css-loader?sourceMap',
+-                    styleLoader,
+-                    cssLoader,
 -                ]
 +                use: ExtractTextPlugin.extract({
 +                    use: [
-+                        'css-loader?sourceMap',
++                        cssLoader
 +                    ],
 +                    // use this, if CSS isn't extracted
-+                    fallback: 'style-loader?sourceMap'
++                    fallback: styleLoader
 +                }),
              },
              {
                  test: /\.scss$/,
 -                use: [
--                    'style-loader?sourceMap',
--                    'css-loader?sourceMap',
--                    'resolve-url-loader?sourceMap',
--                    'sass-loader?sourceMap',
+-                    styleLoader,
+-                    cssLoader,
+-                    resolveUrlLoader,
+-                    sassLoader,
 -                ]
 +                use: ExtractTextPlugin.extract({
 +                    use: [
-+                        'css-loader?sourceMap',
-+                        'resolve-url-loader?sourceMap',
-+                        'sass-loader?sourceMap',
++                        cssLoader,
++                        resolveUrlLoader,
++                        sassLoader,
 +                    ],
-+                    fallback: 'style-loader?sourceMap'
++                    fallback: styleLoader
 +                }),
              },
              {
                  test: /\.(png|jpg|jpeg|gif|ico|svg)$/,
-@@ -89,7 +95,9 @@ module.exports = {
+@@ -114,7 +120,9 @@ module.exports = {
                  'manifest'
              ],
              minChunks: Infinity
@@ -115,7 +115,7 @@ index f8de0948..2f2de679 100644
      devtool: 'inline-source-map',
      devServer: {
 diff --git a/yarn.lock b/yarn.lock
-index 5bc26a21..087fb5ce 100644
+index d91fb3fa..a263e6c7 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -195,7 +195,7 @@ async@^1.5.2:
@@ -127,7 +127,7 @@ index 5bc26a21..087fb5ce 100644
    version "2.5.0"
    resolved "https://registry.yarnpkg.com/async/-/async-2.5.0.tgz#843190fd6b7357a0b9e1c956edddd5ec8462b54d"
    dependencies:
-@@ -1645,6 +1645,15 @@ extglob@^0.3.1:
+@@ -1665,6 +1665,15 @@ extglob@^0.3.1:
    dependencies:
      is-extglob "^1.0.0"
  

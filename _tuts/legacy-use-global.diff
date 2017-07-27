@@ -12,10 +12,10 @@ index bbaaa09d..9bdfc1da 100644
  $(document).ready(function() {
      var $wrapper = $('.js-rep-log-table');
 diff --git a/webpack.config.js b/webpack.config.js
-index d40a90eb..69398840 100644
+index d924e7d3..ef77a49b 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
-@@ -70,7 +70,6 @@ module.exports = {
+@@ -96,7 +96,6 @@ module.exports = {
              jQuery: 'jquery',
              $: 'jquery',
              'window.jQuery': 'jquery',

@@ -1,0 +1,14 @@
+diff --git a/webpack.config.js b/webpack.config.js
+index 3922895c..f4088092 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -16,7 +16,8 @@ const styleLoader = {
+ const cssLoader = {
+     loader: 'css-loader',
+     options: {
+-        sourceMap: useSourcemaps
++        sourceMap: useSourcemaps,
++        minimize: true
+     }
+ };
+ const sassLoader = {

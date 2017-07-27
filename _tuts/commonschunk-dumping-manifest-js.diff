@@ -11,10 +11,10 @@ index 1205992a..5e680a41 100644
  {% endblock %}
  
 diff --git a/webpack.config.js b/webpack.config.js
-index 6b6eb348..41634f38 100644
+index 5347fccd..316b084f 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
-@@ -78,9 +78,13 @@ module.exports = {
+@@ -104,9 +104,13 @@ module.exports = {
          ]),
  
          new webpack.optimize.CommonsChunkPlugin({

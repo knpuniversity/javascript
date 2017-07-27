@@ -1,5 +1,5 @@
 diff --git a/webpack.config.js b/webpack.config.js
-index ab7c8469..72ee0a3f 100644
+index cf26af27..525f14d7 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -6,6 +6,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -8,6 +8,6 @@ index ab7c8469..72ee0a3f 100644
  
 +console.log(process.env.NODE_ENV);
 +
- module.exports = {
-     entry: {
-         rep_log: './assets/js/rep_log.js',
+ const styleLoader = {
+     loader: 'style-loader',
+     options: {

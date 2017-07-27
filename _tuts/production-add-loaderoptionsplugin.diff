@@ -1,8 +1,8 @@
 diff --git a/webpack.config.js b/webpack.config.js
-index a94cbc67..d094e84e 100644
+index de9d50da..f19249e6 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
-@@ -110,6 +110,15 @@ if (process.env.NODE_ENV === 'production') {
+@@ -135,6 +135,15 @@ if (process.env.NODE_ENV === 'production') {
      webpackConfig.plugins.push(
          new webpack.optimize.UglifyJsPlugin()
      );

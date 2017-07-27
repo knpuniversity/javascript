@@ -12,10 +12,10 @@ index 7eb4739c..588916ff 100644
  web_profiler:
      toolbar: true
 diff --git a/webpack.config.js b/webpack.config.js
-index 41634f38..3612f9e9 100644
+index 316b084f..c948a1ad 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
-@@ -88,5 +88,8 @@ module.exports = {
+@@ -114,5 +114,8 @@ module.exports = {
              minChunks: Infinity
          })
      ],

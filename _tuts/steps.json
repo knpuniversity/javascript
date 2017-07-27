@@ -1146,6 +1146,11 @@
             "description": null
         },
         {
+            "id": "sourcemaps-refactoring-loaders",
+            "name": "Sourcemaps: Refactoring loaders",
+            "description": null
+        },
+        {
             "id": "sourcemaps-add-devtool-for-js",
             "name": "Sourcemaps: Add devtool for js",
             "description": null
@@ -1299,7 +1304,12 @@
             "id": "production-disable-sourcemaps",
             "name": "Production: Disable sourcemaps",
             "description": null
+        },
+        {
+            "id": "production-pass-minimize-directly-to-css-loader",
+            "name": "Production: Pass minimize directly to css-loader",
+            "description": null
         }
     ],
-    "sha": "2b11778bdd64d3a3ed1f6514c33e59a54290a449"
+    "sha": "84902f6fd0842464b00fd136d0022d7df27dba81"
 }

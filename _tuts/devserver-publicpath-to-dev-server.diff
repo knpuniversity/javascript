@@ -1,5 +1,5 @@
 diff --git a/webpack.config.js b/webpack.config.js
-index 3612f9e9..f8de0948 100644
+index c948a1ad..df2a104f 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -2,6 +2,9 @@ const path = require('path');
@@ -9,10 +9,18 @@ index 3612f9e9..f8de0948 100644
 +const useDevServer = true;
 +const publicPath = useDevServer ? 'http://localhost:8080/build/' : '/build/';
 +
+ const styleLoader = {
+     loader: 'style-loader',
+     options: {
+@@ -27,7 +30,6 @@ const resolveUrlLoader = {
+     }
+ };
+ 
+-
  module.exports = {
      entry: {
          rep_log: './assets/js/rep_log.js',
-@@ -11,7 +14,7 @@ module.exports = {
+@@ -37,7 +39,7 @@ module.exports = {
      output: {
          path: path.resolve(__dirname, 'web', 'build'),
          filename: '[name].js',
@@ -21,7 +29,7 @@ index 3612f9e9..f8de0948 100644
      },
      module: {
          rules: [
-@@ -91,5 +94,6 @@ module.exports = {
+@@ -117,5 +119,6 @@ module.exports = {
      devtool: 'inline-source-map',
      devServer: {
          contentBase: './web',

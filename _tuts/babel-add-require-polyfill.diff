@@ -11,7 +11,7 @@ index 385bf770..5af3b1e2 100644
  {% endblock %}
  
 diff --git a/package.json b/package.json
-index 046b6f02..d6a751ea 100644
+index e8833e34..39dd53ba 100644
 --- a/package.json
 +++ b/package.json
 @@ -8,6 +8,7 @@
@@ -36,7 +36,7 @@ index e9d87b70..6df59b1f 100644
  $(document).ready(function() {
      $('[data-toggle="tooltip"]').tooltip();
 diff --git a/yarn.lock b/yarn.lock
-index 7e86de2c..5958b5db 100644
+index b2c97766..b3688fef 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -515,6 +515,14 @@ babel-plugin-transform-strict-mode@^6.24.1:

@@ -29,10 +29,10 @@ index e852d14f..e3fd3f29 100644
  
      _addRow(repLog) {
 diff --git a/package.json b/package.json
-index 343ea932..38476fac 100644
+index 573a0187..0120d4dc 100644
 --- a/package.json
 +++ b/package.json
-@@ -15,6 +15,7 @@
+@@ -16,6 +16,7 @@
      "file-loader": "^0.11.2",
      "font-awesome": "^4.7.0",
      "jquery": "^3.2.1",
@@ -41,10 +41,10 @@ index 343ea932..38476fac 100644
      "resolve-url-loader": "^2.1.0",
      "sass-loader": "^6.0.6",
 diff --git a/yarn.lock b/yarn.lock
-index 613b3107..aed8f914 100644
+index d82c01e6..56913c9a 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -2207,7 +2207,7 @@ lodash.uniq@^4.5.0:
+@@ -2248,7 +2248,7 @@ lodash.uniq@^4.5.0:
    version "4.5.0"
    resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
  
