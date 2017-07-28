@@ -11,7 +11,7 @@ index 5c9ba665..53edf61a 100644
      "webpack-manifest-plugin": "^1.2.1"
    },
 diff --git a/webpack.config.js b/webpack.config.js
-index bbe93200..e29663e8 100644
+index 1fb328ce..446b6e49 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -3,6 +3,7 @@ const webpack = require('webpack');
@@ -31,9 +31,9 @@ index bbe93200..e29663e8 100644
          publicPath: publicPath,
      },
      module: {
-@@ -134,6 +135,9 @@ const webpackConfig = {
-         new ManifestPlugin({
-             basePath: 'build/'
+@@ -136,6 +137,9 @@ const webpackConfig = {
+             // always dump manifest
+             writeToFileEmit: true
          }),
 +
 +        // allows for [chunkhash]

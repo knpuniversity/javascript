@@ -1,0 +1,16 @@
+diff --git a/webpack.config.js b/webpack.config.js
+index 611cafd3..a70fe588 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -131,7 +131,10 @@ const webpackConfig = {
+             useVersioning ? '[name].[contenthash:6].css' : '[name].css'
+         ),
+ 
+-        new ManifestPlugin(),
++        new ManifestPlugin({
++            // always dump manifest
++            writeToFileEmit: true
++        }),
+     ],
+     devtool: useSourcemaps ? 'inline-source-map' : false,
+     devServer: {

@@ -1,8 +1,8 @@
 diff --git a/webpack.config.js b/webpack.config.js
-index e29663e8..facd7d6a 100644
+index 446b6e49..dbf11d54 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
-@@ -138,6 +138,10 @@ const webpackConfig = {
+@@ -140,6 +140,10 @@ const webpackConfig = {
  
          // allows for [chunkhash]
          new WebpackChunkHash(),

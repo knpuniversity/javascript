@@ -1326,6 +1326,11 @@
             "description": null
         },
         {
+            "id": "versioning-always-dump-manifest",
+            "name": "Versioning: Always dump manifest",
+            "description": null
+        },
+        {
             "id": "versioning-add-version-strategy",
             "name": "Versioning: Add version_strategy",
             "description": null
@@ -1344,7 +1349,37 @@
             "id": "versioning-clean-between-builds",
             "name": "Versioning: clean between builds",
             "description": null
+        },
+        {
+            "id": "splitting-move-username-to-new-module",
+            "name": "Splitting: Move username to new module",
+            "description": null
+        },
+        {
+            "id": "splitting-try-to-split-in-username-error",
+            "name": "Splitting: Try to split in username error",
+            "description": null
+        },
+        {
+            "id": "splitting-adding-syntax-dynamic-import",
+            "name": "Splitting: Adding syntax-dynamic-import",
+            "description": null
+        },
+        {
+            "id": "splitting-use-default-key",
+            "name": "Splitting: Use .default key",
+            "description": null
+        },
+        {
+            "id": "splitting-split-css",
+            "name": "Splitting: Split CSS",
+            "description": null
+        },
+        {
+            "id": "visualizer-use-partial-core-js",
+            "name": "Visualizer: Use partial core-js",
+            "description": null
         }
     ],
-    "sha": "31c95bdd9fb11bd5682f379d5252ba37296b018b"
+    "sha": "d679a08ebee9f2645927ba6c27cfc41cadc7681c"
 }

@@ -13,17 +13,14 @@ index 20d4525e..043ada19 100644
  # Twig Configuration
  twig:
 diff --git a/webpack.config.js b/webpack.config.js
-index 611cafd3..bbe93200 100644
+index a70fe588..1fb328ce 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
-@@ -131,7 +131,9 @@ const webpackConfig = {
-             useVersioning ? '[name].[contenthash:6].css' : '[name].css'
+@@ -132,6 +132,7 @@ const webpackConfig = {
          ),
  
--        new ManifestPlugin(),
-+        new ManifestPlugin({
-+            basePath: 'build/'
-+        }),
-     ],
-     devtool: useSourcemaps ? 'inline-source-map' : false,
-     devServer: {
+         new ManifestPlugin({
++            basePath: 'build/',
+             // always dump manifest
+             writeToFileEmit: true
+         }),

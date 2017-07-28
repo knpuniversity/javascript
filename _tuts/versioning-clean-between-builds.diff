@@ -11,7 +11,7 @@ index 53edf61a..17656092 100644
      "css-loader": "^0.28.4",
      "extract-text-webpack-plugin": "^3.0.0",
 diff --git a/webpack.config.js b/webpack.config.js
-index facd7d6a..c951e3d2 100644
+index dbf11d54..1d3d9ad6 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -22,7 +22,7 @@ index facd7d6a..c951e3d2 100644
  
  const useDevServer = false;
  const useVersioning = true;
-@@ -141,7 +142,9 @@ const webpackConfig = {
+@@ -143,7 +144,9 @@ const webpackConfig = {
  
          // keep module ids consistent between builds
          // so that hashes doesn't suddenly change
