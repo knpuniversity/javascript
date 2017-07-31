@@ -18,9 +18,9 @@ Oh, what does Webpack actually do? Did I not mention that? I'll show you soon.
 Like always, JavaScript is best written together, so download the course code from
 this page to code along with me. When you unzip the file, you'll find a `start/`
 directory inside that has the same code you see here. Oh, and if you've been coding
-along with the first two JavaScript tutorials - you're amazing! But also, make sure
-to download the new code: I've made a few tweaks since the last tutorial to make
-things more interesting.
+along with the first two [JavaScript tutorials][modern_javascript] - you're amazing!
+But also, make sure to download the new code: I've made a few tweaks since the last
+tutorial to make things more interesting.
 
 Then, open the `README.md` file for *fascinating* instructions on how to get the
 project setup. The last step will be to find your favorite terminal, move into the
@@ -41,10 +41,13 @@ Now, we're going to revolutionize the way that code is organized.
 
 What am I talking about? Well, in the last tutorial, in addition to running JavaScript
 in the browser, we actually wrote a bit of Node.js - aka JavaScript that runs right
-on your server. Open up `play.js`: we used this as a simple way to test out new ES6
-features.
+on your server. Open up `play.js`:
 
-To exectue this, open a new terminal tab and run:
+[[[ code('b9c9542188') ]]]
+
+We used this as a simple way to test out new ES6 features.
+
+To execute this, open a new terminal tab and run:
 
 ```terminal
 node play.js
@@ -55,7 +58,9 @@ the `require()` function. On the surface, it's a lot like PHP's `require` statem
 it allows you to separate code into multiple files.
 
 Try it out: at the root of our project, create a new `foods.js` file. Then, copy
-the old foods code from `play.js`, delete it, and paste it in `foods.js`.
+the old foods code from `play.js`, delete it, and paste it in `foods.js`:
+
+[[[ code('6d9b928d12') ]]]
 
 ## Modules & module.exports
 
@@ -65,11 +70,16 @@ works in PHP versus Node. In PHP, when you require a file, you magically have ac
 to all functions, classes or variables inside. But in Node, that's not true: you
 need to explicitly export a value from the required file.
 
-How? By saying `module.exports = foods`. By the way, in JavaScript, each file is
-known as a *module* and is executed in isolation. Nothing is returned from this
-file *other* than what we export.
+How? By saying `module.exports = foods`:
 
-Ok! Back in `play.js`, we can *now* say, `const foods = require('./foods')`.
+[[[ code('54619df8a2') ]]]
+
+By the way, in JavaScript, each file is known as a *module* and is executed in
+isolation. Nothing is returned from this file *other* than what we export.
+
+Ok! Back in `play.js`, we can *now* say, `const foods = require('./foods')`:
+
+[[[ code('94c7e23d85') ]]]
 
 Before I say more, try it! Head back to your terminal and re-run the code:
 
@@ -78,8 +88,12 @@ node play.js
 ```
 
 It still works! Back in the code, notice that we do *not* need the `.js` on the end
-of the filename. We *can* add it - that would totally work. But if it's not there,
-Node knows to look for `foods.js`.
+of the filename:
+
+[[[ code('e74007956e') ]]]
+
+We *can* add it - that would totally work. But if it's not there, Node knows to look
+for `foods.js`.
 
 Also, that `./` before `foods` is no accident: that's *super* important. When a path
 starts with a `.`, Node knows to look for that file relative to *this* file. If we
@@ -88,23 +102,38 @@ More on that later.
 
 ## Using require in the Browser
 
-So the `require` function is an *awesome* feature. The question is: can we use this
+So the `require()` function is an *awesome* feature. The question is: can we use this
 in the browser JavaScript world? Because if we could, just *imagine* how easy it
 would be to organize our JavaScript!
 
 And yes! We can totally get it working... otherwise this would be a really short
 tutorial.
 
-But first, a little bit of cleanup: open `app/Resources/views/lift/index.html.twig`.
+But first, a little bit of cleanup: open `app/Resources/views/lift/index.html.twig`:
+
+[[[ code('09420d7b25') ]]]
+
 This is the template for the main page. And at the end of the last tutorial, we
 used a library called Babel to "transpile" our source `RepLogApp.js` into a `dist/RepLogApp.js`
 file. We *are* going to use Babel again, but for now, delete the `dist` file. Then,
-point our page back to the source `RepLogApp.js`.
+point our page back to the source `RepLogApp.js`:
+
+[[[ code('68c760619c') ]]]
 
 This file contains two classes: `RepLogApp` and, near the bottom, another called
-`Helper`. Hey! For organization, let's move this class into its own file. In that
+`Helper`:
+
+[[[ code('3aa5998b63') ]]]
+
+Hey! For organization, let's move this class into its own file. In that
 same directory, create a new `RepLogAppHelper.js` file. I'll add the `'use strict';`
-on top and then paste the class. At the bottom, add `module.exports = Helper`.
+on top and then paste the class:
+
+[[[ code('288fae20a3') ]]]
+
+At the bottom, add `module.exports = Helper`:
+
+[[[ code('1976cc9357') ]]]
 
 You can export anything you want from a module - a value, like we did earlier -
 a class, a function, an object - whatever!
@@ -113,8 +142,11 @@ Back in `RepLogApp.js`, now that the `Helper` class is gone... well, we're not
 going to have a good time. On line 10, PhpStorm is giving me a cryptic error:
 element is not exported... a funny way of saying "Variable undefined"!
 
-Fix this: at the top, add `const Helper = require('./RepLogAppHelper')`. My editor
-is happy!
+Fix this: at the top, add `const Helper = require('./RepLogAppHelper')`:
+
+[[[ code('7e7a52598a') ]]]
+
+My editor is happy!
 
 Based on what we saw in Node... this should just work! Back in my browser, I'll
 open the console and then, refresh. Yep, we somehow *knew* life wouldn't be so simple.
@@ -122,7 +154,7 @@ We get an error:
 
 > require is not defined
 
-Here's the deal: the `require` function does not work in any browser. And it's not
+Here's the deal: the `require()` function does not work in any browser. And it's not
 that browsers are behind... it's just not *possible* to make it work!
 
 Think about it: in PHP, when we use the `require` statement, we're reading a file
@@ -133,3 +165,6 @@ required 10 *other* files... so we finally decide to go have lunch while the web
 loads. It just doesn't work!
 
 Enter Webpack.
+
+
+[modern_javascript]: https://knpuniversity.com/tracks/javascript#modern-javascript
