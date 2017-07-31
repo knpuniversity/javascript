@@ -1,16 +1,99 @@
 # Modularize our Code
 
-In an earlier tutorial, when we created RepLogApp, we put all of our code into a self-executing function, which starts up here. Then, down here at the bottom, we passed in our dependencies, which before a recent change, included jQuery and SweetAlert. This gave us a nice, isolated place to write our code, a place where we knew exactly what dependencies we needed. Also, it made sure that we couldn't do something stupid like accidentally say "$ = null" in here and break the rest of our application. If we had done that without the self-executing block, that would have actually overridden the global $ variable and caused problems. Inside the self-executing block, it only applies to things inside of that function.
+In the last tutorial, when we created `RepLogApp`, we put all of our code into
+a self-executing function: It starts up here... then all the way at the bottom,
+we call that function and pass in our dependencies which, before a recent change,
+included jQuery and SweetAlert. Why did we do this? Well, it gave our code a little
+bit of isolation: any variables we created inside the function are *not* available
+outside of it. And also, if we did something silly like saying `$ = null`, well,
+it wouldn't *actually* set the global `$` variable to null everywhere, it would
+only do it inside the function.
 
-Well, we don't need this anymore, and the reason is that webpack treats all of our files like modules, which means that they are in their own isolated environment. Sure, we can still use global variables if we want to. For example, we are still relying on this global routing variable. If we start to refactor that code and instead use require statements, then this becomes unnecessary. Remove the self-executing function. Then, I will indent everything to the root. This still does the same thing as before. It just doesn't give us the isolation, because we don't need the isolation.
+Now that I've told you about the amazing benefits of the self-executing function...
+I want you to delete it! What!? Inside a module system, each module is executed in
+*isolation*. Basically, you can imagine that Webpack wraps a self-executing function
+*around* our module for us. Actually, in the built file... that's *exactly* what happens!
+Sure, we can still *use* global variables - like this `Routing` global variable -
+but we don't need to worry about any non-exported values leaking out of our module.
 
-Now, at the bottom, you notice that we're still seeing "window.RepLogApp = RepLogApp," and that's because in index.htmltwig, we're actually relying on this RepLogApp variable to be available globally. It has to be a global variable. We do not want to deal with global variables anymore. At this point, RepLogApp says it's being loaded by webpack. It's a module, so instead of saying window.RepLogApp, we should say "module.Exports =RepLogApp." It means that if anything requires this file, they can get our class, and we're not modifying anything in the global scope. As soon as we try that, our code is going to be super broken. RepLogApp is not defined. The reason this is happening is because inside of our template, we are relying on RepLogApp to be a global variable. Now, this is just a well-behaved module. It just exports a variable if somebody wants to use it.
+So get rid of the self-executing function! Woo! I'll un-indent everything to the
+root.
 
-What we need to do to truly modernize our code is to remove all of the JavaScript from our template, like this, and use proper requires. First, in the JS directory, I'm actually going to create a new file called rep_log.js. This is going to be our new entry. In fact, I'll go to webpackconfig.js right now and change this to rep_log.js. Inside here, I'm going to move all of this script and paste it. Now, effectively, in index.htmltwig, we're grabbing the rep_log.js file, which is now going to be the built version of this file. Inside here, if you look closely, we're depending on two things. We're depending on $. This means a "const $ = require jQuery." We're also relying on the RepLogApp class itself, which is totally fine, because we're now exporting that. So "const RepLogApp = require ./RepLogApp," and that's it.
+This has *no* effect on our app... except looking a bit cleaner. Hmm, nice.
 
-Now, you notice, if we look at our watch, there's no errors here, but we do actually need to Control + C this and rerun it. That's because we just made a change to our rep_log, our webpackconfig.js file. Webpack doesn't see that until we actually restart. Okay, finally, refresh, and everything still works. This is huge, because now, we have no code inside of our template at all. We include our entry, and this is a very common pattern that I'll file. I'll have one entry with document.ready if I need it, and it will call out and actually boot up my application.
+## Exporting RepLogApp
 
-So now if you look at our JS directory, we have a layout, login, and rep_log files. If you look at our JS directory, the rep_log is our entry point, but the RepLogApp and the RepLogAppHelper are not entries. They're meant to be used by other code. To make that a little bit more clear, I'm going to create a new directory called Components. The name of that is not important. I'm going to drag those two files in there. So now we have our entry at our root, and then, it's making use of these components. These components are truly standalone components. Anybody could use them. To get that to work, all we need to do is update the path to have ./Components/RepLogApp. The require statement to RepLogApp itself to RepLogHelper still works, because they're in the same directory. When we refresh, everything still works, and our setup is starting to look pretty awesome.
+But at the bottom, huh, we still have `window.RepLogApp = RepLogApp`. In other words,
+we're using the global `window` variable that our browser makes available to create
+a global `RepLogApp` variable. We *need* that because - in `index.html.twig` - we're
+relying on `RepLogApp` to be available globally.
 
-Next, we need to talk about how we can have multiple entries, because right now, this only works for our rep_log page. What about our login page, which actually has its own JavaScript?
+Listen: we do *not* want to deal with global variables anymore. We can do better.
 
+Since `RepLogApp` is being loaded by webpack. it's already a module. So instead of
+using `window.RepLogApp`, let's export a value properly: `module.exports = RepLogApp`.
+Now, if anything requires this file, they will get the `RepLogApp` class. *And*,
+we are *no longer* modifying anything in the global scope.
+
+And as *soon* as we try that, our app is super broken! Thanks Ryan!
+
+> RepLogApp is not defined.
+
+Yes! This makes sense: in our template, we're *still* trying to reference the now,
+- non-existent - global variable `RepLogApp`.
+
+## Creating a new Entry File
+
+How do we fix this? By *fully* modularizing our code and removing *all* JavaScript
+from our templates.
+
+First, in the `js/` directory, create a new file called `rep_log.js`. This will be
+our new *entry* file. In fact, open `webpack.config.js` right now and change the
+entry to this file: `rep_log.js`.
+
+This file will be the "entry point" for all the JavaScript that needs to run on
+this page. In other words, remove all of JavaScript code from the template and paste
+it here. Now, when `index.html.twig` includes the new built `rep_log.js` file, it
+will hold *all* of the code that's needed to run this page.
+
+Back in that file, if you look closely, we have two dependencies: `$` and `RepLogApp`.
+Add `const $ = require('jquery')`. And then - thanks to the new `module.exports`
+we added - `const RepLogApp = require('./RepLogApp');`.
+
+So cool! If you look at the watch output in our terminal... it looks happy! But...
+remember.. we need to restart Webpack! Webpack's watch does take into account changes
+to `webpack.config.js` until we restart it. Hit `Control+C` and then re-run the command.
+
+Finally, let's try it! Refresh! Ha! Everything still works! Guys... this is big!
+We have *zero* code inside our template. This is a really common pattern: include
+*one* script tag to your entry file. And from that file, write *just* a little bit
+of code to require and boot up the rest of your application. This file is kind of
+like a *controller* in PHP: it's a thin layer of code that calls out to other layers.
+
+By the way, to help keep my code clean, the entry file is the *only* file where I
+allow myself to reference the `document` or `window` objects that come from the browser.
+For all my *true* modules, I try to not rely on *any* global objects. If I need to
+use jQuery to find an element on the *entire* page, I do it here and *pass* that
+into my other modules.
+
+## Moving into Components
+
+If you look at our `js/` directory now, `rep_log.js` is our entry point. `RepLogApp`
+and `RepLogHelper`? Well, they're really *components*: independent modules that are
+meant to be used by *other* code. That's really cool!
+
+To make that distinction a bit more clear, let's create a new directory called
+`Components/` - that name isn't important. Then, drag those two files inside.
+
+Oh, I like this: our entry file lives at the root, and the *true* modules live inside
+this new directory. To get this all working, all we need to do is update the path
+to `./Components/RepLogApp`. The `require` statement in `RepLogApp` to `RepLogHelper`
+still works, because they live in the same directory.
+
+Try it! Wow, we just *can't* seem to break our app! It still works, and our setup
+is starting to look pretty awesome.
+
+Next! We need to talk about how we can have *multiple* entries... because right
+now, we can only create Webpacked JavaScript for the rep log page. But, what about
+the JavaScript on our login page? Or... any JavaScript in our layout? We need a way
+to handle all of that.

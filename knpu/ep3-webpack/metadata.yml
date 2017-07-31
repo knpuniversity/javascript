@@ -2,3 +2,11 @@ chapters:
     - require
     - first-webpack
     - webpack-config
+    - watch-require-jquery
+    - require-sweet-alert
+    - modularize-our-code
+    - multiple-entries
+    - legacy-jquery
+    - provide-plugin
+    - babel
+    - babel-options-polyfill

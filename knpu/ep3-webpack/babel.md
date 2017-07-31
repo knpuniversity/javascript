@@ -1,22 +1,81 @@
-# Babel
+# babel-loader
 
-A RepLogApp uses ES6 classes. And at the end of the last episode, we used a tool called Babel to transpile this new ES6 code to older code that would actually work on older browsers. But, we lost that when we moved to Webpack. If you look on our dumped rep underscore log dot js and search for class RepLogApp, you see that we do still have the new ES6 class syntax in there. Nothing is being processed through Babel. That transpiling is not happening. I want to get that back. It's very simple, in a sense, we just need to tell Webpack, whenever you see a js file, I want you to process it through Babel. We still have the dot babelrc file from the last tutorial that tells Babel to process things through the env preset. Which is a preset that does the transpiling from new JavaScript to old JavaScript.
+RepLogApp uses an ES6 class. And, at the end of the last tutorial, we used a
+tool called Babel to *transpile* this new ES6 code to older code that will run
+on older browsers. But... we lost that when we moved to Webpack. Yep, if you look
+at the dumped `rep_log.js` file and search for `class RepLogApp`, there it is!
+Still using the ES6 class syntax.
 
-How do we do this? How can we tell Webpack to filter our code through something? Well, it's via a very powerful system and Webpack called Loaders. So, Google for Babel loader and you'll find its GitHub page. Now first, let's get this guy installed. You see down here, you can grab the yarn add line. We don't need to install Webpack because we already have it installed. So, we'll paste that with our dash dash dev on the end. So, this is installing Babel core and Babel preset env, which we had installed previously in the last tutorial. And it also installs Babel dash loader.
+Nothing is being processed through Babel.
 
-So, Loader system is basically something where, in Webpack, you can say, I want you to require this file, but send it through this loader. So, if we can tell Webpack, hey, when we require this RepLogApp module, I want you to process it through Babel. That's all we would need to do. The Babel loader would take care of the rest.
+## Installing babel-loader
 
-There are two ways to do that. The first is the simple inline way, which is literally when you require a module, you add the name of the loader, Babel dash loader and then an exclamation point. And you need to read this from right to left. It says, require this module and then pass it through this loader. And you can even have multiple loaders and the loaders can even have options, which you will see as query parameters.
+It's time to bring Babel back. How? Well, we still have the `.babelrc` file from
+the last tutorial, which configures Babel to do the transpiling we want. So if we
+could somehow tell Webpack to pass all `.js` files through Babel... we'd be done!
 
-So, we don't do anything else. We can go back, refresh our page, just to double check, yep, things worked and, most importantly, open up that rep underscore log built file and I'm gonna search for -- You search for RepLogApp. I don't even need to, because it's right here. You'll find that the ClassKey is gone. Replaced with a bunch of create class types of things, things that are added by Babel. We are processing through the Babel loader. Awesome.
+How do we do this? How can we tell Webpack to filter our code through something
+external? Via a *very* powerful system in Webpack called *loader*. Google for
+[babel-loader](https://github.com/babel/babel-loader) and find its GitHub page.
+Let's get this guy installed. Copy the `yarn add` line, though we already have
+`webpack` installed.
 
-Now, as you might has guessed, doing this type of thing is pretty laborious, because you'll need to do this every time you require any file. So, instead of doing that, there's a way to match by file name and apply to all js files. So, I'm gonna remove that inline loader and let's open up our Webpack dot config dot js file. And add a new module key. Set to open curly, close curly. And a sub rules key, set to an array. Here's the deal. Inside of here, we're gonna create a number of regular expression rules that tell Webpack when a file name matches this rule, process it through this loader. So, to do that, every rule has a test key set to a regular expression. So, in this case, let's do everything that ends with dot js. When a file name matches that, we'll add a use key and we'll type loader Babel dash loader. And that's it. Automatically, every single dot js file is gonna go through Babel loader. So, let's go back over here to our watch script, Control c, rerun that. Now if you look at our built rep underscore log dot js. Search RepLogApp. You see the exact same thing as before. So, it's still been processed through it, so that is awesome.
+Find your terminal and run this:
 
-Now, you may or may not have noticed that that build actually took a little bit longer than normal. It took almost five seconds, which is a lot slower than was happening before. And the reason is that every single JavaScript file is now being processed through Babel. It's actually a little bit of overkill. After the test key, I want you to add a new exclude key, set to the regular expression matching mode modules. Basically, we're expecting that any modules that we require, are already transpiled to older JavaScript. So, we don't need to re-transpile them. And just by making this small change if we rerun Webpack, you're gonna see it runs way faster. Instead of four and a half seconds, you're back under two seconds.
+```terminal
+yarn add babel-loader babel-core babel-preset-env --dev
+```
 
-Another option we're gonna add -- Another thing you can do with every loader is you can pass them options. If you look at the documentation on Babel loader, you scroll down eventually, you're gonna see a bunch of options of different things that you can pass inside of there. This is really common. In this case, I want to show you one option, so I'll run options key. I'm gonna send it to cache directory true. This is something that basically tells Babel to cache its results. That if it transpiles the same contents twice, it does it faster the second time. And it's a good example of what it looks like to have an option on the loader. So now, if we rerun Webpack, it takes about seven to eight hundred milliseconds. If we run it again, it takes seven hundred milliseconds. Way faster! And, if you're curious, the cache file is actually in node module slash dot cache. And then you can see a bunch of cached files inside of there. So, kind of cool.
+This installs Babel itself and the `env` preset: both things we installed in the
+last tutorial. It also installed `babel-loader`.
 
-Alright, while we're talking about Babel, I want to do one last thing. If you look in your base layout, app resources views base dot html twig. We included this link to a promised polyfill. And that's because, in our code, we're using new ES6 promise, but some older browsers don't support the ES6 promise. So, we included this polyfill, so that the promise object is available everywhere.
+## About Loaders
 
-Well, when we use Babel, that transpiles our new JavaScript into old JavaScript, but it doesn't add missing features. It just transpiles the syntax. So, it doesn't add a promise variable. So, it basically means that we still need something to fill in the promise for us. But, I don't want to rely on these global script tags anymore, so instead I'm going to delete this. And, over in our terminal, let's install a new Liver called Babel dash polyfill. This is something that will provide the promise polyfill and any other polyfills that we might need. To use it, inside of our layout dot js file, so that it's included on every single page, we're just going to require Babel dash polyfill. I'll add a comment, say we're including this on every page. I'll just add a comment about that. And, of course, if we refresh, everything is happy. So, our code is now being transpiled into old compatible JavaScript, which is awesome.
+Here's how the loader system works. In Webpack, you can say:
 
+> Yo, Webpack! When I require this file, I want you to send it through this loader
+> so that it can make whatever changes it wants.
+
+*We* want to send `RepLogApp` through `babel-loader`. How? Of course, there are
+two ways.
+
+## The Inline Loader Sytnax
+
+The first way is a special syntax *right* when you require the module. Before the
+name of the module, add `babe-loader!`.
+
+Read this from right to left. It says: require this module and *then* pass it through
+`babel-loader`. You can even have *multiple* loaders, each separated by an exclamation
+mark and reading from right to left. And to go *further*, each loader can accept
+*options*, which are query parameters when using this syntax.
+
+Let's try it! Refresh! Yes.... nothing is broken. An in the built `rep_log.js` file,
+search for `RepLogApp`. The `class` key is gone! Replaced by fancy code that mimics
+its behavior.
+
+We are processing through the `babel-loader`!
+
+## Using a Loader Globally
+
+This is great! Except that I do *not* want to have to add this to *every* require
+statement! Thankfully, Webpack also has a *global* way to apply loaders.
+
+Remove the inline loader syntax and open `webpack.config.js`. And add a new `module`
+key set to `{}` and a sub-key called `rules` set to an array.
+
+Here's the deal: each *rule* will contain a filename regular expression and a loader
+that should be applied if an imported file matches that. Add `{}` for this first
+loader with a `test` key. We want to apply the loader to *all* files that *end*
+in `.js`. That's what this regular expression matches. Below this, add a `use` key
+with `loader: 'babel-loader`.
+
+That is it! Now, *every* .js file will go through Babel! Woohoo!
+
+Restart the webpack script:
+
+```terminal-silent
+./node_modules/.bin/webpack --watch
+```
+
+And check out the built `rep_log.js` file. Try to find `RepLogApp` again. Yep, the
+same, beautiful, transpiled code.
