@@ -6,7 +6,7 @@ chapters:
     - require-sweet-alert
     - modularize-our-code
     - multiple-entries
-    - legacy-jquery
+    - legacy-global-jquery
     - provide-plugin
     - babel
     - babel-options-polyfill

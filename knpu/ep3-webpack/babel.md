@@ -47,7 +47,7 @@ Read this from right to left. It says: require this module and *then* pass it th
 mark, processing from right to left. Each loader can *even* accept *options* via
 query parameters when using this syntax.
 
-Let's try it! Refresh! Yes.... nothing is broken. An in the built `rep_log.js` file,
+Let's try it! Refresh! Yes.... nothing is broken. And in the built `rep_log.js` file,
 search for `RepLogApp`. The `class` key is gone! Replaced by fancy code that mimics
 its behavior.
 
