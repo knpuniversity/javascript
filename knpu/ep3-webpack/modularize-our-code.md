@@ -52,7 +52,7 @@ our new *entry* file. In fact, open `webpack.config.js` right now and change the
 entry to this file: `rep_log.js`.
 
 This file will be the "entry point" for all the JavaScript that needs to run on
-this page. In other words, remove all of JavaScript code from the template and paste
+this page. In other words, remove all of the JavaScript code from the template and paste
 it here. Now, when `index.html.twig` includes the new built `rep_log.js` file, it
 will hold *all* of the code that's needed to run this page.
 
@@ -61,7 +61,7 @@ Add `const $ = require('jquery')`. And then - thanks to the new `module.exports`
 we added - `const RepLogApp = require('./RepLogApp');`.
 
 So cool! If you look at the watch output in our terminal... it looks happy! But...
-remember.. we need to restart Webpack! Webpack's watch does take into account changes
+remember.. we need to restart Webpack! Webpack's watch does not take into account changes
 to `webpack.config.js` until we restart it. Hit `Control+C` and then re-run the command.
 
 Finally, let's try it! Refresh! Ha! Everything still works! Guys... this is big!
@@ -71,7 +71,7 @@ of code to require and boot up the rest of your application. This file is kind o
 like a *controller* in PHP: it's a thin layer of code that calls out to other layers.
 
 By the way, to help keep my code clean, the entry file is the *only* file where I
-allow myself to reference the `document` or `window` objects that come from the browser.
+allow myself to reference the `document` or `window` objects that come from my browser.
 For all my *true* modules, I try to not rely on *any* global objects. If I need to
 use jQuery to find an element on the *entire* page, I do it here and *pass* that
 into my other modules.

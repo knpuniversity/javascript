@@ -61,7 +61,7 @@ yarn add jquery --dev
 And *just* like that! jQuery now lives inside `node_modules/`. That's great! Because
 we can *now* require it like *any* other module.
 
-At the top of `RepLogApp.js`, a `const $ = require('jquery')`.
+At the top of `RepLogApp.js`, add `const $ = require('jquery')`.
 
 For simplicity, we can remove the `$` from the self-executing function and the
 `jQuery` argument at the bottom.

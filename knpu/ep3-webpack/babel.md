@@ -1,12 +1,10 @@
 # babel-loader
 
-RepLogApp uses an ES6 class. And, at the end of the last tutorial, we used a
+RepLogApp uses the ES6 class syntax. And, at the end of the last tutorial, we used a
 tool called Babel to *transpile* this new ES6 code to older code that will run
 on older browsers. But... we lost that when we moved to Webpack. Yep, if you look
 at the dumped `rep_log.js` file and search for `class RepLogApp`, there it is!
 Still using the ES6 class syntax.
-
-Nothing is being processed through Babel.
 
 ## Installing babel-loader
 
@@ -15,14 +13,14 @@ the last tutorial, which configures Babel to do the transpiling we want. So if w
 could somehow tell Webpack to pass all `.js` files through Babel... we'd be done!
 
 How do we do this? How can we tell Webpack to filter our code through something
-external? Via a *very* powerful system in Webpack called *loader*. Google for
+external? With a *very* powerful system in Webpack called *loaders*. Google for
 [babel-loader](https://github.com/babel/babel-loader) and find its GitHub page.
 Let's get this guy installed. Copy the `yarn add` line, though we already have
 `webpack` installed.
 
-Find your terminal and run this:
+Find your terminal and run it with `--dev` on the end:
 
-```terminal
+```terminal-silent
 yarn add babel-loader babel-core babel-preset-env --dev
 ```
 
@@ -36,38 +34,38 @@ Here's how the loader system works. In Webpack, you can say:
 > Yo, Webpack! When I require this file, I want you to send it through this loader
 > so that it can make whatever changes it wants.
 
-*We* want to send `RepLogApp` through `babel-loader`. How? Of course, there are
-two ways.
+In this case, we want to send `RepLogApp` through `babel-loader`. How? Of course,
+there are two ways.
 
 ## The Inline Loader Sytnax
 
-The first way is a special syntax *right* when you require the module. Before the
-name of the module, add `babe-loader!`.
+The first is a special syntax *right* when you require the module. Before the
+name of the module, add `babel-loader!`.
 
 Read this from right to left. It says: require this module and *then* pass it through
 `babel-loader`. You can even have *multiple* loaders, each separated by an exclamation
-mark and reading from right to left. And to go *further*, each loader can accept
-*options*, which are query parameters when using this syntax.
+mark, processing from right to left. Each loader can *even* accept *options* via
+query parameters when using this syntax.
 
 Let's try it! Refresh! Yes.... nothing is broken. An in the built `rep_log.js` file,
 search for `RepLogApp`. The `class` key is gone! Replaced by fancy code that mimics
 its behavior.
 
-We are processing through the `babel-loader`!
+Babel is back!
 
 ## Using a Loader Globally
 
 This is great! Except that I do *not* want to have to add this to *every* require
 statement! Thankfully, Webpack also has a *global* way to apply loaders.
 
-Remove the inline loader syntax and open `webpack.config.js`. And add a new `module`
+Remove the inline loader syntax and open `webpack.config.js`. Add a new `module`
 key set to `{}` and a sub-key called `rules` set to an array.
 
 Here's the deal: each *rule* will contain a filename regular expression and a loader
-that should be applied if an imported file matches that. Add `{}` for this first
+that should be applied whenever a file matches that. Add `{}` for this first
 loader with a `test` key. We want to apply the loader to *all* files that *end*
-in `.js`. That's what this regular expression matches. Below this, add a `use` key
-with `loader: 'babel-loader`.
+in `.js`. That's what this regular expression matches. Below this, add `use`,
+with `loader: 'babel-loader'`.
 
 That is it! Now, *every* .js file will go through Babel! Woohoo!
 

@@ -17,7 +17,7 @@ and then try to call `.tooltip()` on it!
 That doesn't work because - when the Bootstrap code is loaded - it modifies the
 jQuery that's loaded in our *layout*: it modifies the *global* jQuery variable.
 In `layout.js`, we're *not* using the global `jQuery` variable: we're requiring
-our *own* jQuery... which has *not* been modified by jQuery.
+our *own* jQuery... which has *not* been modified by Bootstrap.
 
 The fix? We already know it: we need to once again handle all our dependencies
 *inside* `layout.js`. I mean, if we need bootstrap functions inside of this file,
@@ -44,7 +44,7 @@ We should be good, right? Try it! Ah!!! The same cold, unfuzzy error! This is co
 
 To see what's really going on, open the base layout and remove the `script` tags
 for `jQuery` and `bootstrap`. We don't need these anymore: we've refactored all
-of our code to properly *require* what we need instead of rely on global variables.
+of our code to properly *require* what we need instead of relying on global variables.
 
 And when we refresh now, the *new* error is a bit more helpful:
 
@@ -62,8 +62,8 @@ files require the same module - like `jquery`, they are all returned the *same*
 object. This means that Bootstrap would add the `tooltip` function to the same
 `jquery` that we use in `layout.js`.
 
-But.... that doesn't happen. Instead, Bootstrap looks for a *global* jQuery object
-to modify. If there is *no* global object - like in our nice system - it explodes.
+But.... that doesn't happen. Instead, Bootstrap looks for a *global* jQuery variable
+to modify. If there is *no* global variable - like in our nice system - it explodes.
 
 ## Fixing Poorly-Behaving Modules
 

@@ -32,7 +32,7 @@ to configure *one* entry file... which creates *one* output file. How can we tel
 Webpack to *also* look at `login.js` and build a *second* file? The secret is that
 `entry` can *actually* contain *multiple* things.
 
-Copy the original path and set `entry` to `{}`. For the first entry. put `rep_log`
+Copy the original path and set `entry` to `{}`. For the first entry, put `rep_log`
 as the key set to the copied path. Then, repeat that for a new entry called `login`
 that points to our source `login.js` file.
 

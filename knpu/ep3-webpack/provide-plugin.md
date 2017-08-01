@@ -5,12 +5,12 @@ straight to the Documentation, Plugins, then find the [ProvidePlugin](https://we
 This plugin is *crazy* cool: it's both *massively* useful and shows off the power
 of the dark side... I mean Webpack.
 
-At the top, it say:
+At the top, it says:
 
 > Automatically load modules instead of having to require them everywhere.
 
-Let's see what that means. In `webpack.config.js`, there is a a *new* key we can
-put here called `plugins`, set to an array. Add `new webpack.ProvidePlugin()` and
+Let's see what that means. In `webpack.config.js`, there is a *new* key we can
+put here called `plugins`, set to an array. Add `new webpack.ProvidePlugin()`
 with `{}`. Inside, pass a key called `jQuery` set to the string `jquery` in all
 lowercase... like the module's name.
 

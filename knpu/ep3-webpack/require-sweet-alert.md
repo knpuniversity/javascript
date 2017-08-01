@@ -48,8 +48,8 @@ CDN... but at a *different*, slightly less evil version: `6.1.0`. Change this to
 
 *Now* refresh... and hit delete. Much, much better! 
 
-But... this just uncovered a *huge* flaw in our setup! Sure, we no longer to *hope*
-that the SweetAlert's JS file was included on our page anymore... but we still *do*
+But... this just uncovered a *huge* flaw in our setup! Sure, we no longer need to *hope*
+that the SweetAlert JS file was included on our page... but we still *do*
 need to hope that we remembered to include the SweetAlert CSS *link* tag! This CSS
 file is *really* a dependency of `RepLogApp`... but there's no way for us to require
 it like with JS... well... no way yet. Stay tuned.
