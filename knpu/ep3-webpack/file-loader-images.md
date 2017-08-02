@@ -1,36 +1,99 @@
-# File Loader Images
+# Images in CSS (file-loader)
 
-Most of the CSS on the site is actually coming from our base layout, base dot html dot twig. On top there's a link tag that points to assets, css slash main dot css. But, to keep with our new theme, instead of adding this link tag manually, I want to actually require the CSS I need from my entry, so in this case, our layout dot J S entry. So, we move the link tag for main dot css, which is going to completely make our site ugly for a moment.
+Most of the CSS comes from our base layout: `base.html.twig`. On top, there's a link
+tag to `assets/css/main.css`. But, to keep with our new system, instead of adding
+this link tag manually, I want to *require* that CSS from JavaScript. For global
+CSS, I'll include it from my global JavaScript: `layout.js`.
 
-Then, in the source layout dot JS, we'll add require dot dot slash CSS slash main dot CSS, and that should work just fine.
+In other words, remove that link tag!
 
-So refresh. And as promised, never mind, it looks terrible. What happened here? We have an error, it says module parse failed, dumbbell dash mini, unexpected character. Huh. Actually, over in our watch tab, we have a very similar error. Module parse fail, unexpected character, and it looks like it's when it was trying to load main dot CSS.
+Then, in the source `layout.js` file, add `require('../css/main.css')`.
 
-So, let's check this out. In main dot CSS, whoa, there it is right there. We have a back ground image pointing to a dumbbell dash mini file. So this is very interesting. When we tell Webpack to load a CSS file, it actually reads our background images and also tries to load those. And as you'll see in a second, it does the same thing for font files. It tries to load your font files. It even processes at imports and tries to load those CSS files.
+And... that *should* just work!
 
-So why is this failing? It's failing because just like with CSS, a minute ago, Webpack does not know how to understand PNG files.
+## Webpack *Follows* Images in CSS
 
-So, what's the fix in this case? Well, what we basically want is we want Webpack to read the dumbbell dot mini dot png, but not really do anything with it, other than maybe copy it to our build directory so that it sits with all our other files, and then when it writes the final CSS, to make sure that it changes this path to point to the new path of the dumbbell dash mini file in the build directory.
+So... refresh! And as promised... woh! Nevermind! It does *not* work... it looks
+*terrible*! What happened?
 
-That didn't make total sense, that's okay. Let's see this in action. Head over to Webpack dot JS dot org, click on guides, and then asset management and loading images.
+Our console shows an error:
 
-Here it talks about something called the file loader. The file loader has one simple job. It loads a file and then moves it into your build directory. But when it does that, it actually returns the file name to that new file so that Webpack can appropriately update our final CSS to point to the new location.
+> Module parse failed, dummbell-mini.png, unexpected character
 
-So first, let's get it installed. I'll copy the name and the module, then in my last terminal tab, we'll run yarn add file dash loader dash dash dev.
+Huh. Over in the terminal, the watch script has a similar message... and it looks
+like it happens when Webpack reads `main.css`.
 
-Back in Webpack dot config dot JS, we will had a third loader. Copy the CSS loader, and then for the test, you notice in the docs, it basically looks for any image file. So, we're going to do something similar but actually even a little stronger. I'm going to paste a test, that's our PNGs, jpegs, gifs, icons and SEGs. And then for the U statement, we're going to pass this through the file loader.
+Hmm. Open `main.css`. Ah! There's the image: it's a *background* image inside our CSS!
+This, is *very* interesting. When we tell Webpack to load a CSS file, it actually
+*parses* the background images and - basically - *requires* them! It does the same
+with fonts and also finds and requires any `@import` calls.
 
-So before we do anything else, let's head over, and restart Webpack. And now look at the output. Not only did it write a layout, rep log and log in dot JS, it actually wrote a ping file with a big funny long name. You can see this in our build directory. This is our mini dumbbell.
+So... why is this failing? Well, *just* like with CSS, a .png file is *not* JavaScript...
+so Webpack has *no* idea what to do with it!
 
-And if you go and refresh the page, this mini dumbbell should be showing up right ... huh, it should be right on this menu link here. And actually, you can see a 404 down here, it's still not working.
+## Using file-loader
 
-So let's do an inspect element. And if you look, the style that's brought in for the mini dumbbell actually points at background image and then the name of the background image. In other words, it's looking for local host colon 8000 slash the name of our PNG. It's missing the build directory.
+What's the fix? We need a loader capable of understanding image files.
 
-So I open that up in a new tab and just added build slash, then it would actually work.
+Head over to webpack.js.org, click on Guides, Asset Management and then
+[Loading Images](https://webpack.js.org/guides/asset-management/#loading-images).
 
-So Webpack is doing almost everything correctly. It's moving the file into a new build directory. It's even updating our CSS to point to that file name. But, if you look in our Webpack dot config dot JS file, even though we've told Webpack to put things in the web slash build directory, it doesn't actually know what the public path is to the files in this directory. Webpack doesn't know that web is our document root, so everything in build is accessible via slash build and then the file name. That's something that we need to tell it so that it can actually create the correct link to the image files.
+Ah, the `file-loader`! It has one simple job: move any files it processes into the
+`build/` directory. When it does that, internally, it will return the filename to
+that new file... which Webpack will use to re-rewrite the background-image path in
+our CSS to point to it. It's pretty amazing.
 
-How? By adding public path slash build slash. Head back to your Webpack [inaudible 00:07:14] tab and restart it. Everything looks the same here, but now, when we refresh, go to our menu, there is our little icon. And you can see down here it's actually rendering the CSS with the URL slash build slash the file name.
+Installed it first: copy the name of the module and then, in your open terminal, run:
 
-So this is another huge step. It means that whenever we reference background images or fonts, we want to reference them truly relative to our source file. Our main dot CSS, we go up one directory and then dumbbell dash mini dot PNG. We don't need to worry about, oh, what happens if Webpack moves my CSS file. And so then this link breaks. Webpack takes care of correcting that link for you. You can write your source code perfectly and when Webpack moves everything to the build directory, it makes sure that all of your links are still active. Even better. You can't mess things up. If I have a typo in my file name here, you're actually going to get a build error. There's no way to accidentally have a broken link.
+```terminal
+yarn add file-loader --dev
+```
 
+Back in `webpack.config.js`, we need to add a *third* loader. Copy the `css-loader`
+config. This time, for `test`, in the docs, it basically looks for *any* image file.
+I'll paste something similar that includes even *more* image filenames. And for
+`use`, pass these to `file-loader`.
+
+Before you do *anything* else, head over, and restart Webpack!
+
+```terminal-silent
+./node_modules/.bin/webpack --watch
+```
+
+Ah, look at the output! Not *only* did it write `layout.js`, `rep_log.js` and
+`login.js` files, it output a `.png` file... with a long funny name. You can see
+it in the `build/` directory. *This* is `mini-dumbbell.png`. Its name is a hash of
+its contents - more on that later.
+
+## Configuring publicPath
+
+Let's try it! Refresh! The image *should* show up on this first menu item... but
+it's not there! And my console has a 404 for the image! What's up?!
+
+Inspect the element. Ok, the final CSS from Webpack changed the `background-image`
+to point to the new filename. Let's open that in a new tab.
+
+Ah! The filename is right, but it's *missing* the `build/` directory prefix!
+
+Webpack is *almost* doing everything correctly: it moves the file into `build/`
+and even updates the CSS to point to that filename.
+
+Open `webpack.config.js`. Yes, we *did* tell Webpack to put everything into `web/build`.
+But, Webpack doesn't actually know what the *public* path is to files in this directory.
+I mean, it doesn't know that `web/` is our document root, and so it doesn't know
+that these files are accessible via `build/` then the filename. Nope, this is something
+we need to *tell* Webpack, so that it can create the correct paths.
+
+How? Under `output`, set `publicPath` to `/build/`. Find you terminal and restart
+Webpack.
+
+Everything looks the same here... but when we refresh and open the menu... there
+it is! Our little icon. The `background-image` *now* point to `/build/` the filename.
+
+Guys, this is another monumental step forward! Now, as *long* as we correctly reference
+image paths in CSS, Webpack will make sure those images are available in `build/`
+*and* that their paths in the final CSS are correct. We focus on our source files,
+and Webpack takes care of the rest.
+
+Even better, if you make a mistake - like a typo - you'll actually see a Webpack
+*build* error. There's no way to accidentally have a broken link.

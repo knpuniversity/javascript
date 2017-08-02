@@ -10,3 +10,9 @@ chapters:
     - provide-plugin
     - babel
     - babel-options-polyfill
+    - require-css
+    - file-loader-images
+    - bootstrap-fonts
+    - font-awesome
+    - copy-webpack-plugin
+    - sass-loader

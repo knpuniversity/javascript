@@ -1,10 +1,49 @@
-# SASS Loader
+# Sass with sass-loader
 
-Look, I've just read this awesome article talking about how cool SASS is, so instead of my boring old main.css, I want to turn this into a SASS file. You know what? I'm going to rename it to main.scss, and then down here, I'm going to use a really fancy syntax. Instead of having these button log in dash hover, it's a tiny bit of duplication. I'm going to use the &:hover, &:focus syntax. That will ultimately dump the same CSS, but you know, I get to save a little bit of code here, in my SASS file.
+I just read this awesome article about how cool Sass is. So now, I'm bored with my
+old, `main.css` file. Oof. Ancient! Rename this to `main.scss`. Yea!
 
-Of course, now that I've renamed this file, I need to go in my js, layout.js file, and change this to be main.scss. Now, what do you think is going to happen when webpack sees this import? You can probably guess. Well, let's go over webpack and find out. Yep. It's that exact error we've been seeing: module parsed fail, unexpected token. You may need an appropriate loader to handle this file. We already have loaders for CSS fonts and images. We do not have a loader for SASS, but adding it is super easy.
+Now that this is a *Sass* file - oooOOOooo - I'll re-work some syntax. Instead of
+having this extra `:hover` and `:focus` section, we can leverage Sass syntax and
+say `&:hover, &:focus`, followed by the CSS.
 
-Google for SASS loader, and then let's get it installed. You can see it actually needs SASS loader and a library called Node-SASS. I'll copy both of those. Then head over [inaudible 00:01:54] last terminal and run yarn add SASS loader node-sass---. In our webpack.config.js file, this is going to be super simple. We already have a loader for CSS files. We're going to keep that. Now, I just need a loader for SASS files, so I'll copy the CSS loader. Paste it right after. Then what do we actually use for the loader? Well, just add a third loader on the bottom, SASS loader, and that's it.
+That should, *ultimately* dump the same CSS. But now, we have the power of Sass!
 
-You see, the SASS loader will be called first, which will convert the SASS into CSS. Then, the CSS loader will convert that to a JavaScript object, and finally, the style loader will add that to the page. Just make sure you actually update the tasks to be SCSS. So nice. Flip back to your webpack tab. Hit control C and rerun webpack. No errors. When we refresh the site, it looks great. Yeah, in just a couple lines of code, you've now unlocked SASS wherever you want it. I won't show you how to do the same thing with less, because it's exactly the same.
+Since we renamed the file, in `layout.js`, we need to change the `require` to be
+`main.scss`.
 
+Now, what do you think will happen when webpack sees this import? You can probably
+guess: it's *not* going to like it.
+
+Find your webpack terminal. Oh boy... it did *not* like it. We have a familiar error:
+
+> Module parse failed. Unexpected token. You may need an appropriate loader
+> to handle this file.
+
+We *do* have a loader for files ending in `.css`... but not `.scss`. Fixing this?
+Oh, it's *so* nice.
+
+## Adding sass-loader
+
+Google for [sass-loader](https://github.com/webpack-contrib/sass-loader). Let's get
+this guy installed. This package needs itself - `sass-loader` - but also another
+package called `node-sass`. Copy both of those. Then, in your terminal, run:
+
+```terminal
+yarn add sass-loader node-sass --dev
+```
+
+Next, in `webpack.config.js` file, we just need to setup our `.scss` loader. Copy
+the CSS loader and paste it. Then, add `sass-loader` as a *third* loader. Oh, and
+don't forget to update `test` for `.scss` files.
+
+I love this: `sass-loader` will be called first, which will convert the SASS into
+CSS. Then, `css-loader` will convert that to a JavaScript object. Finally, `style-loader`
+will add the CSS to the page. That's team work people!
+
+Switch over to your Webpack tab, hit Control+C and restart webpack.
+
+No errors! Try the site. It looks *great*.
+
+Guys! In just a *few* lines of code, we've unlocked the power of *Sass*: Use it
+wherever you want. Like Less instead? It's *just* as easy to configure.

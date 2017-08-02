@@ -1,12 +1,82 @@
-# Copy Webpack Plugin
+# copy-webpack-plugin
 
-That's why we have a really good distinction between our source files, everything in web/assets and our build files, everything in web/build. We code over here, and then all of the stuff we need is actually moved over into the build directory. At runtime, when we actually load our site, nothing is actually read from web/assets. Everything is read from the build directory. And this mean that the web/assets directory doesn't actually need to be public anymore, we can actually hide our source files, and it's a good idea to do so. What I mean is you can literally copy and literally move web/assets to assets. So, I just moved the directory there into the root of my projects.
+Our *source* files all live in `web/assets`. We code there, and Webpack moves everything
+we need to `web/build`. At runtime, when the user actually loads the site, *nothing*
+is read from `web/assets`. Nope! The user downloads *all* files from `web/build`.
 
-And really, that doesn't break much. All these files use relative paths to refer to each other. The only thing we need to update is webpack.config.js, to take the web out of all the entry files. Yeah, that's it. So if you go over and find webpack, webpack tab now. Restart. Everything still builds, and the page still loads. Except we're missing one little thing here. There used to be a little dumbbell icon. Inspect element on a leaderboard, there actually is an H2 with a good old fashioned image tag, which was referencing /assets/image/dumbbell.png. In other words, it's referencing /assets/images/dumbbell.png right here at the root of my project. So when I said nothing was referencing the assets directory, that actually wasn't true. If I have any image tags left in my actual application, those are still referencing it. If you look in app resources views, lift/index.[hd mat twig 00:02:30]. We can see our image tag right there.
+And that means... well... `web/assets` does *not* need to be publicly accessible
+anymore! We can - and should - *hide* our source files.
 
-So how do we fix this, because this is a silly reason to keep all of my source files in a public directory. The answer is with a plugin called the copy webpack plugin. Google for 'copy webpack plugin'. As the name suggests, this plugin is just a little tool to copy any files to your build directory that you might need, but which aren't actually being used and processed by webpack. Very simply, you give it a bunch of patterns of from and to, and when we run webpack, it does the copying. So let's get the installer, copy the name of the module, copy webpack plugin. And then in my last general tab, run [yarn ad 00:03:32], copy-webpack-plugin--dev. Then I go back to the documentation, I'll copy the top require line and then our webpack.copy.js, I'll paste that, I'll change it to [const 00:03:50], since I like using the hipster const keyword.
+Yes, I mean we can, literally:
 
-I'll also copy the new copy webpack plugin line. This goes into our plugins key, which we've used only once before. Inside, we're gonna pass it what we actually want to copy. So here's the deal. In the image directory, right now we have a mixture of images that are used by webpack and copy fine, like dumbbell mini, and other images that we use directly. So what I'm gonna do is actually create a new directory in assets called static, and move the dumbbell file there. In these static assets that are not processed by webpack, we will put into the static directory. Then, for the copy webpack plugin, we will copy from '.assets/static' to static. I'll put a little comment what that means, it means it copies to the output directory/static.
+```terminal
+mv web/assets assets
+```
 
-All right, let's try this out. We'll go and find our webpack tab, we can restart webpack. And instantly, we can see the web build static directory with our dumbbell.png in it. It's nothing crazy, it just works nicely, and our template index.[hd mat twig 00:06:01], we can just change this to be build/static/dumbbbell.png. And it's actually also used in our login template. Change it there as well. Simply build/static/dumbbell.png. And no surprises, when we refresh now, it loads perfectly. So the copy webpack plugin shouldn't be overused, because most of your paths should be going through webpack, but there is a legit use case for it.
+The `assets/` directory now lives at the root of our project.
 
+And really... that doesn't break much. All of our files use relative paths internally
+to refer to each other. The *only* thing we need to update is `webpack.config.js`:
+to remove the `web/` from the 3 entries. Yep, that's it.
+
+Find your `webpack` terminal tab and restart!
+
+```terminal
+./node_modules/.bin/webpack --watch
+```
+
+Everything still builds... and the page still loads *fine*.
+
+## Static, Non-Webpacked Image Files
+
+Except... we lost something small. Before this change, the leaderboard had a little
+dumbbell image. Inspect that element. Yea, inside the `h2`, there is a good, old-fashioned
+`img` tag. And it references `/assets/images/dumbbell.png`. I was wrong! I said *nothing*
+was referencing the public `web/assets` directory. But that's not true!
+
+In `app/Resources/views/lift/index.html.twig`, yep, there is the `img` tag.
+
+## The copy-webpack-plugin
+
+How can we fix this? It would be silly to keep *all* of our source files in a public
+directory *just* so we can reference a few, static images.
+
+The answer? With a plugin called `copy-webpack-plugin`. Google for it.
+
+This plugin is a little tool that allows you to copy files from one location to
+another when Webpack runs. For us, it means we could copy files to the `build/`
+directory that *aren't* processed through Webpack.
+
+Let's get it installed! Copy the name of the package. Then, in your favorite open
+terminal tab, run:
+
+```terminal
+yarn add copy-webpack-plugin --dev
+```
+
+Back in the documentation, copy the `require` line. In our `webpack.config.js`, paste
+that, but use the trendier `const` keyword.
+
+I'll also copy the `new CopyWebpackPlugin()` line. This goes under the `plugins` key.
+
+So here's the deal: in the `images/` directory, we have a *mixture* of images. One -
+`dumbbell-mini.png` - is processed through Webpack and copied to the `build/` directory
+already. But the other, `dumbbell.png` is *not*.
+
+To organize this, create a *new* directory in `assets/` called `static/`. Move the
+dumbbell file there. This directory will hold all assets that are *not* processed
+by webpack.
+
+Now, for `CopyWebpackPlugin`, we will copy from `./assets/static` to `static/`. I'll
+add a comment about what this means: copies to `{output}/static`.
+
+Give it a try! Hit Ctrl+C to stop webpack, then restart it! And *instantly*, we
+have a `web/build/static` directory with `dumbbell.png` inside!
+
+This is nothing *crazy*, but it works well! In our template - `index.html.twig` -
+change the `src` to `build/static/dumbbell.png`. Also open `login.html.twig`: we
+have another `img` tag there too.
+
+When we refresh, no nasty surprises this time! The image loads.
+
+Next! Let's add some fanciness to our CSS... by using Sass...

@@ -1,14 +1,129 @@
-# Require CSS
+# Require CSS Files
 
-When you type a really long username in the login page, you see an error. Check this out. In the login.html.twig template, we include the build/login.js, and we also include this login.css file. [inaudible 00:00:23] web, assets, css, login.css. Really, this css is necessary to make this page look correct. Even more than that, this special div that's added in JavaScript, it's actually styled using css from login.css. What I'm trying to say is that the login.js entry really depends on the login.css file, but right now we still need to remember to include login.css whenever we use login.js. I want to stop doing that. Instead, let's treat the login.css file like any other dependency. What I mean is, at the top, let's require it. Require ('../css.login.css'). Now, that might seem crazy to you, but this is going to work. In the login template, I'm actually going to remove the login.css style sheet entirely.
+When you type a really long username on the login page, we give you a fancy error.
+Hey! Stop making things so long!
 
-Now, if you move over to your browser and find your watch tab, boom, we see an explosion. No surprises. It says, module parse failed, login.css unexpected token. It's opening login.css. That is not a JavaScript file, so webpack is exploding. Look at this message. You may need an appropriate loader to handle this file type. This is where webpack really takes a turn towards incredible. Webpack can load more than JavaScript files. In fact, it can load anything. It can load css files. It can load image files. It can load JSON files out of the box, html files, anything you want as long as you have a loader that is able to handle that. In your browser, google for css-loader and open its GitHub page. Copy the name of the library, and let's get this installed. Go over to my third terminal tab and run yarn add css-loader and also install another loader called style-loader --dev. When you're loading something that is not a JavaScript file, the job of the loader is to somehow convert that to JavaScript, which I realize still doesn't make sense, but stay with me.
+Open this pages's template: `login.html.twig`. We include `build/login.js` and we
+*also* include a CSS file: `login.css`. That lives at `web/assets/css/login.css`.
+If we *forgot* to include this, the page would look *terrible*. But, it's even more
+important than that! Our JavaScript adds this error div to the page. And that element
+is *styled* thanks to code in `login.css`.
 
-Back in our webpack.config.js, we're going to add a second rule, this time with test: /\.css$/, and then use: [ 'css-loader'. We're using a shorter syntax here than the bigger loader and options, but they mean the same thing. I also want you to go into login.js and actually put a variable before the require. We'll say const css = and then console.log(css);. Because if I am telling you that somehow webpack can require css files, I'm curious. What does that mean? What will the require function actually return when we require css? Let's find out. Go over to your watch terminal, hit Control C, and rerun webpack. Check this out. There are no errors. Let's go over to the login page and refresh. First of all, the page does look really ugly. It does not work yet. No surprise, but look at the [inaudible 00:05:05]. The dump, it's actually a JavaScript array that includes all of the css rules in some sort of a string, so it's converted css into some sort of JavaScript object, which is interesting but still not very helpful.
+What I'm saying is: our "login app" *depends* on the `login.css` file... it's as
+much of a *dependency* as any JavaScript files! But right now, we still need to
+*remember* to include `login.css`. I want to stop doing that!
 
-Now, go back to your webpack.config.js and, before the 'css-loader', add 'style-loader'. Remember how I said you can have multiple loaders? In this case, we're using css-loader and style-loader. Just like with the inline syntax where you would read loaders from right to left, in this case you read the loaders from the bottom to the top. When we require any css file, it's first going to go to the css-loader, which is going to convert it to that JavaScript structure, and then it's going to go through this style-loader. What does that do? Let's find out. Go back to your watch tab and restart webpack. Now, find your browser, refresh, and what? It works. We don't have a link tag on the page, but somehow the css is actually being loaded. Notice logging an empty string, but if you inspect element and look up in the head tag you'll now find a style element with all the css. What happened is, webpack actually packaged the css into the built login.js file with some special JavaScript that said on page load add a script tag and inject the css into it. That's incredible.
+Instead, let's treat `login.css` like any other dependency: by *requiring* it.
+I know it sounds crazy, but, at the top, add `require('../css/login.css')`.
 
-Now, it does have one big downside, and that's that if you refresh and watch closely you see it's ugly for a second while the JavaScript loads, and then it looks good. This isn't really a good solution for production, but don't worry about that yet because we have a good solution for that that I'll talk about later. For now, celebrate. We can now require any dependent css from our JavaScript. I'll get rid of the console.log and the const css = part, because we don't need that. Let's do this in one other place. If you open up a components, RepLogApp, you remember this uses sweetalert, and sweetalert requires a css file. Inside app, resources, views, lift/index.html.twig, right now we're pointing to the sweetalert css file with a manual link tag. Remove that and then go back to RepLogApp.
+What!? This is outrageous!!? Requiring a CSS file from JavaScript doesn't even
+make sense! Or... does it?
 
-Now, this is a little bit more interesting. We know how to include the sweetalert Javascript by saying require('sweetalert2'), but where is the css file? Does it also download a css file? Open up node_modules and go all the way down to the bottom and find sweetalert2. Inside of here is actually a dist directory with a sweetalert2.css file. We can actually say require('sweetalert2/dist/sweetalert2.css'); I'm going to talk more in a second about requiring files in this way, but for now it makes sense. We go to the sweetalert2 directory and then we just find whatever path we want after that. Now, when we head back to the Lift Stuff page and hit delete, it still looks good. Let's keep going [inaudible 00:09:44] the rest of our app to require css. We have a few surprises in store.
+## The css-loader
 
+Go over to your terminal and find the watch tab. It's *so* angry!
+
+> module parse failed: login.css unexpected token.
+
+It *tries* to open `login.css`... but surprise! It's not a JavaScript file, so Webpack
+explodes! But, the error says a bit more:
+
+> You may need an appropriate loader to handle this file type.
+
+*This* is where Webpack becomes *incredible*. Webpack can load *more* than mere
+JavaScript files. It can load anything! It can load CSS files, JSON files, HTML
+files, image files from your vacation! Heck, you an even load *markdown* files or
+Twig templates! Webpack can load *anything*... as long as you have a *loader* that
+can read that file type.
+
+In your browser, google for [css-loader](https://github.com/webpack-contrib/css-loader)
+and open its GitHub page. Copy the name of the library: let's get it installed! In
+your open terminal, run:
+
+```terminal
+yarn add css-loader style-loader --dev
+```
+
+We'll need `style-loader` in a minute.
+
+Ok, when you try to require something that is *not* a JavaScript file, the job of
+the loader is to somehow *convert* that file to JavaScript. I realize that still
+doesn't make sense - "Convert a CSS file to JavaScript?" - but stay with me!
+
+Back in `webpack.config.js`, add a *second* rule. This time with
+`test: /\.css$/` and `use: ['css-loader']`. This is just a shorter syntax than
+the `loader` and `options` format we used above... but it means the same thing.
+
+To see what this *actually* does, open `login.js` and assign a new `css` variable
+to the `require` call. Then, `console.log(css)`. Because, if I'm telling you that
+*somehow* Webpack can *require* css files... well... I'm curious. What does that
+mean? What will the `require` function *actually* return?
+
+Let's find out! Go over to your watch terminal, hit "Control+C", and re-run webpack:
+
+```terminal-silent
+./node_modules/.bin/webpack --watch
+```
+
+Hey! No errors! Find the login page and refresh. First... yes, the page looks *really*
+ugly. This should *not* work yet. But check out the console: our `css` variable is
+a JavaScript *array*, and it includes all the css on one of its keys. Weird! The
+`css-loader` converted our CSS into a JavaScript object... which is interesting...
+but still not useful.
+
+## Adding style-loader
+
+But now, go back to `webpack.config.js` and, *before* `css-loader`, add `style-loader`.
+
+Remember how I said you can have *multiple* loaders? In this case, we're using
+`css-loader` *and* `style-loader`. When you activate loaders with the *inline* syntax
+we saw earlier, you read the loaders from right to left. Here, it's similar: read
+the loaders from bottom to top.
+
+So, this say: when we require a file ending in `.css`, first send its contents through
+`css-loader` - which converts it to that JavaScript object - and *then* send *that*
+through `style-loader`.
+
+And what does `style-loader` do? Let's find out! Go back to your watch tab and
+restart webpack. Ok, find your browser and refresh.
+
+What!? It works! Our CSS is back... even though we don't have a link tag on the
+page! The console logs an empty value.
+
+But if you inspect the page and look in the head tag, there's a surprise: a new
+`style` element with all our CSS. Yep! the style-loader's job is to package the
+CSS *inside* `login.js`, along with some extra JavaScript that injects that CSS
+onto the page in a `style` tag. It's *incredible*.
+
+But, it does have one downside. Refresh and watch closely: the page is ugly for
+just a moment, before the JavaScript loads. Then, it looks fine. But, for production,
+that's a problem. Yep, `style-loader` is a *development-only* tool. But, I promise
+to show you a proper, *great* solution for production later.
+
+For now, celebrate! We can require CSS from our JavaScript! We are *truly* creating
+self-contained JavaScript apps.
+
+## Requiring CSS from node_modules
+
+Remove `console.log` and the `const css =` part.
+
+Let's require one more CSS file right now. Open `RepLogApp.js`. This uses `sweetalert2`,
+which itself needs a CSS File. In `app/Resources/views/lift/index.html.twig`, we
+manually added a `link` tag for that. Get rid of it!
+
+Go back to `RepLogApp`. Hmm, this is a little bit more interesting. We know how
+to import the SweetAlert *JavaScript*: `require('sweetalert2')`. But, what about
+the CSS file? Did yarn even download a CSS file when it installed SweetAlert?
+
+Open up `node_modules` and go all the way down to find `sweetalert2/`. Inside, there
+is a `dist` directory and - awesome! *It* has a `sweetalert2.css` file. How can we
+require it? With `require('sweetalert2/dist/sweetalert2.css')`.
+
+I'll talk more soon about requiring files in this way, but, it should make sense:
+look in the `sweetalert2` directory and then go require `dist/sweetalert2.css`.
+
+Go back to the "Lift Stuff" main page, and hit delete. I *love* it. I just love
+it.
+
+Let's keep going and require CSS across our *entire* app! When we do, we're going
+to find a few surprises.
