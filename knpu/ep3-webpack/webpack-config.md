@@ -1,4 +1,4 @@
-# Webpackk.config.js
+# webpack.config.js
 
 Since we programmers are *famously* lazy, we don't usually run Webpack with all
 these cumbersome command-line options. Nope, we put them into a configuration file.
