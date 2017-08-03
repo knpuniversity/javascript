@@ -43,7 +43,7 @@ Ah, the `file-loader`! It has one simple job: move any files it processes into t
 that new file... which Webpack will use to re-rewrite the background-image path in
 our CSS to point to it. It's pretty amazing.
 
-Installed it first: copy the name of the module and then, in your open terminal, run:
+Install it first: copy the name of the module and then, in your open terminal, run:
 
 ```terminal
 yarn add file-loader --dev

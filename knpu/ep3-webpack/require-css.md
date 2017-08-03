@@ -80,7 +80,7 @@ Remember how I said you can have *multiple* loaders? In this case, we're using
 we saw earlier, you read the loaders from right to left. Here, it's similar: read
 the loaders from bottom to top.
 
-So, this say: when we require a file ending in `.css`, first send its contents through
+So, this says: when we require a file ending in `.css`, first send its contents through
 `css-loader` - which converts it to that JavaScript object - and *then* send *that*
 through `style-loader`.
 

@@ -10,7 +10,7 @@ But, what do we put here?
 
 ## Finding Non-Standard node_modules Paths
 
-We installed Bootstrap via Yarn. That's why we can require the `bootstrap.js` file.
+We installed Bootstrap via Yarn. That's why we can require the Bootstrap JS file.
 But what about the Bootstrap CSS file? Does that package even *contain* the CSS?
 Let's find out! Open your `node_modules/` directory, find `bootstrap`, and look
 inside.
@@ -57,10 +57,10 @@ And, yea, it's the same exact thing as images.
 In `webpack.config.js`, copy the image loader, and, this time I'll use the `test`
 regex from the docs exactly.
 
-Excellent! Find your terminal, clear out all these ugly error - oof-  and restart
+Excellent! Find your terminal, clear out all these ugly error - oof - and restart
 Webpack!
 
-It's happy! Ah, I'm happy! And if you close `node_modules` and look in `build/`,
+It's happy! I'm happy! And if you close `node_modules` and look in `build/`,
 ha! We have a *bunch* of new font files. If you refresh, everything is back to
 normal. We're not using any of the Glyphicons from Bootstrap, but if we *were*,
 they would totally work.
