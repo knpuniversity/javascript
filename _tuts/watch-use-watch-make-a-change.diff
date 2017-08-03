@@ -1,8 +1,8 @@
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index adc1760e..a66e2e26 100644
+index c5fee468..78b2b180 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
-@@ -63,7 +63,7 @@ const Helper = require('./RepLogHelper');
+@@ -63,7 +63,7 @@ const Helper = require('./RepLogAppHelper');
              const $link = $(e.currentTarget);
  
              swal({

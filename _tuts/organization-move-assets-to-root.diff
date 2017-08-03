@@ -18,10 +18,10 @@ diff --git a/web/assets/js/Components/RepLogApp.js b/assets/js/Components/RepLog
 similarity index 100%
 rename from web/assets/js/Components/RepLogApp.js
 rename to assets/js/Components/RepLogApp.js
-diff --git a/web/assets/js/Components/RepLogHelper.js b/assets/js/Components/RepLogHelper.js
+diff --git a/web/assets/js/Components/RepLogAppHelper.js b/assets/js/Components/RepLogAppHelper.js
 similarity index 100%
-rename from web/assets/js/Components/RepLogHelper.js
-rename to assets/js/Components/RepLogHelper.js
+rename from web/assets/js/Components/RepLogAppHelper.js
+rename to assets/js/Components/RepLogAppHelper.js
 diff --git a/web/assets/js/layout.js b/assets/js/layout.js
 similarity index 100%
 rename from web/assets/js/layout.js

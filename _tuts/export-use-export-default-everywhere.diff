@@ -1,5 +1,5 @@
 diff --git a/assets/js/Components/RepLogApp.js b/assets/js/Components/RepLogApp.js
-index 3af117cd..c2b5d05b 100644
+index 0079fbb1..7deaa418 100644
 --- a/assets/js/Components/RepLogApp.js
 +++ b/assets/js/Components/RepLogApp.js
 @@ -211,4 +211,4 @@ const rowTemplate = (repLog) => `
@@ -8,10 +8,10 @@ index 3af117cd..c2b5d05b 100644
  
 -module.exports = RepLogApp;
 +export default RepLogApp;
-diff --git a/assets/js/Components/RepLogHelper.js b/assets/js/Components/RepLogHelper.js
+diff --git a/assets/js/Components/RepLogAppHelper.js b/assets/js/Components/RepLogAppHelper.js
 index bb2d5c93..2e5ae3a4 100644
---- a/assets/js/Components/RepLogHelper.js
-+++ b/assets/js/Components/RepLogHelper.js
+--- a/assets/js/Components/RepLogAppHelper.js
++++ b/assets/js/Components/RepLogAppHelper.js
 @@ -34,4 +34,4 @@ class Helper {
      }
  }

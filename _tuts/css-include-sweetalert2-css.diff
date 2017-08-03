@@ -16,11 +16,11 @@ index a8f2a3c4..2c1fe8a8 100644
      {{ parent() }}
  
 diff --git a/web/assets/js/Components/RepLogApp.js b/web/assets/js/Components/RepLogApp.js
-index 6085e4b9..9a9c224b 100644
+index cbbaaa41..284cdf34 100644
 --- a/web/assets/js/Components/RepLogApp.js
 +++ b/web/assets/js/Components/RepLogApp.js
 @@ -3,6 +3,7 @@
- const Helper = require('./RepLogHelper');
+ const Helper = require('./RepLogAppHelper');
  const $ = require('jquery');
  const swal = require('sweetalert2');
 +require('sweetalert2/dist/sweetalert2.css');

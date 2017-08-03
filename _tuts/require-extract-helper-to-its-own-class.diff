@@ -1,11 +1,11 @@
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index 24ffa0d8..adc1760e 100644
+index 24ffa0d8..c5fee468 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -1,5 +1,7 @@
  'use strict';
  
-+const Helper = require('./RepLogHelper');
++const Helper = require('./RepLogAppHelper');
 +
  (function(window, $, Routing, swal) {
  
@@ -51,11 +51,11 @@ index 24ffa0d8..adc1760e 100644
      const rowTemplate = (repLog) => `
  <tr data-weight="${repLog.totalWeightLifted}">
      <td>${repLog.itemLabel}</td>
-diff --git a/web/assets/js/RepLogHelper.js b/web/assets/js/RepLogHelper.js
+diff --git a/web/assets/js/RepLogAppHelper.js b/web/assets/js/RepLogAppHelper.js
 new file mode 100644
 index 00000000..bb2d5c93
 --- /dev/null
-+++ b/web/assets/js/RepLogHelper.js
++++ b/web/assets/js/RepLogAppHelper.js
 @@ -0,0 +1,37 @@
 +'use strict';
 +
