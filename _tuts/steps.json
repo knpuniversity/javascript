@@ -1026,6 +1026,11 @@
             "description": null
         },
         {
+            "id": "bootstrap-js-make-jquery-global",
+            "name": "Bootstrap.js: Make jQuery global",
+            "description": null
+        },
+        {
             "id": "bootstrap-js-use-provideplugin",
             "name": "Bootstrap.js: use ProvidePlugin",
             "description": null
@@ -1381,5 +1386,5 @@
             "description": null
         }
     ],
-    "sha": "99b520c683fab9232a7aca6206b4b1958bf3ffcb"
+    "sha": "e0db8684a856b67e4428b636b032dda2e090a9fa"
 }
