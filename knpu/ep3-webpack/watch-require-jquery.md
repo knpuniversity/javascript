@@ -14,10 +14,12 @@ Re-run webpack, but this time with a `--watch` flag:
 ```
 
 It still builds the assets... but then *waits*. It's now constantly watching *all*
-your files for changes. Creepy
+your files for changes. Creepy.
 
 Put it to the test: in `RepLogApp.js`, add a few more question marks to the delete
-modal for emphasis and save.
+modal for emphasis and save:
+
+[[[ code('e6e4140db9') ]]]
 
 Refresh the page and.... we *instantly* see the change.
 
@@ -30,14 +32,20 @@ Webpack watch does *not* detect changes to itself.
 
 ## The Classic Problem with JS Dependencies
 
-Ok, it's time do something *completely* different... and unlock a massively powerful
+Ok, it's time to do something *completely* different... and unlock a massively powerful
 new tool. I'm going to say that a lot in this tutorial... and I mean it every time!
 
-Right now, `RepLogApp` *only* works because jQuery is available globally: we have
-a self-executing function, which expects `jQuery` to be a global variable by the
-time this file is loaded. That works because, in our base layout -
-`app/Resources/views/base.html.twig` - we include jQuery. This gives us two global
-variables - `$` and `jQuery` - which we use everywhere else.
+Right now, `RepLogApp` *only* works because jQuery is available globally:
+
+[[[ code('a3cdf8d11a') ]]]
+
+We have a self-executing function, which expects `jQuery` to be a global variable
+by the time this file is loaded. That works because, in our base layout -
+`app/Resources/views/base.html.twig` - we include jQuery:
+
+[[[ code('6547b3aac2') ]]]
+
+This gives us two global variables - `$` and `jQuery` - which we use everywhere else.
 
 And this is the big, huge, *classic*, *horrifying* problem we want to fix: when we
 write JavaScript, our code is not self-contained. Nope, we need to very carefully
@@ -58,13 +66,20 @@ In our terminal, we already used `yarn` earlier to install `webpack`. But we can
 yarn add jquery --dev
 ```
 
-And *just* like that! jQuery now lives inside `node_modules/`. That's great! Because
-we can *now* require it like *any* other module.
+And *just* like that! jQuery now lives inside `node_modules/`:
 
-At the top of `RepLogApp.js`, add `const $ = require('jquery')`.
+[[[ code('a8b8193ebe') ]]]
+
+That's great! Because we can *now* require it like *any* other module.
+
+At the top of `RepLogApp.js`, add `const $ = require('jquery')`:
+
+[[[ code('fbcff8dc68') ]]]
 
 For simplicity, we can remove the `$` from the self-executing function and the
-`jQuery` argument at the bottom.
+`jQuery` argument at the bottom:
+
+[[[ code('eee84c8d2d') ]]]
 
 Now, we require jQuery from `node_modules` and assign it to the `$` variable. Whenever
 we reference `$` in this file, that *required* value is used. We are *no* longer
@@ -73,9 +88,13 @@ dependent on whether or not a global `$` or `jQuery` variable exists.
 ## What Happens when you Require a Module
 
 There are two *very* important things I want to point out. First, we just said
-`require('jquery')`. We *now* know that because this does *not* start with `.`,
-Node knows to look for a core library - like it did with `path` - or to look inside
-`node_modules/`, which is what happens this time. That's perfect!
+`require('jquery')`:
+
+[[[ code('fd748102bc') ]]]
+
+We *now* know that because this does *not* start with `.`, Node knows to look for
+a core library - like it did with `path` - or to look inside `node_modules/`,
+which is what happens this time. That's perfect!
 
 The second very, very, very important thing is that jQuery acts *differently*,
 depending on whether or not it's being included with a traditional script tag -
@@ -96,7 +115,7 @@ between classic JavaScript and modern JavaScript: instead of creating and using
 global variables, we require modules and export things *from* these modules.
 
 Phew! Let's try this out already! In my terminal, I'll check out my watch tab.
-Yep, it's still working, and should have already detected our new `require` and
+Yep, it's still working, and should have already detected our new `require()` and
 dumped the new file.
 
 Back in the browser, refresh! Yes! Everything still works! It's not super obvious
@@ -108,7 +127,7 @@ pages that depend on it. And yes, that means that - until we fix this - our user
 are downloading jQuery *twice*: once in the base layout and again when they download
 `rep_log.js`.
 
-Open up that file: `build/rep_log.js`. Yep, most of this file is now jQuery.
+Open up that file: `web/build/rep_log.js`. Yep, most of this file is now jQuery.
 
 Now that we have this super power, let's repeat it with SweetAlert... and discover
 one lingering issue.
