@@ -1,9 +1,11 @@
 # Your First Webpack
 
+Since the `require()` key doesn't work in a browser:
+
 [[[ code('87f43fcf2c') ]]]
 
-Since the `require()` key doesn't work in a browser, we're going to use Webpack to...
-pack it all together! Let's jump straight in to see how it works!
+We're going to use Webpack to... pack it all together! Let's jump straight in
+to see how it works!
 
 ## Installing webpack
 
