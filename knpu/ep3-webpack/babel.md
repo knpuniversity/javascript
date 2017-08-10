@@ -9,14 +9,17 @@ Still using the ES6 class syntax.
 ## Installing babel-loader
 
 It's time to bring Babel back. How? Well, we still have the `.babelrc` file from
-the last tutorial, which configures Babel to do the transpiling we want. So if we
-could somehow tell Webpack to pass all `.js` files through Babel... we'd be done!
+the last tutorial, which configures Babel to do the transpiling we want:
+
+[[[ code('12b34dedba') ]]]
+
+So if we could somehow tell Webpack to pass all `.js` files through Babel...
+we'd be done!
 
 How do we do this? How can we tell Webpack to filter our code through something
 external? With a *very* powerful system in Webpack called *loaders*. Google for
-[babel-loader](https://github.com/babel/babel-loader) and find its GitHub page.
-Let's get this guy installed. Copy the `yarn add` line, though we already have
-`webpack` installed.
+"babel-loader" and find its [GitHub page][babel-loader]. Let's get this guy installed.
+Copy the `yarn add` line, though we already have `webpack` installed.
 
 Find your terminal and run it with `--dev` on the end:
 
@@ -40,7 +43,9 @@ there are two ways.
 ## The Inline Loader Sytnax
 
 The first is a special syntax *right* when you require the module. Before the
-name of the module, add `babel-loader!`.
+name of the module, add `babel-loader!`:
+
+[[[ code('bf59017350') ]]]
 
 Read this from right to left. It says: require this module and *then* pass it through
 `babel-loader`. You can even have *multiple* loaders, each separated by an exclamation
@@ -58,16 +63,28 @@ Babel is back!
 This is great! Except that I do *not* want to have to add this to *every* require
 statement! Thankfully, Webpack also has a *global* way to apply loaders.
 
-Remove the inline loader syntax and open `webpack.config.js`. Add a new `module`
-key set to `{}` and a sub-key called `rules` set to an array.
+Remove the inline loader syntax:
+
+[[[ code('7045f55c97') ]]]
+
+And open `webpack.config.js`. Add a new `module` key set to `{}` and a sub-key
+called `rules` set to an array:
+
+[[[ code('287398d29a') ]]]
 
 Here's the deal: each *rule* will contain a filename regular expression and a loader
 that should be applied whenever a file matches that. Add `{}` for this first
 loader with a `test` key. We want to apply the loader to *all* files that *end*
-in `.js`. That's what this regular expression matches. Below this, add `use`,
-with `loader: 'babel-loader'`.
+in `.js`:
 
-That is it! Now, *every* .js file will go through Babel! Woohoo!
+[[[ code('43e10fd3e5') ]]]
+
+That's what this regular expression matches. Below this, add `use`, with
+`loader: 'babel-loader'`:
+
+[[[ code('c2915277b1') ]]]
+
+That is it! Now, *every* `.js` file will go through Babel! Woohoo!
 
 Restart the webpack script:
 
@@ -77,3 +94,6 @@ Restart the webpack script:
 
 And check out the built `rep_log.js` file. Try to find `RepLogApp` again. Yep, the
 same, beautiful, transpiled code.
+
+
+[babel_loader]: https://github.com/babel/babel-loader
