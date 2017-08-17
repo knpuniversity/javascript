@@ -16,3 +16,7 @@ chapters:
     - font-awesome
     - copy-webpack-plugin
     - sass-loader
+    - bootstrap-sass
+    - bootstrap-sass-variables
+    - sourcemaps
+    - global-jquery
