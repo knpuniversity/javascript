@@ -1,4 +1,4 @@
-# Font-Awesome & file-loader hash
+# Font Awesome & file-loader [hash]
 
 We have only *one* link tag left: FontAwesome. Remove it! And clean up the `stylesheets`
 block.
