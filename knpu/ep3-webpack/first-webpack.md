@@ -1,20 +1,30 @@
 # Your First Webpack
 
-Since the `require` key doesn't work in a browser, we're going to use Webpack to...
-pack it all together! Let's jump straight in to see how it works!
+Since the `require()` key doesn't work in a browser:
+
+[[[ code('87f43fcf2c') ]]]
+
+We're going to use Webpack to... pack it all together! Let's jump straight in
+to see how it works!
 
 ## Installing webpack
 
-In the last tutorial, we installed Babel. We're going to use Babel again. But for
-now, let's remove it. In your terminal, run `yarn remove babel-cli` then
-`babel-preset-env`:
+In the last tutorial, we installed Babel:
+
+[[[ code('4227383260') ]]]
+
+We're going to use Babel again. But for now, let's remove it. In your terminal, run
+`yarn remove babel-cli` then `babel-preset-env`:
 
 ```terminal-silent
 yarn remove babel-cli babel-preset-env
 ```
 
-After this, we have absolutely *nothing* in our app: `package.json` is empty and
-so is `node_modules/`. We're starting from scratch.
+After this, we have absolutely *nothing* in our app: `package.json` is empty:
+
+[[[ code('ae6952efea') ]]]
+
+And so is `node_modules/`. We're starting from scratch.
 
 Now, add webpack:
 
@@ -24,9 +34,13 @@ yarn add webpack --dev
 
 As it's downloading, let's talk strategy. Webpack is an executable, and we will point
 it at `RepLogApp.js`. Webpack is amazing because it will actually *read* the `require()`
-call inside that, open `RepLogAppHelper.js`, and finally dump one big file with *both*
-modules inside. Yes, this means *we* will get to use the `require` function and our
-*browser* will still get one, streamlined, simple, beautiful JS file.
+call inside that:
+
+[[[ code('a9270424c6') ]]]
+
+Open `RepLogAppHelper.js`, and finally dump one big file with *both* modules inside.
+Yes, this means *we* will get to use the `require()` function and our *browser* will
+still get one, streamlined, simple, beautiful JS file.
 
 Create a new directory in `web/` called `build/`: we'll put our finished file here.
 
@@ -45,9 +59,11 @@ Deep breath. Run webpack:
 
 Yes! No errors... and it looks like it did something. Check the `web/build` directory...
 we *do* have a `rep_log.js` file. In `index.html.twig`, update the script `src`
-to point here: `build/rep_log.js`.
+to point here: `build/rep_log.js`:
 
-Now, refresh! Everything works! Holy cats Batman! We just unlocked the `require`
+[[[ code('2652ebc1af') ]]]
+
+Now, refresh! Everything works! Holy cats Batman! We just unlocked the `require()`
 function for front-end JavaScript. Game. Changer.
 
 ## Checking out the Compiled File
@@ -63,7 +79,9 @@ much more powerful than that. But this is already *huge*.
 
 Now, the `build/` directory is not something we need to commit to the repository:
 we can always rebuild this file whenever we need to. So, in `.gitignore`, ignore
-it: `/web/build/*`.
+it: `/web/build/*`:
+
+[[[ code('6925333847') ]]]
 
 Next, we'll create the all-important `webpack.config.js` file: they key to unlocking
 Webpack's full potential.

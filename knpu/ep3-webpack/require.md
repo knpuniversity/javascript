@@ -33,7 +33,7 @@ php bin/console server:run
 to start the built-in PHP web server.
 
 Pull up the site in your browser: `http://localhost:8000`. Welcome to Lift Stuff!
-Log in as `ron_furgundy`, password `pumpup`. Over the past 2 courses, we've lovingly
+Log in as `ron_furgandy`, password `pumpup`. Over the past 2 courses, we've lovingly
 built this activity-tracker-for-programmers into a nice, JavaScript-powered front-end.
 Now, we're going to revolutionize the way that code is organized.
 
