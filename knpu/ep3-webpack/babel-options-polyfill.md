@@ -1,7 +1,10 @@
 # babel-loader Options & Polyfill
 
 Now, you may or may not have noticed it, but that build took a bit longer than normal:
-it took almost *five* seconds. That makes sense... our code is now going through Babel.
+it took almost *five* seconds. That makes sense... our code is now going through Babel:
+
+[[[ code('6be6a3861f') ]]]
+
 But actually, *most* of that time is because *every* file is being processed through
 Babel... including third-party files like jQuery and Bootstrap! That's overkill.
 
@@ -11,9 +14,17 @@ Most of the time, we expect third-party modules to *already* be compiled into ol
 JavaScript. So, we don't need to re-transpile them. That may not always be the case,
 so just be cautious.
 
-How can we *skip* third-party files? Add an `exclude` for `/node_modules/`. And
-*just* by making this small change, when we re-run Webpack, it's way faster. Instead
-of four and a half seconds, we're back under two seconds.
+How can we *skip* third-party files? Add an `exclude` for `/node_modules/`:
+
+[[[ code('bcd2be4fa4') ]]]
+
+And *just* by making this small change, when we re-run Webpack, it's way faster:
+
+```terminal-silent
+./node_modules/.bin/webpack --watch
+```
+
+Instead of four and a half seconds, we're back under two seconds.
 
 ## Passing babel-loader Options
 
@@ -22,10 +33,12 @@ documentation for `babel-loader` and scroll down, eventually, you'll see those
 options.
 
 For `babel-loader`, there's one *really* cool option. Under `use`, add an `options`
-object with `cacheDirectory` set to `true`. This tells Babel to *cache* its results
-so that it doesn't need to re-transpile the same source code twice.
+object with `cacheDirectory` set to `true`:
 
-Try running webpack:
+[[[ code('a55af48699') ]]]
+
+This tells Babel to *cache* its results so that it doesn't need to re-transpile
+the same source code twice. Try running webpack:
 
 ```terminal-silent
 ./node_modules/.bin/webpack --watch
@@ -45,7 +58,10 @@ And, if you're curious - which I *know* you are - the cache files live in
 ## babel-polyfill
 
 While we're talking about Babel, open your base layout:
-`app/Resources/views/base.html.twig`. We have a script tag to a Promise *polyfill*.
+`app/Resources/views/base.html.twig`. We have a script tag to a Promise *polyfill*:
+
+[[[ code('26bfb23013') ]]]
+
 Why? Because some of our code is using the ES6 `Promise` object... and some older
 browsers don't support that. By including the polyfill, we're *guaranteed* to have
 that.
@@ -64,7 +80,9 @@ yarn add babel-polyfill --dev
 
 This library will give us the `Promise` polyfill and actually, *all* Polyfills.
 Use it inside of `layout.js` - so that we get the polyfill on every page: require
-`babel-polyfill`. I'll add a little comment above this.
+`babel-polyfill`. I'll add a little comment above this:
+
+[[[ code('eb88ca5595') ]]]
 
 And of course, when we refresh, everything is happy! And it would *even* be happy
 if I were using an older browser. Of course, *I* would be less happy using an older

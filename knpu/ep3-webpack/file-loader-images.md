@@ -1,13 +1,21 @@
 # Images in CSS (file-loader)
 
 Most of the CSS comes from our base layout: `base.html.twig`. On top, there's a link
-tag to `assets/css/main.css`. But, to keep with our new system, instead of adding
-this link tag manually, I want to *require* that CSS from JavaScript. For global
-CSS, I'll include it from my global JavaScript: `layout.js`.
+tag to `assets/css/main.css`:
+
+[[[ code('b5bfc373b8') ]]]
+
+But, to keep with our new system, instead of adding this link tag manually,
+I want to *require* that CSS from JavaScript. For global CSS, I'll include it
+from my global JavaScript: `layout.js`.
 
 In other words, remove that link tag!
 
-Then, in the source `layout.js` file, add `require('../css/main.css')`.
+[[[ code('54275ff9b8') ]]]
+
+Then, in the source `layout.js` file, add `require('../css/main.css')`:
+
+[[[ code('e712995b49') ]]]
 
 And... that *should* just work!
 
@@ -24,11 +32,14 @@ Huh. Over in the terminal, the watch script has a similar message... and it look
 like it happens when Webpack reads `main.css`.
 
 Hmm. Open `main.css`. Ah! There's the image: it's a *background* image inside our CSS!
+
+[[[ code('ae24abd15a') ]]]
+
 This, is *very* interesting. When we tell Webpack to load a CSS file, it actually
 *parses* the background images and - basically - *requires* them! It does the same
 with fonts and also finds and requires any `@import` calls.
 
-So... why is this failing? Well, *just* like with CSS, a .png file is *not* JavaScript...
+So... why is this failing? Well, *just* like with CSS, a `.png` file is *not* JavaScript...
 so Webpack has *no* idea what to do with it!
 
 ## Using file-loader
@@ -36,7 +47,7 @@ so Webpack has *no* idea what to do with it!
 What's the fix? We need a loader capable of understanding image files.
 
 Head over to webpack.js.org, click on Guides, Asset Management and then
-[Loading Images](https://webpack.js.org/guides/asset-management/#loading-images).
+[Loading Images][loading_images].
 
 Ah, the `file-loader`! It has one simple job: move any files it processes into the
 `build/` directory. When it does that, internally, it will return the filename to
@@ -52,7 +63,9 @@ yarn add file-loader --dev
 Back in `webpack.config.js`, we need to add a *third* loader. Copy the `css-loader`
 config. This time, for `test`, in the docs, it basically looks for *any* image file.
 I'll paste something similar that includes even *more* image filenames. And for
-`use`, pass these to `file-loader`.
+`use`, pass these to `file-loader`:
+
+[[[ code('9f8137e4ca') ]]]
 
 Before you do *anything* else, head over, and restart Webpack!
 
@@ -84,8 +97,15 @@ I mean, it doesn't know that `web/` is our document root, and so it doesn't know
 that these files are accessible via `build/` then the filename. Nope, this is something
 we need to *tell* Webpack, so that it can create the correct paths.
 
-How? Under `output`, set `publicPath` to `/build/`. Find you terminal and restart
-Webpack.
+How? Under `output`, set `publicPath` to `/build/`:
+
+[[[ code('935726bd3b') ]]]
+
+Find you terminal and restart Webpack:
+
+```terminal-silent
+./node_modules/.bin/webpack --watch
+```
 
 Everything looks the same here... but when we refresh and open the menu... there
 it is! Our little icon. The `background-image` *now* point to `/build/` the filename.
@@ -97,3 +117,6 @@ and Webpack takes care of the rest.
 
 Even better, if you make a mistake - like a typo - you'll actually see a Webpack
 *build* error. There's no way to accidentally have a broken link.
+
+
+[loading_images]: https://webpack.js.org/guides/asset-management/#loading-images
