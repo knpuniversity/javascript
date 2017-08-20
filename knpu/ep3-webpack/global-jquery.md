@@ -1,27 +1,28 @@
 # jQuery & Legacy JS in your Template
 
-Here's a simple challenge: when I hover over the leaderboard, I want to show a little
-Bootstrap popover JavaScript that gives us some information about how it works.
+Here's a simple challenge: when I hover over the leaderboard, I want to show a
+JavaScript Bootstrap popover that gives us some info about how it works.
 
 Open up the template: `app/Resources/views/lift/index.html.twig`. Add a class on
-the `h2` that we can target in JavaScript: `js-custom-popover`. Then I'll add a
+the `h2` that we can target in JavaScript: `js-custom-popover`. Then, I'll add a
 few other things that will help the popover: `data-toggle="popover"`, a `title`
 and `data-content`.
 
-To get this working, all we need to do is write some JavaScript to find this element
+To get this working, all we need to do is write some JavaScript to find that element
 and activate the popover. Normally, we would put this in `rep_log.js`. In fact,
-that's the *best* place to put it. Well, there, or perhaps some other file that
-it requires. The point is, now that our JavaScript has matured, 100% of your JS
-code should live in an external JavaScript file. You should have *no* JavaScript
-in your templates, other than the one script tag.
+that's the *best* place to put it. Well, there, or some file that it requires. The
+point is, now that our JavaScript has matured, 100% of your JS code should live in
+an external JavaScript file. You should have *no* JavaScript in your templates, other
+than the one script tag.
 
-But, what if you're using Webpack on a *legacy* app... that has a *ton* of JavaScript
-in your templates? You *should* refactor this over time. But, you *can* get this
-working.
+But, what if you're using Webpack on a *legacy* app... that still has a *ton* of
+JavaScript in your templates? You *should* refactor this. But, since that can be
+a big job, let's find out how we can *still* write JavaScript in a template... even
+though we shouldn't.
 
-To see how, let's add a new `script` tag right in the template. Here, code like
-normally: a `$(document).ready()` block, then find our `.js-custom-popover` elements
-and activate `popover()`. I'll pass that a few options.
+Add a new `script` tag right in the template. Here, code like normally: add a
+`$(document).ready()` block, then find our `.js-custom-popover` elements and activate
+`popover()`. I'll pass that a few options.
 
 So simple! It should work, right? After all, `rep_log.js` requires `jQuery`, so
 we should be able to use it in our template.
@@ -37,10 +38,10 @@ This is coming from our template. What's going on? We *are* requiring jQuery!
 Well... we already know what's going on. When we require `jquery`, it *detects*
 that it is being used in a module environment. So it does *not* set a global `jQuery`
 or `$` variable. Instead, it just returns the `jQuery` function, which we set to
-`$`... but that only affects *this* file.
+`$`. But that only affects *this* file.
 
-And this is good! This is the way we *want* things. But, if you *do* need to expose
-a `jQuery` variable globally, you can.
+And this is good! We *want* each module to live in isolation like this. But, if you
+*do* need to expose a `jQuery` variable globally, you can.
 
 First, since we're using a Bootstrap function on this page, `require('bootstrap-sass')`
 so the popover function is available.
@@ -59,11 +60,12 @@ Refresh now! Ha! It works!
 
 But, I have one *tiny* complication. In `webpack.config.js`, near the bottom, we
 added something called the `webpack.ProvidePlugin`. Thanks to this, if *any* JavaScript
-relies on `jQuery` or `$` to be available as a global variable, it rewrites the
-code to require the `jquery` modules properly. This doesn't *make* the `jQuery`
-or `$` variables available globally, but rather it fixes other code to not *need*
-that. If you *do* want to make these global, that's what we just did in `main.js`.
-These are solving two separate, but similar issues.
+relies on `jQuery` or `$` to be available as a global variable, Webpack rewrites
+that code to require the `jquery` module properly. This does *not* make the `jQuery`
+or `$` variables available globally, like in a template. Instead, it *fixes* code
+to not *need* that. If you *do* want to make these variables global, that's what
+we just did in `main.js`. In other words, these are solving two separate, but similar
+issues.
 
 Here's the complication: sometimes, a third party library will try to reference `jQuery`
 globally *not* by just saying `jQuery`, but by saying `window.jQuery`... which is
@@ -78,12 +80,14 @@ Cool! So now we're covered. Re-start Webpack:
 ./node_modules/.bin/webpack --watch
 ```
 
-Now, refresh! Woh! What! An error! Once again, it says that `$` is not defined!
+And, refresh! Woh! What! An error! Once again, it says that `$` is not defined!
 What the heck!
+
+## Using global to set Global Variables
 
 This is a *total* gotcha. Thanks to the `ProvidePlugin`, it's actually now re-writing
 *our* code, changing the `window.$` in a way so that it does *not* actually create
-a global variable anymore. This is *not* what we intended to do!
+a global variable anymore. This is *not* what we intended!
 
 The fix is easy: change `window.$` to `global.$`. What? *We* know that `window`
 is the global variable in a browser environment. Well, in Webpack, you're allowed
@@ -93,5 +97,7 @@ thing as before, but won't be re-written by the ProvidePlugin.
 
 *Just* by making this change, when we refresh, it *works*. Now, in practice, some
 libraries *do* reference `window.jQuery`, but I don't know of any that reference
-`window.$`, so you can remove it. But I wanted you to see this gotcha so that you
-can navigate around it and keep going.
+`window.$`, so you can remove it.
+
+Next! Let's talk about import and export... the more hipster alternative to `require`
+and `module.exports`.
