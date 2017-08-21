@@ -2,7 +2,7 @@
 
 Now that we finally have Bootstrap's Sass working, we can celebrate! Inside
 `_bootstrap.scss`, the first thing it imports is an `_variables.scss` file. I'll
-hold Command+Click to open that.
+hold Command and click to open that.
 
 Awesome! This holds a *bunch* of variables that are used throughout the rest of the
 Sass files. Yep, this means we can override these to control colors and many other
@@ -23,12 +23,12 @@ of CSS.
 
 ## Importing Only Parts of Bootstrap
 
-Let's do one more thing! The `_bootstrap.scss` file imports *every* part in Bootstrap.
+Let's do one more thing! The `_bootstrap.scss` file imports *every* part of Bootstrap.
 But what if you don't *need* every part of Bootstrap? For example, we are *not*
 using the glyphicons. Importing that CSS is wasteful!
 
 Let's fix this! Copy the *entire* contents of `_bootstrap.scss`. Then, in our `css/`
-directory, create a new `_bootstrap.scss` file and paste that there.
+directory, create a new `_bootstrap.scss` file and paste that here.
 
 As *soon* as we do that... all the paths are broken! Yea, that makes sense: we're
 in a different directory. No problem, I'll copy `"bootstrap` and do a Find and Replace
@@ -51,12 +51,12 @@ rm -rf web/build/*
 Now, re-run webpack:
 
 ```terminal-silent
-./node_modules/.bin/webpack --watc
+./node_modules/.bin/webpack --watch
 ```
 
 Check it out! In `web/build`, we still have the Font Awesome fonts... but we do *not*
 have the glyphicon fonts anymore. That's awesome! We're not parsing the `_glyphicons.scss`
 file anymore, so Webpack never sees those font files and so never moves them. This
-is proof that our CSS file is now just a *little* but smaller.
+is proof that our CSS file is now just a *little* bit smaller.
 
 Ok, let's add some sourcemaps to make debugging a lot nicer.

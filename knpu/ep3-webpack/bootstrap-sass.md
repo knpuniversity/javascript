@@ -66,10 +66,10 @@ Oh no! It looks *terrible*! Find your terminal. Interesting:
 
 ... and then it references our `main.scss` file. Huh. This is really odd.
 
-What's *really* curious is that the font file is actually referenced from deep inside
+What's *really* curious is that the file is actually referenced from deep inside
 bootstrap: we require `_bootstrap.scss`, it imports another `_glyphicons.scss` and
 *it* references the font files. Well, it uses some variables, but this code references
-that font file.
+that file.
 
 And this worked a moment ago... so why would it break? All we did was change the
 *way* that we were require these files.
@@ -86,7 +86,7 @@ The most important thing is to fix this nonsense. How? With another loader.
 Find your terminal and run
 
 ```terminal
-yarn add resolve-URL-loader --dev
+yarn add resolve-url-loader --dev
 ```
 
 ***TIP

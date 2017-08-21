@@ -48,13 +48,13 @@ Cool! Use these below: use `cssLoader` in both places, then `resolveUrlLoader` a
 Back to sourcemaps! First, let's activate them for JavaScript. How? At the bottom
 of your config, add `devtool` set to `inline-source-map`. Yep, that's it. Actually,
 there are multiple ways to generate source maps. Each has pros and cons, and each
-seems to do funny things in at lease some situations. But, `inline-source-map` is
+seems to do funny things in at least some situations. But, `inline-source-map` is
 the most reliable I've found while developing.
 
 Give it a try! Find your Webpack tab and restart:
 
 ```terminal-silent
-./node_modules/.bin/webpack --watc
+./node_modules/.bin/webpack --watch
 ```
 
 Then, refresh the page! Moment of truth: click one of the rows.. then find the console.

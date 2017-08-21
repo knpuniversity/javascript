@@ -99,5 +99,5 @@ thing as before, but won't be re-written by the ProvidePlugin.
 libraries *do* reference `window.jQuery`, but I don't know of any that reference
 `window.$`, so you can remove it.
 
-Next! Let's talk about import and export... the more hipster alternative to `require`
+Next! Let's talk about import and export... the more hipster alternativse to `require`
 and `module.exports`.
