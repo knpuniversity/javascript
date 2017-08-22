@@ -1,5 +1,5 @@
 diff --git a/webpack.config.js b/webpack.config.js
-index cfe4753d..0ec3e214 100644
+index 64e5621f..ab3de489 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');

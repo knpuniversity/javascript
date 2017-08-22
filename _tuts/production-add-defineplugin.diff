@@ -1,17 +1,15 @@
 diff --git a/webpack.config.js b/webpack.config.js
-index 08041c8d..cfe4753d 100644
+index 08041c8d..64e5621f 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
-@@ -147,6 +147,14 @@ if (isProduction) {
+@@ -147,6 +147,12 @@ if (isProduction) {
              debug: false
          })
      );
 +
 +    webpackConfig.plugins.push(
 +        new webpack.DefinePlugin({
-+            'process.env': {
-+                'NODE_ENV': JSON.stringify('production')
-+            }
++            'process.env.NODE_ENV': JSON.stringify('production')
 +        })
 +    );
  }

@@ -1,12 +1,12 @@
 diff --git a/assets/js/login.js b/assets/js/login.js
-index ccae1467..293fa666 100644
+index 102430ab..0615f07f 100644
 --- a/assets/js/login.js
 +++ b/assets/js/login.js
 @@ -2,7 +2,6 @@
  
  import $ from 'jquery';
  import '../css/login.css';
--import UsernameValidationError from './Components/UsernameValidationError';
+-import username_validation_error from './Components/username_validation_error';
  
  $(document).ready(function() {
      $('.js-recommended-login').on('click', '.js-show-login', function(e) {
@@ -14,12 +14,12 @@ index ccae1467..293fa666 100644
          $('.login-long-username-warning').remove();
  
          if ($usernameInput.val().length >= 20) {
--            console.log(UsernameValidationError);
--            UsernameValidationError($usernameInput);
+-            console.log(username_validation_error);
+-            username_validation_error($usernameInput);
 +            // use code splitting to lazily load this "chunk"
-+            import('./Components/UsernameValidationError').then(UsernameValidationError => {
-+                console.log(UsernameValidationError);
-+                UsernameValidationError($usernameInput);
++            import('./Components/username_validation_error').then(username_validation_error => {
++                console.log(username_validation_error);
++                username_validation_error($usernameInput);
 +            });
          }
      });

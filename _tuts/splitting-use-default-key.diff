@@ -1,14 +1,14 @@
 diff --git a/assets/js/login.js b/assets/js/login.js
-index 293fa666..4d40f254 100644
+index 0615f07f..076a2293 100644
 --- a/assets/js/login.js
 +++ b/assets/js/login.js
 @@ -18,8 +18,7 @@ $(document).ready(function() {
          if ($usernameInput.val().length >= 20) {
              // use code splitting to lazily load this "chunk"
-             import('./Components/UsernameValidationError').then(UsernameValidationError => {
--                console.log(UsernameValidationError);
--                UsernameValidationError($usernameInput);
-+                UsernameValidationError.default($usernameInput);
+             import('./Components/username_validation_error').then(username_validation_error => {
+-                console.log(username_validation_error);
+-                username_validation_error($usernameInput);
++                username_validation_error.default($usernameInput);
              });
          }
      });
