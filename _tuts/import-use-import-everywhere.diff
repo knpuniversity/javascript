@@ -1,5 +1,5 @@
 diff --git a/assets/js/Components/RepLogApp.js b/assets/js/Components/RepLogApp.js
-index ea478fd1..0079fbb1 100644
+index 5d81c72f..240567a2 100644
 --- a/assets/js/Components/RepLogApp.js
 +++ b/assets/js/Components/RepLogApp.js
 @@ -1,10 +1,10 @@
@@ -15,7 +15,7 @@ index ea478fd1..0079fbb1 100644
 +import swal from 'sweetalert2';
 +import 'sweetalert2/dist/sweetalert2.css';
 +import Routing from './Routing';
- import { random } from 'lodash';
+ import random from 'lodash/random';
  
  let HelperInstances = new WeakMap();
 diff --git a/assets/js/layout.js b/assets/js/layout.js

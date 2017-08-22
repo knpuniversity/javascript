@@ -1226,6 +1226,11 @@
             "description": null
         },
         {
+            "id": "import-import-specific-file",
+            "name": "Import: import specific file",
+            "description": null
+        },
+        {
             "id": "import-use-import-everywhere",
             "name": "Import: Use import everywhere",
             "description": null
@@ -1386,5 +1391,5 @@
             "description": null
         }
     ],
-    "sha": "e0db8684a856b67e4428b636b032dda2e090a9fa"
+    "sha": "2bf5b9b6dd93530e2dfcf1ea278f8b431fc584a5"
 }
