@@ -1,4 +1,4 @@
-# Extract Text Webpack
+# Extract Text Webpack Plugin
 
 Ever since we've started requiring CSS from our JS, we've had this problem of when we refresh there's no CSS for a second and then it loads. That's because the CSS is packaged inside of our Java script so we need to wait for the Java script to be executed so that I can actually add CSS to our page.
 
