@@ -20,3 +20,12 @@ chapters:
     - bootstrap-sass-variables
     - sourcemaps
     - global-jquery
+    - pass-data-to-js
+    - fosjsroutingbundle
+    - lodash-partial-require
+    - es6-import-export
+    - commons-chunk-plugin
+    - webpack-dev-server
+    - hot-module-reload
+    - extract-text-webpack-plugin
+    - production-build

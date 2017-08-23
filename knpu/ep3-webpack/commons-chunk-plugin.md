@@ -1,31 +1,71 @@
-# Commons Chunk Plugin
+# CommonsChunkPlugin: Shared/Vendor Entry
 
-If you restart webpack, you're gonna see a problem that we have been ignoring so far; the files are huge! Layout, replog, and login are all humongous. And there's a really simple reason why: jQuery. Login.js imports jQuery. Replog.js imports jQuery. And layout.js, guess what? It imports jQuery. That's perfect except it means that jQuery is being packaged in each of our three output files. That is totally wasteful. Fortunately, webpack has a solution for this; it's a plugin called the CommonsChunkPlugin.
+Restart Webpack! Woh, those JavaScript files are huge! And there's a really simple
+reason why: jQuery. Yep, `login.js` imports `jquery`, `rep_log.js` imports `jquery`,
+and `layout.js`? Yep, it imports `jquery` too. That make sense - we use it in each
+module. But, it means that `jQuery` is packaged in *each* output file individually.
+That's wasteful! jQuery, well, really *any* code that's needed on most pages, should
+live in its *own* JavaScript file and *removed* from everywhere else.
 
-Find your webpack.config.js file and under the plugin section say new webpack.optimize.CommonsChunkPlugin. And pass that an object. We're going to give this two things: a name set to vendor and an option called MinChunks set to 2. Before we talk about what that does, go over, restart webpack.
+How can we do that? The CommonsChunkPlugin.
 
-Ooh, check this out. Two really important things to see. First, we're now outputting a vendor.js file. And second, layout, replog, and login are all much smaller. In fact, login.js is tiny. This is the power of the commons chunk plugin. Chunk is a word in webpack that more or less means module. And when you configure the plugin like this, it says whenever we see a module that is required two or more times, include it in vendor.js instead of any of your other files. For example, since jQuery is required in all three of these files, it's packaged in vendor.js and then it is not packaged in the other three files making them smaller.
+## Adding the CommonsChunkPlugin
 
-Of course, to get this to work, we need to get into our base layout at resources view's base.html.twig. And before layout.js, we need to add a script tag for vendor.js. That must be included on every single page. If you take a look inside your web build directory, you can open vendor and yes, you can actually see there is jQuery right inside of it. And if you looked at your other build files, you would not see jQuery inside.
+Find your `webpack.config.js` file. Under the `plugins` section, add
+`new webpack.optimize.CommonsChunkPlugin()` and pass that an object with two keys:
+`name` set to `vendor` and `minChunks` set to 2.
 
-This is amazing right? Let's make our other files even smaller. Here's another common configuration you'll see. Instead of MinChunks 2, it can actually pass as a function. You can ass it [inaudible 00:03:12] a module argument. And then I'll put in a little bit of code here.
+Before we talk about what this does. Try it. Restart Webpack!
 
-This code says basically if the module comes from node module if it's a vendor module, then put it into our vendor file. If we rerun webpack now, the results are even more dramatic. Rep_log.js is now almost empty. But there isn't an art to this vendor file. By blinding including everything that was in node modules, that might not be the best plan.
+```terminal-silent
+./node_modules/.bin/webpack --watch
+```
 
-For example, what if your login.js file imports some third party module, some giant third party module. Well, now whenever anybody visits your homepage, they're going to download that third party module cause it's gonna live in layout. You want to strike the balance between having smaller entry files and not having a gigantic vendor file full of modules that are only used on edge case pages.
+Woh! There are two really important things! First... a new file! Yea, Webpack is
+outputting `vendor.js`. And second, `layout.js`, `rep_log.js` and `login.js` are
+now all *much* smaller. Heck, `login.js` is tiny!
 
-Let me show you the way I use the minChunks, CommonChunkPlugin. Set minChunks to infinity and then rename for the name option sass layout. See layout is important. If you scroll up, layout is the name of one our entries. And that is important. Makes this anything included in layout is not included in other output files. Effectively layout becomes our vendor file. What I mean specifically is, because layout imports jQuery, jQuery will not be in the final login.js or rep_log.js. Since bootstrap-sass is imported here, if any other entry file imports bootstrap-sass, it will not be included there. The layout.js file now serves two purposes. To collect all the common things that we want included in the CommonsChunk to make our entry file smaller. And also it gives us the opportunity to run any global JavaScript if we need to.
+This is the power of the `CommonsChunkPlugin`. Wait, what the heck is a chunk?
+Webpack uses this term a lot, and I have still not found a *solid* definition for
+it! But basically, a chunk refers to a bundle of code... in a generic sense.
+`CommonsChunkPlugin` has its name because it allows us to move *common*, shared,
+code into a separate chunk... i.e. a separate output file.
 
-Flip over. Control C webpack. And I'm actually going to do a rm-rf on web/build/*. Cause we won't need that vendor file anymore and I don't want that confuse us. Rerun webpack. And now you can see there's no vendor.js but there is a layout.js which has all of the main hidden thinks. Thinks this and base.html twig, we can remove the vendor.js and when I refresh the page, everything works fine. Now if you look inside of the built layout.js file, the first thing you're going to see on top is the webpack bootstrap. A number of functions that the rest of the built code use to help organize all this module loading. Before we use the CommonsChunkPlugin, this appeared at the top of all of our entry files. But now you can see at the top of the built login.js it's not there anymore. That's because webpack is already smart enough to know that since layout.js is our common chunk, it's included on every single page. Hence, there's no need for it to include the bootstrap multiple times.
+With this configuration whenever Webpack sees a module that is required two or more
+times, it is put into `vendor.js` and *removed* from all other chunks. For example,
+since `jquery` is imported in all three of these files, Webpack packages it in
+`vendor.js` and then does *not* put them in `layout.js`, `rep_log.js`, or `login.js`.
 
-There is one small catch. And that is that this bootstrap code includes some module IDs. Basically a couple of numbers that refer to our different modules. Something we don't normally care about. However, sometimes these numbers change. And what that means is that, if we made some change to, for example, some code inside of rep_log.js, we would of course expect the dumped rep_log.js to be different than a second ago. But thanks to this wepback bootstrap stuff, which includes something called the manifest, even a change to rep_log.js could actually cause your layout file to change. Why is that a problem? Well, in a little while we're going to talk about versioning and long-term caching.
+## Including the vendor.js File
 
-And basically what I want you to think about now is that we want all of our files to change only when they need to. I don't want my layout.js build file to change unless something actually changed in that. Cause I don't want my users to have to redownload a fresh version of the file. It would be really unfortunate if they changed to rep_log.js caused my entire layout.js file to be invalidated. Cause after all, my layout file is huge.
+But, for this to work, `vendor.js` needs to be included on *every* page. Open the
+base layout in `app/Resources/views/base.html.twig`. Then, before `layout.js`,
+add a script tag for `vendor.js`.
 
-The way to fix this is actually to extract the manifest and the bootstrap out of layout.js and into yet one more file. And this is done down in our CommonsChunkPlugin. Instead of setting name to layout, we're actually going to set it to an array. And we're going to have another one called manifest. I'm going to bring my comment down here called the layout file and add one more comment about the manifest. Dumps the manifest in a separate file. Now if you restart webpack, you'll see that there is a layout.js like before. There's also a tiny manifest.js. The importance of this is now that layout.js just goes straight to the code.
+In `web/build`, open up `vendor.js`. Yea! You can totally see jQuery right inside.
+And if you looked at the other built files, you would *not* see it anymore.
 
-This is actually underscore.
+## Include everything from node_modules?
 
-And then manifest is just that webpack bootstrap stuff.
+That's amazing right? Let's make our entry files even smaller. Here's another
+common configuration. Instead of `minChunks` set to a number, you can pass a callback
+function with a `module` argument. I'll paste a bit of code.
 
-Of course, to get this to work now we need to go into our base layout. And right before layout, we'll add a second script tag pointing to the manifest. Whew! That was the really confusing part. Use the CommonsChunkPlugin to take anything you want and put it in layout.js so it's not duplicated in the other files. This manifest.js thing that's less important but it's going to make our layout.js file change less often, which is going to allow us to leverage more long-term caching.
+This simply says: if a module comes from the `node_modules` directory, put it in
+the `vendor.js` file. Re-run Webpack now:
+
+```terminal-silent
+./node_modules/.bin/webpack --watch
+```
+
+Wow! The results are *super* dramatic: `rep_log.js` is now almost empty. But...
+there's a problem, do you see it? Configuring the "commons" entry is not an exact
+science. By blindly including *everything* from `node_modules`, we have probably
+*hurt* performance!
+
+How? Well, imagine `login.js` requires some giant module from `node_modules`. Even
+though this is only needed on *one* page, you will now download that huge module
+when visiting *any* page. You need to strike a balance between small entry file
+and a small vendor file, since it's included on every page.
+
+Let's try a different strategy next!

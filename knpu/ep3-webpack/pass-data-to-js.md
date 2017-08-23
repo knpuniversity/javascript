@@ -1,20 +1,66 @@
-# Pass Data to JS
+# Passing Server Data to JS
 
-Alright, so watch, if I refresh right now, there's actually a slight delay before the table loads, and this is because in assets > js > Components > RepLogApp.js, in the constructor we call this.loadRepLogs(); and that actually initially populates the table while making an ajax call. And that's fine, but what if I want this to load instantly? What if right on page load, I want the repLogs to be there? Well back when we use to write more of our java script in the template, this was easier, since our java script was in the template, if we needed to print out a bunch of Json from the server, we could just mix twig inside of here, and maybe print out some repLogs.Json. And then that would instantly be available to our java script.
+Watch... if I refresh... there's a *slight* delay before the table loads. That's
+by design. Open `assets/js/Components/RepLogApp.js`. In the constructor, we call
+`this.loadRepLogs()`, which initially populates the table by making an AJAX call.
+And that's fine... but what if I want this to load instantly? I mean, when the page
+loads, our JavaScript *already* knows what the initial rep logs are, without needing
+the AJAX call.
 
-It's not like we can go right in the middle of replogapp.js and replace this ajax call with some twig code that print out the Json. Nope, we need a new way of allowing our server to communicate with our java script. There's actually a really nice and powerful way to do this.
+Well, if we still wrote JavaScript in our template... this would be pretty easy.
+We could, for example, create a JavaScript variable and use Twig to print out all
+the rep logs into that variable. Yep, mixing Twig and JavaScript is kinda handy.
 
-First, let's get rid of loadRepLogs. What I'm going to do instead is I'm going to have whoever uses me pass the initialRepLogs as a second argument. Down here, we'll just loop over those for (latRepLog of initialRepLogs) we'll say this._addRowRepLog. Now, who calls this? It's actually our assets > js > rep_log.js entry point.
+But obviously... we can't start writing Twig code right in the middle of `RepLogApp.js`.
+Nope, we need a new way to communicate from our server to JavaScript. And I'm happy
+to say, there's a really easy way to do this!
 
-We have the same problem here, we still can't just printout twig code, so we still have that same problem. But for now, just to see if this is working, I'm going to paste two hard coded logs above this. This is the exact format that the logs had in our ajax end point. Then I'll pass the logs as the second argument. So in theory, this should work. I'm gonna refresh, we instantly see those two rep logs. Okay, so we are a little bit closer.
+## Refactoring initialRepLogs to an Argument
 
-Now if you go into the server code for this src > AppBundle > Controller > RepLogController. You'll see that this is actually the ajax end point where you were using a second ago. What I'm going to do is in our LiftController index action this is actually the page renders that template. What I want to do is make the repLogJson available in the template. So I'm actually going to steal the first line of code here that gets all of our repLogModels. Rename that to repLogModels then I'll create another variable called repLogsJson = $this->get('serializer') -> serialize($repLogModels, 'Json') Then I'm going to pass that in as another variable linked into my twig template repLogsJson => $replogsjson.
+First, remove `loadRepLogs()`. Instead, add `initialRepLogs` as a second argument
+to the `constructor`. Whoever calls me will need to pass this in.
 
-So what that sets up for me is now in my twig template for this page, which is App > Resources > views > lift > index.html.twig. We now have access to the Json that we want to somehow pass into our repLog java script file.
+Down below, loop over these: `for (let repLog of initialRepLogs)`, then,
+`this._addRow(repLog)`.
 
-So, how can we actually do that? The answer is by leveraging data attributes. This is the very, very simple key. So, if we look at our replog that js file we actually look for a js-replog-table element. That is near the top of my file. So, to end this I'm going to add new data attribute called data-rep-logs="{{ repLogsJson|e('html_attr') }}">. That does actually print all of that Json right onto this html attribute. And the pipe e html attr make sure that it's escaped correctly so that it can live safely on that attribute.
+Ok! Now, who constructs this object? Ah yes, it's our entry file: `assets/js/rep_log.js`.
 
-So what we've done is basically put all of the data that we need right into the DOM. And that lets us very easily inside replog.js. We can delete the old logs variable and say $wrapper.data('rep-logs') And that's it. Now when we refresh we instantly have our real table.
+Of course, we can't put Twig code here either. For now, just to see if this is working,
+I'll paste two hard-coded logs above this. This is the exact format returned by
+the AJAX endpoint. Now, pass `logs` as the second argument.
 
-That's the key that I wanted to show you. Whenever you want to pass data from your server to java script, that's totally cool, just set it on data attributes on your elements and then read those preferably in your entry java script file. Just pass that, and use that data however you need to.
+In theory, this should work. Boy, that's a dangerous thing to say.
 
+But yea, it *does* work! The list starts with those two logs. Now, we're close!
+
+## Rendering initialLogs as a data- Attribute
+
+Go in the server code: `src/AppBundle/Controller/RepLogController.php`. This is the
+code for the AJAX endpoint that we *were* using before. Open `LiftController`,
+`indexAction()`: this is the method that renders the current page.
+
+Here's the plan: I want to get all the of the initial rep logs as JSON, pass that
+into the template, then render it in a way that our JavaScript can read.
+
+Let's steal the first line of code from the AJAX controller. Paste it in `indexAction()`,
+but rename the variable to `repLogModels`. Then, create another variable called
+`repLogsJson` set to `$this->get('serializer')->serialize($repLogModels, 'json')`.
+Cool! Pass that into the template: `repLogsJson` set to `$repLogsJson`.
+
+Next, open up the template: `app/Resources/views/lift/index.html.twig`. Ok, how
+can we pass the `repLogsJson` variable to JavaScript?
+
+One *great* way is by leveraging data attributes. If you look inside `rep_log.js`,
+we look for a `.js-rep-log-table` element. This lives near the top of the template.
+On it, add new attribute: `data-rep-logs="{{ repLogsJson|e('html_attr') }}"`.
+
+Brilliant! That prints the rep logs and escapes them so they can live safely on an
+attribute.
+
+Dude! Now our job is *easy*. In `rep_log.js`, delete the old `logs` variable. And
+instead, say `$wrapper.data('rep-logs')`.
+
+That is it. Now when we refresh... yes! We instantly have a real table.
+
+I know, it's simple. Whenever you want to pass data from your server to `JavaScript`,
+a great option is to leverage data-attributes.

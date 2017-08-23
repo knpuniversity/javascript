@@ -1,26 +1,107 @@
-# ES6 Import Export
+# ES6 import & export
 
-Okay, here's the plan. Down here this form is always empty.  You pick how many ... what you are lifting, you put in how many times. Let's say, for some reason, I'm going to auto fill this box with a random number. Maybe we need a little inspiration on lifting our cat 50 times.
+When it comes to using `require`, or `module.exports` to export a value from a module,
+well, we *rock*. So now... let's completely change things!
 
-So to get that random number, I'm actually going to use a library called LoDash which is just a utility library full of lots and lots of random functions. If you click on the documentation, you can see that one of them is actually called random, you can say <_.random>, so that's what I'm going to use. So obviously, we're going to install this as a new library. Let's flip over to our terminal, yarn add <lodash--dev>. Then, in <Rep Log App.JS> on top, I'm going to say <const_=require lodash>. As soon as that is done downloading ... Peachtree Storm sees it.
+To simplify the history of things, `require` and `module.exports` basically come
+from Node.js. They're not part of ECMAScript - so not officially part of the JavaScript
+language - but you know that if you're in Node, these are available to use.
 
-Now down a bit in a function called "clearform," which is normally called after we fill out the form, we're going to say <form.find:> to find the <name=reps element> and then <.val>, and then <_.random> and we'll choose a number between one and ten. To make sure that box has a value on load we'll go all the way to the top inside of our constructor, and here we'll call this <._clearform>. Perfect. So if you refresh now, yes you can see we have a little random number in there and it resets every time we add something else. So here is the deal, LoDash is actually this giant library which has lots of functions. And it wasn't really that obvious but you'll notice now that our <rep log.js> file is actually a lot bigger, its 2.7 megabites whereas a second ago on our initial bill it was 1.27- that's all LoDash.
+Node did this because... well... there was *no* module system in ECMAScript. So they
+invented `require` and `module.exports` to fit their needs. But, guess what!? In
+ES6... there *is* a module system in JavaScript! It uses two new keywords: `import`
+and `export`.
 
-So is there a way for us to import just one thing? Well, it depends on the library. In this case there is.  Look inside your [inaudible 00:03:04] directory for LoDash. What you'll actually see is the library itself is just a bunch of tiny functions all separated into files. You can require the main library which gives you everything or you can just require a single file. So in this case <number.js> is actually the file that gives us clamp, in range, and random so we can actually require random or we can require number.
+## Hello import
 
-In other words, at the top we can say <const_=requireLoDash/number>. Everything still works in the browser, and our package is back down to 1.3 megabites, awesome. So why are we talking about this other than "that's a cool trick?" Well, this require thing, and also the <module.exports> that we've been using at the bottom here, these originally come from Node. This is the way that they basically import and export values for modules. So WebPack used it as the same way that we do that, but technically there was no standard across all of javascript to do this. This is something that Node did, but it didn't work in browsers of course. That actually changed in ES6. In ES6 they actually formalized this idea of modules that had been used in Node for a long time. Instead of using <require> and <module.exports> they invented two new keywords which are <import> and <export>. WebPack supports both, and more or less they do the same thing. So check this out. Instead of <const_=require> we can say <import_from>.
+Webpack supports both... but `import` and `export` have a few subtle advantages...
+other than being the newer, shinier thing.
 
-We do that, WebPack is still happy, and our application still works. So that is the first thing I want you to realize. There is an "import" and it works more or less the same as "require." One difference from "import" and "require" is that with the "require" system ... one thing you can do with import, sometimes a module exports multiple things. In this case, LoDash actually exports an object with many keys on it- one of those keys being "random" which is why we can say <_.random>. If you want, you can actually say <import: {random}> from LoDash. This is using "D referencing." So if the LoDash module gives us an object where there is a key in it called "random," this assigns that key to a new vairable and this file called "random." The first few times you see this it looks a little funny. Now of course as soon as we do this we are not importing an underscore anymore, so I'll search for <_.random> ... media replaced this now with just "random" because that's the key we just imported here on top.
+But mostly, they work the same. Instead of `const _ = require()`, we can say
+`import _ from 'lodash'`.
 
-Now once again, with import everything still works but we do have one new problem: our file size. We got it down to 1.32 before but as soon as we changed to "import" it got much bigger. This makes some sense, a second ago when I was importing everything from LoDash it makes sense its not loading everything from LoDash. However, we are importing things from LoDash but we're only actually using one piece of LoDash, so think about it. In theory, WebPack could be smart enough to know that we're only importing one part of LoDash. So to remove the rest of LoDash from the final packages ... actually, that exists. Its something called "Tree Shaking." This is where "import" starts to get interesting.  When you require something that entire module is brought in. However if you import something and you only use one piece of it- in theory WebPack should perform TreeShaking where it figures out which parts of a module you are using and which parts you aren't and removes those parts. Now you notice though, it's not actually doing that.
+When we do, Webpack is still happy... *and* our app still works!
 
-As of the latest version of WebPack, this recording 3.3, TreeShaking seems to work in some cases and not in other cases. I expect in the future it will work better. That's the one big advantage of using <import> over <require>. For now, I do want to make my file size a little bit smaller, TreeShaking isn't doing it [inaudible 00:09:30] so I'm actually going to change this to <import: random> from <LoDash/random> that's effectively the same thing we had with the <require> statement a second ago.
+## Named Imports
 
-So let's change these to "import." <Import helper> from [inaudible 00:09:56]helper <import $> from jQwery <import: SWL from SweetAlert 2>, and then <import routing> from routing. Now for the CSS, we don't actually need that value so in this case you can just say "import." Let's do the same thing inside of <rebel_log.js> <import$> from jQwery and then <import: bootstrap-sas> and <import: rep.log app> from components. Then I'm logging <.js Import$> from jQwery and <import log.CSS file>, and then <layout.JS> <Import$> from jQuery, <import: bootstrap-sas>, import our main .sas file, <import-polyfil>. After all that change, you can see WebPack is still happy here and the page still works fine so we're just using the more hipster import.
+So `import` and `require` basically do the same thing. But `import` has one special
+power: the ability to import just *one* part of a module. We know that `lodash`
+actually exports an object with many keys on it... `random` is one of them, which
+is why we can say `_.random()`.
 
-Now on the other side of it, instead of using <module.exports> there's a new way of doing that. At the bottom of your replog.app, this is the way that we exported that replog.appclass, now I'm going to change that to <export: default rep log app>. <Export:Default> is the way that you're going to export things when you only export one thing from your module, which is actually what we're doing in all cases. If you look at replog app helper, we're only exporting one thing so we'll say <export: default helper> and same thing with <routing.js>, <export:default window.routing>.
+Instead of importing *everything*, you can instead say `import { random } from 'lodash'`.
+This uses something called *destructuring* - a little ES6 feature we talked about
+in the previous tutorial. Since `lodash` returns an object with a `random` key on
+it, this syntax sets a new variable called `random` to that value.
 
-In some cases though, sometimes you'll have a module that exports multiple things. For example, you might export two functions. When you do that you can export the function "FU" and you can export the function "BAR." In that case you're not exporting in default value, you're exporting a default value- you're exporting two things. The difference is when you import it, you actually need to import those things by name. Like, <import {FU,BAR} from> instead of just being able to say, like we're doing, <import replog app>. So, most of the time you're going to <export: default> but it is possible you export named things, and when you import them you import them by name as well.
+Of course, we're *not* importing an `_` variable anymore. So, search for `_.random`
+and replace this with just `random()`.
 
-Just a quick check over here, looks like WebPack is still very happy after all of these changes.
+Great! And yea... this is *really* still the same thing we were doing with `require`
+before: importing one part of a library. But... stay tuned!
 
+Our app still works... but we have a problem: our file size! It was 1.32 mb before,
+but with import, it's much bigger! This makes some sense: `import` loads *everything*
+from `lodash`... even if we only *use* the `random` key on it.
+
+## Tree Shaking, import & require
+
+But, dream with me for a moment. What if Webpack were *so* smart that it *knew*
+were were only using this *one* key... and just removed the rest of the code from
+the built file. That would be awesome! Oh, and I have a great name for this imaginary
+feature: tree shaking! Yea, because it would be like Webpack was "shaking" our JS
+and allowing all unused modules to "fall off"!
+
+Wait what? It does exist? And it *is* called tree shaking? Wow! So, I've just been
+informed that Webpack *can* do this! And this is where `import` starts to get really
+interesting. 
+
+When you `require` something, that entire module is included. However, if you `import`
+something and you only use one piece of it, in theory WebPack should perform tree
+shaking to figure out which parts you are using, and remove the rest. But... you'll
+notice that... well, it's not actually doing that!
+
+At the time of this recording, the latest Webpack - version 3.5 - seems to not
+do tree shaking perfectly. It works in some cases, but not others - and there's
+a lot of conflicting info about this. But, I expect it to work better in the future,
+and so I *do* want to use `import` instead of `require` so we can take advantage
+of this.
+
+But for now, I need my smaller file size... and tree sharking isn't helping. So,
+update our line to `import random from 'lodash/random`. That's effectively the same
+thing we had before with `require`.
+
+## Using import Everywhere!
+
+Let's change the rest of our code to use `import`! Since this is a chore, I'll
+speed through part of this. For the CSS, we don't actually need that value it imports.
+So in this case, just say `import` then the filename.
+
+Keep going inside `rep_log.js`: change `require` to `import`. And then in `login.js`,
+and finally `layout.js`.
+
+After *all* that... Webpack is still happy. Amazing! The page still works... and
+our code is trendier and more hipster than ever!
+
+## Using export
+
+What about *exporting* values? Well, at the bottom of `RepLogApp`, change `module.exports`
+to `export default RepLogApp`. Usually, you will only export one value from a module,
+whether that's a class, function or something else. Use `export default` in these
+cases. Let's repeat this in `RepLogAppHelper`: `export default Helper`. And in
+`Routing.js`: `export default window.Routing`.
+
+In some cases, you might have a module that exports *multiple* things, like two
+functions. In that case, you could say `export function foo() {}` and also
+`export function bar() {}`. Instead of exporting a `default`, you're using *named*
+exports: you're exporting `foo` and `bar`.
+
+When you do this, the `import` changes a bit to `import {foo, bar} from`: we use
+destructuring to grab whatever *named* exports we want.
+
+It can look a little confusing at first. Fortunately, most of the time, you'll
+probably export a single, `default` value and import it like we are. But keep
+this in mind.
+
+Next! Let's fix a *big* problem we've been ignoring... the fact that jQuery is packaged
+inside *every* individual built file. Oof, wasteful!
