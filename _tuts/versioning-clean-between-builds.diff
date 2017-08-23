@@ -11,7 +11,7 @@ index 53edf61a..17656092 100644
      "css-loader": "^0.28.4",
      "extract-text-webpack-plugin": "^3.0.0",
 diff --git a/webpack.config.js b/webpack.config.js
-index d048f5ce..35b567ed 100644
+index e8905da5..1158a46d 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');

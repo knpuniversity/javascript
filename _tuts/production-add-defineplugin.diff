@@ -1,5 +1,5 @@
 diff --git a/webpack.config.js b/webpack.config.js
-index 08041c8d..64e5621f 100644
+index 9f11919d..b98e8c7c 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -147,6 +147,12 @@ if (isProduction) {

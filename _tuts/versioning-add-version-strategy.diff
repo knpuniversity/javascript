@@ -13,7 +13,7 @@ index 20d4525e..043ada19 100644
  # Twig Configuration
  twig:
 diff --git a/webpack.config.js b/webpack.config.js
-index 66159438..6e546ed6 100644
+index 36543d46..cf98a439 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -132,6 +132,7 @@ const webpackConfig = {

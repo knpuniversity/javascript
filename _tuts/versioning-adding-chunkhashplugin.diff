@@ -11,7 +11,7 @@ index 5c9ba665..53edf61a 100644
      "webpack-manifest-plugin": "^1.2.1"
    },
 diff --git a/webpack.config.js b/webpack.config.js
-index 6e546ed6..52da5267 100644
+index cf98a439..51cc96a0 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -3,6 +3,7 @@ const webpack = require('webpack');

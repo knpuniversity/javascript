@@ -13,7 +13,7 @@ index f29df9bd..5c9ba665 100644
    "dependencies": {}
  }
 diff --git a/webpack.config.js b/webpack.config.js
-index ab3de489..ee9cf30c 100644
+index f9727d62..475086f3 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -2,6 +2,7 @@ const path = require('path');
