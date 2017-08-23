@@ -144,7 +144,7 @@ element is not exported... a funny way of saying "Variable undefined"!
 
 Fix this: at the top, add `const Helper = require('./RepLogAppHelper')`:
 
-[[[ code('7e7a52598a') ]]]
+[[[ code('abdc01eb32') ]]]
 
 My editor is happy!
 
