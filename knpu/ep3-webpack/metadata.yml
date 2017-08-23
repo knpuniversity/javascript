@@ -25,7 +25,13 @@ chapters:
     - lodash-partial-require
     - es6-import-export
     - commons-chunk-plugin
+    - optimized-commons-chunk
     - webpack-dev-server
-    - hot-module-reload
+    - hot-module-replacement
     - extract-text-webpack-plugin
     - production-build
+    - minify-css
+    - automatic-versioning
+    - versioning-optimization
+    - code-splitting
+    - visualizer

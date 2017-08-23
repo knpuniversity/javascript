@@ -1,17 +1,93 @@
-# Webpack Dev Server
+# webpack-dev-server
 
-Right now we're using the --watchflag as our dev tool, but there's another dev tool available when you use webpack. It's an entirely different library called the webpack-dev-server. So, let's get it installed. Yarn add webpack-dev-server --dev. As soon as that's installed, I'm going to go back to my main tab and, instead of running - and first, I'm actually going to clear out the web/bell directory again - and then, instead of running webpack, run webpack-dev-server.
+To make developing easy, we're using the `--watch` flag on Webpack. But, there's
+another way to make using Webpack awesome: the `webpack-dev-server`. This is a totally
+separate library that works a *bit* like `--watch`... but has some magic up its sleeves.
 
-There's two interesting things here. First, it appears to do the same thing as before. We get the same output. But, it says it's running at localhost:8000. This is actually spun off a web server that will return all of these assets. So I want you to copy that URL. But before we look at it, one very important thing to notice is that if you look in your web directory, web/build is empty. When you use the dev-server, it does not physically write files. Instead, it gives you a web server, localhost:8000, and if you go to any URL, any webpack URL on that, it returns the asset to you. It's a different way of solving the problem.
+First, let's get it installed:
 
-But this one has a couple of interesting advantages. Now, in order to be able to take advantage of this, we're actually going to change all of the assets on our page. Specifically our script tags and our CSS tags to point to that host. So not just /build/layout.js, but localhost:8000/build/layout.js. If you're using Symphony, that's actually pretty easy. If you go up to app - config - config.yml, under the framework key, then assets, set base_url to http://localhost:8080. If you were doing this in a real project, you would probably put that in a config_dev.yml file so it only affects the dev environment.
+```terminal
+yarn add webpack-dev-server --dev
+```
 
-Now, if you refresh the page, even though there was nothing in the web/build directory, it works perfectly. Instead of our source, our script tags are all pointing to localhost:8000. But, there's actually a problem. If you look at your network tab, you'll see a number of 404s inside of here. The most important one is router.js. Inside the html source, that looks correct. But, remember: router.js is not a file that runs through webpack. That's just a normal, physical file that exists in our file system. And, sure enough, if you open that in a new tab, it doesn't work.
+As soon as it finishes, go back to the main tab. Stop Webpack and clear the build
+directory:
 
-So here's the confusing part about the dev server. If you just go to localhost:8080, it actually looks like it's serving files for our project. Except it's serving them from the root of our project. We really want the webpack-dev-server to know that our web directory is our document root. So, for example, if we go to just localhost:8080/faveicon.ico, that should work. That should make perfect sense and that's an easy fix. The only confusing part is that URLs like /build/login.js work. You don't need /web/build/login.js. So anything [inaudible 00:05:21] your webpack works already with the correct URL, but all of our normal static assets, they're messed up and we need to fix that. How?
+```terminal
+rm -rf web/build/*
+```
 
-In your webpack.config.js file, you can add a new devServer key to configure how the new devServer acts. And the most important one is Contentbase set to ./web. So go over and restart the web server. And when we do that, files like login.js, they still work just like before. But if you just go to localhost:8080, it's building from our web directory, which means static asset files work perfectly. So now when we refresh, things are happy again.
+Now, instead of running webpack, run `webpack-dev-server`:
 
-Now, notice that you do see a couple of 404s down here about fontawesome. We're going to talk about that in a second.
+```terminal-silent
+./node_modules/.bin/webpack-dev-server
+```
 
-So, what has this given us so far? In a second we're going to talk about something called Hot Module Reloading, which is really awesome. But already, thanks to this, whenever you make a change, it's going to automatically reload. Which is kind of cool. So, if I change this 2.5 to 10 and hit save, then quickly switch back, you'll see it actually reload the page automatically for me once it's done compiling. I didn't hit refresh there. That's cool, but really - Hot Module Reloading - that's what makes the devServer awesome.
+OooOOOooo. I want you to notice two things. First, it *appears* to do the same thing
+as Webpack, building all of our assets. And second, it says that it's running on
+`localhost:8080`. Yea, this created a new web server that returns our Webpack assets.
+
+Let me show you: copy that URL. But before try it, look in `web/build`. Holy cow!
+It's *empty*! When you use `webpack-dev-server`, it does *not* physically write
+any files! Instead, it runs a web server - `localhost:8080`. And when you navigate
+to the URL of one of our output files... there it is! 
+
+## Pointing our App at the dev server
+
+To use this, we need change all of our assets - all of our `script` and `link` tags
+to point to that host. Yep, instead of `/build/layout.js`, this script tag needs
+to be `http://localhost:8080/build/layout.js`. If you're using Symfony, you're in
+luck! Seting this up is easy.
+
+Open `app/config/config.yml`. And, under the `framework` key, then `assets`, set
+`base_url` to `http://localhost:8080`. If you were doing this in a real project,
+you would probably put this in `config_dev.yml` instead, so that it only affects
+the `dev` environment.
+
+Let's try it! Refresh the page! Ha! Even though there are *no* physical files in
+`web/build`, this works! All of our assets now point to `http://localhost:8080`.
+
+## webpack-dev-server Static Assets
+
+But... there's a problem. Look at the network tab. Hmm... there are a few 404's,
+including for `router.js`. In the HTML source, hmm, the path looks correct. But
+remember: `router.js` is a normal file: it is *not* processed through Webpack.
+
+Open the URL in a browser. Yep, it does *not* work. The `webpack-dev-server` correctly
+services our *built* assets... but it apparently does not serve normal, static assets.
+
+Here's the confusing thing about the dev server. Go to just `http://localhost:8080`.
+Huh, it looks like *can* serve static files from our project. Oh... but it's serving
+files from the *root* of our project. The `webpack-dev-server` doesn't know that
+the `web/` directory is our document root. So, in a perfect world, we should be
+able to go to `http://localhost:8080/favicon.ico`, not `/web/favicon.ico`. That's
+something we can easily fix.
+
+The only confusing part is that URLs like `/build/login.js` *do* work... you don't
+need `/web/build/login.js`. Basically, Webpack-processed URLs already have the correct
+URL, but static assets don't. 
+
+## Setting contentBase
+
+So how do we fix this? In `webpack.config.js`, add a new `devServer` key. The most
+option we need is `contentBase` set to `./web`.
+
+Go restart the dev server:
+
+```terminal-silent
+./node_modules/.bin/webpack-dev-server
+```
+
+*Now*, files like `login.js` still work. But go back to `http://localhost:8080`.
+Perfect! It's looking at the `web/` directory. And that means that the dev server
+can now serve our static assets.
+
+When we refresh, the router 404 is gone! There are a few 404's still for some font
+awesome assets, but we'll fix that in a minute.
+
+Anyways, compared to using `--watch`, this is pretty similar. Make a change, like
+the darken from 2.5 to 10. Hit save and then quickly switch over to your browser.
+See it reload? I didn't do that: the dev server is automatically reloading for me.
+
+That's cool... but the *real* reason to use the dev server is for Hot Module Replacement,
+which is *amazing* and our next topic.
