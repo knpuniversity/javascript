@@ -19,7 +19,7 @@ Webpack supports the original `require` and `module.exports` and the ES6 syntax.
 But, `import` and `export` have a few subtle advantages... other than being newer
 and shinier.
 
-But mostly, they work the same! Instead of `const _ = require()`,say
+But mostly, they work the same! Instead of `const _ = require()`, say
 `import _ from 'lodash'`.
 
 When we do, Webpack is still happy... *and* our app still works!
@@ -69,14 +69,14 @@ a lot of conflicting info about this. But, I expect it to work better in the fut
 And by using `import` instead of `require`, we're opting into tree shaking... if
 and when it works.
 
-But for now, I *do* want a smaller file size. And since tree sharking isn't helping,
+But for now, I *do* want a smaller file size. And since tree shaking isn't helping,
 update the line to `import random from 'lodash/random`. That's effectively the same
 thing we had before with `require`.
 
 ## Using import Everywhere!
 
 Let's change the rest of our code to use `import`! Since this is a chore, I'll
-speed through part of this. For the CSS, we don't need that value it imports. So,
+speed through part of this. For the CSS, we don't need the value it imports. So,
 just say `import` then the filename.
 
 Keep going: inside `rep_log.js`, change `require` to `import`. And then in `login.js`,

@@ -30,7 +30,7 @@ Uh oh... it did *not* like that:
 
 It's coming from `router.js`, line 8. Huh. If you look at this file, well, it's
 minified... so it's pretty confusing. This file is built using something called
-the Google Closure compiler... which basically means that it does *not* play nice
+the Google Closure compiler... which basically means that it does *not* play nicely
 with `require`. I *hope* this will be fixed in the library soon - there's a pull
 request open for it. But right now... well, there is no simple way to `require` it.
 

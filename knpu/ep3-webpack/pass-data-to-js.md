@@ -15,7 +15,7 @@ We could create a JavaScript variable and use Twig to print out all the rep logs
 into that variable. Yep, mixing Twig and JavaScript is kinda handy.
 
 But obviously... we can't start writing Twig code right in the middle of `RepLogApp.js`.
-Sign, nope, we need a *new* way to communicate from our server to JavaScript. And
+Sigh, nope, we need a *new* way to communicate from our server to JavaScript. And
 there is a *great*... and simple solution.
 
 ## Refactoring initialRepLogs to an Argument

@@ -2,7 +2,7 @@
 
 Restart Webpack! Woh, those JavaScript files are huge! And there's a really simple
 reason why: jQuery. Yep, `login.js` imports `jquery`, `rep_log.js` imports `jquery`,
-and `layout.js`? Yep, it imports `jquery` too. Thats good! We use it in each module.
+and `layout.js`? Yep, it imports `jquery` too. That's good! We use it in each module.
 But, it means that `jQuery` is packaged in *each* output file individually. That's
 *super* wasteful! Instead, jQuery, well, really *any* code that's needed on most pages,
 should probably live in its *own* file that's included on every page, and *removed*
@@ -69,7 +69,7 @@ though this module is only needed for login, it will now be included in `vendor.
 That means your users will need to download this giant module *just* to see the homepage...
 even though the homepage doesn't use it!
 
-Yep, you need to find a balance between small entry file and a small vendor file,
+Yep, you need to find a balance between small entry files and a small vendor file,
 since it's included on every page.
 
 I'll show you *my* favorite setup next.
