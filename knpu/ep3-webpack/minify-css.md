@@ -1,27 +1,137 @@
-# Minify CSS
+# Minify CSS & DefinePlugin
 
-Compile your webpack in production mode with yarn production. We already know that this minifies our JavaScript but it does not minify our CSS yet. You can see everything is just fully expanded still. That makes sense because webpack handles JavaScript but it doesn't really handle CSS. It's our loaders than handle the CSS. Specifically the CSS loader has a minimize option that we can pass to it. But very typically you're going to see it done a slightly different way with a plugin.
+Compile webpack in production mode with:
 
-This can be a little confusing so I want to show it. Down at the bottom of my plugins list, down inside my production loop, I'm going to say webpackConfig.plugins.push with new webpack.LoaderOptionsPlugin. To this we're going to pass minimize: true which is the really important one, and another one called debug: false. All right, so what the heck does that do?
+```terminal
+yarn production
+```
 
-This plugin passes these options to all loaders, which initially shouldn't make sense. If I want to pass a minimize option to a loader, I should just pass them to the loader, and that's correct. But in webpack version 1, the way that you configured loaders was a little bit different, and when webpack 2 and 3 came out, not all loaders were necessarily upgraded to allow you to pass options to them in the new way. Basically, this makes sure that you're passing minimize: true, which his the really important one, and also debug: false flag, which also seems like it might be important, to all of our loaders. In the future we'll probably get rid of this, but it takes care of passing the minimize: true to the CSS loader for us, which actually we're going to do ourselves in a second anyways just to be sure.
+This minifies the JavaScript files... but does *nothing* to our CSS. Yep, everything
+is still fully expanded. That makes sense: Webpack handles JavaScript... but it
+doesn't handle CSS. That's done with the loaders.
 
-But if we just do that, rerun yarn production. If you scroll up, you can see now for example our login.css is only 5 kilobytes, and it is definitely minified. Of course, it still has these source map which is actually taking up more space than the CSS itself. We want to get rid of our source map in the production build. Actually, there are two opinions on this. Some people say that you should continue to output the source map in production, but use a different type of source map that outputs to a file so that it's not part of your actual production build.
+But! The `css-loader` has a `minimize` option. If we set it to true, it will use
+a library called [cssnano](http://cssnano.co/) to make things... well... nano!
 
-I'm going to turn source maps off entirely inside of my production environment instead. On top of my file, to make this really easy, let's add a ... On the top of my file, I'm actually going to move up my settings that I created earlier above my loaders, then add two new ones. const isProduction = ... then I'll copy the inside of our if statement down below and paste that here. Another one called const useSourcemaps = !isProduction. Very simply, instead of the sourceMap true on all of our loaders, we'll just change that true to the variable. We've now disabled source maps for CSS in production mode.
+## css-loader, minimize & LoaderOptionsPlugin
 
-Near the bottom, remember we also have the devtool option which adds source maps for JavaScript. So same thing, I'll say useSourcemaps and then we'll use the inline-source-map else we'll set source maps to false. Finally, down below in our if statement, I can use the simpler isProduction flag.
+Setting an option on `css-loader` is easy! But... first, I need to show you a
+*different* way to set this option...
 
-Check this out. Before we had 211 kilobytes for our layout.js and 712 kilobytes for our layout.css. Let's try it again. When that's done, scroll up. You can see our layout.css is much smaller. You notice the layout.js is actually not smaller and that's because it already didn't have source maps set in it due to the uglify plugin which removes extra comments.
+Go down to the production if statement. Add a new plugin: `webpackConfig.plugins.push()`
+with `new webpack.LoaderOptionsPlugin()`. Pass this two options: `minimize: true`
+and `debug: false`.
 
-Remember, we used the LoaderOptionsPlugin down here to pass minimize true. What we really wanted to do ... that was just a lazy way of passing that to our cssLoader which is really the one responsible for minifying CSS. If you Google for css-loader and find its GitHub page, and search on here for minimize, you'll see these are the options that you can pass to the CSS loader. Minimize is the key one. Very simply, I'm going to add up here minimize: isProduction just so we have the direct, real way of setting that option.
+Ok, what the heck does this do?
 
-Okay, so we're done. We have removed source maps. We have minimized our JavaScript and our CSS. There's one last little detail that we want to take care of. Google for webpack defineplugin. This is a very interesting plugin. Basically it allows you to define constants in your code. If you scroll down a little bit, here's a really good example. Let's say that in your code, you actually want to know whether you are in production mode or not, because maybe you do more logging if you're in production.
+Basically... this plugin will pass these two options to *all* loaders. Wait... why
+do we need that? I mean, if we want to pass `minimize: true` to `css-loader`...
+can't we just scroll up and add that option? Yes! The plugin exists to help some
+older, legacy loaders work with new versions of Webpack. And honestly... it may not
+even be needed anymore. But, I still add it just in case.
 
-In your code, you could use some constant called production, which you never set in your code. But then in your webpack config, you can use the define plugin to say that production should be set to true. What happens is webpack actually rewrites your code, so if you normally have if !production in your code, the final built code will say if !true because it will actually replace the value of production with true. It's actually going through our code and rewriting it. This is a really cool feature and you can use it, as the documentation says down here, for feature flags even.
+The `minimize: true` option is important for `css-loader`. And in a few minutes,
+we're going to pass that option manually to that loader anyways. The `debug` flag
+toggles "debug" mode on each loader... which I'm pretty sure doesn't even do anything
+anymore.
 
-We're going to use it in a slightly different way. Down at the bottom of our configuration, in the isProduction block, we're going to say webpackConfig.plugins.push and new webpack.DefinePlugin, passing to that 'process.env.NODE_ENV': JSON.stringify('production'). There's a couple things going on here. First of all, you always wrap the values in JSON.stringify with a define plugin because it does an actual perfect search and replace, so you need to make sure that your string is wrapped in quotes. JSON.stringify is a really convenient way to do that.
+But thanks to this, we're ready to see our minified CSS! Re-run:
 
-Sometimes when you use third-party libraries, in those third-party libraries, they will actually check for process.env.NODE_ENV and check to see if it equals production. They'll actually do the same thing we're doing in our webpack config file. Of course when you're running JavaScript in a browser, there is no process.env.NODE_ENV and so sometimes this can cause third-party code to run in development mode instead of production mode. For example, it might do more logging or it might do things a little bit less efficiently. By adding this, if some third-party library uses node environment, this will replace it with the string production. Effectively, you will have if statements that say if production === 'production', then do something. This is what we want.
+```terminal
+yarn production
+```
 
-In our code it won't make any noticeable difference. When you run yarn production one last time, you'll still see everything built in its smallest format. We have a ready-to-go production build.
+Scroll up! Yes! `login.css` is only 5 kb! It is definitely minified! Of course...
+it still contains a giant sourcemap! Heck, that's bigger than the CSS itself!
+
+## Disabling sourcemaps
+
+We should probably remove the sourcemaps in the production build, right? Well,
+there are two opinions on this. Some people say that you *should* continue to
+output the sourcemaps in production... just in case you need to debug something.
+But, they use a different sourcemap option that outputs to a separate *file*. We
+want our CSS and JS files to *just* contain CSS and JS.
+
+Personally, I typically turn sourcemaps off entirely for production. Go to the top
+of `webpack.config.js`. Let's move our settings variables above the loaders. Add
+two new variables: `const isProduction =` ... then go copy the inside of our if statement,
+and paste it here. Next, add `const useSourcemaps = !isProduction`.
+
+Use that below! Set the `sourceMap` option for each loader to `useSourcemaps`. Oh,
+except for `sassLoader` - keep that `true` always... even though I just messed that
+up! Remember, `resolve-url-loader` needs this. Don't worry, the sourcemaps won't
+actually be rendered... since that option is set to false on `css-loader`.
+
+Yep, we have now disabled sourcemaps for CSS in production.
+
+Next, near the bottom, find the `devtool` option. Change this: if `useSourcemaps`,
+then set it to `inline-source-map`. Else set this to false.
+
+Oh, and down below in the if statement, we can use the new `isProduction` variable!
+
+Let's try it. Right now, `layout.js` is 211 kilobytes and `layout.css` is 712 kilobytes.
+Run the production build!
+
+```terminal-silent
+yarn production
+```
+
+Ok! Scroll up. Yes! `layout.css` is much smaller. But, `layout.js` is the same.
+Ah, that's because Uglify was *already* removing the extra sourcemap comments.
+
+## Adding minify to css-loader directly
+
+We're in *great* shape. Just two more small things. First, Google for `css-loader`
+to find its GitHub page. Search for `minimize`. Cool! These are the options we can
+pass to the loader. The important one is `minimize`. Right now, we're setting this...
+but in a weird way: by using the `LoaderOptionsPlugin`. To be more explicit, let's
+set it for real: `minimize: isProduction`.
+
+If we decide the `LoaderOptionsPlugin` isn't needed some day, our CSS will stay minified.
+
+## The DefinePlugin
+
+Ok! Our code is minified and sourcemaps are gone. There's just *one* more thing
+we need to do to fully optimize our assets! Google for the Webpack
+[DefinePlugin](https://webpack.js.org/plugins/define-plugin/). This is a *very*
+cool plugin.
+
+It allows you to define constants in your code. Here's a good example. Imagine you
+want to know in your JS code whether or not you're in production... maybe because
+you do some extra logging when *not* in production.
+
+In your code, you would use a constant called `PRODUCTION`. But insted of *defining*
+that somewhere in your JS, you can let the `DefinePlugin` do that for you. With
+this config, Webpack actually *rewrites* your code! If it sees `!PRODUCTION`,
+the final built code will say if `!true`. It literally replaces the `PRODUCTION`
+constant with the word `true`.
+
+## DefinePlugin: process.env.NODE_ENV
+
+The plugin is *perfect* for something like this, or even feature flags. But it's
+almost important for your production build. Down in our production section, add
+the plugin: new `webpack.DefinePlugin()`. Pass it
+`process.env.NODE_ENV` set to `JSON.stringify('production')`.
+
+There are a few things happening. First, you must *always* wrap the values to this
+plugin with `JSON.stringify()`. The plugin does a literal find and replace... so if
+the value is a string, it needs to be wrapped in quotes. `JSON.stringify` is an
+easy way to do that.
+
+But why do we need this at all? Sometimes, a third-party library will try to determine
+whether or not it is being used in production or development... maybe so that it
+can add more helpful error messages. To do this, it will often do the same thing
+we're doing: check to see if `process.env.NODE_ENV === 'production'`.
+
+But... that won't work! In a browser environment - which is where all of our actual
+JavaScript runs - there is *no* `process.env.NODE_ENV`! This causes that code to
+always run in development mode.
+
+Thanks to the plugin, if any code checks for `proces.env.NODE_ENV`, it will be replaced
+with the string `"production"`. Yep, the final JS would literally contain code
+that looked like `if ("production" === "production")`!
+
+In our app, this won't make any noticeable difference. But, our production build
+is ready-to-go.
+
+Now, let's turn to asset versioning!

@@ -53,7 +53,7 @@ Why is that a problem? Caching.
 We're going to talk more about caching and versioning later. But for now, let me
 just say this: you don't want the contents of a built file to change unless it actually
 *needs* to change. Why make your user re-download a fresh `layout.js` file... if
-nothing really changed inside it?
+nothing important changed inside it?
 
 ## Extracting the Manifest
 

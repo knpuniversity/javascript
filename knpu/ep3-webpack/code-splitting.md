@@ -1,28 +1,157 @@
-Head over to the login page. I mentioned earlier that if you type a really long username here, you get this little error popup. I want to look at that code. It's in assets, js, login.js. Down here. Key down, our length is longer than 20 and we add this warning. I'm about to show you a absolute killer feature of Webpack that we've not been taking advantage of yet. I want you to pretend the code that runs whenever the username is longer than 20 is really, really big. So big that it's really wasteful to have a user download it, just in case they ever type a username longer than 20.
+# Code Splitting
 
-In a perfect world, these two lines here, or maybe there are many more lines, would only actually be downloaded by the user if and when they type a username that is too long. That is actually possible with Webpack. It's called code splitting. First, I'm going to do a little bit of refactoring. In our components directory, I'm going to create a new file here called username, underscore validation, underscore error, dot js. Here we're actually going to export a function.
+Go to the login page. If you type a *really* long username, we yell at you! Yes,
+we value brevity!
 
-Export default function. Take a username input argument. Then I'm going to move these two lines here over to our new function. I'm just reorganizing my code here. Then I'll change the dollar sign open parentheses this to username input. Which will be the same thing as before. Now, in order to get our code to still work, of course at the top we need to import username, underscore validation, underscore error, from dot slash username, underscore validation, underscore error.
+Look at the code behind this: `assets/js/login.js`. If the length is longer than
+20, we add the warning.
 
-Down below, inside of here we can simply say username, validation error, open parentheses, then pass it, open parentheses, this. Maybe we can do a console.log on username validation error. In theory, that's the same thing as before. Make sure you have components on your file name, as well. Perfect. I already have my watch script running here. You can see it was unhappy until I made that fix. I can refresh our login page, and it still works perfectly. Now that we have this isolated to its own module, we can actually have it be lazily loaded with code splitting.
+## Code Splitting?
 
-There are two syntaxes to do code splitting. The old one is called require dot ensure. I'm not going to show you that one. I'm going to show you the new one that uses import. Ultimately, they're the exact same thing. Here's how it works. Down here inside of my if statement, this is the moment when I actually need to load my username validation error module. I'm actually going to say import, and use it like a function. Here I'm actually going to copy my dot slash component slash username validation error line, and delete the import, and pass that as the first argument to import down here.
+Guess what? Webpack comes with an absolutely *killer* feature... and I've been
+keeping it a secret! No more! For this to make sense, I want you to pretend that
+the code that adds the long username warning is really, really big. I literally
+mean, imagine the code inside the `if` statement is *many* lines... instead of just
+two.
 
-When you use import in this way, it returns a promise. You can say dot then, and then for each argument you pass to import you can have an argument to your callback function. I'll say username validation error, and I use our equal arrow, open curly. Then I'll move our code inside of there. Conceptually, this sort of makes sense. We're going to import the username validation error, but since that's going to need to download via ajax, it's not going to happen instantly, so you pass it a callback, which is going to pass as that module.
+In this situation, it's *really* wasteful to force the user to download all that
+extra JavaScript... just in *case* they *ever* type a long username! 
 
-We should be able to use it like normal. Now, if you check out Webpack, whoa, it is super unhappy. Module build failed, syntax error, import and export may only appear at the top level. It's very unhappy with the import right here. Using import like we have been at the top of the file, that is in ECMAScript standard. It's in ES6. Using import down here for code splitting, that is not yet part of the ECMAScript standard. It's a draft, but it's not officially part of the standard yet. This error's actually coming from Babel. It's trying to transpile our javascript.
+In my perfect world, these two lines - or these *many* lines, in our imaginary
+situation - would *only* be downloaded by the user if and when they type a long
+username. Yes, I want to *lazily* load parts of our JavaScript!
 
-It's basically saying, this is not valid javascript. This is a little interesting. What we basically want to do is, we want to tell Babel to ignore this. Basically, we want to teach Babel that this is a balanced syntax, but not to do anything with it. To leave it so that Webpack can parse it and do what it needs to do with it. In order to do that, in our open tab run yarn add babel, dash plugin, dash syntax, dash dynamic, dash import. This is a plugin for Babel that makes it understand that dynamic import syntax.
+With Webpack, this is possible! It's called code splitting.
 
-Once it's installed, to activate it you'll go into your dot babelrc file. In addition to presets, the other common thing you'll have inside of here are called plugins. We'll very simply say syntax, dash dynamic, dash import. It's not that Babel will parse that syntax and do something with it, it just won't err on it. It will leave that syntax alone, so that Webpack can read the import itself. Flip back over, find your second tab, and let's restart Webpack just to be safe. This time it's happy. I'm actually going to go to inspect element, to bring up my network tab, and then refresh.
+## Refactoring to a Module
 
-Then I'm going to clear out my network tab. So far, no errors. Everything looks good. Then let's type a really long file name. Whoa, check this out! Check this out! I don't see the error message here. It's not working, but you can see it actually made an ajax request for our script tag. Look inside of it. Yeah, it's Webpack five, but this is that lazy module. It lazily downloaded it. That's amazing. Why didn't it work? If you look at our log here, you can see a whole bunch of errors that say, username validation error is not a function.
+To use code splitting, you first need to move the conditional code to a new module.
+In the `Components/` directory, create a new file called `username_validation_error.js`.
+Export a default function with a `$usernameInput` argument.
 
-On top, you can actually see our console.log that we did. We kind of would expect the console.log to be a function, right? Because what we're exporting from our module is a function. Instead, it's actually an object with a key on it called default, and that is the function. This is a little weird gotcha with code splitting. When you export things as default, they actually come to you on a default key. In other words, to get this to work, you actually need to say username validation error, dot default. Then pass it the argument.
+I'll move the two lines from `login.js` over to this new function. And I'll change
+`$(this)` to `$usernameInput`.
 
-Now when we refresh, type our long file name, it works. You can see in the network tab, it's downloading our javascript file. That is code splitting. We can also use it for CSS. Look inside of assets CSS. Login that CSS. All the way in the bottom, you see this last entry here for login long username warning? That exists only to style this box. Just like with javascript, that's not really needed on the page unless the user types a long file name. I'm going to remove that and then create a new CSS file called login long username warning error dot CSS, and paste it there.
+To use the new module, back in `login.js`, add `import username_validation_error`
+from `./Components/username_validation_error`.
 
-Then inside of our javascript file, that CSS is really a dependency of this file. I'm going to say import, dot dot slash, dot dot slash, CSS slash, login long username dot CSS. It's so pretty. Now when we refresh the page, the original login dot CSS does not contain that extra CSS. We've made our CSS file slightly smaller. If we type a really long username, let's refresh and try again. This time it works perfectly. I actually can explain what happened there. That's one of the first times I've seen the watch task seemingly not rebuild correctly. Anyways, now it's working. If you look at the javascript it downloaded, you'll see it actually contains ... Our CSS in the bottom.
+And below, just, `username_validation_error($(this))`. Let's also log the imported
+module... which should be a function. Oh, and make sure you have `Components`
+in your import!
 
-Then it's being injected on the page via a good, old-fashioned style tag. Via basically, a style tag. It's using this weird blob thing. That's a fancy way for it to stick in the CSS. What's happening here is, remember the extract text plugin by default, does not extract code split CSS. If we use code splitting with CSS, it does not make it into the final CSS file. Instead, it uses our fallback styleLoader. That's what that file fallback was for. When you use code splitting with CSS, it's going to ultimately fall back to the styleLoader, which is exactly what you want. Say hello to code splitting.
+Over in my Webpack tab, once I finished, Webpack was happy. Refresh the login page
+and .... yep! It still works. Code refactoring complete!
 
+## Using the delayed import()
+
+To add code splitting, Webpack has two syntaxes... and both work the same. The
+first is called `require.ensure()`. The second - the one I want to show you - uses
+`import`.
+
+Down in the `if` statement, this is the moment when I actually need to load my
+`username_validation_error` module. Add `import` here... but use it like a function.
+I'll copy the `./Components/username_validation_error` module path, delete that
+import line entirely, and pass that as the first argument.
+
+When you use `import` like this, it returns a `Promise`. Hey, we know about those!
+It means that we can say `.then()` and pass a callback. The argument will be the
+imported module. So, `username_validation_error`. Move the code inside of the callback.
+
+Yea... I like this! It feels like... and well.. *is* an AJAX call! We're saying:
+
+> Good afternoon Webpack! Could you please download the `username_validation_error`
+> module via AJAX and then execute my callback when it's ready.
+
+It shoudl work... but go look at the Webpack terminal. Ah! It's SO angry!
+
+> Module build failed. Syntax error: import and export may only appear at the
+> top level.
+
+## The dynamic import Proposal
+
+Hmm. It's very unhappy about the `import`: it says that this is only allowed to live
+at the *top* of the file!
+
+Here's the story: when you use `import` at the top of the file - like we've been
+doing until now - we're using a real, official ECMAScript feature - it's in ES6.
+But when you use `import` like a function... well... that's *not* part of ECMAScript!
+Well, not yet. That functionality is just a *propsal* called dynamic import.
+
+The parse error comes from Babel: it tries to parse our code, but sees this code
+as invalid. And technically, it's right! 
+
+## Making Babel like dynamic imports
+
+So here's the plan: we need to *teach* Babel that this syntax is valid... but not
+to do anything with it. I mean, it should *not* have an error, and it should leave
+the `import` function there so *Webpack* can parse it.
+
+Doing this is *easy*: Babel is *super* configurable. In our open terminal, run:
+
+```terminal
+yarn add babel-plugin-syntax-dynamic-import --dev
+```
+
+This is a plugin for Babel that makes it understand the dynamic import syntax.
+
+Once it's installed, to activate it, open your `.babelrc` file. In addition to
+`presets`, the other common thing you'll add here is `plugins`. Pass it one:
+`syntax-dyamic-import`.
+
+Now, Babel will at least understand this as a valid syntax.
+
+Go back to the terminal that's running Webpack and restart it... just to be safe:
+
+```terminal
+yarn watch
+```
+
+Yes! It's happy! Back in the browser, bring up the network tab and refresh. Ok, I'll
+clear this out. Now, type a really long filename.
+
+Woh! Check it out! I don't see the error message... but it *did* make an AJAX request
+for a script tag! And look inside! Yea! This is our code-split module!
+
+## Using the .default Key
+
+Great! Except... for the fact that it didn't work! Check out the console. Above the
+errors, remember, we logged the module. But... it's not a function! What!? It's an
+object... with a key called `default`... and *that* is the function!
+
+This is a gotcha with code splitting. When you export things as `default`, the module
+will *actually* live on a `default` key! No big deal: to get things to work, say
+`username_validation_error.default()`.
+
+Refresh again! Type a long username... and... woohoo! There's our warning! And
+it was loaded via an AJAX call. Hello code splitting. And though it looks really
+fast, in a real app, you may want to add a loading animation... like with any other
+AJAX call.
+
+## Code Splitting CSS
+
+And, I have more good news! You can *also* code split CSS! Open `login.css`. At the
+bottom, yep, this *last* CSS rule only exists to style the warning box. Just like
+with our JavaScript, it's wasteful to make the user download this... when they might
+not need it!
+
+Remove that CSS and create a new file: `login-long-username-error.css`. Paste
+it here.
+
+Now, inside `username_validation_error.js`, that CSS is really a dependency of *this*
+module. So, add `import '../../css/login-long-username-error.css`.
+
+When we refresh now, `login.css` does *not* contain that extra code. Yep, we've made
+that file slightly smaller. But when we try a really long username... it works! Look
+at the downloaded JavaScript file. Yes! It *contains* the CSS, down at the bottom.
+
+When the JS file loads, the CSS is being injected onto the page via a traditional
+style tag. Well, it's a weird blob actually... but conceptually, this is a `style`
+tag with that CSS.
+
+Oh, remember the `extract-text-webpack-plugin`? Well, by default, it does *not* extract
+any CSS that has been code split. Nope, any code-split CSS is instead passed to
+the `fallback` loader: `style-loader`. In other words, code-split CSS is packaged
+into JavaScript and added to the page when that JavaScript file is downloaded.
+
+So next time you have some conditional code... think about code splitting: you could
+drastically reduce the size of your assets!

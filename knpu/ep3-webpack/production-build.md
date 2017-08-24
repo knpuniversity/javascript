@@ -1,26 +1,104 @@
 # Production Build
 
-So, one big missing piece right now is that all of our built assets are not minified; they include lots of comments; basically they're not optimized at all for production. So we need to prepare a production build, which minifies everything. So, that means that we actually need to know inside of our webpack.config.js file whether we want to compile things in a development mode right now or in a production mode.
+During development, we are *not* minifying our assets: yep, they're full of comments
+and spaces. And that's perfect for development! I like spaces! And those comments
+might be useful! Also... minification takes extra time, so we don't want to slow
+down our builds unnecessarily.
 
-Now the way ... There's a really common way to do this in node applications and it's by setting an environment variable called node_env. The way read that inside of node, is by saying process.env.node_env.
+In other words, while developing, no minification! But for production, yes minification!
+That means that - somehow - we need to be able to pass a flag to `webpack.config.js`
+that tells it to compile in dev or production mode.
 
-So, let's just dump that out. Now right now if you just run webpack like normal, you'll see that that prints out as undefined. So how do we set that? Well if you're on a Unix file system, before the command you say NODE_ENV=production and then the command.
+## Using NODE_ENV
 
-And then it prints production. If you're on Windows, there's also a library called cross env, which is gonna help you do that. The point is we can send a flag into webpack to figure out what the environment is. This is awesome!
+In Node applications, there's a standard way to *signal* the environment to your
+apps: by setting an environment variable called `NODE_ENV`. To read this, you can
+say `process.env.NODE_ENV`.
 
-So, first thing we're gonna do is minify our java script. And there's a plugin to do that called Uglify JS. So instead of saying module that exports here, I'm actually gonna set a variable called webpack. So I'll say const webpack = ... const webpackconfig = and then all the way at the bottom I'll add module.exports = webpackconfig.
+Let's log that. Tun webpack like normal:
 
-But now before that we can add "if" statements that says, if process.env.node_ENV === production. Then we're going to add that plugin, which is very simply webpack.config.plugins so we can add to our existing plugins key dot push.
+```terminal-silent
+./node_modules/.bin/webpack --watch
+```
 
-Inside here, we'll say new webpack.optimize.UglifyJSplugin. And that is it. So let's check this out. But if you're running webpack like normal, it's not going to apply the Uglify plugin, which gives us assets of, let's see, layout.JS is 1.62 megabytes. If you stop that and re-run it with the flag, you'll notice it takes a little bit longer to run, which makes sense. And the Java Script files are way way smaller.
+Ok! It prints undefined. So... how do we set that? On a UNIX system, prefix the
+command:
 
-And you can prove it by opening any of those login.JS files and yup, there is one beautiful line. So of course remembering how to run that long command is kind of a bummer. So there's a really cool feature inside of node that we can take advantage of.
+```terminal
+NODE_ENV=production ./node_modules/.bin/webpack --watch
+```
 
-Open up your package.json. And one of the keys you're allowed to have in here is called "scripts", Which is set to an object. Inside of here you can put something like Dev and we'll set that to node_ENV = Dev webpack. So just by having that, we can now go over here and run yarn run ... just yarn dev. And it runs node_ENV = Dev webpack and we don't have to say node module/ dot bin/webpack. Here we can just say webpack and it knows to run that from inside of our node modules directory.
+Yes! It prints `production`. If you're on Windows, there's a library called `cross-env`
+that can help do this.
 
-And you can see that our layout files is huge again. So let's add two more here. Let's add a watch script, which will be the same thing as that but with a -- watch flag on the end. And we'll add one more called production. We'll set the node ENV to production.
+The point is: we can now send a flag into Webpack to tell it the environment.
 
-Awesome. So with this, we can say yarn watch, which runs it with a -- watch flag. I'll stop that. Or more importantly for our case we can run yarn production. Can see the command it's running. It's setting our environment variable. It's super short. And then we see our super small layout.JS file.
+## Minify JavaScript
 
-So our isn't done yet 'cause we still need to take care of CSS files and a few other things.
+Awesome! Let's use this flag to minify our JavaScript first, via a plugin.
 
+Start by replacing `module.exports` with a new variable: `const webpackConfig =`.
+Then, all the way at the bottom, export this: `module.exports = webpackConfig`.
+
+Before that, add an if statement: if `process.env.NODE_ENV === 'production')`, then
+we will add a new plugin. So, `webpackConfig.plugins.push()` then
+`new webpack.optimize.UglifyJsPlugin`. And... that's it!
+
+Try it! Run webpack without the NODE_ENV flag first:
+
+```terminal-silent
+./node_modules/.bin/webpack --watch
+```
+
+Ok cool. The un-uglified `layout.js` file is 1.62 megabtyes. Stop and re-run in production:
+
+```terminal-silent
+NODE_ENV=production ./node_modules/.bin/webpack --watch
+```
+
+Ahh... this takes longer to run! But, the JavaScript files are way, way smaller!
+
+Open up the built `login.js`. Ah, yes, one *beautiful*, single line.
+
+***TIP
+License comments from outside libraries are *not* removed from the Uglified files
+for legal reasons. To remove them, see the [extractComments option](https://github.com/webpack-contrib/uglifyjs-webpack-plugin#extractcomments).
+***
+
+## Adding package.json scripts
+
+But, remembering this long command is a bummer. Heck, the command was *already*
+long, *before* adding the `NODE_ENV` stuff! My fingers are so tired...
+
+There's a *great* way to improve this. Open `package.json`. Add a new key called
+`scripts` set to a hash. Inside, you can put something like `dev` set to
+`NODE_ENV=dev webpack`.
+
+Thanks to that, we have a shortcut! Just run:
+
+```terminal
+yarn dev
+```
+
+Yep, *it* runs `NODE_ENV=dev webpack`! And we don't even need to say
+`node_module/.bin/webpack`: the `scripts` know to look there already for `webpack`.
+
+Let's add two more: `watch` set to the same thing with `--watch` on the end. And
+finally, `production`, with `NODE_ENV=production`.
+
+I love it! Try them out:
+
+```terminal
+yarn watch
+```
+
+Nice! Stop that, and try:
+
+```terminal
+yarn production
+```
+
+The command looks right... and the final JavaScript files are super small.
+
+But! Our work isn't done yet: we still need to minify the CSS files... *and* handle
+a few other things.

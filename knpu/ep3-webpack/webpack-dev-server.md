@@ -35,7 +35,7 @@ to the URL of one of our built files... there it is!
 
 ## Pointing our App at the dev server
 
-To use this, we need change all of our assets - all of our `script` and `link` tags
+To use this, we need to change all of our assets - all of our `script` and `link` tags
 to point to that host. Yep, instead of `/build/layout.js`, this script tag needs
 to be `http://localhost:8080/build/layout.js`. If you're using Symfony, you're in
 luck! Doing this is easy.
@@ -57,7 +57,7 @@ Open the URL in a browser. Yep, it's broken! `webpack-dev-server` correctly serv
 our Webpack-built assets... but it apparently does not serve normal, static assets.
 
 Here's the confusing thing about the dev server. Go to just `http://localhost:8080`.
-Huh, it looks like *can* serve static files from our project. Oh... but it's serving
+Huh, it looks like it *can* serve static files from our project. Oh... but it's serving
 files from the *root* of our project. `webpack-dev-server` doesn't know that the
 `web/` directory is our document root! Yea! We need to tweak things so that we're
 able to go to `http://localhost:8080/favicon.ico`, not `/web/favicon.ico`. We can

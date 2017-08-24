@@ -1,36 +1,110 @@
-# Visualizer
+# Webpack Visualizer
 
-All right. Last part. Let's do something fun with Webpack. One of the things that was weird for me when I first started using Webpack is to stop thinking about exactly what files need to go in exactly which output file, and just to start thinking about building nice modules that require whatever they need. Webpack takes care of the rest.
+You've made it to the end! So let's do something fun!
 
-However, there is sometimes, especially when working with your shared entry, where you might not really have an optimum setup. For example, you might have ... Maybe there's a module you're using over and over again that you should move into your commons entry, for us, layout.js. Or maybe you're requiring a huge library, and you only need to use a small part, and you don't realize it.
+The *cool* thing about Webpack is that it allows you to just *code*: import modules
+when you need them, import CSS and let Webpack figure out how to package it all
+together.
 
-So one of the cool things is, you can actually get a visualizer to look at what your assets look like. Google for Webpack visualizer, and there's a fun one called ... by Chris Bateman.
+The downside is that you might not realize if your built files are becoming too big!
+Like, maybe you import a *huge* library... but only use a small part of it. Or, you
+have some big code that can be code split. There's a fun solution to seeing these
+optimizations!
 
-So here's what we're going to do. We can actually run Webpack and tell it to dump a JSON file that describes our setup. So flip over to your second terminal tab, stop it. And we're actually going to manually run our long version of the command. So we're going to say NODE_ENV=production. And then, ./node_modules/.bin/webpack opacity --json >, and save that to a stats.json file.
+## Dumping the Stats
 
-So Webpack will run like normal, but its output is actually JSON. And it saves it to this cool stats.json file, which you see has errors, warning versions, and it just has tons and tons of information about all of the assets that it dumped out. I hit Q to get out of that.
+Google for Webpack visualizer. The one I like is by someone named Chris Bateman.
+Hi Chris!
 
-Awesome. So now, we can flip back over to our browser. I'll click this box here and upload our stats.json file, and boom. Check this out. So here we have everything. If you go out a little bit, you can see that 97.6 percent of our JavaScript code is actually coming from stuff in node modules. So only this tiny chunk here which is coming from assets directory, which is interesting.  And then, as you go out, it describes the pieces in smaller and smaller portions. And then, notice up here, this is showing all chunks. You can also look specifically at specific JavaScript files that were dumped. This 02D here is actually our code split segment, but I'm going to look at everything.
+When you execute Webpack, you can tell it to dump a JSON file with *very* detailed
+information about the final assets. Find your terminal and stop webpack. Use the
+full, long version of our production command:
+`NODE_ENV=production ./node_modules/.bin/webpack`, and then `--json`. Save the
+output to a `stats.json` file:
 
-Inside node modules, jquery actually takes up 39 percent. Something called core-js takes up 29.5 percent, which is really interesting. More on that in a second. And then, we have bootstrap-sass, sweetalert, and then css-loader. If you actually look, this is font-awesome. Makes sense, and then something called regenerator-runtime. And then, we have lodash over here.
+```terminal-silent
+NODE_ENV=production ./node_modules/.bin/webpack --json > stats.json
+```
 
-So we have a couple of surprises here. The biggest one is this core-js. What the heck is that? What's going on with this core.js? Where did this come from? Well, if you do a little bit of digging, you'll find that this is actually coming from our layout.js file, and it's our babel polyfill. Remember, we included this so that we got the promise object, in case all the browsers don't have that.
+Run it! Webpack compiles like normal... but it outputs JSON, which we save to
+`stats.json`. Check out that file: it has details about errors, warnings, and endless
+information about the assets.
 
-Now, if you look inside of the babel polyfill ... I'm actually going to hold command and click this, and this moves us to node modules, babelPolyfill lib/index.js. You can actually that it is actually more or less just leveraging another library called core-js. And it's actually importing the entire thing. If you follow this shim file, that's going to import lots and lots and lots of things. So we've actually imported a huge library just to get the promise object.
+Sweet! Now: back at the browser! Click the box to load our `stats.json`.
 
-So if promise is the only polyfill we need, we can actually do a much better job than this. Let's actually run yarn remove babel-polyfill, and then yard add core-js --dev. We're actually going to install that core-js library directly.
+Wow! A donut! It looks delicious! Apparently, 97.6% of our delicious donut... I mean
+97.6% of our code is coming from stuff in `node_modules`. Only this *tiny* portion
+comes from our `assets/` directory! As you move out, it describes each part in
+more and more detail.
 
-While we're waiting for that, I want you to Google for core-js, and you can see this is basically a library full of lots of polyfills for ES6, and also things like ES7 proposals and other things. Inside of here, you can see, here's ES6 polyfills. Here's ES7 plus polyfills, and even some other things. And do you see the one called ECMAScript 6, promise? And it's just showing you how to use the promise.
+Oh, and notice: we're looking at *all* chunks. But you can also view this graph
+for only *specific* JavaScript files. This `02d` file is actually our code split
+chunk!
 
-What we are really interested in is this common JS entry points. It's actually telling you, if you need the promise polyfill on your project, you can just include core.js/library/ES6 promise or this equivalent /fn/promise. It gives you a couple different ways to grab it.
+But let's look at everything. Inside `node_modules`, `jquery` takes up 39%. The
+second biggest portion... is something called `core-js`, at 29.5%! That's interesting...
+more on that in a moment.
 
-In other words, in our layout.js file, instead of importing everything from babel-polyfill, we can actually say import core-js/library/es6/promise. And everything in our application is still going to be very happy.
+Next is `bootstrap-sass`, `sweetalert` and then `css-loader`... which if you look
+closer is Font Awesome. A few smaller libraries finish off the donut.
 
-Alright. So let's rerun our production Webpack and dump it to stats. All right. It's done, so let's flip over. I'll refresh our visualizer so we can get a fresh one. Upload our stats.json, and oh, way better. Now, jquery takes up 53%, not because it's taking up more, but because our package is so much smaller than bootstrap-sass, sweetalert. Core.js went from 30-something percent to 8.1 percent only. And then, font-awesome, lodash, and a couple other things.
+## Importing core-js Smarter
 
-So yeah, this is a great tool. I have discovered things in my project that were definitely not set up correctly. And by switching over to your other files, you might discover some other things that are not as efficient as they should be.
+So... this contained a surprise! The *second* biggest library is `core-js`. What
+the heck is that? And where did it come from?
 
-All right, guys, that is it. Thank you for sticking with me. Webpack is an amazing library, but it gives you so many ways just to shoot yourself in the foot. So I hope you feel very, very confident now, and I hope you'll join us for another tutorial that we will release on Webpack Encore, a library created by Symphony to help make all of this Webpack configuration easier, faster, and more bulletproof.
+If you do some digging, you'll find out that this comes from `layout.js`: specifically
+from `babel-polyfill`. Remember, we included this so that it would polyfill the
+`Promise` object for older browsers.
+
+I'll hold command to click into the `babel-polyfill` module. Huh, this basically
+just uses *another* library: `core-js`. And if you dig further, you'd find out that
+by requiring the `shim` module, it imports *many* polyfills. Yep, we're importing
+a *huge* library *just* to polyfill `Promise`.
+
+Let's be smarter! First, remove `babel-polyfill`:
+
+```terminal
+yarn remove babel-polyfill
+```
+
+And now add `core-js`:
+
+```terminal
+yarn add core-js --dev
+```
+
+While we're waiting, Google for `core-js`. Ok, this is a library full of polyfills,
+for ES6, ES7 and other things. Ah, and here are the docs about `Promise`.
+
+See the "CommonJS entry points" part? This is telling us that if we need the `Promise`
+polyfill, we can *just* require `core-js/library/es6/promise` or
+`core-js/library/fn/promise`.
+
+Let's do that! In `layout.js`, remove the `babel-polyfill` line. Instead, import
+`core-js/library/es6/promise`.
+
+And now... re-dump our stats:
+
+```terminal-silent
+NODE_ENV=production ./node_modules/.bin/webpack --json > stats.json
+```
+
+When it finishes, find the visualizer and refresh to reset it. Load the *new*
+`stats.json`. Oh, way better! jQuery *now* takes up 53%... not because it got bigger,
+but because our JavaScript donut is *so* much smaller. Then `bootstrap-sass` & `sweetalert2`.
+`core-js` went from 29.5% to only 8.1%.
+
+Thank you visualizer! So, focus on your code! And then... come to the visualizer
+to make sure you're not doing anything *crazy*.
+
+Ok guys! We've done it! We're done! Thank you for staying with me! Webpack is an
+*amazing* library... but it's *hard*. It gives you so much flexibility... which means
+I have endless ways to confuse myself and mess things up! But now, you are a Webpack
+power user!
+
+Oh, and also check out [Webpack Encore](https://github.com/symfony/webpack-encore):
+a library created by Symfony to make configuring Webpack easier, faster and more
+fool-proof. We'll create a tutorial about it on KnpU soon!
 
 All right, guys. See you next time.
-

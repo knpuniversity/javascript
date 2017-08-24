@@ -28,7 +28,7 @@ Go to your browser's console, click the gear icon and check "Preserve logs". Tha
 to this, the console will *not* clear logs when the page reloads.
 
 Refresh once more... wait for the page to load... and then clear the console. Go
-make another change to the app, the move back. It says "App updated", "Recompiling",
+make another change to the app, then move back. It says "App updated", "Recompiling",
 but then it refreshes the whole page!
 
 These messages are coming from the HMR system. And check this out: it says

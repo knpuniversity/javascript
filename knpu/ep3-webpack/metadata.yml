@@ -28,10 +28,12 @@ chapters:
     - optimized-commons-chunk
     - webpack-dev-server
     - hot-module-replacement
+
     - extract-text-webpack-plugin
     - production-build
     - minify-css
-    - automatic-versioning
+    - caching-versioning
+    - versioning-manifest
     - versioning-optimization
     - code-splitting
     - visualizer
