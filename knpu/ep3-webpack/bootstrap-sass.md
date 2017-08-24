@@ -26,13 +26,17 @@ yarn add bootstrap-sass --dev
 
 This package is *just* like the previous one... except it has Sass files instead
 of CSS. It *does* still contain the Bootstrap JavaScript. So to keep loading that,
-just change the require to `bootstrap-sass`.
+just change the require to `bootstrap-sass`:
 
-Next, for the CSS require, we need to find the new path. Look inside `node_modules`
+[[[ code('779358be81') ]]]
+
+Next, for the CSS require, we need to find the new path. Look inside `node_modules/`
 for `bootstrap-sass`. Ok! It has an `assets/stylesheets/_bootstrap.scss` file!
 This is the key: *it* imports every piece of bootstrap.
 
-Ok! Back in our file, require `bootstrap-sass/assets/stylesheets/_bootstrap.scss`.
+Ok! Back in our file, require `bootstrap-sass/assets/stylesheets/_bootstrap.scss`:
+
+[[[ code('c139f5fe89') ]]]
 
 Check out the terminal that's running Webpack. It had a *ton* of errors... but now
 it's happy again! Try out the site. Nice!
@@ -41,8 +45,14 @@ it's happy again! Try out the site. Nice!
 
 Up until now, to load CSS or Sass, we've required it from JavaScript. But, you can
 also use `@import` from inside *CSS*. Close the `node_modules/` directory and open
-our `main.css`. At the very top, add `@import`. Then, copy the path to the bootstrap
-Sass file, remove it, and add it to the `@import` line.
+our `main.scss`. At the very top, add `@import`. Then, copy the path to the bootstrap
+Sass file, remove it:
+
+[[[ code('02f206a40d') ]]]
+
+And add it to the `@import` line:
+
+[[[ code('d412acd48e') ]]]
 
 Webpack parses these `@import` lines... so this is effectively identical
 to what we had before. Except... it doesn't work! Even PhpStorm is *super* angry!
@@ -51,10 +61,17 @@ inside the `node_modules/` directory. But when you use a CSS `@import`, that pat
 is relative to *this* file.
 
 No worries! To hint to Webpack that you want to treat this path like a *module*
-path, prefix it with `~`.
+path, prefix it with `~`:
 
-Let's do this for Font Awesome too: copy its path, remove the `require` line, and
-add `@import ~`, then the path.
+[[[ code('dbb4b1ddf0') ]]]
+
+Let's do this for Font Awesome too: copy its path, remove the `require` line:
+
+[[[ code('91d012557b') ]]]
+
+And add `@import ~`, then the path:
+
+[[[ code('0c4ddedf82') ]]]
 
 ## Path Problems in Sass
 
@@ -95,12 +112,23 @@ point it at the `fonts/` directory inside `bootstrap-sass`.
 ***
 
 This loader exists only to solve this problem. Once it's installed, find `webpack.config.js`
-and, *right* before `sass-loader`, add `resolve-url-loader`. But, for this to work,
-on `sass-loader`, add `?sourceMap`. We're going to talk more about source maps
-in a few minutes. But internally, the `resolve-url-loader` needs them so it can
-do its job.
+and, *right* before `sass-loader`, add `resolve-url-loader`:
 
-I know. It's a little crazy. But! If we go back and restart Webpack... it works!
-And the page comes back to life!
+[[[ code('3b73f7db21') ]]]
+
+But, for this to work, on `sass-loader`, add `?sourceMap`:
+
+[[[ code('47ac5899ce') ]]]
+
+We're going to talk more about source maps in a few minutes. But internally,
+the `resolve-url-loader` needs them so it can do its job.
+
+I know. It's a little crazy. But! If we go back and restart Webpack...
+
+```terminal
+./node_modules/.bin/webpack --watch
+```
+
+It works! And the page comes back to life!
 
 Hey! We've got Bootstrap via Sass! Now, let's tweak some stuff!
