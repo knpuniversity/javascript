@@ -31,9 +31,9 @@ code to read this map... we are in business!
 
 ## copy-webpack-plugin & manifest.json
 
-Oh, and just a note: any files copied by the `copy-webpack-plgin` are *not* in the
+Oh, and just a note: any files copied by the `copy-webpack-plugin` are *not* in the
 manifest. They may add support for this to `webpack-manifest-plugin` in the future.
-But right now, even though it *is* is possible to add hashes to the copied filenames...
+But right now, even though it *is* possible to add hashes to the copied filenames...
 they won't show up in the manifest.
 
 ## Always emitting manifest.json
@@ -52,7 +52,7 @@ and replace it with the hashed version!
 
 To activate it, open `app/config/config.yml` and, under `assets`, add a key called
 `json_manifest_path` set to `%kernel.project_dir%` - that points to the root of our
-project - `/web/build/mainfest.json`.
+project - `/web/build/manifest.json`.
 
 And... that's it! Go back and... refresh! It works! Wait.. no it doesn't! What's
 up?

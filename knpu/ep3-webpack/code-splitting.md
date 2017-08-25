@@ -60,9 +60,9 @@ imported module. So, `username_validation_error`. Move the code inside of the ca
 Yea... I like this! It feels like... and well.. *is* an AJAX call! We're saying:
 
 > Good afternoon Webpack! Could you please download the `username_validation_error`
-> module via AJAX and then execute my callback when it's ready.
+> module via AJAX and then execute my callback when it's ready. Thank you!
 
-It shoudl work... but go look at the Webpack terminal. Ah! It's SO angry!
+It should work... but go look at the Webpack terminal. Ah! It's SO angry!
 
 > Module build failed. Syntax error: import and export may only appear at the
 > top level.
@@ -75,7 +75,7 @@ at the *top* of the file!
 Here's the story: when you use `import` at the top of the file - like we've been
 doing until now - we're using a real, official ECMAScript feature - it's in ES6.
 But when you use `import` like a function... well... that's *not* part of ECMAScript!
-Well, not yet. That functionality is just a *propsal* called dynamic import.
+Well, not yet. That functionality is just a *proposal* called dynamic import.
 
 The parse error comes from Babel: it tries to parse our code, but sees this code
 as invalid. And technically, it's right! 
@@ -96,7 +96,7 @@ This is a plugin for Babel that makes it understand the dynamic import syntax.
 
 Once it's installed, to activate it, open your `.babelrc` file. In addition to
 `presets`, the other common thing you'll add here is `plugins`. Pass it one:
-`syntax-dyamic-import`.
+`syntax-dynamic-import`.
 
 Now, Babel will at least understand this as a valid syntax.
 
@@ -107,7 +107,7 @@ yarn watch
 ```
 
 Yes! It's happy! Back in the browser, bring up the network tab and refresh. Ok, I'll
-clear this out. Now, type a really long filename.
+clear this out. Now, type a really long username.
 
 Woh! Check it out! I don't see the error message... but it *did* make an AJAX request
 for a script tag! And look inside! Yea! This is our code-split module!
@@ -155,3 +155,5 @@ into JavaScript and added to the page when that JavaScript file is downloaded.
 
 So next time you have some conditional code... think about code splitting: you could
 drastically reduce the size of your assets!
+
+Speaking of that, let's use a *visualizer* to make our assets even *more* efficient.

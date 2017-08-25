@@ -30,7 +30,7 @@ Run it! Webpack compiles like normal... but it outputs JSON, which we save to
 `stats.json`. Check out that file: it has details about errors, warnings, and endless
 information about the assets.
 
-Sweet! Now: back at the browser! Click the box to load our `stats.json`.
+Sweet! Now: back to the browser! Click the box to load our `stats.json`.
 
 Wow! A donut! It looks delicious! Apparently, 97.6% of our delicious donut... I mean
 97.6% of our code is coming from stuff in `node_modules`. Only this *tiny* portion

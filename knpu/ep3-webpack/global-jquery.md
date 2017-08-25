@@ -64,7 +64,7 @@ relies on `jQuery` or `$` to be available as a global variable, Webpack rewrites
 that code to require the `jquery` module properly. This does *not* make the `jQuery`
 or `$` variables available globally, like in a template. Instead, it *fixes* code
 to not *need* that. If you *do* want to make these variables global, that's what
-we just did in `main.js`. In other words, these are solving two separate, but similar
+we just did in `rep_log.js`. In other words, these are solving two separate, but similar
 issues.
 
 Here's the complication: sometimes, a third party library will try to reference `jQuery`

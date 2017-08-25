@@ -15,7 +15,7 @@ In Node applications, there's a standard way to *signal* the environment to your
 apps: by setting an environment variable called `NODE_ENV`. To read this, you can
 say `process.env.NODE_ENV`.
 
-Let's log that. Tun webpack like normal:
+Let's log that. Run webpack like normal:
 
 ```terminal-silent
 ./node_modules/.bin/webpack --watch
@@ -100,5 +100,5 @@ yarn production
 
 The command looks right... and the final JavaScript files are super small.
 
-But! Our work isn't done yet: we still need to minify the CSS files... *and* handle
+But! Our work is not done yet: we still need to minify the CSS files... *and* handle
 a few other things.

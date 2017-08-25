@@ -100,7 +100,7 @@ It allows you to define constants in your code. Here's a good example. Imagine y
 want to know in your JS code whether or not you're in production... maybe because
 you do some extra logging when *not* in production.
 
-In your code, you would use a constant called `PRODUCTION`. But insted of *defining*
+In your code, you would use a constant called `PRODUCTION`. But instead of *defining*
 that somewhere in your JS, you can let the `DefinePlugin` do that for you. With
 this config, Webpack actually *rewrites* your code! If it sees `!PRODUCTION`,
 the final built code will say if `!true`. It literally replaces the `PRODUCTION`
@@ -109,7 +109,7 @@ constant with the word `true`.
 ## DefinePlugin: process.env.NODE_ENV
 
 The plugin is *perfect* for something like this, or even feature flags. But it's
-almost important for your production build. Down in our production section, add
+also important for your production build. Down in our production section, add
 the plugin: new `webpack.DefinePlugin()`. Pass it
 `process.env.NODE_ENV` set to `JSON.stringify('production')`.
 
@@ -127,7 +127,7 @@ But... that won't work! In a browser environment - which is where all of our act
 JavaScript runs - there is *no* `process.env.NODE_ENV`! This causes that code to
 always run in development mode.
 
-Thanks to the plugin, if any code checks for `proces.env.NODE_ENV`, it will be replaced
+Thanks to the plugin, if any code checks for `process.env.NODE_ENV`, it will be replaced
 with the string `"production"`. Yep, the final JS would literally contain code
 that looked like `if ("production" === "production")`!
 

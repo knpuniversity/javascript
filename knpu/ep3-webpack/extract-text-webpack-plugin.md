@@ -1,7 +1,7 @@
 # extract-text-webpack-plugin
 
 Ever since we started requiring CSS from JS, we've had this annoying problem:
-when the page loads... *just* for a second... there's no CSS! Ugly! Ah!
+when the page loads... *just* for a second... there's no CSS! Oof! Ugly!
 
 This is because the CSS is packaged *inside* our JavaScript... so we need to wait
 for it to download and be executed.
@@ -95,7 +95,7 @@ a change and move over to your browser... it says "Nothing hot updated" and
 
 Yep, `extract-text-webpack-plugin` and HMR are incompatible. Boooo! There *is* a
 plugin to make this all work - [extract-css-chunks-webpack-plugin](https://github.com/faceyspacey/extract-css-chunks-webpack-plugin),
-but pretty young and I haven't tested it yet. If you like HMR, try it out!
+but it's pretty young and I haven't tested it yet. If you like HMR, try it out!
 
 But, how is it possible that two *super* important features like extract text and
 HMR don't work together?! Well, the official answer is that `extract-text-webpack-plugin`

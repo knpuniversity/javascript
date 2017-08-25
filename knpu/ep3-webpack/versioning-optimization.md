@@ -42,7 +42,7 @@ represents the `jquery` module.
 
 The problem is that sometimes those module ID's change between builds. Because of
 this, even if we don't change *any* files that are part of `login.js`, some of
-the module ID's it references `login.js` *could* change. Like 45 could become 46
+the module ID's it references *could* change. Like 45 could become 46
 for jQuery! And *that* means that the filename of the built `login.js` file would
 change... *simply* because these silly, internal module ids change! We don't want
 to bust our user's cache unnecessarily.
@@ -96,7 +96,7 @@ That's a *glob* pattern: the `**` says look at `web/build` recursively, and the
 
 Try it! Run:
 
-```terminal-silent
+```terminal
 yarn watch
 ```
 
