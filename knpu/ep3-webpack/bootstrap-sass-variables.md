@@ -1,8 +1,8 @@
 # Tweaking Bootstrap's Sass
 
 Now that we finally have Bootstrap's Sass working, we can celebrate! Inside
-`_bootstrap.scss`, the first thing it imports is an `_variables.scss` file. I'll
-hold Command and click to open that.
+`_bootstrap.scss`, the first thing it imports is an `_variables.scss` file.
+I'll hold `Command` and click to open that.
 
 Awesome! This holds a *bunch* of variables that are used throughout the rest of the
 Sass files. Yep, this means we can override these to control colors and many other
@@ -13,7 +13,9 @@ before we import Bootstrap, *override* that variable. Make sure to remove the de
 
 This variable is used to color some buttons and a lot of other things. Let's make
 it a little lighter: change the 6.5 to 2.5. It's not important, but the new color
-should be `#3885C7`.
+should be `#3885C7`:
+
+[[[ code('ac2f0983f7') ]]]
 
 Back in the browser, inspect the "I Lifted It!" button. Yep! The current color is
 `#337AB7`. Now, refresh! Check it out. Yes! It's the slightly lighter `#3885C7`.
@@ -31,15 +33,21 @@ Let's fix this! Copy the *entire* contents of `_bootstrap.scss`. Then, in our `c
 directory, create a new `_bootstrap.scss` file and paste that here.
 
 As *soon* as we do that... all the paths are broken! Yea, that makes sense: we're
-in a different directory. No problem, I'll copy `"bootstrap` and do a Find and Replace
+in a different directory. No problem, I'll copy `"bootstrap` and do a "Find and Replace"
 to replace this with `"~bootstrap-sass/assets/stylesheets/bootstrap`. Replace everything!
+
+[[[ code('e22e6f5657') ]]]
 
 Yay! Happy paths!
 
-Next, in `main.scss`, import this file instead of the core one. Just, `./_bootstrap.scss.`
+Next, in `main.scss`, import this file instead of the core one. Just, `./_bootstrap.scss.`:
+
+[[[ code('72e0da5410') ]]]
 
 If this is all we did, nothing would change: we're still importing everything. But
-now... we have power! In `_bootstrap.scss`, comment out the `glyphicons` line.
+now... we have power! In `_bootstrap.scss`, comment out the `glyphicons` line:
+
+[[[ code('5cf11b2fb5') ]]]
 
 Cool! We don't need to restart Webpack after this change, but, stop it temporarily
 so that we can clean out the `build/` directory:
