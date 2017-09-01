@@ -28,7 +28,7 @@ First, remove `loadRepLogs()`:
 
 [[[ code('9fc8199421') ]]]
 
-Instead, add `initialRepLogs()` as a second argument to the `constructor`:
+Instead, add `initialRepLogs` as a second argument to the `constructor`:
 
 [[[ code('c9cfde51cb') ]]]
 
