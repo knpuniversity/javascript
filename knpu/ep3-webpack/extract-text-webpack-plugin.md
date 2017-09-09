@@ -14,7 +14,7 @@ it outputs a *real* CSS file, instead of embedding CSS in JavaScript.
 Let's get it rocking! Find your terminal and run
 
 ```terminal
-yard add extract-text-webpack-plugin --dev
+yarn add extract-text-webpack-plugin --dev
 ```
 
 ## Current Setup: style-loader
