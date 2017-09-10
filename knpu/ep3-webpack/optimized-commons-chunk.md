@@ -1,12 +1,22 @@
 # Optimizing the "Commons" Chunk
 
 Here's how I like to configure the CommonsChunkPlugin. Set `minChunks` to `Infinity`.
-Then change the `name` option to `layout`. That name is important. Scroll up: `layout`
-is the name of one of our entries! Because of this, *anything* that is required in
-`layout.js` will not be included in other files. Yep, since `layout.js` requires `jquery`,
-it will live in the compiled `layout.js`, but not in `login.js` or `rep_log.js`.
-And since `bootstrap-sass` is used here, it also won't be output in any other built
-file.
+Then change the `name` option to `layout`:
+
+[[[ code('7ec39975d5') ]]]
+
+That name is important. Scroll up: `layout` is the name of one of our entries!
+
+[[[ code('b8e6f4ed5a') ]]]
+
+Because of this, *anything* that is required in `layout.js` will not be included
+in other files. Yep, since `layout.js` requires `jquery`, it will live in the compiled
+`layout.js`, but not in `login.js` or `rep_log.js`:
+
+[[[ code('6ef95879c6') ]]]
+
+And since `bootstrap-sass` is used here, it also won't be output in any other
+built file.
 
 Our `layout.js` file now serves two purposes. First, to collect all the common modules
 that we don't want duplicated across multiple entries. And second, as a way for us
@@ -24,8 +34,12 @@ to delete that `vendor.js` file. Now, Restart webpack:
 ./node_modules/.bin/webpack --watch
 ```
 
-Yep, no `vendor.js`. In `base.html.twig`, we can remove the extra `vendor.js` script
-tag. Try it out: refresh! Yes! Everything works! 
+Yep, no `vendor.js`. In `base.html.twig`, we can remove the extra `vendor.js`
+script tag:
+
+[[[ code('6105698bd7') ]]]
+
+Try it out: refresh! Yes! Everything works!
 
 ## The Webpack Manifest
 
@@ -60,10 +74,15 @@ nothing important changed inside it?
 Anyways, the fix is to move that Webpack bootstrap code *out* of `layout.js`... so it
 can happily remain unchanged even when the internal module ids change. To do that,
 open `webpack.config.js` and go to the `CommonsChunkPlugin`. Change the `name` option
-to an array, with `layout` and a new entry called `manifest`. I'll move my first
-comment down a bit, and then add a new comment above `manifest`:
+to an array, with `layout` and a new entry called `manifest`:
+
+[[[ code('59e7503062') ]]]
+
+I'll move my first comment down a bit, and then add a new comment above `manifest`:
 
 > Dumps the manifest in a separate file.
+
+[[[ code('fc1cae0813') ]]]
 
 Let's see what this does! Restart Webpack:
 
@@ -77,7 +96,9 @@ contains the Webpack bootstrap. If the ids change now, the user will only need t
 re-download that small file.
 
 Of course, to get this to work... we need to add another script tag! Open `base.html.twig`.
-Add a second `script` tag pointing to `manifest.js`.
+Add a second `script` tag pointing to `manifest.js`:
+
+[[[ code('7714860f8f') ]]]
 
 Phew! I know, that was confusing. But our setup rocks! Thanks to `CommonsChunkPlugin`,
 anything in `layout.js`, will *not* be duplicated in the other files.
