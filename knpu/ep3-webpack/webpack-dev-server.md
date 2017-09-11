@@ -41,8 +41,11 @@ to be `http://localhost:8080/build/layout.js`. If you're using Symfony, you're i
 luck! Doing this is easy.
 
 Open `app/config/config.yml`. And, under the `framework` key, then `assets`, set
-`base_url` to `http://localhost:8080`. Actually, in a real project, you should probably
-put this in `config_dev.yml` instead, so that it only affects the `dev` environment.
+`base_url` to `http://localhost:8080`. Actually, in a real project, you should
+probably put this in `config_dev.yml` instead, so that it only affects the `dev`
+environment:
+
+[[[ code('66fcbcc5cd') ]]]
 
 Let's try it! Refresh the page! Ha! Even though there are *no* physical files in
 `web/build`, this works! All of our assets now point to `http://localhost:8080`.
@@ -70,7 +73,9 @@ correct URL, but static assets don't.
 ## Setting contentBase
 
 How do we fix this? In `webpack.config.js`, add a new `devServer` key. The most
-important option we need is `contentBase` set to `./web`.
+important option we need is `contentBase` set to `./web`:
+
+[[[ code('5312f3c9be') ]]]
 
 Go restart the dev server:
 
@@ -86,8 +91,12 @@ When we refresh, the router 404 is gone! There are a few other 404's for some fo
 awesome assets - we'll fix that next.
 
 Anyways, compared to using `--watch`, this is pretty similar. Make a change, like
-the darken from 2.5 to 10. Hit save and then quickly switch over to your browser.
-See it reload? I didn't do that! The dev server automatically reloaded for me.
+the darken from 2.5 to 10:
+
+[[[ code('f09afaa697') ]]]
+
+Hit save and then quickly switch over to your browser. See it reload? I didn't
+do that! The dev server automatically reloaded for me.
 
 That's cool... but the *real* reason to use the dev server is for Hot Module Replacement,
 which is *amazing*... and our next topic.
