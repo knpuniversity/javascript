@@ -94,7 +94,7 @@ a change and move over to your browser... it says "Nothing hot updated" and
 "App is up to date".
 
 Yep, `extract-text-webpack-plugin` and HMR are incompatible. Boooo! There *is* a
-plugin to make this all work - [extract-css-chunks-webpack-plugin](https://github.com/faceyspacey/extract-css-chunks-webpack-plugin),
+plugin to make this all work - [css-hot-loader](https://github.com/shepherdwind/css-hot-loader),
 but it's pretty young and I haven't tested it yet. If you like HMR, try it out!
 
 But, how is it possible that two *super* important features like extract text and
