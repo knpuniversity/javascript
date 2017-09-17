@@ -11,7 +11,7 @@ is still fully expanded. That makes sense: Webpack handles JavaScript... but it
 doesn't handle CSS. That's done with the loaders.
 
 But! The `css-loader` has a `minimize` option. If we set it to true, it will use
-a library called [cssnano](http://cssnano.co/) to make things... well... nano!
+a library called [cssnano][cssnano] to make things... well... nano!
 
 ## css-loader, minimize & LoaderOptionsPlugin
 
@@ -20,7 +20,9 @@ Setting an option on `css-loader` is easy! But... first, I need to show you a
 
 Go down to the production if statement. Add a new plugin: `webpackConfig.plugins.push()`
 with `new webpack.LoaderOptionsPlugin()`. Pass this two options: `minimize: true`
-and `debug: false`.
+and `debug: false`:
+
+[[[ code('ee5b14494b') ]]]
 
 Ok, what the heck does this do?
 
@@ -53,21 +55,41 @@ But, they use a different sourcemap option that outputs to a separate *file*. We
 want our CSS and JS files to *just* contain CSS and JS.
 
 Personally, I typically turn sourcemaps off entirely for production. Go to the top
-of `webpack.config.js`. Let's move our settings variables above the loaders. Add
-two new variables: `const isProduction =` ... then go copy the inside of our if statement,
-and paste it here. Next, add `const useSourcemaps = !isProduction`.
+of `webpack.config.js`. Let's move our settings variables above the loaders:
 
-Use that below! Set the `sourceMap` option for each loader to `useSourcemaps`. Oh,
-except for `sassLoader` - keep that `true` always... even though I just messed that
-up! Remember, `resolve-url-loader` needs this. Don't worry, the sourcemaps won't
-actually be rendered... since that option is set to false on `css-loader`.
+[[[ code('32e5967169') ]]]
+
+Add two new variables: `const isProduction =` ... then go copy the inside of our
+if statement, and paste it here:
+
+[[[ code('77c73cb746') ]]]
+
+Next, add `const useSourcemaps = !isProduction`:
+
+[[[ code('c4661f0eaf') ]]]
+
+Use that below! Set the `sourceMap` option for each loader to `useSourcemaps`:
+
+[[[ code('66a4cd37ce') ]]]
+
+Oh, except for `sassLoader` - keep that `true` always... even though I just messed
+that up!
+
+[[[ code('f7f4721c80') ]]]
+
+Remember, `resolve-url-loader` needs this. Don't worry, the sourcemaps won't actually
+be rendered... since that option is set to `false` on `css-loader`.
 
 Yep, we have now disabled sourcemaps for CSS in production.
 
 Next, near the bottom, find the `devtool` option. Change this: if `useSourcemaps`,
-then set it to `inline-source-map`. Else set this to false.
+then set it to `inline-source-map`. Else set this to `false`:
+
+[[[ code('a5b2c2ca2e') ]]]
 
 Oh, and down below in the if statement, we can use the new `isProduction` variable!
+
+[[[ code('823a75270b') ]]]
 
 Let's try it. Right now, `layout.js` is 211 kilobytes and `layout.css` is 712 kilobytes.
 Run the production build!
@@ -85,16 +107,17 @@ We're in *great* shape. Just two more small things. First, Google for `css-loade
 to find its GitHub page. Search for `minimize`. Cool! These are the options we can
 pass to the loader. The important one is `minimize`. Right now, we're setting this...
 but in a weird way: by using the `LoaderOptionsPlugin`. To be more explicit, let's
-set it for real: `minimize: isProduction`.
+set it for real: `minimize: isProduction`:
+
+[[[ code('bb35d24a70') ]]]
 
 If we decide the `LoaderOptionsPlugin` isn't needed some day, our CSS will stay minified.
 
 ## The DefinePlugin
 
 Ok! Our code is minified and sourcemaps are gone. There's just *one* more thing
-we need to do to fully optimize our assets! Google for the Webpack
-[DefinePlugin](https://webpack.js.org/plugins/define-plugin/). This is a *very*
-cool plugin.
+we need to do to fully optimize our assets! Google for the Webpack [DefinePlugin][define_plugin].
+This is a *very* cool plugin.
 
 It allows you to define constants in your code. Here's a good example. Imagine you
 want to know in your JS code whether or not you're in production... maybe because
@@ -110,8 +133,10 @@ constant with the word `true`.
 
 The plugin is *perfect* for something like this, or even feature flags. But it's
 also important for your production build. Down in our production section, add
-the plugin: new `webpack.DefinePlugin()`. Pass it
-`process.env.NODE_ENV` set to `JSON.stringify('production')`.
+the plugin: new `webpack.DefinePlugin()`. Pass it `process.env.NODE_ENV` set
+to `JSON.stringify('production')`:
+
+[[[ code('3a455d9add') ]]]
 
 There are a few things happening. First, you must *always* wrap the values to this
 plugin with `JSON.stringify()`. The plugin does a literal find and replace... so if
@@ -135,3 +160,7 @@ In our app, this won't make any noticeable difference. But, our production build
 is ready-to-go.
 
 Now, let's turn to asset versioning!
+
+
+[cssnano]: http://cssnano.co/
+[define_plugin]: https://webpack.js.org/plugins/define-plugin/
