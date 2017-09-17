@@ -6,9 +6,12 @@ Let's talk about caching.
 
 Imagine someone comes to our site and downloads `layout.js`. In a typical setup,
 when they visit the next page, their browser makes a request back to our server for
-`layout.js`. If that file hasn't changed, our server sends back an empty response
-that says "Hey! Use your cached version dude!". But if the file *has* changed,
-our server sends back the new, updated `layout.js`.
+`layout.js`. If that file has not changed, our server sends back an empty response
+that says:
+
+> Hey! Use your cached version dude!
+
+But if the file *has* changed, our server sends back the new, updated `layout.js`.
 
 This caching strategy is called "validation". On the bright side, when `layout.js`
 changes, browsers will automatically go get the new, updated file. With validation
@@ -35,16 +38,26 @@ Webpack has a *great* way to do that automatically.
 ## Adding [hash] to the Filenames
 
 At the top of `webpack.config.js`, add a new variable called `useVersioning` set
-to `true`. This will let us disable versioning easily if we want to.
+to `true`:
+
+[[[ code('00f457e351') ]]]
+
+This will let us disable versioning easily if we want to.
 
 Start under `output`: the `filename` option controls the JavaScript files. Change
-this: if `useVersioning`, then change the filename to be `[name].[hash:6].js`. `[hash]`
-is another special wildcard: it's a hash based on the file's *contents*. And this
-outputs just the first 6 characters.
+this: if `useVersioning`, then change the filename to be `[name].[hash:6].js`:
+
+[[[ code('230ce66d6a') ]]]
+
+`[hash]` is another special wildcard: it's a hash based on the file's *contents*.
+And this outputs just the first 6 characters.
 
 To control the CSS filenames, find the `plugins` section. For `ExtractTextPlugin`,
-add `useVersioning`. If it's on, use `[name].[contenthash:6].css`. ExtractTextPlugin
-exposes a `[contenthash]` wildcard.
+add `useVersioning`. If it's on, use `[name].[contenthash:6].css`:
+
+[[[ code('5e5286246a') ]]]
+
+ExtractTextPlugin exposes a `[contenthash]` wildcard.
 
 And... that's it! Find your webpack terminal. First, clear the build directory:
 
