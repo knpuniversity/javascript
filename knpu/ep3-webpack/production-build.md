@@ -13,7 +13,9 @@ that tells it to compile in dev or production mode.
 
 In Node applications, there's a standard way to *signal* the environment to your
 apps: by setting an environment variable called `NODE_ENV`. To read this, you can
-say `process.env.NODE_ENV`.
+say `process.env.NODE_ENV`:
+
+[[[ code('7b8640546b') ]]]
 
 Let's log that. Run webpack like normal:
 
@@ -28,7 +30,7 @@ command:
 NODE_ENV=production ./node_modules/.bin/webpack --watch
 ```
 
-Yes! It prints `production`. If you're on Windows, there's a library called `cross-env`
+Yes! It prints `production`. If you're on Windows, there's a library called [cross-env][cross_env]
 that can help do this.
 
 The point is: we can now send a flag into Webpack to tell it the environment.
@@ -37,12 +39,21 @@ The point is: we can now send a flag into Webpack to tell it the environment.
 
 Awesome! Let's use this flag to minify our JavaScript first, via a plugin.
 
-Start by replacing `module.exports` with a new variable: `const webpackConfig =`.
-Then, all the way at the bottom, export this: `module.exports = webpackConfig`.
+Start by replacing `module.exports` with a new variable: `const webpackConfig =`:
+
+[[[ code('d6e28979aa') ]]]
+
+Then, all the way at the bottom, export this: `module.exports = webpackConfig`:
+
+[[[ code('c0705c446c') ]]]
 
 Before that, add an if statement: if `process.env.NODE_ENV === 'production')`, then
 we will add a new plugin. So, `webpackConfig.plugins.push()` then
-`new webpack.optimize.UglifyJsPlugin`. And... that's it!
+`new webpack.optimize.UglifyJsPlugin`:
+
+[[[ code('cc717660bc') ]]]
+
+And... that's it!
 
 Try it! Run webpack without the NODE_ENV flag first:
 
@@ -50,7 +61,7 @@ Try it! Run webpack without the NODE_ENV flag first:
 ./node_modules/.bin/webpack --watch
 ```
 
-Ok cool. The un-uglified `layout.js` file is 1.62 megabtyes. Stop and re-run in production:
+Ok cool. The un-uglified `layout.js` file is 1.62 megabytes. Stop and re-run in production:
 
 ```terminal-silent
 NODE_ENV=production ./node_modules/.bin/webpack --watch
@@ -62,7 +73,7 @@ Open up the built `login.js`. Ah, yes, one *beautiful*, single line.
 
 ***TIP
 License comments from outside libraries are *not* removed from the Uglified files
-for legal reasons. To remove them, see the [extractComments option](https://github.com/webpack-contrib/uglifyjs-webpack-plugin#extractcomments).
+for legal reasons. To remove them, see the [extractComments option][extract_comments].
 ***
 
 ## Adding package.json scripts
@@ -72,7 +83,9 @@ long, *before* adding the `NODE_ENV` stuff! My fingers are so tired...
 
 There's a *great* way to improve this. Open `package.json`. Add a new key called
 `scripts` set to a hash. Inside, you can put something like `dev` set to
-`NODE_ENV=dev webpack`.
+`NODE_ENV=dev webpack`:
+
+[[[ code('f746244c91') ]]]
 
 Thanks to that, we have a shortcut! Just run:
 
@@ -84,7 +97,9 @@ Yep, *it* runs `NODE_ENV=dev webpack`! And we don't even need to say
 `node_module/.bin/webpack`: the `scripts` know to look there already for `webpack`.
 
 Let's add two more: `watch` set to the same thing with `--watch` on the end. And
-finally, `production`, with `NODE_ENV=production`.
+finally, `production`, with `NODE_ENV=production`:
+
+[[[ code('a733f029d0') ]]]
 
 I love it! Try them out:
 
@@ -102,3 +117,7 @@ The command looks right... and the final JavaScript files are super small.
 
 But! Our work is not done yet: we still need to minify the CSS files... *and* handle
 a few other things.
+
+
+[cross_env]: https://npmjs.com/package/cross-env
+[extract_comments]: https://github.com/webpack-contrib/uglifyjs-webpack-plugin#extractcomments
