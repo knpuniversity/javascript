@@ -87,7 +87,7 @@ yarn add clean-webpack-plugin --dev
 ```
 
 Copy that package name. Inside `webpack.config.js`, on top, require it:
-`const CleanWebpackPlugin = require()` and the package name.
+`const CleanWebpackPlugin = require('clean-webpack-plugin')` and the package name.
 
 You can probably guess the next step. To the `plugins` section! Add
 `new CleanWebpackPlugin()` and pass it the path to clean: `web/build/**/*.*`.
