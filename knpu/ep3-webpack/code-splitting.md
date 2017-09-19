@@ -33,7 +33,7 @@ I'll move the two lines from `login.js` over to this new function. And I'll chan
 `$(this)` to `$usernameInput`.
 
 To use the new module, back in `login.js`, add `import username_validation_error`
-from `./Components/username_validation_error`.
+from `./username_validation_error`.
 
 And below, just, `username_validation_error($(this))`. Let's also log the imported
 module... which should be a function. Oh, and make sure you have `Components`
