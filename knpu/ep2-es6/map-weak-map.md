@@ -49,9 +49,6 @@ And that returns `false`. Bummer for us.
 
 It wasn't too difficult to check if a key existed before, but this *feels* clean.
 
-And it has other cool methods on it, like `contains()`, to see if a *value* exists
-inside of the `Map`.
-
 ## Map with Non-String Keys
 
 Map has one other advantage... which is kind of crazy: you can use non-string keys!
