@@ -18,7 +18,7 @@ we'd be done!
 
 How do we do this? How can we tell Webpack to filter our code through something
 external? With a *very* powerful system in Webpack called *loaders*. Google for
-"babel-loader" and find its [GitHub page][babel-loader] babel-loader. Let's get this guy installed.
+"babel-loader" and find its [GitHub page][babel_loader]. Let's get this guy installed.
 Copy the `yarn add` line, though we already have `webpack` installed.
 
 Find your terminal and run it with `--dev` on the end:
