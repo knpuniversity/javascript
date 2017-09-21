@@ -33,7 +33,7 @@ information about the assets.
 Sweet! Now: back to the browser! Click the box to load our `stats.json`.
 
 Wow! A donut! It looks delicious! Apparently, 97.6% of our delicious donut... I mean
-97.6% of our code is coming from stuff in `node_modules`. Only this *tiny* portion
+97.6% of our code is coming from stuff in `node_modules/`. Only this *tiny* portion
 comes from our `assets/` directory! As you move out, it describes each part in
 more and more detail.
 
@@ -41,7 +41,7 @@ Oh, and notice: we're looking at *all* chunks. But you can also view this graph
 for only *specific* JavaScript files. This `02d` file is actually our code split
 chunk!
 
-But let's look at everything. Inside `node_modules`, `jquery` takes up 39%. The
+But let's look at everything. Inside `node_modules/`, `jquery` takes up 39%. The
 second biggest portion... is something called `core-js`, at 29.5%! That's interesting...
 more on that in a moment.
 
@@ -54,10 +54,14 @@ So... this contained a surprise! The *second* biggest library is `core-js`. What
 the heck is that? And where did it come from?
 
 If you do some digging, you'll find out that this comes from `layout.js`: specifically
-from `babel-polyfill`. Remember, we included this so that it would polyfill the
-`Promise` object for older browsers.
+from `babel-polyfill`:
 
-I'll hold command to click into the `babel-polyfill` module. Huh, this basically
+[[[ code('b998c37c68') ]]]
+
+Remember, we included this so that it would polyfill the `Promise` object for older
+browsers.
+
+I'll hold `Command` to click into the `babel-polyfill` module. Huh, this basically
 just uses *another* library: `core-js`. And if you dig further, you'd find out that
 by requiring the `shim` module, it imports *many* polyfills. Yep, we're importing
 a *huge* library *just* to polyfill `Promise`.
@@ -82,7 +86,9 @@ polyfill, we can *just* require `core-js/library/es6/promise` or
 `core-js/library/fn/promise`.
 
 Let's do that! In `layout.js`, remove the `babel-polyfill` line. Instead, import
-`core-js/library/es6/promise`.
+`core-js/library/es6/promise`:
+
+[[[ code('082b7f6657') ]]]
 
 And now... re-dump our stats:
 
@@ -103,8 +109,11 @@ Ok guys! We've done it! We're done! Thank you for staying with me! Webpack is an
 I have endless ways to confuse myself and mess things up! But now, you are a Webpack
 power user!
 
-Oh, and also check out [Webpack Encore](https://github.com/symfony/webpack-encore):
-a library created by Symfony to make configuring Webpack easier, faster and more
-fool-proof. We'll create a tutorial about it on KnpU soon!
+Oh, and also check out [Webpack Encore][webpack_encore]: a library created by Symfony
+to make configuring Webpack easier, faster and more fool-proof. We'll create a tutorial
+about it on KnpU soon!
 
 All right, guys. See you next time.
+
+
+[webpack_encore]: https://github.com/symfony/webpack-encore
