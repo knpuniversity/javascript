@@ -61,10 +61,11 @@ index 68c4f0fa..85c55e13 100644
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -1025,6 +1025,64 @@
+@@ -1024,6 +1024,64 @@
+             ],
              "time": "2016-09-10T18:51:13+00:00"
          },
-         {
++        {
 +            "name": "friendsofsymfony/jsrouting-bundle",
 +            "version": "1.6.0",
 +            "source": {
@@ -122,14 +123,14 @@ index 68c4f0fa..85c55e13 100644
 +            ],
 +            "time": "2015-10-28T15:08:39+00:00"
 +        },
-+        {
+         {
              "name": "friendsofsymfony/user-bundle",
              "version": "dev-master",
-             "source": {
-@@ -2353,6 +2411,46 @@
+@@ -2352,6 +2410,46 @@
+             ],
              "time": "2016-10-25T19:17:17+00:00"
          },
-         {
++        {
 +            "name": "willdurand/jsonp-callback-validator",
 +            "version": "v1.1.0",
 +            "source": {
@@ -169,10 +170,9 @@ index 68c4f0fa..85c55e13 100644
 +            "description": "JSONP callback validator.",
 +            "time": "2014-01-20T22:35:06+00:00"
 +        },
-+        {
+         {
              "name": "zendframework/zend-code",
              "version": "2.6.3",
-             "source": {
 diff --git a/src/AppBundle/Controller/RepLogController.php b/src/AppBundle/Controller/RepLogController.php
 index c1335f99..44cc485d 100644
 --- a/src/AppBundle/Controller/RepLogController.php

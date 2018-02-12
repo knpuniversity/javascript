@@ -1389,7 +1389,17 @@
             "id": "visualizer-use-partial-core-js",
             "name": "Visualizer: Use partial core-js",
             "description": null
+        },
+        {
+            "id": "upgrade-upgrade-to-symfony-4",
+            "name": "Upgrade: Upgrade to Symfony 4",
+            "description": null
+        },
+        {
+            "id": "upgrade-cleanup-tutorial",
+            "name": "Upgrade: Cleanup tutorial\/",
+            "description": null
         }
     ],
-    "sha": "4611ae0dba9c0524e6426231d7e720fc8b46fe54"
+    "sha": "c9fd1d2efe2289407c6be770724ca5f8df2433c4"
 }

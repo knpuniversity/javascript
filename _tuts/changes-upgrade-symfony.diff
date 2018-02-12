@@ -54,7 +54,7 @@ index c6665efd..dbab2f7e 100644
 -    "content-hash": "a22c25027740892ca785c9261aac013d",
 +    "content-hash": "0818f03c11954ee512b7cb0cd4a4418c",
      "packages": [
-         {
++        {
 +            "name": "composer/ca-bundle",
 +            "version": "1.0.7",
 +            "source": {
@@ -113,7 +113,7 @@ index c6665efd..dbab2f7e 100644
 +            ],
 +            "time": "2017-03-06T11:59:08+00:00"
 +        },
-+        {
+         {
              "name": "doctrine/annotations",
 -            "version": "v1.3.1",
 +            "version": "v1.5.0",
@@ -406,10 +406,11 @@ index c6665efd..dbab2f7e 100644
          },
          {
              "name": "doctrine/instantiator",
-@@ -1027,6 +1090,60 @@
+@@ -1026,6 +1089,60 @@
+             ],
              "time": "2016-12-18T15:42:34+00:00"
          },
-         {
++        {
 +            "name": "fig/link-util",
 +            "version": "1.0.0",
 +            "source": {
@@ -463,10 +464,9 @@ index c6665efd..dbab2f7e 100644
 +            ],
 +            "time": "2016-10-17T18:31:11+00:00"
 +        },
-+        {
+         {
              "name": "friendsofsymfony/jsrouting-bundle",
              "version": "1.6.0",
-             "source": {
 @@ -1086,16 +1203,16 @@
          },
          {
@@ -698,10 +698,11 @@ index c6665efd..dbab2f7e 100644
          },
          {
              "name": "psr/cache",
-@@ -1497,6 +1669,104 @@
+@@ -1496,6 +1668,104 @@
+             ],
              "time": "2016-08-06T20:24:11+00:00"
          },
-         {
++        {
 +            "name": "psr/container",
 +            "version": "1.0.0",
 +            "source": {
@@ -799,14 +800,14 @@ index c6665efd..dbab2f7e 100644
 +            ],
 +            "time": "2016-10-28T16:06:13+00:00"
 +        },
-+        {
+         {
              "name": "psr/log",
              "version": "1.0.2",
-             "source": {
-@@ -1544,17 +1814,65 @@
+@@ -1543,18 +1813,66 @@
+             ],
              "time": "2016-10-10T12:19:37+00:00"
          },
-         {
++        {
 +            "name": "psr/simple-cache",
 +            "version": "1.0.0",
 +            "source": {
@@ -854,7 +855,7 @@ index c6665efd..dbab2f7e 100644
 +            ],
 +            "time": "2017-01-02T13:31:39+00:00"
 +        },
-+        {
+         {
              "name": "sensio/distribution-bundle",
 -            "version": "v5.0.18",
 +            "version": "v5.0.20",
@@ -1602,19 +1603,19 @@ diff --git a/var/SymfonyRequirements.php b/var/SymfonyRequirements.php
 index 7e7a99de..3b14a402 100644
 --- a/var/SymfonyRequirements.php
 +++ b/var/SymfonyRequirements.php
-@@ -634,12 +634,6 @@ class SymfonyRequirements extends RequirementCollection
+@@ -633,12 +633,6 @@ class SymfonyRequirements extends RequirementCollection
+             'Install and enable the <strong>mbstring</strong> extension.'
          );
  
-         $this->addRecommendation(
+-        $this->addRecommendation(
 -            function_exists('iconv'),
 -            'iconv() should be available',
 -            'Install and enable the <strong>iconv</strong> extension.'
 -        );
 -
--        $this->addRecommendation(
+         $this->addRecommendation(
              function_exists('utf8_decode'),
              'utf8_decode() should be available',
-             'Install and enable the <strong>XML</strong> extension.'
 diff --git a/web/config.php b/web/config.php
 index 69df43cf..fd7e17e6 100644
 --- a/web/config.php
