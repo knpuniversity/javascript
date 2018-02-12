@@ -46,7 +46,7 @@ above. But instead, paste the SweetAlert code and update the title - "Delete thi
 and the text - "Did you not actually lift this?". And remove the timer option. Instead,
 add `showCancelButton: true`:
 
-***NOTE
+***SEEALSO
 In version 7, when you click "Cancel", the reject handler is not called anymore. Instead, the success handler is called, but you can use the promise argument to check which button was clicked! See https://github.com/sweetalert2/sweetalert2/releases/tag/v7.0.0 for details!
 ***
 
