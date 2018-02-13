@@ -40,9 +40,9 @@ Let's do it!
 
 First, install Bootstrap:
 
-```TIP
+***TIP
 Hey, Bootstrap 4 is out! But this site is designed for Bootstrap 3 CSS, so don't forget to change your dependency to version 3: yarn add bootstrap@3 --dev.
-```
+***
 
 ```terminal
 yarn add bootstrap@3 --dev
