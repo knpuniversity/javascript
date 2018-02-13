@@ -924,7 +924,37 @@
             "id": "changes-upgrade-symfony",
             "name": "Changes: Upgrade Symfony",
             "description": null
+        },
+        {
+            "id": "changes-upgrading-to-symfony-4",
+            "name": "Changes: Upgrading to Symfony 4",
+            "description": null
+        },
+        {
+            "id": "changes-cleanup",
+            "name": "Changes: Cleanup",
+            "description": null
+        },
+        {
+            "id": "changes-fixing-after-upgrade",
+            "name": "Changes: Fixing after upgrade",
+            "description": null
+        },
+        {
+            "id": "require-require-reploghelper",
+            "name": "Require: require RepLogHelper",
+            "description": null
+        },
+        {
+            "id": "require-install-encore",
+            "name": "Require: install Encore",
+            "description": null
+        },
+        {
+            "id": "require-ignore-node-modules",
+            "name": "Require: Ignore node_modules",
+            "description": null
         }
     ],
-    "sha": "c9fd1d2efe2289407c6be770724ca5f8df2433c4"
+    "sha": "5c6c9f03f49095187a7588c077e0c424cea65296"
 }
