@@ -1,0 +1,12 @@
+diff --git a/public/assets/js/layout.js b/public/assets/js/layout.js
+index e9d87b70..3628a4e3 100644
+--- a/public/assets/js/layout.js
++++ b/public/assets/js/layout.js
+@@ -1,6 +1,7 @@
+ 'use strict';
+ 
+ const $ = require('jquery');
++window.jQuery = $;
+ require('bootstrap');
+ 
+ $(document).ready(function() {

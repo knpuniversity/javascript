@@ -1,0 +1,43 @@
+diff --git a/.gitignore b/.gitignore
+index 1cc8473c..e7a1938c 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,4 +1,5 @@
+ /node_modules/*
++/public/build/*
+ 
+ ###> symfony/framework-bundle ###
+ .env
+diff --git a/templates/lift/index.html.twig b/templates/lift/index.html.twig
+index 9939e139..00096017 100644
+--- a/templates/lift/index.html.twig
++++ b/templates/lift/index.html.twig
+@@ -55,7 +55,7 @@
+     {{ parent() }}
+ 
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.11.0/dist/sweetalert2.all.min.js"></script>
+-    <script src="{{ asset('assets/js/RepLogApp.js') }}"></script>
++    <script src="{{ asset('build/rep_log.js') }}"></script>
+ 
+     <script>
+         $(document).ready(function() {
+diff --git a/webpack.config.js b/webpack.config.js
+new file mode 100644
+index 00000000..df27bbf7
+--- /dev/null
++++ b/webpack.config.js
+@@ -0,0 +1,14 @@
++var Encore = require('@symfony/webpack-encore');
++
++Encore
++    // the project directory where all compiled assets will be stored
++    .setOutputPath('public/build/')
++
++    // the public path used by the web server to access the previous directory
++    .setPublicPath('/build')
++
++    .addEntry('rep_log', './public/assets/js/RepLogApp.js')
++;
++
++// export the final configuration
++module.exports = Encore.getWebpackConfig();

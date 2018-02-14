@@ -1,0 +1,10 @@
+diff --git a/assets/js/Components/RepLogHelper.js b/assets/js/Components/RepLogHelper.js
+index 507dbe40..d9d65ca4 100644
+--- a/assets/js/Components/RepLogHelper.js
++++ b/assets/js/Components/RepLogHelper.js
+@@ -31,4 +31,4 @@ class Helper {
+     }
+ }
+ 
+-module.exports = Helper;
++export default Helper;

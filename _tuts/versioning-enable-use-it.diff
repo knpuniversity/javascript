@@ -1,0 +1,24 @@
+diff --git a/config/packages/framework.yaml b/config/packages/framework.yaml
+index 97407de7..31c1a465 100644
+--- a/config/packages/framework.yaml
++++ b/config/packages/framework.yaml
+@@ -32,3 +32,6 @@ framework:
+     # just here until FOSUserBundle fully removes their templating dependency
+     templating:
+         engines: [twig]
++
++    assets:
++        json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
+diff --git a/webpack.config.js b/webpack.config.js
+index 0924ae8b..c300f115 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -23,6 +23,8 @@ Encore
+ 
+     .enableSassLoader()
+     .enableSourceMaps(!Encore.isProduction())
++    .cleanupOutputBeforeBuild()
++    .enableVersioning()
+ ;
+ 
+ // export the final configuration

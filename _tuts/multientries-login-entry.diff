@@ -1,0 +1,68 @@
+diff --git a/public/assets/js/login.js b/public/assets/js/login.js
+index c07e0d7e..7daf09dc 100644
+--- a/public/assets/js/login.js
++++ b/public/assets/js/login.js
+@@ -1,22 +1,22 @@
+ 'use strict';
+ 
+-(function(window, $) {
+-    $(document).ready(function() {
+-        $('.js-recommended-login').on('click', '.js-show-login', function(e) {
+-            e.preventDefault();
++const $ = require('jquery');
+ 
+-            $('.js-recommended-login-details').toggle();
+-        });
++$(document).ready(function() {
++    $('.js-recommended-login').on('click', '.js-show-login', function(e) {
++        e.preventDefault();
+ 
+-        $('.js-login-field-username').on('keydown', function(e) {
+-            const $usernameInput = $(e.currentTarget);
+-            // remove any existing warnings
+-            $('.login-long-username-warning').remove();
++        $('.js-recommended-login-details').toggle();
++    });
++
++    $('.js-login-field-username').on('keydown', function(e) {
++        const $usernameInput = $(e.currentTarget);
++        // remove any existing warnings
++        $('.login-long-username-warning').remove();
+ 
+-            if ($usernameInput.val().length >= 20) {
+-                const $warning = $('<div class="login-long-username-warning">This is a really long username - are you sure that is right?</div>');
+-                $usernameInput.before($warning);
+-            }
+-        });
++        if ($usernameInput.val().length >= 20) {
++            const $warning = $('<div class="login-long-username-warning">This is a really long username - are you sure that is right?</div>');
++            $usernameInput.before($warning);
++        }
+     });
+-})(window, jQuery);
++});
+diff --git a/templates/bundles/FOSUserBundle/Security/login.html.twig b/templates/bundles/FOSUserBundle/Security/login.html.twig
+index f180c02b..4ec9b201 100644
+--- a/templates/bundles/FOSUserBundle/Security/login.html.twig
++++ b/templates/bundles/FOSUserBundle/Security/login.html.twig
+@@ -11,7 +11,7 @@
+ {% block javascripts %}
+     {{ parent() }}
+ 
+-    <script src="{{ asset('assets/js/login.js') }}"></script>
++    <script src="{{ asset('build/login.js') }}"></script>
+ {% endblock %}
+ 
+ {% block fos_user_content %}
+diff --git a/webpack.config.js b/webpack.config.js
+index eba23d52..fde8e582 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -8,6 +8,7 @@ Encore
+     .setPublicPath('/build')
+ 
+     .addEntry('rep_log', './public/assets/js/rep_log.js')
++    .addEntry('login', './public/assets/js/login.js')
+ 
+     .enableBuildNotifications()
+ ;

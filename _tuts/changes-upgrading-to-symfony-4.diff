@@ -6820,10 +6820,10 @@ similarity index 100%
 rename from var/logs/.gitkeep
 rename to src/Controller/.gitignore
 diff --git a/src/AppBundle/Controller/BaseController.php b/src/Controller/BaseController.php
-similarity index 92%
+similarity index 93%
 rename from src/AppBundle/Controller/BaseController.php
 rename to src/Controller/BaseController.php
-index 30f376af..1ef3bf5d 100644
+index 30f376af..16155734 100644
 --- a/src/AppBundle/Controller/BaseController.php
 +++ b/src/Controller/BaseController.php
 @@ -1,9 +1,10 @@
@@ -6840,15 +6840,12 @@ index 30f376af..1ef3bf5d 100644
  use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  use Symfony\Component\Form\FormInterface;
  use Symfony\Component\HttpFoundation\JsonResponse;
-@@ -87,9 +88,9 @@ class BaseController extends Controller
-     /**
-      * @return RepLogApiModel[]
+@@ -89,7 +90,7 @@ class BaseController extends Controller
       */
--    protected function findAllUsersRepLogModels()
-+    protected function findAllUsersRepLogModels(RepLogRepository $repLogRepo)
+     protected function findAllUsersRepLogModels()
      {
 -        $repLogs = $this->getDoctrine()->getRepository('AppBundle:RepLog')
-+        $repLogs = $repLogRepo
++        $repLogs = $this->getDoctrine()->getRepository(RepLog::class)
              ->findBy(array('user' => $this->getUser()))
          ;
  

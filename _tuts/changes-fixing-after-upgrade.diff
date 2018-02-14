@@ -38,13 +38,13 @@ similarity index 100%
 rename from web/assets/js/login.js
 rename to public/assets/js/login.js
 diff --git a/templates/lift/index.html.twig b/templates/lift/index.html.twig
-index 508eb8f9..739833b3 100644
+index f34e5302..9939e139 100644
 --- a/templates/lift/index.html.twig
 +++ b/templates/lift/index.html.twig
 @@ -55,7 +55,7 @@
      {{ parent() }}
  
-     <script src="https://cdn.jsdelivr.net/sweetalert2/6.1.0/sweetalert2.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.11.0/dist/sweetalert2.all.min.js"></script>
 -    <script src="{{ asset('assets/dist/RepLogApp.js') }}"></script>
 +    <script src="{{ asset('assets/js/RepLogApp.js') }}"></script>
  

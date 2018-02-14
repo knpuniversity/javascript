@@ -931,6 +931,11 @@
             "description": null
         },
         {
+            "id": "changes-upgrading-sweetalert",
+            "name": "Changes: Upgrading SweetAlert",
+            "description": null
+        },
+        {
             "id": "changes-cleanup",
             "name": "Changes: Cleanup",
             "description": null
@@ -954,7 +959,167 @@
             "id": "require-ignore-node-modules",
             "name": "Require: Ignore node_modules",
             "description": null
+        },
+        {
+            "id": "require-first-webpack-config-js",
+            "name": "Require: First webpack.config.js",
+            "description": null
+        },
+        {
+            "id": "notifier-enable-desktop-notifications",
+            "name": "Notifier: Enable desktop notifications",
+            "description": null
+        },
+        {
+            "id": "outside-deps-install-jquery",
+            "name": "Outside Deps: Install jQuery",
+            "description": null
+        },
+        {
+            "id": "outside-deps-install-sweetalert",
+            "name": "Outside Deps: Install SweetAlert",
+            "description": null
+        },
+        {
+            "id": "components-remove-self-executing-func",
+            "name": "Components: Remove self-executing func",
+            "description": null
+        },
+        {
+            "id": "components-real-rep-log-js-entry",
+            "name": "Components: real rep_log.js entry",
+            "description": null
+        },
+        {
+            "id": "components-reorg-to-components-dir",
+            "name": "Components: Reorg to Components dir",
+            "description": null
+        },
+        {
+            "id": "multientries-login-entry",
+            "name": "MultiEntries: login entry",
+            "description": null
+        },
+        {
+            "id": "multientries-layout-entry",
+            "name": "MultiEntries: layout entry",
+            "description": null
+        },
+        {
+            "id": "legacy-jquery-require-in-layout",
+            "name": "Legacy jQuery: Require $ in layout",
+            "description": null
+        },
+        {
+            "id": "legacy-jquery-install-bootstrap",
+            "name": "Legacy jQuery: Install Bootstrap",
+            "description": null
+        },
+        {
+            "id": "legacy-jquery-remove-global-scripts",
+            "name": "Legacy jQuery: Remove global scripts",
+            "description": null
+        },
+        {
+            "id": "legacy-jquery-set-global-jquery",
+            "name": "Legacy jQuery: Set global jQuery",
+            "description": null
+        },
+        {
+            "id": "legacy-jquery-autoprovidejquery",
+            "name": "Legacy jQuery: autoProvidejQuery()",
+            "description": null
+        },
+        {
+            "id": "css-require-login-css",
+            "name": "CSS: require login.css",
+            "description": null
+        },
+        {
+            "id": "css-require-from-layout",
+            "name": "CSS require from layout",
+            "description": null
+        },
+        {
+            "id": "css-require-bootstrap",
+            "name": "CSS: require bootstrap",
+            "description": null
+        },
+        {
+            "id": "css-require-fontawesome",
+            "name": "CSS: Require fontawesome",
+            "description": null
+        },
+        {
+            "id": "copy-move-assets-to-root",
+            "name": "Copy: Move assets to root",
+            "description": null
+        },
+        {
+            "id": "copy-install-the-copy-plugin",
+            "name": "Copy: Install the copy plugin",
+            "description": null
+        },
+        {
+            "id": "copy-copy-the-image",
+            "name": "Copy: copy the image",
+            "description": null
+        },
+        {
+            "id": "sass-try-to-use-sass",
+            "name": "Sass: Try to use Sass",
+            "description": null
+        },
+        {
+            "id": "sass-install-enable-loader",
+            "name": "Sass: Install & enable loader",
+            "description": null
+        },
+        {
+            "id": "sourcemaps-enable-them",
+            "name": "Sourcemaps: Enable them!",
+            "description": null
+        },
+        {
+            "id": "fosjsroutingbundle-try-to-require-it",
+            "name": "FOSJsRoutingBundle: Try to require it",
+            "description": null
+        },
+        {
+            "id": "fosjsroutingbundle-fake-module",
+            "name": "FOSJsRoutingBundle: Fake module",
+            "description": null
+        },
+        {
+            "id": "import-use-import",
+            "name": "Import: Use import",
+            "description": null
+        },
+        {
+            "id": "import-use-export",
+            "name": "Import: Use export",
+            "description": null
+        },
+        {
+            "id": "import-use-import-export-everywhere",
+            "name": "Import: use import\/export everywhere",
+            "description": null
+        },
+        {
+            "id": "commons-add-common-entry",
+            "name": "Commons: Add common entry",
+            "description": null
+        },
+        {
+            "id": "scripts-add-package-json-scripts",
+            "name": "Scripts: Add package.json scripts",
+            "description": null
+        },
+        {
+            "id": "versioning-enable-use-it",
+            "name": "Versioning: Enable & use it",
+            "description": null
         }
     ],
-    "sha": "5c6c9f03f49095187a7588c077e0c424cea65296"
+    "sha": "520a9dfa6c9a34d4121f63f071c4d4313da3ec16"
 }

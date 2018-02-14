@@ -1,0 +1,60 @@
+diff --git a/package.json b/package.json
+index b59e74c3..a41a736a 100644
+--- a/package.json
++++ b/package.json
+@@ -2,6 +2,7 @@
+   "devDependencies": {
+     "@symfony/webpack-encore": "^0.19.0",
+     "jquery": "^3.3.1",
++    "sweetalert2": "^7.11.0",
+     "webpack-notifier": "^1.5.1"
+   }
+ }
+diff --git a/public/assets/js/RepLogApp.js b/public/assets/js/RepLogApp.js
+index d9e06416..2285a7a6 100644
+--- a/public/assets/js/RepLogApp.js
++++ b/public/assets/js/RepLogApp.js
+@@ -2,8 +2,9 @@
+ 
+ const Helper = require('./RepLogHelper');
+ const $ = require('jquery');
++const swal = require('sweetalert2');
+ 
+-(function(window, Routing, swal) {
++(function(window, Routing) {
+ 
+     let HelperInstances = new WeakMap();
+ 
+@@ -212,4 +213,4 @@ const $ = require('jquery');
+ `;
+ 
+     window.RepLogApp = RepLogApp;
+-})(window, Routing, swal);
++})(window, Routing);
+diff --git a/templates/lift/index.html.twig b/templates/lift/index.html.twig
+index 00096017..6cae22bd 100644
+--- a/templates/lift/index.html.twig
++++ b/templates/lift/index.html.twig
+@@ -54,7 +54,6 @@
+ {% block javascripts %}
+     {{ parent() }}
+ 
+-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.11.0/dist/sweetalert2.all.min.js"></script>
+     <script src="{{ asset('build/rep_log.js') }}"></script>
+ 
+     <script>
+diff --git a/yarn.lock b/yarn.lock
+index 874a6414..26d824e9 100644
+--- a/yarn.lock
++++ b/yarn.lock
+@@ -4774,6 +4774,10 @@ svgo@^0.7.0:
+     sax "~1.2.1"
+     whet.extend "~0.9.9"
+ 
++sweetalert2@^7.11.0:
++  version "7.11.0"
++  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-7.11.0.tgz#1d0d47900911a680775ebbd79cb0c77315dce75a"
++
+ tapable@^0.2.7:
+   version "0.2.8"
+   resolved "https://registry.yarnpkg.com/tapable/-/tapable-0.2.8.tgz#99372a5c999bf2df160afc0d74bed4f47948cd22"

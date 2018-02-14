@@ -1,0 +1,12 @@
+diff --git a/assets/js/Components/RepLogApp.js b/assets/js/Components/RepLogApp.js
+index eafaef76..372634d1 100644
+--- a/assets/js/Components/RepLogApp.js
++++ b/assets/js/Components/RepLogApp.js
+@@ -3,6 +3,7 @@
+ const Helper = require('./RepLogHelper');
+ const $ = require('jquery');
+ const swal = require('sweetalert2');
++const Routing = require('../../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js');
+ 
+ let HelperInstances = new WeakMap();
+ 

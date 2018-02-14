@@ -1,0 +1,27 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 5250b8af..3526e289 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -98,6 +98,7 @@
+     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.0.5/es6-promise.auto.min.js"></script>
++    <script src="{{ asset('build/manifest.js') }}"></script>
+     <script src="{{ asset('build/layout.js') }}"></script>
+ {% endblock %}
+ 
+diff --git a/webpack.config.js b/webpack.config.js
+index f72261f9..0924ae8b 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -8,9 +8,9 @@ Encore
+     // the public path used by the web server to access the previous directory
+     .setPublicPath('/build')
+ 
++    .createSharedEntry('layout', './assets/js/layout.js')
+     .addEntry('rep_log', './assets/js/rep_log.js')
+     .addEntry('login', './assets/js/login.js')
+-    .addEntry('layout', './assets/js/layout.js')
+ 
+     .enableBuildNotifications()
+     // fixes modules that expect jQuery to be global

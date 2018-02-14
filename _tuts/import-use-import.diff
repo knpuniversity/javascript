@@ -1,0 +1,12 @@
+diff --git a/assets/js/Components/RepLogApp.js b/assets/js/Components/RepLogApp.js
+index f024cd1b..99eec81a 100644
+--- a/assets/js/Components/RepLogApp.js
++++ b/assets/js/Components/RepLogApp.js
+@@ -1,6 +1,6 @@
+ 'use strict';
+ 
+-const Helper = require('./RepLogHelper');
++import Helper from './RepLogHelper';
+ const $ = require('jquery');
+ const swal = require('sweetalert2');
+ const Routing = require('./Routing');

@@ -1,0 +1,25 @@
+diff --git a/public/assets/js/login.js b/public/assets/js/login.js
+index 7daf09dc..479c6e39 100644
+--- a/public/assets/js/login.js
++++ b/public/assets/js/login.js
+@@ -1,6 +1,7 @@
+ 'use strict';
+ 
+ const $ = require('jquery');
++require('../css/login.css');
+ 
+ $(document).ready(function() {
+     $('.js-recommended-login').on('click', '.js-show-login', function(e) {
+diff --git a/templates/bundles/FOSUserBundle/Security/login.html.twig b/templates/bundles/FOSUserBundle/Security/login.html.twig
+index 4ec9b201..a0bf8e68 100644
+--- a/templates/bundles/FOSUserBundle/Security/login.html.twig
++++ b/templates/bundles/FOSUserBundle/Security/login.html.twig
+@@ -5,7 +5,7 @@
+ {% block stylesheets %}
+     {{ parent() }}
+ 
+-    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}" />
++    <link rel="stylesheet" href="{{ asset('build/login.css') }}" />
+ {% endblock %}
+ 
+ {% block javascripts %}

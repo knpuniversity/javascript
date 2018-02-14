@@ -1,0 +1,52 @@
+diff --git a/assets/images/dumbbell.png b/assets/static/dumbbell.png
+similarity index 100%
+rename from assets/images/dumbbell.png
+rename to assets/static/dumbbell.png
+diff --git a/templates/bundles/FOSUserBundle/Security/login.html.twig b/templates/bundles/FOSUserBundle/Security/login.html.twig
+index a0bf8e68..df23dcae 100644
+--- a/templates/bundles/FOSUserBundle/Security/login.html.twig
++++ b/templates/bundles/FOSUserBundle/Security/login.html.twig
+@@ -18,7 +18,7 @@
+     <div class="container">
+         <div class="wrapper">
+             <form action="{{ path("fos_user_security_check") }}" method="post" class="form-signin">
+-                <h3><img class="dumbbell" src="{{ asset('assets/images/dumbbell.png') }}">Login! Start Lifting!</h3>
++                <h3><img class="dumbbell" src="{{ asset('build/static/dumbbell.png') }}">Login! Start Lifting!</h3>
+                 <div class="js-recommended-login">
+                     <a href="#" class="js-show-login">Don't know the login?</a>
+                     <div class="js-recommended-login-details" style="display: none;">
+diff --git a/templates/lift/index.html.twig b/templates/lift/index.html.twig
+index 7f8c825f..6342f651 100644
+--- a/templates/lift/index.html.twig
++++ b/templates/lift/index.html.twig
+@@ -35,7 +35,7 @@
+         <div class="col-md-5">
+             <div class="leaderboard">
+                 <h2 class="text-center">
+-                    <img class="dumbbell" src="{{ asset('assets/images/dumbbell.png') }}" />
++                    <img class="dumbbell" src="{{ asset('build/static/dumbbell.png') }}" />
+                     Leaderboard
+                 </h2>
+ 
+diff --git a/webpack.config.js b/webpack.config.js
+index 55a8c5b0..83700013 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -1,4 +1,5 @@
+ var Encore = require('@symfony/webpack-encore');
++const CopyWebpackPlugin = require('copy-webpack-plugin');
+ 
+ Encore
+     // the project directory where all compiled assets will be stored
+@@ -14,6 +15,11 @@ Encore
+     .enableBuildNotifications()
+     // fixes modules that expect jQuery to be global
+     .autoProvidejQuery()
++
++    .addPlugin(new CopyWebpackPlugin([
++        // copies to {output}/static
++        { from: './assets/static', to: 'static' }
++    ]))
+ ;
+ 
+ // export the final configuration

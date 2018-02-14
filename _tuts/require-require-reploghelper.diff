@@ -1,16 +1,16 @@
 diff --git a/public/assets/js/RepLogApp.js b/public/assets/js/RepLogApp.js
-index 24ffa0d8..bcbff434 100644
+index 3c02bfd3..fd7333bf 100644
 --- a/public/assets/js/RepLogApp.js
 +++ b/public/assets/js/RepLogApp.js
 @@ -1,5 +1,7 @@
  'use strict';
  
-+const Helper = require('./RepLogHelper')
++const Helper = require('./RepLogHelper');
 +
  (function(window, $, Routing, swal) {
  
      let HelperInstances = new WeakMap();
-@@ -194,40 +196,6 @@
+@@ -192,40 +194,6 @@
          }
      }
  

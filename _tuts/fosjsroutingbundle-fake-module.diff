@@ -1,0 +1,24 @@
+diff --git a/assets/js/Components/RepLogApp.js b/assets/js/Components/RepLogApp.js
+index 372634d1..f024cd1b 100644
+--- a/assets/js/Components/RepLogApp.js
++++ b/assets/js/Components/RepLogApp.js
+@@ -3,7 +3,7 @@
+ const Helper = require('./RepLogHelper');
+ const $ = require('jquery');
+ const swal = require('sweetalert2');
+-const Routing = require('../../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js');
++const Routing = require('./Routing');
+ 
+ let HelperInstances = new WeakMap();
+ 
+diff --git a/assets/js/Components/Routing.js b/assets/js/Components/Routing.js
+new file mode 100644
+index 00000000..09c7674a
+--- /dev/null
++++ b/assets/js/Components/Routing.js
+@@ -0,0 +1,5 @@
++/**
++ * For now, we rely on the router.js script tag to be included
++ * in the layout. This is just a helper module to get that object.
++ */
++module.exports = window.Routing;
