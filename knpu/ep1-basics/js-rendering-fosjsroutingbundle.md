@@ -106,7 +106,7 @@ Back down in `loadRepLogs`, let's get to work: `$.ajax()`, and set the `url` to
 `Routing.generate()`, passing that the name of our route: `rep_log_list`. And on
 `success`, just dump that data:
 
-[[[[ code('92d300da35') ]]]]
+[[[ code('92d300da35') ]]]
 
 Ok, go check it out! Refresh! You can see the `GET` AJAX call made *immediately*.
 And adding a new row of course still works.
