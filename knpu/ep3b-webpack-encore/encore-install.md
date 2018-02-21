@@ -21,7 +21,7 @@ setup details and, of course, a Haiku about Webpack.
 The last step will be to find a terminal, move into the project, and run
 
 ```terminal
-php bin/console server:start
+php bin/console server:run
 ```
 
 to start the built-in web server. Find your most favorite browser and go to:
