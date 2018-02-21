@@ -1,1 +1,14 @@
-chapters: []
+chapters:
+    - encore-install
+    - first-encore
+    - require-outside-libs
+    - entry-components
+    - multi-page-entry
+    - jquery-plugins
+    - require-css
+    - copy-plugin
+    - sass-sourcemaps
+    - fos-js-routing-bundle
+    - import-export
+    - production-build
+    - versioning
