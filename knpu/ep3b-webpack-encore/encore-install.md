@@ -6,7 +6,7 @@ also because I think you're going to *love* working with it and I *know* that it
 going to *drastically* improve the way you write JavaScript.
 
 Basically, Encore is a wrapper around Webpack... because honestly, Webpack - while
-*amazing* - is a pain in the butt to setup. And what does Webpack do? We'll get
+*amazing* - is a pain to setup. And what does Webpack do? We'll get
 to that.
 
 ## Setting up the Project
