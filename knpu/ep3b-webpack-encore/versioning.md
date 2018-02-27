@@ -10,7 +10,7 @@ But, when an existing user comes back to our site, their browser might use the o
 ## Enabling Versioning
 
 This is a *classic* problem. But with Encore, we can solve it beautifully and
-automatically! In `webpack.config.js`, first add `.cleanOutputBeforeBuild()`.
+automatically! In `webpack.config.js`, first add `.cleanupOutputBeforeBuild()`.
 That's a nice little function that will empty the `public/build` directory whenever
 you run Encore. Then, here's the key: `enableVersioning()`.
 
