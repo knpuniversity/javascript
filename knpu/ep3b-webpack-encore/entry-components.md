@@ -6,11 +6,8 @@ up! First, remove the self-executing function that's around everything:
 [[[ code('21e41f99e2') ]]]
 
 We *originally* added this because it gave our code a little bit of isolation.
-It helped us to, for example, avoid accidentally overriding global variables:
-
-[[[ code('21e41f99e2') ]]]
-
-But... now that `RepLogApp` is being processed by Webpack, it is *itself* a module!
+It helped us to, for example, avoid accidentally overriding global variables, but...
+now that `RepLogApp` is being processed by Webpack, it is *itself* a module!
 And Webpack automatically wraps it - behind the scenes - so that it's isolated.
 Basically, we don't need to worry about silly things like self-executing functions.
 
