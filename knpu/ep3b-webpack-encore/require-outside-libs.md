@@ -6,13 +6,19 @@ and *start* thinking about how you can code *correctly*. It's not as easy as it
 sounds: we've been using global variables in JavaScript... well... forever!
 
 For example, in `RepLogApp.js`, we created this self-executing function to give
-our code a little bit of isolation. That part isn't too important. But at the bottom,
-we are *relying* on there to be a *global* `jQuery` variable. It just *must* exist,
-or else everything will explode! On top, this becomes a `$` variable in the function.
+our code a little bit of isolation:
+
+[[[ code('59df695dea') ]]]
+
+That part isn't too important. But at the bottom, we are *relying* on there to be
+a *global* `jQuery` variable. It just *must* exist, or else everything will explode!
+On top, this becomes a `$` variable in the function.
 
 Open the base layout file - `base.html.twig`. The *only* reason our code works is
 that, at the bottom, yep! We have a script tag for jQuery, which adds a global
-`jQuery` variable.
+`jQuery` variable:
+
+[[[ code('fbe68e4442') ]]]
 
 And this is the process we've used for *years*: add a script tag for a JS library,
 then reference its global variable everywhere else.
@@ -24,7 +30,7 @@ it in the same way that we are requiring `Helper`.
 
 The *only* difference is that jQuery is a third-party library. Well... in PHP, we
 would use Composer to install third-party libraries. And... yea! In JavaScript, we
-can use yarn to do the same thing!
+can use Yarn to do the same thing!
 
 ## Installing jQuery via Yarn
 
@@ -37,19 +43,26 @@ yarn add jquery --dev
 Yep! We can use yarn to download *front-end* libraries! Oh, and you can search for
 package names on `npmjs.com` or `npms.io`.
 
-This downloads jquery into the `node_modules/` directory and adds it to `package.json`.
+This downloads jquery into the `node_modules/` directory and adds it to `package.json`:
+
+[[[ code('80edd87051') ]]]
 
 ## Requiring jQuery
 
-So... how do we require it? Oh, it's *awesome*: `const $ = require('jquery')`.
+So... how do we require it? Oh, it's *awesome*: `const $ = require('jquery')`:
+
+[[[ code('6c5f8c5594') ]]]
 
 That's it! When a require path does *not* start with a `.`, Webpack knows to look
 for a *package* in `node_modules/` with that name.
 
 And now that we are *properly* importing the `$` variable - yay us - remove `$`
-and `jQuery` from the self-executing function. Yep, when we use the `$` variable
-below, it is *no longer* dependent on any global jQuery variable! Responsible coding
-for the win!
+and `jQuery` from the self-executing function:
+
+[[[ code('3aeb8a04d4') ]]]
+
+Yep, when we use the `$` variable below, it is *no longer* dependent on any global
+jQuery variable! Responsible coding for the win!
 
 But... does it work? Try it! Go back to our site and refresh! It does! That's because,
 back on the terminal, if you run:
@@ -68,12 +81,14 @@ Webpack takes care of the rest!
 
 Let's require one more outside package. Search for "swal". We're using a really cool
 library called SweetAlert to bring up the delete dialog. But... the *only* reason
-this works is that, in the template, we're including a script tag for it.
+this works is that, in the template, we're including a script tag for it:
+
+[[[ code('b943b61089') ]]]
 
 Boo! Let's refactor this to *require* that library properly.
 
-If you search for this package, you'll find out that it's called `sweetalert2`. Let's
-install it:
+If you search for this package, you'll find out that it's called `sweetalert2`.
+Let's install it:
 
 ```terminal
 yarn add sweetalert2 --dev
@@ -84,11 +99,17 @@ yet because we're still using the global variable in a few places. But, we'll fi
 that soon.
 
 Then, in `RepLogApp.js`, remove the argument from the self-executing function: that
-global variable doesn't even exist anymore! To prove it, refresh! Awesome!
+global variable doesn't even exist anymore!
 
-> swal is not defined
+[[[ code('bacd6b0d16') ]]]
 
-To get it back, add `const swal = require('sweetalert2');`
+To prove it, refresh! Awesome!
+
+> `swal` is not defined
+
+To get it back, add `const swal = require('sweetalert2');`:
+
+[[[ code('4b6733287b') ]]]
 
 As *soon* as we save this, Webpack recompiles, we refresh and... it works! Yes!
 We can use *any* outside library by running one command and adding one require line.
