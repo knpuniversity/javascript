@@ -28,8 +28,12 @@ And so is `node_modules/`. We're starting from scratch.
 
 Now, add webpack:
 
+***TIP
+This tutorial uses Webpack v3, so please double check that you do too, otherwise, you will run into some troubles in further chapters
+***
+
 ```terminal
-yarn add webpack --dev
+yarn add webpack@3 --dev
 ```
 
 As it's downloading, let's talk strategy. Webpack is an executable, and we will point
