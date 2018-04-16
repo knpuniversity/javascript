@@ -92,7 +92,7 @@ JavaScript like we just did: each time you change a file, you will need to re-ru
 Encore! Lame! That's why Encore has a fancy "watch" option. Run:
 
 ```terminal
-./node_module/.bin/encore dev --watch
+./node_modules/.bin/encore dev --watch
 ```
 
 This will build, but now it's watching for changes! Let's just add a space here
