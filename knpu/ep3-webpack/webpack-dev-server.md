@@ -8,7 +8,7 @@ up its sleeves.
 First, install it
 
 ```terminal
-yarn add webpack-dev-server --dev
+yarn add webpack-dev-server@2 --dev
 ```
 
 As soon as it finishes, go back to the main tab. Stop Webpack and clear the build
