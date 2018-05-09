@@ -1,0 +1,35 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index c3284276..cb6996b0 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -2,6 +2,13 @@ import React, { Component } from 'react';
+ 
+ export default class RepLogApp extends Component {
+     render() {
+-        return <h2>Lift Stuff! <span>❤️</span></h2>;
++        let heart = '';
++        if (this.props.withHeart) {
++            heart = <span>❤️</span>;
++        }
++
++        return (
++            <h2>Lift Stuff! {heart}</h2>
++        );
+     }
+ }
+diff --git a/assets/js/rep_log_react.js b/assets/js/rep_log_react.js
+index 24cac09f..7fc40512 100644
+--- a/assets/js/rep_log_react.js
++++ b/assets/js/rep_log_react.js
+@@ -2,5 +2,9 @@ import React from 'react';
+ import ReactDom from 'react-dom';
+ import RepLogApp from './RepLog/RepLogApp';
+ 
+-console.log(<RepLogApp />);
+-ReactDom.render(<RepLogApp />, document.getElementById('lift-stuff-app'));
++const shouldShowHeart = true;
++
++ReactDom.render(
++    <RepLogApp withHeart={shouldShowHeart} />,
++    document.getElementById('lift-stuff-app')
++);

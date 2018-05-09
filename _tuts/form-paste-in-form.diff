@@ -1,0 +1,48 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index dd11f2cb..a84423a4 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -49,6 +49,43 @@ export default class RepLogApp extends Component {
+                     </tr>
+                     </tfoot>
+                 </table>
++
++                <form className="form-inline js-new-rep-log-form" noValidate
++                      data-url="{{ path('rep_log_new') }}">
++                    <div className="form-group">
++                        <label className="sr-only control-label required"
++                               htmlFor="rep_log_item">
++                            What did you lift?
++                        </label>
++                        <select id="rep_log_item"
++                                name="item"
++                                required="required"
++                                className="form-control">
++                            <option value="" selected="selected">What did you
++                                lift?
++                            </option>
++                            <option value="cat">Cat</option>
++                            <option value="fat_cat">Big Fat Cat</option>
++                            <option value="laptop">My Laptop</option>
++                            <option value="coffee_cup">Coffee Cup</option>
++                        </select>
++                    </div>
++
++                    <div className="form-group">
++                        <label className="sr-only control-label required"
++                               htmlFor="rep_log_reps">
++                            How many times?
++                        </label>
++                        <input type="number" id="rep_log_reps"
++                               name="reps" required="required"
++                               placeholder="How many times?"
++                               className="form-control"/>
++                    </div>
++
++                    <button type="submit" className="btn btn-primary">I Lifted
++                        it!
++                    </button>
++                </form>
+             </div>
+ 
+         );

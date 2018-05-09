@@ -1119,7 +1119,142 @@
             "id": "versioning-enable-use-it",
             "name": "Versioning: Enable & use it",
             "description": null
+        },
+        {
+            "id": "pre-react-upgrade-symfony-deps",
+            "name": "PRE_REACT: Upgrade Symfony deps",
+            "description": null
+        },
+        {
+            "id": "pre-react-upgrade-yarn-deps",
+            "name": "PRE_REACT: Upgrade yarn deps",
+            "description": null
+        },
+        {
+            "id": "pre-react-remove-babelrc-file",
+            "name": "PRE_REACT: Remove .babelrc file",
+            "description": null
+        },
+        {
+            "id": "pre-react-minor-markup-cleanup",
+            "name": "PRE_REACT: Minor markup cleanup",
+            "description": null
+        },
+        {
+            "id": "first-react-create-rep-log-react-js",
+            "name": "First React: Create rep_log_react.js",
+            "description": null
+        },
+        {
+            "id": "first-react-install-react",
+            "name": "First React: Install React",
+            "description": null
+        },
+        {
+            "id": "first-react-react-createelement-log",
+            "name": "First React: React.createElement & log",
+            "description": null
+        },
+        {
+            "id": "first-react-reactdom-render",
+            "name": "First React: ReactDOM.render()",
+            "description": null
+        },
+        {
+            "id": "first-react-createelement-with-nested",
+            "name": "First React: createElement with nested",
+            "description": null
+        },
+        {
+            "id": "jsx-show-first-jsx",
+            "name": "JSX: Show first JSX!",
+            "description": null
+        },
+        {
+            "id": "jsx-create-first-class-component",
+            "name": "JSX: Create first class component",
+            "description": null
+        },
+        {
+            "id": "jsx-import-component",
+            "name": "JSX: Import { Component }",
+            "description": null
+        },
+        {
+            "id": "jsx-extract-to-replogapp-js",
+            "name": "JSX: Extract to RepLogApp.js",
+            "description": null
+        },
+        {
+            "id": "jsx-export-import-module",
+            "name": "JSX: Export & import module",
+            "description": null
+        },
+        {
+            "id": "jsx-pass-withheart-prop",
+            "name": "JSX: Pass withHeart prop",
+            "description": null
+        },
+        {
+            "id": "jsx-render-2-replogapp",
+            "name": "JSX: Render 2 RepLogApp",
+            "description": null
+        },
+        {
+            "id": "jsx-wrap-2-inside-div",
+            "name": "JSX: Wrap 2 inside <div>",
+            "description": null
+        },
+        {
+            "id": "jsx-go-back-to-one-element",
+            "name": "JSX: Go back to one element",
+            "description": null
+        },
+        {
+            "id": "collection-wrap-in-div-with-classname",
+            "name": "Collection: Wrap in div with className",
+            "description": null
+        },
+        {
+            "id": "collection-copy-in-table",
+            "name": "Collection: Copy in table",
+            "description": null
+        },
+        {
+            "id": "collection-cleanup-table",
+            "name": "Collection: Cleanup table",
+            "description": null
+        },
+        {
+            "id": "collection-use-array-to-render",
+            "name": "Collection: Use array to render",
+            "description": null
+        },
+        {
+            "id": "collection-add-key",
+            "name": "Collection: Add key",
+            "description": null
+        },
+        {
+            "id": "form-paste-in-form",
+            "name": "Form: Paste in form",
+            "description": null
+        },
+        {
+            "id": "form-cleanup",
+            "name": "Form: Cleanup",
+            "description": null
+        },
+        {
+            "id": "form-add-manual-whitespace",
+            "name": "Form: Add manual whitespace",
+            "description": null
+        },
+        {
+            "id": "state-add-highlightedrowid-state",
+            "name": "State: Add highlightedRowId state",
+            "description": null
         }
     ],
-    "sha": "520a9dfa6c9a34d4121f63f071c4d4313da3ec16"
+    "sha": "5e67a5b220da2339efd72a38589e13a5756749f3"
 }

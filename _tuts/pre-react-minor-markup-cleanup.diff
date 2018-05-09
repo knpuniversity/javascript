@@ -1,0 +1,14 @@
+diff --git a/templates/lift/_form.html.twig b/templates/lift/_form.html.twig
+index a98b2684..722a71f3 100644
+--- a/templates/lift/_form.html.twig
++++ b/templates/lift/_form.html.twig
+@@ -12,7 +12,8 @@
+             <option value="fat_cat">Big Fat Cat</option>
+             <option value="laptop">My Laptop</option>
+             <option value="coffee_cup">Coffee Cup</option>
+-        </select></div>
++        </select>
++    </div>
+ 
+     <div class="form-group">
+         <label class="sr-only control-label required" for="rep_log_reps">
