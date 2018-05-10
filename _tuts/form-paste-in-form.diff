@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index dd11f2cb..a84423a4 100644
+index 26f8881a..c39c2f1b 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -49,6 +49,43 @@ export default class RepLogApp extends Component {
+@@ -45,6 +45,43 @@ class RepLogApp extends Component {
                      </tr>
                      </tfoot>
                  </table>

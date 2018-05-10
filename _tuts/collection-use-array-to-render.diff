@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 894032e2..c40e3f81 100644
+index d3aaed18..6b970541 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -7,6 +7,23 @@ export default class RepLogApp extends Component {
+@@ -7,6 +7,23 @@ class RepLogApp extends Component {
              heart = <span>❤️</span>;
          }
  
@@ -26,7 +26,7 @@ index 894032e2..c40e3f81 100644
          return (
              <div className="col-md-7">
                  <h2>Lift Stuff! {heart}</h2>
-@@ -21,12 +38,7 @@ export default class RepLogApp extends Component {
+@@ -21,12 +38,7 @@ class RepLogApp extends Component {
                      </tr>
                      </thead>
                      <tbody>

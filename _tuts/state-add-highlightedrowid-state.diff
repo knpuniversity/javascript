@@ -1,11 +1,11 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index b66f94e0..77469373 100644
+index ed9236bb..65aa78bb 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -1,7 +1,17 @@
  import React, { Component } from 'react';
  
- export default class RepLogApp extends Component {
+ class RepLogApp extends Component {
 +    constructor(props) {
 +        super(props);
 +
@@ -20,12 +20,15 @@ index b66f94e0..77469373 100644
          let heart = '';
          if (this.props.withHeart) {
              heart = <span>❤️</span>;
-@@ -15,7 +25,7 @@ export default class RepLogApp extends Component {
- 
-         const repLogElements = repLogs.map((repLog) => {
-             return (
--                <tr key={repLog.id}>
-+                <tr key={repLog.id} className={highlightedRowId === repLog.id ? 'info' : ''}>
-                     <td>{repLog.itemLabel}</td>
-                     <td>{repLog.reps}</td>
-                     <td>{repLog.totalWeightLifted}</td>
+@@ -28,7 +38,10 @@ class RepLogApp extends Component {
+                     </thead>
+                     <tbody>
+                     {repLogs.map((repLog) => (
+-                        <tr key={repLog.id}>
++                        <tr
++                            key={repLog.id}
++                            className={highlightedRowId === repLog.id ? 'info' : ''}
++                        >
+                             <td>{repLog.itemLabel}</td>
+                             <td>{repLog.reps}</td>
+                             <td>{repLog.totalWeightLifted}</td>

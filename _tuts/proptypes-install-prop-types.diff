@@ -1,0 +1,25 @@
+diff --git a/package.json b/package.json
+index 4249a412..6db37103 100644
+--- a/package.json
++++ b/package.json
+@@ -7,6 +7,7 @@
+     "font-awesome": "4",
+     "jquery": "^3.3.1",
+     "node-sass": "^4.7.2",
++    "prop-types": "^15.6.1",
+     "react": "^16.3.2",
+     "react-dom": "^16.3.2",
+     "sass-loader": "^6.0.6",
+diff --git a/yarn.lock b/yarn.lock
+index 095cf171..d4071571 100644
+--- a/yarn.lock
++++ b/yarn.lock
+@@ -4494,7 +4494,7 @@ promise@^7.1.1:
+   dependencies:
+     asap "~2.0.3"
+ 
+-prop-types@^15.6.0:
++prop-types@^15.6.0, prop-types@^15.6.1:
+   version "15.6.1"
+   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
+   dependencies:

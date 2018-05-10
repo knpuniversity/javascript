@@ -1,0 +1,13 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index f832218c..39674703 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -41,7 +41,7 @@ class RepLogApp extends Component {
+                         <tr
+                             key={repLog.id}
+                             className={highlightedRowId === repLog.id ? 'info' : ''}
+-                            onClick={() => this.setState({highlightedRowId: repLog.id})}
++                            onClick={(event) => this.setState({highlightedRowId: repLog.id})}
+                         >
+                             <td>{repLog.itemLabel}</td>
+                             <td>{repLog.reps}</td>

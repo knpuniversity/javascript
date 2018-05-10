@@ -1,0 +1,29 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index ef20d001..26f8881a 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -27,16 +27,14 @@ class RepLogApp extends Component {
+                     </tr>
+                     </thead>
+                     <tbody>
+-                    {repLogs.map((repLog) => {
+-                        return (
+-                            <tr key={repLog.id}>
+-                                <td>{repLog.itemLabel}</td>
+-                                <td>{repLog.reps}</td>
+-                                <td>{repLog.totalWeightLifted}</td>
+-                                <td>...</td>
+-                            </tr>
+-                        )
+-                    })}
++                    {repLogs.map((repLog) => (
++                        <tr key={repLog.id}>
++                            <td>{repLog.itemLabel}</td>
++                            <td>{repLog.reps}</td>
++                            <td>{repLog.totalWeightLifted}</td>
++                            <td>...</td>
++                        </tr>
++                    ))}
+                     </tbody>
+                     <tfoot>
+                     <tr>

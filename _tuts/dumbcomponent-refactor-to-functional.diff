@@ -1,0 +1,60 @@
+diff --git a/assets/js/RepLog/RepLogList.js b/assets/js/RepLog/RepLogList.js
+index a0615e9c..b7083f9d 100644
+--- a/assets/js/RepLog/RepLogList.js
++++ b/assets/js/RepLog/RepLogList.js
+@@ -1,32 +1,30 @@
+ import React, { Component } from 'react';
+ 
+-class RepLogList extends Component {
+-    render() {
+-        const { highlightedRowId, handleRowClick } = this.props;
++function RepLogList(props) {
++    const { highlightedRowId, handleRowClick } = this.props;
+ 
+-        const repLogs = [
+-            { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
+-            { id: 2, reps: 10, itemLabel: 'Big Fat Cat', totalWeightLifted: 180 },
+-            { id: 8, reps: 4, itemLabel: 'Big Fat Cat', totalWeightLifted: 72 }
+-        ];
++    const repLogs = [
++        { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
++        { id: 2, reps: 10, itemLabel: 'Big Fat Cat', totalWeightLifted: 180 },
++        { id: 8, reps: 4, itemLabel: 'Big Fat Cat', totalWeightLifted: 72 }
++    ];
+ 
+-        return (
+-            <tbody>
+-            {repLogs.map((repLog) => (
+-                <tr
+-                    key={repLog.id}
+-                    className={highlightedRowId === repLog.id ? 'info' : ''}
+-                    onClick={() =>  handleRowClick(repLog.id)}
+-                >
+-                    <td>{repLog.itemLabel}</td>
+-                    <td>{repLog.reps}</td>
+-                    <td>{repLog.totalWeightLifted}</td>
+-                    <td>...</td>
+-                </tr>
+-            ))}
+-            </tbody>
+-        )
+-    }
++    return (
++        <tbody>
++        {repLogs.map((repLog) => (
++            <tr
++                key={repLog.id}
++                className={highlightedRowId === repLog.id ? 'info' : ''}
++                onClick={() =>  handleRowClick(repLog.id)}
++            >
++                <td>{repLog.itemLabel}</td>
++                <td>{repLog.reps}</td>
++                <td>{repLog.totalWeightLifted}</td>
++                <td>...</td>
++            </tr>
++        ))}
++        </tbody>
++    );
+ }
+ 
+ export default RepLogList;

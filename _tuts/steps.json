@@ -1236,6 +1236,16 @@
             "description": null
         },
         {
+            "id": "collection-render-inline",
+            "name": "Collection: Render inline",
+            "description": null
+        },
+        {
+            "id": "collection-use-simpler-arrow-func",
+            "name": "Collection: Use simpler arrow func",
+            "description": null
+        },
+        {
             "id": "form-paste-in-form",
             "name": "Form: Paste in form",
             "description": null
@@ -1254,7 +1264,57 @@
             "id": "state-add-highlightedrowid-state",
             "name": "State: Add highlightedRowId state",
             "description": null
+        },
+        {
+            "id": "state-add-onclick-to-set-state",
+            "name": "State: Add onClick to set state",
+            "description": null
+        },
+        {
+            "id": "state-add-e-arg-to-onclick",
+            "name": "State: Add e arg to onClick",
+            "description": null
+        },
+        {
+            "id": "state-refactor-to-handlerowclick",
+            "name": "State: Refactor to handleRowClick()",
+            "description": null
+        },
+        {
+            "id": "child-element-create-reploglist",
+            "name": "Child Element: Create RepLogList",
+            "description": null
+        },
+        {
+            "id": "child-element-pass-highlightdrowid-as-prop",
+            "name": "Child Element: Pass highlightdRowId as prop",
+            "description": null
+        },
+        {
+            "id": "child-element-pass-in-handlerowclick",
+            "name": "Child Element: Pass in handleRowClick",
+            "description": null
+        },
+        {
+            "id": "child-element-bind-handlerowclick-to-this",
+            "name": "Child Element: Bind handleRowClick to this",
+            "description": null
+        },
+        {
+            "id": "dumbcomponent-refactor-to-functional",
+            "name": "DumbComponent: Refactor to functional",
+            "description": null
+        },
+        {
+            "id": "dumbcomponent-this-props-props",
+            "name": "DumbComponent: this.props -> props",
+            "description": null
+        },
+        {
+            "id": "proptypes-install-prop-types",
+            "name": "PropTypes: Install prop-types",
+            "description": null
         }
     ],
-    "sha": "5e67a5b220da2339efd72a38589e13a5756749f3"
+    "sha": "2ce8a3aa700f8ff2e1c819e7f321241451ba506a"
 }

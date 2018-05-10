@@ -1,0 +1,81 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 4d600973..3b81379b 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -1,4 +1,5 @@
+ import React, { Component } from 'react';
++import RepLogList from './RepLogList';
+ 
+ class RepLogApp extends Component {
+     constructor(props) {
+@@ -21,12 +22,6 @@ class RepLogApp extends Component {
+             heart = <span>❤️</span>;
+         }
+ 
+-        const repLogs = [
+-            { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
+-            { id: 2, reps: 10, itemLabel: 'Big Fat Cat', totalWeightLifted: 180 },
+-            { id: 8, reps: 4, itemLabel: 'Big Fat Cat', totalWeightLifted: 72 }
+-        ];
+-
+         return (
+             <div className="col-md-7">
+                 <h2>Lift Stuff! {heart}</h2>
+@@ -40,20 +35,7 @@ class RepLogApp extends Component {
+                         <th>&nbsp;</th>
+                     </tr>
+                     </thead>
+-                    <tbody>
+-                    {repLogs.map((repLog) => (
+-                        <tr
+-                            key={repLog.id}
+-                            className={highlightedRowId === repLog.id ? 'info' : ''}
+-                            onClick={(event) => this.handleRowClick(repLog.id, event)}
+-                        >
+-                            <td>{repLog.itemLabel}</td>
+-                            <td>{repLog.reps}</td>
+-                            <td>{repLog.totalWeightLifted}</td>
+-                            <td>...</td>
+-                        </tr>
+-                    ))}
+-                    </tbody>
++                    <RepLogList/>
+                     <tfoot>
+                     <tr>
+                         <td>&nbsp;</td>
+diff --git a/assets/js/RepLog/RepLogList.js b/assets/js/RepLog/RepLogList.js
+new file mode 100644
+index 00000000..d19b895d
+--- /dev/null
++++ b/assets/js/RepLog/RepLogList.js
+@@ -0,0 +1,30 @@
++import React, { Component } from 'react';
++
++class RepLogList extends Component {
++    render() {
++        const repLogs = [
++            { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
++            { id: 2, reps: 10, itemLabel: 'Big Fat Cat', totalWeightLifted: 180 },
++            { id: 8, reps: 4, itemLabel: 'Big Fat Cat', totalWeightLifted: 72 }
++        ];
++
++        return (
++            <tbody>
++            {repLogs.map((repLog) => (
++                <tr
++                    key={repLog.id}
++                    className={highlightedRowId === repLog.id ? 'info' : ''}
++                    onClick={(event) => this.handleRowClick(repLog.id, event)}
++                >
++                    <td>{repLog.itemLabel}</td>
++                    <td>{repLog.reps}</td>
++                    <td>{repLog.totalWeightLifted}</td>
++                    <td>...</td>
++                </tr>
++            ))}
++            </tbody>
++        )
++    }
++}
++
++export default RepLogList;

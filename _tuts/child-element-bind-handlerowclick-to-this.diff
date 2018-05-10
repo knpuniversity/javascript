@@ -1,0 +1,13 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index e6026389..ca100380 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -8,6 +8,8 @@ class RepLogApp extends Component {
+         this.state = {
+             highlightedRowId: null
+         };
++
++        this.handleRowClick = this.handleRowClick.bind(this);
+     }
+ 
+     handleRowClick(repLogId) {

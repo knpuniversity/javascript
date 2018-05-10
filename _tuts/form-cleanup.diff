@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index a84423a4..5451d54d 100644
+index c39c2f1b..269554c0 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -50,8 +50,7 @@ export default class RepLogApp extends Component {
+@@ -46,8 +46,7 @@ class RepLogApp extends Component {
                      </tfoot>
                  </table>
  
@@ -12,7 +12,7 @@ index a84423a4..5451d54d 100644
                      <div className="form-group">
                          <label className="sr-only control-label required"
                                 htmlFor="rep_log_item">
-@@ -61,7 +60,7 @@ export default class RepLogApp extends Component {
+@@ -57,7 +56,7 @@ class RepLogApp extends Component {
                                  name="item"
                                  required="required"
                                  className="form-control">
