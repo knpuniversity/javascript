@@ -1,11 +1,11 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index ed9236bb..65aa78bb 100644
+index 66026994..5054d52c 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -1,7 +1,17 @@
  import React, { Component } from 'react';
  
- class RepLogApp extends Component {
+ export default class RepLogApp extends Component {
 +    constructor(props) {
 +        super(props);
 +
@@ -20,7 +20,7 @@ index ed9236bb..65aa78bb 100644
          let heart = '';
          if (this.props.withHeart) {
              heart = <span>❤️</span>;
-@@ -28,7 +38,10 @@ class RepLogApp extends Component {
+@@ -28,7 +38,10 @@ export default class RepLogApp extends Component {
                      </thead>
                      <tbody>
                      {repLogs.map((repLog) => (

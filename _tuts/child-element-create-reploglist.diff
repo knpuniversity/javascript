@@ -1,14 +1,14 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 4d600973..3b81379b 100644
+index 5aa3122e..2a928403 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -1,4 +1,5 @@
  import React, { Component } from 'react';
 +import RepLogList from './RepLogList';
  
- class RepLogApp extends Component {
+ export default class RepLogApp extends Component {
      constructor(props) {
-@@ -21,12 +22,6 @@ class RepLogApp extends Component {
+@@ -21,12 +22,6 @@ export default class RepLogApp extends Component {
              heart = <span>❤️</span>;
          }
  
@@ -21,7 +21,7 @@ index 4d600973..3b81379b 100644
          return (
              <div className="col-md-7">
                  <h2>Lift Stuff! {heart}</h2>
-@@ -40,20 +35,7 @@ class RepLogApp extends Component {
+@@ -40,20 +35,7 @@ export default class RepLogApp extends Component {
                          <th>&nbsp;</th>
                      </tr>
                      </thead>
@@ -45,13 +45,13 @@ index 4d600973..3b81379b 100644
                          <td>&nbsp;</td>
 diff --git a/assets/js/RepLog/RepLogList.js b/assets/js/RepLog/RepLogList.js
 new file mode 100644
-index 00000000..d19b895d
+index 00000000..15fbf48f
 --- /dev/null
 +++ b/assets/js/RepLog/RepLogList.js
-@@ -0,0 +1,30 @@
+@@ -0,0 +1,28 @@
 +import React, { Component } from 'react';
 +
-+class RepLogList extends Component {
++export default class RepLogList extends Component {
 +    render() {
 +        const repLogs = [
 +            { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
@@ -77,5 +77,3 @@ index 00000000..d19b895d
 +        )
 +    }
 +}
-+
-+export default RepLogList;

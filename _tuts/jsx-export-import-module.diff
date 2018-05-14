@@ -1,13 +1,15 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index a3233c2b..40112c46 100644
+index a3233c2b..c3284276 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -5,3 +5,5 @@ class RepLogApp extends Component {
+@@ -1,6 +1,6 @@
+ import React, { Component } from 'react';
+ 
+-class RepLogApp extends Component {
++export default class RepLogApp extends Component {
+     render() {
          return <h2>Lift Stuff! <span>❤️</span></h2>;
      }
- }
-+
-+export default RepLogApp;
 diff --git a/assets/js/rep_log_react.js b/assets/js/rep_log_react.js
 index 8d536af2..24cac09f 100644
 --- a/assets/js/rep_log_react.js

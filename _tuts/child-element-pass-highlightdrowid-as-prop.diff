@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 3b81379b..bc55be7e 100644
+index 2a928403..c756239d 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -35,7 +35,7 @@ class RepLogApp extends Component {
+@@ -35,7 +35,7 @@ export default class RepLogApp extends Component {
                          <th>&nbsp;</th>
                      </tr>
                      </thead>
@@ -12,12 +12,12 @@ index 3b81379b..bc55be7e 100644
                      <tr>
                          <td>&nbsp;</td>
 diff --git a/assets/js/RepLog/RepLogList.js b/assets/js/RepLog/RepLogList.js
-index d19b895d..188c2195 100644
+index 15fbf48f..5afbaafa 100644
 --- a/assets/js/RepLog/RepLogList.js
 +++ b/assets/js/RepLog/RepLogList.js
 @@ -2,6 +2,8 @@ import React, { Component } from 'react';
  
- class RepLogList extends Component {
+ export default class RepLogList extends Component {
      render() {
 +        const { highlightedRowId } = this.props;
 +

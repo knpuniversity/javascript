@@ -1,0 +1,19 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 29371b7d..b62f203a 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -28,9 +28,12 @@ export default class RepLogApp extends Component {
+     handleNewItemSubmit(e) {
+         e.preventDefault();
+ 
++        const quantityInput = this.quantityInput.current;
++        const itemSelect = this.itemSelect.current;
++
+         console.log('I love when a good form submits!');
+-        console.log(this.quantityInput);
+-        console.log(this.itemSelect);
++        console.log(quantityInput.value);
++        console.log(itemSelect.options[itemSelect.selectedIndex].value);
+     }
+ 
+     calculateTotalWeightLifted() {

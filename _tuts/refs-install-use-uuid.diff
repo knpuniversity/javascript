@@ -1,0 +1,25 @@
+diff --git a/package.json b/package.json
+index 6db37103..82321aaf 100644
+--- a/package.json
++++ b/package.json
+@@ -12,6 +12,7 @@
+     "react-dom": "^16.3.2",
+     "sass-loader": "^6.0.6",
+     "sweetalert2": "^7.11.0",
++    "uuid": "^3.2.1",
+     "webpack-notifier": "^1.5.1"
+   },
+   "scripts": {
+diff --git a/yarn.lock b/yarn.lock
+index d4071571..ea9bcb93 100644
+--- a/yarn.lock
++++ b/yarn.lock
+@@ -5754,7 +5754,7 @@ utils-merge@1.0.1:
+   version "1.0.1"
+   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
+ 
+-uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0:
++uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0, uuid@^3.2.1:
+   version "3.2.1"
+   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
+ 

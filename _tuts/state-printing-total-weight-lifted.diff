@@ -1,0 +1,30 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 781a1ed1..0bcfcc5c 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -21,6 +21,16 @@ export default class RepLogApp extends Component {
+         this.setState({highlightedRowId: repLogId});
+     }
+ 
++    calculateTotalWeightLifted() {
++        let total = 0;
++
++        for (let repLog of this.state.repLogs) {
++            total += repLog.totalWeightLifted;
++        }
++
++        return total;
++    }
++
+     render() {
+         const { highlightedRowId, repLogs } = this.state;
+ 
+@@ -51,7 +61,7 @@ export default class RepLogApp extends Component {
+                     <tr>
+                         <td>&nbsp;</td>
+                         <th>Total</th>
+-                        <th>TODO</th>
++                        <th>{this.calculateTotalWeightLifted()}</th>
+                         <td>&nbsp;</td>
+                     </tr>
+                     </tfoot>

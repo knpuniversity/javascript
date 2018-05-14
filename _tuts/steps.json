@@ -1314,7 +1314,82 @@
             "id": "proptypes-install-prop-types",
             "name": "PropTypes: Install prop-types",
             "description": null
+        },
+        {
+            "id": "proptypes-specify-reploglist-types",
+            "name": "PropTypes: Specify RepLogList types",
+            "description": null
+        },
+        {
+            "id": "proptypes-set-as-required",
+            "name": "PropTypes: Set as required",
+            "description": null
+        },
+        {
+            "id": "proptypes-re-add-prop",
+            "name": "PropTypes: Re-add prop",
+            "description": null
+        },
+        {
+            "id": "state-refactor-reploglist-to-expect-replogs-prop",
+            "name": "State: Refactor RepLogList to expect repLogs prop",
+            "description": null
+        },
+        {
+            "id": "state-add-replogs-state-to-replogapp",
+            "name": "State: Add repLogs state to RepLogApp",
+            "description": null
+        },
+        {
+            "id": "state-printing-total-weight-lifted",
+            "name": "State: Printing total weight lifted",
+            "description": null
+        },
+        {
+            "id": "form-add-handler-preventdefault",
+            "name": "Form: Add handler & preventDefault",
+            "description": null
+        },
+        {
+            "id": "form-get-named-item-value",
+            "name": "Form: Get named item value",
+            "description": null
+        },
+        {
+            "id": "refs-assign-quanity-item-refs",
+            "name": "Refs: Assign quanity & item refs",
+            "description": null
+        },
+        {
+            "id": "refs-bind-handleformsubmit",
+            "name": "Refs: bind handleFormSubmit",
+            "description": null
+        },
+        {
+            "id": "refs-print-values",
+            "name": "Refs: Print values",
+            "description": null
+        },
+        {
+            "id": "refs-update-replogs-state",
+            "name": "Refs: Update repLogs state",
+            "description": null
+        },
+        {
+            "id": "refs-install-use-uuid",
+            "name": "Refs: install & use uuid",
+            "description": null
+        },
+        {
+            "id": "refs-use-uuid",
+            "name": "Refs: Use uuid",
+            "description": null
+        },
+        {
+            "id": "refs-clear-inputs-submit",
+            "name": "Refs: Clear inputs & submit",
+            "description": null
         }
     ],
-    "sha": "2ce8a3aa700f8ff2e1c819e7f321241451ba506a"
+    "sha": "49c5c0bfe77127c37660025508df71166c39f5e7"
 }

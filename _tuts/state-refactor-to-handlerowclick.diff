@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 39674703..4d600973 100644
+index 9466125a..5aa3122e 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -9,6 +9,10 @@ class RepLogApp extends Component {
+@@ -9,6 +9,10 @@ export default class RepLogApp extends Component {
          };
      }
  
@@ -13,7 +13,7 @@ index 39674703..4d600973 100644
      render() {
          const { highlightedRowId } = this.state;
  
-@@ -41,7 +45,7 @@ class RepLogApp extends Component {
+@@ -41,7 +45,7 @@ export default class RepLogApp extends Component {
                          <tr
                              key={repLog.id}
                              className={highlightedRowId === repLog.id ? 'info' : ''}
