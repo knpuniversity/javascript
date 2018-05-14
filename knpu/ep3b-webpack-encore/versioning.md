@@ -10,9 +10,14 @@ But, when an existing user comes back to our site, their browser might use the o
 ## Enabling Versioning
 
 This is a *classic* problem. But with Encore, we can solve it beautifully and
-automatically! In `webpack.config.js`, first add `.cleanOutputBeforeBuild()`.
+automatically! In `webpack.config.js`, first add `.cleanupOutputBeforeBuild()`:
+
+[[[ code('e58a8f895d') ]]]
+
 That's a nice little function that will empty the `public/build` directory whenever
-you run Encore. Then, here's the key: `enableVersioning()`.
+you run Encore. Then, here's the key: `.enableVersioning()`:
+
+[[[ code('7d146a1553') ]]]
 
 That's it! Because we just changed our config, restart Encore:
 
@@ -30,8 +35,11 @@ will see the *new* filename and load it, instead of using the old, cached versio
 
 Perfect! Except... we just broke *everything*. Find your browser and refresh. Yep!
 It's horrible! And this makes sense: in the base layout, our `script` tag simply
-points to `build/layout.js`. But this is *not* the filename anymore - it's missing
-the hash part!
+points to `build/layout.js`:
+
+[[[ code('93de4323c3') ]]]
+
+But this is *not* the filename anymore - it's missing the hash part!
 
 Of course, we *could* type the filename manually here. But, gross! Then, *every*
 time we updated a file, we would need to update its script tag.
@@ -39,12 +47,14 @@ time we updated a file, we would need to update its script tag.
 Here's the *key* to fix this. Behind the scenes, as *soon* as we started using Encore,
 it generated a `manifest.json` file automatically. This is a map from the *source*
 filename to the current *hashed* filename! That's great! If we could somehow tell
-Symfony's `asset` function to read this and make the transformation, then, well...
+Symfony's `asset()` function to read this and make the transformation, then, well...
 everything would work perfectly!
 
 And... yea! That feature exists! Open `config/packages/framework.yaml`. Anywhere,
 but I'll do it at the bottom, add `assets:` then `json_manifest_path` set to
-`%kernel.project_dir%/public/build/manifest.json`.
+`%kernel.project_dir%/public/build/manifest.json`:
+
+[[[ code('ad90417477') ]]]
 
 This is a built-in feature that tells Symfony to look for a JSON file at this path,
 and to use it to lookup the *real* filename. In other words... just, refresh! Yea,
@@ -74,7 +84,7 @@ add. Google for "Nginx expires header for directory".
 
 OK guys, I hope, hope, hope you love Webpack Encore as much as I do! It has even
 more features that we didn't talk about, like `enableReactPreset()` to build React
-apps or `enableVueLoader` for Vue.js. And we're adding new features all the time
+apps or `enableVueLoader()` for Vue.js. And we're adding new features all the time
 so that it's easier to use front-end frameworks and enjoy some of the really amazing
 things that are coming from the JavaScript world... without needing to read 100
 blog posts every day.

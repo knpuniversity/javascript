@@ -11,15 +11,20 @@ ls -la public/build
 ```
 
 ... yea! These files are pretty huge - `rep_log.js` is over 1 megabyte and so is
-`layout.js`! If you looked inside, you would find the problem *immediately*: jQuery
-is packaged individually inside *each* of these! That's super wasteful! Our users
-should *only* need to download jQuery *one* time.
+`layout.js`! If you looked inside, you would find the problem *immediately*:
+
+[[[ code('af8cd42a80') ]]]
+
+jQuery is packaged individually inside *each* of these! That's super wasteful!
+Our users should *only* need to download jQuery *one* time.
 
 ## The Shared Entry
 
 No problem! Webpack has an *awesome* solution. Open `webpack.config.js`. Move the
 layout entry to the top - though, order doesn't matter. Now, change the method to
-`createSharedEntry()`.
+`createSharedEntry()`:
+
+[[[ code('c7279cdaac') ]]]
 
 Before we talk about this, move back to your terminal and restart Encore:
 
@@ -35,8 +40,7 @@ ls -la public/build
 ```
 
 Woh! `rep_log.js` is down from 1 megabyte to 300kb! `layout.js` is still big because
-it *does* still contain jQuery. But `login.js` - which was almost 800kb is now...
-4!
+it *does* still contain jQuery. But `login.js` - which was almost 800kb is now... 4!
 
 What is this *magical* shared entry!? To *slightly* over-simplify it, each project
 should have exactly *one* shared entry. And its JS file and CSS file should be included
@@ -46,7 +50,7 @@ When you set `layout.js` as a shared entry, any modules included in `layout.js`
 are *not* repeated in other files. For example, when Webpack sees that `jquery`
 is required by `login.js`, it says:
 
-> Hold on! `jquery` is already inculded in `layout.js` - the *shared* entry. So,
+> Hold on! `jquery` is already included in `layout.js` - the *shared* entry. So,
 > I don't need to *also* put it in `login.js`.
 
 It's a *great* solution to the duplication problem: if you have a library that
@@ -56,12 +60,14 @@ don't need it there. You can experiment with the right balance.
 ## The manifest.js File
 
 As *soon* as you do this, if you refresh, it works! I'm kidding - you'll totally
-get an errror:
+get an error:
 
-> webpackJsonP is not defined
+> `webpackJsonp` is not defined
 
 To fix that, in your base layout, *right* before `layout.js`, add one more script
-tag. Point it to a new `build/manifest.js` file.
+tag. Point it to a new `build/manifest.js` file:
+
+[[[ code('b8c192282d') ]]]
 
 The *reason* we need to do this is... well.. a bit technical. But basically, this
 helps with long-term caching, because it allows your giant `layout.js` file to
@@ -84,16 +90,20 @@ ls -la public/build
 ```
 
 Let's check out the file sizes! The development `rep_log.js` that *was* 310kb is
-down to 74! Layout went from about 1 mb to 125kb. The CSS files are also way
+down to 74! Layout went from about 1Mb to 125kb. The CSS files are also way
 smaller. Yep, building for production is just *one* command: Encore handles all
 the details.
 
 ## Adding Shortcut scripts
 
 Oh, and here's a trick to be even *lazier*. Open `package.json`. I'm going to paste
-a new `script` section. This gives you different shortcut commands for the different
-ways that you'll run Encore. Oh, we didn't talk about the `dev-server`, but it's
-*another* option for local development.
+a new `script` section:
+
+[[[ code('cc7b0aa23a') ]]]
+
+This gives you different shortcut commands for the different ways that you'll run
+Encore. Oh, we didn't talk about the `dev-server`, but it's *another* option for
+local development.
 
 Anyways, *now*, in the terminal, we can just say:
 
@@ -127,10 +137,13 @@ after you execute:
 yarn run encore production
 ```
 
-you could send the `public/build` directroy to your production machine and it would
+you could send the `public/build` directory to your production machine and it would
 work perfectly. If you have a "build" server, that's a *great* place to run this
-command. Or, if you watched our [Ansistrano Tutorial](https://knpuniversity.com/screencast/ansistrano),
-you could run Encore locally, and use the `copy` module to deploy those files.
+command. Or, if you watched our [Ansistrano Tutorial][ansistrano_tutorial], you
+could run Encore locally, and use the `copy` module to deploy those files.
 
 If you have any questions on your specific situation, you can ask us in the
 comments.
+
+
+[ansistrano_tutorial]: https://knpuniversity.com/screencast/ansistrano

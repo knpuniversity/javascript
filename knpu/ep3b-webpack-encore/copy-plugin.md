@@ -10,7 +10,9 @@ To celebrate, let's move `assets/` *out* of the `public/` directory and into the
 to be publicly accessible, why make it public?
 
 This change breaks almost *nothing*. The *only* things we need to update are
-the paths in `webpack.config.js`.
+the paths in `webpack.config.js`:
+
+[[[ code('af649b797d') ]]]
 
 After making that change, restart Encore!
 
@@ -22,8 +24,11 @@ And... refresh! Woohoo! Wait... there's a missing image! Bah! I was lying! There
 *is* one file that *still* needs to be publicly accessible!
 
 Open `index.html.twig`... ah! We have a good, old-fashioned `img` tag that references
-one of the images in the `assets/` directory. And... whoops! It's not public anymore.
-My bad!
+one of the images in the `assets/` directory:
+
+[[[ code('7d58af3032') ]]]
+
+And... whoops! It's not public anymore. My bad!
 
 This is one of the *few* cases - maybe the *only* case - where we need to reference
 public images from *outside* a file that Webpack processes. The simple problem is
@@ -36,7 +41,7 @@ place.
 ## Installing copy-webpack-plugin
 
 To do this, we can take advantage of a Webpack *plugin* that can copy the file
-for us. Google for `copy-webpack-plugin` to find its [GitHub page](https://github.com/webpack-contrib/copy-webpack-plugin).
+for us. Google for `copy-webpack-plugin` to find its [GitHub page][copy_webpack_plugin].
 Encore gives you *a lot* of features... but it doesn't give you *everything*. But...
 no worries! We're using Webpack under-the-hood. So if you find a Webpack plugin
 you want, you can totally use it!
@@ -55,8 +60,11 @@ yarn add copy-webpack-plugin --dev
 ## Adding Custom Webpack Config
 
 To use the plugin, we need to require it at the top of the Webpack config file. No
-problem. And then below, um.... `config =`... and `plugins:`... what the heck does
-this mean?
+problem:
+
+[[[ code('2bef8e46cc') ]]]
+
+And then below, um.... `config =`... and `plugins:`... what the heck does this mean?
 
 Well... earlier, I told you that `webpack.config.js` *normally* returns a big configuration
 object. And Encore is just a tool to help *generate* that config. In fact, at the
@@ -70,9 +78,7 @@ yarn run encore dev --watch
 ```
 
 Woh! There's our config! Actually, it's not so scary: there are keys for `entry`,
-`output`, `module`, `plugins` and a few other things. *This* is Webpack's config.
-And it's important to understand this in case you ever need to add something that Encore
-doesn't provide.
+`output`, `module`, `plugins` and a few other things.
 
 For example, see the `plugins` key? Back on their docs, *that* is what they're referring
 to: they want you to add *their* plugin to that config key.
@@ -83,7 +89,9 @@ something to the plugins array!
 
 But, fortunately, Encore gives you an easier way to modify the most common things.
 In this case, use `addPlugin()` and then `new CopyWebpackPlugin()`. Pass this an
-array - this will soon be the paths it should copy.
+array - this will soon be the paths it should copy:
+
+[[[ code('df0943fd18') ]]]
 
 ## Copying Images into build/
 
@@ -93,7 +101,11 @@ create a *new* directory called `static/` and move any files that need to be cop
 into *that* directory, like `dumbell.png`.
 
 In the `CopyWebpackPlugin` config, set `from` to `./assets/static` and `to` to
-just `static`. This will copy to the output directory `/static`.
+just `static`:
+
+[[[ code('de4816029c') ]]]
+
+This will copy to the output directory `/static`.
 
 Ok, go restart Encore!
 
@@ -103,9 +115,18 @@ yarn run encore dev --watch
 
 Once the build finishes... inside `public/build`... yes! We have a new `static`
 directory. It's nothing fancy, but this is a nice way to move files so that we can
-reference them publicly in a template.
+reference them publicly in a template:
+
+[[[ code('838116cdb0') ]]]
 
 There's one *more* reference in the login template: search for "bell" and... update
-this one too. Try it! Find your browser and refresh. There it is!
+this one too:
+
+[[[ code('5117efe242') ]]]
+
+Try it! Find your browser and refresh. There it is!
 
 Next, let's make our CSS sassier... with... Sass of course!
+
+
+[copy_webpack_plugin]: https://github.com/webpack-contrib/copy-webpack-plugin
