@@ -1,47 +1,30 @@
-diff --git a/assets/js/RepLog/RepLogCreatorWithState.js b/assets/js/RepLog/RepLogCreatorWithState.js
-index 9058c001..a584c12b 100644
---- a/assets/js/RepLog/RepLogCreatorWithState.js
-+++ b/assets/js/RepLog/RepLogCreatorWithState.js
-@@ -2,12 +2,18 @@ import React, { Component } from 'react';
- import PropTypes from 'prop-types';
+diff --git a/assets/js/RepLog/RepLogCreatorControlledComponents.js b/assets/js/RepLog/RepLogCreatorControlledComponents.js
+index 0e7fa225..6bb3fb0f 100644
+--- a/assets/js/RepLog/RepLogCreatorControlledComponents.js
++++ b/assets/js/RepLog/RepLogCreatorControlledComponents.js
+@@ -6,6 +6,8 @@ export default class RepLogCreator extends Component {
+         super(props);
  
- export default class RepLogCreator extends Component {
-+    constructor(props) {
-+        super(props);
-+
-+        this.state = {
+         this.state = {
 +            selectedItemId: '',
-+            quantityValue: 0
-+        };
-+    }
-+
-     render() {
-         const { handleAddRepLog } = this.props;
++            quantityValue: 0,
+             quantityInputError: ''
+         };
  
--        let itemSelect = null;
--        let quantityInput = null;
--
-         function handleSubmit(e) {
-             e.preventDefault();
- 
-@@ -34,9 +40,7 @@ export default class RepLogCreator extends Component {
+@@ -64,7 +66,7 @@ export default class RepLogCreator extends Component {
                          What did you lift?
                      </label>
                      <select id="rep_log_item"
--                            ref={(ref) => {
--                                itemSelect = ref;
--                            }}
+-                            ref={this.itemSelect}
 +                            value={this.state.selectedItemId}
                              required="required"
                              className="form-control">
                          <option value="">What did you
-@@ -54,9 +58,7 @@ export default class RepLogCreator extends Component {
+@@ -82,7 +84,7 @@ export default class RepLogCreator extends Component {
                          How many times?
                      </label>
                      <input type="number" id="rep_log_reps"
--                           ref={(ref) => {
--                               quantityInput = ref;
--                           }}
+-                           ref={this.quantityInput}
 +                           value={this.state.quantityValue}
                             required="required"
                             placeholder="How many times?"

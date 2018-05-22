@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 88bec148..b9e858bc 100644
+index 52eea755..a32ffcf7 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -14,6 +14,9 @@ export default class RepLogApp extends Component {
@@ -13,10 +13,10 @@ index 88bec148..b9e858bc 100644
      }
  
 @@ -25,7 +28,8 @@ export default class RepLogApp extends Component {
-         e.preventDefault();
+         event.preventDefault();
  
          console.log('I love when a good form submits!');
--        console.log(e.target.elements.namedItem('reps').value);
+-        console.log(event.target.elements.namedItem('reps').value);
 +        console.log(this.quantityInput);
 +        console.log(this.itemSelect);
      }

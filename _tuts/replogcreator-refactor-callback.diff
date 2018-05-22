@@ -1,13 +1,13 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 5d5bf549..9444cf43 100644
+index 5b10319d..9444cf43 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -27,23 +27,15 @@ export default class RepLogApp extends Component {
          this.setState({highlightedRowId: repLogId});
      }
  
--    handleNewItemSubmit(e) {
--        e.preventDefault();
+-    handleNewItemSubmit(event) {
+-        event.preventDefault();
 -
 -        const quantityInput = this.quantityInput.current;
 -        const itemSelect = this.itemSelect.current;
@@ -30,14 +30,12 @@ index 5d5bf549..9444cf43 100644
  
      calculateTotalWeightLifted() {
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 0ae5897d..1336871b 100644
+index 53ea6d8a..50bb67db 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
-@@ -9,25 +9,18 @@ export default function RepLogCreator(props) {
- 
-     function handleSubmit(e) {
-         e.preventDefault();
-+        console.log(quantityInput);
+@@ -10,24 +10,16 @@ export default function RepLogCreator(props) {
+     function handleSubmit(event) {
+         event.preventDefault();
  
 -        const quantityInput = this.quantityInput.current;
 -        const itemSelect = this.itemSelect.current;
@@ -63,12 +61,3 @@ index 0ae5897d..1336871b 100644
              <div className="form-group">
                  <label className="sr-only control-label required"
                         htmlFor="rep_log_item">
-@@ -53,7 +46,7 @@ export default function RepLogCreator(props) {
-                     How many times?
-                 </label>
-                 <input type="number" id="rep_log_reps"
--                       ref={(ref) => { quantityInput = ref }}
-+                       ref={(ref) => { quantityInput = ref; }}
-                        required="required"
-                        placeholder="How many times?"
-                        className="form-control"/>

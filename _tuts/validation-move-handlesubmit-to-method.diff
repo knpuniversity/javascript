@@ -1,0 +1,65 @@
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index b2da46f7..654bfd5a 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -2,29 +2,35 @@ import React, { Component } from 'react';
+ import PropTypes from 'prop-types';
+ 
+ export default class RepLogCreator extends Component {
+-    render() {
+-        const { handleAddRepLog } = this.props;
++    constructor(props) {
++        super(props);
+ 
+-        let itemSelect = null;
+-        let quantityInput = null;
++        this.handleSubmit = this.handleSubmit.bind(this);
++    }
+ 
+-        function handleSubmit(event) {
+-            event.preventDefault();
++    handleSubmit(event) {
++        event.preventDefault();
+ 
+-            const itemLabel = itemSelect.options[itemSelect.selectedIndex].text;
++        const itemLabel = itemSelect.options[itemSelect.selectedIndex].text;
+ 
+-            if (quantityInput.value <= 0) {
+-                // TODO - print some validation error!
++        if (quantityInput.value <= 0) {
++            // TODO - print some validation error!
+ 
+-                // don't submit, or clear the form
+-                return;
+-            }
++            // don't submit, or clear the form
++            return;
++        }
+ 
+-            handleAddRepLog(itemLabel, quantityInput.value);
++        handleAddRepLog(itemLabel, quantityInput.value);
+ 
+-            quantityInput.value = '';
+-            itemSelect.selectedIndex = 0;
+-        }
++        quantityInput.value = '';
++        itemSelect.selectedIndex = 0;
++    }
++
++    render() {
++        const { handleAddRepLog } = this.props;
++
++        let itemSelect = null;
++        let quantityInput = null;
+ 
+         const itemOptions = [
+             {id: 'cat', text: 'Cat'},
+@@ -34,7 +40,7 @@ export default class RepLogCreator extends Component {
+         ];
+ 
+         return (
+-            <form className="form-inline" onSubmit={handleSubmit}>
++            <form className="form-inline" onSubmit={this.handleSubmit}>
+                 <div className="form-group">
+                     <label className="sr-only control-label required"
+                            htmlFor="rep_log_item">

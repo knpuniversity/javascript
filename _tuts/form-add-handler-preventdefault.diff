@@ -1,16 +1,16 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 0bcfcc5c..486dc7c7 100644
+index 0bcfcc5c..63580107 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -21,6 +21,13 @@ export default class RepLogApp extends Component {
          this.setState({highlightedRowId: repLogId});
      }
  
-+    handleNewItemSubmit(e) {
-+        e.preventDefault();
++    handleNewItemSubmit(event) {
++        event.preventDefault();
 +
 +        console.log('I love when a good form submits!');
-+        console.log(e.target);
++        console.log(event.target);
 +    }
 +
      calculateTotalWeightLifted() {

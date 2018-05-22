@@ -1,0 +1,121 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index acc04d79..18363152 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -1,6 +1,7 @@
+ import React, { Component } from 'react';
+ import RepLogList from './RepLogList';
+-import RepLogCreator from './RepLogCreator';
++//import RepLogCreator from './RepLogCreator';
++import RepLogCreator from './RepLogCreatorControlledComponents';
+ import uuid from 'uuid/v4';
+ 
+ export default class RepLogApp extends Component {
+diff --git a/assets/js/RepLog/RepLogCreatorControlledComponents.js b/assets/js/RepLog/RepLogCreatorControlledComponents.js
+new file mode 100644
+index 00000000..0e7fa225
+--- /dev/null
++++ b/assets/js/RepLog/RepLogCreatorControlledComponents.js
+@@ -0,0 +1,102 @@
++import React, { Component } from 'react';
++import PropTypes from 'prop-types';
++
++export default class RepLogCreator extends Component {
++    constructor(props) {
++        super(props);
++
++        this.state = {
++            quantityInputError: ''
++        };
++
++        this.itemSelect = React.createRef();
++        this.quantityInput = React.createRef();
++
++        // static select options
++        this.itemOptions = [
++            {id: 'cat', text: 'Cat'},
++            {id: 'fat_cat', text: 'Big Fat Cat'},
++            {id: 'laptop', text: 'My Laptop'},
++            {id: 'coffee_cup', text: 'Coffee Cup'},
++        ];
++
++        this.handleSubmit = this.handleSubmit.bind(this);
++    }
++
++    handleSubmit(event) {
++        event.preventDefault();
++        const { handleAddRepLog } = this.props;
++
++        const itemSelect = this.itemSelect.current;
++        const quantityInput = this.quantityInput.current;
++
++        const itemLabel = itemSelect.options[itemSelect.selectedIndex].text;
++
++        if (quantityInput.value <= 0) {
++            this.setState({
++                quantityInputError: 'Please enter a value greater than 0'
++            });
++
++            // don't submit, or clear the form
++            return;
++        }
++
++        handleAddRepLog(itemLabel, quantityInput.value);
++
++        quantityInput.value = '';
++        itemSelect.selectedIndex = 0;
++        this.setState({
++            quantityInputError: ''
++        });
++    }
++
++    render() {
++        let quantityError = '';
++        if (this.state.quantityInputError) {
++            quantityError = <span className="help-block">{this.state.quantityInputError}</span>
++        }
++
++        return (
++            <form onSubmit={this.handleSubmit}>
++                <div className="form-group">
++                    <label className="sr-only control-label required"
++                           htmlFor="rep_log_item">
++                        What did you lift?
++                    </label>
++                    <select id="rep_log_item"
++                            ref={this.itemSelect}
++                            required="required"
++                            className="form-control">
++                        <option value="">What did you
++                            lift?
++                        </option>
++                        {this.itemOptions.map(option => {
++                            return <option value={option.id} key={option.id}>{option.text}</option>
++                        })}
++                    </select>
++                </div>
++                {' '}
++                <div className={'form-group'+(this.state.quantityInputError ? ' has-error' : '')}>
++                    <label className="sr-only control-label required"
++                           htmlFor="rep_log_reps">
++                        How many times?
++                    </label>
++                    <input type="number" id="rep_log_reps"
++                           ref={this.quantityInput}
++                           required="required"
++                           placeholder="How many times?"
++                           className="form-control"/>
++                    {quantityError}
++                </div>
++                {' '}
++                <button type="submit" className="btn btn-primary">I Lifted
++                    it!
++                </button>
++            </form>
++        );
++    }
++}
++
++RepLogCreator.propTypes = {
++    handleAddRepLog: PropTypes.func.isRequired,
++};

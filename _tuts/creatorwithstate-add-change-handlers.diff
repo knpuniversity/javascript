@@ -1,65 +1,62 @@
-diff --git a/assets/js/RepLog/RepLogCreatorWithState.js b/assets/js/RepLog/RepLogCreatorWithState.js
-index a584c12b..45b4c3f8 100644
---- a/assets/js/RepLog/RepLogCreatorWithState.js
-+++ b/assets/js/RepLog/RepLogCreatorWithState.js
-@@ -9,22 +9,38 @@ export default class RepLogCreator extends Component {
-             selectedItemId: '',
-             quantityValue: 0
-         };
-+
+diff --git a/assets/js/RepLog/RepLogCreatorControlledComponents.js b/assets/js/RepLog/RepLogCreatorControlledComponents.js
+index 6bb3fb0f..7f8fdbe7 100644
+--- a/assets/js/RepLog/RepLogCreatorControlledComponents.js
++++ b/assets/js/RepLog/RepLogCreatorControlledComponents.js
+@@ -23,18 +23,17 @@ export default class RepLogCreator extends Component {
+         ];
+ 
+         this.handleSubmit = this.handleSubmit.bind(this);
 +        this.handleSelectedItemChange = this.handleSelectedItemChange.bind(this);
 +        this.handleQuantityInputChange = this.handleQuantityInputChange.bind(this);
-+        this.onFormSubmit = this.onFormSubmit.bind(this);
      }
  
--    render() {
--        const { handleAddRepLog } = this.props;
+     handleSubmit(event) {
+         event.preventDefault();
+         const { handleAddRepLog } = this.props;
+ 
+-        const itemSelect = this.itemSelect.current;
+-        const quantityInput = this.quantityInput.current;
++        const itemLabel = 'TODO - just wait a second!';
+ 
+-        const itemLabel = itemSelect.options[itemSelect.selectedIndex].text;
+-
+-        if (quantityInput.value <= 0) {
++        if (this.state.quantityValue <= 0) {
+             this.setState({
+                 quantityInputError: 'Please enter a value greater than 0'
+             });
+@@ -43,15 +42,27 @@ export default class RepLogCreator extends Component {
+             return;
+         }
+ 
+-        handleAddRepLog(itemLabel, quantityInput.value);
++        handleAddRepLog(itemLabel, this.state.quantityValue);
+ 
+-        quantityInput.value = '';
+-        itemSelect.selectedIndex = 0;
+         this.setState({
++            selectedItemId: '',
++            quantityValue: 0,
+             quantityInputError: ''
+         });
+     }
+ 
 +    handleSelectedItemChange(event) {
 +        this.setState({
 +            selectedItemId: event.target.value
 +        });
 +    }
- 
--        function handleSubmit(e) {
--            e.preventDefault();
++
 +    handleQuantityInputChange(event) {
 +        this.setState({
 +            quantityValue: event.target.value
 +        });
 +    }
- 
--            const itemLabel = itemSelect.options[itemSelect.selectedIndex].text;
-+    onFormSubmit(event) {
-+        event.preventDefault();
- 
--            handleAddRepLog(itemLabel, quantityInput.value);
-+        const itemLabel = 'TODO - just wait a second!';
- 
--            quantityInput.value = '';
--            itemSelect.selectedIndex = 0;
--        }
-+        this.props.handleAddRepLog(itemLabel, this.state.quantityValue);
- 
-+        this.setState({
-+            selectedItemId: '',
-+            quantityValue: 0
-+        });
-+    }
 +
-+    render() {
-         const itemOptions = [
-             { id: 'cat', text: 'Cat' },
-             { id: 'fat_cat', text: 'Big Fat Cat' },
-@@ -33,7 +49,7 @@ export default class RepLogCreator extends Component {
-         ];
- 
-         return (
--            <form className="form-inline" onSubmit={handleSubmit}>
-+            <form className="form-inline" onSubmit={this.onFormSubmit}>
-                 <div className="form-group">
-                     <label className="sr-only control-label required"
-                            htmlFor="rep_log_item">
-@@ -41,6 +57,7 @@ export default class RepLogCreator extends Component {
+     render() {
+         let quantityError = '';
+         if (this.state.quantityInputError) {
+@@ -67,6 +78,7 @@ export default class RepLogCreator extends Component {
                      </label>
                      <select id="rep_log_item"
                              value={this.state.selectedItemId}
@@ -67,7 +64,7 @@ index a584c12b..45b4c3f8 100644
                              required="required"
                              className="form-control">
                          <option value="">What did you
-@@ -59,6 +76,7 @@ export default class RepLogCreator extends Component {
+@@ -85,6 +97,7 @@ export default class RepLogCreator extends Component {
                      </label>
                      <input type="number" id="rep_log_reps"
                             value={this.state.quantityValue}

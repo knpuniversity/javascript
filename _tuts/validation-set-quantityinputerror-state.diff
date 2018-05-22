@@ -1,0 +1,45 @@
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index feae9087..e9171fa6 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -5,6 +5,10 @@ export default class RepLogCreator extends Component {
+     constructor(props) {
+         super(props);
+ 
++        this.state = {
++            quantityInputError: ''
++        };
++
+         this.itemSelect = React.createRef();
+         this.quantityInput = React.createRef();
+ 
+@@ -29,7 +33,9 @@ export default class RepLogCreator extends Component {
+         const itemLabel = itemSelect.options[itemSelect.selectedIndex].text;
+ 
+         if (quantityInput.value <= 0) {
+-            // TODO - print some validation error!
++            this.setState({
++                quantityInputError: 'Please enter a value greater than 0'
++            });
+ 
+             // don't submit, or clear the form
+             return;
+@@ -39,6 +45,9 @@ export default class RepLogCreator extends Component {
+ 
+         quantityInput.value = '';
+         itemSelect.selectedIndex = 0;
++        this.setState({
++            quantityInputError: ''
++        });
+     }
+ 
+     render() {
+@@ -62,7 +71,7 @@ export default class RepLogCreator extends Component {
+                     </select>
+                 </div>
+                 {' '}
+-                <div className="form-group">
++                <div className={'form-group'+(this.state.quantityInputError ? ' has-error' : '')}>
+                     <label className="sr-only control-label required"
+                            htmlFor="rep_log_reps">
+                         How many times?

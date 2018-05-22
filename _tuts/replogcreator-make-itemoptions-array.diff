@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 2cc567cf..63f3a9cb 100644
+index f7c5c0fc..6602cb71 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
-@@ -19,6 +19,13 @@ export default function RepLogCreator(props) {
+@@ -18,6 +18,13 @@ export default function RepLogCreator(props) {
          itemSelect.selectedIndex = 0;
      }
  
@@ -16,7 +16,7 @@ index 2cc567cf..63f3a9cb 100644
      return (
          <form className="form-inline" onSubmit={handleSubmit}>
              <div className="form-group">
-@@ -33,10 +40,9 @@ export default function RepLogCreator(props) {
+@@ -32,10 +39,9 @@ export default function RepLogCreator(props) {
                      <option value="">What did you
                          lift?
                      </option>

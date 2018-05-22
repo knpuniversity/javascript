@@ -1,0 +1,42 @@
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index f7397c29..feae9087 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -8,6 +8,14 @@ export default class RepLogCreator extends Component {
+         this.itemSelect = React.createRef();
+         this.quantityInput = React.createRef();
+ 
++        // static select options
++        this.itemOptions = [
++            {id: 'cat', text: 'Cat'},
++            {id: 'fat_cat', text: 'Big Fat Cat'},
++            {id: 'laptop', text: 'My Laptop'},
++            {id: 'coffee_cup', text: 'Coffee Cup'},
++        ];
++
+         this.handleSubmit = this.handleSubmit.bind(this);
+     }
+ 
+@@ -34,13 +42,6 @@ export default class RepLogCreator extends Component {
+     }
+ 
+     render() {
+-        const itemOptions = [
+-            {id: 'cat', text: 'Cat'},
+-            {id: 'fat_cat', text: 'Big Fat Cat'},
+-            {id: 'laptop', text: 'My Laptop'},
+-            {id: 'coffee_cup', text: 'Coffee Cup'},
+-        ];
+-
+         return (
+             <form className="form-inline" onSubmit={this.handleSubmit}>
+                 <div className="form-group">
+@@ -55,7 +56,7 @@ export default class RepLogCreator extends Component {
+                         <option value="">What did you
+                             lift?
+                         </option>
+-                        {itemOptions.map(option => {
++                        {this.itemOptions.map(option => {
+                             return <option value={option.id} key={option.id}>{option.text}</option>
+                         })}
+                     </select>

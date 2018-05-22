@@ -1,8 +1,8 @@
-diff --git a/assets/js/RepLog/RepLogCreatorWithState.js b/assets/js/RepLog/RepLogCreatorWithState.js
-index d2817722..62a9468b 100644
---- a/assets/js/RepLog/RepLogCreatorWithState.js
-+++ b/assets/js/RepLog/RepLogCreatorWithState.js
-@@ -1,67 +1,73 @@
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index a11bebcf..47b40cd8 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -1,74 +1,76 @@
 -import React from 'react';
 +import React, { Component } from 'react';
  import PropTypes from 'prop-types';
@@ -18,13 +18,25 @@ index d2817722..62a9468b 100644
 +        let itemSelect = null;
 +        let quantityInput = null;
  
--    function handleSubmit(e) {
--        e.preventDefault();
-+        function handleSubmit(e) {
-+            e.preventDefault();
+-    function handleSubmit(event) {
+-        event.preventDefault();
++        function handleSubmit(event) {
++            event.preventDefault();
  
 -        const itemLabel = itemSelect.options[itemSelect.selectedIndex].text;
 +            const itemLabel = itemSelect.options[itemSelect.selectedIndex].text;
+ 
+-        if (quantityInput.value <= 0) {
+-            // TODO - print some validation error!
++            if (quantityInput.value <= 0) {
++                // TODO - print some validation error!
+ 
+-            // don't submit, or clear the form
+-            return;
+-        }
++                // don't submit, or clear the form
++                return;
++            }
  
 -        handleAddRepLog(itemLabel, quantityInput.value);
 +            handleAddRepLog(itemLabel, quantityInput.value);
@@ -43,10 +55,10 @@ index d2817722..62a9468b 100644
 -        { id: 'coffee_cup', text: 'Coffee Cup' },
 -    ];
 +        const itemOptions = [
-+            { id: 'cat', text: 'Cat' },
-+            { id: 'fat_cat', text: 'Big Fat Cat' },
-+            { id: 'laptop', text: 'My Laptop' },
-+            { id: 'coffee_cup', text: 'Coffee Cup' },
++            {id: 'cat', text: 'Cat'},
++            {id: 'fat_cat', text: 'Big Fat Cat'},
++            {id: 'laptop', text: 'My Laptop'},
++            {id: 'coffee_cup', text: 'Coffee Cup'},
 +        ];
  
 -    return (
@@ -75,7 +87,7 @@ index d2817722..62a9468b 100644
 -                    How many times?
 -                </label>
 -                <input type="number" id="rep_log_reps"
--                       ref={(ref) => { quantityInput = ref; }}
+-                       ref={(ref) => { quantityInput = ref }}
 -                       required="required"
 -                       placeholder="How many times?"
 -                       className="form-control"/>
@@ -94,9 +106,7 @@ index d2817722..62a9468b 100644
 +                        What did you lift?
 +                    </label>
 +                    <select id="rep_log_item"
-+                            ref={(ref) => {
-+                                itemSelect = ref;
-+                            }}
++                            ref={(ref) => { itemSelect = ref; }}
 +                            required="required"
 +                            className="form-control">
 +                        <option value="">What did you
@@ -114,9 +124,7 @@ index d2817722..62a9468b 100644
 +                        How many times?
 +                    </label>
 +                    <input type="number" id="rep_log_reps"
-+                           ref={(ref) => {
-+                               quantityInput = ref;
-+                           }}
++                           ref={(ref) => { quantityInput = ref }}
 +                           required="required"
 +                           placeholder="How many times?"
 +                           className="form-control"/>

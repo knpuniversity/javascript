@@ -29,7 +29,7 @@ index 9444cf43..16e46cf0 100644
          );
      }
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 1336871b..2cc567cf 100644
+index 50bb67db..f7c5c0fc 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -2,7 +2,7 @@ import React from 'react';
@@ -41,7 +41,7 @@ index 1336871b..2cc567cf 100644
  
      let itemSelect = null;
      let quantityInput = null;
-@@ -13,7 +13,7 @@ export default function RepLogCreator(props) {
+@@ -12,7 +12,7 @@ export default function RepLogCreator(props) {
  
          const itemLabel = itemSelect.options[itemSelect.selectedIndex].text;
  
@@ -50,7 +50,7 @@ index 1336871b..2cc567cf 100644
  
          quantityInput.value = '';
          itemSelect.selectedIndex = 0;
-@@ -60,5 +60,5 @@ export default function RepLogCreator(props) {
+@@ -59,5 +59,5 @@ export default function RepLogCreator(props) {
  }
  
  RepLogCreator.propTypes = {

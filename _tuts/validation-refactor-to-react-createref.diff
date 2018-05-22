@@ -1,0 +1,53 @@
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index 654bfd5a..f7397c29 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -5,11 +5,18 @@ export default class RepLogCreator extends Component {
+     constructor(props) {
+         super(props);
+ 
++        this.itemSelect = React.createRef();
++        this.quantityInput = React.createRef();
++
+         this.handleSubmit = this.handleSubmit.bind(this);
+     }
+ 
+     handleSubmit(event) {
+         event.preventDefault();
++        const { handleAddRepLog } = this.props;
++
++        const itemSelect = this.itemSelect.current;
++        const quantityInput = this.quantityInput.current;
+ 
+         const itemLabel = itemSelect.options[itemSelect.selectedIndex].text;
+ 
+@@ -27,11 +34,6 @@ export default class RepLogCreator extends Component {
+     }
+ 
+     render() {
+-        const { handleAddRepLog } = this.props;
+-
+-        let itemSelect = null;
+-        let quantityInput = null;
+-
+         const itemOptions = [
+             {id: 'cat', text: 'Cat'},
+             {id: 'fat_cat', text: 'Big Fat Cat'},
+@@ -47,7 +49,7 @@ export default class RepLogCreator extends Component {
+                         What did you lift?
+                     </label>
+                     <select id="rep_log_item"
+-                            ref={(ref) => { itemSelect = ref; }}
++                            ref={this.itemSelect}
+                             required="required"
+                             className="form-control">
+                         <option value="">What did you
+@@ -65,7 +67,7 @@ export default class RepLogCreator extends Component {
+                         How many times?
+                     </label>
+                     <input type="number" id="rep_log_reps"
+-                           ref={(ref) => { quantityInput = ref }}
++                           ref={this.quantityInput}
+                            required="required"
+                            placeholder="How many times?"
+                            className="form-control"/>

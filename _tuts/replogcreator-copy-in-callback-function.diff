@@ -1,13 +1,13 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index efa181fb..0ae5897d 100644
+index efa181fb..53ea6d8a 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -7,6 +7,25 @@ export default function RepLogCreator(props) {
      let itemSelect = null;
      let quantityInput = null;
  
-+    function handleSubmit(e) {
-+        e.preventDefault();
++    function handleSubmit(event) {
++        event.preventDefault();
 +
 +        const quantityInput = this.quantityInput.current;
 +        const itemSelect = this.itemSelect.current;

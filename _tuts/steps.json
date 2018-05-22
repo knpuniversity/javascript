@@ -1436,6 +1436,51 @@
             "description": null
         },
         {
+            "id": "validation-add-if-logic-for-quantity",
+            "name": "Validation: Add if logic for quantity",
+            "description": null
+        },
+        {
+            "id": "validation-refactor-replogcreator-to-a-class",
+            "name": "Validation: Refactor RepLogCreator to a class",
+            "description": null
+        },
+        {
+            "id": "validation-use-this-props",
+            "name": "Validation: Use this.props",
+            "description": null
+        },
+        {
+            "id": "validation-move-handlesubmit-to-method",
+            "name": "Validation: Move handleSubmit to method",
+            "description": null
+        },
+        {
+            "id": "validation-refactor-to-react-createref",
+            "name": "Validation: Refactor to React.createRef",
+            "description": null
+        },
+        {
+            "id": "validation-move-itemoptions-to-property",
+            "name": "Validation: Move itemOptions to property",
+            "description": null
+        },
+        {
+            "id": "validation-set-quantityinputerror-state",
+            "name": "Validation: Set quantityInputError state",
+            "description": null
+        },
+        {
+            "id": "validation-print-error-message",
+            "name": "Validation: Print error message",
+            "description": null
+        },
+        {
+            "id": "validation-improve-styling",
+            "name": "Validation: Improve styling",
+            "description": null
+        },
+        {
             "id": "controlledinput-add-input-field-to-replogapp",
             "name": "ControlledInput: Add input field to RepLogApp",
             "description": null
@@ -1456,18 +1501,18 @@
             "description": null
         },
         {
-            "id": "creatorwithstate-duplicate-to-replogcreatorwithstate",
-            "name": "CreatorWithState: Duplicate to RepLogCreatorWithState",
+            "id": "creatorwithstate-duplicate-to-replogcreatorcontrolledcomponents",
+            "name": "CreatorWithState: Duplicate to RepLogCreatorControlledComponents",
             "description": null
         },
         {
-            "id": "creatorwithstate-change-to-class",
-            "name": "CreatorWithState: Change to class",
+            "id": "delete-creatorwithstate-change-to-class",
+            "name": "DELETE: CreatorWithState: Change to class",
             "description": null
         },
         {
-            "id": "creatorwithstate-use-this-props",
-            "name": "CreatorWithState: Use this.props",
+            "id": "delete-creatorwithstate-use-this-props",
+            "name": "DELETE: CreatorWithState: Use this.props",
             "description": null
         },
         {
@@ -1491,5 +1536,5 @@
             "description": null
         }
     ],
-    "sha": "2ae69c790fde4985a2201e2ef9ef007a27f4356d"
+    "sha": "1b2c466390c032aeb27c9a6b6b67502dd75e2480"
 }

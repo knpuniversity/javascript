@@ -1,7 +1,7 @@
-diff --git a/assets/js/RepLog/RepLogCreatorWithState.js b/assets/js/RepLog/RepLogCreatorWithState.js
-index 62a9468b..9058c001 100644
---- a/assets/js/RepLog/RepLogCreatorWithState.js
-+++ b/assets/js/RepLog/RepLogCreatorWithState.js
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index 47b40cd8..b2da46f7 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
 @@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
  
  export default class RepLogCreator extends Component {
