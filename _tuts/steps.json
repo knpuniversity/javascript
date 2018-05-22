@@ -1389,7 +1389,42 @@
             "id": "refs-clear-inputs-submit",
             "name": "Refs: Clear inputs & submit",
             "description": null
+        },
+        {
+            "id": "immutability-set-state-without-mutation",
+            "name": "Immutability: Set state without mutation",
+            "description": null
+        },
+        {
+            "id": "replogcreator-create-functional-component",
+            "name": "RepLogCreator: Create functional component",
+            "description": null
+        },
+        {
+            "id": "replogcreator-copy-in-form-code",
+            "name": "RepLogCreator: Copy in form code",
+            "description": null
+        },
+        {
+            "id": "replogcreator-add-handlenewitemsubmit-prop",
+            "name": "RepLogCreator: Add handleNewItemSubmit prop",
+            "description": null
+        },
+        {
+            "id": "replogcreator-use-local-variable-refs",
+            "name": "RepLogCreator: Use local variable refs",
+            "description": null
+        },
+        {
+            "id": "replogcreator-copy-in-callback-function",
+            "name": "RepLogCreator: Copy in callback function",
+            "description": null
+        },
+        {
+            "id": "replogcreator-refactor-callback",
+            "name": "RepLogCreator: Refactor callback",
+            "description": null
         }
     ],
-    "sha": "49c5c0bfe77127c37660025508df71166c39f5e7"
+    "sha": "346ecfc569ba3f348414bf2689f383c23ad60802"
 }

@@ -1,0 +1,39 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 90fb82e8..5d5bf549 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -92,9 +92,8 @@ export default class RepLogApp extends Component {
+                     </tfoot>
+                 </table>
+ 
+-                <RepLogCreator/>
++                <RepLogCreator handleNewItemSubmit={this.handleNewItemSubmit} />
+             </div>
+-
+         );
+     }
+ }
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index fe4380d4..12edc2ec 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -2,8 +2,10 @@ import React from 'react';
+ import PropTypes from 'prop-types';
+ 
+ export default function RepLogCreator(props) {
++    const { handleNewItemSubmit } = props;
++
+     return (
+-        <form className="form-inline" onSubmit={this.handleNewItemSubmit}>
++        <form className="form-inline" onSubmit={handleNewItemSubmit}>
+             <div className="form-group">
+                 <label className="sr-only control-label required"
+                        htmlFor="rep_log_item">
+@@ -41,3 +43,7 @@ export default function RepLogCreator(props) {
+         </form>
+     );
+ }
++
++RepLogCreator.propTypes = {
++    handleNewItemSubmit: PropTypes.func.isRequired,
++};

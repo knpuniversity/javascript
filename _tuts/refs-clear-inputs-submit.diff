@@ -1,11 +1,11 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index bdb6716f..8a40a35f 100644
+index de0cbeb1..24af9f63 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -41,6 +41,9 @@ export default class RepLogApp extends Component {
          };
          repLogs.push(newRep);
-         this.setState(repLogs);
+         this.setState({repLogs: repLogs});
 +
 +        quantityInput.value = '';
 +        itemSelect.selectedIndex = 0;

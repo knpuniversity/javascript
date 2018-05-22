@@ -1,0 +1,30 @@
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index efa181fb..0ae5897d 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -7,6 +7,25 @@ export default function RepLogCreator(props) {
+     let itemSelect = null;
+     let quantityInput = null;
+ 
++    function handleSubmit(e) {
++        e.preventDefault();
++
++        const quantityInput = this.quantityInput.current;
++        const itemSelect = this.itemSelect.current;
++
++        const newRep = {
++            id: uuid(),
++            reps: quantityInput.value,
++            itemLabel: itemSelect.options[itemSelect.selectedIndex].text,
++            totalWeightLifted: Math.floor(Math.random() * 50)
++        };
++        const newRepLogs = [...this.state.repLogs, newRep];
++        this.setState({repLogs: newRepLogs});
++
++        quantityInput.value = '';
++        itemSelect.selectedIndex = 0;
++    }
++
+     return (
+         <form className="form-inline" onSubmit={handleNewItemSubmit}>
+             <div className="form-group">

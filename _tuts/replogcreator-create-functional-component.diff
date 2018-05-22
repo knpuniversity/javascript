@@ -1,0 +1,34 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 2a653daa..2e673f2d 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -1,5 +1,6 @@
+ import React, { Component } from 'react';
+ import RepLogList from './RepLogList';
++import RepLogCreator from './RepLogCreator';
+ import uuid from 'uuid/v4';
+ 
+ export default class RepLogApp extends Component {
+@@ -91,6 +92,8 @@ export default class RepLogApp extends Component {
+                     </tfoot>
+                 </table>
+ 
++                <RepLogCreator/>
++
+                 <form className="form-inline" onSubmit={this.handleNewItemSubmit}>
+                     <div className="form-group">
+                         <label className="sr-only control-label required"
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+new file mode 100644
+index 00000000..8124d698
+--- /dev/null
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -0,0 +1,8 @@
++import React from 'react';
++import PropTypes from 'prop-types';
++
++export default function RepLogCreator(props) {
++    return (
++        <div>I'm going to be a form when I grow up!</div>
++    );
++}

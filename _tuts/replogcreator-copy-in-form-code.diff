@@ -1,0 +1,95 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 2e673f2d..90fb82e8 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -93,43 +93,6 @@ export default class RepLogApp extends Component {
+                 </table>
+ 
+                 <RepLogCreator/>
+-
+-                <form className="form-inline" onSubmit={this.handleNewItemSubmit}>
+-                    <div className="form-group">
+-                        <label className="sr-only control-label required"
+-                               htmlFor="rep_log_item">
+-                            What did you lift?
+-                        </label>
+-                        <select id="rep_log_item"
+-                                ref={this.itemSelect}
+-                                required="required"
+-                                className="form-control">
+-                            <option value="">What did you
+-                                lift?
+-                            </option>
+-                            <option value="cat">Cat</option>
+-                            <option value="fat_cat">Big Fat Cat</option>
+-                            <option value="laptop">My Laptop</option>
+-                            <option value="coffee_cup">Coffee Cup</option>
+-                        </select>
+-                    </div>
+-                    {' '}
+-                    <div className="form-group">
+-                        <label className="sr-only control-label required"
+-                               htmlFor="rep_log_reps">
+-                            How many times?
+-                        </label>
+-                        <input type="number" id="rep_log_reps"
+-                               ref={this.quantityInput}
+-                               required="required"
+-                               placeholder="How many times?"
+-                               className="form-control"/>
+-                    </div>
+-                    {' '}
+-                    <button type="submit" className="btn btn-primary">I Lifted
+-                        it!
+-                    </button>
+-                </form>
+             </div>
+ 
+         );
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index 8124d698..fe4380d4 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -3,6 +3,41 @@ import PropTypes from 'prop-types';
+ 
+ export default function RepLogCreator(props) {
+     return (
+-        <div>I'm going to be a form when I grow up!</div>
++        <form className="form-inline" onSubmit={this.handleNewItemSubmit}>
++            <div className="form-group">
++                <label className="sr-only control-label required"
++                       htmlFor="rep_log_item">
++                    What did you lift?
++                </label>
++                <select id="rep_log_item"
++                        ref={this.itemSelect}
++                        required="required"
++                        className="form-control">
++                    <option value="">What did you
++                        lift?
++                    </option>
++                    <option value="cat">Cat</option>
++                    <option value="fat_cat">Big Fat Cat</option>
++                    <option value="laptop">My Laptop</option>
++                    <option value="coffee_cup">Coffee Cup</option>
++                </select>
++            </div>
++            {' '}
++            <div className="form-group">
++                <label className="sr-only control-label required"
++                       htmlFor="rep_log_reps">
++                    How many times?
++                </label>
++                <input type="number" id="rep_log_reps"
++                       ref={this.quantityInput}
++                       required="required"
++                       placeholder="How many times?"
++                       className="form-control"/>
++            </div>
++            {' '}
++            <button type="submit" className="btn btn-primary">I Lifted
++                it!
++            </button>
++        </form>
+     );
+ }
