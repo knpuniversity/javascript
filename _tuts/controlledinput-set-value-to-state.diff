@@ -1,0 +1,34 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 94567755..fcb4ece7 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -13,7 +13,8 @@ export default class RepLogApp extends Component {
+                 { id: uuid(), reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
+                 { id: uuid(), reps: 10, itemLabel: 'Big Fat Cat', totalWeightLifted: 180 },
+                 { id: uuid(), reps: 4, itemLabel: 'Big Fat Cat', totalWeightLifted: 72 }
+-            ]
++            ],
++            numberOfHearts: 1
+         };
+ 
+         this.quantityInput = React.createRef();
+@@ -53,14 +54,17 @@ export default class RepLogApp extends Component {
+ 
+         let heart = '';
+         if (this.props.withHeart) {
+-            heart = <span>❤️</span>;
++            heart = <span>{'❤️'.repeat(this.state.numberOfHearts)}</span>;
+         }
+ 
+         return (
+             <div className="col-md-7">
+                 <h2>Lift Stuff! {heart}</h2>
+ 
+-                <input type="number" />
++                <input
++                    type="number"
++                    value={this.state.numberOfHearts}
++                />
+ 
+                 <table className="table table-striped">
+                     <thead>

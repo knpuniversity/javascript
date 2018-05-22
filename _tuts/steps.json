@@ -1424,7 +1424,72 @@
             "id": "replogcreator-refactor-callback",
             "name": "RepLogCreator: Refactor callback",
             "description": null
+        },
+        {
+            "id": "replogcreator-rename-handler-method",
+            "name": "RepLogCreator: Rename handler method",
+            "description": null
+        },
+        {
+            "id": "replogcreator-make-itemoptions-array",
+            "name": "RepLogCreator: Make itemOptions array",
+            "description": null
+        },
+        {
+            "id": "controlledinput-add-input-field-to-replogapp",
+            "name": "ControlledInput: Add input field to RepLogApp",
+            "description": null
+        },
+        {
+            "id": "controlledinput-set-value-to-state",
+            "name": "ControlledInput: Set value to state",
+            "description": null
+        },
+        {
+            "id": "controlledinput-add-onchange",
+            "name": "ControlledInput: Add onChange",
+            "description": null
+        },
+        {
+            "id": "controlledinput-use-range-input",
+            "name": "ControlledInput: Use range input",
+            "description": null
+        },
+        {
+            "id": "creatorwithstate-duplicate-to-replogcreatorwithstate",
+            "name": "CreatorWithState: Duplicate to RepLogCreatorWithState",
+            "description": null
+        },
+        {
+            "id": "creatorwithstate-change-to-class",
+            "name": "CreatorWithState: Change to class",
+            "description": null
+        },
+        {
+            "id": "creatorwithstate-use-this-props",
+            "name": "CreatorWithState: Use this.props",
+            "description": null
+        },
+        {
+            "id": "creatorwithstate-set-inputs-to-state",
+            "name": "CreatorWithState: Set inputs to state",
+            "description": null
+        },
+        {
+            "id": "creatorwithstate-add-change-handlers",
+            "name": "CreatorWithState: Add change handlers",
+            "description": null
+        },
+        {
+            "id": "creatorwithstate-use-proper-option-text",
+            "name": "CreatorWithState: Use proper option text",
+            "description": null
+        },
+        {
+            "id": "validation-use-replogcreator-again",
+            "name": "Validation: Use RepLogCreator again",
+            "description": null
         }
     ],
-    "sha": "346ecfc569ba3f348414bf2689f383c23ad60802"
+    "sha": "2ae69c790fde4985a2201e2ef9ef007a27f4356d"
 }

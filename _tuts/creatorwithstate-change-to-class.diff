@@ -1,0 +1,133 @@
+diff --git a/assets/js/RepLog/RepLogCreatorWithState.js b/assets/js/RepLog/RepLogCreatorWithState.js
+index d2817722..62a9468b 100644
+--- a/assets/js/RepLog/RepLogCreatorWithState.js
++++ b/assets/js/RepLog/RepLogCreatorWithState.js
+@@ -1,67 +1,73 @@
+-import React from 'react';
++import React, { Component } from 'react';
+ import PropTypes from 'prop-types';
+ 
+-export default function RepLogCreator(props) {
+-    const { handleAddRepLog } = props;
++export default class RepLogCreator extends Component {
++    render() {
++        const { handleAddRepLog } = props;
+ 
+-    let itemSelect = null;
+-    let quantityInput = null;
++        let itemSelect = null;
++        let quantityInput = null;
+ 
+-    function handleSubmit(e) {
+-        e.preventDefault();
++        function handleSubmit(e) {
++            e.preventDefault();
+ 
+-        const itemLabel = itemSelect.options[itemSelect.selectedIndex].text;
++            const itemLabel = itemSelect.options[itemSelect.selectedIndex].text;
+ 
+-        handleAddRepLog(itemLabel, quantityInput.value);
++            handleAddRepLog(itemLabel, quantityInput.value);
+ 
+-        quantityInput.value = '';
+-        itemSelect.selectedIndex = 0;
+-    }
++            quantityInput.value = '';
++            itemSelect.selectedIndex = 0;
++        }
+ 
+-    const itemOptions = [
+-        { id: 'cat', text: 'Cat' },
+-        { id: 'fat_cat', text: 'Big Fat Cat' },
+-        { id: 'laptop', text: 'My Laptop' },
+-        { id: 'coffee_cup', text: 'Coffee Cup' },
+-    ];
++        const itemOptions = [
++            { id: 'cat', text: 'Cat' },
++            { id: 'fat_cat', text: 'Big Fat Cat' },
++            { id: 'laptop', text: 'My Laptop' },
++            { id: 'coffee_cup', text: 'Coffee Cup' },
++        ];
+ 
+-    return (
+-        <form className="form-inline" onSubmit={handleSubmit}>
+-            <div className="form-group">
+-                <label className="sr-only control-label required"
+-                       htmlFor="rep_log_item">
+-                    What did you lift?
+-                </label>
+-                <select id="rep_log_item"
+-                        ref={(ref) => { itemSelect = ref; }}
+-                        required="required"
+-                        className="form-control">
+-                    <option value="">What did you
+-                        lift?
+-                    </option>
+-                    {itemOptions.map(option => {
+-                        return <option value={option.id} key={option.id}>{option.text}</option>
+-                    })}
+-                </select>
+-            </div>
+-            {' '}
+-            <div className="form-group">
+-                <label className="sr-only control-label required"
+-                       htmlFor="rep_log_reps">
+-                    How many times?
+-                </label>
+-                <input type="number" id="rep_log_reps"
+-                       ref={(ref) => { quantityInput = ref; }}
+-                       required="required"
+-                       placeholder="How many times?"
+-                       className="form-control"/>
+-            </div>
+-            {' '}
+-            <button type="submit" className="btn btn-primary">I Lifted
+-                it!
+-            </button>
+-        </form>
+-    );
++        return (
++            <form className="form-inline" onSubmit={handleSubmit}>
++                <div className="form-group">
++                    <label className="sr-only control-label required"
++                           htmlFor="rep_log_item">
++                        What did you lift?
++                    </label>
++                    <select id="rep_log_item"
++                            ref={(ref) => {
++                                itemSelect = ref;
++                            }}
++                            required="required"
++                            className="form-control">
++                        <option value="">What did you
++                            lift?
++                        </option>
++                        {itemOptions.map(option => {
++                            return <option value={option.id} key={option.id}>{option.text}</option>
++                        })}
++                    </select>
++                </div>
++                {' '}
++                <div className="form-group">
++                    <label className="sr-only control-label required"
++                           htmlFor="rep_log_reps">
++                        How many times?
++                    </label>
++                    <input type="number" id="rep_log_reps"
++                           ref={(ref) => {
++                               quantityInput = ref;
++                           }}
++                           required="required"
++                           placeholder="How many times?"
++                           className="form-control"/>
++                </div>
++                {' '}
++                <button type="submit" className="btn btn-primary">I Lifted
++                    it!
++                </button>
++            </form>
++        );
++    }
+ }
+ 
+ RepLogCreator.propTypes = {

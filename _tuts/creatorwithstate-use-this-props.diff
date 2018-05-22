@@ -1,0 +1,13 @@
+diff --git a/assets/js/RepLog/RepLogCreatorWithState.js b/assets/js/RepLog/RepLogCreatorWithState.js
+index 62a9468b..9058c001 100644
+--- a/assets/js/RepLog/RepLogCreatorWithState.js
++++ b/assets/js/RepLog/RepLogCreatorWithState.js
+@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
+ 
+ export default class RepLogCreator extends Component {
+     render() {
+-        const { handleAddRepLog } = props;
++        const { handleAddRepLog } = this.props;
+ 
+         let itemSelect = null;
+         let quantityInput = null;

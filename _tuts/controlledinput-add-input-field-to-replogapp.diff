@@ -1,0 +1,25 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 16e46cf0..94567755 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -60,6 +60,8 @@ export default class RepLogApp extends Component {
+             <div className="col-md-7">
+                 <h2>Lift Stuff! {heart}</h2>
+ 
++                <input type="number" />
++
+                 <table className="table table-striped">
+                     <thead>
+                     <tr>
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index 63f3a9cb..d2817722 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -9,7 +9,6 @@ export default function RepLogCreator(props) {
+ 
+     function handleSubmit(e) {
+         e.preventDefault();
+-        console.log(quantityInput);
+ 
+         const itemLabel = itemSelect.options[itemSelect.selectedIndex].text;
+ 

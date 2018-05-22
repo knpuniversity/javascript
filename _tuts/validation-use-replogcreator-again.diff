@@ -1,0 +1,14 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index ffe8d267..27397dbb 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -1,7 +1,7 @@
+ import React, { Component } from 'react';
+ import RepLogList from './RepLogList';
+-//import RepLogCreator from './RepLogCreator';
+-import RepLogCreator from './RepLogCreatorWithState';
++import RepLogCreator from './RepLogCreator';
++//import RepLogCreator from './RepLogCreatorWithState';
+ import uuid from 'uuid/v4';
+ 
+ export default class RepLogApp extends Component {

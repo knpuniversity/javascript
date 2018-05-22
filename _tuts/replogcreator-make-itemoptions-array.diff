@@ -1,0 +1,32 @@
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index 2cc567cf..63f3a9cb 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -19,6 +19,13 @@ export default function RepLogCreator(props) {
+         itemSelect.selectedIndex = 0;
+     }
+ 
++    const itemOptions = [
++        { id: 'cat', text: 'Cat' },
++        { id: 'fat_cat', text: 'Big Fat Cat' },
++        { id: 'laptop', text: 'My Laptop' },
++        { id: 'coffee_cup', text: 'Coffee Cup' },
++    ];
++
+     return (
+         <form className="form-inline" onSubmit={handleSubmit}>
+             <div className="form-group">
+@@ -33,10 +40,9 @@ export default function RepLogCreator(props) {
+                     <option value="">What did you
+                         lift?
+                     </option>
+-                    <option value="cat">Cat</option>
+-                    <option value="fat_cat">Big Fat Cat</option>
+-                    <option value="laptop">My Laptop</option>
+-                    <option value="coffee_cup">Coffee Cup</option>
++                    {itemOptions.map(option => {
++                        return <option value={option.id} key={option.id}>{option.text}</option>
++                    })}
+                 </select>
+             </div>
+             {' '}

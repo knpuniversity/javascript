@@ -1,0 +1,48 @@
+diff --git a/assets/js/RepLog/RepLogCreatorWithState.js b/assets/js/RepLog/RepLogCreatorWithState.js
+index 9058c001..a584c12b 100644
+--- a/assets/js/RepLog/RepLogCreatorWithState.js
++++ b/assets/js/RepLog/RepLogCreatorWithState.js
+@@ -2,12 +2,18 @@ import React, { Component } from 'react';
+ import PropTypes from 'prop-types';
+ 
+ export default class RepLogCreator extends Component {
++    constructor(props) {
++        super(props);
++
++        this.state = {
++            selectedItemId: '',
++            quantityValue: 0
++        };
++    }
++
+     render() {
+         const { handleAddRepLog } = this.props;
+ 
+-        let itemSelect = null;
+-        let quantityInput = null;
+-
+         function handleSubmit(e) {
+             e.preventDefault();
+ 
+@@ -34,9 +40,7 @@ export default class RepLogCreator extends Component {
+                         What did you lift?
+                     </label>
+                     <select id="rep_log_item"
+-                            ref={(ref) => {
+-                                itemSelect = ref;
+-                            }}
++                            value={this.state.selectedItemId}
+                             required="required"
+                             className="form-control">
+                         <option value="">What did you
+@@ -54,9 +58,7 @@ export default class RepLogCreator extends Component {
+                         How many times?
+                     </label>
+                     <input type="number" id="rep_log_reps"
+-                           ref={(ref) => {
+-                               quantityInput = ref;
+-                           }}
++                           value={this.state.quantityValue}
+                            required="required"
+                            placeholder="How many times?"
+                            className="form-control"/>

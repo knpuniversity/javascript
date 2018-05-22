@@ -1,0 +1,59 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 9444cf43..16e46cf0 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -20,14 +20,14 @@ export default class RepLogApp extends Component {
+         this.itemSelect = React.createRef();
+ 
+         this.handleRowClick = this.handleRowClick.bind(this);
+-        this.handleNewItemSubmit = this.handleNewItemSubmit.bind(this);
++        this.handleAddRepLog = this.handleAddRepLog.bind(this);
+     }
+ 
+     handleRowClick(repLogId) {
+         this.setState({highlightedRowId: repLogId});
+     }
+ 
+-    handleNewItemSubmit(itemLabel, quantity) {
++    handleAddRepLog(itemLabel, quantity) {
+         const newRep = {
+             id: uuid(),
+             reps: quantity,
+@@ -84,7 +84,7 @@ export default class RepLogApp extends Component {
+                     </tfoot>
+                 </table>
+ 
+-                <RepLogCreator handleNewItemSubmit={this.handleNewItemSubmit} />
++                <RepLogCreator handleAddRepLog={this.handleAddRepLog} />
+             </div>
+         );
+     }
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index 1336871b..2cc567cf 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -2,7 +2,7 @@ import React from 'react';
+ import PropTypes from 'prop-types';
+ 
+ export default function RepLogCreator(props) {
+-    const { handleNewItemSubmit } = props;
++    const { handleAddRepLog } = props;
+ 
+     let itemSelect = null;
+     let quantityInput = null;
+@@ -13,7 +13,7 @@ export default function RepLogCreator(props) {
+ 
+         const itemLabel = itemSelect.options[itemSelect.selectedIndex].text;
+ 
+-        handleNewItemSubmit(itemLabel, quantityInput.value);
++        handleAddRepLog(itemLabel, quantityInput.value);
+ 
+         quantityInput.value = '';
+         itemSelect.selectedIndex = 0;
+@@ -60,5 +60,5 @@ export default function RepLogCreator(props) {
+ }
+ 
+ RepLogCreator.propTypes = {
+-    handleNewItemSubmit: PropTypes.func.isRequired,
++    handleAddRepLog: PropTypes.func.isRequired,
+ };

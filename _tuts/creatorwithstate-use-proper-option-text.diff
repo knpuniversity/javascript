@@ -1,0 +1,52 @@
+diff --git a/assets/js/RepLog/RepLogCreatorWithState.js b/assets/js/RepLog/RepLogCreatorWithState.js
+index 45b4c3f8..4536d8cb 100644
+--- a/assets/js/RepLog/RepLogCreatorWithState.js
++++ b/assets/js/RepLog/RepLogCreatorWithState.js
+@@ -10,6 +10,13 @@ export default class RepLogCreator extends Component {
+             quantityValue: 0
+         };
+ 
++        this.itemOptions = [
++            { id: 'cat', text: 'Cat' },
++            { id: 'fat_cat', text: 'Big Fat Cat' },
++            { id: 'laptop', text: 'My Laptop' },
++            { id: 'coffee_cup', text: 'Coffee Cup' },
++        ];
++
+         this.handleSelectedItemChange = this.handleSelectedItemChange.bind(this);
+         this.handleQuantityInputChange = this.handleQuantityInputChange.bind(this);
+         this.onFormSubmit = this.onFormSubmit.bind(this);
+@@ -30,7 +37,9 @@ export default class RepLogCreator extends Component {
+     onFormSubmit(event) {
+         event.preventDefault();
+ 
+-        const itemLabel = 'TODO - just wait a second!';
++        const itemLabel = this.itemOptions.find((option) => {
++            return option.id === this.state.selectedItemId
++        }).text;
+ 
+         this.props.handleAddRepLog(itemLabel, this.state.quantityValue);
+ 
+@@ -41,13 +50,6 @@ export default class RepLogCreator extends Component {
+     }
+ 
+     render() {
+-        const itemOptions = [
+-            { id: 'cat', text: 'Cat' },
+-            { id: 'fat_cat', text: 'Big Fat Cat' },
+-            { id: 'laptop', text: 'My Laptop' },
+-            { id: 'coffee_cup', text: 'Coffee Cup' },
+-        ];
+-
+         return (
+             <form className="form-inline" onSubmit={this.onFormSubmit}>
+                 <div className="form-group">
+@@ -63,7 +65,7 @@ export default class RepLogCreator extends Component {
+                         <option value="">What did you
+                             lift?
+                         </option>
+-                        {itemOptions.map(option => {
++                        {this.itemOptions.map(option => {
+                             return <option value={option.id} key={option.id}>{option.text}</option>
+                         })}
+                     </select>
