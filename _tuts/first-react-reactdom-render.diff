@@ -11,7 +11,7 @@ index 9e814c62..15e47b52 100644
 +
 +ReactDom.render(el, document.getElementById('lift-stuff-app'));
 diff --git a/templates/lift/index.html.twig b/templates/lift/index.html.twig
-index 3288a09e..d7f26665 100644
+index fb49e8ed..71218baa 100644
 --- a/templates/lift/index.html.twig
 +++ b/templates/lift/index.html.twig
 @@ -1,6 +1,14 @@

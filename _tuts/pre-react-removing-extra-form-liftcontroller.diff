@@ -1,0 +1,29 @@
+diff --git a/src/Controller/LiftController.php b/src/Controller/LiftController.php
+index 9fcce613..d39bbd4d 100644
+--- a/src/Controller/LiftController.php
++++ b/src/Controller/LiftController.php
+@@ -20,24 +20,7 @@ class LiftController extends BaseController
+     {
+         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
+ 
+-        $form = $this->createForm(RepLogType::class);
+-        $form->handleRequest($request);
+-
+-        if ($form->isSubmitted() && $form->isValid()) {
+-            $em = $this->getDoctrine()->getManager();
+-            $repLog = $form->getData();
+-            $repLog->setUser($this->getUser());
+-
+-            $em->persist($repLog);
+-            $em->flush();
+-
+-            $this->addFlash('notice', 'Reps crunched!');
+-
+-            return $this->redirectToRoute('lift');
+-        }
+-
+         return $this->render('lift/index.html.twig', array(
+-            'form' => $form->createView(),
+             'leaderboard' => $this->getLeaders($replogRepo, $userRepo),
+         ));
+     }

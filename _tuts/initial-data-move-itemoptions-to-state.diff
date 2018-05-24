@@ -1,0 +1,81 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index c8ee8c33..678e8221 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -17,7 +17,14 @@ export default class RepLogApp extends Component {
+             isLoaded: false,
+             savingNewRepLog: false,
+             successMessage: '',
+-            newRepLogValidationErrorMessage: ''
++            newRepLogValidationErrorMessage: '',
++            itemOptions: [
++                {id: 'cat', text: 'Cat'},
++                {id: 'fat_cat', text: 'Big Fat Cat'},
++                {id: 'laptop', text: 'My Laptop'},
++                {id: 'coffee_cup', text: 'Coffee Cup'},
++                {id: 'invalid_item', text: 'Dark Matter'}
++            ]
+         };
+ 
+         this.handleRowClick = this.handleRowClick.bind(this);
+@@ -125,7 +132,7 @@ export default class RepLogApp extends Component {
+     }
+ 
+     render() {
+-        const { highlightedRowId, repLogs, isLoaded, savingNewRepLog, successMessage, newRepLogValidationErrorMessage } = this.state;
++        const { highlightedRowId, repLogs, isLoaded, savingNewRepLog, successMessage, newRepLogValidationErrorMessage, itemOptions } = this.state;
+ 
+         let heart = '';
+         if (this.props.withHeart) {
+@@ -184,6 +191,7 @@ export default class RepLogApp extends Component {
+                         <RepLogCreator
+                             handleAddRepLog={this.handleAddRepLog}
+                             validationErrorMessage={newRepLogValidationErrorMessage}
++                            itemOptions={itemOptions}
+                         />
+                     </div>
+                 </div>
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index bf25775a..c8d8c6e3 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -12,15 +12,6 @@ export default class RepLogCreator extends Component {
+         this.itemSelect = React.createRef();
+         this.quantityInput = React.createRef();
+ 
+-        // static select options
+-        this.itemOptions = [
+-            {id: 'cat', text: 'Cat'},
+-            {id: 'fat_cat', text: 'Big Fat Cat'},
+-            {id: 'laptop', text: 'My Laptop'},
+-            {id: 'coffee_cup', text: 'Coffee Cup'},
+-            {id: 'invalid_item', text: 'Dark Matter'}
+-        ];
+-
+         this.handleSubmit = this.handleSubmit.bind(this);
+     }
+ 
+@@ -53,7 +44,7 @@ export default class RepLogCreator extends Component {
+ 
+     render() {
+         const { quantityInputError } = this.state;
+-        const { validationErrorMessage } = this.props;
++        const { validationErrorMessage, itemOptions } = this.props;
+ 
+         let quantityError = '';
+         if (quantityInputError) {
+@@ -79,7 +70,7 @@ export default class RepLogCreator extends Component {
+                         <option value="">What did you
+                             lift?
+                         </option>
+-                        {this.itemOptions.map(option => {
++                        {itemOptions.map(option => {
+                             return <option value={option.id} key={option.id}>{option.text}</option>
+                         })}
+                     </select>
+@@ -109,4 +100,5 @@ export default class RepLogCreator extends Component {
+ RepLogCreator.propTypes = {
+     handleAddRepLog: PropTypes.func.isRequired,
+     validationErrorMessage: PropTypes.string.isRequired,
++    itemOptions: PropTypes.array.isRequired
+ };

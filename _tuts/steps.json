@@ -1151,6 +1151,16 @@
             "description": null
         },
         {
+            "id": "pre-react-update-webpack-to-use-dev-server",
+            "name": "PRE_REACT: Update webpack to use dev-server",
+            "description": null
+        },
+        {
+            "id": "pre-react-removing-extra-form-liftcontroller",
+            "name": "PRE_REACT: Removing extra form LiftController",
+            "description": null
+        },
+        {
             "id": "eslint-install-configure-eslint",
             "name": "Eslint: Install\/configure eslint",
             "description": null
@@ -1664,7 +1674,32 @@
             "id": "server-validation-hiding-loading-row-on-error",
             "name": "Server Validation: Hiding loading row on error",
             "description": null
+        },
+        {
+            "id": "initial-data-move-itemoptions-to-state",
+            "name": "Initial Data: Move itemOptions to state",
+            "description": null
+        },
+        {
+            "id": "initial-data-pass-in-initialstate",
+            "name": "Initial Data: Pass in initialState",
+            "description": null
+        },
+        {
+            "id": "initial-data-dump-replog-getthingsyoucanliftchoices",
+            "name": "Initial Data: Dump RepLog::getThingsYouCanLiftChoices()",
+            "description": null
+        },
+        {
+            "id": "initial-data-loop-to-create-items-structure",
+            "name": "Initial Data: Loop to create items structure",
+            "description": null
+        },
+        {
+            "id": "initial-data-print-and-json-encode-data",
+            "name": "Initial Data: Print and json_encode data",
+            "description": null
         }
     ],
-    "sha": "ffddbdfcd25cefe6ad0df4d58214a7cda421f164"
+    "sha": "dd7249ac1ec780dfd6d06e8eb4d0b61c32f5623b"
 }

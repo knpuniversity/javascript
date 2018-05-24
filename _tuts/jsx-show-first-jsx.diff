@@ -29,13 +29,13 @@ index e5550ed8..e2345ab8 100644
      "copy-webpack-plugin": "^4.4.1",
      "eslint": "^4.19.1",
 diff --git a/webpack.config.js b/webpack.config.js
-index 1d3f54b7..0235acf7 100644
+index 9276beb7..96848a7e 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -26,6 +26,7 @@ Encore
      .enableSourceMaps(!Encore.isProduction())
      .cleanupOutputBeforeBuild()
-     .enableVersioning()
+     .enableVersioning(Encore.isProduction())
 +    .enableReactPreset()
  ;
  

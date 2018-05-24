@@ -6,17 +6,17 @@ index 00000000..b9cd21c1
 @@ -0,0 +1 @@
 +console.log('Oh hallo React peeps! 🏋️');
 diff --git a/templates/lift/index.html.twig b/templates/lift/index.html.twig
-index 6342f651..3288a09e 100644
+index e3dfa10e..fb49e8ed 100644
 --- a/templates/lift/index.html.twig
 +++ b/templates/lift/index.html.twig
-@@ -55,4 +55,5 @@
+@@ -57,4 +57,5 @@
      {{ parent() }}
  
      <script src="{{ asset('build/rep_log.js') }}"></script>
 +    <script src="{{ asset('build/rep_log_react.js') }}"></script>
  {% endblock %}
 diff --git a/webpack.config.js b/webpack.config.js
-index c300f115..1d3f54b7 100644
+index 0ad3d245..9276beb7 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -10,6 +10,7 @@ Encore

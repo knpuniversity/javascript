@@ -1,9 +1,9 @@
 diff --git a/.eslintrc.js b/.eslintrc.js
 new file mode 100644
-index 00000000..c1dd20a0
+index 00000000..61df8708
 --- /dev/null
 +++ b/.eslintrc.js
-@@ -0,0 +1,18 @@
+@@ -0,0 +1,19 @@
 +module.exports = {
 +    extends: ['eslint:recommended'],
 +    parserOptions: {
@@ -15,7 +15,8 @@ index 00000000..c1dd20a0
 +    },
 +    env: {
 +        browser: true,
-+        es6: true
++        es6: true,
++        node: true
 +    },
 +    rules: {
 +        "no-console": 0,
