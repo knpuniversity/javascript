@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 52eea755..a32ffcf7 100644
+index f316543a..a339ee1e 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -14,6 +14,9 @@ export default class RepLogApp extends Component {
+@@ -15,6 +15,9 @@ export default class RepLogApp extends Component {
              ]
          };
  
@@ -12,7 +12,7 @@ index 52eea755..a32ffcf7 100644
          this.handleRowClick = this.handleRowClick.bind(this);
      }
  
-@@ -25,7 +28,8 @@ export default class RepLogApp extends Component {
+@@ -26,7 +29,8 @@ export default class RepLogApp extends Component {
          event.preventDefault();
  
          console.log('I love when a good form submits!');
@@ -22,7 +22,7 @@ index 52eea755..a32ffcf7 100644
      }
  
      calculateTotalWeightLifted() {
-@@ -81,7 +85,7 @@ export default class RepLogApp extends Component {
+@@ -82,7 +86,7 @@ export default class RepLogApp extends Component {
                              What did you lift?
                          </label>
                          <select id="rep_log_item"
@@ -31,7 +31,7 @@ index 52eea755..a32ffcf7 100644
                                  required="required"
                                  className="form-control">
                              <option value="">What did you
-@@ -100,7 +104,8 @@ export default class RepLogApp extends Component {
+@@ -101,7 +105,8 @@ export default class RepLogApp extends Component {
                              How many times?
                          </label>
                          <input type="number" id="rep_log_reps"

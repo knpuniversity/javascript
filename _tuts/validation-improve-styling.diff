@@ -1,14 +1,14 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 16e46cf0..3ef7108c 100644
+index 3d99bcf7..ce69cb02 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -84,7 +84,11 @@ export default class RepLogApp extends Component {
+@@ -86,7 +86,11 @@ export default class RepLogApp extends Component {
                      </tfoot>
                  </table>
  
 -                <RepLogCreator handleAddRepLog={this.handleAddRepLog} />
 +                <div className="row">
-+                    <div className="col-md-12">
++                    <div className="col-md-6">
 +                        <RepLogCreator handleAddRepLog={this.handleAddRepLog} />
 +                    </div>
 +                </div>
@@ -16,10 +16,10 @@ index 16e46cf0..3ef7108c 100644
          );
      }
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 1824bd41..0e7fa225 100644
+index b6ad42fa..f831f89a 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
-@@ -57,7 +57,7 @@ export default class RepLogCreator extends Component {
+@@ -59,7 +59,7 @@ export default class RepLogCreator extends Component {
          }
  
          return (

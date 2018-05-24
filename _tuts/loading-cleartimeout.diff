@@ -1,0 +1,50 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index ba3f872c..65548064 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -34,6 +34,12 @@ export default class RepLogApp extends Component {
+             });
+     }
+ 
++    componentWillUnmount() {
++        if (this.clearSuccessMessageTimeout) {
++            clearTimeout(this.clearSuccessMessageTimeout);
++        }
++    }
++
+     handleRowClick(repLogId) {
+         this.setState({highlightedRowId: repLogId});
+     }
+@@ -56,9 +62,10 @@ export default class RepLogApp extends Component {
+                     return {
+                         repLogs: newRepLogs,
+                         savingNewRepLog: false,
+-                        successMessage: 'Rep Log Saved!'
+                     };
+-                })
++                });
++
++                this.setSuccessMessage('Rep Log Saved!');
+             })
+         ;
+     }
+@@ -85,6 +92,19 @@ export default class RepLogApp extends Component {
+         return total;
+     }
+ 
++    setSuccessMessage(message) {
++        this.setState({
++            successMessage: message
++        });
++
++        this.clearSuccessMessageTimeout = setTimeout(() => {
++            this.setState({
++                successMessage: ''
++            });
++            this.clearSuccessMessageTimeout = null;
++        }, 3000)
++    }
++
+     render() {
+         const { highlightedRowId, repLogs, isLoaded, savingNewRepLog, successMessage } = this.state;
+ 

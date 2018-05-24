@@ -1,0 +1,16 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 65548064..4ec44186 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -71,7 +71,10 @@ export default class RepLogApp extends Component {
+     }
+ 
+     handleDeleteRepLog(id) {
+-        deleteRepLog(id);
++        deleteRepLog(id)
++            .then(() => {
++                this.setSuccessMessage('Item was Un-lifted!');
++            });
+ 
+         // remove the rep log without mutating state
+         // filter returns a new array

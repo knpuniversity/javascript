@@ -1,0 +1,49 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 04531024..6801e331 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -4,7 +4,7 @@ import RepLogCreator from './RepLogCreator';
+ //import RepLogCreator from './RepLogCreatorControlledComponents';
+ import PropTypes from 'prop-types';
+ import uuid from 'uuid/v4';
+-import { getRepLogs, deleteRepLog } from '../api/rep_log_api';
++import { getRepLogs, deleteRepLog, createRepLog } from '../api/rep_log_api';
+ 
+ export default class RepLogApp extends Component {
+     constructor(props) {
+@@ -44,6 +44,12 @@ export default class RepLogApp extends Component {
+             totalWeightLifted: Math.floor(Math.random() * 50)
+         };
+ 
++        createRepLog(newRep)
++            .then(data => {
++                console.log(data);
++            })
++        ;
++
+         this.setState(prevState => {
+             const newRepLogs = [...prevState.repLogs, newRep];
+ 
+diff --git a/assets/js/api/rep_log_api.js b/assets/js/api/rep_log_api.js
+index f1a234b6..ae74606d 100644
+--- a/assets/js/api/rep_log_api.js
++++ b/assets/js/api/rep_log_api.js
+@@ -19,3 +19,17 @@ export function deleteRepLog(id) {
+         method: 'DELETE'
+     });
+ }
++
++export function createRepLog(repLog) {
++    return fetch('/reps', {
++        credentials: 'same-origin',
++        method: 'POST',
++        body: JSON.stringify(repLog),
++        headers: {
++            'Content-Type': 'application/json'
++        }
++    })
++        .then(response => {
++            return response.json();
++        });
++}
+\ No newline at end of file

@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogCreatorControlledComponents.js b/assets/js/RepLog/RepLogCreatorControlledComponents.js
-index 6bb3fb0f..7f8fdbe7 100644
+index 404fa17e..e5030177 100644
 --- a/assets/js/RepLog/RepLogCreatorControlledComponents.js
 +++ b/assets/js/RepLog/RepLogCreatorControlledComponents.js
 @@ -23,18 +23,17 @@ export default class RepLogCreator extends Component {
@@ -54,9 +54,9 @@ index 6bb3fb0f..7f8fdbe7 100644
 +    }
 +
      render() {
-         let quantityError = '';
-         if (this.state.quantityInputError) {
-@@ -67,6 +78,7 @@ export default class RepLogCreator extends Component {
+         const { quantityInputError } = this.state;
+ 
+@@ -69,6 +80,7 @@ export default class RepLogCreator extends Component {
                      </label>
                      <select id="rep_log_item"
                              value={this.state.selectedItemId}
@@ -64,7 +64,7 @@ index 6bb3fb0f..7f8fdbe7 100644
                              required="required"
                              className="form-control">
                          <option value="">What did you
-@@ -85,6 +97,7 @@ export default class RepLogCreator extends Component {
+@@ -87,6 +99,7 @@ export default class RepLogCreator extends Component {
                      </label>
                      <input type="number" id="rep_log_reps"
                             value={this.state.quantityValue}

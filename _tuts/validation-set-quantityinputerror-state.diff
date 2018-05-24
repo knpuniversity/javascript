@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index feae9087..e9171fa6 100644
+index feae9087..cf797399 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -5,6 +5,10 @@ export default class RepLogCreator extends Component {
@@ -24,7 +24,7 @@ index feae9087..e9171fa6 100644
  
              // don't submit, or clear the form
              return;
-@@ -39,6 +45,9 @@ export default class RepLogCreator extends Component {
+@@ -39,9 +45,14 @@ export default class RepLogCreator extends Component {
  
          quantityInput.value = '';
          itemSelect.selectedIndex = 0;
@@ -34,12 +34,17 @@ index feae9087..e9171fa6 100644
      }
  
      render() {
-@@ -62,7 +71,7 @@ export default class RepLogCreator extends Component {
++        const { quantityInputError } = this.state;
++
+         return (
+             <form className="form-inline" onSubmit={this.handleSubmit}>
+                 <div className="form-group">
+@@ -62,7 +73,7 @@ export default class RepLogCreator extends Component {
                      </select>
                  </div>
                  {' '}
 -                <div className="form-group">
-+                <div className={'form-group'+(this.state.quantityInputError ? ' has-error' : '')}>
++                <div className={'form-group'+(quantityInputError ? ' has-error' : '')}>
                      <label className="sr-only control-label required"
                             htmlFor="rep_log_reps">
                          How many times?

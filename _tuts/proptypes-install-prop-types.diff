@@ -1,8 +1,8 @@
 diff --git a/package.json b/package.json
-index 4249a412..6db37103 100644
+index d540d5b9..e8e67a07 100644
 --- a/package.json
 +++ b/package.json
-@@ -7,6 +7,7 @@
+@@ -9,6 +9,7 @@
      "font-awesome": "4",
      "jquery": "^3.3.1",
      "node-sass": "^4.7.2",
@@ -11,10 +11,10 @@ index 4249a412..6db37103 100644
      "react-dom": "^16.3.2",
      "sass-loader": "^6.0.6",
 diff --git a/yarn.lock b/yarn.lock
-index 095cf171..d4071571 100644
+index 1bbc7a37..2d4c81dd 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -4494,7 +4494,7 @@ promise@^7.1.1:
+@@ -4743,7 +4743,7 @@ promise@^7.1.1:
    dependencies:
      asap "~2.0.3"
  

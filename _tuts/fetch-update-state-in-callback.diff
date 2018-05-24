@@ -1,0 +1,27 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index d0e3a0b4..f3007a8d 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -43,16 +43,14 @@ export default class RepLogApp extends Component {
+         };
+ 
+         createRepLog(newRep)
+-            .then(data => {
+-                console.log(data);
++            .then(repLog => {
++                this.setState(prevState => {
++                    const newRepLogs = [...prevState.repLogs, repLog];
++
++                    return {repLogs: newRepLogs};
++                })
+             })
+         ;
+-
+-        // this.setState(prevState => {
+-        //     const newRepLogs = [...prevState.repLogs, newRep];
+-        //
+-        //     return {repLogs: newRepLogs};
+-        // })
+     }
+ 
+     handleDeleteRepLog(id) {

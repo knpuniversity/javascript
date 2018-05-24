@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 1aacc8da..890f4401 100644
+index 679593a7..302a4224 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -31,9 +31,15 @@ export default class RepLogApp extends Component {
+@@ -32,9 +32,15 @@ export default class RepLogApp extends Component {
          const quantityInput = this.quantityInput.current;
          const itemSelect = this.itemSelect.current;
  

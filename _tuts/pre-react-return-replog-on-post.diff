@@ -1,0 +1,14 @@
+diff --git a/src/Controller/RepLogController.php b/src/Controller/RepLogController.php
+index 0f751a03..baa1601e 100644
+--- a/src/Controller/RepLogController.php
++++ b/src/Controller/RepLogController.php
+@@ -87,8 +87,7 @@ class RepLogController extends BaseController
+ 
+         $apiModel = $this->createRepLogApiModel($repLog);
+ 
+-        //$response = $this->createApiResponse($apiModel);
+-        $response = new Response(null, 204);
++        $response = $this->createApiResponse($apiModel);
+         // setting the Location header... it's a best-practice
+         $response->headers->set(
+             'Location',

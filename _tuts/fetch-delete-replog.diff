@@ -1,0 +1,37 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index da47e649..04531024 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -4,7 +4,7 @@ import RepLogCreator from './RepLogCreator';
+ //import RepLogCreator from './RepLogCreatorControlledComponents';
+ import PropTypes from 'prop-types';
+ import uuid from 'uuid/v4';
+-import { getRepLogs } from '../api/rep_log_api';
++import { getRepLogs, deleteRepLog } from '../api/rep_log_api';
+ 
+ export default class RepLogApp extends Component {
+     constructor(props) {
+@@ -52,6 +52,8 @@ export default class RepLogApp extends Component {
+     }
+ 
+     handleDeleteRepLog(id) {
++        deleteRepLog(id);
++
+         // remove the rep log without mutating state
+         // filter returns a new array
+         this.setState((prevState) => {
+diff --git a/assets/js/api/rep_log_api.js b/assets/js/api/rep_log_api.js
+index 49457f77..f1a234b6 100644
+--- a/assets/js/api/rep_log_api.js
++++ b/assets/js/api/rep_log_api.js
+@@ -12,3 +12,10 @@ export function getRepLogs() {
+         })
+         .then(data => data.items);
+ }
++
++export function deleteRepLog(id) {
++    return fetch(`/reps/${id}`, {
++        credentials: 'same-origin',
++        method: 'DELETE'
++    });
++}

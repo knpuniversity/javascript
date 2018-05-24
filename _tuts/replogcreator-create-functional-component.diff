@@ -1,15 +1,15 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index f03e0caf..12f8cc6b 100644
+index 7e4a2857..208a27fa 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -1,5 +1,6 @@
  import React, { Component } from 'react';
  import RepLogList from './RepLogList';
 +import RepLogCreator from './RepLogCreator';
+ import PropTypes from 'prop-types';
  import uuid from 'uuid/v4';
  
- export default class RepLogApp extends Component {
-@@ -91,6 +92,8 @@ export default class RepLogApp extends Component {
+@@ -96,6 +97,8 @@ export default class RepLogApp extends Component {
                      </tfoot>
                  </table>
  

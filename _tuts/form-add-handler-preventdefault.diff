@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 0bcfcc5c..63580107 100644
+index 67508fc7..ed5daa62 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -21,6 +21,13 @@ export default class RepLogApp extends Component {
+@@ -22,6 +22,13 @@ export default class RepLogApp extends Component {
          this.setState({highlightedRowId: repLogId});
      }
  
@@ -16,7 +16,7 @@ index 0bcfcc5c..63580107 100644
      calculateTotalWeightLifted() {
          let total = 0;
  
-@@ -67,7 +74,7 @@ export default class RepLogApp extends Component {
+@@ -68,7 +75,7 @@ export default class RepLogApp extends Component {
                      </tfoot>
                  </table>
  

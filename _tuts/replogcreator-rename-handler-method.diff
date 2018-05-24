@@ -1,9 +1,9 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 9444cf43..16e46cf0 100644
+index 996fc0ec..3d99bcf7 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -20,14 +20,14 @@ export default class RepLogApp extends Component {
-         this.itemSelect = React.createRef();
+@@ -18,14 +18,14 @@ export default class RepLogApp extends Component {
+         };
  
          this.handleRowClick = this.handleRowClick.bind(this);
 -        this.handleNewItemSubmit = this.handleNewItemSubmit.bind(this);
@@ -19,7 +19,7 @@ index 9444cf43..16e46cf0 100644
          const newRep = {
              id: uuid(),
              reps: quantity,
-@@ -84,7 +84,7 @@ export default class RepLogApp extends Component {
+@@ -86,7 +86,7 @@ export default class RepLogApp extends Component {
                      </tfoot>
                  </table>
  

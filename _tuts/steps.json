@@ -1141,6 +1141,21 @@
             "description": null
         },
         {
+            "id": "pre-react-secure-reps-endpoints",
+            "name": "PRE_REACT: Secure \/reps endpoints",
+            "description": null
+        },
+        {
+            "id": "pre-react-return-replog-on-post",
+            "name": "PRE_REACT: Return repLog on POST",
+            "description": null
+        },
+        {
+            "id": "eslint-install-configure-eslint",
+            "name": "Eslint: Install\/configure eslint",
+            "description": null
+        },
+        {
             "id": "first-react-create-rep-log-react-js",
             "name": "First React: Create rep_log_react.js",
             "description": null
@@ -1168,6 +1183,11 @@
         {
             "id": "jsx-show-first-jsx",
             "name": "JSX: Show first JSX!",
+            "description": null
+        },
+        {
+            "id": "jsx-install-eslint-plugin-react",
+            "name": "JSX: Install eslint-plugin-react",
             "description": null
         },
         {
@@ -1331,6 +1351,11 @@
             "description": null
         },
         {
+            "id": "proptypes-add-withheart-proptype",
+            "name": "PropTypes: Add withHeart propType",
+            "description": null
+        },
+        {
             "id": "state-refactor-reploglist-to-expect-replogs-prop",
             "name": "State: Refactor RepLogList to expect repLogs prop",
             "description": null
@@ -1393,6 +1418,11 @@
         {
             "id": "immutability-set-state-without-mutation",
             "name": "Immutability: Set state without mutation",
+            "description": null
+        },
+        {
+            "id": "immutability-use-setstate-callback",
+            "name": "Immutability: Use setState() callback",
             "description": null
         },
         {
@@ -1531,10 +1561,110 @@
             "description": null
         },
         {
-            "id": "validation-use-replogcreator-again",
-            "name": "Validation: Use RepLogCreator again",
+            "id": "delete-add-delete-link",
+            "name": "Delete: Add delete link",
+            "description": null
+        },
+        {
+            "id": "delete-add-handler-functions",
+            "name": "Delete: Add handler functions",
+            "description": null
+        },
+        {
+            "id": "delete-update-replogs-state",
+            "name": "Delete: Update repLogs state",
+            "description": null
+        },
+        {
+            "id": "delete-use-setstate-callback",
+            "name": "Delete: Use setState() callback",
+            "description": null
+        },
+        {
+            "id": "fetch-make-first-test-fetch",
+            "name": "Fetch: Make first test fetch()",
+            "description": null
+        },
+        {
+            "id": "fetch-send-credentials",
+            "name": "Fetch: Send credentials",
+            "description": null
+        },
+        {
+            "id": "fetch-update-replogs-state",
+            "name": "Fetch: Update repLogs state",
+            "description": null
+        },
+        {
+            "id": "fetch-add-isloaded-loading-text",
+            "name": "Fetch: Add isLoaded loading text",
+            "description": null
+        },
+        {
+            "id": "fetch-delete-replog",
+            "name": "Fetch: Delete replog",
+            "description": null
+        },
+        {
+            "id": "fetch-add-createreplog",
+            "name": "Fetch: Add createRepLog",
+            "description": null
+        },
+        {
+            "id": "fetch-refactor-to-send-correct-things-to-post",
+            "name": "Fetch: Refactor to send correct things to POST",
+            "description": null
+        },
+        {
+            "id": "fetch-update-state-in-callback",
+            "name": "Fetch: Update state in callback",
+            "description": null
+        },
+        {
+            "id": "loading-add-loading-row",
+            "name": "Loading: Add loading row",
+            "description": null
+        },
+        {
+            "id": "loading-add-success-message",
+            "name": "Loading: Add success message",
+            "description": null
+        },
+        {
+            "id": "loading-cleartimeout",
+            "name": "Loading: clearTimeout",
+            "description": null
+        },
+        {
+            "id": "loading-also-success-on-delete",
+            "name": "Loading: Also success on delete",
+            "description": null
+        },
+        {
+            "id": "server-validation-throw-on-api-errors",
+            "name": "Server Validation: Throw on API errors",
+            "description": null
+        },
+        {
+            "id": "server-validation-catch-print-response",
+            "name": "Server Validation: catch & print response",
+            "description": null
+        },
+        {
+            "id": "server-validation-json-decode-the-errors",
+            "name": "Server Validation: json decode the errors",
+            "description": null
+        },
+        {
+            "id": "server-validation-set-a-form-error-state",
+            "name": "Server Validation: Set a form error state",
+            "description": null
+        },
+        {
+            "id": "server-validation-hiding-loading-row-on-error",
+            "name": "Server Validation: Hiding loading row on error",
             "description": null
         }
     ],
-    "sha": "1b2c466390c032aeb27c9a6b6b67502dd75e2480"
+    "sha": "ffddbdfcd25cefe6ad0df4d58214a7cda421f164"
 }

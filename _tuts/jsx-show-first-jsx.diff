@@ -17,7 +17,7 @@ index 162a9ccc..f124e97b 100644
  console.log(el);
  ReactDom.render(el, document.getElementById('lift-stuff-app'));
 diff --git a/package.json b/package.json
-index a1fc42ee..4249a412 100644
+index e5550ed8..e2345ab8 100644
 --- a/package.json
 +++ b/package.json
 @@ -1,6 +1,7 @@
@@ -27,7 +27,7 @@ index a1fc42ee..4249a412 100644
 +    "babel-preset-react": "^6.24.1",
      "bootstrap": "3",
      "copy-webpack-plugin": "^4.4.1",
-     "font-awesome": "4",
+     "eslint": "^4.19.1",
 diff --git a/webpack.config.js b/webpack.config.js
 index 1d3f54b7..0235acf7 100644
 --- a/webpack.config.js
@@ -41,10 +41,10 @@ index 1d3f54b7..0235acf7 100644
  
  // export the final configuration
 diff --git a/yarn.lock b/yarn.lock
-index 703c86da..095cf171 100644
+index 7fabca65..2002b98a 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -367,6 +367,14 @@ babel-helper-builder-binary-assignment-operator-visitor@^6.24.1:
+@@ -385,6 +385,14 @@ babel-helper-builder-binary-assignment-operator-visitor@^6.24.1:
      babel-runtime "^6.22.0"
      babel-types "^6.24.1"
  
@@ -59,7 +59,7 @@ index 703c86da..095cf171 100644
  babel-helper-call-delegate@^6.24.1:
    version "6.24.1"
    resolved "https://registry.yarnpkg.com/babel-helper-call-delegate/-/babel-helper-call-delegate-6.24.1.tgz#ece6aacddc76e41c3461f88bfc575bd0daa2df8d"
-@@ -488,6 +496,14 @@ babel-plugin-syntax-exponentiation-operator@^6.8.0:
+@@ -506,6 +514,14 @@ babel-plugin-syntax-exponentiation-operator@^6.8.0:
    version "6.13.0"
    resolved "https://registry.yarnpkg.com/babel-plugin-syntax-exponentiation-operator/-/babel-plugin-syntax-exponentiation-operator-6.13.0.tgz#9ee7e8337290da95288201a6a57f4170317830de"
  
@@ -74,7 +74,7 @@ index 703c86da..095cf171 100644
  babel-plugin-syntax-trailing-function-commas@^6.22.0:
    version "6.22.0"
    resolved "https://registry.yarnpkg.com/babel-plugin-syntax-trailing-function-commas/-/babel-plugin-syntax-trailing-function-commas-6.22.0.tgz#ba0360937f8d06e40180a43fe0d5616fff532cf3"
-@@ -676,6 +692,41 @@ babel-plugin-transform-exponentiation-operator@^6.22.0:
+@@ -694,6 +710,41 @@ babel-plugin-transform-exponentiation-operator@^6.22.0:
      babel-plugin-syntax-exponentiation-operator "^6.8.0"
      babel-runtime "^6.22.0"
  
@@ -116,7 +116,7 @@ index 703c86da..095cf171 100644
  babel-plugin-transform-regenerator@^6.22.0:
    version "6.26.0"
    resolved "https://registry.yarnpkg.com/babel-plugin-transform-regenerator/-/babel-plugin-transform-regenerator-6.26.0.tgz#e0703696fbde27f0a3efcacf8b4dca2f7b3a8f2f"
-@@ -724,6 +775,23 @@ babel-preset-env@^1.2.2:
+@@ -742,6 +793,23 @@ babel-preset-env@^1.2.2:
      invariant "^2.2.2"
      semver "^5.3.0"
  

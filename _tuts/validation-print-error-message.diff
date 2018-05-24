@@ -1,20 +1,20 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index e9171fa6..1824bd41 100644
+index cf797399..b6ad42fa 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
-@@ -51,6 +51,11 @@ export default class RepLogCreator extends Component {
-     }
- 
+@@ -53,6 +53,11 @@ export default class RepLogCreator extends Component {
      render() {
+         const { quantityInputError } = this.state;
+ 
 +        let quantityError = '';
-+        if (this.state.quantityInputError) {
-+            quantityError = <span className="help-block">{this.state.quantityInputError}</span>
++        if (quantityInputError) {
++            quantityError = <span className="help-block">{quantityInputError}</span>
 +        }
 +
          return (
              <form className="form-inline" onSubmit={this.handleSubmit}>
                  <div className="form-group">
-@@ -81,6 +86,7 @@ export default class RepLogCreator extends Component {
+@@ -83,6 +88,7 @@ export default class RepLogCreator extends Component {
                             required="required"
                             placeholder="How many times?"
                             className="form-control"/>

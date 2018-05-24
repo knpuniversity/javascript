@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 3c184a00..781a1ed1 100644
+index 787ad4cd..30bef582 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -7,6 +7,11 @@ export default class RepLogApp extends Component {
+@@ -8,6 +8,11 @@ export default class RepLogApp extends Component {
  
          this.state = {
              highlightedRowId: null,
@@ -14,7 +14,7 @@ index 3c184a00..781a1ed1 100644
          };
  
          this.handleRowClick = this.handleRowClick.bind(this);
-@@ -17,7 +22,7 @@ export default class RepLogApp extends Component {
+@@ -18,7 +23,7 @@ export default class RepLogApp extends Component {
      }
  
      render() {
@@ -23,7 +23,7 @@ index 3c184a00..781a1ed1 100644
  
          let heart = '';
          if (this.props.withHeart) {
-@@ -40,6 +45,7 @@ export default class RepLogApp extends Component {
+@@ -41,6 +46,7 @@ export default class RepLogApp extends Component {
                      <RepLogList
                          highlightedRowId={highlightedRowId}
                          handleRowClick={this.handleRowClick}

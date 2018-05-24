@@ -1,0 +1,89 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index f3007a8d..81606972 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -14,7 +14,8 @@ export default class RepLogApp extends Component {
+             highlightedRowId: null,
+             repLogs: [],
+             numberOfHearts: 1,
+-            isLoaded: false
++            isLoaded: false,
++            savingNewRepLog: false
+         };
+ 
+         this.handleRowClick = this.handleRowClick.bind(this);
+@@ -42,12 +43,19 @@ export default class RepLogApp extends Component {
+             item: item
+         };
+ 
++        this.setState({
++            savingNewRepLog: true
++        });
++
+         createRepLog(newRep)
+             .then(repLog => {
+                 this.setState(prevState => {
+                     const newRepLogs = [...prevState.repLogs, repLog];
+ 
+-                    return {repLogs: newRepLogs};
++                    return {
++                        repLogs: newRepLogs,
++                        savingNewRepLog: false
++                    };
+                 })
+             })
+         ;
+@@ -76,7 +84,7 @@ export default class RepLogApp extends Component {
+     }
+ 
+     render() {
+-        const { highlightedRowId, repLogs, isLoaded } = this.state;
++        const { highlightedRowId, repLogs, isLoaded, savingNewRepLog } = this.state;
+ 
+         let heart = '';
+         if (this.props.withHeart) {
+@@ -110,6 +118,7 @@ export default class RepLogApp extends Component {
+                         handleDeleteRepLog={this.handleDeleteRepLog}
+                         repLogs={repLogs}
+                         isLoaded={isLoaded}
++                        savingNewRepLog={savingNewRepLog}
+                     />
+                     <tfoot>
+                     <tr>
+diff --git a/assets/js/RepLog/RepLogList.js b/assets/js/RepLog/RepLogList.js
+index be4cdbf9..dd8c7f77 100644
+--- a/assets/js/RepLog/RepLogList.js
++++ b/assets/js/RepLog/RepLogList.js
+@@ -2,7 +2,7 @@ import React from 'react';
+ import PropTypes from 'prop-types';
+ 
+ export default function RepLogList(props) {
+-    const { highlightedRowId, handleRowClick, handleDeleteRepLog, repLogs, isLoaded } = props;
++    const { highlightedRowId, handleRowClick, handleDeleteRepLog, repLogs, isLoaded, savingNewRepLog } = props;
+ 
+     if (!isLoaded) {
+         return (
+@@ -38,6 +38,17 @@ export default function RepLogList(props) {
+                 </td>
+             </tr>
+         ))}
++        {savingNewRepLog ? (
++            <tr>
++                <td
++                    colSpan="4"
++                    className="text-center"
++                    style={{
++                        opacity: .5
++                    }}
++                >Lifting to the database ...</td>
++            </tr>
++        ) : null}
+         </tbody>
+     );
+ }
+@@ -48,4 +59,5 @@ RepLogList.propTypes = {
+     handleDeleteRepLog: PropTypes.func.isRequired,
+     repLogs: PropTypes.array.isRequired,
+     isLoaded: PropTypes.bool.isRequired,
++    savingNewRepLog: PropTypes.bool.isRequired
+ };

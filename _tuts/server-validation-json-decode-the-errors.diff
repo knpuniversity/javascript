@@ -1,0 +1,15 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 32514f4c..f4d79b36 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -68,7 +68,9 @@ export default class RepLogApp extends Component {
+                 this.setSuccessMessage('Rep Log Saved!');
+             })
+             .catch(error => {
+-                console.log(error.response);
++                error.response.json().then(errorsData => {
++                    console.log(errorsData);
++                })
+             })
+         ;
+     }

@@ -1,0 +1,20 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 3c184a00..787ad4cd 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -1,5 +1,6 @@
+ import React, { Component } from 'react';
+ import RepLogList from './RepLogList';
++import PropTypes from 'prop-types';
+ 
+ export default class RepLogApp extends Component {
+     constructor(props) {
+@@ -91,3 +92,7 @@ export default class RepLogApp extends Component {
+         );
+     }
+ }
++
++RepLogApp.propTypes = {
++    withHeart: PropTypes.bool
++}
+\ No newline at end of file

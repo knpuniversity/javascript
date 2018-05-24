@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index acc04d79..18363152 100644
+index cfb6bee0..f017bcb7 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -1,6 +1,7 @@
@@ -8,15 +8,15 @@ index acc04d79..18363152 100644
 -import RepLogCreator from './RepLogCreator';
 +//import RepLogCreator from './RepLogCreator';
 +import RepLogCreator from './RepLogCreatorControlledComponents';
+ import PropTypes from 'prop-types';
  import uuid from 'uuid/v4';
  
- export default class RepLogApp extends Component {
 diff --git a/assets/js/RepLog/RepLogCreatorControlledComponents.js b/assets/js/RepLog/RepLogCreatorControlledComponents.js
 new file mode 100644
-index 00000000..0e7fa225
+index 00000000..f831f89a
 --- /dev/null
 +++ b/assets/js/RepLog/RepLogCreatorControlledComponents.js
-@@ -0,0 +1,102 @@
+@@ -0,0 +1,104 @@
 +import React, { Component } from 'react';
 +import PropTypes from 'prop-types';
 +
@@ -70,9 +70,11 @@ index 00000000..0e7fa225
 +    }
 +
 +    render() {
++        const { quantityInputError } = this.state;
++
 +        let quantityError = '';
-+        if (this.state.quantityInputError) {
-+            quantityError = <span className="help-block">{this.state.quantityInputError}</span>
++        if (quantityInputError) {
++            quantityError = <span className="help-block">{quantityInputError}</span>
 +        }
 +
 +        return (
@@ -95,7 +97,7 @@ index 00000000..0e7fa225
 +                    </select>
 +                </div>
 +                {' '}
-+                <div className={'form-group'+(this.state.quantityInputError ? ' has-error' : '')}>
++                <div className={'form-group'+(quantityInputError ? ' has-error' : '')}>
 +                    <label className="sr-only control-label required"
 +                           htmlFor="rep_log_reps">
 +                        How many times?

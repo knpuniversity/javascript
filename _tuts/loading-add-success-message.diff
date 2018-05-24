@@ -1,0 +1,54 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 81606972..ba3f872c 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -15,7 +15,8 @@ export default class RepLogApp extends Component {
+             repLogs: [],
+             numberOfHearts: 1,
+             isLoaded: false,
+-            savingNewRepLog: false
++            savingNewRepLog: false,
++            successMessage: ''
+         };
+ 
+         this.handleRowClick = this.handleRowClick.bind(this);
+@@ -54,7 +55,8 @@ export default class RepLogApp extends Component {
+ 
+                     return {
+                         repLogs: newRepLogs,
+-                        savingNewRepLog: false
++                        savingNewRepLog: false,
++                        successMessage: 'Rep Log Saved!'
+                     };
+                 })
+             })
+@@ -84,13 +86,18 @@ export default class RepLogApp extends Component {
+     }
+ 
+     render() {
+-        const { highlightedRowId, repLogs, isLoaded, savingNewRepLog } = this.state;
++        const { highlightedRowId, repLogs, isLoaded, savingNewRepLog, successMessage } = this.state;
+ 
+         let heart = '';
+         if (this.props.withHeart) {
+             heart = <span>{'❤️'.repeat(this.state.numberOfHearts)}</span>;
+         }
+ 
++        let successMessageElement = '';
++        if (successMessage) {
++            successMessageElement = <div className="alert alert-success text-center">{successMessage}</div>
++        }
++
+         return (
+             <div className="col-md-7">
+                 <h2>Lift Stuff! {heart}</h2>
+@@ -103,6 +110,9 @@ export default class RepLogApp extends Component {
+                     }}
+                 />
+ 
++                <hr/>
++
++                {successMessageElement}
+                 <table className="table table-striped">
+                     <thead>
+                     <tr>
