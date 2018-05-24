@@ -1,6 +1,6 @@
 diff --git a/assets/js/Components/username_validation_error.js b/assets/js/Components/username_validation_error.js
 new file mode 100644
-index 00000000..ba1ebe41
+index 0000000..ba1ebe4
 --- /dev/null
 +++ b/assets/js/Components/username_validation_error.js
 @@ -0,0 +1,4 @@
@@ -9,7 +9,7 @@ index 00000000..ba1ebe41
 +    $usernameInput.before($warning);
 +}
 diff --git a/assets/js/login.js b/assets/js/login.js
-index afb516d4..102430ab 100644
+index afb516d..102430a 100644
 --- a/assets/js/login.js
 +++ b/assets/js/login.js
 @@ -2,6 +2,7 @@

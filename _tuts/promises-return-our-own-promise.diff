@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
-index f1eaafb0..dc52defb 100644
+index f1eaafb..dc52def 100644
 --- a/app/Resources/views/base.html.twig
 +++ b/app/Resources/views/base.html.twig
 @@ -94,6 +94,7 @@
@@ -11,7 +11,7 @@ index f1eaafb0..dc52defb 100644
  
  </body>
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index febb2f23..58cbfe6f 100644
+index febb2f2..58cbfe6 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -95,16 +95,18 @@

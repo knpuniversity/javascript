@@ -1,5 +1,5 @@
 diff --git a/assets/js/Components/RepLogApp.js b/assets/js/Components/RepLogApp.js
-index faffd37c..0de72182 100644
+index faffd37..0de7218 100644
 --- a/assets/js/Components/RepLogApp.js
 +++ b/assets/js/Components/RepLogApp.js
 @@ -4,7 +4,7 @@ const Helper = require('./RepLogAppHelper');
@@ -13,7 +13,7 @@ index faffd37c..0de72182 100644
  
 diff --git a/assets/js/Components/Routing.js b/assets/js/Components/Routing.js
 new file mode 100644
-index 00000000..09c7674a
+index 0000000..09c7674
 --- /dev/null
 +++ b/assets/js/Components/Routing.js
 @@ -0,0 +1,5 @@

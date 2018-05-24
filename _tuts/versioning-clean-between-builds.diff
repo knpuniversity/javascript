@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 53edf61a..17656092 100644
+index 53edf61..1765609 100644
 --- a/package.json
 +++ b/package.json
 @@ -16,6 +16,7 @@
@@ -11,7 +11,7 @@ index 53edf61a..17656092 100644
      "css-loader": "^0.28.4",
      "extract-text-webpack-plugin": "^3.0.0",
 diff --git a/webpack.config.js b/webpack.config.js
-index e8905da5..1158a46d 100644
+index e8905da..1158a46 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -34,7 +34,7 @@ index e8905da5..1158a46d 100644
      devtool: useSourcemaps ? 'inline-source-map' : false,
      devServer: {
 diff --git a/yarn.lock b/yarn.lock
-index 1612cea1..540a424b 100644
+index 1612cea..540a424 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -976,6 +976,12 @@ clap@^1.0.9:

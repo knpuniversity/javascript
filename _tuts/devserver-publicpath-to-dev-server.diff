@@ -1,5 +1,5 @@
 diff --git a/webpack.config.js b/webpack.config.js
-index c948a1ad..df2a104f 100644
+index c948a1a..df2a104 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -2,6 +2,9 @@ const path = require('path');

@@ -1,5 +1,5 @@
 diff --git a/assets/js/Components/RepLogApp.js b/assets/js/Components/RepLogApp.js
-index 284cdf34..6d39c0b2 100644
+index 284cdf3..6d39c0b 100644
 --- a/assets/js/Components/RepLogApp.js
 +++ b/assets/js/Components/RepLogApp.js
 @@ -8,13 +8,15 @@ require('sweetalert2/dist/sweetalert2.css');
@@ -38,7 +38,7 @@ index 284cdf34..6d39c0b2 100644
          this.$wrapper.find('.js-total-weight').html(
              HelperInstances.get(this).getTotalWeightString()
 diff --git a/assets/js/rep_log.js b/assets/js/rep_log.js
-index 9bdfc1da..26e60844 100644
+index 9bdfc1d..26e6084 100644
 --- a/assets/js/rep_log.js
 +++ b/assets/js/rep_log.js
 @@ -6,7 +6,24 @@ const RepLogApp = require('./Components/RepLogApp');

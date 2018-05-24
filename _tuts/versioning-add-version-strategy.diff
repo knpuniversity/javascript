@@ -1,5 +1,5 @@
 diff --git a/app/config/config.yml b/app/config/config.yml
-index 20d4525e..043ada19 100644
+index 20d4525..043ada1 100644
 --- a/app/config/config.yml
 +++ b/app/config/config.yml
 @@ -31,7 +31,8 @@ framework:
@@ -13,7 +13,7 @@ index 20d4525e..043ada19 100644
  # Twig Configuration
  twig:
 diff --git a/webpack.config.js b/webpack.config.js
-index 36543d46..cf98a439 100644
+index 36543d4..cf98a43 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -132,6 +132,7 @@ const webpackConfig = {

@@ -1,6 +1,6 @@
 diff --git a/.babelrc b/.babelrc
 new file mode 100644
-index 00000000..002b4aa0
+index 0000000..002b4aa
 --- /dev/null
 +++ b/.babelrc
 @@ -0,0 +1,3 @@
@@ -8,7 +8,7 @@ index 00000000..002b4aa0
 +  "presets": ["env"]
 +}
 diff --git a/package.json b/package.json
-index 72cba688..a1c42b9f 100644
+index 72cba68..a1c42b9 100644
 --- a/package.json
 +++ b/package.json
 @@ -6,6 +6,7 @@
@@ -21,7 +21,7 @@ index 72cba688..a1c42b9f 100644
    }
  }
 diff --git a/web/assets/dist/RepLogApp.js b/web/assets/dist/RepLogApp.js
-index 27c120d5..6c09a54f 100644
+index 27c120d..6c09a54 100644
 --- a/web/assets/dist/RepLogApp.js
 +++ b/web/assets/dist/RepLogApp.js
 @@ -1,11 +1,17 @@
@@ -521,7 +521,7 @@ index 27c120d5..6c09a54f 100644
      window.RepLogApp = RepLogApp;
  })(window, jQuery, Routing, swal);
 diff --git a/yarn.lock b/yarn.lock
-index 6747626a..a6c2de2e 100644
+index 6747626..a6c2de2 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -143,6 +143,100 @@ babel-generator@^6.22.0:

@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 564f7d70..770aa53a 100644
+index 564f7d7..770aa53 100644
 --- a/package.json
 +++ b/package.json
 @@ -16,6 +16,8 @@
@@ -12,13 +12,14 @@ index 564f7d70..770aa53a 100644
      "sweetalert2": "^6.6.6",
      "webpack": "^3.4.1"
 diff --git a/webpack.config.js b/webpack.config.js
-index 503d9c96..92b1f38e 100644
+index 503d9c9..92b1f38 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
-@@ -33,6 +33,14 @@ module.exports = {
+@@ -32,6 +32,14 @@ module.exports = {
+                     'css-loader',
                  ]
              },
-             {
++            {
 +                test: /\.scss$/,
 +                use: [
 +                    'style-loader',
@@ -26,12 +27,11 @@ index 503d9c96..92b1f38e 100644
 +                    'sass-loader',
 +                ]
 +            },
-+            {
+             {
                  test: /\.(png|jpg|jpeg|gif|ico|svg)$/,
                  use: [
-                     {
 diff --git a/yarn.lock b/yarn.lock
-index 26d26437..781b75c3 100644
+index 26d2643..781b75c 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -52,6 +52,10 @@ alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:

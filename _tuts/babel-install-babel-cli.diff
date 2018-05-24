@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index 93821ad1..0654fa26 100644
+index 93821ad..0654fa2 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -14,3 +14,4 @@
@@ -8,7 +8,7 @@ index 93821ad1..0654fa26 100644
  /web/bundles/
 +/node_modules
 diff --git a/package.json b/package.json
-index f5d0db39..72cba688 100644
+index f5d0db3..72cba68 100644
 --- a/package.json
 +++ b/package.json
 @@ -4,5 +4,8 @@
@@ -23,7 +23,7 @@ index f5d0db39..72cba688 100644
  }
 diff --git a/yarn.lock b/yarn.lock
 new file mode 100644
-index 00000000..6747626a
+index 0000000..6747626
 --- /dev/null
 +++ b/yarn.lock
 @@ -0,0 +1,1218 @@

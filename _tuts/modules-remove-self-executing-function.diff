@@ -1,5 +1,5 @@
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index c788f9bf..3c187e4e 100644
+index c788f9b..3c187e4 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -4,215 +4,212 @@ const Helper = require('./RepLogAppHelper');

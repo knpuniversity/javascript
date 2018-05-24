@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index f29df9bd..5c9ba665 100644
+index f29df9b..5c9ba66 100644
 --- a/package.json
 +++ b/package.json
 @@ -29,7 +29,8 @@
@@ -13,7 +13,7 @@ index f29df9bd..5c9ba665 100644
    "dependencies": {}
  }
 diff --git a/webpack.config.js b/webpack.config.js
-index f9727d62..475086f3 100644
+index f9727d6..475086f 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -2,6 +2,7 @@ const path = require('path');
@@ -34,7 +34,7 @@ index f9727d62..475086f3 100644
      devtool: useSourcemaps ? 'inline-source-map' : false,
      devServer: {
 diff --git a/yarn.lock b/yarn.lock
-index a263e6c7..2d11ffa8 100644
+index a263e6c..2d11ffa 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -1809,6 +1809,16 @@ fs-extra@^0.26.4:

@@ -1,5 +1,5 @@
 diff --git a/app/Resources/FOSUserBundle/views/Security/login.html.twig b/app/Resources/FOSUserBundle/views/Security/login.html.twig
-index 1e2ce3ca..e982bbd7 100644
+index 1e2ce3c..e982bbd 100644
 --- a/app/Resources/FOSUserBundle/views/Security/login.html.twig
 +++ b/app/Resources/FOSUserBundle/views/Security/login.html.twig
 @@ -2,12 +2,6 @@
@@ -16,7 +16,7 @@ index 1e2ce3ca..e982bbd7 100644
      {{ parent() }}
  
 diff --git a/web/assets/js/login.js b/web/assets/js/login.js
-index 7daf09dc..479c6e39 100644
+index 7daf09d..479c6e3 100644
 --- a/web/assets/js/login.js
 +++ b/web/assets/js/login.js
 @@ -1,6 +1,7 @@
