@@ -1,0 +1,45 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 2929f0d2..2ee06fda 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -22,11 +22,8 @@ export default class RepLogApp extends Component {
+         this.setState({highlightedRowId: repLogId});
+     }
+ 
+-    handleNewItemSubmit(event) {
+-        event.preventDefault();
+-
+-        console.log('I love when a good form submits!');
+-        console.log(event.target.elements.namedItem('reps').value);
++    handleNewItemSubmit() {
++        console.log('todo');
+     }
+ 
+     render() {
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index 0d29f726..ecc67a90 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -12,6 +12,13 @@ function calculateTotalWeightLifted(repLogs) {
+     return total;
+ }
+ 
++function handleFormSubmit(event) {
++    event.preventDefault();
++
++    console.log('I love when a good form submits!');
++    console.log(event.target.elements.namedItem('reps').value);
++}
++
+ export default function RepLogs(props) {
+     const { withHeart, highlightedRowId, handleRowClick, repLogs, handleNewItemSubmit } = props;
+ 
+@@ -48,7 +55,7 @@ export default function RepLogs(props) {
+                 </tfoot>
+             </table>
+ 
+-            <form className="form-inline" onSubmit={handleNewItemSubmit}>
++            <form className="form-inline" onSubmit={handleFormSubmit}>
+                 <div className="form-group">
+                     <label className="sr-only control-label required"
+                            htmlFor="rep_log_item">

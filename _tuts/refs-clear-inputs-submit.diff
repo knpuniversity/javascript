@@ -1,14 +1,14 @@
-diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 5b876410..dac50abb 100644
---- a/assets/js/RepLog/RepLogApp.js
-+++ b/assets/js/RepLog/RepLogApp.js
-@@ -42,6 +42,9 @@ export default class RepLogApp extends Component {
-         };
-         repLogs.push(newRep);
-         this.setState({repLogs: repLogs});
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index 59386388..fefd8dd1 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -33,6 +33,9 @@ export default class RepLogs extends Component {
+             itemSelect.options[itemSelect.selectedIndex].text,
+             quantityInput.value
+         );
 +
 +        quantityInput.value = '';
 +        itemSelect.selectedIndex = 0;
      }
  
-     calculateTotalWeightLifted() {
+     render() {

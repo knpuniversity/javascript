@@ -1,9 +1,9 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 7b40d5b5..c4d65dde 100644
+index edadc594..98c024c8 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -4,11 +4,17 @@ import RepLogCreator from './RepLogCreator';
- //import RepLogCreator from './RepLogCreatorControlledComponents';
+@@ -2,11 +2,17 @@ import React, { Component } from 'react';
+ import RepLogs from './RepLogs';
  import PropTypes from 'prop-types';
  import uuid from 'uuid/v4';
 +import { getRepLogs } from '../api/rep_log_api';

@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index cf797399..b6ad42fa 100644
+index e84ef885..f9b00e55 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -53,6 +53,11 @@ export default class RepLogCreator extends Component {
@@ -12,7 +12,7 @@ index cf797399..b6ad42fa 100644
 +        }
 +
          return (
-             <form className="form-inline" onSubmit={this.handleSubmit}>
+             <form className="form-inline" onSubmit={this.handleFormSubmit}>
                  <div className="form-group">
 @@ -83,6 +88,7 @@ export default class RepLogCreator extends Component {
                             required="required"

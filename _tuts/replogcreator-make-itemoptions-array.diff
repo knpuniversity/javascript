@@ -1,32 +1,32 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index f7c5c0fc..6602cb71 100644
+index f80ca5af..7d58c288 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
-@@ -18,6 +18,13 @@ export default function RepLogCreator(props) {
-         itemSelect.selectedIndex = 0;
+@@ -8,6 +8,13 @@ export default class RepLogCreator extends Component {
+         this.quantityInput = React.createRef();
+         this.itemSelect = React.createRef();
+ 
++        this.itemOptions = [
++            { id: 'cat', text: 'Cat' },
++            { id: 'fat_cat', text: 'Big Fat Cat' },
++            { id: 'laptop', text: 'My Laptop' },
++            { id: 'coffee_cup', text: 'Coffee Cup' },
++        ];
++
+         this.handleFormSubmit = this.handleFormSubmit.bind(this);
      }
  
-+    const itemOptions = [
-+        { id: 'cat', text: 'Cat' },
-+        { id: 'fat_cat', text: 'Big Fat Cat' },
-+        { id: 'laptop', text: 'My Laptop' },
-+        { id: 'coffee_cup', text: 'Coffee Cup' },
-+    ];
-+
-     return (
-         <form className="form-inline" onSubmit={handleSubmit}>
-             <div className="form-group">
-@@ -32,10 +39,9 @@ export default function RepLogCreator(props) {
-                     <option value="">What did you
-                         lift?
-                     </option>
--                    <option value="cat">Cat</option>
--                    <option value="fat_cat">Big Fat Cat</option>
--                    <option value="laptop">My Laptop</option>
--                    <option value="coffee_cup">Coffee Cup</option>
-+                    {itemOptions.map(option => {
-+                        return <option value={option.id} key={option.id}>{option.text}</option>
-+                    })}
-                 </select>
-             </div>
-             {' '}
+@@ -42,10 +49,9 @@ export default class RepLogCreator extends Component {
+                         <option value="">What did you
+                             lift?
+                         </option>
+-                        <option value="cat">Cat</option>
+-                        <option value="fat_cat">Big Fat Cat</option>
+-                        <option value="laptop">My Laptop</option>
+-                        <option value="coffee_cup">Coffee Cup</option>
++                        {this.itemOptions.map(option => {
++                            return <option value={option.id} key={option.id}>{option.text}</option>
++                        })}
+                     </select>
+                 </div>
+                 {' '}

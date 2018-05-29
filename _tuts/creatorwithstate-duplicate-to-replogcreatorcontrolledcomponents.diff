@@ -1,19 +1,6 @@
-diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index cfb6bee0..f017bcb7 100644
---- a/assets/js/RepLog/RepLogApp.js
-+++ b/assets/js/RepLog/RepLogApp.js
-@@ -1,6 +1,7 @@
- import React, { Component } from 'react';
- import RepLogList from './RepLogList';
--import RepLogCreator from './RepLogCreator';
-+//import RepLogCreator from './RepLogCreator';
-+import RepLogCreator from './RepLogCreatorControlledComponents';
- import PropTypes from 'prop-types';
- import uuid from 'uuid/v4';
- 
 diff --git a/assets/js/RepLog/RepLogCreatorControlledComponents.js b/assets/js/RepLog/RepLogCreatorControlledComponents.js
 new file mode 100644
-index 00000000..f831f89a
+index 00000000..82f53296
 --- /dev/null
 +++ b/assets/js/RepLog/RepLogCreatorControlledComponents.js
 @@ -0,0 +1,104 @@
@@ -28,28 +15,25 @@ index 00000000..f831f89a
 +            quantityInputError: ''
 +        };
 +
-+        this.itemSelect = React.createRef();
 +        this.quantityInput = React.createRef();
++        this.itemSelect = React.createRef();
 +
-+        // static select options
 +        this.itemOptions = [
-+            {id: 'cat', text: 'Cat'},
-+            {id: 'fat_cat', text: 'Big Fat Cat'},
-+            {id: 'laptop', text: 'My Laptop'},
-+            {id: 'coffee_cup', text: 'Coffee Cup'},
++            { id: 'cat', text: 'Cat' },
++            { id: 'fat_cat', text: 'Big Fat Cat' },
++            { id: 'laptop', text: 'My Laptop' },
++            { id: 'coffee_cup', text: 'Coffee Cup' },
 +        ];
 +
-+        this.handleSubmit = this.handleSubmit.bind(this);
++        this.handleFormSubmit = this.handleFormSubmit.bind(this);
 +    }
 +
-+    handleSubmit(event) {
++    handleFormSubmit(event) {
 +        event.preventDefault();
 +        const { handleAddRepLog } = this.props;
 +
-+        const itemSelect = this.itemSelect.current;
 +        const quantityInput = this.quantityInput.current;
-+
-+        const itemLabel = itemSelect.options[itemSelect.selectedIndex].text;
++        const itemSelect = this.itemSelect.current;
 +
 +        if (quantityInput.value <= 0) {
 +            this.setState({
@@ -60,7 +44,10 @@ index 00000000..f831f89a
 +            return;
 +        }
 +
-+        handleAddRepLog(itemLabel, quantityInput.value);
++        handleAddRepLog(
++            itemSelect.options[itemSelect.selectedIndex].text,
++            quantityInput.value
++        );
 +
 +        quantityInput.value = '';
 +        itemSelect.selectedIndex = 0;
@@ -78,7 +65,7 @@ index 00000000..f831f89a
 +        }
 +
 +        return (
-+            <form onSubmit={this.handleSubmit}>
++            <form onSubmit={this.handleFormSubmit}>
 +                <div className="form-group">
 +                    <label className="sr-only control-label required"
 +                           htmlFor="rep_log_item">
@@ -121,3 +108,17 @@ index 00000000..f831f89a
 +RepLogCreator.propTypes = {
 +    handleAddRepLog: PropTypes.func.isRequired,
 +};
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index ad9efaeb..3c7d7414 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -1,7 +1,8 @@
+ import React, { Component } from 'react';
+ import PropTypes from 'prop-types';
+ import RepLogList from './RepLogList';
+-import RepLogCreator from './RepLogCreator';
++//import RepLogCreator from './RepLogCreator';
++import RepLogCreator from './RepLogCreatorControlledComponents';
+ 
+ export default class RepLogs extends Component {
+     constructor(props) {

@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index ea611313..3c184a00 100644
+index 79bb715b..d1d86e3a 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -39,6 +39,7 @@ export default class RepLogApp extends Component {
+@@ -40,6 +40,7 @@ export default class RepLogApp extends Component {
                      </thead>
                      <RepLogList
                          highlightedRowId={highlightedRowId}

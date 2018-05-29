@@ -1,26 +1,26 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index f4d79b36..6fa693c8 100644
+index c8377fb9..ca1d8697 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -16,7 +16,8 @@ export default class RepLogApp extends Component {
+@@ -14,7 +14,8 @@ export default class RepLogApp extends Component {
              numberOfHearts: 1,
              isLoaded: false,
-             savingNewRepLog: false,
+             isSavingNewRepLog: false,
 -            successMessage: ''
 +            successMessage: '',
 +            newRepLogValidationErrorMessage: ''
          };
  
          this.handleRowClick = this.handleRowClick.bind(this);
-@@ -62,6 +63,7 @@ export default class RepLogApp extends Component {
+@@ -61,6 +62,7 @@ export default class RepLogApp extends Component {
                      return {
                          repLogs: newRepLogs,
-                         savingNewRepLog: false,
+                         isSavingNewRepLog: false,
 +                        newRepLogValidationErrorMessage: '',
                      };
                  });
  
-@@ -69,7 +71,12 @@ export default class RepLogApp extends Component {
+@@ -68,7 +70,12 @@ export default class RepLogApp extends Component {
              })
              .catch(error => {
                  error.response.json().then(errorsData => {
@@ -34,29 +34,8 @@ index f4d79b36..6fa693c8 100644
                  })
              })
          ;
-@@ -114,7 +121,7 @@ export default class RepLogApp extends Component {
-     }
- 
-     render() {
--        const { highlightedRowId, repLogs, isLoaded, savingNewRepLog, successMessage } = this.state;
-+        const { highlightedRowId, repLogs, isLoaded, savingNewRepLog, successMessage, newRepLogValidationErrorMessage } = this.state;
- 
-         let heart = '';
-         if (this.props.withHeart) {
-@@ -170,7 +177,10 @@ export default class RepLogApp extends Component {
- 
-                 <div className="row">
-                     <div className="col-md-6">
--                        <RepLogCreator handleAddRepLog={this.handleAddRepLog} />
-+                        <RepLogCreator
-+                            handleAddRepLog={this.handleAddRepLog}
-+                            validationErrorMessage={newRepLogValidationErrorMessage}
-+                        />
-                     </div>
-                 </div>
-             </div>
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index d7c08ae5..bf25775a 100644
+index 735826be..9f8d864d 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -53,6 +53,7 @@ export default class RepLogCreator extends Component {
@@ -70,7 +49,7 @@ index d7c08ae5..bf25775a 100644
 @@ -61,6 +62,11 @@ export default class RepLogCreator extends Component {
  
          return (
-             <form onSubmit={this.handleSubmit}>
+             <form onSubmit={this.handleFormSubmit}>
 +                {validationErrorMessage ? (
 +                    <div className="alert alert-danger">
 +                        {validationErrorMessage}
@@ -84,6 +63,39 @@ index d7c08ae5..bf25775a 100644
  RepLogCreator.propTypes = {
      handleAddRepLog: PropTypes.func.isRequired,
 +    validationErrorMessage: PropTypes.string.isRequired,
+ };
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index f91cb25b..fc4358ce 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -20,7 +20,7 @@ export default class RepLogs extends Component {
+     }
+ 
+     render() {
+-        const { withHeart, highlightedRowId, handleRowClick, repLogs, handleAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage } = this.props;
++        const { withHeart, highlightedRowId, handleRowClick, repLogs, handleAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage, newRepLogValidationErrorMessage } = this.props;
+ 
+         let heart = '';
+         if (withHeart) {
+@@ -77,7 +77,10 @@ export default class RepLogs extends Component {
+ 
+                 <div className="row">
+                     <div className="col-md-6">
+-                        <RepLogCreator handleAddRepLog={handleAddRepLog}/>
++                        <RepLogCreator
++                            handleAddRepLog={handleAddRepLog}
++                            validationErrorMessage={newRepLogValidationErrorMessage}
++                        />
+                     </div>
+                 </div>
+             </div>
+@@ -96,5 +99,6 @@ RepLogs.propTypes = {
+     onDeleteRepLog: PropTypes.func.isRequired,
+     isLoaded: PropTypes.bool.isRequired,
+     isSavingNewRepLog: PropTypes.bool.isRequired,
+-    successMessage: PropTypes.string.isRequired
++    successMessage: PropTypes.string.isRequired,
++    newRepLogValidationErrorMessage: PropTypes.string.isRequired,
  };
 diff --git a/src/Form/Type/RepLogType.php b/src/Form/Type/RepLogType.php
 index 296d24d4..494cadc3 100644

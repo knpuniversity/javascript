@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 3a135a79..a49803df 100644
+index 914bdca3..8978bd8f 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -44,7 +44,11 @@ export default class RepLogApp extends Component {
+@@ -49,7 +49,11 @@ export default class RepLogApp extends Component {
      }
  
      handleDeleteRepLog(id) {
@@ -14,4 +14,4 @@ index 3a135a79..a49803df 100644
 +        );
      }
  
-     calculateTotalWeightLifted() {
+     render() {

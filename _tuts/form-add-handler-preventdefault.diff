@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 67508fc7..ed5daa62 100644
+index 05e2db24..8126f008 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -22,6 +22,13 @@ export default class RepLogApp extends Component {
+@@ -22,12 +22,20 @@ export default class RepLogApp extends Component {
          this.setState({highlightedRowId: repLogId});
      }
  
@@ -13,15 +13,42 @@ index 67508fc7..ed5daa62 100644
 +        console.log(event.target);
 +    }
 +
-     calculateTotalWeightLifted() {
-         let total = 0;
+     render() {
+         return (
+             <RepLogs
+                 {...this.props}
+                 {...this.state}
+                 handleRowClick={this.handleRowClick}
++                handleNewItemSubmit={this.handleNewItemSubmit}
+             />
+         );
+     }
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index 0022f3e4..0d29f726 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -13,7 +13,7 @@ function calculateTotalWeightLifted(repLogs) {
+ }
  
-@@ -68,7 +75,7 @@ export default class RepLogApp extends Component {
-                     </tfoot>
-                 </table>
+ export default function RepLogs(props) {
+-    const { withHeart, highlightedRowId, handleRowClick, repLogs } = props;
++    const { withHeart, highlightedRowId, handleRowClick, repLogs, handleNewItemSubmit } = props;
  
--                <form className="form-inline">
-+                <form className="form-inline" onSubmit={this.handleNewItemSubmit}>
-                     <div className="form-group">
-                         <label className="sr-only control-label required"
-                                htmlFor="rep_log_item">
+     let heart = '';
+     if (withHeart) {
+@@ -48,7 +48,7 @@ export default function RepLogs(props) {
+                 </tfoot>
+             </table>
+ 
+-            <form className="form-inline">
++            <form className="form-inline" onSubmit={handleNewItemSubmit}>
+                 <div className="form-group">
+                     <label className="sr-only control-label required"
+                            htmlFor="rep_log_item">
+@@ -91,5 +91,6 @@ RepLogs.propTypes = {
+     withHeart: PropTypes.bool.isRequired,
+     highlightedRowId: PropTypes.any,
+     handleRowClick: PropTypes.func.isRequired,
++    handleNewItemSubmit: PropTypes.func.isRequired,
+     repLogs: PropTypes.array.isRequired
+ };

@@ -1,0 +1,63 @@
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index b31cb686..15dd337d 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -2,24 +2,30 @@ import React, { Component } from 'react';
+ import PropTypes from 'prop-types';
+ import RepLogList from './RepLogList';
+ 
+-function calculateTotalWeightLifted(repLogs) {
+-    let total = 0;
++export default class RepLogs extends Component {
++    constructor(props) {
++        super(props);
+ 
+-    for (let repLog of repLogs) {
+-        total += repLog.totalWeightLifted;
++        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+     }
+ 
+-    return total;
+-}
++    calculateTotalWeightLifted(repLogs) {
++        let total = 0;
+ 
+-function handleFormSubmit(event) {
+-    event.preventDefault();
++        for (let repLog of repLogs) {
++            total += repLog.totalWeightLifted;
++        }
+ 
+-    console.log('I love when a good form submits!');
+-    console.log(event.target.elements.namedItem('reps').value);
+-}
++        return total;
++    }
++
++    handleFormSubmit(event) {
++        event.preventDefault();
++
++        console.log('I love when a good form submits!');
++        console.log(event.target.elements.namedItem('reps').value);
++    }
+ 
+-export default class RepLogs extends Component {
+     render() {
+         const { withHeart, highlightedRowId, handleRowClick, repLogs, handleNewItemSubmit } = this.props;
+ 
+@@ -50,13 +56,13 @@ export default class RepLogs extends Component {
+                     <tr>
+                         <td>&nbsp;</td>
+                         <th>Total</th>
+-                        <th>{calculateTotalWeightLifted(repLogs)}</th>
++                        <th>{this.calculateTotalWeightLifted(repLogs)}</th>
+                         <td>&nbsp;</td>
+                     </tr>
+                     </tfoot>
+                 </table>
+ 
+-                <form className="form-inline" onSubmit={handleFormSubmit}>
++                <form className="form-inline" onSubmit={this.handleFormSubmit}>
+                     <div className="form-group">
+                         <label className="sr-only control-label required"
+                                htmlFor="rep_log_item">

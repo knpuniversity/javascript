@@ -1,10 +1,10 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 6602cb71..a11bebcf 100644
+index 7d58c288..6abb595a 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
-@@ -12,6 +12,13 @@ export default function RepLogCreator(props) {
- 
-         const itemLabel = itemSelect.options[itemSelect.selectedIndex].text;
+@@ -25,6 +25,13 @@ export default class RepLogCreator extends Component {
+         const quantityInput = this.quantityInput.current;
+         const itemSelect = this.itemSelect.current;
  
 +        if (quantityInput.value <= 0) {
 +            // TODO - print some validation error!
@@ -13,6 +13,6 @@ index 6602cb71..a11bebcf 100644
 +            return;
 +        }
 +
-         handleAddRepLog(itemLabel, quantityInput.value);
- 
-         quantityInput.value = '';
+         handleAddRepLog(
+             itemSelect.options[itemSelect.selectedIndex].text,
+             quantityInput.value

@@ -1296,6 +1296,11 @@
             "description": null
         },
         {
+            "id": "state-destructure-the-props-also",
+            "name": "State: destructure the props also",
+            "description": null
+        },
+        {
             "id": "state-add-onclick-to-set-state",
             "name": "State: Add onClick to set state",
             "description": null
@@ -1341,6 +1346,11 @@
             "description": null
         },
         {
+            "id": "empty-to-delete",
+            "name": "EMPTY: to delete",
+            "description": null
+        },
+        {
             "id": "proptypes-install-prop-types",
             "name": "PropTypes: Install prop-types",
             "description": null
@@ -1366,6 +1376,16 @@
             "description": null
         },
         {
+            "id": "container-create-replogs-prez",
+            "name": "Container: Create RepLogs prez",
+            "description": null
+        },
+        {
+            "id": "container-pass-needed-props-to-prez",
+            "name": "Container: Pass needed props to prez",
+            "description": null
+        },
+        {
             "id": "state-refactor-reploglist-to-expect-replogs-prop",
             "name": "State: Refactor RepLogList to expect repLogs prop",
             "description": null
@@ -1373,6 +1393,11 @@
         {
             "id": "state-add-replogs-state-to-replogapp",
             "name": "State: Add repLogs state to RepLogApp",
+            "description": null
+        },
+        {
+            "id": "state-use-jsx-spread-attributes",
+            "name": "State: Use JSX spread attributes",
             "description": null
         },
         {
@@ -1391,13 +1416,38 @@
             "description": null
         },
         {
+            "id": "form-move-handler-to-replogs",
+            "name": "Form: Move handler to RepLogs",
+            "description": null
+        },
+        {
+            "id": "form-refactor-replogs-to-class",
+            "name": "Form: Refactor RepLogs to class",
+            "description": null
+        },
+        {
+            "id": "form-change-to-this-props",
+            "name": "Form: Change to this.props",
+            "description": null
+        },
+        {
+            "id": "form-move-functions-into-replogs-class",
+            "name": "Form: Move functions into RepLogs class",
+            "description": null
+        },
+        {
+            "id": "form-call-parent-handler",
+            "name": "Form: Call parent handler",
+            "description": null
+        },
+        {
             "id": "refs-assign-quanity-item-refs",
             "name": "Refs: Assign quanity & item refs",
             "description": null
         },
         {
-            "id": "refs-bind-handleformsubmit",
-            "name": "Refs: bind handleFormSubmit",
+            "id": "refs-empty-step-to-delete",
+            "name": "Refs: Empty step to delete",
             "description": null
         },
         {
@@ -1411,8 +1461,13 @@
             "description": null
         },
         {
-            "id": "refs-install-use-uuid",
-            "name": "Refs: install & use uuid",
+            "id": "refs-bind-replogapp-handlenewitemsubmit",
+            "name": "Refs: bind RepLogApp.handleNewItemSubmit",
+            "description": null
+        },
+        {
+            "id": "refs-install-uuid",
+            "name": "Refs: install uuid",
             "description": null
         },
         {
@@ -1446,23 +1501,33 @@
             "description": null
         },
         {
+            "id": "replogcreator-refactor-to-class",
+            "name": "RepLogCreator: Refactor to class",
+            "description": null
+        },
+        {
+            "id": "replogcreator-move-handler-to-class",
+            "name": "RepLogCreator: Move handler to class",
+            "description": null
+        },
+        {
             "id": "replogcreator-add-handlenewitemsubmit-prop",
             "name": "RepLogCreator: Add handleNewItemSubmit prop",
             "description": null
         },
         {
-            "id": "replogcreator-use-local-variable-refs",
-            "name": "RepLogCreator: Use local variable refs",
+            "id": "replogcreator-empty-delete-me",
+            "name": "RepLogCreator: Empty Delete Me",
             "description": null
         },
         {
-            "id": "replogcreator-copy-in-callback-function",
-            "name": "RepLogCreator: Copy in callback function",
+            "id": "replogcreator-empty-delete-me-2",
+            "name": "RepLogCreator: Empty Delete me 2",
             "description": null
         },
         {
-            "id": "replogcreator-refactor-callback",
-            "name": "RepLogCreator: Refactor callback",
+            "id": "replogcreator-empty-delete-me-3",
+            "name": "RepLogCreator: Empty Delete me 3",
             "description": null
         },
         {
@@ -1481,28 +1546,28 @@
             "description": null
         },
         {
-            "id": "validation-refactor-replogcreator-to-a-class",
-            "name": "Validation: Refactor RepLogCreator to a class",
+            "id": "validation-empty-delete-me",
+            "name": "Validation: Empty Delete me",
             "description": null
         },
         {
-            "id": "validation-use-this-props",
-            "name": "Validation: Use this.props",
+            "id": "validation-empty-delete-me-2",
+            "name": "Validation: Empty Delete me 2",
             "description": null
         },
         {
-            "id": "validation-move-handlesubmit-to-method",
-            "name": "Validation: Move handleSubmit to method",
+            "id": "validation-empty-delete-me-3",
+            "name": "Validation: Empty delete me 3",
             "description": null
         },
         {
-            "id": "validation-refactor-to-react-createref",
-            "name": "Validation: Refactor to React.createRef",
+            "id": "validation-empty-delete-me-4",
+            "name": "Validation: Empty Delete me 4",
             "description": null
         },
         {
-            "id": "validation-move-itemoptions-to-property",
-            "name": "Validation: Move itemOptions to property",
+            "id": "validation-empty-delete-me-5",
+            "name": "Validation: Empty delete me 5",
             "description": null
         },
         {
@@ -1533,6 +1598,11 @@
         {
             "id": "controlledinput-add-onchange",
             "name": "ControlledInput: Add onChange",
+            "description": null
+        },
+        {
+            "id": "controlledinput-cast-to-integer",
+            "name": "ControlledInput: Cast to integer",
             "description": null
         },
         {
@@ -1701,5 +1771,5 @@
             "description": null
         }
     ],
-    "sha": "dd7249ac1ec780dfd6d06e8eb4d0b61c32f5623b"
+    "sha": "e5c68c0ba82666ced2d7ed828200e28bc1afe42b"
 }

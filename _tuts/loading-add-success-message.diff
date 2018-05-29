@@ -1,37 +1,41 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 81606972..ba3f872c 100644
+index 657de183..8d19aa6a 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -15,7 +15,8 @@ export default class RepLogApp extends Component {
+@@ -13,7 +13,8 @@ export default class RepLogApp extends Component {
              repLogs: [],
              numberOfHearts: 1,
              isLoaded: false,
--            savingNewRepLog: false
-+            savingNewRepLog: false,
+-            isSavingNewRepLog: false
++            isSavingNewRepLog: false,
 +            successMessage: ''
          };
  
          this.handleRowClick = this.handleRowClick.bind(this);
-@@ -54,7 +55,8 @@ export default class RepLogApp extends Component {
+@@ -53,7 +54,8 @@ export default class RepLogApp extends Component {
  
                      return {
                          repLogs: newRepLogs,
--                        savingNewRepLog: false
-+                        savingNewRepLog: false,
+-                        isSavingNewRepLog: false
++                        isSavingNewRepLog: false,
 +                        successMessage: 'Rep Log Saved!'
                      };
                  })
              })
-@@ -84,13 +86,18 @@ export default class RepLogApp extends Component {
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index 81184149..f91cb25b 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -20,13 +20,18 @@ export default class RepLogs extends Component {
      }
  
      render() {
--        const { highlightedRowId, repLogs, isLoaded, savingNewRepLog } = this.state;
-+        const { highlightedRowId, repLogs, isLoaded, savingNewRepLog, successMessage } = this.state;
+-        const { withHeart, highlightedRowId, handleRowClick, repLogs, handleAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog } = this.props;
++        const { withHeart, highlightedRowId, handleRowClick, repLogs, handleAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage } = this.props;
  
          let heart = '';
-         if (this.props.withHeart) {
-             heart = <span>{'❤️'.repeat(this.state.numberOfHearts)}</span>;
+         if (withHeart) {
+             heart = <span>{'❤️'.repeat(numberOfHearts)}</span>;
          }
  
 +        let successMessageElement = '';
@@ -42,13 +46,20 @@ index 81606972..ba3f872c 100644
          return (
              <div className="col-md-7">
                  <h2>Lift Stuff! {heart}</h2>
-@@ -103,6 +110,9 @@ export default class RepLogApp extends Component {
+@@ -39,6 +44,10 @@ export default class RepLogs extends Component {
                      }}
                  />
  
 +                <hr/>
 +
 +                {successMessageElement}
++
                  <table className="table table-striped">
                      <thead>
                      <tr>
+@@ -87,4 +96,5 @@ RepLogs.propTypes = {
+     onDeleteRepLog: PropTypes.func.isRequired,
+     isLoaded: PropTypes.bool.isRequired,
+     isSavingNewRepLog: PropTypes.bool.isRequired,
++    successMessage: PropTypes.string.isRequired
+ };

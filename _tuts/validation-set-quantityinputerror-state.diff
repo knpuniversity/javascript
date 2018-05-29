@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index feae9087..cf797399 100644
+index 6abb595a..e84ef885 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -5,6 +5,10 @@ export default class RepLogCreator extends Component {
@@ -10,11 +10,11 @@ index feae9087..cf797399 100644
 +            quantityInputError: ''
 +        };
 +
-         this.itemSelect = React.createRef();
          this.quantityInput = React.createRef();
+         this.itemSelect = React.createRef();
  
-@@ -29,7 +33,9 @@ export default class RepLogCreator extends Component {
-         const itemLabel = itemSelect.options[itemSelect.selectedIndex].text;
+@@ -26,7 +30,9 @@ export default class RepLogCreator extends Component {
+         const itemSelect = this.itemSelect.current;
  
          if (quantityInput.value <= 0) {
 -            // TODO - print some validation error!
@@ -37,7 +37,7 @@ index feae9087..cf797399 100644
 +        const { quantityInputError } = this.state;
 +
          return (
-             <form className="form-inline" onSubmit={this.handleSubmit}>
+             <form className="form-inline" onSubmit={this.handleFormSubmit}>
                  <div className="form-group">
 @@ -62,7 +73,7 @@ export default class RepLogCreator extends Component {
                      </select>

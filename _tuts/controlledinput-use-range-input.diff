@@ -1,13 +1,13 @@
-diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 44d2fbdd..cfb6bee0 100644
---- a/assets/js/RepLog/RepLogApp.js
-+++ b/assets/js/RepLog/RepLogApp.js
-@@ -64,7 +64,7 @@ export default class RepLogApp extends Component {
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index a4bdbfad..ad9efaeb 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -31,7 +31,7 @@ export default class RepLogs extends Component {
                  <h2>Lift Stuff! {heart}</h2>
  
                  <input
 -                    type="number"
 +                    type="range"
-                     value={this.state.numberOfHearts}
+                     value={numberOfHearts}
                      onChange={(e) => {
-                         this.setState({numberOfHearts: e.target.value});
+                         onHeartChange(+e.target.value);

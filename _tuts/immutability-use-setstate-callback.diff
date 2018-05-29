@@ -1,9 +1,9 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index bcb1b3d4..7e4a2857 100644
+index 1d5fe13a..e6ae2e68 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -39,8 +39,12 @@ export default class RepLogApp extends Component {
-             itemLabel: itemSelect.options[itemSelect.selectedIndex].text,
+@@ -31,8 +31,12 @@ export default class RepLogApp extends Component {
+             itemLabel: itemLabel,
              totalWeightLifted: Math.floor(Math.random() * 50)
          };
 -        const newRepLogs = [...this.state.repLogs, newRep];
@@ -14,6 +14,6 @@ index bcb1b3d4..7e4a2857 100644
 +
 +            return {repLogs: newRepLogs};
 +        })
+     }
  
-         quantityInput.value = '';
-         itemSelect.selectedIndex = 0;
+     render() {

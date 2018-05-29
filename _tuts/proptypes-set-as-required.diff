@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index f67dc7bf..ea611313 100644
+index b27ea7af..79bb715b 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -6,7 +6,7 @@ export default class RepLogApp extends Component {
@@ -11,7 +11,7 @@ index f67dc7bf..ea611313 100644
          };
  
          this.handleRowClick = this.handleRowClick.bind(this);
-@@ -39,7 +39,6 @@ export default class RepLogApp extends Component {
+@@ -40,7 +40,6 @@ export default class RepLogApp extends Component {
                      </thead>
                      <RepLogList
                          highlightedRowId={highlightedRowId}
@@ -20,13 +20,13 @@ index f67dc7bf..ea611313 100644
                      <tfoot>
                      <tr>
 diff --git a/assets/js/RepLog/RepLogList.js b/assets/js/RepLog/RepLogList.js
-index 9da76732..4f26824c 100644
+index 8d14248b..1966cc4a 100644
 --- a/assets/js/RepLog/RepLogList.js
 +++ b/assets/js/RepLog/RepLogList.js
 @@ -30,5 +30,5 @@ export default function RepLogList(props) {
  
  RepLogList.propTypes = {
-     highlightedRowId: PropTypes.number,
+     highlightedRowId: PropTypes.any,
 -    handleRowClick: PropTypes.func
 +    handleRowClick: PropTypes.func.isRequired
  };

@@ -1,30 +1,30 @@
-diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 3d99bcf7..ce69cb02 100644
---- a/assets/js/RepLog/RepLogApp.js
-+++ b/assets/js/RepLog/RepLogApp.js
-@@ -86,7 +86,11 @@ export default class RepLogApp extends Component {
-                     </tfoot>
-                 </table>
- 
--                <RepLogCreator handleAddRepLog={this.handleAddRepLog} />
-+                <div className="row">
-+                    <div className="col-md-6">
-+                        <RepLogCreator handleAddRepLog={this.handleAddRepLog} />
-+                    </div>
-+                </div>
-             </div>
-         );
-     }
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index b6ad42fa..f831f89a 100644
+index f9b00e55..82f53296 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -59,7 +59,7 @@ export default class RepLogCreator extends Component {
          }
  
          return (
--            <form className="form-inline" onSubmit={this.handleSubmit}>
-+            <form onSubmit={this.handleSubmit}>
+-            <form className="form-inline" onSubmit={this.handleFormSubmit}>
++            <form onSubmit={this.handleFormSubmit}>
                  <div className="form-group">
                      <label className="sr-only control-label required"
                             htmlFor="rep_log_item">
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index 10153dde..d4550eca 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -54,7 +54,11 @@ export default class RepLogs extends Component {
+                     </tfoot>
+                 </table>
+ 
+-                <RepLogCreator handleAddRepLog={handleAddRepLog}/>
++                <div className="row">
++                    <div className="col-md-6">
++                        <RepLogCreator handleAddRepLog={handleAddRepLog}/>
++                    </div>
++                </div>
+             </div>
+         );
+     }

@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index a49803df..7b40d5b5 100644
+index 8978bd8f..edadc594 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -46,9 +46,11 @@ export default class RepLogApp extends Component {
+@@ -51,9 +51,11 @@ export default class RepLogApp extends Component {
      handleDeleteRepLog(id) {
          // remove the rep log without mutating state
          // filter returns a new array
@@ -16,4 +16,4 @@ index a49803df..7b40d5b5 100644
 +        });
      }
  
-     calculateTotalWeightLifted() {
+     render() {

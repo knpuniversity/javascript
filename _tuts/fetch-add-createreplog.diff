@@ -1,9 +1,9 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 04531024..6801e331 100644
+index da054d6c..0cf3d4b7 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -4,7 +4,7 @@ import RepLogCreator from './RepLogCreator';
- //import RepLogCreator from './RepLogCreatorControlledComponents';
+@@ -2,7 +2,7 @@ import React, { Component } from 'react';
+ import RepLogs from './RepLogs';
  import PropTypes from 'prop-types';
  import uuid from 'uuid/v4';
 -import { getRepLogs, deleteRepLog } from '../api/rep_log_api';
@@ -11,7 +11,7 @@ index 04531024..6801e331 100644
  
  export default class RepLogApp extends Component {
      constructor(props) {
-@@ -44,6 +44,12 @@ export default class RepLogApp extends Component {
+@@ -43,6 +43,12 @@ export default class RepLogApp extends Component {
              totalWeightLifted: Math.floor(Math.random() * 50)
          };
  

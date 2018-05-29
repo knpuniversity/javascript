@@ -1,23 +1,23 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index f3007a8d..81606972 100644
+index 0c302cd7..657de183 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -14,7 +14,8 @@ export default class RepLogApp extends Component {
+@@ -12,7 +12,8 @@ export default class RepLogApp extends Component {
              highlightedRowId: null,
              repLogs: [],
              numberOfHearts: 1,
 -            isLoaded: false
 +            isLoaded: false,
-+            savingNewRepLog: false
++            isSavingNewRepLog: false
          };
  
          this.handleRowClick = this.handleRowClick.bind(this);
-@@ -42,12 +43,19 @@ export default class RepLogApp extends Component {
+@@ -41,12 +42,19 @@ export default class RepLogApp extends Component {
              item: item
          };
  
 +        this.setState({
-+            savingNewRepLog: true
++            isSavingNewRepLog: true
 +        });
 +
          createRepLog(newRep)
@@ -28,38 +28,21 @@ index f3007a8d..81606972 100644
 -                    return {repLogs: newRepLogs};
 +                    return {
 +                        repLogs: newRepLogs,
-+                        savingNewRepLog: false
++                        isSavingNewRepLog: false
 +                    };
                  })
              })
          ;
-@@ -76,7 +84,7 @@ export default class RepLogApp extends Component {
-     }
- 
-     render() {
--        const { highlightedRowId, repLogs, isLoaded } = this.state;
-+        const { highlightedRowId, repLogs, isLoaded, savingNewRepLog } = this.state;
- 
-         let heart = '';
-         if (this.props.withHeart) {
-@@ -110,6 +118,7 @@ export default class RepLogApp extends Component {
-                         handleDeleteRepLog={this.handleDeleteRepLog}
-                         repLogs={repLogs}
-                         isLoaded={isLoaded}
-+                        savingNewRepLog={savingNewRepLog}
-                     />
-                     <tfoot>
-                     <tr>
 diff --git a/assets/js/RepLog/RepLogList.js b/assets/js/RepLog/RepLogList.js
-index be4cdbf9..dd8c7f77 100644
+index 61ad1360..6673ba2d 100644
 --- a/assets/js/RepLog/RepLogList.js
 +++ b/assets/js/RepLog/RepLogList.js
 @@ -2,7 +2,7 @@ import React from 'react';
  import PropTypes from 'prop-types';
  
  export default function RepLogList(props) {
--    const { highlightedRowId, handleRowClick, handleDeleteRepLog, repLogs, isLoaded } = props;
-+    const { highlightedRowId, handleRowClick, handleDeleteRepLog, repLogs, isLoaded, savingNewRepLog } = props;
+-    const { highlightedRowId, handleRowClick, onDeleteRepLog, repLogs, isLoaded } = props;
++    const { highlightedRowId, handleRowClick, onDeleteRepLog, repLogs, isLoaded, isSavingNewRepLog } = props;
  
      if (!isLoaded) {
          return (
@@ -67,7 +50,7 @@ index be4cdbf9..dd8c7f77 100644
                  </td>
              </tr>
          ))}
-+        {savingNewRepLog ? (
++        {isSavingNewRepLog ? (
 +            <tr>
 +                <td
 +                    colSpan="4"
@@ -82,8 +65,35 @@ index be4cdbf9..dd8c7f77 100644
      );
  }
 @@ -48,4 +59,5 @@ RepLogList.propTypes = {
-     handleDeleteRepLog: PropTypes.func.isRequired,
+     onDeleteRepLog: PropTypes.func.isRequired,
      repLogs: PropTypes.array.isRequired,
      isLoaded: PropTypes.bool.isRequired,
-+    savingNewRepLog: PropTypes.bool.isRequired
++    isSavingNewRepLog: PropTypes.bool.isRequired
+ };
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index 33312d45..81184149 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -20,7 +20,7 @@ export default class RepLogs extends Component {
+     }
+ 
+     render() {
+-        const { withHeart, highlightedRowId, handleRowClick, repLogs, handleAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded } = this.props;
++        const { withHeart, highlightedRowId, handleRowClick, repLogs, handleAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog } = this.props;
+ 
+         let heart = '';
+         if (withHeart) {
+@@ -54,6 +54,7 @@ export default class RepLogs extends Component {
+                         onDeleteRepLog={onDeleteRepLog}
+                         repLogs={repLogs}
+                         isLoaded={isLoaded}
++                        isSavingNewRepLog={isSavingNewRepLog}
+                     />
+                     <tfoot>
+                     <tr>
+@@ -85,4 +86,5 @@ RepLogs.propTypes = {
+     onHeartChange: PropTypes.func.isRequired,
+     onDeleteRepLog: PropTypes.func.isRequired,
+     isLoaded: PropTypes.bool.isRequired,
++    isSavingNewRepLog: PropTypes.bool.isRequired,
  };

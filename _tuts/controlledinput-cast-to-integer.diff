@@ -1,0 +1,13 @@
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index e18c9f33..a4bdbfad 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -34,7 +34,7 @@ export default class RepLogs extends Component {
+                     type="number"
+                     value={numberOfHearts}
+                     onChange={(e) => {
+-                        onHeartChange(e.target.value);
++                        onHeartChange(+e.target.value);
+                     }}
+                 />
+ 

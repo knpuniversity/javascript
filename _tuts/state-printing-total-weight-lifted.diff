@@ -1,30 +1,30 @@
-diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 30bef582..67508fc7 100644
---- a/assets/js/RepLog/RepLogApp.js
-+++ b/assets/js/RepLog/RepLogApp.js
-@@ -22,6 +22,16 @@ export default class RepLogApp extends Component {
-         this.setState({highlightedRowId: repLogId});
-     }
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index 9583d163..0022f3e4 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -2,6 +2,16 @@ import React from 'react';
+ import PropTypes from 'prop-types';
+ import RepLogList from './RepLogList';
  
-+    calculateTotalWeightLifted() {
-+        let total = 0;
++function calculateTotalWeightLifted(repLogs) {
++    let total = 0;
 +
-+        for (let repLog of this.state.repLogs) {
-+            total += repLog.totalWeightLifted;
-+        }
-+
-+        return total;
++    for (let repLog of repLogs) {
++        total += repLog.totalWeightLifted;
 +    }
 +
-     render() {
-         const { highlightedRowId, repLogs } = this.state;
++    return total;
++}
++
+ export default function RepLogs(props) {
+     const { withHeart, highlightedRowId, handleRowClick, repLogs } = props;
  
-@@ -52,7 +62,7 @@ export default class RepLogApp extends Component {
-                     <tr>
-                         <td>&nbsp;</td>
-                         <th>Total</th>
--                        <th>TODO</th>
-+                        <th>{this.calculateTotalWeightLifted()}</th>
-                         <td>&nbsp;</td>
-                     </tr>
-                     </tfoot>
+@@ -32,7 +42,7 @@ export default function RepLogs(props) {
+                 <tr>
+                     <td>&nbsp;</td>
+                     <th>Total</th>
+-                    <th>TODO</th>
++                    <th>{calculateTotalWeightLifted(repLogs)}</th>
+                     <td>&nbsp;</td>
+                 </tr>
+                 </tfoot>

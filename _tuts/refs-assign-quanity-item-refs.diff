@@ -1,28 +1,31 @@
-diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index f316543a..a339ee1e 100644
---- a/assets/js/RepLog/RepLogApp.js
-+++ b/assets/js/RepLog/RepLogApp.js
-@@ -15,6 +15,9 @@ export default class RepLogApp extends Component {
-             ]
-         };
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index d69e37e1..cdfb79a4 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -6,6 +6,9 @@ export default class RepLogs extends Component {
+     constructor(props) {
+         super(props);
  
 +        this.quantityInput = React.createRef();
 +        this.itemSelect = React.createRef();
 +
-         this.handleRowClick = this.handleRowClick.bind(this);
+         this.handleFormSubmit = this.handleFormSubmit.bind(this);
      }
  
-@@ -26,7 +29,8 @@ export default class RepLogApp extends Component {
-         event.preventDefault();
+@@ -24,9 +27,10 @@ export default class RepLogs extends Component {
+         const { handleNewItemSubmit } = this.props;
  
          console.log('I love when a good form submits!');
 -        console.log(event.target.elements.namedItem('reps').value);
 +        console.log(this.quantityInput);
 +        console.log(this.itemSelect);
+ 
+-        handleNewItemSubmit('Big Fat Cat', event.target.elements.namedItem('reps').value);
++        //handleNewItemSubmit('Big Fat Cat', event.target.elements.namedItem('reps').value);
      }
  
-     calculateTotalWeightLifted() {
-@@ -82,7 +86,7 @@ export default class RepLogApp extends Component {
+     render() {
+@@ -72,7 +76,7 @@ export default class RepLogs extends Component {
                              What did you lift?
                          </label>
                          <select id="rep_log_item"
@@ -31,7 +34,7 @@ index f316543a..a339ee1e 100644
                                  required="required"
                                  className="form-control">
                              <option value="">What did you
-@@ -101,7 +105,8 @@ export default class RepLogApp extends Component {
+@@ -91,7 +95,8 @@ export default class RepLogs extends Component {
                              How many times?
                          </label>
                          <input type="number" id="rep_log_reps"

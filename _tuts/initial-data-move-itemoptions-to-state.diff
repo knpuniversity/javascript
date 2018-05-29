@@ -1,10 +1,10 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index c8ee8c33..678e8221 100644
+index df313e7b..188e1f3c 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -17,7 +17,14 @@ export default class RepLogApp extends Component {
+@@ -15,7 +15,14 @@ export default class RepLogApp extends Component {
              isLoaded: false,
-             savingNewRepLog: false,
+             isSavingNewRepLog: false,
              successMessage: '',
 -            newRepLogValidationErrorMessage: ''
 +            newRepLogValidationErrorMessage: '',
@@ -18,44 +18,26 @@ index c8ee8c33..678e8221 100644
          };
  
          this.handleRowClick = this.handleRowClick.bind(this);
-@@ -125,7 +132,7 @@ export default class RepLogApp extends Component {
-     }
- 
-     render() {
--        const { highlightedRowId, repLogs, isLoaded, savingNewRepLog, successMessage, newRepLogValidationErrorMessage } = this.state;
-+        const { highlightedRowId, repLogs, isLoaded, savingNewRepLog, successMessage, newRepLogValidationErrorMessage, itemOptions } = this.state;
- 
-         let heart = '';
-         if (this.props.withHeart) {
-@@ -184,6 +191,7 @@ export default class RepLogApp extends Component {
-                         <RepLogCreator
-                             handleAddRepLog={this.handleAddRepLog}
-                             validationErrorMessage={newRepLogValidationErrorMessage}
-+                            itemOptions={itemOptions}
-                         />
-                     </div>
-                 </div>
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index bf25775a..c8d8c6e3 100644
+index 9f8d864d..77dcee00 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
-@@ -12,15 +12,6 @@ export default class RepLogCreator extends Component {
-         this.itemSelect = React.createRef();
+@@ -12,14 +12,6 @@ export default class RepLogCreator extends Component {
          this.quantityInput = React.createRef();
+         this.itemSelect = React.createRef();
  
--        // static select options
 -        this.itemOptions = [
--            {id: 'cat', text: 'Cat'},
--            {id: 'fat_cat', text: 'Big Fat Cat'},
--            {id: 'laptop', text: 'My Laptop'},
--            {id: 'coffee_cup', text: 'Coffee Cup'},
--            {id: 'invalid_item', text: 'Dark Matter'}
+-            { id: 'cat', text: 'Cat' },
+-            { id: 'fat_cat', text: 'Big Fat Cat' },
+-            { id: 'laptop', text: 'My Laptop' },
+-            { id: 'coffee_cup', text: 'Coffee Cup' },
+-            { id: 'invalid_item', text: 'Dark Matter' }
 -        ];
 -
-         this.handleSubmit = this.handleSubmit.bind(this);
+         this.handleFormSubmit = this.handleFormSubmit.bind(this);
      }
  
-@@ -53,7 +44,7 @@ export default class RepLogCreator extends Component {
+@@ -53,7 +45,7 @@ export default class RepLogCreator extends Component {
  
      render() {
          const { quantityInputError } = this.state;
@@ -64,7 +46,7 @@ index bf25775a..c8d8c6e3 100644
  
          let quantityError = '';
          if (quantityInputError) {
-@@ -79,7 +70,7 @@ export default class RepLogCreator extends Component {
+@@ -79,7 +71,7 @@ export default class RepLogCreator extends Component {
                          <option value="">What did you
                              lift?
                          </option>
@@ -73,9 +55,36 @@ index bf25775a..c8d8c6e3 100644
                              return <option value={option.id} key={option.id}>{option.text}</option>
                          })}
                      </select>
-@@ -109,4 +100,5 @@ export default class RepLogCreator extends Component {
+@@ -109,4 +101,5 @@ export default class RepLogCreator extends Component {
  RepLogCreator.propTypes = {
      handleAddRepLog: PropTypes.func.isRequired,
      validationErrorMessage: PropTypes.string.isRequired,
++    itemOptions: PropTypes.array.isRequired
+ };
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index fc4358ce..3af4efad 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -20,7 +20,7 @@ export default class RepLogs extends Component {
+     }
+ 
+     render() {
+-        const { withHeart, highlightedRowId, handleRowClick, repLogs, handleAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage, newRepLogValidationErrorMessage } = this.props;
++        const { withHeart, highlightedRowId, handleRowClick, repLogs, handleAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage, newRepLogValidationErrorMessage, itemOptions } = this.props;
+ 
+         let heart = '';
+         if (withHeart) {
+@@ -80,6 +80,7 @@ export default class RepLogs extends Component {
+                         <RepLogCreator
+                             handleAddRepLog={handleAddRepLog}
+                             validationErrorMessage={newRepLogValidationErrorMessage}
++                            itemOptions={itemOptions}
+                         />
+                     </div>
+                 </div>
+@@ -101,4 +102,5 @@ RepLogs.propTypes = {
+     isSavingNewRepLog: PropTypes.bool.isRequired,
+     successMessage: PropTypes.string.isRequired,
+     newRepLogValidationErrorMessage: PropTypes.string.isRequired,
 +    itemOptions: PropTypes.array.isRequired
  };

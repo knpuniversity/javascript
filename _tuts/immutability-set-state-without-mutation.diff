@@ -1,22 +1,22 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index dac50abb..bcb1b3d4 100644
+index 967b255f..1d5fe13a 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -33,15 +33,14 @@ export default class RepLogApp extends Component {
-         const quantityInput = this.quantityInput.current;
-         const itemSelect = this.itemSelect.current;
+@@ -25,15 +25,14 @@ export default class RepLogApp extends Component {
+     }
  
+     handleNewItemSubmit(itemLabel, quantity) {
 -        const repLogs = this.state.repLogs;
          const newRep = {
              id: uuid(),
-             reps: quantityInput.value,
-             itemLabel: itemSelect.options[itemSelect.selectedIndex].text,
+             reps: quantity,
+             itemLabel: itemLabel,
              totalWeightLifted: Math.floor(Math.random() * 50)
          };
 -        repLogs.push(newRep);
 -        this.setState({repLogs: repLogs});
 +        const newRepLogs = [...this.state.repLogs, newRep];
 +        this.setState({repLogs: newRepLogs});
+     }
  
-         quantityInput.value = '';
-         itemSelect.selectedIndex = 0;
+     render() {
