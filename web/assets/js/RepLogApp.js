@@ -34,6 +34,7 @@
             $.ajax({
                 url: Routing.generate('rep_log_list'),
             }).then(data => {
+                console.log(this, self);
                 $.each(data.items, function(key, repLog) {
                     self._addRow(repLog);
                 });
