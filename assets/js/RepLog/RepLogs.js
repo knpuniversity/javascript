@@ -26,7 +26,7 @@ export default function RepLogs(props) {
             <h2>Lift Stuff! {heart}</h2>
 
             <input
-                type="number"
+                type="range"
                 value={numberOfHearts}
                 onChange={(e) => {
                     onHeartChange(+e.target.value);
