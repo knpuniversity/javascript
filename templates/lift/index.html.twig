@@ -64,6 +64,17 @@
 {% block javascripts %}
     {{ parent() }}
 
+    <script>
+        window.REP_LOG_APP_INITIAL_STATE = {
+            itemOptions: [
+                {id: 'cat', text: 'Cat'},
+                {id: 'fat_cat', text: 'Big Fat Cat'},
+                {id: 'laptop', text: 'My Laptop'},
+                {id: 'coffee_cup', text: 'Coffee Cup'},
+                {id: 'invalid_item', text: 'Dark Matter'}
+            ]
+        }
+    </script>
     <script src="{{ asset('build/rep_log.js') }}"></script>
     <script src="{{ asset('build/rep_log_react.js') }}"></script>
 {% endblock %}

@@ -8,7 +8,7 @@ export default class RepLogApp extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
+        this.state = Object.assign({
             highlightedRowId: null,
             repLogs: [],
             numberOfHearts: 1,
@@ -16,14 +16,8 @@ export default class RepLogApp extends Component {
             isSavingNewRepLog: false,
             successMessage: '',
             newRepLogValidationErrorMessage: '',
-            itemOptions: [
-                {id: 'cat', text: 'Cat'},
-                {id: 'fat_cat', text: 'Big Fat Cat'},
-                {id: 'laptop', text: 'My Laptop'},
-                {id: 'coffee_cup', text: 'Coffee Cup'},
-                {id: 'invalid_item', text: 'Dark Matter'}
-            ]
-        };
+            itemOptions: []
+        }, this.props.initialState);
 
         this.handleRowClick = this.handleRowClick.bind(this);
         this.handleAddRepLog = this.handleAddRepLog.bind(this);
@@ -141,5 +135,6 @@ export default class RepLogApp extends Component {
 }
 
 RepLogApp.propTypes = {
-    withHeart: PropTypes.bool
+    withHeart: PropTypes.bool,
+    initialState: PropTypes.object
 }
