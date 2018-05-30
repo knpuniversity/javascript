@@ -2,7 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function RepLogList(props) {
-    const { highlightedRowId, onRowClick, repLogs } = props;
+    const { highlightedRowId, onRowClick, onDeleteRepLog, repLogs } = props;
+
+    const handleDeleteClick = function(event, repLogId) {
+        event.preventDefault();
+
+        onDeleteRepLog(repLogId);
+    };
 
     return (
         <tbody>
@@ -16,7 +22,7 @@ export default function RepLogList(props) {
                 <td>{repLog.reps}</td>
                 <td>{repLog.totalWeightLifted}</td>
                 <td>
-                    <a href="#">
+                    <a href="#" onClick={(event) => handleDeleteClick(event, repLog.id) }>
                         <span className="fa fa-trash"></span>
                     </a>
                 </td>
@@ -29,5 +35,6 @@ export default function RepLogList(props) {
 RepLogList.propTypes = {
     highlightedRowId: PropTypes.any,
     onRowClick: PropTypes.func.isRequired,
+    onDeleteRepLog: PropTypes.func.isRequired,
     repLogs: PropTypes.array.isRequired,
 };
