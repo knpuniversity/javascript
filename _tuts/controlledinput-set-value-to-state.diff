@@ -13,35 +13,35 @@ index 79ff0c5b..4123121c 100644
  
          this.handleRowClick = this.handleRowClick.bind(this);
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 8647a78f..ec3ae95c 100644
+index 11b9a971..535512a4 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -19,18 +19,21 @@ export default class RepLogs extends Component {
+@@ -14,18 +14,21 @@ function calculateTotalWeightLifted(repLogs) {
+ }
+ 
+ export default function RepLogs(props) {
+-    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog } = props;
++    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts } = props;
+ 
+     let heart = '';
+     if (withHeart) {
+-        heart = <span>❤️</span>;
++        heart = <span>{'❤️'.repeat(numberOfHearts)}</span>;
      }
  
-     render() {
--        const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog } = this.props;
-+        const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts } = this.props;
+     return (
+         <div className="col-md-7">
+             <h2>Lift Stuff! {heart}</h2>
  
-         let heart = '';
-         if (withHeart) {
--            heart = <span>❤️</span>;
-+            heart = <span>{'❤️'.repeat(numberOfHearts)}</span>;
-         }
+-            <input type="number" />
++            <input
++                type="number"
++                value={numberOfHearts}
++            />
  
-         return (
-             <div className="col-md-7">
-                 <h2>Lift Stuff! {heart}</h2>
- 
--                <input type="number" />
-+                <input
-+                    type="number"
-+                    value={numberOfHearts}
-+                />
- 
-                 <table className="table table-striped">
-                     <thead>
-@@ -71,5 +74,6 @@ RepLogs.propTypes = {
+             <table className="table table-striped">
+                 <thead>
+@@ -67,5 +70,6 @@ RepLogs.propTypes = {
      highlightedRowId: PropTypes.any,
      onRowClick: PropTypes.func.isRequired,
      onAddRepLog: PropTypes.func.isRequired,
