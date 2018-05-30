@@ -33,6 +33,12 @@ export default class RepLogApp extends Component {
             });
     }
 
+    componentWillUnmount() {
+        if (this.clearSuccessMessageTimeout) {
+            clearTimeout(this.clearSuccessMessageTimeout);
+        }
+    }
+
     handleRowClick(repLogId) {
         this.setState({highlightedRowId: repLogId});
     }
@@ -55,9 +61,10 @@ export default class RepLogApp extends Component {
                     return {
                         repLogs: newRepLogs,
                         isSavingNewRepLog: false,
-                        successMessage: 'Rep Log Saved!'
                     };
-                })
+                });
+
+                this.setSuccessMessage('Rep Log Saved!');
             })
         ;
     }
@@ -78,6 +85,19 @@ export default class RepLogApp extends Component {
                 repLogs: prevState.repLogs.filter(repLog => repLog.id !== id)
             };
         });
+    }
+
+    setSuccessMessage(message) {
+        this.setState({
+            successMessage: message
+        });
+
+        this.clearSuccessMessageTimeout = setTimeout(() => {
+            this.setState({
+                successMessage: ''
+            });
+            this.clearSuccessMessageTimeout = null;
+        }, 3000)
     }
 
     render() {
