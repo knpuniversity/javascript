@@ -1,13 +1,13 @@
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index c779eb59..8647a78f 100644
+index 7c400890..11b9a971 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -30,6 +30,8 @@ export default class RepLogs extends Component {
-             <div className="col-md-7">
-                 <h2>Lift Stuff! {heart}</h2>
+@@ -25,6 +25,8 @@ export default function RepLogs(props) {
+         <div className="col-md-7">
+             <h2>Lift Stuff! {heart}</h2>
  
-+                <input type="number" />
++            <input type="number" />
 +
-                 <table className="table table-striped">
-                     <thead>
-                     <tr>
+             <table className="table table-striped">
+                 <thead>
+                 <tr>
