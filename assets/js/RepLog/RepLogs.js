@@ -12,6 +12,13 @@ function calculateTotalWeightLifted(repLogs) {
     return total;
 }
 
+function handleFormSubmit(event) {
+    event.preventDefault();
+
+    console.log('I love when a good form submits!');
+    console.log(event.target.elements.namedItem('reps').value);
+}
+
 export default function RepLogs(props) {
     const { withHeart, highlightedRowId, onRowClick, repLogs, onNewItemSubmit } = props;
 
@@ -48,7 +55,7 @@ export default function RepLogs(props) {
                 </tfoot>
             </table>
 
-            <form className="form-inline" onSubmit={onNewItemSubmit}>
+            <form className="form-inline" onSubmit={handleFormSubmit}>
                 <div className="form-group">
                     <label className="sr-only control-label required"
                            htmlFor="rep_log_item">
