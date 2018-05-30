@@ -1,5 +1,7 @@
 'use strict';
 
+const Helper = require('./RepLogHelper');
+
 (function(window, $, Routing, swal) {
 
     let HelperInstances = new WeakMap();
@@ -189,40 +191,6 @@
             this.$wrapper.find('tbody').append($row);
 
             this.updateTotalWeightLifted();
-        }
-    }
-
-    /**
-     * A "private" object
-     */
-    class Helper {
-        constructor(repLogs) {
-            this.repLogs = repLogs;
-        }
-
-        calculateTotalWeight() {
-            return Helper._calculateWeights(
-                this.repLogs
-            );
-        }
-
-        getTotalWeightString(maxWeight = 500) {
-            let weight = this.calculateTotalWeight();
-
-            if (weight > maxWeight) {
-                weight = maxWeight + '+';
-            }
-
-            return weight + ' lbs';
-        }
-
-        static _calculateWeights(repLogs) {
-            let totalWeight = 0;
-            for (let repLog of repLogs) {
-                totalWeight += repLog.totalWeightLifted;
-            }
-
-            return totalWeight;
         }
     }
 
