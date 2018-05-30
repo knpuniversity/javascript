@@ -53,6 +53,11 @@ export default class RepLogCreator extends Component {
     render() {
         const { quantityInputError } = this.state;
 
+        let quantityError = '';
+        if (quantityInputError) {
+            quantityError = <span className="help-block">{quantityInputError}</span>
+        }
+
         return (
             <form className="form-inline" onSubmit={this.handleFormSubmit}>
                 <div className="form-group">
@@ -83,6 +88,7 @@ export default class RepLogCreator extends Component {
                            required="required"
                            placeholder="How many times?"
                            className="form-control"/>
+                    {quantityError}
                 </div>
                 {' '}
                 <button type="submit" className="btn btn-primary">I Lifted
