@@ -22,6 +22,7 @@ Encore
     ]))
 
     .enableSassLoader()
+    .enableSourceMaps(!Encore.isProduction())
 ;
 
 // export the final configuration
