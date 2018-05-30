@@ -61,7 +61,6 @@ export default class RepLogApp extends Component {
 
                     return {
                         repLogs: newRepLogs,
-                        isSavingNewRepLog: false,
                         newRepLogValidationErrorMessage: '',
                     };
                 });
@@ -77,6 +76,11 @@ export default class RepLogApp extends Component {
                         newRepLogValidationErrorMessage: firstError
                     });
                 })
+            })
+            .finally(() => {
+                this.setState({
+                    isSavingNewRepLog: false
+                });
             })
         ;
     }
