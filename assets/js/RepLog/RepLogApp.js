@@ -66,6 +66,9 @@ export default class RepLogApp extends Component {
 
                 this.setSuccessMessage('Rep Log Saved!');
             })
+            .catch(error => {
+                console.log(error.response);
+            })
         ;
     }
 
