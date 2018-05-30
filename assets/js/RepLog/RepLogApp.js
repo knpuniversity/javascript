@@ -11,9 +11,10 @@ export default class RepLogApp extends Component {
 
     render() {
         const { highlightedRowId } = this.state;
+        const { withHeart } = this.props;
 
         let heart = '';
-        if (this.props.withHeart) {
+        if (withHeart) {
             heart = <span>❤️</span>;
         }
 
