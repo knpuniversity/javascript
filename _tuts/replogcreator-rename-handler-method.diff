@@ -55,28 +55,28 @@ index 0e7659fc..1af3bdb1 100644
 +    onAddRepLog: PropTypes.func.isRequired,
  };
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 6490c0cb..65257534 100644
+index 373a8eb7..f5a1eba1 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -19,7 +19,7 @@ export default class RepLogs extends Component {
-     }
+@@ -14,7 +14,7 @@ function calculateTotalWeightLifted(repLogs) {
+ }
  
-     render() {
--        const { withHeart, highlightedRowId, onRowClick, repLogs, onNewItemSubmit } = this.props;
-+        const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog } = this.props;
+ export default function RepLogs(props) {
+-    const { withHeart, highlightedRowId, onRowClick, repLogs, onNewItemSubmit } = props;
++    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog } = props;
  
-         let heart = '';
-         if (withHeart) {
-@@ -54,7 +54,7 @@ export default class RepLogs extends Component {
-                     </tfoot>
-                 </table>
+     let heart = '';
+     if (withHeart) {
+@@ -50,7 +50,7 @@ export default function RepLogs(props) {
+             </table>
  
--                <RepLogCreator onNewItemSubmit={onNewItemSubmit}/>
-+                <RepLogCreator onAddRepLog={onAddRepLog}/>
-             </div>
-         );
-     }
-@@ -64,6 +64,6 @@ RepLogs.propTypes = {
+             <RepLogCreator
+-                onNewItemSubmit={onNewItemSubmit}
++                onAddRepLog={onAddRepLog}
+             />
+         </div>
+     );
+@@ -60,6 +60,6 @@ RepLogs.propTypes = {
      withHeart: PropTypes.bool.isRequired,
      highlightedRowId: PropTypes.any,
      onRowClick: PropTypes.func.isRequired,
