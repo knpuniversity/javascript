@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function RepLogList(props) {
-    const { highlightedRowId, onRowClick } = this.props;
+    const { highlightedRowId, onRowClick } = props;
 
     const repLogs = [
         { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
