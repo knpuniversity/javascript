@@ -27,6 +27,10 @@ export default class RepLogCreator extends Component {
         event.preventDefault();
         const { onAddRepLog } = this.props;
 
+        const itemLabel = this.itemOptions.find((option) => {
+            return option.id === this.state.selectedItemId
+        }).text;
+
         if (this.state.quantityValue <= 0) {
             this.setState({
                 quantityInputError: 'Please enter a value greater than 0'
@@ -37,7 +41,7 @@ export default class RepLogCreator extends Component {
         }
 
         onAddRepLog(
-            'TODO - just wait a second!',
+            itemLabel,
             this.state.quantityValue
         );
 
