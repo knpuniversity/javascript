@@ -29,7 +29,7 @@ export default function RepLogs(props) {
                 type="number"
                 value={numberOfHearts}
                 onChange={(e) => {
-                    onHeartChange(e.target.value);
+                    onHeartChange(+e.target.value);
                 }}
             />
 
