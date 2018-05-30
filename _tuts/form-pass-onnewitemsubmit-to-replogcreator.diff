@@ -1,0 +1,27 @@
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index ffd5f0b1..aa378621 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -47,3 +47,7 @@ export default function RepLogCreator(props) {
+         </form>
+     );
+ }
++
++RepLogCreator.propTypes = {
++    onNewItemSubmit: PropTypes.func.isRequired,
++};
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index a80a766d..373a8eb7 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -49,7 +49,9 @@ export default function RepLogs(props) {
+                 </tfoot>
+             </table>
+ 
+-            <RepLogCreator/>
++            <RepLogCreator
++                onNewItemSubmit={onNewItemSubmit}
++            />
+         </div>
+     );
+ }
