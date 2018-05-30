@@ -40,6 +40,7 @@ export default class RepLogApp extends Component {
                     </thead>
                     <RepLogList
                         highlightedRowId={highlightedRowId}
+                        onRowClick={this.handleRowClick}
                     />
                     <tfoot>
                     <tr>
