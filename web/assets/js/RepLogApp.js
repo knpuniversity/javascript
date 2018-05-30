@@ -63,7 +63,10 @@
             $.ajax({
                 url: $form.attr('action'),
                 method: 'POST',
-                data: $form.serialize()
+                data: $form.serialize(),
+                success: function(data) {
+                    $form.closest('.js-new-rep-log-form-wrapper').html(data);
+                }
             });
         }
     });
