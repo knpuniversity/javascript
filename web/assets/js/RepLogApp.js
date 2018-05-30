@@ -213,5 +213,21 @@
         }
     }
 
+    const rowTemplate = '
+<tr data-weight="<%= totalWeightLifted %>">
+    <td><%= itemLabel %></td>
+    <td><%= reps %></td>
+    <td><%= totalWeightLifted %></td>
+    <td>
+        <a href="#"
+           class="js-delete-rep-log"
+           data-url="<%= links._self %>"
+        >
+            <span class="fa fa-trash"></span>
+        </a>
+    </td>
+</tr>
+';
+
     window.RepLogApp = RepLogApp;
 })(window, jQuery, Routing, swal);
