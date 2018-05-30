@@ -1,22 +1,22 @@
 'use strict';
 
-(function(window, $) {
-    $(document).ready(function() {
-        $('.js-recommended-login').on('click', '.js-show-login', function(e) {
-            e.preventDefault();
+const $ = require('jquery');
 
-            $('.js-recommended-login-details').toggle();
-        });
+$(document).ready(function() {
+    $('.js-recommended-login').on('click', '.js-show-login', function(e) {
+        e.preventDefault();
 
-        $('.js-login-field-username').on('keydown', function(e) {
-            const $usernameInput = $(e.currentTarget);
-            // remove any existing warnings
-            $('.login-long-username-warning').remove();
-
-            if ($usernameInput.val().length >= 20) {
-                const $warning = $('<div class="login-long-username-warning">This is a really long username - are you sure that is right?</div>');
-                $usernameInput.before($warning);
-            }
-        });
+        $('.js-recommended-login-details').toggle();
     });
-})(window, jQuery);
+
+    $('.js-login-field-username').on('keydown', function(e) {
+        const $usernameInput = $(e.currentTarget);
+        // remove any existing warnings
+        $('.login-long-username-warning').remove();
+
+        if ($usernameInput.val().length >= 20) {
+            const $warning = $('<div class="login-long-username-warning">This is a really long username - are you sure that is right?</div>');
+            $usernameInput.before($warning);
+        }
+    });
+});
