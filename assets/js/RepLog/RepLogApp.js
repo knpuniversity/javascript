@@ -15,7 +15,14 @@ export default class RepLogApp extends Component {
             isLoaded: false,
             isSavingNewRepLog: false,
             successMessage: '',
-            newRepLogValidationErrorMessage: ''
+            newRepLogValidationErrorMessage: '',
+            itemOptions: [
+                {id: 'cat', text: 'Cat'},
+                {id: 'fat_cat', text: 'Big Fat Cat'},
+                {id: 'laptop', text: 'My Laptop'},
+                {id: 'coffee_cup', text: 'Coffee Cup'},
+                {id: 'invalid_item', text: 'Dark Matter'}
+            ]
         };
 
         this.handleRowClick = this.handleRowClick.bind(this);
