@@ -15,11 +15,16 @@ function calculateTotalWeightLifted(repLogs) {
 }
 
 export default function RepLogs(props) {
-    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog } = props;
+    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage } = props;
 
     let heart = '';
     if (withHeart) {
         heart = <span>{'❤️'.repeat(numberOfHearts)}</span>;
+    }
+
+    let successMessageElement = '';
+    if (successMessage) {
+        successMessageElement = <div className="alert alert-success text-center">{successMessage}</div>
     }
 
     return (
@@ -33,6 +38,10 @@ export default function RepLogs(props) {
                     onHeartChange(+e.target.value);
                 }}
             />
+
+            <hr/>
+
+            {successMessageElement}
 
             <table className="table table-striped">
                 <thead>
@@ -83,4 +92,5 @@ RepLogs.propTypes = {
     onDeleteRepLog: PropTypes.func.isRequired,
     isLoaded: PropTypes.bool.isRequired,
     isSavingNewRepLog: PropTypes.bool.isRequired,
+    successMessage: PropTypes.string.isRequired
 };
