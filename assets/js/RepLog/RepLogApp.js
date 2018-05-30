@@ -19,6 +19,7 @@ export default class RepLogApp extends Component {
 
         this.handleRowClick = this.handleRowClick.bind(this);
         this.handleAddRepLog = this.handleAddRepLog.bind(this);
+        this.handleHeartChange = this.handleHeartChange.bind(this);
     }
 
     handleRowClick(repLogId) {
@@ -40,6 +41,12 @@ export default class RepLogApp extends Component {
         })
     }
 
+    handleHeartChange(heartCount) {
+        this.setState({
+            numberOfHearts: heartCount
+        });
+    }
+
     render() {
         return (
             <RepLogs
@@ -47,6 +54,7 @@ export default class RepLogApp extends Component {
                 {...this.state}
                 onRowClick={this.handleRowClick}
                 onAddRepLog={this.handleAddRepLog}
+                onHeartChange={this.handleHeartChange}
             />
         );
     }
