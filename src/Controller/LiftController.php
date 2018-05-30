@@ -30,10 +30,10 @@ class LiftController extends BaseController
                 'text' => $translator->trans($label),
             ];
         }
-        dump($repLogAppState);die;
 
         return $this->render('lift/index.html.twig', array(
             'leaderboard' => $this->getLeaders($replogRepo, $userRepo),
+            'repLogAppState' => $repLogAppState,
         ));
     }
 
