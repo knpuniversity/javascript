@@ -215,14 +215,14 @@
     }
 
     const rowTemplate = `
-<tr data-weight="<%= totalWeightLifted %>">
-    <td><%= itemLabel %></td>
-    <td><%= reps %></td>
-    <td><%= totalWeightLifted %></td>
+<tr data-weight="${repLog.totalWeightLifted}">
+    <td>${repLog.itemLabel}</td>
+    <td>${repLog.reps}</td>
+    <td>${repLog.totalWeightLifted}</td>
     <td>
         <a href="#"
            class="js-delete-rep-log"
-           data-url="<%= links._self %>"
+           data-url="${repLog.links._self}"
         >
             <span class="fa fa-trash"></span>
         </a>
