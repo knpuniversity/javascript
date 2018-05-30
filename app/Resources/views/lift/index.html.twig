@@ -73,7 +73,10 @@
                 e.preventDefault();
 
                 $(e.target).addClass('text-danger');
-                console.dir(e.target);
+                console.log(
+                    e.target,
+                    $(e.target)[0] === e.target
+                );
             });
 
             $table.find('tbody tr').on('click', function() {
