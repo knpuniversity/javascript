@@ -30,5 +30,5 @@ export default function RepLogList(props) {
 
 RepLogList.propTypes = {
     highlightedRowId: PropTypes.any,
-    onRowClick: PropTypes.func
+    onRowClick: PropTypes.func.isRequired
 };
