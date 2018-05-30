@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 05e2db24..8126f008 100644
+index b981c696..405a8163 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -22,12 +22,20 @@ export default class RepLogApp extends Component {
@@ -18,21 +18,21 @@ index 05e2db24..8126f008 100644
              <RepLogs
                  {...this.props}
                  {...this.state}
-                 handleRowClick={this.handleRowClick}
-+                handleNewItemSubmit={this.handleNewItemSubmit}
+                 onRowClick={this.handleRowClick}
++                onNewItemSubmit={this.handleNewItemSubmit}
              />
          );
      }
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 0022f3e4..0d29f726 100644
+index cfb60863..8f227276 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -13,7 +13,7 @@ function calculateTotalWeightLifted(repLogs) {
  }
  
  export default function RepLogs(props) {
--    const { withHeart, highlightedRowId, handleRowClick, repLogs } = props;
-+    const { withHeart, highlightedRowId, handleRowClick, repLogs, handleNewItemSubmit } = props;
+-    const { withHeart, highlightedRowId, onRowClick, repLogs } = props;
++    const { withHeart, highlightedRowId, onRowClick, repLogs, onNewItemSubmit } = props;
  
      let heart = '';
      if (withHeart) {
@@ -41,14 +41,14 @@ index 0022f3e4..0d29f726 100644
              </table>
  
 -            <form className="form-inline">
-+            <form className="form-inline" onSubmit={handleNewItemSubmit}>
++            <form className="form-inline" onSubmit={onNewItemSubmit}>
                  <div className="form-group">
                      <label className="sr-only control-label required"
                             htmlFor="rep_log_item">
 @@ -91,5 +91,6 @@ RepLogs.propTypes = {
      withHeart: PropTypes.bool.isRequired,
      highlightedRowId: PropTypes.any,
-     handleRowClick: PropTypes.func.isRequired,
-+    handleNewItemSubmit: PropTypes.func.isRequired,
+     onRowClick: PropTypes.func.isRequired,
++    onNewItemSubmit: PropTypes.func.isRequired,
      repLogs: PropTypes.array.isRequired
  };

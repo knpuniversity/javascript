@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index ecc67a90..e9294eb4 100644
+index 8a347322..6c348195 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -1,4 +1,4 @@
@@ -13,10 +13,10 @@ index ecc67a90..e9294eb4 100644
  }
  
 -export default function RepLogs(props) {
--    const { withHeart, highlightedRowId, handleRowClick, repLogs, handleNewItemSubmit } = props;
+-    const { withHeart, highlightedRowId, onRowClick, repLogs, onNewItemSubmit } = props;
 +export default class RepLogs extends Component {
 +    render() {
-+        const { withHeart, highlightedRowId, handleRowClick, repLogs, handleNewItemSubmit } = props;
++        const { withHeart, highlightedRowId, onRowClick, repLogs, onNewItemSubmit } = props;
  
 -    let heart = '';
 -    if (withHeart) {
@@ -45,7 +45,7 @@ index ecc67a90..e9294eb4 100644
 -                </thead>
 -                <RepLogList
 -                    highlightedRowId={highlightedRowId}
--                    handleRowClick={handleRowClick}
+-                    onRowClick={onRowClick}
 -                    repLogs={repLogs}
 -                />
 -                <tfoot>
@@ -68,7 +68,7 @@ index ecc67a90..e9294eb4 100644
 +                    </thead>
 +                    <RepLogList
 +                        highlightedRowId={highlightedRowId}
-+                        handleRowClick={handleRowClick}
++                        onRowClick={onRowClick}
 +                        repLogs={repLogs}
 +                    />
 +                    <tfoot>

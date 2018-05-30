@@ -1,13 +1,13 @@
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index e9294eb4..b31cb686 100644
+index 6c348195..6a897b5f 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -21,7 +21,7 @@ function handleFormSubmit(event) {
  
  export default class RepLogs extends Component {
      render() {
--        const { withHeart, highlightedRowId, handleRowClick, repLogs, handleNewItemSubmit } = props;
-+        const { withHeart, highlightedRowId, handleRowClick, repLogs, handleNewItemSubmit } = this.props;
+-        const { withHeart, highlightedRowId, onRowClick, repLogs, onNewItemSubmit } = props;
++        const { withHeart, highlightedRowId, onRowClick, repLogs, onNewItemSubmit } = this.props;
  
          let heart = '';
          if (withHeart) {

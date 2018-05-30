@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index ede6fc9a..101803f5 100644
+index ede6fc9a..550c0e80 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -1,5 +1,4 @@
@@ -17,14 +17,14 @@ index ede6fc9a..101803f5 100644
 +            <RepLogs
 +                highlightedRowId={highlightedRowId}
 +                withHeart={withHeart}
-+                handleRowClick={this.handleRowClick}
++                onRowClick={this.handleRowClick}
 +            />
 +        );
      }
  }
  
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index a8e76843..921a5ff0 100644
+index 69bf4e8f..f8768c9e 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -1,6 +1,10 @@
@@ -33,7 +33,7 @@ index a8e76843..921a5ff0 100644
 +import RepLogList from './RepLogList';
  
  export default function RepLogs(props) {
-+    const { withHeart, highlightedRowId, handleRowClick } = props;
++    const { withHeart, highlightedRowId, onRowClick } = props;
 +
      let heart = '';
      if (withHeart) {
@@ -42,8 +42,8 @@ index a8e76843..921a5ff0 100644
                  </thead>
                  <RepLogList
                      highlightedRowId={highlightedRowId}
--                    handleRowClick={this.handleRowClick}
-+                    handleRowClick={handleRowClick}
+-                    onRowClick={this.handleRowClick}
++                    onRowClick={onRowClick}
                  />
                  <tfoot>
                  <tr>
@@ -55,5 +55,5 @@ index a8e76843..921a5ff0 100644
 +RepLogs.propTypes = {
 +    withHeart: PropTypes.bool.isRequired,
 +    highlightedRowId: PropTypes.any,
-+    handleRowClick: PropTypes.func.isRequired
++    onRowClick: PropTypes.func.isRequired
 +};

@@ -1,6 +1,6 @@
 diff --git a/assets/js/RepLog/RepLogCreatorControlledComponents.js b/assets/js/RepLog/RepLogCreatorControlledComponents.js
 new file mode 100644
-index 00000000..82f53296
+index 00000000..97cd4a6a
 --- /dev/null
 +++ b/assets/js/RepLog/RepLogCreatorControlledComponents.js
 @@ -0,0 +1,104 @@
@@ -84,7 +84,7 @@ index 00000000..82f53296
 +                    </select>
 +                </div>
 +                {' '}
-+                <div className={'form-group'+(quantityInputError ? ' has-error' : '')}>
++                <div className={`form-group ${quantityInputError ? 'has-error' : ''}`}>
 +                    <label className="sr-only control-label required"
 +                           htmlFor="rep_log_reps">
 +                        How many times?
@@ -109,7 +109,7 @@ index 00000000..82f53296
 +    handleAddRepLog: PropTypes.func.isRequired,
 +};
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index ad9efaeb..3c7d7414 100644
+index c1a93207..a42f1dd2 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -1,7 +1,8 @@

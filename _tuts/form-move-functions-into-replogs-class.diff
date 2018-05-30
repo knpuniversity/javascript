@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index b31cb686..15dd337d 100644
+index 6a897b5f..56663a22 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -2,24 +2,30 @@ import React, { Component } from 'react';
@@ -43,7 +43,7 @@ index b31cb686..15dd337d 100644
  
 -export default class RepLogs extends Component {
      render() {
-         const { withHeart, highlightedRowId, handleRowClick, repLogs, handleNewItemSubmit } = this.props;
+         const { withHeart, highlightedRowId, onRowClick, repLogs, onNewItemSubmit } = this.props;
  
 @@ -50,13 +56,13 @@ export default class RepLogs extends Component {
                      <tr>

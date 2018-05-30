@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 0c302cd7..657de183 100644
+index c695f467..6fb8b587 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -12,7 +12,8 @@ export default class RepLogApp extends Component {
@@ -34,15 +34,15 @@ index 0c302cd7..657de183 100644
              })
          ;
 diff --git a/assets/js/RepLog/RepLogList.js b/assets/js/RepLog/RepLogList.js
-index 61ad1360..6673ba2d 100644
+index 669fccf7..f370d4c6 100644
 --- a/assets/js/RepLog/RepLogList.js
 +++ b/assets/js/RepLog/RepLogList.js
 @@ -2,7 +2,7 @@ import React from 'react';
  import PropTypes from 'prop-types';
  
  export default function RepLogList(props) {
--    const { highlightedRowId, handleRowClick, onDeleteRepLog, repLogs, isLoaded } = props;
-+    const { highlightedRowId, handleRowClick, onDeleteRepLog, repLogs, isLoaded, isSavingNewRepLog } = props;
+-    const { highlightedRowId, onRowClick, onDeleteRepLog, repLogs, isLoaded } = props;
++    const { highlightedRowId, onRowClick, onDeleteRepLog, repLogs, isLoaded, isSavingNewRepLog } = props;
  
      if (!isLoaded) {
          return (
@@ -71,15 +71,15 @@ index 61ad1360..6673ba2d 100644
 +    isSavingNewRepLog: PropTypes.bool.isRequired
  };
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 33312d45..81184149 100644
+index d5d0719f..1b1b9473 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -20,7 +20,7 @@ export default class RepLogs extends Component {
      }
  
      render() {
--        const { withHeart, highlightedRowId, handleRowClick, repLogs, handleAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded } = this.props;
-+        const { withHeart, highlightedRowId, handleRowClick, repLogs, handleAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog } = this.props;
+-        const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded } = this.props;
++        const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog } = this.props;
  
          let heart = '';
          if (withHeart) {

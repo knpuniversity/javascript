@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index edadc594..98c024c8 100644
+index c6095ad6..8e01bfab 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -2,11 +2,17 @@ import React, { Component } from 'react';

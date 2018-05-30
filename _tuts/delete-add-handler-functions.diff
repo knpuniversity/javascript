@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 92ea3d22..914bdca3 100644
+index a17ceb4d..32dc3ec3 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -20,6 +20,7 @@ export default class RepLogApp extends Component {
@@ -22,23 +22,23 @@ index 92ea3d22..914bdca3 100644
          return (
              <RepLogs
 @@ -55,6 +60,7 @@ export default class RepLogApp extends Component {
-                 handleRowClick={this.handleRowClick}
-                 handleAddRepLog={this.handleAddRepLog}
+                 onRowClick={this.handleRowClick}
+                 onAddRepLog={this.handleAddRepLog}
                  onHeartChange={this.handleHeartChange}
 +                onDeleteRepLog={this.handleDeleteRepLog}
              />
          );
      }
 diff --git a/assets/js/RepLog/RepLogList.js b/assets/js/RepLog/RepLogList.js
-index 6f744b19..4d92e3fc 100644
+index 119ee426..8e2af791 100644
 --- a/assets/js/RepLog/RepLogList.js
 +++ b/assets/js/RepLog/RepLogList.js
 @@ -2,7 +2,13 @@ import React from 'react';
  import PropTypes from 'prop-types';
  
  export default function RepLogList(props) {
--    const { highlightedRowId, handleRowClick, repLogs } = props;
-+    const { highlightedRowId, handleRowClick, onDeleteRepLog, repLogs } = props;
+-    const { highlightedRowId, onRowClick, repLogs } = props;
++    const { highlightedRowId, onRowClick, onDeleteRepLog, repLogs } = props;
 +
 +    const handleDeleteClick = function(event, repLogId) {
 +        event.preventDefault();
@@ -60,33 +60,33 @@ index 6f744b19..4d92e3fc 100644
 @@ -29,5 +35,6 @@ export default function RepLogList(props) {
  RepLogList.propTypes = {
      highlightedRowId: PropTypes.any,
-     handleRowClick: PropTypes.func.isRequired,
+     onRowClick: PropTypes.func.isRequired,
 +    onDeleteRepLog: PropTypes.func.isRequired,
-     repLogs: PropTypes.array.isRequired
+     repLogs: PropTypes.array.isRequired,
  };
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 557ca27a..c5eedf47 100644
+index 5074116f..906a890a 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -20,7 +20,7 @@ export default class RepLogs extends Component {
      }
  
      render() {
--        const { withHeart, highlightedRowId, handleRowClick, repLogs, handleAddRepLog, numberOfHearts, onHeartChange } = this.props;
-+        const { withHeart, highlightedRowId, handleRowClick, repLogs, handleAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog } = this.props;
+-        const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange } = this.props;
++        const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog } = this.props;
  
          let heart = '';
          if (withHeart) {
 @@ -51,6 +51,7 @@ export default class RepLogs extends Component {
                      <RepLogList
                          highlightedRowId={highlightedRowId}
-                         handleRowClick={handleRowClick}
+                         onRowClick={onRowClick}
 +                        onDeleteRepLog={onDeleteRepLog}
                          repLogs={repLogs}
                      />
                      <tfoot>
 @@ -80,5 +81,6 @@ RepLogs.propTypes = {
-     handleAddRepLog: PropTypes.func.isRequired,
+     onAddRepLog: PropTypes.func.isRequired,
      repLogs: PropTypes.array.isRequired,
      numberOfHearts: PropTypes.number.isRequired,
 -    onHeartChange: PropTypes.func.isRequired

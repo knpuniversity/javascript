@@ -46,7 +46,7 @@ index 8124d698..6f0d2fa3 100644
      );
  }
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 2af2f019..8ade1de8 100644
+index b5554978..9a0f3bd0 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -76,43 +76,6 @@ export default class RepLogs extends Component {

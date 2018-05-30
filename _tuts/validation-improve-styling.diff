@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index f9b00e55..82f53296 100644
+index 870aad0d..5e5cb495 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -59,7 +59,7 @@ export default class RepLogCreator extends Component {
@@ -12,17 +12,17 @@ index f9b00e55..82f53296 100644
                      <label className="sr-only control-label required"
                             htmlFor="rep_log_item">
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 10153dde..d4550eca 100644
+index 65257534..c779eb59 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -54,7 +54,11 @@ export default class RepLogs extends Component {
                      </tfoot>
                  </table>
  
--                <RepLogCreator handleAddRepLog={handleAddRepLog}/>
+-                <RepLogCreator onAddRepLog={onAddRepLog}/>
 +                <div className="row">
 +                    <div className="col-md-6">
-+                        <RepLogCreator handleAddRepLog={handleAddRepLog}/>
++                        <RepLogCreator onAddRepLog={onAddRepLog}/>
 +                    </div>
 +                </div>
              </div>

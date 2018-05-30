@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index faaa234b..638783c5 100644
+index 6bca809e..abae3e5c 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -23,7 +23,15 @@ export default class RepLogApp extends Component {
@@ -20,7 +20,7 @@ index faaa234b..638783c5 100644
  
      render() {
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 60fdd269..59386388 100644
+index efdba6be..41133224 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -29,11 +29,10 @@ export default class RepLogs extends Component {
@@ -31,8 +31,8 @@ index 60fdd269..59386388 100644
 -        console.log(quantityInput.value);
 -        console.log(itemSelect.options[itemSelect.selectedIndex].value);
 -
--        //handleNewItemSubmit('Big Fat Cat', event.target.elements.namedItem('reps').value);
-+        handleNewItemSubmit(
+-        //onNewItemSubmit('Big Fat Cat', event.target.elements.namedItem('reps').value);
++        onNewItemSubmit(
 +            itemSelect.options[itemSelect.selectedIndex].text,
 +            quantityInput.value
 +        );

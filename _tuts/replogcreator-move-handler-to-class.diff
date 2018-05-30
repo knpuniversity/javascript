@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 86b5bdb5..6a6eea79 100644
+index 86b5bdb5..0a977fb9 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -2,6 +2,31 @@ import React, { Component } from 'react';
@@ -17,12 +17,12 @@ index 86b5bdb5..6a6eea79 100644
 +
 +    handleFormSubmit(event) {
 +        event.preventDefault();
-+        const { handleNewItemSubmit } = this.props;
++        const { onNewItemSubmit } = this.props;
 +
 +        const quantityInput = this.quantityInput.current;
 +        const itemSelect = this.itemSelect.current;
 +
-+        handleNewItemSubmit(
++        onNewItemSubmit(
 +            itemSelect.options[itemSelect.selectedIndex].text,
 +            quantityInput.value
 +        );
@@ -35,7 +35,7 @@ index 86b5bdb5..6a6eea79 100644
          return (
              <form className="form-inline" onSubmit={this.handleFormSubmit}>
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 8ade1de8..edaffd38 100644
+index 9a0f3bd0..718a8bbb 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -6,11 +6,6 @@ import RepLogCreator from './RepLogCreator';
@@ -56,12 +56,12 @@ index 8ade1de8..edaffd38 100644
  
 -    handleFormSubmit(event) {
 -        event.preventDefault();
--        const { handleNewItemSubmit } = this.props;
+-        const { onNewItemSubmit } = this.props;
 -
 -        const quantityInput = this.quantityInput.current;
 -        const itemSelect = this.itemSelect.current;
 -
--        handleNewItemSubmit(
+-        onNewItemSubmit(
 -            itemSelect.options[itemSelect.selectedIndex].text,
 -            quantityInput.value
 -        );
@@ -71,5 +71,5 @@ index 8ade1de8..edaffd38 100644
 -    }
 -
      render() {
-         const { withHeart, highlightedRowId, handleRowClick, repLogs } = this.props;
+         const { withHeart, highlightedRowId, onRowClick, repLogs } = this.props;
  

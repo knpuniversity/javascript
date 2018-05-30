@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogList.js b/assets/js/RepLog/RepLogList.js
-index 449fcddf..6f744b19 100644
+index 1e622e18..119ee426 100644
 --- a/assets/js/RepLog/RepLogList.js
 +++ b/assets/js/RepLog/RepLogList.js
 @@ -15,7 +15,11 @@ export default function RepLogList(props) {
@@ -16,7 +16,7 @@ index 449fcddf..6f744b19 100644
          ))}
          </tbody>
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 3c7d7414..557ca27a 100644
+index a42f1dd2..5074116f 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -1,8 +1,8 @@

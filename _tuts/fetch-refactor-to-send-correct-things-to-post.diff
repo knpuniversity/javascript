@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 0cf3d4b7..f39d5387 100644
+index 18a8e42d..8a72e0ce 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -35,12 +35,10 @@ export default class RepLogApp extends Component {
@@ -35,13 +35,13 @@ index 0cf3d4b7..f39d5387 100644
  
      handleHeartChange(heartCount) {
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 82f53296..18b03dfd 100644
+index 5e5cb495..b7733230 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -39,7 +39,7 @@ export default class RepLogCreator extends Component {
          }
  
-         handleAddRepLog(
+         onAddRepLog(
 -            itemSelect.options[itemSelect.selectedIndex].text,
 +            itemSelect.options[itemSelect.selectedIndex].value,
              quantityInput.value

@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 2ee06fda..faaa234b 100644
+index 865069b1..6bca809e 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -22,8 +22,8 @@ export default class RepLogApp extends Component {
@@ -14,24 +14,24 @@ index 2ee06fda..faaa234b 100644
  
      render() {
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 15dd337d..d69e37e1 100644
+index 56663a22..eb6cf80e 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -21,13 +21,16 @@ export default class RepLogs extends Component {
  
      handleFormSubmit(event) {
          event.preventDefault();
-+        const { handleNewItemSubmit } = this.props;
++        const { onNewItemSubmit } = this.props;
  
          console.log('I love when a good form submits!');
          console.log(event.target.elements.namedItem('reps').value);
 +
-+        handleNewItemSubmit('Big Fat Cat', event.target.elements.namedItem('reps').value);
++        onNewItemSubmit('Big Fat Cat', event.target.elements.namedItem('reps').value);
      }
  
      render() {
--        const { withHeart, highlightedRowId, handleRowClick, repLogs, handleNewItemSubmit } = this.props;
-+        const { withHeart, highlightedRowId, handleRowClick, repLogs } = this.props;
+-        const { withHeart, highlightedRowId, onRowClick, repLogs, onNewItemSubmit } = this.props;
++        const { withHeart, highlightedRowId, onRowClick, repLogs } = this.props;
  
          let heart = '';
          if (withHeart) {

@@ -1,19 +1,19 @@
 diff --git a/assets/js/RepLog/RepLogList.js b/assets/js/RepLog/RepLogList.js
-index 1966cc4a..449fcddf 100644
+index f05345eb..1e622e18 100644
 --- a/assets/js/RepLog/RepLogList.js
 +++ b/assets/js/RepLog/RepLogList.js
 @@ -2,13 +2,7 @@ import React from 'react';
  import PropTypes from 'prop-types';
  
  export default function RepLogList(props) {
--    const { highlightedRowId, handleRowClick } = props;
+-    const { highlightedRowId, onRowClick } = props;
 -
 -    const repLogs = [
 -        { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
 -        { id: 2, reps: 10, itemLabel: 'Big Fat Cat', totalWeightLifted: 180 },
 -        { id: 8, reps: 4, itemLabel: 'Big Fat Cat', totalWeightLifted: 72 }
 -    ];
-+    const { highlightedRowId, handleRowClick, repLogs } = props;
++    const { highlightedRowId, onRowClick, repLogs } = props;
  
      return (
          <tbody>
@@ -21,7 +21,7 @@ index 1966cc4a..449fcddf 100644
  
  RepLogList.propTypes = {
      highlightedRowId: PropTypes.any,
--    handleRowClick: PropTypes.func.isRequired
-+    handleRowClick: PropTypes.func.isRequired,
-+    repLogs: PropTypes.array.isRequired
+-    onRowClick: PropTypes.func.isRequired
++    onRowClick: PropTypes.func.isRequired,
++    repLogs: PropTypes.array.isRequired,
  };

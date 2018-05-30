@@ -1,14 +1,13 @@
 diff --git a/assets/js/RepLog/RepLogList.js b/assets/js/RepLog/RepLogList.js
-index c9f4f3e6..ac7641b6 100644
+index fb2c2ef7..6a02498d 100644
 --- a/assets/js/RepLog/RepLogList.js
 +++ b/assets/js/RepLog/RepLogList.js
 @@ -1,7 +1,7 @@
--import React, { Component } from 'react';
-+import React from 'react';
+ import React from 'react';
  
  export default function RepLogList(props) {
--    const { highlightedRowId, handleRowClick } = this.props;
-+    const { highlightedRowId, handleRowClick } = props;
+-    const { highlightedRowId, onRowClick } = this.props;
++    const { highlightedRowId, onRowClick } = props;
  
      const repLogs = [
          { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },

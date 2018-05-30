@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 7d58c288..6abb595a 100644
+index eaeff86f..e4a21f38 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -25,6 +25,13 @@ export default class RepLogCreator extends Component {
@@ -13,6 +13,6 @@ index 7d58c288..6abb595a 100644
 +            return;
 +        }
 +
-         handleAddRepLog(
+         onAddRepLog(
              itemSelect.options[itemSelect.selectedIndex].text,
              quantityInput.value

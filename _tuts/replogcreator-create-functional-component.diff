@@ -13,7 +13,7 @@ index 00000000..8124d698
 +    );
 +}
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index fefd8dd1..2af2f019 100644
+index 9628263c..b5554978 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -1,6 +1,7 @@

@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index c8377fb9..ca1d8697 100644
+index 0f7d4757..99654c15 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -14,7 +14,8 @@ export default class RepLogApp extends Component {
@@ -35,7 +35,7 @@ index c8377fb9..ca1d8697 100644
              })
          ;
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 735826be..9f8d864d 100644
+index 47638ce0..6e3d5b8b 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -53,6 +53,7 @@ export default class RepLogCreator extends Component {
@@ -61,19 +61,19 @@ index 735826be..9f8d864d 100644
 @@ -102,4 +108,5 @@ export default class RepLogCreator extends Component {
  
  RepLogCreator.propTypes = {
-     handleAddRepLog: PropTypes.func.isRequired,
+     onAddRepLog: PropTypes.func.isRequired,
 +    validationErrorMessage: PropTypes.string.isRequired,
  };
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index f91cb25b..fc4358ce 100644
+index 6a899796..368fe79b 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -20,7 +20,7 @@ export default class RepLogs extends Component {
      }
  
      render() {
--        const { withHeart, highlightedRowId, handleRowClick, repLogs, handleAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage } = this.props;
-+        const { withHeart, highlightedRowId, handleRowClick, repLogs, handleAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage, newRepLogValidationErrorMessage } = this.props;
+-        const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage } = this.props;
++        const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage, newRepLogValidationErrorMessage } = this.props;
  
          let heart = '';
          if (withHeart) {
@@ -81,9 +81,9 @@ index f91cb25b..fc4358ce 100644
  
                  <div className="row">
                      <div className="col-md-6">
--                        <RepLogCreator handleAddRepLog={handleAddRepLog}/>
+-                        <RepLogCreator onAddRepLog={onAddRepLog}/>
 +                        <RepLogCreator
-+                            handleAddRepLog={handleAddRepLog}
++                            onAddRepLog={onAddRepLog}
 +                            validationErrorMessage={newRepLogValidationErrorMessage}
 +                        />
                      </div>

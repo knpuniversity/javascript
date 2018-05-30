@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 1416e9ef..ede6fc9a 100644
+index 3ad352b1..ede6fc9a 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -1,5 +1,6 @@
@@ -33,7 +33,7 @@ index 1416e9ef..ede6fc9a 100644
 -                    </thead>
 -                    <RepLogList
 -                        highlightedRowId={highlightedRowId}
--                        handleRowClick={this.handleRowClick}
+-                        onRowClick={this.handleRowClick}
 -                    />
 -                    <tfoot>
 -                    <tr>
@@ -89,7 +89,7 @@ index 1416e9ef..ede6fc9a 100644
  
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
 new file mode 100644
-index 00000000..a8e76843
+index 00000000..69bf4e8f
 --- /dev/null
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -0,0 +1,73 @@
@@ -116,7 +116,7 @@ index 00000000..a8e76843
 +                </thead>
 +                <RepLogList
 +                    highlightedRowId={highlightedRowId}
-+                    handleRowClick={this.handleRowClick}
++                    onRowClick={this.handleRowClick}
 +                />
 +                <tfoot>
 +                <tr>

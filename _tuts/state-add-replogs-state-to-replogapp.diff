@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 101803f5..0862b902 100644
+index 550c0e80..684435ea 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -8,6 +8,11 @@ export default class RepLogApp extends Component {
@@ -26,28 +26,28 @@ index 101803f5..0862b902 100644
 @@ -26,6 +31,7 @@ export default class RepLogApp extends Component {
                  highlightedRowId={highlightedRowId}
                  withHeart={withHeart}
-                 handleRowClick={this.handleRowClick}
+                 onRowClick={this.handleRowClick}
 +                repLogs={repLogs}
              />
          );
      }
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 921a5ff0..9583d163 100644
+index f8768c9e..76d1aa03 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
  import RepLogList from './RepLogList';
  
  export default function RepLogs(props) {
--    const { withHeart, highlightedRowId, handleRowClick } = props;
-+    const { withHeart, highlightedRowId, handleRowClick, repLogs } = props;
+-    const { withHeart, highlightedRowId, onRowClick } = props;
++    const { withHeart, highlightedRowId, onRowClick, repLogs } = props;
  
      let heart = '';
      if (withHeart) {
 @@ -26,6 +26,7 @@ export default function RepLogs(props) {
                  <RepLogList
                      highlightedRowId={highlightedRowId}
-                     handleRowClick={handleRowClick}
+                     onRowClick={onRowClick}
 +                    repLogs={repLogs}
                  />
                  <tfoot>
@@ -56,7 +56,7 @@ index 921a5ff0..9583d163 100644
  RepLogs.propTypes = {
      withHeart: PropTypes.bool.isRequired,
      highlightedRowId: PropTypes.any,
--    handleRowClick: PropTypes.func.isRequired
-+    handleRowClick: PropTypes.func.isRequired,
+-    onRowClick: PropTypes.func.isRequired
++    onRowClick: PropTypes.func.isRequired,
 +    repLogs: PropTypes.array.isRequired
  };

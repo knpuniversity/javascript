@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index d69e37e1..cdfb79a4 100644
+index eb6cf80e..b95e1bc8 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -6,6 +6,9 @@ export default class RepLogs extends Component {
@@ -13,15 +13,15 @@ index d69e37e1..cdfb79a4 100644
      }
  
 @@ -24,9 +27,10 @@ export default class RepLogs extends Component {
-         const { handleNewItemSubmit } = this.props;
+         const { onNewItemSubmit } = this.props;
  
          console.log('I love when a good form submits!');
 -        console.log(event.target.elements.namedItem('reps').value);
 +        console.log(this.quantityInput);
 +        console.log(this.itemSelect);
  
--        handleNewItemSubmit('Big Fat Cat', event.target.elements.namedItem('reps').value);
-+        //handleNewItemSubmit('Big Fat Cat', event.target.elements.namedItem('reps').value);
+-        onNewItemSubmit('Big Fat Cat', event.target.elements.namedItem('reps').value);
++        //onNewItemSubmit('Big Fat Cat', event.target.elements.namedItem('reps').value);
      }
  
      render() {
