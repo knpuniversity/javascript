@@ -71,27 +71,27 @@ index 669fccf7..f370d4c6 100644
 +    isSavingNewRepLog: PropTypes.bool.isRequired
  };
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index d5d0719f..1b1b9473 100644
+index 1bb3396e..ad5dc145 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -20,7 +20,7 @@ export default class RepLogs extends Component {
-     }
+@@ -15,7 +15,7 @@ function calculateTotalWeightLifted(repLogs) {
+ }
  
-     render() {
--        const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded } = this.props;
-+        const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog } = this.props;
+ export default function RepLogs(props) {
+-    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded } = props;
++    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog } = props;
  
-         let heart = '';
-         if (withHeart) {
-@@ -54,6 +54,7 @@ export default class RepLogs extends Component {
-                         onDeleteRepLog={onDeleteRepLog}
-                         repLogs={repLogs}
-                         isLoaded={isLoaded}
-+                        isSavingNewRepLog={isSavingNewRepLog}
-                     />
-                     <tfoot>
-                     <tr>
-@@ -85,4 +86,5 @@ RepLogs.propTypes = {
+     let heart = '';
+     if (withHeart) {
+@@ -49,6 +49,7 @@ export default function RepLogs(props) {
+                     onDeleteRepLog={onDeleteRepLog}
+                     repLogs={repLogs}
+                     isLoaded={isLoaded}
++                    isSavingNewRepLog={isSavingNewRepLog}
+                 />
+                 <tfoot>
+                 <tr>
+@@ -81,4 +82,5 @@ RepLogs.propTypes = {
      onHeartChange: PropTypes.func.isRequired,
      onDeleteRepLog: PropTypes.func.isRequired,
      isLoaded: PropTypes.bool.isRequired,
