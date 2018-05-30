@@ -58,7 +58,13 @@
 
         handleNewFormSubmit: function(e) {
             e.preventDefault();
-            console.log('submitting!');
+
+            var $form = $(e.currentTarget);
+            $.ajax({
+                url: $form.attr('action'),
+                method: 'POST',
+                data: $form.serialize()
+            });
         }
     });
 
