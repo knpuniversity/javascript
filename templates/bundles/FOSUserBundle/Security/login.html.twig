@@ -1,0 +1,71 @@
+{% extends '@FOSUser/layout.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('assets/js/login.js') }}"></script>
+{% endblock %}
+
+{% block fos_user_content %}
+    <div class="container">
+        <div class="wrapper">
+            <form action="{{ path("fos_user_security_check") }}" method="post" class="form-signin">
+                <h3><img class="dumbbell" src="{{ asset('assets/images/dumbbell.png') }}">Login! Start Lifting!</h3>
+                <div class="js-recommended-login">
+                    <a href="#" class="js-show-login">Don't know the login?</a>
+                    <div class="js-recommended-login-details" style="display: none;">
+                        Sir or madam, might I recommend that you try the following login details:
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>Username</th>
+                                    <td>cindy_clawford</td>
+                                </tr>
+                                <tr>
+                                    <th>Password</th>
+                                    <td>pumpup</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <hr class="colorgraph" />
+
+                <br/>
+
+                {% if error %}
+                    <div class="alert alert-block alert-danger">{{ error.messageKey|trans }}</div>
+                {% endif %}
+
+                <input type="text"
+                       class="form-control js-login-field-username"
+                       name="_username"
+                       value="{{ last_username }}"
+                       required="required"
+                       placeholder="{{ 'security.login.username'|trans }}"
+                />
+                <input type="password"
+                       class="form-control"
+                       name="_password"
+                       required="required"
+                       placeholder="{{ 'security.login.password'|trans }}"
+                />
+
+                <input type="checkbox" name="_remember_me" checked style="display: none;" />
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                    Login
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock fos_user_content %}
