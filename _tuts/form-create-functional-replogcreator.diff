@@ -13,23 +13,23 @@ index 00000000..8124d698
 +    );
 +}
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 9628263c..b5554978 100644
+index 8a347322..57747972 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -1,6 +1,7 @@
- import React, { Component } from 'react';
+ import React from 'react';
  import PropTypes from 'prop-types';
  import RepLogList from './RepLogList';
 +import RepLogCreator from './RepLogCreator';
  
- export default class RepLogs extends Component {
-     constructor(props) {
-@@ -74,6 +75,8 @@ export default class RepLogs extends Component {
-                     </tfoot>
-                 </table>
+ function calculateTotalWeightLifted(repLogs) {
+     let total = 0;
+@@ -55,6 +56,8 @@ export default function RepLogs(props) {
+                 </tfoot>
+             </table>
  
-+                <RepLogCreator/>
++            <RepLogCreator/>
 +
-                 <form className="form-inline" onSubmit={this.handleFormSubmit}>
-                     <div className="form-group">
-                         <label className="sr-only control-label required"
+             <form className="form-inline" onSubmit={handleFormSubmit}>
+                 <div className="form-group">
+                     <label className="sr-only control-label required"
