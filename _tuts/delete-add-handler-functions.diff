@@ -65,27 +65,27 @@ index 119ee426..8e2af791 100644
      repLogs: PropTypes.array.isRequired,
  };
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 5074116f..906a890a 100644
+index 80f6edac..01d7e707 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -20,7 +20,7 @@ export default class RepLogs extends Component {
-     }
+@@ -15,7 +15,7 @@ function calculateTotalWeightLifted(repLogs) {
+ }
  
-     render() {
--        const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange } = this.props;
-+        const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog } = this.props;
+ export default function RepLogs(props) {
+-    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange } = props;
++    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog } = props;
  
-         let heart = '';
-         if (withHeart) {
-@@ -51,6 +51,7 @@ export default class RepLogs extends Component {
-                     <RepLogList
-                         highlightedRowId={highlightedRowId}
-                         onRowClick={onRowClick}
-+                        onDeleteRepLog={onDeleteRepLog}
-                         repLogs={repLogs}
-                     />
-                     <tfoot>
-@@ -80,5 +81,6 @@ RepLogs.propTypes = {
+     let heart = '';
+     if (withHeart) {
+@@ -46,6 +46,7 @@ export default function RepLogs(props) {
+                 <RepLogList
+                     highlightedRowId={highlightedRowId}
+                     onRowClick={onRowClick}
++                    onDeleteRepLog={onDeleteRepLog}
+                     repLogs={repLogs}
+                 />
+                 <tfoot>
+@@ -76,5 +77,6 @@ RepLogs.propTypes = {
      onAddRepLog: PropTypes.func.isRequired,
      repLogs: PropTypes.array.isRequired,
      numberOfHearts: PropTypes.number.isRequired,
