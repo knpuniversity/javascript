@@ -5,6 +5,9 @@ import RepLogApp from './RepLog/RepLogApp';
 const shouldShowHeart = true;
 
 ReactDom.render(
-    <RepLogApp withHeart={shouldShowHeart} /> <RepLogApp withHeart={false} />,
+    <div>
+        <RepLogApp withHeart={shouldShowHeart} />
+        <RepLogApp withHeart={false} />
+    </div>,
     document.getElementById('lift-stuff-app')
 );
