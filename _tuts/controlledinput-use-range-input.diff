@@ -1,13 +1,13 @@
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 8a70e00b..c1a93207 100644
+index 3265b18c..e3f835ee 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -31,7 +31,7 @@ export default class RepLogs extends Component {
-                 <h2>Lift Stuff! {heart}</h2>
+@@ -26,7 +26,7 @@ export default function RepLogs(props) {
+             <h2>Lift Stuff! {heart}</h2>
  
-                 <input
--                    type="number"
-+                    type="range"
-                     value={numberOfHearts}
-                     onChange={(e) => {
-                         onHeartChange(+e.target.value);
+             <input
+-                type="number"
++                type="range"
+                 value={numberOfHearts}
+                 onChange={(e) => {
+                     onHeartChange(+e.target.value);
