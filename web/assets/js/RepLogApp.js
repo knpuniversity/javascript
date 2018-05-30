@@ -7,7 +7,8 @@
     class RepLogApp {
         constructor($wrapper) {
             this.$wrapper = $wrapper;
-            HelperInstances.set(this, new Helper(this.$wrapper));
+            HelperInstances.set(this, new Helper($wrapper));
+            return;
 
             this.loadRepLogs();
 
@@ -229,6 +230,12 @@
     </td>
 </tr>
 `;
+
+    new RepLogApp($('body'));
+    new RepLogApp($('body'));
+    new RepLogApp($('body'));
+    new RepLogApp($('body'));
+    console.log(HelperInstances);
 
     window.RepLogApp = RepLogApp;
 })(window, jQuery, Routing, swal);
