@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RepLogList from './RepLogList';
+import PropTypes from 'prop-types';
 
 export default class RepLogApp extends Component {
     constructor(props) {
@@ -91,4 +92,8 @@ export default class RepLogApp extends Component {
 
         );
     }
+}
+
+RepLogApp.propTypes = {
+    withHeart: PropTypes.bool
 }
