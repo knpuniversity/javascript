@@ -23,41 +23,41 @@ index 6fb8b587..f5f7dd03 100644
                  })
              })
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 1b1b9473..6a899796 100644
+index ad5dc145..7fddf0ee 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -20,13 +20,18 @@ export default class RepLogs extends Component {
+@@ -15,13 +15,18 @@ function calculateTotalWeightLifted(repLogs) {
+ }
+ 
+ export default function RepLogs(props) {
+-    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog } = props;
++    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage } = props;
+ 
+     let heart = '';
+     if (withHeart) {
+         heart = <span>{'❤️'.repeat(numberOfHearts)}</span>;
      }
  
-     render() {
--        const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog } = this.props;
-+        const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage } = this.props;
- 
-         let heart = '';
-         if (withHeart) {
-             heart = <span>{'❤️'.repeat(numberOfHearts)}</span>;
-         }
- 
-+        let successMessageElement = '';
-+        if (successMessage) {
-+            successMessageElement = <div className="alert alert-success text-center">{successMessage}</div>
-+        }
++    let successMessageElement = '';
++    if (successMessage) {
++        successMessageElement = <div className="alert alert-success text-center">{successMessage}</div>
++    }
 +
-         return (
-             <div className="col-md-7">
-                 <h2>Lift Stuff! {heart}</h2>
-@@ -39,6 +44,10 @@ export default class RepLogs extends Component {
-                     }}
-                 />
+     return (
+         <div className="col-md-7">
+             <h2>Lift Stuff! {heart}</h2>
+@@ -34,6 +39,10 @@ export default function RepLogs(props) {
+                 }}
+             />
  
-+                <hr/>
++            <hr/>
 +
-+                {successMessageElement}
++            {successMessageElement}
 +
-                 <table className="table table-striped">
-                     <thead>
-                     <tr>
-@@ -87,4 +96,5 @@ RepLogs.propTypes = {
+             <table className="table table-striped">
+                 <thead>
+                 <tr>
+@@ -83,4 +92,5 @@ RepLogs.propTypes = {
      onDeleteRepLog: PropTypes.func.isRequired,
      isLoaded: PropTypes.bool.isRequired,
      isSavingNewRepLog: PropTypes.bool.isRequired,
