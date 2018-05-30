@@ -1,7 +1,9 @@
 var aGreatNumber = 10;
 
 if (true) {
-    var aGreatNumber = 42;
+    (() => {
+        var aGreatNumber = 42;
+    })();
 }
 
 setTimeout(() => {
