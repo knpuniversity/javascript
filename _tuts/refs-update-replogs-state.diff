@@ -19,11 +19,11 @@ index 6bca809e..abae3e5c 100644
      }
  
      render() {
-diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index efdba6be..41133224 100644
---- a/assets/js/RepLog/RepLogs.js
-+++ b/assets/js/RepLog/RepLogs.js
-@@ -29,11 +29,10 @@ export default class RepLogs extends Component {
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index 93003a95..13bc55de 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -18,11 +18,10 @@ export default class RepLogCreator extends Component {
          const quantityInput = this.quantityInput.current;
          const itemSelect = this.itemSelect.current;
  
