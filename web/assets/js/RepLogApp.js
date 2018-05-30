@@ -55,7 +55,7 @@
     /**
      * A "private" object
      */
-    Helper = {
+    var Helper = {
         initialize: function ($wrapper) {
             this.$wrapper = $wrapper;
         },
