@@ -17,7 +17,8 @@ class RepLogType extends AbstractType
             ->add('reps', IntegerType::class)
             ->add('item', ChoiceType::class, array(
                 'choices' => RepLog::getThingsYouCanLiftChoices(),
-                'placeholder' => 'What did you lift?'
+                'placeholder' => 'What did you lift?',
+                'invalid_message' => 'Please lift something that is understood by our scientists.'
             ))
         ;
     }
