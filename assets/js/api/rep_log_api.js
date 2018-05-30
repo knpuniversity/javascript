@@ -19,3 +19,17 @@ export function deleteRepLog(id) {
         method: 'DELETE'
     });
 }
+
+export function createRepLog(repLog) {
+    return fetch('/reps', {
+        credentials: 'same-origin',
+        method: 'POST',
+        body: JSON.stringify(repLog),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => {
+            return response.json();
+        });
+}
