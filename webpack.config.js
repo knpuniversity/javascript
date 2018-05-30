@@ -7,7 +7,7 @@ Encore
     // the public path used by the web server to access the previous directory
     .setPublicPath('/build')
 
-    .addEntry('rep_log', './public/assets/js/RepLogApp.js')
+    .addEntry('rep_log', './public/assets/js/rep_log.js')
 
     .enableBuildNotifications()
 ;
