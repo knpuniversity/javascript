@@ -1,29 +1,7 @@
+let printThreeThings = function(thing1, thing2, thing3) {
+    console.log(thing1, thing2, thing3);
+};
 
-class AGreatClass {
-    constructor(greatNumber) {
-        this.greatNumber = greatNumber;
-    }
+let yummyThings = ['pizza', 'gelato', 'sushi'];
 
-    returnGreatThings() {
-        return this.greatNumber;
-    }
-}
-
-class AnotherGreatClass extends AGreatClass{
-    constructor(greatNumber, greatWord) {
-        super(greatNumber);
-
-        this.greatWord = greatWord;
-    }
-
-    returnGreatThings() {
-        let greatNumber = super.returnGreatThings();
-
-        return [greatNumber, this.greatWord];
-    }
-}
-
-const aGreatObject = new AnotherGreatClass(42, 'adventure');
-console.log(
-    aGreatObject.returnGreatThings()
-);
+printThreeThings(...yummyThings);
