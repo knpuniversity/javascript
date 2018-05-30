@@ -13,13 +13,6 @@ function calculateTotalWeightLifted(repLogs) {
     return total;
 }
 
-function handleFormSubmit(event) {
-    event.preventDefault();
-
-    console.log('I love when a good form submits!');
-    console.log(event.target.elements.namedItem('reps').value);
-}
-
 export default function RepLogs(props) {
     const { withHeart, highlightedRowId, onRowClick, repLogs, onNewItemSubmit } = props;
 
