@@ -1346,11 +1346,6 @@
             "description": null
         },
         {
-            "id": "empty-to-delete",
-            "name": "EMPTY: to delete",
-            "description": null
-        },
-        {
             "id": "proptypes-install-prop-types",
             "name": "PropTypes: Install prop-types",
             "description": null
@@ -1456,33 +1451,8 @@
             "description": null
         },
         {
-            "id": "form-empty-delete-me",
-            "name": "Form: Empty delete me",
-            "description": null
-        },
-        {
-            "id": "form-empty-delete-me-2",
-            "name": "Form: Empty delete me 2",
-            "description": null
-        },
-        {
-            "id": "form-empty-delete-me-3",
-            "name": "Form: Empty delete me 3",
-            "description": null
-        },
-        {
-            "id": "form-empty-delete-me-4",
-            "name": "Form: Empty delete me 4",
-            "description": null
-        },
-        {
             "id": "refs-assign-quanity-item-refs",
             "name": "Refs: Assign quanity & item refs",
-            "description": null
-        },
-        {
-            "id": "refs-empty-step-to-delete",
-            "name": "Refs: Empty step to delete",
             "description": null
         },
         {
@@ -1526,46 +1496,6 @@
             "description": null
         },
         {
-            "id": "replogcreator-empty-delete-me-10",
-            "name": "RepLogCreator: Empty delete me 10",
-            "description": null
-        },
-        {
-            "id": "replogcreator-empty-delete-me-11",
-            "name": "RepLogCreator: Empty delete me 11",
-            "description": null
-        },
-        {
-            "id": "replogcreator-empty-delete-me-12",
-            "name": "RepLogCreator: Empty delete me 12",
-            "description": null
-        },
-        {
-            "id": "replogcreator-empty-delete-me-13",
-            "name": "RepLogCreator: Empty delete me 13",
-            "description": null
-        },
-        {
-            "id": "replogcreator-add-handlenewitemsubmit-prop",
-            "name": "RepLogCreator: Add handleNewItemSubmit prop",
-            "description": null
-        },
-        {
-            "id": "replogcreator-empty-delete-me",
-            "name": "RepLogCreator: Empty Delete Me",
-            "description": null
-        },
-        {
-            "id": "replogcreator-empty-delete-me-2",
-            "name": "RepLogCreator: Empty Delete me 2",
-            "description": null
-        },
-        {
-            "id": "replogcreator-empty-delete-me-3",
-            "name": "RepLogCreator: Empty Delete me 3",
-            "description": null
-        },
-        {
             "id": "replogcreator-rename-handler-method",
             "name": "RepLogCreator: Rename handler method",
             "description": null
@@ -1578,31 +1508,6 @@
         {
             "id": "validation-add-if-logic-for-quantity",
             "name": "Validation: Add if logic for quantity",
-            "description": null
-        },
-        {
-            "id": "validation-empty-delete-me",
-            "name": "Validation: Empty Delete me",
-            "description": null
-        },
-        {
-            "id": "validation-empty-delete-me-2",
-            "name": "Validation: Empty Delete me 2",
-            "description": null
-        },
-        {
-            "id": "validation-empty-delete-me-3",
-            "name": "Validation: Empty delete me 3",
-            "description": null
-        },
-        {
-            "id": "validation-empty-delete-me-4",
-            "name": "Validation: Empty Delete me 4",
-            "description": null
-        },
-        {
-            "id": "validation-empty-delete-me-5",
-            "name": "Validation: Empty delete me 5",
             "description": null
         },
         {
@@ -1648,16 +1553,6 @@
         {
             "id": "creatorwithstate-duplicate-to-replogcreatorcontrolledcomponents",
             "name": "CreatorWithState: Duplicate to RepLogCreatorControlledComponents",
-            "description": null
-        },
-        {
-            "id": "delete-creatorwithstate-change-to-class",
-            "name": "DELETE: CreatorWithState: Change to class",
-            "description": null
-        },
-        {
-            "id": "delete-creatorwithstate-use-this-props",
-            "name": "DELETE: CreatorWithState: Use this.props",
             "description": null
         },
         {
