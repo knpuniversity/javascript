@@ -1,22 +1,27 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 6f0d2fa3..86b5bdb5 100644
+index aa378621..1974f055 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
-@@ -1,43 +1,45 @@
+@@ -1,4 +1,4 @@
 -import React from 'react';
 +import React, { Component } from 'react';
  import PropTypes from 'prop-types';
  
+ function handleFormSubmit(event) {
+@@ -8,44 +8,46 @@ function handleFormSubmit(event) {
+     console.log(event.target.elements.namedItem('reps').value);
+ }
+ 
 -export default function RepLogCreator(props) {
 -    return (
--        <form className="form-inline" onSubmit={this.handleFormSubmit}>
+-        <form className="form-inline" onSubmit={handleFormSubmit}>
 -            <div className="form-group">
 -                <label className="sr-only control-label required"
 -                       htmlFor="rep_log_item">
 -                    What did you lift?
 -                </label>
 -                <select id="rep_log_item"
--                        ref={this.itemSelect}
+-                        name="item"
 -                        required="required"
 -                        className="form-control">
 -                    <option value="">What did you
@@ -35,8 +40,7 @@ index 6f0d2fa3..86b5bdb5 100644
 -                    How many times?
 -                </label>
 -                <input type="number" id="rep_log_reps"
--                       ref={this.quantityInput}
--                       required="required"
+-                       name="reps" required="required"
 -                       placeholder="How many times?"
 -                       className="form-control"/>
 -            </div>
@@ -49,14 +53,14 @@ index 6f0d2fa3..86b5bdb5 100644
 +export default class RepLogCreator extends Component {
 +    render() {
 +        return (
-+            <form className="form-inline" onSubmit={this.handleFormSubmit}>
++            <form className="form-inline" onSubmit={handleFormSubmit}>
 +                <div className="form-group">
 +                    <label className="sr-only control-label required"
 +                           htmlFor="rep_log_item">
 +                        What did you lift?
 +                    </label>
 +                    <select id="rep_log_item"
-+                            ref={this.itemSelect}
++                            name="item"
 +                            required="required"
 +                            className="form-control">
 +                        <option value="">What did you
@@ -75,8 +79,7 @@ index 6f0d2fa3..86b5bdb5 100644
 +                        How many times?
 +                    </label>
 +                    <input type="number" id="rep_log_reps"
-+                           ref={this.quantityInput}
-+                           required="required"
++                           name="reps" required="required"
 +                           placeholder="How many times?"
 +                           className="form-control"/>
 +                </div>
@@ -88,3 +91,5 @@ index 6f0d2fa3..86b5bdb5 100644
 +        );
 +    }
  }
+ 
+ RepLogCreator.propTypes = {
