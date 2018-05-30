@@ -23,15 +23,11 @@ export default class RepLogApp extends Component {
     }
 
     render() {
-        const { highlightedRowId, repLogs } = this.state;
-        const { withHeart } = this.props;
-
         return (
             <RepLogs
-                highlightedRowId={highlightedRowId}
-                withHeart={withHeart}
+                {...this.props}
+                {...this.state}
                 onRowClick={this.handleRowClick}
-                repLogs={repLogs}
             />
         );
     }
