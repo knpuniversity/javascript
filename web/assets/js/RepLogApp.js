@@ -1,28 +1,30 @@
 'use strict';
 
 (function(window, $, Routing, swal) {
-    window.RepLogApp = function ($wrapper) {
-        this.$wrapper = $wrapper;
-        this.helper = new Helper(this.$wrapper);
+    class RepLogApp {
+        constructor($wrapper) {
+            this.$wrapper = $wrapper;
+            this.helper = new Helper(this.$wrapper);
 
-        this.loadRepLogs();
+            this.loadRepLogs();
 
-        this.$wrapper.on(
-            'click',
-            '.js-delete-rep-log',
-            this.handleRepLogDelete.bind(this)
-        );
-        this.$wrapper.on(
-            'click',
-            'tbody tr',
-            this.handleRowClick.bind(this)
-        );
-        this.$wrapper.on(
-            'submit',
-            this._selectors.newRepForm,
-            this.handleNewFormSubmit.bind(this)
-        );
-    };
+            this.$wrapper.on(
+                'click',
+                '.js-delete-rep-log',
+                this.handleRepLogDelete.bind(this)
+            );
+            this.$wrapper.on(
+                'click',
+                'tbody tr',
+                this.handleRowClick.bind(this)
+            );
+            this.$wrapper.on(
+                'submit',
+                this._selectors.newRepForm,
+                this.handleNewFormSubmit.bind(this)
+            );
+        }
+    }
 
     $.extend(window.RepLogApp.prototype, {
         _selectors: {
