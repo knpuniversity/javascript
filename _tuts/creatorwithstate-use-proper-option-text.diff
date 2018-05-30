@@ -1,10 +1,10 @@
 diff --git a/assets/js/RepLog/RepLogCreatorControlledComponents.js b/assets/js/RepLog/RepLogCreatorControlledComponents.js
-index 0417a06d..bafac615 100644
+index d13d493d..d0bd086c 100644
 --- a/assets/js/RepLog/RepLogCreatorControlledComponents.js
 +++ b/assets/js/RepLog/RepLogCreatorControlledComponents.js
 @@ -27,6 +27,10 @@ export default class RepLogCreator extends Component {
          event.preventDefault();
-         const { handleAddRepLog } = this.props;
+         const { onAddRepLog } = this.props;
  
 +        const itemLabel = this.itemOptions.find((option) => {
 +            return option.id === this.state.selectedItemId
@@ -16,7 +16,7 @@ index 0417a06d..bafac615 100644
 @@ -37,7 +41,7 @@ export default class RepLogCreator extends Component {
          }
  
-         handleAddRepLog(
+         onAddRepLog(
 -            'TODO - just wait a second!',
 +            itemLabel,
              this.state.quantityValue
