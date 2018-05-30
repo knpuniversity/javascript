@@ -30,13 +30,11 @@
         },
 
         loadRepLogs: function() {
-            var self = this;
             $.ajax({
                 url: Routing.generate('rep_log_list'),
             }).then(data => {
-                console.log(this, self);
-                $.each(data.items, function(key, repLog) {
-                    self._addRow(repLog);
+                $.each(data.items, (key, repLog) => {
+                    this._addRow(repLog);
                 });
             })
         },
