@@ -13,12 +13,20 @@ index 865069b1..6bca809e 100644
      }
  
      render() {
-diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 56663a22..eb6cf80e 100644
---- a/assets/js/RepLog/RepLogs.js
-+++ b/assets/js/RepLog/RepLogs.js
-@@ -21,13 +21,16 @@ export default class RepLogs extends Component {
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index afa98df0..e45802f4 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -2,11 +2,20 @@ import React, { Component } from 'react';
+ import PropTypes from 'prop-types';
  
+ export default class RepLogCreator extends Component {
++    constructor(props) {
++        super(props);
++
++        this.handleFormSubmit = this.handleFormSubmit.bind(this);
++    }
++
      handleFormSubmit(event) {
          event.preventDefault();
 +        const { onNewItemSubmit } = this.props;
@@ -30,8 +38,3 @@ index 56663a22..eb6cf80e 100644
      }
  
      render() {
--        const { withHeart, highlightedRowId, onRowClick, repLogs, onNewItemSubmit } = this.props;
-+        const { withHeart, highlightedRowId, onRowClick, repLogs } = this.props;
- 
-         let heart = '';
-         if (withHeart) {
