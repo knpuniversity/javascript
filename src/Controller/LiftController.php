@@ -20,6 +20,8 @@ class LiftController extends BaseController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
 
+        dump(RepLog::getThingsYouCanLiftChoices());die;
+
         return $this->render('lift/index.html.twig', array(
             'leaderboard' => $this->getLeaders($replogRepo, $userRepo),
         ));
