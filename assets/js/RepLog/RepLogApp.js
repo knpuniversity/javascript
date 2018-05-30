@@ -6,7 +6,7 @@ export default class RepLogApp extends Component {
         super(props);
 
         this.state = {
-            highlightedRowId: null
+            highlightedRowId: 'cool!'
         };
 
         this.handleRowClick = this.handleRowClick.bind(this);
