@@ -49,7 +49,11 @@ export default class RepLogApp extends Component {
     }
 
     handleDeleteRepLog(id) {
-        console.log('todo');
+        // remove the rep log without mutating state
+        // filter returns a new array
+        this.setState({
+            repLogs: this.state.repLogs.filter(repLog => repLog.id !== id)}
+        );
     }
 
     render() {
