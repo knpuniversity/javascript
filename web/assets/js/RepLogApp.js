@@ -89,13 +89,8 @@
                 self._clearForm();
                 self._addRow(data);
             }).catch(function(jqXHR) {
-                if (typeof jqXHR.responseText === 'undefined') {
-                    throw jqXHR;
-                }
                 var errorData = JSON.parse(jqXHR.responseText);
                 self._mapErrorsToForm(errorData.errors);
-            }).catch(function(e) {
-                console.log(e);
             });
         },
 
@@ -104,6 +99,8 @@
                 url: Routing.generate('rep_log_new'),
                 method: 'POST',
                 data: JSON.stringify(data)
+            }).then(function(data, textStatus, jqXHR) {
+                console.log(jqXHR.getResponseHeader('Location'));
             });
         },
 
