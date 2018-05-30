@@ -109,7 +109,7 @@
                 const url = Routing.generate('rep_log_new');
 
                 $.ajax({
-                    url: url,
+                    url,
                     method: 'POST',
                     data: JSON.stringify(data)
                 }).then((data, textStatus, jqXHR) => {
