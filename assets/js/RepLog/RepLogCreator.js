@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-function handleFormSubmit(event) {
-    event.preventDefault();
-
-    console.log('I love when a good form submits!');
-    console.log(event.target.elements.namedItem('reps').value);
-}
-
 export default class RepLogCreator extends Component {
+    handleFormSubmit(event) {
+        event.preventDefault();
+
+        console.log('I love when a good form submits!');
+        console.log(event.target.elements.namedItem('reps').value);
+    }
+
     render() {
         return (
-            <form className="form-inline" onSubmit={handleFormSubmit}>
+            <form className="form-inline" onSubmit={this.handleFormSubmit}>
                 <div className="form-group">
                     <label className="sr-only control-label required"
                            htmlFor="rep_log_item">
