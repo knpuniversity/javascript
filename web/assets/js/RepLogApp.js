@@ -66,8 +66,6 @@
                 showCancelButton: true,
                 showLoaderOnConfirm: true,
                 preConfirm: () => this._deleteRepLog($link)
-            }).catch((arg) => {
-                // canceling is cool!
             });
         }
 
