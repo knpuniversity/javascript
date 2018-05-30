@@ -82,7 +82,8 @@
                     this.handleRowClick
                 );
 
-                this.whatIsThis('hello');
+                var newThis = {cat: 'meow', dog: 'woof'};
+                this.whatIsThis.call(newThis, 'hello');
             },
 
             whatIsThis: function(greeting) {
