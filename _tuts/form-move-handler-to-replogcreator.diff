@@ -1,0 +1,36 @@
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index c1a1bccf..ffd5f0b1 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -1,6 +1,13 @@
+ import React from 'react';
+ import PropTypes from 'prop-types';
+ 
++function handleFormSubmit(event) {
++    event.preventDefault();
++
++    console.log('I love when a good form submits!');
++    console.log(event.target.elements.namedItem('reps').value);
++}
++
+ export default function RepLogCreator(props) {
+     return (
+         <form className="form-inline" onSubmit={handleFormSubmit}>
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index 0979c752..a80a766d 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -13,13 +13,6 @@ function calculateTotalWeightLifted(repLogs) {
+     return total;
+ }
+ 
+-function handleFormSubmit(event) {
+-    event.preventDefault();
+-
+-    console.log('I love when a good form submits!');
+-    console.log(event.target.elements.namedItem('reps').value);
+-}
+-
+ export default function RepLogs(props) {
+     const { withHeart, highlightedRowId, onRowClick, repLogs, onNewItemSubmit } = props;
+ 
