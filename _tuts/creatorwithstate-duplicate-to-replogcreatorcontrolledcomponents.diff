@@ -1,6 +1,6 @@
 diff --git a/assets/js/RepLog/RepLogCreatorControlledComponents.js b/assets/js/RepLog/RepLogCreatorControlledComponents.js
 new file mode 100644
-index 00000000..97cd4a6a
+index 00000000..5e5cb495
 --- /dev/null
 +++ b/assets/js/RepLog/RepLogCreatorControlledComponents.js
 @@ -0,0 +1,104 @@
@@ -30,7 +30,7 @@ index 00000000..97cd4a6a
 +
 +    handleFormSubmit(event) {
 +        event.preventDefault();
-+        const { handleAddRepLog } = this.props;
++        const { onAddRepLog } = this.props;
 +
 +        const quantityInput = this.quantityInput.current;
 +        const itemSelect = this.itemSelect.current;
@@ -44,7 +44,7 @@ index 00000000..97cd4a6a
 +            return;
 +        }
 +
-+        handleAddRepLog(
++        onAddRepLog(
 +            itemSelect.options[itemSelect.selectedIndex].text,
 +            quantityInput.value
 +        );
@@ -106,19 +106,19 @@ index 00000000..97cd4a6a
 +}
 +
 +RepLogCreator.propTypes = {
-+    handleAddRepLog: PropTypes.func.isRequired,
++    onAddRepLog: PropTypes.func.isRequired,
 +};
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index c1a93207..a42f1dd2 100644
+index e3f835ee..9edf4f6f 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -1,7 +1,8 @@
- import React, { Component } from 'react';
+ import React from 'react';
  import PropTypes from 'prop-types';
  import RepLogList from './RepLogList';
 -import RepLogCreator from './RepLogCreator';
 +//import RepLogCreator from './RepLogCreator';
 +import RepLogCreator from './RepLogCreatorControlledComponents';
  
- export default class RepLogs extends Component {
-     constructor(props) {
+ function calculateTotalWeightLifted(repLogs) {
+     let total = 0;
