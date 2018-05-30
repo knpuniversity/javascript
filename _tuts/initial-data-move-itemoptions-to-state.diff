@@ -62,27 +62,27 @@ index 6e3d5b8b..347b41f4 100644
 +    itemOptions: PropTypes.array.isRequired
  };
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 368fe79b..85c50ca8 100644
+index f7387c6e..61af52af 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -20,7 +20,7 @@ export default class RepLogs extends Component {
-     }
+@@ -15,7 +15,7 @@ function calculateTotalWeightLifted(repLogs) {
+ }
  
-     render() {
--        const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage, newRepLogValidationErrorMessage } = this.props;
-+        const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage, newRepLogValidationErrorMessage, itemOptions } = this.props;
+ export default function RepLogs(props) {
+-    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage, newRepLogValidationErrorMessage } = props;
++    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage, newRepLogValidationErrorMessage, itemOptions } = props;
  
-         let heart = '';
-         if (withHeart) {
-@@ -80,6 +80,7 @@ export default class RepLogs extends Component {
-                         <RepLogCreator
-                             onAddRepLog={onAddRepLog}
-                             validationErrorMessage={newRepLogValidationErrorMessage}
-+                            itemOptions={itemOptions}
-                         />
-                     </div>
+     let heart = '';
+     if (withHeart) {
+@@ -75,6 +75,7 @@ export default function RepLogs(props) {
+                     <RepLogCreator
+                         onAddRepLog={onAddRepLog}
+                         validationErrorMessage={newRepLogValidationErrorMessage}
++                        itemOptions={itemOptions}
+                     />
                  </div>
-@@ -101,4 +102,5 @@ RepLogs.propTypes = {
+             </div>
+@@ -95,4 +96,5 @@ RepLogs.propTypes = {
      isSavingNewRepLog: PropTypes.bool.isRequired,
      successMessage: PropTypes.string.isRequired,
      newRepLogValidationErrorMessage: PropTypes.string.isRequired,
