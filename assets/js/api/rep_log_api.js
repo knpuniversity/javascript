@@ -9,5 +9,6 @@ export function getRepLogs() {
     })
         .then(response => {
             return response.json();
-        });
+        })
+        .then(data => data.items);
 }
