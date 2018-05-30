@@ -1,8 +1,8 @@
-diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index b95e1bc8..efdba6be 100644
---- a/assets/js/RepLog/RepLogs.js
-+++ b/assets/js/RepLog/RepLogs.js
-@@ -26,9 +26,12 @@ export default class RepLogs extends Component {
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index e85efada..93003a95 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -15,9 +15,12 @@ export default class RepLogCreator extends Component {
          event.preventDefault();
          const { onNewItemSubmit } = this.props;
  
