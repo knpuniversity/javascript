@@ -2,11 +2,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class RepLogCreator extends Component {
+    constructor(props) {
+        super(props);
+
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    }
+
     handleFormSubmit(event) {
         event.preventDefault();
+        const { onNewItemSubmit } = this.props;
 
         console.log('I love when a good form submits!');
         console.log(event.target.elements.namedItem('reps').value);
+
+        onNewItemSubmit('Big Fat Cat', event.target.elements.namedItem('reps').value);
     }
 
     render() {
