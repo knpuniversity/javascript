@@ -12,19 +12,23 @@ index 870aad0d..5e5cb495 100644
                      <label className="sr-only control-label required"
                             htmlFor="rep_log_item">
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 65257534..c779eb59 100644
+index f5a1eba1..7c400890 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -54,7 +54,11 @@ export default class RepLogs extends Component {
-                     </tfoot>
-                 </table>
+@@ -49,9 +49,13 @@ export default function RepLogs(props) {
+                 </tfoot>
+             </table>
  
--                <RepLogCreator onAddRepLog={onAddRepLog}/>
-+                <div className="row">
-+                    <div className="col-md-6">
-+                        <RepLogCreator onAddRepLog={onAddRepLog}/>
-+                    </div>
+-            <RepLogCreator
+-                onAddRepLog={onAddRepLog}
+-            />
++            <div className="row">
++                <div className="col-md-6">
++                    <RepLogCreator
++                        onAddRepLog={onAddRepLog}
++                    />
 +                </div>
-             </div>
-         );
-     }
++            </div>
+         </div>
+     );
+ }
