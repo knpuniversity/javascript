@@ -93,7 +93,7 @@ Copy that class and head to the bottom of the template. Add a block `javascripts
 
 [[[ code('e99b97738d') ]]]
 
-This is Symfony's way of adding JavaScript to a page. Inside, add a `<script>` tag
+This is Symfony's way of adding JavaScript to a page. Inside, add a `script` tag
 and then, use jQuery to find all `.js-delete-rep-log` elements, and then `.on('click')`,
 call this function. For now, just `console.log('todo delete!')`:
 
