@@ -6,6 +6,8 @@ export default class RepLogCreator extends Component {
         super(props);
 
         this.state = {
+            selectedItemId: '',
+            quantityValue: 0,
             quantityInputError: ''
         };
 
@@ -61,7 +63,7 @@ export default class RepLogCreator extends Component {
                         What did you lift?
                     </label>
                     <select id="rep_log_item"
-                            ref={this.itemSelect}
+                            value={this.state.selectedItemId}
                             required="required"
                             className="form-control">
                         <option value="">What did you
@@ -79,7 +81,7 @@ export default class RepLogCreator extends Component {
                         How many times?
                     </label>
                     <input type="number" id="rep_log_reps"
-                           ref={this.quantityInput}
+                           value={this.state.quantityValue}
                            required="required"
                            placeholder="How many times?"
                            className="form-control"/>
