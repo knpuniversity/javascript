@@ -46,8 +46,7 @@ export default class RepLogApp extends Component {
                     </tfoot>
                 </table>
 
-                <form className="form-inline js-new-rep-log-form" noValidate
-                      data-url="{{ path('rep_log_new') }}">
+                <form className="form-inline">
                     <div className="form-group">
                         <label className="sr-only control-label required"
                                htmlFor="rep_log_item">
@@ -57,7 +56,7 @@ export default class RepLogApp extends Component {
                                 name="item"
                                 required="required"
                                 className="form-control">
-                            <option value="" selected="selected">What did you
+                            <option value="">What did you
                                 lift?
                             </option>
                             <option value="cat">Cat</option>
