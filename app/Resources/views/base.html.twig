@@ -30,18 +30,26 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ path('homepage') }}">Lift Stuff</a>
+            <a class="navbar-brand"
+               href="{{ path('homepage') }}"
+               data-toggle="tooltip"
+               data-placement="bottom"
+               title="DO IT! LIFT STUFF!!!">Lift Stuff</a>
         </div>
         <div class="navbar-collapse collapse">
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="drop-down">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user"></span> <strong>{{ app.user.username }}</strong> <span class="caret"></span></a>
+                    <li class="drop-down" data-toggle="tooltip" data-placement="left" title="Welcome back {{ app.user.firstName }}">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="fa fa-user"></span>
+                            <strong>{{ app.user.username }}</strong>
+                            <span class="caret"></span>
+                        </a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="{{ path('lift') }}">
-                                    <img class="mini-dumbbell" src="{{ asset('assets/images/dumbbell.png') }}">
                                     Lift Stuff
+                                    <span class="mini-dumbbell"></span>
                                 </a>
                             </li>
                             <li>
@@ -91,10 +99,10 @@
 {% block javascripts %}
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.0.5/es6-promise.auto.min.js"></script>
+    <script src="{{ asset('assets/js/layout.js') }}"></script>
 {% endblock %}
 
 </body>

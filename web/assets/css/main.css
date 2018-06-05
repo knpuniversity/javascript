@@ -7,7 +7,9 @@ footer.footer {
 
 .mini-dumbbell {
     width: 13px;
-    height: auto;
+    height: 13px;
+    background: url('../images/dumbbell-mini.png') center center  no-repeat;
+    display: inline-block;
 }
 
 /*LOGIN*/
