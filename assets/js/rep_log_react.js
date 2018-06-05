@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 
-class RepLogApp extends React.Component {
+class RepLogApp extends Component {
     render() {
         return <h2>Lift Stuff! <span>❤️</span></h2>;
     }
