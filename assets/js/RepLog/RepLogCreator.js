@@ -47,3 +47,7 @@ export default function RepLogCreator(props) {
         </form>
     );
 }
+
+RepLogCreator.propTypes = {
+    onNewItemSubmit: PropTypes.func.isRequired,
+};
