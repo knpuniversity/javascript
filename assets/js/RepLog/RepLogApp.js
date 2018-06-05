@@ -16,13 +16,7 @@ export default class RepLogApp extends Component {
             isSavingNewRepLog: false,
             successMessage: '',
             newRepLogValidationErrorMessage: '',
-            itemOptions: [
-                {id: 'cat', text: 'Cat'},
-                {id: 'fat_cat', text: 'Big Fat Cat'},
-                {id: 'laptop', text: 'My Laptop'},
-                {id: 'coffee_cup', text: 'Coffee Cup'},
-                {id: 'invalid_item', text: 'Dark Matter'}
-            ]
+            itemOptions: this.props.itemOptions
         };
         this.clearSuccessMessageTimeout = 0;
 
@@ -139,5 +133,10 @@ export default class RepLogApp extends Component {
 }
 
 RepLogApp.propTypes = {
-    withHeart: PropTypes.bool
-}
+    withHeart: PropTypes.bool,
+    itemOptions: PropTypes.array,
+};
+
+RepLogApp.defaultProps = {
+    itemOptions: []
+};
