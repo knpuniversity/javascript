@@ -22,12 +22,20 @@ export default class RepLogApp extends Component {
         this.setState({highlightedRowId: repLogId});
     }
 
+    handleNewItemSubmit(event) {
+        event.preventDefault();
+
+        console.log('I love when a good form submits!');
+        console.log(event.target);
+    }
+
     render() {
         return (
             <RepLogs
                 {...this.props}
                 {...this.state}
                 onRowClick={this.handleRowClick}
+                onNewItemSubmit={this.handleNewItemSubmit}
             />
         );
     }
