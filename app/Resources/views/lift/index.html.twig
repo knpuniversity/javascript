@@ -10,7 +10,7 @@
                 </a>
             </h2>
 
-            <table class="table table-striped">
+            <table class="table table-striped js-rep-log-table">
                 <thead>
                 <tr>
                     <th>What</th>
@@ -69,6 +69,10 @@
         $(document).ready(function() {
             $('.js-delete-rep-log').on('click', function () {
                 console.log('todo delete!');
+            });
+
+            $('.js-rep-log-table tbody tr').on('click', function() {
+                console.log('row clicked!');
             });
         });
     </script>
