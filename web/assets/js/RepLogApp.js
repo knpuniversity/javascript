@@ -5,10 +5,10 @@
         initialize: function ($wrapper) {
             this.$wrapper = $wrapper;
             this.helper = new Helper(this.$wrapper);
+            var helper2 = new Helper($('footer'));
             console.log(
-                'foo'.__proto__,
-                [].__proto__,
-                (new Date()).__proto__
+                this.helper.calculateTotalWeight(),
+                helper2.calculateTotalWeight()
             );
 
             this.$wrapper.find('.js-delete-rep-log').on(
