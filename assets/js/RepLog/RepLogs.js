@@ -11,6 +11,7 @@ function calculateTotalWeightLifted(repLogs) {
 
     return total;
 }
+const calculateTotalWeightFancier = repLogs => repLogs.reduce((total, log) => total + log.totalWeightLifted, 0);
 
 export default function RepLogs(props) {
     const { withHeart, highlightedRowId, onRowClick, repLogs } = props;
@@ -42,7 +43,7 @@ export default function RepLogs(props) {
                 <tr>
                     <td>&nbsp;</td>
                     <th>Total</th>
-                    <th>{calculateTotalWeightLifted(repLogs)}</th>
+                    <th>{calculateTotalWeightFancier(repLogs)}</th>
                     <td>&nbsp;</td>
                 </tr>
                 </tfoot>
