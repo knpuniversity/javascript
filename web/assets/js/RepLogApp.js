@@ -56,15 +56,11 @@
                 title: 'Delete this log?',
                 text: 'What? Did you not actually lift this?',
                 showCancelButton: true
-            }).then(
-                function () {
-                    self._deleteRepLog($link);
-                },
-                function () {
-                    console.log('canceled');
-                }
-            );
-
+            }).then(function () {
+                self._deleteRepLog($link);
+            }).catch(function(arg) {
+                console.log('canceled', arg);
+            });
         },
 
         _deleteRepLog: function($link) {
