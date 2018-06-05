@@ -35,12 +35,10 @@ export default class RepLogApp extends Component {
         this.setState({highlightedRowId: repLogId});
     }
 
-    handleAddRepLog(itemLabel, quantity) {
+    handleAddRepLog(item, quantity) {
         const newRep = {
-            id: uuid(),
             reps: quantity,
-            itemLabel: itemLabel,
-            totalWeightLifted: Math.floor(Math.random() * 50)
+            item: item
         };
 
         createRepLog(newRep)
@@ -49,11 +47,11 @@ export default class RepLogApp extends Component {
             })
         ;
 
-        this.setState(prevState => {
-            const newRepLogs = [...prevState.repLogs, newRep];
-
-            return {repLogs: newRepLogs};
-        })
+        // this.setState(prevState => {
+        //     const newRepLogs = [...prevState.repLogs, newRep];
+        //
+        //     return {repLogs: newRepLogs};
+        // })
     }
 
     handleHeartChange(heartCount) {
