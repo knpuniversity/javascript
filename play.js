@@ -5,6 +5,7 @@ foods.set(['canadian'], 'poutine');
 
 let southernUsStates = ['Tennessee', 'Kentucky', 'Texas'];
 foods.set(southernUsStates, 'hot chicken');
+southernUsStates = null;
 
 console.log(
     foods.get(['italian']),
