@@ -54,7 +54,7 @@ export default class RepLogCreator extends Component {
         const { quantityInputError } = this.state;
 
         return (
-            <form className="form-inline" onSubmit={this.handleFormSubmit}>
+            <form onSubmit={this.handleFormSubmit}>
                 <div className="form-group">
                     <label className="sr-only control-label required"
                            htmlFor="rep_log_item">
