@@ -25,25 +25,21 @@ index 03fd1165..18a8e42d 100644
              const newRepLogs = [...prevState.repLogs, newRep];
  
 diff --git a/assets/js/api/rep_log_api.js b/assets/js/api/rep_log_api.js
-index f1a234b6..ae74606d 100644
+index 0c925a13..2fb160e2 100644
 --- a/assets/js/api/rep_log_api.js
 +++ b/assets/js/api/rep_log_api.js
-@@ -19,3 +19,17 @@ export function deleteRepLog(id) {
+@@ -22,3 +22,13 @@ export function deleteRepLog(id) {
          method: 'DELETE'
      });
  }
 +
 +export function createRepLog(repLog) {
-+    return fetch('/reps', {
-+        credentials: 'same-origin',
++    return doFetch('/reps', {
 +        method: 'POST',
 +        body: JSON.stringify(repLog),
 +        headers: {
 +            'Content-Type': 'application/json'
 +        }
-+    })
-+        .then(response => {
-+            return response.json();
-+        });
++    });
 +}
 \ No newline at end of file

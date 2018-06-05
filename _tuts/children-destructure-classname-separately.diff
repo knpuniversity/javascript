@@ -1,0 +1,19 @@
+diff --git a/assets/js/Components/Button.js b/assets/js/Components/Button.js
+index 56c3a728..d9acec48 100644
+--- a/assets/js/Components/Button.js
++++ b/assets/js/Components/Button.js
+@@ -2,10 +2,12 @@ import React from 'react';
+ import PropTypes from 'prop-types';
+ 
+ export default function Button(props) {
++    const { className, otherProps } = props;
++
+     return (
+         <button
+-            className={`btn ${props.className}`}
+-            {...props}
++            className={`btn ${className}`}
++            {...otherProps}
+         >{props.children}</button>
+     );
+ }

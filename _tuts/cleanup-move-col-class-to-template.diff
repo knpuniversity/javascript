@@ -1,0 +1,26 @@
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index 8cf5dc13..78b454d2 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -29,7 +29,7 @@ export default function RepLogs(props) {
+     }
+ 
+     return (
+-        <div className="col-md-7">
++        <div>
+             <h2>Lift Stuff! {heart}</h2>
+ 
+             <input
+diff --git a/templates/lift/index.html.twig b/templates/lift/index.html.twig
+index e8e3efef..ba301a8c 100644
+--- a/templates/lift/index.html.twig
++++ b/templates/lift/index.html.twig
+@@ -2,7 +2,7 @@
+ 
+ {% block body %}
+     <div class="row">
+-        <div id="lift-stuff-app"></div>
++        <div id="lift-stuff-app" class="col-md-7"></div>
+ 
+         <div class="col-md-5">
+             <div class="leaderboard">

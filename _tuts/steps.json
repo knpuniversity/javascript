@@ -1626,6 +1626,11 @@
             "description": null
         },
         {
+            "id": "fetch-wrapper-dofetch-function",
+            "name": "Fetch: Wrapper doFetch function",
+            "description": null
+        },
+        {
             "id": "fetch-add-createreplog",
             "name": "Fetch: Add createRepLog",
             "description": null
@@ -1724,7 +1729,37 @@
             "id": "initial-data-print-and-json-encode-data",
             "name": "Initial Data: Print and json_encode data",
             "description": null
+        },
+        {
+            "id": "cleanup-remove-old-code",
+            "name": "Cleanup: Remove old code",
+            "description": null
+        },
+        {
+            "id": "cleanup-move-col-class-to-template",
+            "name": "Cleanup: Move col- class to template",
+            "description": null
+        },
+        {
+            "id": "children-create-button-component",
+            "name": "Children: Create Button component",
+            "description": null
+        },
+        {
+            "id": "children-use-props-children",
+            "name": "Children: Use props.children",
+            "description": null
+        },
+        {
+            "id": "children-allow-classname-to-be-passed",
+            "name": "Children: Allow className to be passed",
+            "description": null
+        },
+        {
+            "id": "children-destructure-classname-separately",
+            "name": "Children: Destructure className separately",
+            "description": null
         }
     ],
-    "sha": "a303d04667fbff99cadefe6d42cb187892a88007"
+    "sha": "2e38a25df5947f32a2f55dfe6df6446d16154d91"
 }

@@ -1,0 +1,43 @@
+diff --git a/assets/js/Components/Button.js b/assets/js/Components/Button.js
+new file mode 100644
+index 00000000..595101cc
+--- /dev/null
++++ b/assets/js/Components/Button.js
+@@ -0,0 +1,15 @@
++import React from 'react';
++import PropTypes from 'prop-types';
++
++export default function Button(props) {
++    return (
++        <button
++            className="btn"
++            {...props}
++        >{props.text}</button>
++    );
++}
++
++Button.propTypes = {
++    text: PropTypes.string.isRequired
++};
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index fd7cd271..6f9c2ac2 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -1,5 +1,6 @@
+ import React, { Component } from 'react';
+ import PropTypes from 'prop-types';
++import Button from '../Components/Button';
+ 
+ export default class RepLogCreator extends Component {
+     constructor(props) {
+@@ -85,9 +86,7 @@ export default class RepLogCreator extends Component {
+                     {quantityInputError && <span className="help-block">{quantityInputError}</span>}
+                 </div>
+                 {' '}
+-                <button type="submit" className="btn btn-primary">I Lifted
+-                    it!
+-                </button>
++                <Button type="submit" text="I Lifted it!" />
+             </form>
+         );
+     }

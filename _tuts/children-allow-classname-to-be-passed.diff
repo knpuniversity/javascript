@@ -1,0 +1,36 @@
+diff --git a/assets/js/Components/Button.js b/assets/js/Components/Button.js
+index cf8f5d57..56c3a728 100644
+--- a/assets/js/Components/Button.js
++++ b/assets/js/Components/Button.js
+@@ -4,9 +4,17 @@ import PropTypes from 'prop-types';
+ export default function Button(props) {
+     return (
+         <button
+-            className="btn"
++            className={`btn ${props.className}`}
+             {...props}
+         >{props.children}</button>
+     );
+ }
+ 
++Button.propTypes = {
++    children: PropTypes.element.isRequired,
++    className: PropTypes.string
++};
++
++Button.defaultProps = {
++    className: ''
++};
+diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
+index a1826b4c..2ce3a23b 100644
+--- a/assets/js/RepLog/RepLogCreator.js
++++ b/assets/js/RepLog/RepLogCreator.js
+@@ -86,7 +86,7 @@ export default class RepLogCreator extends Component {
+                     {quantityInputError && <span className="help-block">{quantityInputError}</span>}
+                 </div>
+                 {' '}
+-                <Button type="submit">
++                <Button type="submit" className="btn-primary">
+                     I Lifted it!
+                 </Button>
+             </form>
