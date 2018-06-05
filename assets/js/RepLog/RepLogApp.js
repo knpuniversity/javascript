@@ -23,7 +23,15 @@ export default class RepLogApp extends Component {
     }
 
     handleNewItemSubmit(itemLabel, quantity) {
-        console.log(itemLabel, quantity);
+        const repLogs = this.state.repLogs;
+        const newRep = {
+            id: 'TODO-id',
+            reps: quantity,
+            itemLabel: itemLabel,
+            totalWeightLifted: Math.floor(Math.random() * 50)
+        };
+        repLogs.push(newRep);
+        this.setState({repLogs: repLogs});
     }
 
     render() {
