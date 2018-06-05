@@ -13,7 +13,8 @@ export default class RepLogApp extends Component {
                 { id: uuid(), reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
                 { id: uuid(), reps: 10, itemLabel: 'Big Fat Cat', totalWeightLifted: 180 },
                 { id: uuid(), reps: 4, itemLabel: 'Big Fat Cat', totalWeightLifted: 72 }
-            ]
+            ],
+            numberOfHearts: 1
         };
 
         this.handleRowClick = this.handleRowClick.bind(this);
