@@ -55,7 +55,15 @@
             swal({
                 title: 'Delete this log?',
                 text: 'What? Did you not actually lift this?',
-                showCancelButton: true
+                showCancelButton: true,
+                showLoaderOnConfirm: true,
+                preConfirm: function() {
+                    return new Promise(function(resolve, reject) {
+                        setTimeout(function() {
+                            resolve();
+                        }, 1000);
+                    });
+                }
             }).then(function () {
                 self._deleteRepLog($link);
             }).catch(function(arg) {
