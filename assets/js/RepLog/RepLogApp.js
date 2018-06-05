@@ -6,7 +6,7 @@ export default class RepLogApp extends Component {
         super(props);
 
         this.state = {
-            highlightedRowId: 'cool!'
+            highlightedRowId: null,
         };
 
         this.handleRowClick = this.handleRowClick.bind(this);
@@ -40,7 +40,6 @@ export default class RepLogApp extends Component {
                     </thead>
                     <RepLogList
                         highlightedRowId={highlightedRowId}
-                        onRowClick={this.handleRowClick}
                     />
                     <tfoot>
                     <tr>
