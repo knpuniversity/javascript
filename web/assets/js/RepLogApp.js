@@ -211,13 +211,7 @@
         }
     }
 
-    function upper(template, ...expressions) {
-        return template.reduce((accumulator, part, i) => {
-            return accumulator + (expressions[i - 1].toUpperCase ? expressions[i - 1].toUpperCase() : expressions[i - 1]) + part
-        })
-    }
-
-    const rowTemplate = (repLog) => upper`
+    const rowTemplate = (repLog) => `
 <tr data-weight="${repLog.totalWeightLifted}">
     <td>${repLog.itemLabel}</td>
     <td>${repLog.reps}</td>
