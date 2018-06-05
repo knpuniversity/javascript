@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function RepLogList(props) {
-    const { highlightedRowId, onRowClick, onDeleteRepLog, repLogs, isLoaded } = props;
+    const { highlightedRowId, onRowClick, onDeleteRepLog, repLogs, isLoaded, isSavingNewRepLog } = props;
 
     if (!isLoaded) {
         return (
@@ -38,6 +38,17 @@ export default function RepLogList(props) {
                 </td>
             </tr>
         ))}
+        {isSavingNewRepLog ? (
+            <tr>
+                <td
+                    colSpan="4"
+                    className="text-center"
+                    style={{
+                        opacity: .5
+                    }}
+                >Lifting to the database ...</td>
+            </tr>
+        ) : null}
         </tbody>
     );
 }
@@ -48,4 +59,5 @@ RepLogList.propTypes = {
     onDeleteRepLog: PropTypes.func.isRequired,
     repLogs: PropTypes.array.isRequired,
     isLoaded: PropTypes.bool.isRequired,
+    isSavingNewRepLog: PropTypes.bool.isRequired
 };
