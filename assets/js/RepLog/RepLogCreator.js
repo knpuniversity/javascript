@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+function handleFormSubmit(event) {
+    event.preventDefault();
+
+    console.log('I love when a good form submits!');
+    console.log(event.target.elements.namedItem('reps').value);
+}
+
 export default function RepLogCreator(props) {
     return (
         <form className="form-inline" onSubmit={handleFormSubmit}>
