@@ -22,8 +22,8 @@ export default class RepLogApp extends Component {
         this.setState({highlightedRowId: repLogId});
     }
 
-    handleNewItemSubmit() {
-        console.log('todo');
+    handleNewItemSubmit(itemLabel, quantity) {
+        console.log(itemLabel, quantity);
     }
 
     render() {
