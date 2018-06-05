@@ -22,11 +22,8 @@ export default class RepLogApp extends Component {
         this.setState({highlightedRowId: repLogId});
     }
 
-    handleNewItemSubmit(event) {
-        event.preventDefault();
-
-        console.log('I love when a good form submits!');
-        console.log(event.target.elements.namedItem('reps').value);
+    handleNewItemSubmit() {
+        console.log('todo');
     }
 
     render() {
