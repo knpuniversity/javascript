@@ -53,7 +53,7 @@
     /**
      * A "private" object
      */
-    var Helper = {
+    Helper = {
         initialize: function ($wrapper) {
             this.$wrapper = $wrapper;
         },
