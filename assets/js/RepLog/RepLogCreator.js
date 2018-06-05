@@ -83,6 +83,7 @@ export default class RepLogCreator extends Component {
                            required="required"
                            placeholder="How many times?"
                            className="form-control"/>
+                    {quantityInputError && <span className="help-block">{quantityInputError}</span>}
                 </div>
                 {' '}
                 <button type="submit" className="btn btn-primary">I Lifted
