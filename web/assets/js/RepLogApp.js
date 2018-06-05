@@ -2,7 +2,7 @@
 
 (function(window, $, Routing, swal) {
 
-    let HelperInstances = new Map();
+    let HelperInstances = new WeakMap();
 
     class RepLogApp {
         constructor($wrapper) {
