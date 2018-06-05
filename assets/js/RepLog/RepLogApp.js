@@ -27,16 +27,14 @@ export default class RepLogApp extends Component {
                     </tr>
                     </thead>
                     <tbody>
-                    {repLogs.map((repLog) => {
-                        return (
-                            <tr key={repLog.id}>
-                                <td>{repLog.itemLabel}</td>
-                                <td>{repLog.reps}</td>
-                                <td>{repLog.totalWeightLifted}</td>
-                                <td>...</td>
-                            </tr>
-                        )
-                    })}
+                    {repLogs.map((repLog) => (
+                        <tr key={repLog.id}>
+                            <td>{repLog.itemLabel}</td>
+                            <td>{repLog.reps}</td>
+                            <td>{repLog.totalWeightLifted}</td>
+                            <td>...</td>
+                        </tr>
+                    ))}
                     </tbody>
                     <tfoot>
                     <tr>
