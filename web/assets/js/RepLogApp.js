@@ -89,7 +89,9 @@
                 self._clearForm();
                 self._addRow(data);
             }).catch(function(jqXHR) {
-                console.log(jqXHR);
+                if (jqXHR instanceof ReferenceError) {
+                    console.log('wow!');
+                }
                 var errorData = JSON.parse(jqXHR.responseText);
                 self._mapErrorsToForm(errorData.errors);
             });
