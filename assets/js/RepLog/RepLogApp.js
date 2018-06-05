@@ -16,7 +16,7 @@ export default class RepLogApp extends Component {
             isSavingNewRepLog: false,
             successMessage: '',
             newRepLogValidationErrorMessage: '',
-            itemOptions: this.props.itemOptions
+            itemOptions: this.props.itemOptions,
         };
         this.clearSuccessMessageTimeout = 0;
 
