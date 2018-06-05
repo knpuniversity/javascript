@@ -1,4 +1,4 @@
-let foods = new Map();
+let foods = new WeakMap();
 foods.set('italian', 'gelato');
 foods.set('mexican', 'tortas');
 foods.set('canadian', 'poutine');
