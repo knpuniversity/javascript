@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RepLogList from './RepLogList';
+import RepLogCreator from './RepLogCreator';
 
 function calculateTotalWeightLifted(repLogs) {
     let total = 0;
@@ -55,6 +56,8 @@ export default function RepLogs(props) {
                 </tr>
                 </tfoot>
             </table>
+
+            <RepLogCreator/>
 
             <form className="form-inline" onSubmit={handleFormSubmit}>
                 <div className="form-group">
