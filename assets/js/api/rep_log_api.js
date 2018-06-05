@@ -12,3 +12,10 @@ export function getRepLogs() {
         })
         .then(data => data.items);
 }
+
+export function deleteRepLog(id) {
+    return fetch(`/reps/${id}`, {
+        credentials: 'same-origin',
+        method: 'DELETE'
+    });
+}
