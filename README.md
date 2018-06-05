@@ -11,15 +11,6 @@ If you've just downloaded the code, congratulations!
 
 To get it working, follow these steps:
 
-**Setup parameters.yml**
-
-First, make sure you have an `app/config/parameters.yml`
-file (you should). If you don't, copy `app/config/parameters.yml.dist`
-to get it.
-
-Next, look at the configuration and make any adjustments you
-need (like `database_password`).
-
 **Download Composer dependencies**
 
 Make sure you have [Composer installed](https://getcomposer.org/download/)
@@ -34,9 +25,10 @@ on how you installed Composer.
 
 **Setup the Database**
 
-Again, make sure `app/config/parameters.yml` is setup
-for your computer. Then, create the database and the
-schema!
+Open `.env` and make sure the `DATABASE_URL` setting is
+correct for your system.
+
+Then, create the database and the schema!
 
 ```
 php bin/console doctrine:database:create
