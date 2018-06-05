@@ -16,7 +16,7 @@ function calculateTotalWeightLifted(repLogs) {
 const calculateTotalWeightFancier = repLogs => repLogs.reduce((total, log) => total + log.totalWeightLifted, 0);
 
 export default function RepLogs(props) {
-    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange } = props;
+    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog } = props;
 
     let heart = '';
     if (withHeart) {
@@ -47,6 +47,7 @@ export default function RepLogs(props) {
                 <RepLogList
                     highlightedRowId={highlightedRowId}
                     onRowClick={onRowClick}
+                    onDeleteRepLog={onDeleteRepLog}
                     repLogs={repLogs}
                 />
                 <tfoot>
@@ -77,5 +78,6 @@ RepLogs.propTypes = {
     onAddRepLog: PropTypes.func.isRequired,
     repLogs: PropTypes.array.isRequired,
     numberOfHearts: PropTypes.number.isRequired,
-    onHeartChange: PropTypes.func.isRequired
+    onHeartChange: PropTypes.func.isRequired,
+    onDeleteRepLog: PropTypes.func.isRequired,
 };
