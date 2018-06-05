@@ -2,12 +2,12 @@
 
 (function(window, $, Routing, swal) {
 
-    let HelperInstance = null;
+    let HelperInstances = new Map();
 
     class RepLogApp {
         constructor($wrapper) {
             this.$wrapper = $wrapper;
-            HelperInstance = new Helper(this.$wrapper);
+            HelperInstances.set(this, new Helper(this.$wrapper));
 
             this.loadRepLogs();
 
@@ -49,7 +49,7 @@
 
         updateTotalWeightLifted() {
             this.$wrapper.find('.js-total-weight').html(
-                HelperInstance.getTotalWeightString()
+                HelperInstances.get(this).getTotalWeightString()
             );
         }
 
