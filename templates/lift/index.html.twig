@@ -55,11 +55,4 @@
     {{ parent() }}
 
     <script src="{{ asset('build/rep_log.js') }}"></script>
-
-    <script>
-        $(document).ready(function() {
-            var $wrapper = $('.js-rep-log-table');
-            var repLogApp = new RepLogApp($wrapper);
-        });
-    </script>
 {% endblock %}
