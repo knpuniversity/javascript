@@ -1,6 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import RepLogList from './RepLogList';
 
 export default function RepLogs(props) {
+    const { withHeart, highlightedRowId, onRowClick } = props;
+
     let heart = '';
     if (withHeart) {
         heart = <span>❤️</span>;
@@ -21,7 +25,7 @@ export default function RepLogs(props) {
                 </thead>
                 <RepLogList
                     highlightedRowId={highlightedRowId}
-                    onRowClick={this.handleRowClick}
+                    onRowClick={onRowClick}
                 />
                 <tfoot>
                 <tr>
@@ -71,3 +75,9 @@ export default function RepLogs(props) {
         </div>
     );
 }
+
+RepLogs.propTypes = {
+    withHeart: PropTypes.bool.isRequired,
+    highlightedRowId: PropTypes.any,
+    onRowClick: PropTypes.func.isRequired
+};
