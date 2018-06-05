@@ -24,7 +24,7 @@ Encore
     .enableSassLoader()
     .enableSourceMaps(!Encore.isProduction())
     .cleanupOutputBeforeBuild()
-    .enableVersioning()
+    .enableVersioning(Encore.isProduction())
 ;
 
 // export the final configuration
