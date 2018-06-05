@@ -15,7 +15,7 @@ function calculateTotalWeightLifted(repLogs) {
 const calculateTotalWeightFancier = repLogs => repLogs.reduce((total, log) => total + log.totalWeightLifted, 0);
 
 export default function RepLogs(props) {
-    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts } = props;
+    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange } = props;
 
     let heart = '';
     if (withHeart) {
@@ -29,6 +29,9 @@ export default function RepLogs(props) {
             <input
                 type="number"
                 value={numberOfHearts}
+                onChange={(e) => {
+                    onHeartChange(e.target.value);
+                }}
             />
 
             <table className="table table-striped">
@@ -72,5 +75,6 @@ RepLogs.propTypes = {
     onRowClick: PropTypes.func.isRequired,
     onAddRepLog: PropTypes.func.isRequired,
     repLogs: PropTypes.array.isRequired,
-    numberOfHearts: PropTypes.number.isRequired
+    numberOfHearts: PropTypes.number.isRequired,
+    onHeartChange: PropTypes.func.isRequired
 };
