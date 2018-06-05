@@ -53,9 +53,15 @@ export default class RepLogCreator extends Component {
 
     render() {
         const { quantityInputError } = this.state;
+        const { validationErrorMessage } = this.props;
 
         return (
             <form onSubmit={this.handleFormSubmit}>
+                {validationErrorMessage ? (
+                    <div className="alert alert-danger">
+                        {validationErrorMessage}
+                    </div>
+                ) : null}
                 <div className="form-group">
                     <label className="sr-only control-label required"
                            htmlFor="rep_log_item">
@@ -97,4 +103,5 @@ export default class RepLogCreator extends Component {
 
 RepLogCreator.propTypes = {
     onAddRepLog: PropTypes.func.isRequired,
+    validationErrorMessage: PropTypes.string.isRequired,
 };
