@@ -23,11 +23,11 @@ index 6fb8b587..f5f7dd03 100644
                  })
              })
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index ad5dc145..7fddf0ee 100644
+index 11aea351..53a9eb09 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -15,13 +15,18 @@ function calculateTotalWeightLifted(repLogs) {
- }
+@@ -16,13 +16,18 @@ function calculateTotalWeightLifted(repLogs) {
+ const calculateTotalWeightFancier = repLogs => repLogs.reduce((total, log) => total + log.totalWeightLifted, 0);
  
  export default function RepLogs(props) {
 -    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog } = props;
@@ -46,7 +46,7 @@ index ad5dc145..7fddf0ee 100644
      return (
          <div className="col-md-7">
              <h2>Lift Stuff! {heart}</h2>
-@@ -34,6 +39,10 @@ export default function RepLogs(props) {
+@@ -35,6 +40,10 @@ export default function RepLogs(props) {
                  }}
              />
  
@@ -57,7 +57,7 @@ index ad5dc145..7fddf0ee 100644
              <table className="table table-striped">
                  <thead>
                  <tr>
-@@ -83,4 +92,5 @@ RepLogs.propTypes = {
+@@ -84,4 +93,5 @@ RepLogs.propTypes = {
      onDeleteRepLog: PropTypes.func.isRequired,
      isLoaded: PropTypes.bool.isRequired,
      isSavingNewRepLog: PropTypes.bool.isRequired,

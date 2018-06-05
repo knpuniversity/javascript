@@ -1,24 +1,38 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 99654c15..67368f49 100644
+index 3bc91407..580bf812 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -61,7 +61,6 @@ export default class RepLogApp extends Component {
+@@ -53,16 +53,18 @@ export default class RepLogApp extends Component {
+             isSavingNewRepLog: true
+         });
  
-                     return {
++        const newState = {
++            isSavingNewRepLog: false
++        };
+         createRepLog(newRep)
+             .then(repLog => {
+                 this.setState(prevState => {
+                     const newRepLogs = [...prevState.repLogs, repLog];
+ 
+-                    return {
++                    return Object.assign({
                          repLogs: newRepLogs,
 -                        isSavingNewRepLog: false,
                          newRepLogValidationErrorMessage: '',
-                     };
+-                    };
++                    }, newState);
                  });
-@@ -78,6 +77,11 @@ export default class RepLogApp extends Component {
-                     });
+ 
+                 this.setSuccessMessage('Rep Log Saved!');
+@@ -72,9 +74,9 @@ export default class RepLogApp extends Component {
+                     const errors = errorsData.errors;
+                     const firstError = errors[Object.keys(errors)[0]];
+ 
+-                    this.setState({
++                    this.setState(Object.assign({
+                         newRepLogValidationErrorMessage: firstError
+-                    });
++                    }, newState));
                  })
              })
-+            .finally(() => {
-+                this.setState({
-+                    isSavingNewRepLog: false
-+                });
-+            })
          ;
-     }
- 

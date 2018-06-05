@@ -1211,6 +1211,11 @@
             "description": null
         },
         {
+            "id": "jsx-only-import-render",
+            "name": "JSX: Only import render",
+            "description": null
+        },
+        {
             "id": "jsx-extract-to-replogapp-js",
             "name": "JSX: Extract to RepLogApp.js",
             "description": null
@@ -1398,6 +1403,11 @@
         {
             "id": "state-printing-total-weight-lifted",
             "name": "State: Printing total weight lifted",
+            "description": null
+        },
+        {
+            "id": "state-show-fancier-way-to-calculate-total-weight",
+            "name": "State: Show fancier way to calculate total weight",
             "description": null
         },
         {
@@ -1681,8 +1691,23 @@
             "description": null
         },
         {
+            "id": "initial-data-add-defaultprops-itemoptions",
+            "name": "Initial Data: Add defaultProps itemOptions",
+            "description": null
+        },
+        {
             "id": "initial-data-pass-in-initialstate",
             "name": "Initial Data: Pass in initialState",
+            "description": null
+        },
+        {
+            "id": "initial-data-spread-all-props",
+            "name": "Initial Data: Spread all props",
+            "description": null
+        },
+        {
+            "id": "initial-data-also-pass-withheart",
+            "name": "Initial Data: Also pass withHeart",
             "description": null
         },
         {
@@ -1701,5 +1726,5 @@
             "description": null
         }
     ],
-    "sha": "0dfbf76164e3252cf98752a469f6aa4f200a9811"
+    "sha": "a303d04667fbff99cadefe6d42cb187892a88007"
 }

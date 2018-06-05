@@ -1,9 +1,9 @@
 diff --git a/assets/js/RepLog/RepLogCreatorControlledComponents.js b/assets/js/RepLog/RepLogCreatorControlledComponents.js
 new file mode 100644
-index 00000000..5e5cb495
+index 00000000..3ebc2894
 --- /dev/null
 +++ b/assets/js/RepLog/RepLogCreatorControlledComponents.js
-@@ -0,0 +1,104 @@
+@@ -0,0 +1,99 @@
 +import React, { Component } from 'react';
 +import PropTypes from 'prop-types';
 +
@@ -59,11 +59,6 @@ index 00000000..5e5cb495
 +    render() {
 +        const { quantityInputError } = this.state;
 +
-+        let quantityError = '';
-+        if (quantityInputError) {
-+            quantityError = <span className="help-block">{quantityInputError}</span>
-+        }
-+
 +        return (
 +            <form onSubmit={this.handleFormSubmit}>
 +                <div className="form-group">
@@ -94,7 +89,7 @@ index 00000000..5e5cb495
 +                           required="required"
 +                           placeholder="How many times?"
 +                           className="form-control"/>
-+                    {quantityError}
++                    {quantityInputError && <span className="help-block">{quantityInputError}</span>}
 +                </div>
 +                {' '}
 +                <button type="submit" className="btn btn-primary">I Lifted
@@ -109,7 +104,7 @@ index 00000000..5e5cb495
 +    onAddRepLog: PropTypes.func.isRequired,
 +};
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index e3f835ee..9edf4f6f 100644
+index ccbd84d9..ec16b6f7 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -1,7 +1,8 @@

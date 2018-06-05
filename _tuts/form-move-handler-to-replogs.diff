@@ -17,12 +17,12 @@ index 578a932c..865069b1 100644
  
      render() {
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 8f227276..8a347322 100644
+index c329b9ca..f6288e20 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -12,6 +12,13 @@ function calculateTotalWeightLifted(repLogs) {
-     return total;
+@@ -13,6 +13,13 @@ function calculateTotalWeightLifted(repLogs) {
  }
+ const calculateTotalWeightFancier = repLogs => repLogs.reduce((total, log) => total + log.totalWeightLifted, 0);
  
 +function handleFormSubmit(event) {
 +    event.preventDefault();
@@ -34,7 +34,7 @@ index 8f227276..8a347322 100644
  export default function RepLogs(props) {
      const { withHeart, highlightedRowId, onRowClick, repLogs, onNewItemSubmit } = props;
  
-@@ -48,7 +55,7 @@ export default function RepLogs(props) {
+@@ -49,7 +56,7 @@ export default function RepLogs(props) {
                  </tfoot>
              </table>
  

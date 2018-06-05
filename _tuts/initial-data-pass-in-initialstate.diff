@@ -1,59 +1,42 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 9baee151..e219dc34 100644
+index 4c2520d0..409dffc7 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -8,7 +8,7 @@ export default class RepLogApp extends Component {
-     constructor(props) {
-         super(props);
- 
--        this.state = {
-+        this.state = Object.assign({
-             highlightedRowId: null,
-             repLogs: [],
-             numberOfHearts: 1,
-@@ -16,14 +16,8 @@ export default class RepLogApp extends Component {
+@@ -16,7 +16,7 @@ export default class RepLogApp extends Component {
              isSavingNewRepLog: false,
              successMessage: '',
              newRepLogValidationErrorMessage: '',
--            itemOptions: [
--                {id: 'cat', text: 'Cat'},
--                {id: 'fat_cat', text: 'Big Fat Cat'},
--                {id: 'laptop', text: 'My Laptop'},
--                {id: 'coffee_cup', text: 'Coffee Cup'},
--                {id: 'invalid_item', text: 'Dark Matter'}
--            ]
--        };
-+            itemOptions: []
-+        }, this.props.initialState);
+-            itemOptions: this.props.itemOptions
++            itemOptions: this.props.itemOptions,
+         };
+         this.clearSuccessMessageTimeout = 0;
  
-         this.handleRowClick = this.handleRowClick.bind(this);
-         this.handleAddRepLog = this.handleAddRepLog.bind(this);
-@@ -141,5 +135,6 @@ export default class RepLogApp extends Component {
- }
- 
- RepLogApp.propTypes = {
--    withHeart: PropTypes.bool
-+    withHeart: PropTypes.bool,
-+    initialState: PropTypes.object
- }
-\ No newline at end of file
 diff --git a/assets/js/rep_log_react.js b/assets/js/rep_log_react.js
-index 7fc40512..0b183c80 100644
+index 1a65693b..3ed1614c 100644
 --- a/assets/js/rep_log_react.js
 +++ b/assets/js/rep_log_react.js
-@@ -5,6 +5,9 @@ import RepLogApp from './RepLog/RepLogApp';
+@@ -4,18 +4,10 @@ import RepLogApp from './RepLog/RepLogApp';
+ 
  const shouldShowHeart = true;
  
- ReactDom.render(
--    <RepLogApp withHeart={shouldShowHeart} />,
-+    <RepLogApp
-+        withHeart={shouldShowHeart}
-+        initialState={window.REP_LOG_APP_INITIAL_STATE}
-+    />,
+-const itemOptions = [
+-    {id: 'cat', text: 'Cat'},
+-    {id: 'fat_cat', text: 'Big Fat Cat'},
+-    {id: 'laptop', text: 'My Laptop'},
+-    {id: 'coffee_cup', text: 'Coffee Cup'},
+-    {id: 'invalid_item', text: 'Dark Matter'}
+-];
+-
+ render(
+     <RepLogApp
+         withHeart={shouldShowHeart}
+-        itemOptions={itemOptions}
++        itemOptions={window.REP_LOG_APP_PROPS.itemOptions}
+     />,
      document.getElementById('lift-stuff-app')
  );
 diff --git a/templates/lift/index.html.twig b/templates/lift/index.html.twig
-index 71218baa..f9664527 100644
+index 71218baa..d31e0581 100644
 --- a/templates/lift/index.html.twig
 +++ b/templates/lift/index.html.twig
 @@ -64,6 +64,17 @@
@@ -61,7 +44,7 @@ index 71218baa..f9664527 100644
      {{ parent() }}
  
 +    <script>
-+        window.REP_LOG_APP_INITIAL_STATE = {
++        window.REP_LOG_APP_PROPS = {
 +            itemOptions: [
 +                {id: 'cat', text: 'Cat'},
 +                {id: 'fat_cat', text: 'Big Fat Cat'},

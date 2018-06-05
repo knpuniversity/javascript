@@ -17,12 +17,12 @@ index c1a1bccf..ffd5f0b1 100644
      return (
          <form className="form-inline" onSubmit={handleFormSubmit}>
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 0979c752..a80a766d 100644
+index 0aca769d..f8445e4d 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -13,13 +13,6 @@ function calculateTotalWeightLifted(repLogs) {
-     return total;
+@@ -14,13 +14,6 @@ function calculateTotalWeightLifted(repLogs) {
  }
+ const calculateTotalWeightFancier = repLogs => repLogs.reduce((total, log) => total + log.totalWeightLifted, 0);
  
 -function handleFormSubmit(event) {
 -    event.preventDefault();

@@ -1,9 +1,9 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 870aad0d..5e5cb495 100644
+index cdd762f3..3ebc2894 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
-@@ -59,7 +59,7 @@ export default class RepLogCreator extends Component {
-         }
+@@ -54,7 +54,7 @@ export default class RepLogCreator extends Component {
+         const { quantityInputError } = this.state;
  
          return (
 -            <form className="form-inline" onSubmit={this.handleFormSubmit}>
@@ -12,10 +12,10 @@ index 870aad0d..5e5cb495 100644
                      <label className="sr-only control-label required"
                             htmlFor="rep_log_item">
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index f5a1eba1..7c400890 100644
+index dc3d6b13..6a5f7640 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -49,9 +49,13 @@ export default function RepLogs(props) {
+@@ -50,9 +50,13 @@ export default function RepLogs(props) {
                  </tfoot>
              </table>
  

@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 1f9d8a23..2e9e215a 100644
+index a1de4193..674975d8 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -76,7 +76,10 @@ export default class RepLogApp extends Component {
+@@ -75,7 +75,10 @@ export default class RepLogApp extends Component {
      }
  
      handleDeleteRepLog(id) {

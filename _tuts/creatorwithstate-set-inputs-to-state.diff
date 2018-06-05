@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogCreatorControlledComponents.js b/assets/js/RepLog/RepLogCreatorControlledComponents.js
-index 5e5cb495..47843ac7 100644
+index 3ebc2894..09fd777e 100644
 --- a/assets/js/RepLog/RepLogCreatorControlledComponents.js
 +++ b/assets/js/RepLog/RepLogCreatorControlledComponents.js
 @@ -6,6 +6,8 @@ export default class RepLogCreator extends Component {
@@ -11,7 +11,7 @@ index 5e5cb495..47843ac7 100644
              quantityInputError: ''
          };
  
-@@ -66,7 +68,7 @@ export default class RepLogCreator extends Component {
+@@ -61,7 +63,7 @@ export default class RepLogCreator extends Component {
                          What did you lift?
                      </label>
                      <select id="rep_log_item"
@@ -20,7 +20,7 @@ index 5e5cb495..47843ac7 100644
                              required="required"
                              className="form-control">
                          <option value="">What did you
-@@ -84,7 +86,7 @@ export default class RepLogCreator extends Component {
+@@ -79,7 +81,7 @@ export default class RepLogCreator extends Component {
                          How many times?
                      </label>
                      <input type="number" id="rep_log_reps"

@@ -55,11 +55,11 @@ index 0e7659fc..1af3bdb1 100644
 +    onAddRepLog: PropTypes.func.isRequired,
  };
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 373a8eb7..f5a1eba1 100644
+index 5234a1c3..dc3d6b13 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -14,7 +14,7 @@ function calculateTotalWeightLifted(repLogs) {
- }
+@@ -15,7 +15,7 @@ function calculateTotalWeightLifted(repLogs) {
+ const calculateTotalWeightFancier = repLogs => repLogs.reduce((total, log) => total + log.totalWeightLifted, 0);
  
  export default function RepLogs(props) {
 -    const { withHeart, highlightedRowId, onRowClick, repLogs, onNewItemSubmit } = props;
@@ -67,7 +67,7 @@ index 373a8eb7..f5a1eba1 100644
  
      let heart = '';
      if (withHeart) {
-@@ -50,7 +50,7 @@ export default function RepLogs(props) {
+@@ -51,7 +51,7 @@ export default function RepLogs(props) {
              </table>
  
              <RepLogCreator
@@ -76,7 +76,7 @@ index 373a8eb7..f5a1eba1 100644
              />
          </div>
      );
-@@ -60,6 +60,6 @@ RepLogs.propTypes = {
+@@ -61,6 +61,6 @@ RepLogs.propTypes = {
      withHeart: PropTypes.bool.isRequired,
      highlightedRowId: PropTypes.any,
      onRowClick: PropTypes.func.isRequired,
