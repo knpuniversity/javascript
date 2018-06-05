@@ -1,6 +1,7 @@
 'use strict';
 
 (function(window, $, Routing, swal) {
+
     class RepLogApp {
         constructor($wrapper) {
             this.$wrapper = $wrapper;
@@ -169,7 +170,7 @@
             // let {id, itemLabel, reps, totallyMadeUpKey = 'whatever!'} = repLog;
             // console.log(id, itemLabel, reps, totallyMadeUpKey);
 
-            const tplText = $('#js-rep-log-row-template').html();
+            const tplText = rowTemplate;
             const tpl = _.template(tplText);
 
             const html = tpl(repLog);
@@ -213,7 +214,7 @@
         }
     }
 
-    const rowTemplate = '
+    const rowTemplate = `
 <tr data-weight="<%= totalWeightLifted %>">
     <td><%= itemLabel %></td>
     <td><%= reps %></td>
@@ -227,7 +228,7 @@
         </a>
     </td>
 </tr>
-';
+`;
 
     window.RepLogApp = RepLogApp;
 })(window, jQuery, Routing, swal);
