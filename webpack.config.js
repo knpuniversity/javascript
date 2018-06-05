@@ -12,6 +12,8 @@ Encore
     .addEntry('layout', './public/assets/js/layout.js')
 
     .enableBuildNotifications()
+    // fixes modules that expect jQuery to be global
+    .autoProvidejQuery()
 ;
 
 // export the final configuration
