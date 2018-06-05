@@ -7,7 +7,7 @@ const shouldShowHeart = true;
 render(
     <RepLogApp
         withHeart={shouldShowHeart}
-        itemOptions={window.REP_LOG_APP_PROPS.itemOptions}
+        {...window.REP_LOG_APP_PROPS}
     />,
     document.getElementById('lift-stuff-app')
 );
