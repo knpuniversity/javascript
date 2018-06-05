@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDom from 'react-dom';
+import { render } from 'react-dom';
 
 class RepLogApp extends Component {
     render() {
@@ -8,4 +8,4 @@ class RepLogApp extends Component {
 }
 
 console.log(<RepLogApp />);
-ReactDom.render(<RepLogApp />, document.getElementById('lift-stuff-app'));
+render(<RepLogApp />, document.getElementById('lift-stuff-app'));
