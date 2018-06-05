@@ -3,7 +3,7 @@
 const Helper = require('./RepLogHelper');
 const $ = require('jquery');
 const swal = require('sweetalert2');
-const Routing = require('../../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js');
+const Routing = require('./Routing');
 
 let HelperInstances = new WeakMap();
 
