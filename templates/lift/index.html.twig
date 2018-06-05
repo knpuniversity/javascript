@@ -3,43 +3,7 @@
 {% block body %}
     <div class="row">
         <div id="lift-stuff-app"></div>
-    </div>
 
-    <br><br><br><br><br><br>
-
-    <hr />
-
-    <div class="row">
-        <div class="col-md-7 js-rep-log-table">
-            <h2>
-                Lift History
-            </h2>
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>What</th>
-                    <th>How many times?</th>
-                    <th>Weight</th>
-                    <th>&nbsp;</th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <th>Total</th>
-                        <th class="js-total-weight"></th>
-                        <td>&nbsp;</td>
-                    </tr>
-                </tfoot>
-            </table>
-
-            <div class="js-new-rep-log-form-wrapper">
-                {{ include('lift/_form.html.twig') }}
-            </div>
-        </div>
         <div class="col-md-5">
             <div class="leaderboard">
                 <h2 class="text-center">
@@ -67,6 +31,5 @@
     <script>
         window.REP_LOG_APP_PROPS = {{ repLogAppProps|json_encode|raw }};
     </script>
-    <script src="{{ asset('build/rep_log.js') }}"></script>
     <script src="{{ asset('build/rep_log_react.js') }}"></script>
 {% endblock %}
