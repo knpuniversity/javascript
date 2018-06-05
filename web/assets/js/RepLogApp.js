@@ -173,6 +173,9 @@
     /**
      * A "private" object
      */
+    class Helper {
+
+    }
     const Helper = function ($wrapper) {
         this.$wrapper = $wrapper;
     };
