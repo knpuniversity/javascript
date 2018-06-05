@@ -67,6 +67,7 @@
             $.each($form.serializeArray(), function(key, fieldData) {
                 formData[fieldData.name] = fieldData.value
             });
+            var self = this;
             $.ajax({
                 url: $form.data('url'),
                 method: 'POST',
@@ -76,10 +77,14 @@
                     console.log('success!');
                 },
                 error: function(jqXHR) {
-                    // todo
-                    console.log('error :(');
+                    var errorData = JSON.parse(jqXHR.responseText);
+                    self._mapErrorsToForm(errorData.errors);
                 }
             });
+        },
+
+        _mapErrorsToForm: function(errorData) {
+            console.log(errorData);
         }
     });
 
