@@ -21,19 +21,20 @@ class LiftController extends BaseController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
 
-        $repLogAppState = [
+        $repLogAppProps = [
+            'withHeart' => true,
             'itemOptions' => [],
         ];
         foreach (RepLog::getThingsYouCanLiftChoices() as $label => $id) {
-            $repLogAppState['itemOptions'][] = [
+            $repLogAppProps['itemOptions'][] = [
                 'id' => $id,
                 'text' => $translator->trans($label),
             ];
         }
-        dump($repLogAppState);die;
 
         return $this->render('lift/index.html.twig', array(
             'leaderboard' => $this->getLeaders($replogRepo, $userRepo),
+            'repLogAppProps' => $repLogAppProps,
         ));
     }
 
