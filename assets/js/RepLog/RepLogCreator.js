@@ -86,7 +86,9 @@ export default class RepLogCreator extends Component {
                     {quantityInputError && <span className="help-block">{quantityInputError}</span>}
                 </div>
                 {' '}
-                <Button type="submit" text="I Lifted it!" />
+                <Button type="submit">
+                    I Lifted it!
+                </Button>
             </form>
         );
     }

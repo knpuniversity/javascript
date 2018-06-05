@@ -6,10 +6,7 @@ export default function Button(props) {
         <button
             className="btn"
             {...props}
-        >{props.text}</button>
+        >{props.children}</button>
     );
 }
 
-Button.propTypes = {
-    text: PropTypes.string.isRequired
-};
