@@ -15,7 +15,11 @@ export default function RepLogList(props) {
                 <td>{repLog.itemLabel}</td>
                 <td>{repLog.reps}</td>
                 <td>{repLog.totalWeightLifted}</td>
-                <td>...</td>
+                <td>
+                    <a href="#">
+                        <span className="fa fa-trash"></span>
+                    </a>
+                </td>
             </tr>
         ))}
         </tbody>
