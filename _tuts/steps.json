@@ -1646,6 +1646,16 @@
             "description": null
         },
         {
+            "id": "fetch-polyfill-fetch",
+            "name": "Fetch: Polyfill fetch",
+            "description": null
+        },
+        {
+            "id": "fetch-polyfill-promise",
+            "name": "Fetch: Polyfill promise",
+            "description": null
+        },
+        {
             "id": "loading-add-loading-row",
             "name": "Loading: Add loading row",
             "description": null
@@ -1761,5 +1771,5 @@
             "description": null
         }
     ],
-    "sha": "2e38a25df5947f32a2f55dfe6df6446d16154d91"
+    "sha": "d08ed9909280eff35815a061178e44625ab7a18a"
 }
