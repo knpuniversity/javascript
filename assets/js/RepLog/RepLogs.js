@@ -26,6 +26,8 @@ export default function RepLogs(props) {
         <div className="col-md-7">
             <h2>Lift Stuff! {heart}</h2>
 
+            <input type="number" />
+
             <table className="table table-striped">
                 <thead>
                 <tr>
