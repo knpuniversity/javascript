@@ -20,6 +20,8 @@ Encore
         // copies to {output}/static
         { from: './assets/static', to: 'static' }
     ]))
+
+    .enableSassLoader()
 ;
 
 // export the final configuration
