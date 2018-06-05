@@ -100,7 +100,12 @@
                 method: 'POST',
                 data: JSON.stringify(data)
             }).then(function(data, textStatus, jqXHR) {
-                console.log(jqXHR.getResponseHeader('Location'));
+                $.ajax({
+                    url: jqXHR.getResponseHeader('Location')
+                }).then(function(data) {
+                    console.log('now we are REALLY done');
+                    console.log(data);
+                });
             });
         },
 
