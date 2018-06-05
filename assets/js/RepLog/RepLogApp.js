@@ -8,7 +8,7 @@ export default class RepLogApp extends Component {
         }
 
         return (
-            <div className="col-md-7 js-rep-log-table">
+            <div className="col-md-7">
                 <h2>Lift Stuff! {heart}</h2>
 
                 <table className="table table-striped">
@@ -21,12 +21,18 @@ export default class RepLogApp extends Component {
                     </tr>
                     </thead>
                     <tbody>
+                    <tr>
+                        <td>Big Fat Cat</td>
+                        <td>10</td>
+                        <td>180</td>
+                        <td>...</td>
+                    </tr>
                     </tbody>
                     <tfoot>
                     <tr>
                         <td>&nbsp;</td>
                         <th>Total</th>
-                        <th className="js-total-weight"></th>
+                        <th>TODO</th>
                         <td>&nbsp;</td>
                     </tr>
                     </tfoot>
