@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 export default class RepLogList extends Component {
     render() {
+        const { highlightedRowId } = this.props;
+
         const repLogs = [
             { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
             { id: 2, reps: 10, itemLabel: 'Big Fat Cat', totalWeightLifted: 180 },

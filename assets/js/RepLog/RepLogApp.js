@@ -36,7 +36,7 @@ export default class RepLogApp extends Component {
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
-                    <RepLogList/>
+                    <RepLogList highlightedRowId={highlightedRowId}/>
                     <tfoot>
                     <tr>
                         <td>&nbsp;</td>
