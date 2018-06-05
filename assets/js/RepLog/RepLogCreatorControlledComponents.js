@@ -11,9 +11,6 @@ export default class RepLogCreator extends Component {
             quantityInputError: ''
         };
 
-        this.quantityInput = React.createRef();
-        this.itemSelect = React.createRef();
-
         this.itemOptions = [
             { id: 'cat', text: 'Cat' },
             { id: 'fat_cat', text: 'Big Fat Cat' },
@@ -22,16 +19,15 @@ export default class RepLogCreator extends Component {
         ];
 
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.handleSelectedItemChange = this.handleSelectedItemChange.bind(this);
+        this.handleQuantityInputChange = this.handleQuantityInputChange.bind(this);
     }
 
     handleFormSubmit(event) {
         event.preventDefault();
         const { onAddRepLog } = this.props;
 
-        const quantityInput = this.quantityInput.current;
-        const itemSelect = this.itemSelect.current;
-
-        if (quantityInput.value <= 0) {
+        if (this.state.quantityValue <= 0) {
             this.setState({
                 quantityInputError: 'Please enter a value greater than 0'
             });
@@ -41,14 +37,26 @@ export default class RepLogCreator extends Component {
         }
 
         onAddRepLog(
-            itemSelect.options[itemSelect.selectedIndex].text,
-            quantityInput.value
+            'TODO - just wait a second!',
+            this.state.quantityValue
         );
 
-        quantityInput.value = '';
-        itemSelect.selectedIndex = 0;
         this.setState({
+            selectedItemId: '',
+            quantityValue: 0,
             quantityInputError: ''
+        });
+    }
+
+    handleSelectedItemChange(event) {
+        this.setState({
+            selectedItemId: event.target.value
+        });
+    }
+
+    handleQuantityInputChange(event) {
+        this.setState({
+            quantityValue: event.target.value
         });
     }
 
@@ -64,6 +72,7 @@ export default class RepLogCreator extends Component {
                     </label>
                     <select id="rep_log_item"
                             value={this.state.selectedItemId}
+                            onChange={this.handleSelectedItemChange}
                             required="required"
                             className="form-control">
                         <option value="">What did you
@@ -82,6 +91,7 @@ export default class RepLogCreator extends Component {
                     </label>
                     <input type="number" id="rep_log_reps"
                            value={this.state.quantityValue}
+                           onChange={this.handleQuantityInputChange}
                            required="required"
                            placeholder="How many times?"
                            className="form-control"/>
