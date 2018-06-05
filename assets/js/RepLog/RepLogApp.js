@@ -42,16 +42,14 @@ export default class RepLogApp extends Component {
         };
 
         createRepLog(newRep)
-            .then(data => {
-                console.log(data);
+            .then(repLog => {
+                this.setState(prevState => {
+                    const newRepLogs = [...prevState.repLogs, repLog];
+
+                    return {repLogs: newRepLogs};
+                })
             })
         ;
-
-        // this.setState(prevState => {
-        //     const newRepLogs = [...prevState.repLogs, newRep];
-        //
-        //     return {repLogs: newRepLogs};
-        // })
     }
 
     handleHeartChange(heartCount) {
