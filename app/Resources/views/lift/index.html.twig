@@ -71,7 +71,7 @@
     <script src="{{ asset('assets/js/RepLogApp.js') }}"></script>
 
     <script>
-        console.log(window);
+        console.log(window === this);
         $(document).ready(function() {
             var $table = $('.js-rep-log-table');
             RepLogApp.initialize($table);
