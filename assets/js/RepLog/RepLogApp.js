@@ -16,6 +16,7 @@ export default class RepLogApp extends Component {
             isSavingNewRepLog: false,
             successMessage: ''
         };
+        this.clearSuccessMessageTimeout = 0;
 
         this.handleRowClick = this.handleRowClick.bind(this);
         this.handleAddRepLog = this.handleAddRepLog.bind(this);
@@ -31,6 +32,10 @@ export default class RepLogApp extends Component {
                     isLoaded: true
                 })
             });
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.clearSuccessMessageTimeout);
     }
 
     handleRowClick(repLogId) {
@@ -55,9 +60,10 @@ export default class RepLogApp extends Component {
                     return {
                         repLogs: newRepLogs,
                         isSavingNewRepLog: false,
-                        successMessage: 'Rep Log Saved!'
                     };
-                })
+                });
+
+                this.setSuccessMessage('Rep Log Saved!');
             })
         ;
     }
@@ -78,6 +84,20 @@ export default class RepLogApp extends Component {
                 repLogs: prevState.repLogs.filter(repLog => repLog.id !== id)
             };
         });
+    }
+
+    setSuccessMessage(message) {
+        this.setState({
+            successMessage: message
+        });
+
+        clearTimeout(this.clearSuccessMessageTimeout);
+        this.clearSuccessMessageTimeout = setTimeout(() => {
+            this.setState({
+                successMessage: ''
+            });
+            this.clearSuccessMessageTimeout = 0;
+        }, 3000)
     }
 
     render() {
