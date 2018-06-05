@@ -7,9 +7,9 @@ Encore
     // the public path used by the web server to access the previous directory
     .setPublicPath('/build')
 
-    .addEntry('rep_log', './public/assets/js/rep_log.js')
-    .addEntry('login', './public/assets/js/login.js')
-    .addEntry('layout', './public/assets/js/layout.js')
+    .addEntry('rep_log', './assets/js/rep_log.js')
+    .addEntry('login', './assets/js/login.js')
+    .addEntry('layout', './assets/js/layout.js')
 
     .enableBuildNotifications()
     // fixes modules that expect jQuery to be global
