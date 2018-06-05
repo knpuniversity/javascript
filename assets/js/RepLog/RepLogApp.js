@@ -16,6 +16,7 @@ export default class RepLogApp extends Component {
         };
 
         this.handleRowClick = this.handleRowClick.bind(this);
+        this.handleNewItemSubmit = this.handleNewItemSubmit.bind(this);
     }
 
     handleRowClick(repLogId) {
