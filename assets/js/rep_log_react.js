@@ -2,5 +2,9 @@ import React from 'react';
 import { render } from 'react-dom';
 import RepLogApp from './RepLog/RepLogApp';
 
-console.log(<RepLogApp />);
-render(<RepLogApp />, document.getElementById('lift-stuff-app'));
+const shouldShowHeart = true;
+
+render(
+    <RepLogApp withHeart={shouldShowHeart} />,
+    document.getElementById('lift-stuff-app')
+);
