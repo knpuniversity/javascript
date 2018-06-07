@@ -364,7 +364,7 @@ index 87ee4ddf..e8e3efef 100644
      <script src="{{ asset('build/rep_log_react.js') }}"></script>
  {% endblock %}
 diff --git a/webpack.config.js b/webpack.config.js
-index 96848a7e..ec482c60 100644
+index bc718853..05389360 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -9,7 +9,6 @@ Encore

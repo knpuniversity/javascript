@@ -1,0 +1,86 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 580bf812..b7d6451f 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -61,10 +61,11 @@ export default class RepLogApp extends Component {
+                 this.setState(prevState => {
+                     const newRepLogs = [...prevState.repLogs, repLog];
+ 
+-                    return Object.assign({
++                    return {
++                        ...newState,
+                         repLogs: newRepLogs,
+                         newRepLogValidationErrorMessage: '',
+-                    }, newState);
++                    }
+                 });
+ 
+                 this.setSuccessMessage('Rep Log Saved!');
+@@ -74,9 +75,10 @@ export default class RepLogApp extends Component {
+                     const errors = errorsData.errors;
+                     const firstError = errors[Object.keys(errors)[0]];
+ 
+-                    this.setState(Object.assign({
++                    this.setState({
++                        ...newState,
+                         newRepLogValidationErrorMessage: firstError
+-                    }, newState));
++                    });
+                 })
+             })
+         ;
+diff --git a/package.json b/package.json
+index 5f3f034e..83cd6231 100644
+--- a/package.json
++++ b/package.json
+@@ -1,6 +1,7 @@
+ {
+   "devDependencies": {
+     "@symfony/webpack-encore": "^0.19.0",
++    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+     "babel-preset-react": "^6.24.1",
+     "bootstrap": "3",
+     "copy-webpack-plugin": "^4.4.1",
+diff --git a/webpack.config.js b/webpack.config.js
+index 96848a7e..bc718853 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -27,6 +27,9 @@ Encore
+     .cleanupOutputBeforeBuild()
+     .enableVersioning(Encore.isProduction())
+     .enableReactPreset()
++    .configureBabel((config) => {
++        config.plugins.push('transform-object-rest-spread');
++    })
+ ;
+ 
+ // export the final configuration
+diff --git a/yarn.lock b/yarn.lock
+index 7135631c..d74c9246 100644
+--- a/yarn.lock
++++ b/yarn.lock
+@@ -522,6 +522,10 @@ babel-plugin-syntax-jsx@^6.3.13, babel-plugin-syntax-jsx@^6.8.0:
+   version "6.18.0"
+   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
+ 
++babel-plugin-syntax-object-rest-spread@^6.8.0:
++  version "6.13.0"
++  resolved "https://registry.yarnpkg.com/babel-plugin-syntax-object-rest-spread/-/babel-plugin-syntax-object-rest-spread-6.13.0.tgz#fd6536f2bce13836ffa3a5458c4903a597bb3bf5"
++
+ babel-plugin-syntax-trailing-function-commas@^6.22.0:
+   version "6.22.0"
+   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-trailing-function-commas/-/babel-plugin-syntax-trailing-function-commas-6.22.0.tgz#ba0360937f8d06e40180a43fe0d5616fff532cf3"
+@@ -717,6 +721,13 @@ babel-plugin-transform-flow-strip-types@^6.22.0:
+     babel-plugin-syntax-flow "^6.18.0"
+     babel-runtime "^6.22.0"
+ 
++babel-plugin-transform-object-rest-spread@^6.26.0:
++  version "6.26.0"
++  resolved "https://registry.yarnpkg.com/babel-plugin-transform-object-rest-spread/-/babel-plugin-transform-object-rest-spread-6.26.0.tgz#0f36692d50fef6b7e2d4b3ac1478137a963b7b06"
++  dependencies:
++    babel-plugin-syntax-object-rest-spread "^6.8.0"
++    babel-runtime "^6.26.0"
++
+ babel-plugin-transform-react-display-name@^6.23.0:
+   version "6.25.0"
+   resolved "https://registry.yarnpkg.com/babel-plugin-transform-react-display-name/-/babel-plugin-transform-react-display-name-6.25.0.tgz#67e2bf1f1e9c93ab08db96792e05392bf2cc28d1"

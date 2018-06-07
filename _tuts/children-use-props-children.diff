@@ -1,8 +1,8 @@
 diff --git a/assets/js/Components/Button.js b/assets/js/Components/Button.js
-index 595101cc..cf8f5d57 100644
+index 595101cc..627c75ee 100644
 --- a/assets/js/Components/Button.js
 +++ b/assets/js/Components/Button.js
-@@ -6,10 +6,7 @@ export default function Button(props) {
+@@ -6,10 +6,6 @@ export default function Button(props) {
          <button
              className="btn"
              {...props}
@@ -10,12 +10,12 @@ index 595101cc..cf8f5d57 100644
 +        >{props.children}</button>
      );
  }
- 
+-
 -Button.propTypes = {
 -    text: PropTypes.string.isRequired
 -};
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 6f9c2ac2..a1826b4c 100644
+index 6f9c2ac2..1e7ec2d9 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -86,7 +86,9 @@ export default class RepLogCreator extends Component {
@@ -24,7 +24,7 @@ index 6f9c2ac2..a1826b4c 100644
                  {' '}
 -                <Button type="submit" text="I Lifted it!" />
 +                <Button type="submit">
-+                    I Lifted it!
++                    I Lifted it <span className="fa fa-plus-circle"></span>
 +                </Button>
              </form>
          );

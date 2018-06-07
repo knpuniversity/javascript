@@ -1,5 +1,5 @@
 diff --git a/assets/js/Components/Button.js b/assets/js/Components/Button.js
-index 56c3a728..d9acec48 100644
+index 36db0038..433dfd92 100644
 --- a/assets/js/Components/Button.js
 +++ b/assets/js/Components/Button.js
 @@ -2,10 +2,12 @@ import React from 'react';

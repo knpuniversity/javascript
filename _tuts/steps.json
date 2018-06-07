@@ -1626,8 +1626,8 @@
             "description": null
         },
         {
-            "id": "fetch-wrapper-dofetch-function",
-            "name": "Fetch: Wrapper doFetch function",
+            "id": "fetch-add-wrapper-function",
+            "name": "Fetch: Add wrapper function",
             "description": null
         },
         {
@@ -1701,6 +1701,11 @@
             "description": null
         },
         {
+            "id": "server-validation-use-object-spread",
+            "name": "Server Validation: Use object spread",
+            "description": null
+        },
+        {
             "id": "initial-data-move-itemoptions-to-state",
             "name": "Initial Data: Move itemOptions to state",
             "description": null
@@ -1771,5 +1776,5 @@
             "description": null
         }
     ],
-    "sha": "d08ed9909280eff35815a061178e44625ab7a18a"
+    "sha": "3d4ba8e7e138e12e0af138d48212e3341ac2a8a3"
 }

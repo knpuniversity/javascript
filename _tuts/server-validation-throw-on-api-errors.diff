@@ -11,10 +11,10 @@ index 06d44bce..ee2e47ea 100644
  
          this.handleFormSubmit = this.handleFormSubmit.bind(this);
 diff --git a/assets/js/api/rep_log_api.js b/assets/js/api/rep_log_api.js
-index 2fb160e2..612eec30 100644
+index 43728282..9789046f 100644
 --- a/assets/js/api/rep_log_api.js
 +++ b/assets/js/api/rep_log_api.js
-@@ -2,11 +2,23 @@ function doFetch(url, options) {
+@@ -2,11 +2,23 @@ function fetchJson(url, options) {
      return fetch(url, Object.assign({
          credentials: 'same-origin',
      }, options))
