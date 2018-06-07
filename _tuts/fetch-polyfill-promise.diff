@@ -23,10 +23,10 @@ index 742a0a34..5f3f034e 100644
      "react": "^16.3.2",
      "react-dom": "^16.3.2",
 diff --git a/yarn.lock b/yarn.lock
-index a8f10310..7135631c 100644
+index b12e0dea..8f4f7a22 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -4737,6 +4737,10 @@ promise-inflight@^1.0.1:
+@@ -4741,6 +4741,10 @@ promise-inflight@^1.0.1:
    version "1.0.1"
    resolved "https://registry.yarnpkg.com/promise-inflight/-/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"
  

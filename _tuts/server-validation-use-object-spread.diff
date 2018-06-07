@@ -56,7 +56,7 @@ index 96848a7e..bc718853 100644
  
  // export the final configuration
 diff --git a/yarn.lock b/yarn.lock
-index 7135631c..d74c9246 100644
+index 8f4f7a22..0421a597 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -522,6 +522,10 @@ babel-plugin-syntax-jsx@^6.3.13, babel-plugin-syntax-jsx@^6.8.0:

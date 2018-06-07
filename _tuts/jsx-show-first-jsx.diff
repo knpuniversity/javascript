@@ -41,7 +41,7 @@ index 9276beb7..96848a7e 100644
  
  // export the final configuration
 diff --git a/yarn.lock b/yarn.lock
-index 7fabca65..2002b98a 100644
+index e51543c7..882ca63c 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -385,6 +385,14 @@ babel-helper-builder-binary-assignment-operator-visitor@^6.24.1:

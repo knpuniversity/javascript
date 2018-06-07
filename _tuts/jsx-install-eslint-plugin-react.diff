@@ -22,7 +22,7 @@ index e2345ab8..d540d5b9 100644
      "jquery": "^3.3.1",
      "node-sass": "^4.7.2",
 diff --git a/yarn.lock b/yarn.lock
-index 2002b98a..1bbc7a37 100644
+index 882ca63c..c27e0ad4 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -1842,7 +1842,7 @@ dns-txt@^2.0.2:
