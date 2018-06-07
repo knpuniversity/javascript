@@ -12,10 +12,10 @@ index cdd762f3..3ebc2894 100644
                      <label className="sr-only control-label required"
                             htmlFor="rep_log_item">
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index dc3d6b13..6a5f7640 100644
+index e0f7f030..35c989d2 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -50,9 +50,13 @@ export default function RepLogs(props) {
+@@ -56,9 +56,13 @@ export default function RepLogs(props) {
                  </tfoot>
              </table>
  

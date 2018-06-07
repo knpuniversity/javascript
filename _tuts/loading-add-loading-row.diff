@@ -71,19 +71,20 @@ index 669fccf7..f370d4c6 100644
 +    isSavingNewRepLog: PropTypes.bool.isRequired
  };
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 7faf3897..11aea351 100644
+index 55956333..9cdb76c7 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -16,7 +16,7 @@ function calculateTotalWeightLifted(repLogs) {
- const calculateTotalWeightFancier = repLogs => repLogs.reduce((total, log) => total + log.totalWeightLifted, 0);
- 
- export default function RepLogs(props) {
--    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded } = props;
-+    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog } = props;
+@@ -25,7 +25,8 @@ export default function RepLogs(props) {
+         numberOfHearts,
+         onHeartChange,
+         onDeleteRepLog,
+-        isLoaded
++        isLoaded,
++        isSavingNewRepLog
+     } = props;
  
      let heart = '';
-     if (withHeart) {
-@@ -50,6 +50,7 @@ export default function RepLogs(props) {
+@@ -60,6 +61,7 @@ export default function RepLogs(props) {
                      onDeleteRepLog={onDeleteRepLog}
                      repLogs={repLogs}
                      isLoaded={isLoaded}
@@ -91,7 +92,7 @@ index 7faf3897..11aea351 100644
                  />
                  <tfoot>
                  <tr>
-@@ -82,4 +83,5 @@ RepLogs.propTypes = {
+@@ -92,4 +94,5 @@ RepLogs.propTypes = {
      onHeartChange: PropTypes.func.isRequired,
      onDeleteRepLog: PropTypes.func.isRequired,
      isLoaded: PropTypes.bool.isRequired,

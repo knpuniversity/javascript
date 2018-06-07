@@ -23,18 +23,20 @@ index 6fb8b587..f5f7dd03 100644
                  })
              })
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 11aea351..53a9eb09 100644
+index 9cdb76c7..ce10dfa2 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -16,13 +16,18 @@ function calculateTotalWeightLifted(repLogs) {
- const calculateTotalWeightFancier = repLogs => repLogs.reduce((total, log) => total + log.totalWeightLifted, 0);
- 
- export default function RepLogs(props) {
--    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog } = props;
-+    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage } = props;
+@@ -26,7 +26,8 @@ export default function RepLogs(props) {
+         onHeartChange,
+         onDeleteRepLog,
+         isLoaded,
+-        isSavingNewRepLog
++        isSavingNewRepLog,
++        successMessage
+     } = props;
  
      let heart = '';
-     if (withHeart) {
+@@ -34,6 +35,11 @@ export default function RepLogs(props) {
          heart = <span>{'❤️'.repeat(numberOfHearts)}</span>;
      }
  
@@ -46,7 +48,7 @@ index 11aea351..53a9eb09 100644
      return (
          <div className="col-md-7">
              <h2>Lift Stuff! {heart}</h2>
-@@ -35,6 +40,10 @@ export default function RepLogs(props) {
+@@ -46,6 +52,10 @@ export default function RepLogs(props) {
                  }}
              />
  
@@ -57,7 +59,7 @@ index 11aea351..53a9eb09 100644
              <table className="table table-striped">
                  <thead>
                  <tr>
-@@ -84,4 +93,5 @@ RepLogs.propTypes = {
+@@ -95,4 +105,5 @@ RepLogs.propTypes = {
      onDeleteRepLog: PropTypes.func.isRequired,
      isLoaded: PropTypes.bool.isRequired,
      isSavingNewRepLog: PropTypes.bool.isRequired,

@@ -1511,6 +1511,11 @@
             "description": null
         },
         {
+            "id": "replogcreator-use-multiline-props-in-replogs",
+            "name": "RepLogCreator: Use multiline props in RepLogs",
+            "description": null
+        },
+        {
             "id": "replogcreator-make-itemoptions-array",
             "name": "RepLogCreator: Make itemOptions array",
             "description": null
@@ -1776,5 +1781,5 @@
             "description": null
         }
     ],
-    "sha": "3d4ba8e7e138e12e0af138d48212e3341ac2a8a3"
+    "sha": "06eee87ff5edf11a5b33a59e491ee0f2930bda9c"
 }

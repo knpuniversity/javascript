@@ -39,14 +39,14 @@ index 8e01bfab..d586e52e 100644
          this.setState({highlightedRowId: repLogId});
      }
 diff --git a/assets/js/api/rep_log_api.js b/assets/js/api/rep_log_api.js
-index ea1a68fc..49457f77 100644
+index ea1a68fc..b59b59a6 100644
 --- a/assets/js/api/rep_log_api.js
 +++ b/assets/js/api/rep_log_api.js
-@@ -9,5 +9,6 @@ export function getRepLogs() {
+@@ -8,6 +8,6 @@ export function getRepLogs() {
+         credentials: 'same-origin'
      })
          .then(response => {
-             return response.json();
--        });
-+        })
-+        .then(data => data.items);
+-            return response.json();
++            return response.json().then((data) => data.items)
+         });
  }

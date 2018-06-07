@@ -16,7 +16,7 @@ index 1e622e18..119ee426 100644
          ))}
          </tbody>
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index ec16b6f7..c1f2e3ea 100644
+index 4ad48ff9..52163e37 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -1,8 +1,8 @@

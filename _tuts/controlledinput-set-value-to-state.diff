@@ -13,15 +13,17 @@ index 79ff0c5b..4123121c 100644
  
          this.handleRowClick = this.handleRowClick.bind(this);
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 46732249..62b08d06 100644
+index 22cf92bd..ce85ca75 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -15,18 +15,21 @@ function calculateTotalWeightLifted(repLogs) {
- const calculateTotalWeightFancier = repLogs => repLogs.reduce((total, log) => total + log.totalWeightLifted, 0);
- 
- export default function RepLogs(props) {
--    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog } = props;
-+    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts } = props;
+@@ -20,19 +20,23 @@ export default function RepLogs(props) {
+         highlightedRowId,
+         onRowClick,
+         repLogs,
+-        onAddRepLog
++        onAddRepLog,
++        numberOfHearts
+     } = props;
  
      let heart = '';
      if (withHeart) {
@@ -41,7 +43,7 @@ index 46732249..62b08d06 100644
  
              <table className="table table-striped">
                  <thead>
-@@ -68,5 +71,6 @@ RepLogs.propTypes = {
+@@ -74,5 +78,6 @@ RepLogs.propTypes = {
      highlightedRowId: PropTypes.any,
      onRowClick: PropTypes.func.isRequired,
      onAddRepLog: PropTypes.func.isRequired,

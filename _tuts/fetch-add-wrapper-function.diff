@@ -1,8 +1,8 @@
 diff --git a/assets/js/api/rep_log_api.js b/assets/js/api/rep_log_api.js
-index f1a234b6..9b404757 100644
+index b6c40dd1..9b404757 100644
 --- a/assets/js/api/rep_log_api.js
 +++ b/assets/js/api/rep_log_api.js
-@@ -1,21 +1,24 @@
+@@ -1,20 +1,24 @@
 +function fetchJson(url, options) {
 +    return fetch(url, Object.assign({
 +        credentials: 'same-origin',
@@ -22,10 +22,10 @@ index f1a234b6..9b404757 100644
 -        credentials: 'same-origin'
 -    })
 -        .then(response => {
--            return response.json();
--        })
+-            return response.json().then((data) => data.items)
+-        });
 +    return fetchJson('/reps')
-         .then(data => data.items);
++        .then(data => data.items);
  }
  
  export function deleteRepLog(id) {

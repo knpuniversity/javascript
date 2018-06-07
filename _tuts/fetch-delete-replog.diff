@@ -21,12 +21,12 @@ index a9f26e60..03fd1165 100644
          // filter returns a new array
          this.setState((prevState) => {
 diff --git a/assets/js/api/rep_log_api.js b/assets/js/api/rep_log_api.js
-index 49457f77..f1a234b6 100644
+index b59b59a6..b6c40dd1 100644
 --- a/assets/js/api/rep_log_api.js
 +++ b/assets/js/api/rep_log_api.js
-@@ -12,3 +12,10 @@ export function getRepLogs() {
-         })
-         .then(data => data.items);
+@@ -11,3 +11,10 @@ export function getRepLogs() {
+             return response.json().then((data) => data.items)
+         });
  }
 +
 +export function deleteRepLog(id) {

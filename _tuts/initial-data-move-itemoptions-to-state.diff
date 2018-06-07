@@ -62,19 +62,20 @@ index b2e0748e..fd7cd271 100644
 +    itemOptions: PropTypes.array.isRequired
  };
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 2da5d87f..8cf5dc13 100644
+index 5f5ee84d..14172fb9 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -16,7 +16,7 @@ function calculateTotalWeightLifted(repLogs) {
- const calculateTotalWeightFancier = repLogs => repLogs.reduce((total, log) => total + log.totalWeightLifted, 0);
- 
- export default function RepLogs(props) {
--    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage, newRepLogValidationErrorMessage } = props;
-+    const { withHeart, highlightedRowId, onRowClick, repLogs, onAddRepLog, numberOfHearts, onHeartChange, onDeleteRepLog, isLoaded, isSavingNewRepLog, successMessage, newRepLogValidationErrorMessage, itemOptions } = props;
+@@ -28,7 +28,8 @@ export default function RepLogs(props) {
+         isLoaded,
+         isSavingNewRepLog,
+         successMessage,
+-        newRepLogValidationErrorMessage
++        newRepLogValidationErrorMessage,
++        itemOptions
+     } = props;
  
      let heart = '';
-     if (withHeart) {
-@@ -76,6 +76,7 @@ export default function RepLogs(props) {
+@@ -89,6 +90,7 @@ export default function RepLogs(props) {
                      <RepLogCreator
                          onAddRepLog={onAddRepLog}
                          validationErrorMessage={newRepLogValidationErrorMessage}
@@ -82,7 +83,7 @@ index 2da5d87f..8cf5dc13 100644
                      />
                  </div>
              </div>
-@@ -96,4 +97,5 @@ RepLogs.propTypes = {
+@@ -109,4 +111,5 @@ RepLogs.propTypes = {
      isSavingNewRepLog: PropTypes.bool.isRequired,
      successMessage: PropTypes.string.isRequired,
      newRepLogValidationErrorMessage: PropTypes.string.isRequired,

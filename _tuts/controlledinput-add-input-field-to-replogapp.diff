@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 6a5f7640..46732249 100644
+index 35c989d2..22cf92bd 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -26,6 +26,8 @@ export default function RepLogs(props) {
+@@ -32,6 +32,8 @@ export default function RepLogs(props) {
          <div className="col-md-7">
              <h2>Lift Stuff! {heart}</h2>
  

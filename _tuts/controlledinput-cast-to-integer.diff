@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 9ef1b539..1d03af4d 100644
+index 2ae7329d..40e4d6fc 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -30,7 +30,7 @@ export default function RepLogs(props) {
+@@ -38,7 +38,7 @@ export default function RepLogs(props) {
                  type="number"
                  value={numberOfHearts}
                  onChange={(e) => {
