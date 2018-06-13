@@ -14,7 +14,7 @@ index 865069b1..6bca809e 100644
  
      render() {
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index afa98df0..e45802f4 100644
+index b21a9de2..e70dea42 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -2,11 +2,20 @@ import React, { Component } from 'react';

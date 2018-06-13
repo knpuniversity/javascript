@@ -29,7 +29,7 @@ index 65f6b8cc..79ff0c5b 100644
          );
      }
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 0e7659fc..1af3bdb1 100644
+index 33eac42a..60c94028 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -13,12 +13,12 @@ export default class RepLogCreator extends Component {
@@ -47,7 +47,7 @@ index 0e7659fc..1af3bdb1 100644
              itemSelect.options[itemSelect.selectedIndex].text,
              quantityInput.value
          );
-@@ -70,5 +70,5 @@ export default class RepLogCreator extends Component {
+@@ -69,5 +69,5 @@ export default class RepLogCreator extends Component {
  }
  
  RepLogCreator.propTypes = {

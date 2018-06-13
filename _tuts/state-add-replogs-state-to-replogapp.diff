@@ -32,7 +32,7 @@ index 550c0e80..684435ea 100644
          );
      }
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index f8768c9e..76d1aa03 100644
+index dfe5d9bf..6c397a95 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
@@ -52,7 +52,7 @@ index f8768c9e..76d1aa03 100644
                  />
                  <tfoot>
                  <tr>
-@@ -79,5 +80,6 @@ export default function RepLogs(props) {
+@@ -43,5 +44,6 @@ export default function RepLogs(props) {
  RepLogs.propTypes = {
      withHeart: PropTypes.bool.isRequired,
      highlightedRowId: PropTypes.any,

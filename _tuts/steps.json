@@ -1161,6 +1161,11 @@
             "description": null
         },
         {
+            "id": "pre-react-updating-readme-for-yarn",
+            "name": "PRE_REACT: Updating Readme for yarn",
+            "description": null
+        },
+        {
             "id": "eslint-install-configure-eslint",
             "name": "Eslint: Install\/configure eslint",
             "description": null
@@ -1281,18 +1286,18 @@
             "description": null
         },
         {
-            "id": "form-paste-in-form",
-            "name": "Form: Paste in form",
+            "id": "form-empty-delete-me",
+            "name": "Form: Empty delete me",
             "description": null
         },
         {
-            "id": "form-cleanup",
-            "name": "Form: Cleanup",
+            "id": "form-empty-delete-me-2",
+            "name": "Form: Empty delete me 2",
             "description": null
         },
         {
-            "id": "form-add-manual-whitespace",
-            "name": "Form: Add manual whitespace",
+            "id": "form-empty-delete-me-3",
+            "name": "Form: Empty delete me 3",
             "description": null
         },
         {
@@ -1408,6 +1413,26 @@
         {
             "id": "state-show-fancier-way-to-calculate-total-weight",
             "name": "State: Show fancier way to calculate total weight",
+            "description": null
+        },
+        {
+            "id": "form-copy-in-raw-form",
+            "name": "Form: Copy in raw form",
+            "description": null
+        },
+        {
+            "id": "form-cleanup-the-form",
+            "name": "Form: Cleanup the form",
+            "description": null
+        },
+        {
+            "id": "form-add-some-whitespace",
+            "name": "Form: Add some whitespace",
+            "description": null
+        },
+        {
+            "id": "form-empty-delete-me-4",
+            "name": "Form: Empty delete me 4",
             "description": null
         },
         {
@@ -1781,5 +1806,5 @@
             "description": null
         }
     ],
-    "sha": "0674e2a8d4c4eb695f756ed489cf01d174fc6445"
+    "sha": "fbfd36df6fec9259936dbe7629a4b703e1a38985"
 }

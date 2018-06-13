@@ -1,0 +1,21 @@
+diff --git a/README.md b/README.md
+index 393dedd3..e5515558 100644
+--- a/README.md
++++ b/README.md
+@@ -40,6 +40,16 @@ If you get an error that the database exists, that should
+ be ok. But if you have problems, completely drop the
+ database (`doctrine:database:drop --force`) and try again.
+ 
++**Build your Assets**
++
++To build your assets, install the dependencies with yarn and then
++run encore:
++
++```
++yarn install
++yarn run encore dev --watch
++```
++
+ **Start the built-in web server**
+ 
+ You can use Nginx or Apache, but the built-in web server works

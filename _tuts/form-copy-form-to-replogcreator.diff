@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 8124d698..c1a1bccf 100644
+index 8124d698..90442bcf 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
-@@ -3,6 +3,40 @@ import PropTypes from 'prop-types';
+@@ -3,6 +3,39 @@ import PropTypes from 'prop-types';
  
  export default function RepLogCreator(props) {
      return (
@@ -38,17 +38,16 @@ index 8124d698..c1a1bccf 100644
 +                       className="form-control"/>
 +            </div>
 +            {' '}
-+            <button type="submit" className="btn btn-primary">I Lifted
-+                it!
++            <button type="submit" className="btn btn-primary">I Lifted it!
 +            </button>
 +        </form>
      );
  }
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index fc7e944e..0aca769d 100644
+index 642c5405..0aca769d 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -58,42 +58,6 @@ export default function RepLogs(props) {
+@@ -58,41 +58,6 @@ export default function RepLogs(props) {
              </table>
  
              <RepLogCreator/>
@@ -84,8 +83,7 @@ index fc7e944e..0aca769d 100644
 -                           className="form-control"/>
 -                </div>
 -                {' '}
--                <button type="submit" className="btn btn-primary">I Lifted
--                    it!
+-                <button type="submit" className="btn btn-primary">I Lifted it!
 -                </button>
 -            </form>
          </div>
