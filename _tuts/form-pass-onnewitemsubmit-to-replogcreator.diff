@@ -11,7 +11,7 @@ index ffd5f0b1..aa378621 100644
 +    onNewItemSubmit: PropTypes.func.isRequired,
 +};
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index f8445e4d..5234a1c3 100644
+index e2841fb1..2ef2669d 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -50,7 +50,9 @@ export default function RepLogs(props) {

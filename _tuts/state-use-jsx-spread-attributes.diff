@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 684435ea..b981c696 100644
+index b600119b..9571bad3 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -23,15 +23,11 @@ export default class RepLogApp extends Component {
@@ -18,5 +18,5 @@ index 684435ea..b981c696 100644
                  onRowClick={this.handleRowClick}
 -                repLogs={repLogs}
              />
-         );
+         )
      }

@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index b981c696..405a8163 100644
+index 9571bad3..44c6b25c 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -22,12 +22,20 @@ export default class RepLogApp extends Component {
@@ -21,10 +21,10 @@ index b981c696..405a8163 100644
                  onRowClick={this.handleRowClick}
 +                onNewItemSubmit={this.handleNewItemSubmit}
              />
-         );
+         )
      }
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index d24db412..c329b9ca 100644
+index 2841bd14..254b3bd8 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -14,7 +14,7 @@ function calculateTotalWeightLifted(repLogs) {
@@ -46,7 +46,7 @@ index d24db412..c329b9ca 100644
                      <label className="sr-only control-label required"
                             htmlFor="rep_log_item">
 @@ -92,5 +92,6 @@ RepLogs.propTypes = {
-     withHeart: PropTypes.bool.isRequired,
+     withHeart: PropTypes.bool,
      highlightedRowId: PropTypes.any,
      onRowClick: PropTypes.func.isRequired,
 +    onNewItemSubmit: PropTypes.func.isRequired,

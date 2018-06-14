@@ -1,15 +1,15 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 3ad352b1..ede6fc9a 100644
+index 07aeaa80..55a973aa 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -1,5 +1,6 @@
  import React, { Component } from 'react';
  import RepLogList from './RepLogList';
 +import RepLogs from './RepLogs';
- import PropTypes from 'prop-types';
  
  export default class RepLogApp extends Component {
-@@ -21,76 +22,7 @@ export default class RepLogApp extends Component {
+     constructor(props) {
+@@ -20,75 +21,6 @@ export default class RepLogApp extends Component {
          const { highlightedRowId } = this.state;
          const { withHeart } = this.props;
  
@@ -86,10 +86,9 @@ index 3ad352b1..ede6fc9a 100644
 +        return <RepLogs/>
      }
  }
- 
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
 new file mode 100644
-index 00000000..69bf4e8f
+index 00000000..918f5e64
 --- /dev/null
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -0,0 +1,73 @@
@@ -166,3 +165,4 @@ index 00000000..69bf4e8f
 +        </div>
 +    );
 +}
+\ No newline at end of file

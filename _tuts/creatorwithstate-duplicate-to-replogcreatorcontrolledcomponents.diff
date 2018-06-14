@@ -104,13 +104,13 @@ index 00000000..3ebc2894
 +    onAddRepLog: PropTypes.func.isRequired,
 +};
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index a9c94c9f..4ad48ff9 100644
+index af9a5a93..f1d5fc57 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -1,7 +1,8 @@
  import React from 'react';
+ import RepLogList from './RepLogs';
  import PropTypes from 'prop-types';
- import RepLogList from './RepLogList';
 -import RepLogCreator from './RepLogCreator';
 +//import RepLogCreator from './RepLogCreator';
 +import RepLogCreator from './RepLogCreatorControlledComponents';

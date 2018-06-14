@@ -1311,6 +1311,11 @@
             "description": null
         },
         {
+            "id": "state-add-onclick-with-log",
+            "name": "State: Add onClick with log",
+            "description": null
+        },
+        {
             "id": "state-add-onclick-to-set-state",
             "name": "State: Add onClick to set state",
             "description": null
@@ -1356,6 +1361,16 @@
             "description": null
         },
         {
+            "id": "smartcomponent-create-replogs-prez",
+            "name": "SmartComponent: Create RepLogs prez",
+            "description": null
+        },
+        {
+            "id": "smartcomponent-pass-props",
+            "name": "SmartComponent: Pass props",
+            "description": null
+        },
+        {
             "id": "proptypes-install-prop-types",
             "name": "PropTypes: Install prop-types",
             "description": null
@@ -1381,13 +1396,18 @@
             "description": null
         },
         {
-            "id": "container-create-replogs-prez",
-            "name": "Container: Create RepLogs prez",
+            "id": "proptypes-add-babel-plugin-transform-react-remove-prop-types",
+            "name": "PropTypes: Add babel-plugin-transform-react-remove-prop-types",
             "description": null
         },
         {
-            "id": "container-pass-needed-props-to-prez",
-            "name": "Container: Pass needed props to prez",
+            "id": "container-empty-delete-me",
+            "name": "Container: Empty delete me",
+            "description": null
+        },
+        {
+            "id": "container-delete-me-2",
+            "name": "Container: Delete me 2",
             "description": null
         },
         {
@@ -1806,5 +1826,5 @@
             "description": null
         }
     ],
-    "sha": "c89c2853c680106048cdad06439f9bea85e7eda2"
+    "sha": "e84345e9487d31649f2ce3b04d0a8f3a7c8590ba"
 }

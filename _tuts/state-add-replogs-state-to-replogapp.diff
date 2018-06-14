@@ -1,11 +1,13 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 550c0e80..684435ea 100644
+index 462e6f8f..b600119b 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
-@@ -8,6 +8,11 @@ export default class RepLogApp extends Component {
+@@ -7,7 +7,12 @@ export default class RepLogApp extends Component {
+         super(props);
  
          this.state = {
-             highlightedRowId: null,
+-            highlightedRowId: null
++            highlightedRowId: null,
 +            repLogs: [
 +                { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
 +                { id: 2, reps: 10, itemLabel: 'Big Fat Cat', totalWeightLifted: 180 },
@@ -29,14 +31,14 @@ index 550c0e80..684435ea 100644
                  onRowClick={this.handleRowClick}
 +                repLogs={repLogs}
              />
-         );
+         )
      }
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index f8768c9e..76d1aa03 100644
+index a260bdd4..c2136e73 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
- import RepLogList from './RepLogList';
+@@ -3,7 +3,7 @@ import RepLogList from './RepLogs';
+ import PropTypes from 'prop-types';
  
  export default function RepLogs(props) {
 -    const { withHeart, highlightedRowId, onRowClick } = props;
@@ -54,7 +56,7 @@ index f8768c9e..76d1aa03 100644
                  <tr>
 @@ -79,5 +80,6 @@ export default function RepLogs(props) {
  RepLogs.propTypes = {
-     withHeart: PropTypes.bool.isRequired,
+     withHeart: PropTypes.bool,
      highlightedRowId: PropTypes.any,
 -    onRowClick: PropTypes.func.isRequired
 +    onRowClick: PropTypes.func.isRequired,

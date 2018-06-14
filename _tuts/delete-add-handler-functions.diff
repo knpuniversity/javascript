@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index a17ceb4d..32dc3ec3 100644
+index 7e2badf1..aea5a90a 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -20,6 +20,7 @@ export default class RepLogApp extends Component {
@@ -27,7 +27,7 @@ index a17ceb4d..32dc3ec3 100644
                  onHeartChange={this.handleHeartChange}
 +                onDeleteRepLog={this.handleDeleteRepLog}
              />
-         );
+         )
      }
 diff --git a/assets/js/RepLog/RepLogList.js b/assets/js/RepLog/RepLogList.js
 index 119ee426..8e2af791 100644
@@ -65,7 +65,7 @@ index 119ee426..8e2af791 100644
      repLogs: PropTypes.array.isRequired,
  };
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 52163e37..def7bb67 100644
+index be582309..a28535e6 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -23,7 +23,8 @@ export default function RepLogs(props) {

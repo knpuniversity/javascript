@@ -16,13 +16,13 @@ index 1e622e18..119ee426 100644
          ))}
          </tbody>
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 4ad48ff9..52163e37 100644
+index f1d5fc57..be582309 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -1,8 +1,8 @@
  import React from 'react';
+ import RepLogList from './RepLogs';
  import PropTypes from 'prop-types';
- import RepLogList from './RepLogList';
 -//import RepLogCreator from './RepLogCreator';
 -import RepLogCreator from './RepLogCreatorControlledComponents';
 +import RepLogCreator from './RepLogCreator';

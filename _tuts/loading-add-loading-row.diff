@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index c695f467..6fb8b587 100644
+index 74b80df6..51aa6034 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -12,7 +12,8 @@ export default class RepLogApp extends Component {
@@ -71,7 +71,7 @@ index 669fccf7..f370d4c6 100644
 +    isSavingNewRepLog: PropTypes.bool.isRequired
  };
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 55956333..9cdb76c7 100644
+index c35db82e..4e088ffb 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -25,7 +25,8 @@ export default function RepLogs(props) {

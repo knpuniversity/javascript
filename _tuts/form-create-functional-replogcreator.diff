@@ -13,13 +13,13 @@ index 00000000..8124d698
 +    );
 +}
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index f6288e20..fc7e944e 100644
+index 21c8378f..735f262e 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -1,6 +1,7 @@
  import React from 'react';
+ import RepLogList from './RepLogs';
  import PropTypes from 'prop-types';
- import RepLogList from './RepLogList';
 +import RepLogCreator from './RepLogCreator';
  
  function calculateTotalWeightLifted(repLogs) {

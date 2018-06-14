@@ -1,0 +1,45 @@
+diff --git a/package.json b/package.json
+index e8e67a07..4f41d5d0 100644
+--- a/package.json
++++ b/package.json
+@@ -1,6 +1,7 @@
+ {
+   "devDependencies": {
+     "@symfony/webpack-encore": "^0.19.0",
++    "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
+     "babel-preset-react": "^6.24.1",
+     "bootstrap": "3",
+     "copy-webpack-plugin": "^4.4.1",
+diff --git a/webpack.config.js b/webpack.config.js
+index 96848a7e..30bfd6d2 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -27,6 +27,13 @@ Encore
+     .cleanupOutputBeforeBuild()
+     .enableVersioning(Encore.isProduction())
+     .enableReactPreset()
++    .configureBabel((babelConfig) => {
++        babelConfig.env = {
++            "production": {
++              "plugins": ["transform-react-remove-prop-types"]
++            }
++        }
++    })
+ ;
+ 
+ // export the final configuration
+diff --git a/yarn.lock b/yarn.lock
+index c4fd90fe..d8ce2c97 100644
+--- a/yarn.lock
++++ b/yarn.lock
+@@ -745,6 +745,10 @@ babel-plugin-transform-react-jsx@^6.24.1:
+     babel-plugin-syntax-jsx "^6.8.0"
+     babel-runtime "^6.22.0"
+ 
++babel-plugin-transform-react-remove-prop-types@^0.4.13:
++  version "0.4.13"
++  resolved "https://registry.yarnpkg.com/babel-plugin-transform-react-remove-prop-types/-/babel-plugin-transform-react-remove-prop-types-0.4.13.tgz#331cfc05099a808238311d78319c27460d481189"
++
+ babel-plugin-transform-regenerator@^6.22.0:
+   version "6.26.0"
+   resolved "https://registry.yarnpkg.com/babel-plugin-transform-regenerator/-/babel-plugin-transform-regenerator-6.26.0.tgz#e0703696fbde27f0a3efcacf8b4dca2f7b3a8f2f"

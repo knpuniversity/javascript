@@ -1,16 +1,3 @@
-diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 07aeaa80..70929f86 100644
---- a/assets/js/RepLog/RepLogApp.js
-+++ b/assets/js/RepLog/RepLogApp.js
-@@ -6,7 +6,7 @@ export default class RepLogApp extends Component {
-         super(props);
- 
-         this.state = {
--            highlightedRowId: null
-+            highlightedRowId: 'cool!'
-         };
- 
-         this.handleRowClick = this.handleRowClick.bind(this);
 diff --git a/assets/js/RepLog/RepLogList.js b/assets/js/RepLog/RepLogList.js
 index 6a02498d..2ecc1e32 100644
 --- a/assets/js/RepLog/RepLogList.js
@@ -30,3 +17,16 @@ index 6a02498d..2ecc1e32 100644
 +    highlightedRowId: PropTypes.any,
 +    onRowClick: PropTypes.func
 +};
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index 8ebb3dec..6c690928 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -24,7 +24,7 @@ export default function RepLogs(props) {
+                 </thead>
+                 <RepLogList
+                     highlightedRowId={highlightedRowId}
+-                    onRowClick={onRowClick}
++                    onRowClick="Cool!"
+                 />
+                 <tfoot>
+                 <tr>

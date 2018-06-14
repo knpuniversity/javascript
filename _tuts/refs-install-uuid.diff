@@ -1,8 +1,8 @@
 diff --git a/package.json b/package.json
-index e8e67a07..51de49b1 100644
+index 4f41d5d0..eb58f93f 100644
 --- a/package.json
 +++ b/package.json
-@@ -14,6 +14,7 @@
+@@ -15,6 +15,7 @@
      "react-dom": "^16.3.2",
      "sass-loader": "^6.0.6",
      "sweetalert2": "^7.11.0",
@@ -11,10 +11,10 @@ index e8e67a07..51de49b1 100644
    },
    "scripts": {
 diff --git a/yarn.lock b/yarn.lock
-index c4fd90fe..bdbf7e28 100644
+index d8ce2c97..6183336b 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -6064,7 +6064,7 @@ utils-merge@1.0.1:
+@@ -6068,7 +6068,7 @@ utils-merge@1.0.1:
    version "1.0.1"
    resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
  
