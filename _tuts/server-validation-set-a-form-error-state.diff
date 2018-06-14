@@ -35,7 +35,7 @@ index bb82ccfe..3bc91407 100644
              })
          ;
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 8da78d5a..223ec64f 100644
+index ee2e47ea..b2e0748e 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -53,9 +53,15 @@ export default class RepLogCreator extends Component {
@@ -54,7 +54,7 @@ index 8da78d5a..223ec64f 100644
                  <div className="form-group">
                      <label className="sr-only control-label required"
                             htmlFor="rep_log_item">
-@@ -96,4 +102,5 @@ export default class RepLogCreator extends Component {
+@@ -97,4 +103,5 @@ export default class RepLogCreator extends Component {
  
  RepLogCreator.propTypes = {
      onAddRepLog: PropTypes.func.isRequired,

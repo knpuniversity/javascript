@@ -24,7 +24,7 @@ index ede6fc9a..550c0e80 100644
  }
  
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 0474d1b4..dfe5d9bf 100644
+index 69bf4e8f..f8768c9e 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -1,6 +1,10 @@
@@ -47,7 +47,7 @@ index 0474d1b4..dfe5d9bf 100644
                  />
                  <tfoot>
                  <tr>
-@@ -35,3 +39,9 @@ export default function RepLogs(props) {
+@@ -71,3 +75,9 @@ export default function RepLogs(props) {
          </div>
      );
  }

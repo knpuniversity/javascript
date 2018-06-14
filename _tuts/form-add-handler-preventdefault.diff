@@ -24,7 +24,7 @@ index b981c696..405a8163 100644
          );
      }
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index cea2ea47..e6cb5d60 100644
+index d24db412..c329b9ca 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -14,7 +14,7 @@ function calculateTotalWeightLifted(repLogs) {
@@ -45,7 +45,7 @@ index cea2ea47..e6cb5d60 100644
                  <div className="form-group">
                      <label className="sr-only control-label required"
                             htmlFor="rep_log_item">
-@@ -91,5 +91,6 @@ RepLogs.propTypes = {
+@@ -92,5 +92,6 @@ RepLogs.propTypes = {
      withHeart: PropTypes.bool.isRequired,
      highlightedRowId: PropTypes.any,
      onRowClick: PropTypes.func.isRequired,

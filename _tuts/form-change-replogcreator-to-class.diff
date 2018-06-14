@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 662c944d..81904092 100644
+index aa378621..1974f055 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -1,4 +1,4 @@
@@ -8,7 +8,7 @@ index 662c944d..81904092 100644
  import PropTypes from 'prop-types';
  
  function handleFormSubmit(event) {
-@@ -8,43 +8,45 @@ function handleFormSubmit(event) {
+@@ -8,44 +8,46 @@ function handleFormSubmit(event) {
      console.log(event.target.elements.namedItem('reps').value);
  }
  
@@ -45,7 +45,8 @@ index 662c944d..81904092 100644
 -                       className="form-control"/>
 -            </div>
 -            {' '}
--            <button type="submit" className="btn btn-primary">I Lifted it!
+-            <button type="submit" className="btn btn-primary">I Lifted
+-                it!
 -            </button>
 -        </form>
 -    );
@@ -83,7 +84,8 @@ index 662c944d..81904092 100644
 +                           className="form-control"/>
 +                </div>
 +                {' '}
-+                <button type="submit" className="btn btn-primary">I Lifted it!
++                <button type="submit" className="btn btn-primary">I Lifted
++                    it!
 +                </button>
 +            </form>
 +        );

@@ -1,0 +1,22 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 53e2544a..66026994 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -65,7 +65,7 @@ export default class RepLogApp extends Component {
+                             <option value="coffee_cup">Coffee Cup</option>
+                         </select>
+                     </div>
+-
++                    {' '}
+                     <div className="form-group">
+                         <label className="sr-only control-label required"
+                                htmlFor="rep_log_reps">
+@@ -76,7 +76,7 @@ export default class RepLogApp extends Component {
+                                placeholder="How many times?"
+                                className="form-control"/>
+                     </div>
+-
++                    {' '}
+                     <button type="submit" className="btn btn-primary">I Lifted
+                         it!
+                     </button>

@@ -1286,18 +1286,18 @@
             "description": null
         },
         {
-            "id": "form-empty-delete-me",
-            "name": "Form: Empty delete me",
+            "id": "form-copy-html-form",
+            "name": "Form: Copy HTML form",
             "description": null
         },
         {
-            "id": "form-empty-delete-me-2",
-            "name": "Form: Empty delete me 2",
+            "id": "form-remove-extra-stuff",
+            "name": "Form: Remove extra stuff",
             "description": null
         },
         {
-            "id": "form-empty-delete-me-3",
-            "name": "Form: Empty delete me 3",
+            "id": "form-add-manual-whitespace-for-styling",
+            "name": "Form: Add manual whitespace for styling",
             "description": null
         },
         {
@@ -1416,18 +1416,18 @@
             "description": null
         },
         {
-            "id": "form-copy-in-raw-form",
-            "name": "Form: Copy in raw form",
+            "id": "form-delete-me-please-1",
+            "name": "Form: Delete me please 1",
             "description": null
         },
         {
-            "id": "form-cleanup-the-form",
-            "name": "Form: Cleanup the form",
+            "id": "form-please-delete-me-2",
+            "name": "Form: Please delete me 2",
             "description": null
         },
         {
-            "id": "form-add-some-whitespace",
-            "name": "Form: Add some whitespace",
+            "id": "form-please-delete-me-3",
+            "name": "Form: Please delete me 3",
             "description": null
         },
         {
@@ -1806,5 +1806,5 @@
             "description": null
         }
     ],
-    "sha": "fbfd36df6fec9259936dbe7629a4b703e1a38985"
+    "sha": "c89c2853c680106048cdad06439f9bea85e7eda2"
 }

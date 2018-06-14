@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 7744ba61..0851fb78 100644
+index a20f714f..cdd762f3 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -83,6 +83,7 @@ export default class RepLogCreator extends Component {
@@ -9,4 +9,4 @@ index 7744ba61..0851fb78 100644
 +                    {quantityInputError && <span className="help-block">{quantityInputError}</span>}
                  </div>
                  {' '}
-                 <button type="submit" className="btn btn-primary">I Lifted it!
+                 <button type="submit" className="btn btn-primary">I Lifted

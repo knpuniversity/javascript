@@ -19,7 +19,7 @@ index b7d6451f..82e40640 100644
          this.clearSuccessMessageTimeout = 0;
  
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 223ec64f..67bd1668 100644
+index b2e0748e..fd7cd271 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -12,14 +12,6 @@ export default class RepLogCreator extends Component {
@@ -55,7 +55,7 @@ index 223ec64f..67bd1668 100644
                              return <option value={option.id} key={option.id}>{option.text}</option>
                          })}
                      </select>
-@@ -103,4 +95,5 @@ export default class RepLogCreator extends Component {
+@@ -104,4 +96,5 @@ export default class RepLogCreator extends Component {
  RepLogCreator.propTypes = {
      onAddRepLog: PropTypes.func.isRequired,
      validationErrorMessage: PropTypes.string.isRequired,
