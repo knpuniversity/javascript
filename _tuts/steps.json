@@ -1401,16 +1401,6 @@
             "description": null
         },
         {
-            "id": "container-empty-delete-me",
-            "name": "Container: Empty delete me",
-            "description": null
-        },
-        {
-            "id": "container-delete-me-2",
-            "name": "Container: Delete me 2",
-            "description": null
-        },
-        {
             "id": "state-refactor-reploglist-to-expect-replogs-prop",
             "name": "State: Refactor RepLogList to expect repLogs prop",
             "description": null
@@ -1433,26 +1423,6 @@
         {
             "id": "state-show-fancier-way-to-calculate-total-weight",
             "name": "State: Show fancier way to calculate total weight",
-            "description": null
-        },
-        {
-            "id": "form-delete-me-please-1",
-            "name": "Form: Delete me please 1",
-            "description": null
-        },
-        {
-            "id": "form-please-delete-me-2",
-            "name": "Form: Please delete me 2",
-            "description": null
-        },
-        {
-            "id": "form-please-delete-me-3",
-            "name": "Form: Please delete me 3",
-            "description": null
-        },
-        {
-            "id": "form-empty-delete-me-4",
-            "name": "Form: Empty delete me 4",
             "description": null
         },
         {
@@ -1496,23 +1466,8 @@
             "description": null
         },
         {
-            "id": "form-more-to-delete-1",
-            "name": "Form: More to delete 1",
-            "description": null
-        },
-        {
-            "id": "form-more-to-delete-2",
-            "name": "Form: More to delete 2",
-            "description": null
-        },
-        {
             "id": "form-change-replogcreator-to-class",
             "name": "Form: Change RepLogCreator to class",
-            "description": null
-        },
-        {
-            "id": "form-another-empty-step-to-delete",
-            "name": "Form: Another empty step to delete",
             "description": null
         },
         {
