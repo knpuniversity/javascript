@@ -1,0 +1,32 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 55f626f2..57a9ccd3 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -22,11 +22,9 @@ export default class RepLogApp extends Component {
+         this.setState({highlightedRowId: repLogId});
+     }
+ 
+-    handleNewItemSubmit(event) {
+-        event.preventDefault();
+-
+-        console.log('I love when a good form submits!');
+-        console.log(event.target.elements.namedItem('reps').value);
++    handleNewItemSubmit(itemName, reps) {
++        console.log('TODO - handle this new data');
++        console.log(itemName, reps);
+     }
+ 
+     render() {
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index 7d18146d..66adb75b 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -26,6 +26,8 @@ export default function RepLogs(props) {
+ 
+         console.log('I love when a good form submits!');
+         console.log(event.target.elements.namedItem('reps').value);
++
++        onNewItemSubmit('Big Fat Cat', event.target.elements.namedItem('reps').value);
+     }
+ 
+     return (

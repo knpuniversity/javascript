@@ -1,18 +1,33 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index aa378621..1974f055 100644
+index 5798212a..3f944240 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
-@@ -1,4 +1,4 @@
+@@ -1,55 +1,57 @@
 -import React from 'react';
 +import React, { Component } from 'react';
  import PropTypes from 'prop-types';
  
- function handleFormSubmit(event) {
-@@ -8,44 +8,46 @@ function handleFormSubmit(event) {
-     console.log(event.target.elements.namedItem('reps').value);
- }
- 
 -export default function RepLogCreator(props) {
+-    const { onNewItemSubmit } = props;
++export default class RepLogCreator extends Component {
++    render() {
++        const { onNewItemSubmit } = props;
+ 
+-    function handleFormSubmit(event) {
+-        event.preventDefault();
++        function handleFormSubmit(event) {
++            event.preventDefault();
+ 
+-        console.log('I love when a good form submits!');
+-        console.log(event.target.elements.namedItem('reps').value);
++            console.log('I love when a good form submits!');
++            console.log(event.target.elements.namedItem('reps').value);
+ 
+-        onNewItemSubmit('Big Fat Cat', event.target.elements.namedItem('reps').value);
+-    }
++            onNewItemSubmit('Big Fat Cat', event.target.elements.namedItem('reps').value);
++        }
+ 
 -    return (
 -        <form className="form-inline" onSubmit={handleFormSubmit}>
 -            <div className="form-group">
@@ -50,8 +65,6 @@ index aa378621..1974f055 100644
 -            </button>
 -        </form>
 -    );
-+export default class RepLogCreator extends Component {
-+    render() {
 +        return (
 +            <form className="form-inline" onSubmit={handleFormSubmit}>
 +                <div className="form-group">

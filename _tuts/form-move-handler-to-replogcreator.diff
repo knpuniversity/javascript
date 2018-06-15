@@ -1,36 +1,40 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index c1a1bccf..ffd5f0b1 100644
+index c1a1bccf..ad484ee6 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
-@@ -1,6 +1,13 @@
- import React from 'react';
+@@ -2,6 +2,15 @@ import React from 'react';
  import PropTypes from 'prop-types';
  
-+function handleFormSubmit(event) {
-+    event.preventDefault();
-+
-+    console.log('I love when a good form submits!');
-+    console.log(event.target.elements.namedItem('reps').value);
-+}
-+
  export default function RepLogCreator(props) {
++    function handleFormSubmit(event) {
++        event.preventDefault();
++
++        console.log('I love when a good form submits!');
++        console.log(event.target.elements.namedItem('reps').value);
++
++        onNewItemSubmit('Big Fat Cat', event.target.elements.namedItem('reps').value);
++    }
++
      return (
          <form className="form-inline" onSubmit={handleFormSubmit}>
+             <div className="form-group">
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index d2bfa1ef..e2841fb1 100644
+index 0b5cf4ab..e2841fb1 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
-@@ -14,13 +14,6 @@ function calculateTotalWeightLifted(repLogs) {
- }
- const calculateTotalWeightFancier = repLogs => repLogs.reduce((total, log) => total + log.totalWeightLifted, 0);
+@@ -22,15 +22,6 @@ export default function RepLogs(props) {
+         heart = <span>❤️</span>;
+     }
  
--function handleFormSubmit(event) {
--    event.preventDefault();
+-    function handleFormSubmit(event) {
+-        event.preventDefault();
 -
--    console.log('I love when a good form submits!');
--    console.log(event.target.elements.namedItem('reps').value);
--}
+-        console.log('I love when a good form submits!');
+-        console.log(event.target.elements.namedItem('reps').value);
 -
- export default function RepLogs(props) {
-     const { withHeart, highlightedRowId, onRowClick, repLogs, onNewItemSubmit } = props;
- 
+-        onNewItemSubmit('Big Fat Cat', event.target.elements.namedItem('reps').value);
+-    }
+-
+     return (
+         <div className="col-md-7">
+             <h2>Lift Stuff! {heart}</h2>
