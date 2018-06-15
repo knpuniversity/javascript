@@ -1,0 +1,35 @@
+# Child Component
+
+Coming soon...
+
+At this point, our component is getting a little bit large, you know, not only with the amount of html it has, but also with the complexity it has. We're now handling some highlighted row state. We have a handler function and down here this rep log row stuff is actually fairly complex on it's own, so just like in PHP, if you're building a class that has a bunch of logic in it, eventually that logic mic is so big and so complex that for your own personal sanity, you might choose to take some of that logic and move it into an external class. Another reason you might do this as you might find out that some of that logic, his logic that you want to reuse in multiple places, the same exact idea holds in react when a component becomes too big and it Kinda just gets hard to keep track of. You can, if you want to take part of your component and move it into its own components when you do that and it helps keep things a little bit more organized and in theory you could actually use the new component in multiple places. 
+
+So in this case, the part that I'm going to extract actually is basically the middle of my table. All of this row stuff here is really what is causing most of the complexity and this application. So I'm actually in my rep log director here. I'm gonna, create a new file called rap log lists dot js to represent that. Now ever react component is going to start the same way. We're going to import react in a component from react and then we're going to export our class. In this case, we'll call it export default class rep log list extends components, and then of course every component just needs to have its render method in here in order to render. We're actually going to render here is. I basically want to move the rows into there, but we need one parent elements, so I'm actually going to copy all of this tea body logic in return with parentheses so I can use multiple lines and then we'll paste my [inaudible] body in there and I will fix my tabbing. 
+
+Cool. 
+
+Of course, as you can see, we're missing our rep log variable, so right now that's just hard coded anyway, so let's just move our hardcoded rep logs over into our render method here. 
+
+Cool. 
+
+And you can see there's a still. There's one problem with highlighted row id, but we're going to talk about that in a second. So with this all in place, we can actually delete our body and the end. We're just going to import this component like anything else, this is really cool. Let's say import rep log list from rep log list and then rep log list is a component, so just like we did with rep log app earlier, we just go right down in the middle of the markup and we can say rep log list and close it 
+
+and that's it. 
+
+We have an now broken our big component into a smaller piece. Of course, if we go back and refresh and go to the console, we have a problem highlighted. Row idea is not defined in rep log list. Of course in our render method it needs to know what they highlighted, row ideas so I can know whether or not to know if it should put the info class on there. But this is a problem because the highlighted row id state lives up on our top level components. So how can we get access to the state from inside this child components? 
+
+Well, we have two options. One, we could actually move. One option is actually to move the state, uh, this highlighted row idea state into our rep log list components. And technically that would be fine because as you can see, there's no other part of our component that needs that variable. So if we just move that into this class here, then technically it would work. But for reasons I can't fully explain yet, I don't want you to do that for right now. I want you to leave all of your state in the top level components of your application, which means which means I want any of your child's components to have zero state, so because I'm forcing us to keep all of our state and the top level. The question is how can we pass this highlighted row id state into our rep log list? The answer is by passing it as a prop, so we still have our highlighted row id variable here. We'll go down to our up there. It is to a rep log list and I'm going to say highlighted row ID equals and we'll pass it. That variable we're doing is we're passing a new prop called highlighted row id into rep log list, which means in my render function, just like before I could say const ref highlighted row id and this time is this dot props will grab it out of the crop 
+
+and again, ignore this highlighted thing. It's complaining about props validation. We're going to talk about that a second 
+
+so we go back and refresh this time it works and if you already a react tools. This time it's really cool, you can actually see our rep log app at top and then down here you can actually see our rep log list, which is pretty Rad and you can play with the state. Let's go to the top level element and let's change the state to to and we do that. It does rerender that element and now I feel like down here at the value of our prop, it's two. Now this highlights one really, really, really important thing when you have for every piece of data that you need to keep track of, like highlighted row id for every piece of state that you need to keep track of, the state needs to live in exactly one place it needs to live in exactly one components. What do you mean is you're not allowed to have a highlighted row id state in your rep log app and then also a highlighted row id state and your rep log list. Nope. You're going to put the state in just one place in one component. Then if some of your child components need access to that, you're going to pass it as a prop. 
+
+Yeah, we already saw from earlier that whenever we change the state of, uh, components it re, it recalls a render to rerender that element when actually whenever the prop changes that we pass into a components that components, render method is also called again. So the tricky thing is here is that I told you earlier that props are 
+
+um, 
+
+immutable that prompts can ever change in. That's true, but as you can see in rep log app, the highlighted row idea state, so we're totally allowed to change that. But then when we pass our highlighted or id into our rep log list from the perspective of Rep log list, this is a value that we receive, but we never change. 
+
+Okay, 
+
+this is a pattern we're gonna see over and over and over again where we hold state in one components and we changed the state in that components. But then we pass that state as props to our child components. And the really cool thing is when that state changes, all of the child elements that use that state are going to automatically rerender are automatically going to rerender. If that doesn't make total sense yet, uh, stay with me, but the pattern right now is keep state on your top level element and then pass it down to your children as props when that state changes everything. Well, rerender as normal.

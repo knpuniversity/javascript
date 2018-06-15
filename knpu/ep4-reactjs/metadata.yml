@@ -1,1 +1,16 @@
-chapters: []
+chapters:
+    - eslint
+    - react-create-element
+    - jsx
+    - react-component
+    - props
+    - collection
+    - static-app
+    - state
+    - event-handlers
+    - child-component
+    - callback-props
+    - dumb-component
+    - prop-types
+    - rep-logs-state
+    - form-submit
