@@ -1,25 +1,133 @@
-# Eslint
+# The World of React + ESLint
 
-Coming soon...
+Hey friends! And welcome! Oh, I am *so* excited to talk about React. Developing
+in React *feels* great, and it's powerful! You can build *any* crazy frontend you
+want. But, honestly, writing this tutorial was a *huge* pain. Technically speaking,
+React is not hard. But, to *even* get started, you need to be comfortable with ES6
+features *and* you need a build system, like Webpack Encore. That's why we covered
+both of those topics in previous tutorials.
 
-Hey guys and welcome so happy to have you here for our tutorial about using react and symphony or really this is mostly a tutorial about react. 
+But even then! The best practices around React are basically non-existent, especially
+for a backend developer, who instead of building a single page app, may just want
+to use React to power part of their frontend.
 
-This is was honestly especially a hard to write and it's not that react is hard. The mechanics of it, I feel really good. Using react feels great, but sometimes the best practices around react are super unclear, especially coming from a back end developer. So our goal in this tutorial is not only to learn react really well, but to learn a repeatable pattern you can follow to write great react code and actually get a wonderful real world project out the door so we're not going to hide the hard stuff. We're going to show the ugliest stuff and we're going to build something real as always, to get much, much more out of state. Out of this tutorial, you should totally code along with me. Download the course code on this page, and when you unzip it, you'll find a start directory inside that holds the same code that you see here. The last steps in the tutorial will be to run, will be to open a terminal, move into the project and run bin Console server run to start the built in web server. However, our project, this project builds off of our existing javascript series where we use webpack encore to actually already had a build system into our application, 
+So our goal in this tutorial is clear: to *master* React, but *also* learn
+repeatable patterns you can follow to write high-quality code *while* getting your
+wonderful new app finished, and out the door. We won't hide anything: we'll attack
+the ugliest stuff and, as always, build something *real*.
 
-so in order to get our app to work, we also need to execute webpack encore, so I'll switch over, open another terminal Tab and first installer yarn assets by running yarn or yarn install. Then once this finishes running yarn Ron Encore, Dev Dash, dash watch, so it'll start building our assets and it'll automatically a watch new assets when we use them. Perfect. Now to try out the APP, spin back, go to local host Colon, 8,000 and say hello to say hello to our lift 
+Excited? Me too! And, a *huge* thanks to my co-author on this tutorial Frank de Jonge,
+who helped me navigate many of these important topics.
 
-stuff app. Go ahead and log in with Ron underscore burgundy password. Pump up. This is the application we've been using. We've been building in our javascript series and the main thing here is this lift history. This is a way for us to keep track of all of the exercise that were during the days that we do during the days, like the fact that I left my big fat cat 10 times. I'm going to record that. That happened in my little table. All of the saved of the database Alvis updates via javascript, but this was built using just traditional Java script, so our goal is going to be to rebuild this app, 
+## Project Setup
 
-but do it in react. Now, before we dive in to react, I actually want to install another library, so go back to your terminal and open a third tab so we have one open and run yarn, add e es lint, Dash, Dash, Dev. I'm the same way that phb has a php cs that can run code sniffing tools on your php coach, makes their quality javascript, has he es lint, which is a tool that can actually look at your code and make sure that it follows a certain coding standard. To configure that coding standard, I'm going to go back into our project and at the root of my project I'm going to create a new file called not yes, lint, RC dot js. 
+If you'd like free high-fives from Frank... *or* if you want to get the most out
+of this tutorial, you should *totally* code along with me. Download the course
+code from this page. When you unzip it, you'll find a `start/` directory inside
+that holds the same code that you see here. Open up the `README.md` file for
+winning lottery numbers and instructions on how to get the project setup.
 
-Then I'm going to paste in some basic configuration into this file, which you can get on the code lock on this page. I'm not going to go into the details of ies lent, but we're basically using some recommended settings and then we're overriding a couple of things specifically. This jsx is something that react to is that we're going to talk on a second. So big thanks to this library and the smile, we can now run a utility, no one modules that then yes, lint and the point that at our assets directory and it will look at all the javascript files and our assets directory and run them against those rules. And right now fortunately we don't actually have any violations, but there's a, another more important reason that we just installed lint in that is that php storm automatically reads the Eastland configuration and is now going to give us a lot more, uh, warnings as recoding. So for example, if you open assets js, let's open rep log APP dot js here. Actually I'm gonna move back. No, actually thanks to the smallest important thing is that in php storm you can now go to php storm preferences, search for es lint, and you actually find a section in here where it actually has a little eastland quality tool. If we click enable on that, 
+The last steps will be to open a terminal, move into the project, and run:
 
-it hit okay. It's not going to automatically read the ies lint configuration we have. It's going to give us really good warnings. For example, if you look in the assets js Rep log dot js directory, 
+```terminal
+php bin/console server:run
+```
 
-for example, 
+to start the built-in web server. Our project already uses Webpack Encore to compile
+its CSS and JS files. If you're new to Webpack or Encore, go watch our tutorial on
+that first. 
 
-can you create a variable called food? So the true and then create an if statement, but leave the body of it if statement empty. That doesn't make any sense. And actually you can see that yes, Lindt is actually showing us an error here. So it's really cool that we're just going to start seeing a little syntax errors directly in our code because Petri storm is reading our ESL and configuration. Alright? So as I mentioned, we already have our application built in normal javascript, so we're going to actually leave this here and functional and we're going to build the new way, the new javascript app right next to this. So do you do that? The Rep log, dot js is what builds the normal application. I'm going to create a new javascript file called Rep log, underscore react dot js. And here let's just cancel that log. 
+To build those assets, pour some coffee, open a *second* terminal tab, and run:
 
-Oh, hello react peeps, 
+```terminal
+yarn install
+```
 
-and of course we'll put a very important emoji. Then inside my webpack dot config, that js file, I'm going to add a new entry, which is basically a new javascript app called rapid log. React more point that the rep underscore react dot js file. Now because we modified the webpack configuration, go back to your terminal that is running webpack, hit control c and rerun it so that it sees that new entry file that will cause a new rep log. React dot js file to be output, and so we'll use that in the template that executes this page, which is templates, lift index, dot html dot twig. If a score down near the bottom, you can see that this page already includes rep log, dot js. We'll leave that there, but now we'll also include rep log, react dot js, and just like that, if we inspect element to bring up the console and refresh, we have a fresh canvas that we can paint on. So next let's actually dive into installing react and using it.
+to download our Node dependencies. And... once that finishes:
+
+```terminal
+yarn run encore dev --watch
+```
+
+That will *build* our assets, and *rebuild* when we change files.
+
+Ok cool! Let's go check out the app: find your browser, go to http://localhost:8000
+and say hello to the Lift Stuff App! Login with user `ron_furgandy` password
+`pumpup`.
+
+In our effort to stay in shape... while sitting down and coding all day... we've
+built Lift Stuff: an app where we can record *all* the stuff we've lifted throughout
+the day. For example, before I started recording, I lifted my big fat cat 10 times...
+so let's totally log that!
+
+In the previous tutorials, we built this JavaScript frontend using plain JavaScript
+and jQuery. In this tutorial, we'll re-build it with React.
+
+## Installing ESLint
+
+But before we dive into React, I want to install another library that will make
+life *much* more interesting. Move back to your terminal, open a *third* terminal
+tab - we're getting greedy - and run:
+
+```terminal
+yarn add eslint --dev
+```
+
+ESLint is a library that can detect coding standard violations in your JavaScript.
+We have similar tools in PHP, like PHP-CS-Fixer. To configure exactly *which* coding
+standard rules we want to follow, back in our editor, create a new file at the
+root of the project: `.eslintrc.js`.
+
+I'll paste in some basic configuration here: you can copy this from the code block
+on this page. We won't talk about ESLint in detail, but this basically imports the
+ESLint recommended settings with a couple of tweaks. This `jsx` part is something
+we'll see *very* soon in React.
+
+Thanks to this, we can now run a utility to check our code:
+
+```terminal
+./node_modules/.bin/eslint assets
+```
+
+where `assets/` is the directory that holds our existing JavaScript code. And...
+aw, boring! It looks like *all* of our code already follows the rules.
+
+This utility is nice... but there's a more important reason we installed it. In
+PhpStorm, open the settings and search for `eslint` to find an ESLint section.
+Click to Enable this and hit Ok. Yep, PhpStorm will now *instantly* tell us when
+we've written code that violates our rules.
+
+Check this out: open `assets/js/rep_log.js`: this is the file that runs our existing
+LiftStuff frontend. Here, add `const foo = true` then `if (foo)`, but leave the
+body of the `if` statement empty. See that little red error? That comes from
+ESLint.
+
+This may not *seem* very important, but it's going to be *super* helpful with React.
+
+## Adding a new Entry
+
+As I mentioned, our app is already built in normal JavaScript. Instead of deleting
+our old code immediately, let's leave it here and build our React version right next
+to it. In the same directory as `rep_log.js`, which holds the old code, create a
+new file: `rep_log_react.js`. Log a top-secret, important message inside so that
+we can see if it's working. Don't forget the Emoji!
+
+Now, open `webpack.config.js`: we're going to configure this as a new "entry".
+Typically, you have one entry file per page, and that file holds *all* of the
+JavaScript you need for that page. Use `addEntry('rep_log_react')` pointing to
+that file: `./assets/js/rep_log_react.js`.
+
+To build this, go back to your terminal, find the tab that is running Webpack
+Encore, press Ctrl+C to stop it, and run it again: you need to restart Webpack
+whenever you change its config file.
+
+Finally, to add the new JavaScript file to our page, open
+`templates/lift/index.html.twig`, find the `javascripts` block, and add the
+script tag for `rep_log_react.js`. You don't normally want *two* entry files
+on the same page like this. But when we finish, I plan to delete the old `rep_log.js`
+file.
+
+And just like that, we can find our browser, open the dev tools, go to the console,
+refresh and... Hello World!
+
+Now, it's time to go say Hello to React!

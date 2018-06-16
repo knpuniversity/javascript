@@ -1,21 +1,120 @@
-# React Component
+# React Components
 
-Coming soon...
+It works like this: we create React *element* objects and ask React to render
+them. But, React has *another* important object: a Component. Ooooooooo.
 
-So we already know that we have this idea of reactive elements and we can render them react, has a much more important concept called air react components, which is something, and it looks like this credit class called rep log app and have it extend something called react dot components. A class that extends react component only needs to have one function called render and then render your going to return whatever elements you want to. So in this case I'm going to copy my jsx for above and here we're going to say return and paste that. Hello, I'm actually going to console dot log and here we're actually going to treat our rep log app as if it is an element. So I'm going to say rep log app, just like that. Now side note your. There is one rule about react components and they have to have an upper case letter to begin with, which is how react tells them apart from normal html elements. Totally not that important. Then down here, instead of rendering just an element, we're actually going to render our rep log app. Now, if you go back and refresh, awesome, we get the exact same thing as before and check this out. If you look at what's logged, it's once again a react element. 
+It looks like this: create a class called `RepLogApp` and extend something called
+`React.Component`. A component only needs to have one method `render()`. Inside,
+return whatever element objects you want. In this case I'm going to copy my JSX
+from above and, here, say `return` and paste.
 
-This react component thing is something we're going to use a lot in react, but I don't want to, but it's a really simple concept. Much like how PHP classes allow us to group code together and give it a name that makes sense to our business. React components allow you to do this for the Ui. So here what we've done is we've actually created some Ui elements and me giving them a name rep log app and we can run around and 
+*This* is a React component. Below, I'm going to use `console.log()` and then
+treat my `RepLogApp` as if it were an element: `<RepLogApp />`.
 
-render that 
+Finally, below, instead of rendering an *element*, we can render the *component*
+with that same JSX syntax: `<RepLogApp />`.
 
-because we're not and render that rep log app and it will render the components inside of it. So a simple idea, but it's going to become very important and what we do now, a couple of small things of housekeeping. Notice that component is a property on the react object. You don't have to do this, but very commonly you're going to see react imported like this, react, then curly braces and then components, and when you do this, you can just say rep log APP extends components. Now this is one of the hard things about react as you commonly see react code using newer syntaxes and very aggressive ways. The react module exports a single object called react, but you can also just export in individual parts of it. So because there was a component key, we can actually describe the component. Part of it's this is this, having these curly braces around here is called the destructuring syntax and it basically says, I want to grab the component he off of react and assign it to this component variable. It's a really a meaningless change, but you're gonna see this a lot and I want you to understand what's going on. Totally not necessary. Also in the same way, you'll notice that on react dom, 
+Ok, go back and refresh! Awesome! We get the *exact* same thing as before! *And*,
+check out the console! The component becomes a React element!
 
-we're only using the render method so we can actually do the same thing here. Instead of importing all react dom, we can just import render from react dumb. Down here, we can just use the render function. This one is actually a little bit more important because a tool like webpack should be smart enough to perform something called tree shaking, which is a fancy way of saying it will only include the render code and in our final javascript it won't include anything else from the react down module. So again, you're going to see this. I mostly don't want it to confuse you. These are all different ways to import different parts of those libraries. They also noticed that it looks like react as no longer being used, like that's an unused import. It's actually not because remember when use JSX, that ultimately turns into react, that create element. So once this jsx is parsed, it actually strangely enough, will ultimately need the react to be imported because of that reason. And if you go back and refresh right now just to make sure it works. Yep. Everything still looks good. Now again, we're gonna be talking a lot about not only how did you react, but like good design patterns. So normally what you're going to have is you're going to create one component per file. So I'm actually going to create in my assets directory js directory. I'm going to create a new directory for the rest of my application called Rep log. And then inside of here I'm going to create a new file called Rep log app that then I'm going to copy our components into that file 
+## The What & Why of Components
 
-now so we know with modern javascript, but we're gonna want to do is actually export a value from this. So I'm actually going to say 
+This React component concept is something we're going to use a *lot*. But, I don't
+want to make it seem too important: because it's a *super* simple concept. In PHP,
+we use classes as a way to group code together and give that code a name that makes
+sense. If we organize 50 lines of code into a class called "Mailer", it becomes pretty
+obvious what that code does... it spams people! I mean, it emails valued customers!
 
-export. Oh, 
+React components allow you to do the same thing for the UI: group elements together
+and give them a name. In this case, we've organized our `h2` and `span` React elements
+into a React component called `RepLogApp`. React components are sort of a named
+*container* for elements.
 
-the paste into here. Now notice some weird thing happened. I copied the class and when I pasted it in the actually put the import there for me. That's a little bit of php storm magic, but you'll also notice that it's got a little eastland air here. It says react and must be in scope when using jsx. That's actually what we just talked about. So actually this really needs to be reactive comma components and then that makes it happy. Now when we have, this is going to be a javascript module, which means we're actually going to export something from this, so we're actually going to export our class from this. We'll say export default class rep log APP and then over in Rep log react. We can delete that class and instead say import rep log app from that slash rep log slash rep log app 
+By the way, React components do have one rule: their names must start with a capital
+letter. Actually, this rule is there to help JSX: if we tried using a `<repLogApp />`
+component with a lowercase "r", JSX would actually think we wanted to create some
+new hipster `repLogApp` HTML element, just like how a `<div>` becomes a `<div>`.
+By starting the component name with a capital letter, JSX realizes we're referring
+to our *component* class, not some hipster HTML element with that name.
 
-and then it's not important, but you notice now we're not. We're no longer using the component so we can get rid of that. So this is just a little bit of organization and then when we go back and refresh it works. And actually this is a very important moment because we're already starting to create a structure of how our application is going to look. We have a entry file and this is the actual file that we. This is the first file that's actually loaded for our application and typically these files all look very similar. They're main and really only job is to actually render your top level components. In this case, this thing called Rep log app, that's actually rep log app is eventually going to render our entire application, so we're always going to have one component that is around everything else, which is why we have called the Rep La, why we've called this rep log app. Our jet from here is going to be built to build this out to build the rest of our application, but first we need to talk about any super duper important thing and react call prompts.
+## Making our Imports more Hipster
+
+*Anyways*, a few minor housekeeping things. Notice that `Component` is a property
+on the `React` object. The way we have things now is fine. But, commonly, you'll see
+React imported like this: `import React` then `{ Component }` from `react`. Thanks
+to this, you can just extend `Component`.
+
+This is pretty much just a style thing. And... honestly... it's one of the things
+that can make React frustrating. What I mean is, React developers like to use
+a *lot* of the newer, fancier ES6 syntaxes. In this case, the `react` module
+exports an object that has a `Component` property. This syntax is "object
+destructuring": it grabs the `Component` key from the object and assigns it to a
+new `Component` variable. Really, this syntax is not *that* advanced, and actually,
+we're going to use it *a lot*. But, this is one of the challenges with React:
+you may not be confused by React, you may be confused by a fancy syntax used in
+a React app. And we definitely don't want that!
+
+We can do the same thing with `react-dom`. Because, notice, we're *only* using
+the `render` key. So instead of importing *all* of `react-dom`, import
+`{ render }` from `react-dom`. Below, use the `render()` function directly.
+
+This change is a *little* bit more important because Webpack should be smart enough
+to perform something called "tree shaking". That's a fancy way of saying that Webpack
+will realize that we only need the `render()` function from `react-dom`: not the
+*whole* module. And so, it will only include the code needed for `render` in our
+final JavaScript file.
+
+*Anyways*, these are just fancier ways to import *exactly* what we already had.
+
+Oh, but, notice: it *looks* like the `React` variable is now an *unused* import.
+What I mean is, we don't ever *use* that variable. So, couldn't we just remove it
+and only import `Components`?
+
+Actually, no! Remember: the JSX code is *transformed* into `React.createElement()`.
+So, strangely enough, we *are* still using the `React` variable, even though it
+doesn't look like it. Sneaky React.
+
+To make sure we haven't broken anything... yet, go back and refresh. All good.
+
+## One Component Per File
+
+Just like in PHP, we're going to follow a pattern where each React component class
+lives in its own file. In the `assets/js` directory, create a new `RepLog` directory:
+this will hold all of the code for our React app. Inside, create a new file called
+`RepLogApp`. Copy our entire component class into that file.
+
+Woh. Something weird just happened. Did you see it? We *only* copied the `RepLogApp`
+class. But when we pasted, PhpStorm auto-magically added the import for us! Thanks
+PhpStorm! Gold star!
+
+But, check out this error:
+
+> ESLint: React must be in scope when using JSX.
+
+Oh, that's what we *just* talked about! This is one of those warnings that comes
+from ESLint. Update the import to *also* import `React`.
+
+Now, to make this class available to other files, use
+`export default class RepLogApp`.
+
+Back in `rep_log_react.js`, delete the class and, instead, `import RepLogApp` from
+`./RepLog/RepLogApp`. Oh, and it's not too important, but we're actually *not*
+using the `Component` import anymore. So, trash it.
+
+Awesome! Our code is a bit more organized! And when we refresh, it's *not* broken,
+which is always my favorite.
+
+## The Entry - Component Structure
+
+And actually, this is an important moment because we've just established a basic
+structure for pretty much any React app. First, we have the entry file -
+`rep_log_react.js` - and *it* has just one job: render our top level React component.
+In this case, it renders `RepLogApp`. That's the *only* file that it needs to
+render because eventually, the `RepLogApp` component will contain our *entire*
+app.
+
+So the structure is: the one entry file renders the one top-level React component,
+and *it* returns all the elements we need from its `render()` method.
+
+And, that's our next job: to build out the rest of the app in `RepLogApp`. But first,
+we need to talk about a super-duper important concept called props.

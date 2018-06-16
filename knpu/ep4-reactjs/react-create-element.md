@@ -1,15 +1,88 @@
 # React Create Element
 
-Coming soon...
+Time to install React! Find your open terminal: `yarn add react` - and we also
+need a second package called `react-dom`:
 
-Okay, we have our file, so first thing we need to do obviously is actually install react yarn, add, react, and also another package called react dash, Dash, Dash, Dev. React is the react core. React to dom is a way to is another tool that allows you to actually take your react in, use it in a web context. Now that may seem a little weird because you might wonder where else would you use react, but you can actually use react on this in other places like server side rendering. All right, once that's done, 
+```terminal-silent
+yarn add react react-dom --dev
+```
 
-incident reblog react. Let's first day in fort react from react that still look pretty familiar. We're just importing that library into our file. Now, the idea of react is that you create elements which aren't really s which art objects that represent the DM. You can then render those elements on the page. Of course, the real magic of react is that it's going to automatically update the dom when those elements change, but we'll get to that. So first I want to use react and as a lowest level way. So I'm gonna Create Credit, new El variable set to react that create element, and we're gonna make an h two tag because we basically want to 
+`react` is... um... React. `react-dom` is the library we'll use to render our
+React app onto the page, the DOM. These are separate libraries because you can
+actually use React to render things in a *non-browser* environment.
 
-replicate our h two tag there. So fast two, that's the elements you want for the second argument passing note we'll talk about, that's called props, but we're gonna. Talk about that later. And then the third, fourth, fifth arguments, all the rest of the arguments are things that you want to put inside of that tag. So we'll say lift history and we'll add an exclamation point for now. I'm just going to console that long because I want you to see that this is just a very simple object. It's not being rendered to the screen in any way. We just have this react element object and it contains some information in it about what we want to print on the page. So it's a representation of an element on the page, but it doesn't actually live on the page yet to put it on the page, we use react dom. So once again, let's go back to our index dot html dot twig, because we need to put a new spot on this page where our element can be rendered. So our existing APP has rendered in this div right here. So if I'm this, let's add a div classicals rope and we'll add a new day with an id of how about lyft stuff app. 
+*Anyways*, when that finishes, go back to `rep_log_react.js`. Like with all libraries,
+to use React, we need to require or import it. I'll use the newer, *far* more hipster
+`import` syntax in this tutorial to import `React` from `react`.
 
-Then just to make sure our apps are totally separated, let's add some br tags and I'll also add an hr tech. I'll give it some separation. So we created this empty targets that we can build our application into that target. So I'm going to copy that ID name. Next we can import react, you dumb from react dash DM and down here we can say react dom, that render and here we're going to print the element that we want to render l and then we're gonna say document that get element by ID. That's just raw normal javascript and we're at a pace in our ID. So step one is we can create this very simple element to object. Then we use react dominant to say actually put that element on the page, so foot back and refresh. Hello, we have our very first, but I know very, very simple little tiny react app. Not very impressive yet. Now of course in a real application we're going to have elements and other elements inside of it are real application is going to have a tree of elements that looks a lot like how we nest things together in html. So how could I nest an element inside of this age to well first let me break things onto multiple lines. 
+## Elements & the Virtual DOM
 
-The answer is by adding more and more arguments on the end, every time I add a new argument on the end that becomes a new child that goes into that element. So if I wanted to create a span element, for example, we could say react. That creative element, once again here, we'll do a span past that same. No for prompts and inside. How about let's put a little heart icon surrounded in quotes. Of course, 
+Here's the idea behind React: it's actually really beautiful: *we* create React
+element objects that *represent* HTML elements, like an h1 tag. These don't actually
+live on the page, they're just objects that *describe* HTML elements.
 
-perfect. And once again I'm going to console that log, that element. We can flip back, refresh, and we get the exact structure you want just to prove it. I'll inspect element and check that we have an [inaudible] as lift history inside it. Then it has a span inside of that and if you look at the dump to elements, you can say, here is our react. Then aside of it, it has something called children and the children and one of the child as a text in. The other one is yet again in another react elements, so this has reacted to very low level. I know it's not very realistic, but we're going to build from here, but ultimately behind you're really. You're just creating these react to elements and putting them inside of each other and then rendering them to the page. Now, unfortunately, this is a huge pain in the butt. You can imagine how ugly they would be as we get nested deeper and deeper and deeper. That's why I react. Comes with a really cool feature called J. s x.
+But then, we can tell React to look at our element objects, and use them to create
+*real* HTML elements on the page, or, on the DOM. This means that we will have a
+tree of element objects in React *and* a tree of element objects on the page. To
+say it a different way, we will have a *virtual DOM* in React and the *real DOM*
+on the page.
+
+And... that's it! Of course, the *magic* is that, when we change some data on a
+React element object, React will update the corresponding DOM element automatically.
+
+## Creating React Elements
+
+So... let's create some React elements! To *really* master this, yea... we're
+going to do things the hard way first. But, it will be *totally* worth it.
+
+Create a new `const el` set to `React.createElement()`. Make this an `h2` tag: we're
+building the title on top of the app. Pass `null` for the second argument: but this
+is where you could pass an array of any HTML attributes for the element. These are
+called "props" in React - but more on that later. For the third argument, pass
+*whatever* you want to put inside, like text: "Lift History!".
+
+Cool! Let's `console.log(el)`: I want you to see that this is just a simple object.
+Go refresh the page. The element is not, *yet*, being rendered to the screen in any
+way. It's just a React element that describes a potential HTML element.
+
+## Rendering React to the DOM
+
+Now, go back to `index.html.twig`. To render the element onto the page, we need
+a target. The existing app is rendered in this `js-rep-log-table` element. Above
+this, add a new `<div class="row">` and inside, an empty div we can render into
+with `id=""`, how about, `lift-stuff-app`. Then, for a bit more separation, add a
+bunch of line breaks and an `<hr>`.    
+
+Awesome! Copy the `id` of the div. To render React to the DOM, we need to use that
+*other* package we installed: `import ReactDom` from `react-dom`. Then, just,
+`ReactDom.render()` to render our `el` into `document.getElementById('lift-stuff-app')`.
+
+That's it! Step 1: create a React element object and, step 2, use `ReactDom` and
+some boring, raw JavaScript to render it onto the page.
+
+Let's go try it! Move over and refresh! Ha! We have our very first, but I, know
+very simple, React app. We deserve balloons!
+
+## Nested Elements
+
+Of course, in a *real* app, we're going to have more than just one element. Heck,
+we're going to have a big nested *tree* of elements inside of other elements, just
+like we do in normal HTML.
+
+So... how could we put an element *inside* of our h2? First, break things onto
+multiple lines to keep our sanity. The answer is... by adding more and more arguments
+to the end of `React.createElement()`. Each argument - starting with the third
+argument - becomes a new child that lives inside the `h2`. For example, to create
+a nested `span` element, use `React.createElement()` with `span`, null and a heart
+Emoji.
+
+Let's log `el` again. Then, flip over and... refresh!
+
+Ha! There it is! Inspect the element: yep, the h2 tag with a span inside. Check
+out the logged Element: it now has two "children", which is a React term: the text
+and *another* React element object.
+
+Awesome! But... you've probably already noticed a problem. Building a *real* app
+with many nested elements is going to get *really* ugly... *really* quickly. This
+React "element" idea is great in theory.... but in practice, it's a nightmare! We
+need another tool to save us. That tool is love. I mean, JSX.

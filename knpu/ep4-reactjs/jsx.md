@@ -1,17 +1,106 @@
-# Jsx
+# JSX
 
-Coming soon...
+This system of creating a "virtual DOM", or "tree" of React element objects and
+rendering that to the page is a really cool idea. But, it's already a total pain:
+imagine if we needed another `React.createElement()` inside of the `span`... then
+another element inside of that. Woof.
 
-So this system of creating react element objects and putting react element objects inside of objects to create your dom tree and then rendering it is a really cool idea. We've only just started to scratch the surface of its potential, but it's a total pain to. Right. You can imagine if we needed another element instead of the span, we'd have to have another react, that creative element forever and ever and ever and it would be awful. What would be really cool is if instead we could just write html in here, like for example, literally what if we could do this? What if we said Consta l equals, and then we just wrote an h, two tag lifts stuff. Then we had a span tag with the heart in the middle and then we added the closing h two tag. I mean that's effectively what it's building a javascript, but of course this is not real javascript code. This is me just hacking html right into the middle of my javascript file and no surprise php storm is super angry and if you switch back to a yarn, yeah, it's super unhappy as well. Unexpected token. Well, it turns out that this syntax actually is legal. 
+Because the React element objects are *meant* to represent HTML elements... it would
+be kinda cool if, instead, we could *actually* write HTML right here! Like, for
+example, what if we could say `const el = ` then write an `h2` tag with `Lift Stuff!`
+and add a `span` tag inside with a heart. I mean, that's *exactly* what we're
+ultimately building with `React.createElement()`!
 
-We just need to teach Babel. Remember, Babel is the tool that transliterates that understands our javascript and writes it into older versions. For older browsers, we can teach babble to understand the syntax, how well for using web encore like we are. 
+But, of course, this is *not* real JavaScript code: it's just me hacking HTML right
+into the middle of my JavaScript file. So, no surprise: PhpStorm is *so* angry with
+me. And, if you move back to the terminal tab that is running Webpack, oh, it's
+*furious*: Unexpected Token.
 
-I need to do is go into it and say that enable react preset as referring to a Babel preset, a rule that understands how to how the syntax works because we just updated our webpack file. You then need to go rerun encore, which will actually fail because it's also going to tell you that you need to install a new package babble, react preset, so a copy of that, and then we install that. By the way, pretty soon, that package name is going to become at Babel slash preset dash react, but it's going to do the exact same thing as before. Awesome, and that's done. That's rerun our watch in this time. Oh, it fails again, but this is my fault because I haven't deleted my old react. That create element and now build successful. Webpack actually sees this. Apple sees us as real code and check this out. If we move over, move over and refresh it works. We get the exact same output as before age two and our span inside of here. Now here's the really important part, check out our log because remember we're logging the element at the bottom. It is the exact same thing we had before. It's a reactive element in inside it has two children which are the string and the other react element. 
+## JSX & The Babel React Preset
 
-This special syntax is called J s x and allows you to write html right inside of your javascript and when you do it in react, I'll go. I'll hit undo here. This jsx actually behind the scenes becomes the same thing as up here. It uses react that create element behind the scenes, so we get the same output. It's just way less. It's just way, way prettier. Now of course a PHP storm hates this and that's not going to be okay, but you can already see on top it's saying switch language version to react jsx switch or dismiss so we can hit switch there. So instead of hitting a switch there, just in case you missed that message, I'll do it a different way. Go to peace, restart. I'm going to preferences, search for JSX 
+Well... fun fact! This crazy HTML syntax *is* actually valid. Well, it's not official
+JavaScript: it's something called JSX - an *extension* to JavaScript. To use it,
+all *we* need to do is teach Babel how to parse it. Rememeber, Babel is the tool
+that reads our JavaScript and "transpiles" it, or "rewrites" it, into older
+JavaScript that all browsers can understand.
 
-and under languages and frameworks. Java script changes your javascript format from ecmascript two, react jsx and that hit okay. That tells your editor that you were using the jsx format so it should understand it and boom, you can see like that it is instantly happy, so it was totally legal to you, Jay Jsx, and we're going to use it extensively, but remember behind the scenes, this is just creating those nice little react elements and I want to remember that so we can kind of keep things simple in our minds. Now remember a few minutes ago we installed the ies Linden Library was actually an additional set of rules that we can apply to our ESL. Let that are special to react and this is going to give you all kinds of really nice notices and warnings when you're using react. So I'm gonna switch back over to my terminal, go to my open terminal and run yarn, add e es lint, that plugin dash react dash, dash depth, perfect one that finishes the excellent to use that. Go to your ies lint that, that Eastland ours at our seat, that js file, and afterwards to the extents part, add a new plugin, colon react slash recommended. 
+To teach it how to parse JSX, open your `webpack.config.js` file. In normal Webpack,
+you need to install and enable a React Babel *preset*: a rule that understands
+JSX. In Encore, you can do this by adding `.enableReactPreset()`.
 
-Okay. 
+To make this take affect, go stop Encore and restart it:
 
-That was a whole new set of rules in there and you won't see them yet in here. But as we start to see as we start to see rules coming from that, I'll point them out. So at this point we're starting to see little bit of how react is actually used, but to really see it, we need to create something called a components.
+```terminal-silent
+yarn run encore dev --watch
+```
+
+Oh, it fails! Ah, we need to install a new package: copy the command name. Then,
+paste:
+
+```terminal
+yarn add babel-preset-react --dev
+```
+
+By the way, the next version of this package will be called `@babel/preset-react`.
+So, if you see that package name in the future, don't worry, it's really the same
+thing.
+
+And... done! Try Encore again:
+
+```terminal-silent
+yarn run encore dev --watch
+```
+
+Bah! It fails again - but this is my fault: I forgot to remove my extra `el`
+constant. After removing that, *yea*! Encore builds successfully! This means
+that it *actually* understands our crazy JSX code! Try it - move to your browser
+and refresh!
+
+## JSX Vs React.createElement()
+
+We get the *exact* same output as before! An `h2` with a `span` inside. Now, here's
+the *really* important part. Just like before, we're using `console.log()` to print
+this `el`. Check this out in the browser - woh! It's a React element object! It's
+the *exact* same thing we had before!
+
+This special syntax - JSX - allows you to write, what *looks like* HTML right
+inside JavaScript. But in reality, Babel translates this into `React.createElement()`
+calls: this JSX *generates* the `React.createElement()` code we had before!
+
+Hey, we solved our problem! We found a *much* prettier and more convenient way to
+use the React element system.
+
+## Making PhpStorm *also* Love JSX
+
+Except... PhpStorm still *hates* me for using this. But, you can already see on top
+that it's asking us if we want to switch our language to support JSX. You can make
+the change there, or go to PhpStorm -> Preferences and search for "JSX". Under
+Languages & Frameworks, find JavaScript and change the language version to "React JSX".
+
+Hit ok and... boom! PhpStorm is happy!
+
+From now on, we will *exclusively* use JSX. But, don't forget what it really is!
+Just a fancy way of creating React element objects. Remembering this fact will help
+you understand React as things get more complex.
+
+## Adding the ESLint React Plugin
+
+A few minutes ago, we installed & setup the `eslint` package. And now that we're
+using React, we can activate some *new* ESLint rules that will give us all kinds
+of cool notices and warnings that are specific to developing in React.
+
+To install these new ESLint rules, move over to your terminal, find your open tab
+and run:
+
+```terminal
+yarn add eslint-plugin-react --dev
+```
+
+Once that finishes, open the `.eslintrc.js` file. To use the rules from this package,
+update the `extends` option to have `plugin:react/recommended`.
+
+You won't notice anything immediately, but as we keep developing in React, I'll
+point out the warnings that come from this.
+
+Ok, we've learned how to create & render React element objects. But to *really*
+use React, we need to talk about React components.

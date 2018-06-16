@@ -1,19 +1,100 @@
 # Props
 
-Coming soon...
+So far, the component is 100% static. What I mean is, there are *no* variables
+at all. No matter what, each time we render `RepLogApp`, we will get the *exact*
+same result.
 
-Right now these components are component is really static. What I mean is there, there's no variables at all. When we rented this component, we get this exact market no matter what. Now if components are kind of like php classes, then one of the things we can do in php is when we instantiate classes, we can pass those. We can instantiate classes with different arguments to make those objects act differently and we can actually do the exact same thing with components. We can pass in different variables to the components when they're instantiated to make them rendered different, different things. So first 
+I said earlier that a React component is kind of like a PHP class. Well, when we
+instantiate a class in PHP, we can pass in different arguments to make different
+*instances* of the same class behave in different ways.
 
-just a quick note, when you actually use the jsx syntax on a component that actually creates a new instance of that component. So we can actually create multiple rep log app objects independent of each other and render them anywhere on the page. And that's hugely powerful. Now check this out. Let's suppose that we want to be able to use our rep log app and multiple places and sometimes we want these star icon Emoji and sometimes we don't want the star Emoji, so we need to be able to pass in a flag that says whether or not we're going to run to that star. So inside of our main, our rep log app, react, let's create a new should show heart constant set to true the number below and render. I'm actually just gonna pass us. Put this onto multiple lines there for readability. Now, how can we pass this? Should show heart into a rep log app by adding attributes or what? Look like html attributes. So let's create, let's pass a new attribute called with heart, which I'm just making up set two and here is a really important and then say should show heart. Now something amazing just happened. We are inside of Jsx land on this line. 
+And... yea! We can do the exact same thing here: we can pass variables to a
+component when it's rendered, and use those in the `render()` method.
 
-And when you're in Jsx, you know, if I had said with heart equals food, then you know, we understand what that means, but whenever you're in Jsx, if you do an open curly brace that puts you into javascript land, which is really important because then you can do whatever you want, you can say should show heart, uh, and, and false or whatever javascript logic you want inside of there, they're open curly brace puts us into javascript. No, I keep calling this thing in attribute, but in react, this is actually known as a prop. You can kind of think of it as we're passing this as an argument when it instantiates our rep log app components inside of rep log app, we can access props via a. This arrow prompts property. Check this out. I'm going to get a new property here in render called heart, and I'm going to send it to an open. 
+## Components are Instantiated
 
-Oh, 
+But, first, a quick note: when you use the JSX syntax for a component, React
+*instantiates* a new instance of our class. Yep, we can actually render multiple
+`RepLogApp` components on the page, and each of them will be a separate object.
+with separate data.
 
-instead of render, I'm going to say let heart equals empty quotes. Then here we can say if this Arrow props Arrow with heart referencing that with heart prop that we pass it in here. If that's true, then we're actually gonna reassign heart to a jsx element. Actually, this jsx element down here with the span, some copy our heart icon there, paste here, and hit enter, so we're actually setting this heart to eight, what we know as a react element. Now notice when we say this or approximate with heart, it's giving us an error and it says something about missing prop validation. We're going to talk about that later. For now, you can totally ignore that. 
+## Passing in a Prop
 
-Now, down on our return statement, just for clarity, I'm actually going to do a parentheses and hit enter and then do another parentheses. When you use a presidency and jsx like this, it just allows you to put the jsx onto multiple lines if you want to, which is just for readability. You'll send me to do that quite a lot. Now, instead of our span here, while you want to do is we actually want to print your heart variable. So remember in Jsx you can do open curly, close, curly, and inside you can say heart. So that's either going to be an empty string or it's going to be this react element based on our, based on what we pass in. So since right now with heart is equal to true, why don't we go over it and refresh it actually works in shows. True. So let's see. Let's go and change this really quick to false. Go back, refresh and it's gone. So to really prove the point here, I'll change that back to true. We could actually render multiple elements. So I'm gonna copy my rep log app and then I'm going to say with heart equals false. Now as soon as I say that, you can actually see that Westpac gives me an error and if I moved back over and look, it says adjacent jsx elements must be wrapped in an closing tag. 
+It turns out, that's hugely powerful. Suppose that we want to be able to render our
+`RepLogApp` in multiple places on the page at the same time. But, sometimes we
+want the heart Emoji, but sometimes we don't. To make that possible, we need to
+be able to pass a flag to `RepLogApp` that tells it whether or not to render the
+heart.
 
-And what this basically means is that when you were, is that whenever you're creating a jsx structure, there always needs to be a single top level elements. Like for example, in rep log APP, the top of an element is the [inaudible]. So for example, to fix this, we could actually put a div super simple. Then I'll just use multiple lines here and div open. I have my comment in the wrong spot 
+Inside `rep_log_react.js`, create a new `const shouldShowHeart = true`. I'll also
+update the render code to use multiple lines, just to keep things clear.
 
-and Oh, I completely forgot my false. There's javascript. So let me wrap that and awesome. Webpack is happy again and if we go back and refresh asks, you can see our components being rendered on the page twice and we have two separate instances that we passed. Two different prompts into props are going to be one of the most important things that we talk about with react. It's the way that we are going to change the behavior and create really dynamic, uh, interfaces. Now we don't actually need to have those rep blog apps. So I'm going to copy the original one and then we'll put that one back and then we are back to just one list up.
+So, how can we pass this variable into `RepLogApp`? By adding what *looks* like
+an attribute: `withHeart` - I'm just making that name up - equals `{shouldShowHeart}`.
+
+## The JSX {JavaScript} Syntax
+
+Woh. Wait. Something crazy just happened. We are inside of JSX on this line.
+And, because JSX is like HTML, we know that we could, of course, say something
+like `withHeart="food"`. That's true, but whenever you're in JSX, if you write `{}`,
+that puts you back into JavaScript mode! Once inside, You can write literally *any*
+valid JavaScript: like reference the `shouldShowHeart` variable or even add expressions.
+We'll do this *all* the time.
+
+## Reading Props from Inside a Component
+
+Now, I referred to `withHeart` as an "attribute". But, in React, this is actually
+known as a `prop`, and its the way that you pass "arguments" or "data" into your
+component. Inside `RepLogApp`, we can access any props that were passed to us via
+a `this.props` property.
+
+Check this out: in `render()` create a new variable called `heart` and set it to
+empty quotes. Then, if `this.props.withHeart` - referencing the prop we passed
+in - say `heart =`, copy the `span` JSX from below, and paste it here.
+
+Oh, and notice that when we use `this.props.withHeart`, we have an error from ESLint
+about some missing prop validation. That's just a warning, and we're going to talk
+about it later. For now, *totally* ignore it.
+
+Below, I want to break my `return` statement onto multiple lines. You *can* use
+multiple lines to define JSX, as long as you surround it with parenthesis. I do
+this a lot for readability.
+
+Finally, instead of the span, we want to print the `heart` variable. How? Use
+`{heart}`. Based on the value of the prop, this will print an empty string or a
+React element.
+
+Right now, `withHeart` is equal to true. So let's see if this work: find your browser
+and refresh! Yes! We still see the heart! Change `shouldShowHeart` to false and
+try it again. The heart is gone!
+
+## Rendering a Component Multiple Times
+
+To *really* show off, change that value back to true, but let's see if we can render
+`RepLogApp` *multiple* times. Copy the JSX, paste, and set `withHeart` to `false`.
+
+But, as *soon* as we do this, the Webpack build fails! Find your terminal to see
+what it's complaining about:
+
+> Syntax Error: Adjacent JSX elements must be wrapped in an enclosing tag
+
+This is less scary than it sounds. It's not that you can't put components next to
+each other like this, it just means that there must be just *one* element all the
+way at the *top* of our JSX tree. Each *component* also needs to follow this rule.
+And, `RepLogApp` already is: it has one top-level element: the `h2`.
+
+To put just *one* element at the top of our element tree, there's a simple fix:
+add a `div` and render both components inside. Oh, and I completely forgot to use
+`{}` around my "false" - `false` is JavaScript.
+
+Now that Webpack is happy again, go back and refresh! Sweet! Our component is
+rendered *twice*: each is its own object with its own data.
+
+Props are just about the *most* important concept in React, and they will be the
+*key* to us creating killer UI's that update dynamically.
+
+Back in `rep_log_react.js`, we don't *really* need two of these components: so go
+back to just one. And, beautiful!
+
+It's time to build out the rest of our app: first, by moving the table into
+`RepLogApp`.
