@@ -20,7 +20,7 @@ me. And, if you move back to the terminal tab that is running Webpack, oh, it's
 
 Well... fun fact! This crazy HTML syntax *is* actually valid. Well, it's not official
 JavaScript: it's something called JSX - an *extension* to JavaScript. To use it,
-all *we* need to do is teach Babel how to parse it. Rememeber, Babel is the tool
+all *we* need to do is teach Babel how to parse it. Remember, Babel is the tool
 that reads our JavaScript and "transpiles" it, or "rewrites" it, into older
 JavaScript that all browsers can understand.
 
