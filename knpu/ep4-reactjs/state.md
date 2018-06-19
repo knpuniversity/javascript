@@ -48,7 +48,7 @@ execute the parent constructor. You'll see this pattern over and over again.
 
 To set the initial `state`, just set the property directly: `this.state` equals
 an object, with, how about, a `highlightedRowId` key set to null. Nothing will
-be highlighed at first.
+be highlighted at first.
 
 ## Using State in render()
 

@@ -17,7 +17,7 @@ Move over, refresh, click, and... find the terminal. Boom!
 
 *Cool*. Let's review our goal: to highlight a row when we click on it. So... hmm...
 onClick: if we could update the `highlightedRowId` state to the correct id, React
-would re-render and take... care of the rest! Easy! Inside the arrow function, update
+would re-render and take care of the rest! Easy! Inside the arrow function, update
 the state with `this.setState()`. Pass this an object with the state key or keys
 that you want to change. For us, `highlightedRowId` set to the id of *this* rep
 log: `repLog.id`.
@@ -32,7 +32,7 @@ And, more important, if you modify the state property directly, React won't re-r
 The reason is simple: this is what React uses to *know* that you changed the state
 and so, to start the re-rendering.
 
-Bag, let's go try it! Refresh! And... click! Woohoo! We just added our *first* bit
+Bah, let's go try it already! Refresh! And... click! Woohoo! We just added our *first* bit
 of interactivity. In the React dev tools, if you click on `RepLogApp`, you can watch
 the `highlightedRowId` state change as we click the rows. Pretty freaking cool.
 

@@ -6,7 +6,7 @@ in a handler function *and*, below, this `repLogs` row stuff is pretty complex o
 its own!
 
 In PHP, if you're working on a class, sometimes that class can become so big or
-so *complex* that, for your own sanity, you choose create a *new* class and move
+so *complex* that, for your own sanity, you choose to create a *new* class and move
 some of that logic into it. Another reason you might create a new class is if you
 want to make some of your logic re-usable.
 
@@ -23,7 +23,7 @@ Inside, every React component begins the same way: import `React` and `{ Compone
 from `react`. Then, `export default class RepLogList extends Component`. Add
 the *one* required method: `render()`.
 
-So... hmm...  I basically want to move my rep logs rows into that component. We
+So... hmm...  I basically want to move my rep log rows into that component. We
 could move the whole table, or just the inside - don't over-think it. Let's copy
 all of the `tbody`. Then, return, add parenthesis so we can use multiple lines
 and, paste!
@@ -55,10 +55,10 @@ move the `highlightedRowId` state into the `RepLogList` component. And, technica
 this would work! Look closely: `RepLogApp` isn't using that data anywhere else! So
 if we moved the state, everything would work!
 
-But... dor a reason I can't fully explain yet, I *don't* want you to do that. Nope,
+But... for a reason I can't fully explain yet, I *don't* want you to do that. Nope,
 I want you to leave *all* of your state in the top level component of your app.
 That means, I want *all* of your child components to have zero state. Don't worry:
-we'll talk a lot more about this strategy later.
+we'll talk a lot more about why later.
 
 ## Passing Props down the Tree
 
@@ -95,7 +95,7 @@ component needs that data, we'll pass it as a prop.
 We already know that whenever something updates the state of a component, React
 automatically re-renders that component by calling `render()`. And actually,
 the same is true for props. When the `highlightedRowId` state changes, this changes
-that props of `RepLogList` and *that* causes it to *also* re-render. Which, is
+the props of `RepLogList` and *that* causes it to *also* re-render. Which, is
 *exactly* what we want!
 
 But, earlier, I told you that props are immutable: that props can never be changed.
