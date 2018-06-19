@@ -1,17 +1,106 @@
-# Static App
+# Build the Static App First
 
-Coming soon...
+One of our *big* goals in this tutorial is to create a repeatable path to success.
+And, we're *already* doing that! Step 1 is always to create an entry file. That
+file doesn't do much *except* render a `React` component onto your page.
 
-What am I really big goals with this tutorial is to give you a 
+Step 2, in that React component, build out an entirely static version of your app.
+First do this in pure HTML. Then, create some hardcoded variables and render those.
+For example, we *first* built one dummy `tr` element by hand and *then* created a
+hardcoded `repLogs` array and used *that* to build the rows.
 
-repeatable path for building a react applications that you can get something done and get it looking right and we're actually already starting to follow that path. The Path always starts with an entry file in the entry file. Doesn't really do anything else other than render a react component into an element. Then in that rack component, right lights do first is actually build out an entirely static version of my page so you can see here we are building some rep log rose, but I've just kind of built those as some static data for now. So we're going to build the entire Ui statically first and then we're going to start making parts of it dynamic. 
+So, step 2 for success is to build your entire UI statically... and *then*,
+*soon*, we will make things dynamic and fancy.
 
-Right now, the only thing that we're actually missing from our application from a Ui perspective is this form down here. So I'm actually going to go into our templates, go back to index dot html dot twig, and you can see the form before I actually came from a included template underscore form. So I'm going to open that and this is just a normal html form, which is perfect, so I'm going to copy that closed that template, go back into rep log app and under the table, well paced that form hello form, except scroll up a little bit because we do need to clean a couple things up. A forum class doesn't need this jazz class anymore and that was used by the old javascript a get rid of the data. Same thing with the data you were l and before I had disabled html, five validation. I'm actually going to rehab that html. Five validation will at least thanks to these required attributes. Give me some quick validation to make sure that the form isn't filled out blank. Cool, so let's try that. Football or refresh and awesome form shows up 
+## Adding the Static Form
 
-except the styling is off a little bit. If you look down here, this is a little bit more spacing. Then this spot, there's also another problem which is warning, use the default value or value props on select. Instead of setting selected on an option, we're gonna. Talk more about reacting. How react works was formed later, but basically the problem down here is actually on this selected attribute. This is illegal and react because react actually wants to help manage your form and you'll see what that means later. So for now I'm actually just going to delete that selected, but if you did want to, that could, but you could still make an option selected by using the default, uh, attribute which would actually be applied on the select to say which of the options you want to select, but for the most part, don't worry about that yet, but I am interested about this white space problem. If you actually inspect element on the form itself, then I'll go to the form and right click on that and say edit as html. You can see that this actually renders all as one big line with no space in it. That's a property of how react renders its components. It doesn't render extra white space in 99 point nine percent of the time. You don't care except the problem is that we actually want a little bit of white space. This is an inline elements, so the online element is actually how we were getting 
+The only UI that's missing form our app now is the form below the table. No problem!
+Go back into `templates/lift/index.html.twig`. Ah, the form lives in another
+template: `_form.html.twig`. Open that: it's just a normal, boring HTML form.
+That's perfect! Copy *all* of it, close the file, go back into `RepLogApp` and,
+under the table, paste!
 
-the different styling behavior between the fields. What do you mean is we actually do want there to be a space between the DEV and another space down here, so unfortunately this is a one little hack that you have to do with react. It doesn't happen very often, but we can do is we can actually use javascript to print an extra space. They're ugly Hacky, I know, but honestly it doesn't come up very often and now when we refresh, Yup. Now we have our spaces there. Also, while I'm. While I'm here, I'm going to make one other adjustments so far. We're using webpack encore in the background and we've been running it with yarn run encore Dev, Dash, dash watch, which means every time we make an update to a file that actually writes out the fresh javascripts, there's another option that you can use an encore called Dev server. This one is a bit different. It actually loads up a new kind of fake web server and now we request all our assets from that web server. 
+Except, scroll up a little bit, because we need to do some cleanup! The form doesn't
+need this class anymore: that was used by the old JavaScript. The same is true for
+the `data-url` element. And `noValidate` disables HTML5 validation. But, HTML5 validation
+is nice to have: it will enforce the `required` attribute on the fields. So, remove
+it.
 
-If you go back over and refresh, you shouldn't notice any difference in our symphony application, but thanks to our setup with encore in the previous tutorial, if you view the page source, suddenly all of our assets are actually being prefixed with local host 8,000. This is that web server that was just spun up by Webpack and it lowers the assets dynamically from there. This means that the assets aren't actually being physically written to our our file system temporarily. We're just grabbing them from that server. The reason I'm doing this is that as your application gets more complex, occasionally you can make a change in refresh before webpack has been able to write the files, but if you use the webpack Dev and you refresh too quickly, your browser will actually wait for the CSS or javascript files to be rendered before it actually loads the page. There's a couple other minor differences, but it's not really too important, but this is how I want to use it. Anyways. Back to the task at hand. Our goal was to build our entire application in static html and we've done that. 
+Oh, but I want you to notice something! The attribute was `noValidate` with a capital
+"V"! In the original template, it was `novalidate` with a lowercase "v": that's how
+the property is called in HTML. When we pasted it, PhpStorm updated it for us. This
+is one of those uncommon situations - like `class` and `className` where the HTML 
+attribute is *slightly* different than what you need to use in React. I want to
+point that out, but don't over-think it: almost everything is the same, and React
+will usually warn you if it's not.
 
-There is a little bit of fanciness to our application because we learned that we can actually pass prompts into our components and then use those to render things dynamically, so that means that our react component is kind of dynamic because we can control different parts of how it looks and we get past other props in from outside of our component, but once our component is rendered, it's static. What I mean is once I rep log APP has been rendered with with heart true or with heart false. That's it. It's rendered, it's stuck on the screen. Of course, the whole point of using react is that we want the Ui to change as data changes. We want to be able to update some data and have certain things in the Ui just magically update. We're going to do that with something very, very important called state and that's what we need to learn about next.
+Cool! Try it out: refresh! Awesome! We have a form!
+
+## Using form defaultValue
+
+Hmm, but the styling is not *quite* right. *And*, we have a warning about using
+a `defaultValue`. Let's fix that first. We'll talk a lot more about forms in React
+later. But basically, *React* is a control freak, it *really* really* wants to
+manage the values of any elements on your form, including which option is selected.
+So, instead of using `selected="selected"`, you can use `defaultValue=""` on the
+`select` element and set it to the value of the option you want. I'll skip that part
+because the first option will be automatically selected anyways.
+
+## Adding Ugly Manual Whitespace
+
+Ok, back to the styling problem. Inspect element on the form itself, right click
+on it, and go to "Edit as HTML". Ah, React renders as one big line with *no* spaces
+in it. 99% of the time... we don't care about this: usually whitespace is meaningless.
+But, in this case, the form is an inline element: we *need* a space between the
+first two fields, and between the last field and the button. Without the space,
+everything renders "smashed" together.
+
+The fix is both simple... and ugly: use JavaScript to print an extra space. Do it
+in both places. Yep, weird, but honestly, I *rarely* need to do this: it's just not
+a problem you have very often.
+
+Try it again... yep! It looks *much* better! And we have our static app!
+
+## Using the Dev Server
+
+Before we go kick more butt, I want to make one adjustment to our workflow. We're
+using Webpack Encore. We ran it with:
+
+```terminal
+yarn run encore dev --watch
+```
+
+Thanks to that, each time we update a file, it notices, and re-builds our assets.
+But rather than using `encore dev`, use `encore dev-server`. This is pretty interesting:
+instead of writing physical files to our `public/build` directory, this starts
+a new web server in the background that *serves* the built assets.
+
+Check this out: go back and refresh the app. *No* visible differences. But now,
+view the page source. Suddenly, instead of pointing locally, like `/build/layout.css`,
+every asset is pointing to that new server: `http://localhost:8080`! This magic
+URL changing is thanks to Webpack Encore *and* some config changes we made to our
+Symfony app in the [Encore tutorial](https://knpuniversity.com/screencast/webpack-encore).
+
+The web server - `http://localhost:8080` - is the server that was just started
+by Webpack. When you request an asset from it, Webpack returns the latest, built
+version of that file. What's weird is that the built assets are no longer physically
+written to the filesystem. Nope, we just fetch the dynamic version from the new server.
+
+Ultimately... this is just a different, fancier way to make sure that our code
+is always using the latest version of the built assets. But, as your app gets more
+complex, it *may* become possible for you to refresh your page *before* Webpack has
+been able to physically write the new files! However, if you use the `dev-server`
+and refresh too quickly, your browser will *wait* for the CSS or JavaScript files
+to be ready, before loading the page. And, as an added "nice thing", the dev server
+will cause our browser to automatically refresh whenever we make changes.
+
+*Anyways*, or goal was to build our entire app with a static UI. And, we've done
+that! Sure, we have *some* fanciness: we learned that we can pass "props" into
+our components and then use those to render things dynamically. So, our app is
+"kind of" dynamic, because we can control different parts of how it looks by passing
+different props. But... once our component is rendered, it's static. For example,
+once we render `RepLogApp` with a heart... it will have a heart *forever*.
+
+But, the *whole* point of using React is so that our UI will automagically update
+when data changes! And we'll do that with something very, very important called
+state.

@@ -1,17 +1,68 @@
-# Event Handlers
+# Handling Events (like onClick)!
 
-Coming soon...
+I want to do something when the user clicks the `tr` element. In React, how can we
+attach event listeners? What is the React version of selecting an element in jQuery
+and adding an on `click` function?
 
-So next question, uh, I want to do something when I click this tr elements, so in react, how can we attach event listeners to our elements and answer is, Oh, you're going to love or maybe hate the answer. I love the answer because it's so simple. Here's the tr element. We want to add a click behavior to it. So I'm not kidding you. You add in on click attributes and inside here you pass it a function that should be called whenever this element is clicked. So I'm going to do an inline function here and for now let's just say console dot log. Oh my God. And on Cook. Well add extra oils. So football over refresh and 
+## Attaching an Event
 
-hit our console. Yes, there it is. We have a click event. We're actually adding an attribute. I know that seems kind of crazy. This is actually a really simple way of doing things and it's not hacky. It's the way that react has built in for you to attach event listeners. Now remember our goal was that thanks to our new highlighted row ID state. If we can set that on click, if we can set that to the correct highlighted row than react, is gonna automatically rerender in it's now, it's going to automatically show vtr with a new element with our new class, so literally inside of here, all we need to do is change the state. Do that with this dot set state, and then passed this in array of the state that you want to update. In this case, would we just want to update the highlighted row ID state to the idea of this rope, which actually is rep log.id, 
+Oh, you're going to *love*... or maybe hate the answer. I love it, because it's
+simple! To add a click handler to this `tr` add... `onClick` and pass this a
+function. I'll use an arrow function and, for now, just
+`console.log('OMG - an onClick!')`.
 
-and that's it. Now, one really important thing here is notice that when we initially set our state than the constructor, we, we actually set the property directly. This dot state equals. That will be the only time ever that you changed the state property by accessing it directly. You're only allowed to this when you initialize it every other time after. When you want to change the state, you need to call this dot set state. Always. The reason is this is what react uses to realize that you changed the state so that it can then rerender the element. So check this out, go back, refresh and Wa. We have just added our first bit of interactivity to our APP and if you go back to our rep log app, you can actually watch the state down here, a update as we are clicking through the elements, which is pretty freaking cool. 
+Move over, refresh, click, and... find the terminal. Boom!
 
-Now these, uh, the callback that's past here is very similar to attaching a callback. It's just like attaching a callback outside of react. What I mean is you actually are passed an event object. We don't need the event object in this case, but this event object has a lot of the same. All the same information that you're used to having. And actually this isn't a native dom event in a object reacted, does wrap it and, and kind of change a few things to make your life easier. But this is more or less the same event object that you would get when you used, for example, jquery to attach click listeners. 
+## Updating with this.setState()
 
-Now because this, this inline thing here, it works, but it doesn't look too cool and if you start having too much of this inland logic, it just sucks. So here's what I want to do instead we're inside of a class, so let's actually start organizing our code a little bit better. So let's add a new method to our class handle row click and it'll take in the rep log id that was just clicked and also the event from that click. We don't actually need the events. I'm going to delete that later, but I just want to prove that we can actually handle past that event. Object around inside of here. I'm going to go steal my code and paste it up here. We will say this, that set state highlighted row id equal to the rep log ID. Make sure I close my method there so webpack is happy down below. We can of course now call this this handle real quick and we'll press it passively wrap log that id and the event object just because I have that as an argument right now. 
+*Cool*. Let's review our goal: to highlight a row when we click on it. So... hmm...
+onClick: if we could update the `highlightedRowId` state to the correct id, React
+would re-render and take... care of the rest! Easy! Inside the arrow function, update
+the state with `this.setState()`. Pass this an object with the state key or keys
+that you want to change. For us, `highlightedRowId` set to the id of *this* rep
+log: `repLog.id`.
 
-Cool. Move back, refresh 
+Coolio! But, an important note! In the constructor, we initialized the state by
+setting the `this.state` property directly. This is the *only* place, *ever*,
+that you will change or set the state property directly. *Everywhere* else, always,
+you need to call `this.setState()`. If you don't, puppies will stare at you with
+sad eyes.
 
-in. Not Surprising, it still works is that right there people is the power of a react. You can already imagine the increasing state will have in our application and every time you have a different. Every time in react doesn't care how many different Ui things change when state changes, it handles all of those. So next we're actually going to talk about taking this large component, which has a lot of market right now and actually moving it into a a child component.
+And, more important, if you modify the state property directly, React won't re-render.
+The reason is simple: this is what React uses to *know* that you changed the state
+and so, to start the re-rendering.
+
+Bag, let's go try it! Refresh! And... click! Woohoo! We just added our *first* bit
+of interactivity. In the React dev tools, if you click on `RepLogApp`, you can watch
+the `highlightedRowId` state change as we click the rows. Pretty freaking cool.
+
+## The SyntheticEvent
+
+Just like with jQuery or plain JavaScript, when you add an event callback, your
+function is passed an event object. We don't need the event in this case, but it
+contains all the same information you're used to having. Actually, this isn't a
+native DOM "event" object. React passes you what's called a "SyntheticEvent": an
+event object that wraps the normal event, has all the same methods and properties,
+but adds a few things to make life easier.
+
+## Moving the Handler to the Class
+
+Putting all this logic inline is fine... but it can become hard to read. So, instead,
+I like to make the handler a property on my class. Start by adding a new method:
+`handleRowClick` that will accept the `repLogId` that was just clicked and also
+the event object itself... just to show that we can we pass this:
+
+Next, steal the state-setting code and paste it here, but with `highlightedRowId`
+set to `repLogId`. And... we should probably close the method so Webpack isn't
+so mad at me!
+
+Below, call it: `this.handleRowClick()` with `repLog.id` and `event`.
+
+I like it! Let's make sure we didn't bork our cool app: back to the browser! Refresh!
+Yea! It *still* works! 
+
+*This* is the power of React! It doesn't care *how* many different things in your
+UI need to change when some state changes, it takes care of everything.
+
+And now, it's time to talk about organization. RepLogApp is *big*, and when things
+get too big, they get confusing. Let's move some code into a new child component.

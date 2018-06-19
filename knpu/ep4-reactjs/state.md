@@ -1,21 +1,125 @@
-# State
+# State: For Magic Updating Good Times
 
-Coming soon...
+It turns out that a React component has *two* types of data: props, which we access
+with `this.props` and something different called state. Understanding the difference
+between props and state is, well, just about the most important thing in React.
 
-It turns out that a react component actually has two types of data that handles it has props, which we access via this Arrow props, and then it also is something different called state and understanding the difference between them is very important. As we've seen. Once a component receives a prop, like for example, we pass the true value for the width hard prop. Once this component receives this prop, this component cannot. That prop is constant. What do you mean his prompts? A prop doesn't change. It's just a value that this component reads and that's it. So when you think of props, think of data that doesn't change. Now we're going to complicate that a little bit later, but that's what I want you to go off right now. Props are data that within a component you do not change ever. They're constant, they're immutable state. On the other hand is data that will change during the life cycle of your, of your application scenarios. Example with heart is a really good example of a prop because as soon as our application renders, this heart is going to be there or it's not going to be there, but we don't expect that to ever change based on the user doing some sort of an interaction on our on our page. It's always going to be they're always going to be there or not going to be there. 
+## Props vs State
 
-When did you start making things interactive? We're going to start needing the store different data in state. Now, why is there this distinction between prompts that are immutable in state, which is mutable? We'll learn about that. It has to do with how react is architecture and it's actually one of the trickiest parts of getting a react, so let me give you the goal here. My goal right now is I want to add our first user interaction to our APP here. Whenever I click on one of these rows, I want that row to be highlighted. Now from a data structure, that means that somewhere in our component we're going to need need to keep track of which of these rep log rose is currently highlighted, so great way to do that is we can keep track of the highlighted row id. We can keep track of the fact that one, two, or eight is the currently highlighted row id, but since that data will change throughout the lifecycle of our application, we're not going to store it as a prop. We're going to store it as state. 
+Once a component receives a prop, like, we pass `true` for the `withHeart` prop,
+that prop is constant. A component never changes a prop: it's just a value that
+it receives, *reads* and uses.
 
-As soon as you decide that you have some data that will need to change the route your life cycle, you're gonna want to initialize that value on the state and the way you do that is actually by overriding the constructor on your components. React components, receive a props arguments, and then you're supposed to call super props to call the parent component. It's just a pattern you're going to see over and over and over again. Then to set the initial state of your prop state is just a property, so you say this era estate equals an object and we'll say highlighted row ID is set to no, there's no highlighted row id at first. 
+So, when you think of props, think of "data that doesn't change". We're going to
+*slightly* complicate that later... but for now, think: props are data that we
+never change, they're constant. Or, "immutable" to be more hipster.
 
-Now down and render just like a prop. We use this data, so I'm actually going to use destructuring to get that out as a variable, so const highlighted row id equals this, that state, again, I know the destructuring isn't a little bit weird for us php developers, but this is a really common pattern. On top is instead of referring down below to this dot state dot highlighted row id, we actually destructure out our variable up here by using this format and now down below we can use that on our t, our elements. I'll actually break this into multiple lines here and we're going to give us a special class if it's highlighted, so we'll say class name equals and we'll use the turner and syntax to say if highlighted row ID equals equals equals this rep logs id. Then we'll put an info class. Otherwise, we'll put no class and this info class is already something that I've added into the CSS for my of my application, so it will already give us some styling. Cool, so right now if we refresh, we're not expecting anything you've been highlighted because we've initialized that state to a null value and sure enough, none of these are highlighted and none of these have that. 
+The `withHeart` prop is a really good example: once our app renders, the heart will
+be there or not be there. We don't need that to ever change based on some user
+interaction or some data changing. It will *always* be there... or it will *always*
+not be there.
 
-That's that class on them. Now, one of the really, really awesome, powerful tools when you use react is the chrome react tool. It's something that you can install from the chrome web store and once you've installed it, you're browser tools are going to have any new react tab down here. This is amazing because check this out, it actually shows you your entire components and elements hierarchy and you can click on here and get all kinds of different information about the variables being passed in. Now for us, what's really, really important is if you click up on this rep log app here, check this out. It actually shows us the prompts in the state of this element and we can actually mess with the state. So it's no right now remember our rows are one, two, or eight. So let's check this to two and boom, we get that element one, we get that element eight, we get that element. You can use this to play with the state of your application. Play with that data and reacts job is whenever the state changes is it actually updates. Now, the way this works is 
+But when you want to make things *interactive*, when you have data that needs to
+*change* while your app is alive, well, then you need to store that data somewhere
+else: state, which you can access with `this.state`.
 
-behind the scenes, the way this is working is that the the power of react is that whenever state changes on a particular react components that causes the render method to be re executed. So every time we're basically changing this number from eight back to two, it's actually calling the render method again and we are re rendering this element, all of these elements. Now, one important thing about that is you might think that it means that I'm all this html is actually being replaced every single time with the new stuff and that's actually not sure this is a super power of react even though the render method is being called again and when we're re rendering. All of these elements react actually does a diff diff on the way the elements looked before in the way the album is looked after and it only updates the parts of the dom that needed to change. Check this out. If we open up our table here and we looked down here on our rows one to kind of close these up so I can see them. If you watch as we changed the state on these, does it change the state on this? You're gonna. It's gonna highlight which elements are actually being reloaded, so I'll change it from two to one 
+So... *why* exactly is there this distinction between `props` that must be immutable
+and `state`, which is allowed to change? We'll learn about that: it goes to the
+core of React's architecture.
 
-and you see those two spots actually highlighted in yellow. That was chrome telling us that literally the only part of the dom actually changed was the class name on both these elements. The whole thing isn't really rendering. It's just changing the spots that need to change. So anyways, it's a really, really powerful thing and fundamentally what I want you to understand right now is that when state changes, react is smart enough to automatically call 
+## Adding highlightRowId State
 
-rerender. 
+But first, let's do some coding and add our first user interactivity! Here's
+the goal: when the user clicks a row in the table, I want to highlight that row.
 
-Of course our ultimate goal is not to be able to play with react tools, right? But to actually attach a in a click event, someone to click on these rows that state changes and that's something that we're going to do next. But before we do one other little bit of business here, in the same way that I like to destructure all of my state variables at the top of my render function, I usually like to do the same with my props. So let's say const with heart equals this dot props. And down here I can now say if with heart, small detail, but I like keeping all my variables right on top so everything looks nice. So next, now that we know that if we change state everything magically updates, let's add a new event listener so that when we clicked on the road, it changes the state in rerender.
+From a data standpoint, this means that, somewhere in our `RepLogApp` component,
+we need to keep track of *which* of these rep log rows is currently highlighted.
+We can do that by keeping track of the highlighted row id. Literally, we could
+store that row 1, 2 or 8 is highlighted.
+
+But because this data will *change* throughout the lifecycle of our app, we're
+not going to store the id in `props`. Nope, we're going to store it as `state`.
+
+Once you've decide that you have some data that needs to be stored as state,
+you need to initialize that value on your state. That's always done the same way:
+by overriding the `constructor()` function. The constructor of React components
+receive a `props` argument. And then, you're supposed to call `super(props)` to
+execute the parent constructor. You'll see this pattern over and over again.
+
+To set the initial `state`, just set the property directly: `this.state` equals
+an object, with, how about, a `highlightedRowId` key set to null. Nothing will
+be highlighed at first.
+
+## Using State in render()
+
+Cool! Down in render, we can use this data *just* like we do with props. But, let's
+use object destructuring to get this value as a variable:
+`const { highlightedRowId } = this.state`.
+
+This is another common React pattern. Instead of referring to
+`this.state.highlightedRowId` down below, we use destructuring so that we can
+be lazier later and use the shorter variable name.
+
+I'll break the `tr` onto multiple lines. *If* this row should be highlighted,
+we'll give it a special class: add `className={}` and use the ternary syntax:
+if `highlightedRowId === ` *this* repLog's id, then add an `info` class. Otherwise,
+print no class. This `info` class already exists in the CSS of our app.
+
+Cool! If we try it now, we, of course, don't expect anything to be highlighted:
+we initialized the state to `null`. And, yep! It works... probably: none of the
+rows have the class.
+
+## React Developer Tools
+
+One of the most *awesome* things about developing with React is a tool called the
+"React Developer Tools". It's an extension for Chrome or Firefox, so you can install
+it from the Chrome Web Store or from Firefox Add-Ons.
+
+After installing it, your browser's developer tools will have a new React tab!
+Ooooooo. Check this out: it shows your entire component and element hierarchy.
+*And*, you can click to see all the different props for every part.
+
+Click on the `RepLogApp` component on top. Woh! It shows us the `withHeart` prop
+and the `highlightedRowId` state! *And*, we can mess with it! Remember: the rep
+log ids are 1, 2 and 8. Change `highlightedRowId` to 2. Boom! That row instantly
+updates to have the class! Change it to 1... and 8. Super fun!
+
+## How React Re-Renders Things
+
+This looks like magic... but really, it's just that React is really, really smart.
+Behind the scenes, whenever some "state" changes on a React component, React automatically
+re-executes the `render()` method on that component. So, if we change this number
+from 8 back to 2, it calls the `render()` method again and *we* return the new
+React element objects.
+
+Because of this, you *might* think that *all* of this HTML is completely replaced
+each time we re-render. But actually, dang, nope! React is, yet again, too smart
+for that. Instead of replacing everything, React *compares* the React element objects
+from *before* the re-render to the *new* element objects after. Yep, it performs
+a "diff" to see what changed. And then, it only updates the parts of the DOM that
+*need* to change.
+
+We can actually *watch* this happen! Open the table but collapse the rows so we can
+see them all. Then, I'll re-select the `RepLogApp` component and scroll back down.
+Watch closely when we change the state: from 2 to 1. Did you see it highlight the
+two class attributes that changed in yellow? Watch again: 1 to 8.
+
+That yellow highlight is my browser's way of telling us that these two attributes
+were *literally* the *only* thing that changed. In React, we re-render all of the
+elements. But in the DOM, React only updates the things it needs to.
+
+The big takeaway is this: `state` is allowed to change. And each time it *does*,
+React calls `render()` on our component and updates the DOM as needed.
+
+## But... who Updates State?
+
+Of course, our ultimate goal is *not* just to update state via the cool React dev
+tools. Nope, we want to update the state when the user clicks a row.
+
+Before we do that, there is *one* small housekeeping item. In addition to
+destructuring state, I like to do the same with props. Add
+`const { withHeart } = this.props`. Then below, use if `withHeart`.
+
+It's a small detail, but it's nice to setup *all* the variables right on top.
+
+Now, let's add some click magic and update our state!

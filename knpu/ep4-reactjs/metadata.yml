@@ -5,6 +5,7 @@ chapters:
     - react-component
     - props
     - collection
+    - collection-key
     - static-app
     - state
     - event-handlers

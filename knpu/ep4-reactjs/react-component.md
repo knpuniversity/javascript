@@ -59,10 +59,10 @@ the `render` key. So instead of importing *all* of `react-dom`, import
 `{ render }` from `react-dom`. Below, use the `render()` function directly.
 
 This change is a *little* bit more important because Webpack should be smart enough
-to perform something called "tree shaking". That's a fancy way of saying that Webpack
-will realize that we only need the `render()` function from `react-dom`: not the
-*whole* module. And so, it will only include the code needed for `render` in our
-final JavaScript file.
+to perform something called "tree shaking". That's not because Webpack hates nature,
+that's just a fancy way of saying that Webpack will realize that we only need the
+`render()` function from `react-dom`: not the *whole* module. And so, it will only
+include the code needed for `render` in our final JavaScript file.
 
 *Anyways*, these are just fancier ways to import *exactly* what we already had.
 

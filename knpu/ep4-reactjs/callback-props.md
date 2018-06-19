@@ -1,13 +1,78 @@
-# Callback Props
+# Notifying Parent Components: Callback Props
 
-Coming soon...
+We're storing our `highlightedRowId` state in our top level component and passing
+it down to our child component as a prop. There, we read that prop and use it in
+`render()`. It's all very zen.
 
-So we're keeping track of our highlighted row ID state in our top level components and then we're passing it down to our child component as a prop and then we are reading that prop and using it to render on the page. And this all works really well until we go back and try to click one of our rose. None of our console, we see a gigantic air says underscore this too. That handle real quick is not a function, which is a funny here. But what is referring to is in rep log list. There is no handle row click method. Look, we're saying this, that handle real quick, uh, when you meant to call that on rep log app, that's actually the component that holds that. 
+Until... we go the browser and click on one of the rows. Whoops! Our console exploded:
 
-So there's a very important thing that's happening here. The parent, your parent component passes data down into your child via props. Your child component is really dumb. All it does is received the props and render them. Important thing here is the child never communicates back up to the parent. In fact, this rep log list component doesn't even know who its parent is. In theory, we could use this rep log list in 10 different places on our app from with 10 different parents, so the obvious problem here is unclick. We need to update the highlighted row wise, these state in the parent components. So how can a child component update these state of apparent components? My answer is it can't. Again, the child component doesn't even know who his parents is and furthermore it doesn't even know that highlighted row id is stored in state anywhere. It just says, I don't know, somebody passes me this highlighted row id prop and I use it. I don't know and don't care whether or not that stored in state. 
+> handleRowClick is not a function
 
-So how do we solve this problem? One the same way that we pass data from our parent component into our child component, we can also pass call back functions from the parent to the child. That should be called when certain interactions happened in the child. Check this out. First back up in handled real quick. I'm going to remove our event argument, which we weren't using any ways. Now down inside of rep log list, I'm going to use multiple lines here in, let's pass in another prop called on row click just making that up and we'll say, we'll set this to this dot handled real quick. Don't call the function, just pass the function as a reference. So suddenly now in our child components, we have a new handle row click prop. So I'm going to use the referencing restructuring to get that as a variable. And then down here on click, we know nothing about state. We are, we are dumb, but we know that we're past this, uh, on sweat. We use the destruction and once again to read out that on row click prop. Now we may not know anything about there being state that needs to be updated. We do know that we're now passing on row click prop and that when our roe is click, this is a method that we should call. 
+This comes from `RepLogList`. Yep... it's right! There is *no* `handleRowClick`
+method on `RepLogList`. That method lives on the *parent* component: `RepLogApp`.
 
-So we'll pass on real quick and we'll pass it rep log.id. 
+## Communicating from Child to Parent
 
-And that's it. When we click on the row, it will execute the callback that's controlled by our parent. The parent maintains complete control. Now, if you go back and refresh and try this, it still doesn't work. If you've got a console, it's another air cannot read property sets so we didn't do it earlier, but whenever you have a callback function like this, you're going to want to guarantee that the, this keyword is, uh, is bound to this by going into the constructor in saying this, that handled real quick equals this dot handle real quick dot find this some matter who calls us method in any way. This is going to refer to the rep log APP. Someone refresh. Once again, our application works. You've just seen a massively important pattern. We have state on top level, and not only do we pass the data down into our child elements, but we also pass any call backs that we want into this child elements. Now, what I want you to realize here is that because we've like rep, log list is now so dumb. No, I'll talk about that later.
+We've just hit a very important moment. The parent component passes data down to
+the child via props. Thanks to this, the child component can be really dumb! It
+just receives props and renders them. That's it. *Importantly*, the child never
+communicates back *up* to the parent. Heck, the `RepLogList` component doesn't even
+*know* who its parent is! In theory, we could render `RepLogList` from 10 different
+parent components!
+
+So... that leaves us stuck: inside `onClick`, we need to update he `highlightedRowId`
+state on our parent component. How can we a child component update the state of
+a parent? The answer: it can't!
+
+Wait wait, it's not time to panic... yet. Remember: the child component doesn't
+know who its parent is... heck! It doesn't even know that `highlightedRowId` is
+something that is stored in state somewhere! `RepLogList` just says:
+
+> I don't know, I'm just a React component, and somebody passes me a
+> `highlightedRowId` prop and I render it. I don't know and I don't care if
+> it's stored in state.
+
+So, how do we solve this problem? In the same way that we pass *data* from a parent
+component into a child component, we can also pass *callback* functions from parent
+to child that we expect the child to call when some *interaction* occurs.
+
+## Passing a Callback Prop
+
+It's best to see this in action. First, just to clean things up, in the handler
+function, remove the `event` argument: we were never using this anyways. Next, down
+where we render `RepLogList`, let's break this into multiple lines. Then pass in
+another prop called `onRowClick` set to `this.handleRowClick`. But, make sure you
+don't *call* that function: just pass the function as a reference.
+
+Thanks to this, in the child component, *we* have a fancy new `onRowClick` prop.
+Destructure this into a new variable. Then, `onClick`, we're dumb, we don't know
+*anything* about state, but we *do* know that we're passed an `onRowClick` prop,
+and that we're supposed to call this, um, when the row is clicked! Cool! Call it
+and pass it `repLog.id`.
+
+That's it! When the user clicks the row, our dumb component will execute the callback
+and pass the rep log id. The parent maintains complete control of what to do when
+this happens.
+
+Let's try it! Move over and refresh. Bah! We still have an error:
+
+> Cannot read property setState() of undefined
+
+Whoops! Whenever we have a callback handler like this, we need to guarantee that
+the `this` keyword is bound to this object. There are a few ways to do this, but
+I usually do this in one consistent way: go to the constructor and add
+`this.handleRowClick = this.handleRowClick.bind(this)`.
+
+After doing this, no matter *who* calls this method, `this` will always refer to
+this `RepLogApp` instance.
+
+Refresh one more time. And, click! We got it!
+
+We have just seen a *massively* important pattern. Our state lives on our top level
+component. Then, we communicate *to* our children by passing data as props *and*
+we allow those children to communicate *back* to the parent component by passing
+them *callback* functions that should be executed when some interaction happens.
+
+Oh, and by following this pattern, we've started to identify two types of components:
+*stateful* smart component versus *stateless* dumb components. An important distinction
+we'll talk about next.
