@@ -13,5 +13,6 @@ chapters:
     - callback-props
     - dumb-component
     - prop-types
+    - prop-types-optimization
     - rep-logs-state
     - form-submit
