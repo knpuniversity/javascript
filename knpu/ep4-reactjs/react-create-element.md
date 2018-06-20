@@ -1,4 +1,4 @@
-# React Create Element
+# React.createElement()
 
 Time to install React! Find your open terminal: `yarn add react` - and we also
 need a second package called `react-dom`:
