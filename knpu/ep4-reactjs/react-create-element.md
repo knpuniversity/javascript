@@ -41,9 +41,13 @@ is where you could pass an array of any HTML attributes for the element. These a
 called "props" in React - but more on that later. For the third argument, pass
 *whatever* you want to put inside, like text: "Lift History!".
 
+[[[ code('03e14c823d') ]]]
+
 Cool! Let's `console.log(el)`: I want you to see that this is just a simple object.
 Go refresh the page. The element is not, *yet*, being rendered to the screen in any
 way. It's just a React element that describes a potential HTML element.
+
+[[[ code('96142fe1c3') ]]]
 
 ## Rendering React to the DOM
 
@@ -53,9 +57,13 @@ this, add a new `<div class="row">` and inside, an empty div we can render into
 with `id=""`, how about, `lift-stuff-app`. Then, for a bit more separation, add a
 bunch of line breaks and an `<hr>`.    
 
+[[[ code('8fabbf948e') ]]]
+
 Awesome! Copy the `id` of the div. To render React to the DOM, we need to use that
 *other* package we installed: `import ReactDom` from `react-dom`. Then, just,
 `ReactDom.render()` to render our `el` into `document.getElementById('lift-stuff-app')`.
+
+[[[ code('fcfceda5c2') ]]]
 
 That's it! Step 1: create a React element object and, step 2, use `ReactDom` and
 some boring, raw JavaScript to render it onto the page.
@@ -75,6 +83,8 @@ to the end of `React.createElement()`. Each argument - starting with the third
 argument - becomes a new child that lives inside the `h2`. For example, to create
 a nested `span` element, use `React.createElement()` with `span`, null and a heart
 Emoji.
+
+[[[ code('69470fa8b5') ]]]
 
 Let's log `el` again. Then, flip over and... refresh!
 
