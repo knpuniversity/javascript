@@ -83,6 +83,8 @@ on this page. We won't talk about ESLint in detail, but this basically imports t
 ESLint recommended settings with a couple of tweaks. This `jsx` part is something
 we'll see *very* soon in React.
 
+[[[ code('92dfd50c94') ]]]
+
 Thanks to this, we can now run a utility to check our code:
 
 ```terminal
@@ -112,10 +114,14 @@ to it. In the same directory as `rep_log.js`, which holds the old code, create a
 new file: `rep_log_react.js`. Log a top-secret, important message inside so that
 we can see if it's working. Don't forget the Emoji!
 
+[[[ code('ce3eb62184') ]]]
+
 Now, open `webpack.config.js`: we're going to configure this as a new "entry".
 Typically, you have one entry file per page, and that file holds *all* of the
 JavaScript you need for that page. Use `addEntry('rep_log_react')` pointing to
 that file: `./assets/js/rep_log_react.js`.
+
+[[[ code('da952420e2') ]]]
 
 To build this, go back to your terminal, find the tab that is running Webpack
 Encore, press Ctrl+C to stop it, and run it again: you need to restart Webpack
