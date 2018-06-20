@@ -1,27 +1,120 @@
-# Dumb Component
+# Smart vs Dumb Components
 
-Coming soon...
+So far, only `RepLogApp` has state. But, any component is allowed to have state,
+as long as each specific *piece* of state like `highlightedRowId` lives in just
+one place and isn't duplicated. But, yea, in general, any component can have state.
 
-Every company, every component is allowed to have state as long as for one specific piece of steak, like highlighted row id, you only put it in one spot. It can only live in one spot, but state in general can live in any component. However, I'm giving you a rule for now. We're going to talk more about it later, but the rule for now is that I want you to keep the state all on your top level components. This means that all of your other components, which right now is just one, will be stateless. If you think about this, it's a bit like having a controller and a template and php. You have a component that holds all of your. If the component rep log app is a bit like our controller, it's the one that actually controls all of the data and controls all of the logic like the handle row, click. Then rep log list is like a template. It does nothing. It's dumb. It just receives data in prince that data. Ultimately what you end up with is two types of components. You ended up with what's called smart stateful components, sometimes called, 
+However, I'm going to create a rule, for now. And later, we'll talk about when
+we can *bend* this rule. For now, I want you to keep *all* of your state on the
+one, top level component. This means that all of your *other* components, which,
+right now is just one, will be *stateless*.
 
-sometimes called container components and then dumb stateless components that have no state in them and are just dumb, just like templates. One common thing with stateless components is that as you can see, they only ever have. They usually just have one method render and that's it. So for convenience, you'll often see these stateless components, not as a class, but just as a function. Basically it's just going to be the render function. You can say export default function rep log list, and it's no longer a class, we don't say extends components, and then the first argument, the only argument past to this function is actually the props. So from here we can now just remove one level of function there. Then I'll take everything and I will on indented. So as you can see, this component is now just a function and it returns the markup because that's all we need is just a function that does that. If refresh, however you will get a big air, cannot read property prompts of undefined and that's coming from this line right here because we're no longer in a class, there is no this anymore, and instead as you can see, react passes you the prompts as the only argument to your method. 
+Hmm, if you think about this, it's a bit like how controllers and templates work
+in PHP. `RepLogApp` is a bit like a controller: it's the place that controls all
+the data and logic. It updates state, and will eventually load and save things
+via AJAX calls.
 
-We'll change that to just props. Move back over, refresh and it works again. So this is something you're going to see again and again and again. We're going to keep our one smart components on top than all of our other components are going to be dumb, dumb stateless components and for those we're just going to make them as a function. Now we are going to start bending this rules and making it more complex later, but for now one smart component on top and then dumb components below that that just received data.
+Then, `RepLogList` is like a template. It does... nothing. It's dumb! It just
+receives data and prints that data. This separation is intentional. It means that
+we have *two* types of components: smart, *stateful* components, sometimes called
+"container components". And dumb, *stateless* components, sometimes called presentation
+components.
 
-So with this new smart stateful components and dumb stateless presentation components, as I mentioned, we're a lot like a controller in symphony, the handles all the data, and then a dump template and symphony. Well, to take this to the next level, you look at our smart stateville component rep log app. It is actually a mixture of logic and markup. That's something we would never do in a symphony. We would never actually have a controller that had logic but also had markup and so we want to follow the same rule in react are smart components should hold state in logic, but they should render no mark up or maybe just a little bit of markup of basically no markup to make this happen. A smart component should always wrap a dumb components. So what we're gonna do is we're actually going to take this rep log app and we're going to split it into two components. One that has all the logic and one that has all the markup. So for the I'm gonna create a new file called rep logs dot js. This will be our stateless dumb components. So it will look a lot like rep log list, so important, react from react, and then we'll say export default function rep logs, 
+## Stateless, Functional Components
 
-and then here I'm actually going to steal all of the logic of the markup and render copy that and paste it here. We now have a component that has basically no logic at all except for a tiny bit at top that's related to the markup. And now in rep log app, I'm going to delete all of that and render. And instead up top we're going to say import rep logs from that slash rep logs, we can get rid of the other import and check this out. We're going to return literally rep logs. That's it. So now look how kind of clean and pure this top level smart component is. It renders no markup and it passes all the market responsibilities down to rep logs. No, of course we need to do a little bit more work here because you can see rep logs actually needs a couple of pieces of data. It needs the with heart, the highlighted 
+Most dumb, stateless components also have something else in common: they usually
+only have one method: `render()`. So, *purely* for convenience, or I guess, laziness,
+you'll often see stateless components written, not as a *class*, but as a function.
 
-in the highlighted row id which were, uh, which are available in rep log APP, which means we're gonna need to pass them as props down into prep logs. And actually we also need the on row click call back because we can't call this handle real quick anymore because that lives inside of her parent component. So in the top of rep logs. And actually before we do that, let's import rep log list because we're missing that import rep log list from that slash rep log list, 
+Update this to: `export default function RepLogList`, but now without
+`extends Component`. When a component is a function, React passes you one arg:
+`props`. Now, we can remove on function level and... I'll take *everything* and
+unindent it.
 
-there were a top. I'm going to destructure the props that I need with heart highlighted row id. And then we're also gonna. Need the on row click 
+Yep, the component is now just the render function... because that's all we needed!
+Refresh to try it! Oh, big error:
 
-call back. 
+> cannot read property props of undefined
 
-Then I'll use that on row. Click down here instead of calling this that handle real quick. Now, inside of rep log app, we're just going to pass those three pieces of markups. So I'll use the parentheses so I can use multiple lines here. And then we'll say with heart equals with heart, I like the variety equals how the royalty. And then on row click equals this. That handled real quick. Make sure not to call that function, but just to pass that in. So before we talk more, 
+Of course! Once a component is a function, there is no `this` anymore! That's find,
+just change the code to use `props`. Hmm, destructuring everything in one place
+made that easy...
 
-no, 
+Try it again! Move over and... reload! Yeehaw! Success!
 
-before we try this. Uh, actually I know I have one mistake. You may have seen it in rep logs, import rep log list from rep log list. You're not going to have a good time if you try to import yourself. So now if we go back and refresh. Yep. Everything still looks really nice. So the, the main system here is that you have a top level APP which holds your state, holds logic related to the estate, but doesn't render any markup. It renders directly a dumb component called rep logs. So this is again as symphony is a lot like having your controller on top and then your controller renders a template and the template is dumb and it just has markup. Now after that, your template may choose to render your component, may choose to render other dumb components, right? Like rep log list. 
+We just saw *another* important pattern: we will have one smart component on top,
+and then, because all its children are stateless and dumb, we will write those
+components as functions. Now, we *are* going to start bend this rule later: you
+*can* have more than one smart component and sometimes a "dumb" component *can*
+have state. But, for now, internalize this rule: one smart component on top, and
+then all dumb, *functional*, components inside of it that just receive data.
 
-But that's simply. But at this point, I want you to think of that simply as a choice we made for organization and there was, we could have left all of the rep log list stuff inside of our rep logs, but we decided, you know, since this component was getting big enough where we want it to organize it into something else. So controller on top of renders a template and that template might render other templates. If you want to think of this in terms of symphony, we're going to expand on this pattern, but this is one of those things where if you follow this pattern upfront, even if you don't completely understand why it's important, it's going to save you down the line.
+## Smart Components should not have HTML
+
+Ok, so, a smart component is like a controller in Symfony. Except... check out
+`RepLogApp`. It's a mixture of logic and markup! We would *never* put HTML code
+into our Symfony controllers: controllers should be *pure* logic.
+
+And, guess what? We're going to follow that *same* rule with React components.
+New rule: a smart component should hold state & logic, but *no*, or, very little
+markup. To make this possible, a smart component should always wrap a dumb component.
+
+## A Smart Component Wraps a Dumb Component
+
+Yep, we're going to split `RepLogApp` into two components: one with all the logic
+and another will all the markup. Create a new file called `RepLogs.js`: this will
+be our stateless, dumb component. This will look a lot like `RepLogList`: import
+`React` from `react`. And then, `export default function RepLogs`.
+
+Next, go copy *all* of the code from RepLogApp's `render()` function and, paste
+it here.
+
+We now have a component that has basically no logic, except for a tiny bit on top
+that is related to the markup itself.
+
+Back in `RepLogApp`, let's delete all of that code! Instead, on top, import
+`RepLogs`1 from `./RepLogs`. Below, in render, literally render `<RepLogs />`.
+
+That is it! Oh, it's great: look how pure & clean this top level component is!
+Our business logic is *much* easier to read. All the markup responsibilities now
+belong to `RepLogs`.
+
+By the way, *this* is why smart components are often called "container" components:
+they are a container around a dumb, *presentational* component. Often, people even
+use that to name their components, like `RepLogsContainer` instead of `RepLogApp`.
+
+## Passing Props to the Dumb Component
+
+*Anyways*, I'm sitting here celebrating our genius, but this won't actually work
+yet: `RepLogs` needs a few pieces of data: `withHeart` and `highlightedRowId`.
+Both of these are available in `RepLogApp`. Oh, and we also need to pass a prop
+for the `handleRowClick` callback: *that* method *also* lives in `RepLogApp`.
+
+But, before we fix that, let's add the missing import on top: `import RepLogList`
+from `./RepLogList`.
+
+Then, while we're here, let's destructure the props we're about to pass:
+`const { withHeart, highlightedRowId, onRowClick } = props`.
+
+Use the new `onRowClick` variable down below: pass *this* into `RepLogList`.
+
+Finally, head back to `RepLogApp` so we can pass these props. I'll break things
+onto multiple lines, then add: `withHeart={withHeart}`,
+`highlightedRowId={highlightedRowId}` and `onRowClick={this.handleRowClick}`,
+being sure not to actually *call* that function.
+
+Oh, and I made a mistake! In `RepLogs`, import from `RepLogList`: I was trying
+to import myself! You're not going to have a good time if you do this.
+
+Ok, let's try it already! Refresh! Yea! It still looks nice.
+
+So here is our current system: one smart component on top, which acts like a
+controller in Symfony. Then, it renders a dumb, presentation component, just like
+how a controller renders a template. After that, you may *choose* to also render
+*other* dumb components, just to help keep things organized. Heck, we do that same
+thing in Symfony: a template can *include* another template.
+
+This "pattern" is not an absolute rule, and, we'll talk more about how and when
+you'll bend it. But, generally speaking, by following this pattern upfront - even
+if you don't completely understand *why* it's important - it will save you big
+time later.
