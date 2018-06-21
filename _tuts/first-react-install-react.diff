@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 859717de..e5550ed8 100644
+index 859717dea..e5550ed8f 100644
 --- a/package.json
 +++ b/package.json
 @@ -7,6 +7,8 @@
@@ -12,7 +12,7 @@ index 859717de..e5550ed8 100644
      "sweetalert2": "^7.11.0",
      "webpack-notifier": "^1.5.1"
 diff --git a/yarn.lock b/yarn.lock
-index 8e84673b..e51543c7 100644
+index 8e84673bb..e51543c7a 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -249,6 +249,10 @@ arrify@^1.0.0, arrify@^1.0.1:

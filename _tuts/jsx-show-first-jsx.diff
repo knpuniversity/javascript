@@ -1,5 +1,5 @@
 diff --git a/assets/js/rep_log_react.js b/assets/js/rep_log_react.js
-index 162a9ccc..f124e97b 100644
+index 162a9cccf..f124e97b6 100644
 --- a/assets/js/rep_log_react.js
 +++ b/assets/js/rep_log_react.js
 @@ -1,12 +1,7 @@
@@ -17,7 +17,7 @@ index 162a9ccc..f124e97b 100644
  console.log(el);
  ReactDom.render(el, document.getElementById('lift-stuff-app'));
 diff --git a/package.json b/package.json
-index e5550ed8..e2345ab8 100644
+index e5550ed8f..e2345ab84 100644
 --- a/package.json
 +++ b/package.json
 @@ -1,6 +1,7 @@
@@ -29,7 +29,7 @@ index e5550ed8..e2345ab8 100644
      "copy-webpack-plugin": "^4.4.1",
      "eslint": "^4.19.1",
 diff --git a/webpack.config.js b/webpack.config.js
-index 9276beb7..96848a7e 100644
+index 9276beb70..96848a7e8 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -26,6 +26,7 @@ Encore
@@ -41,7 +41,7 @@ index 9276beb7..96848a7e 100644
  
  // export the final configuration
 diff --git a/yarn.lock b/yarn.lock
-index e51543c7..882ca63c 100644
+index e51543c7a..882ca63c4 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -385,6 +385,14 @@ babel-helper-builder-binary-assignment-operator-visitor@^6.24.1:

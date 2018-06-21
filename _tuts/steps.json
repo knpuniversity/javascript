@@ -1401,6 +1401,11 @@
             "description": null
         },
         {
+            "id": "proptypes-fix-plugin-registration",
+            "name": "PropTypes: Fix plugin registration",
+            "description": null
+        },
+        {
             "id": "state-refactor-reploglist-to-expect-replogs-prop",
             "name": "State: Refactor RepLogList to expect repLogs prop",
             "description": null
@@ -1801,5 +1806,5 @@
             "description": null
         }
     ],
-    "sha": "6e10c14ef4931128ab30fd82f9096660b712029c"
+    "sha": "5c8f98787be75e42fd538280ac10ea0c8169b597"
 }

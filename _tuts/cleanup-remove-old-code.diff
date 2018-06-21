@@ -1,6 +1,6 @@
 diff --git a/assets/js/Components/RepLogApp.js b/assets/js/Components/RepLogApp.js
 deleted file mode 100644
-index 43c10356..00000000
+index 43c103565..000000000
 --- a/assets/js/Components/RepLogApp.js
 +++ /dev/null
 @@ -1,214 +0,0 @@
@@ -220,7 +220,7 @@ index 43c10356..00000000
 -export default RepLogApp;
 diff --git a/assets/js/Components/RepLogHelper.js b/assets/js/Components/RepLogHelper.js
 deleted file mode 100644
-index d9d65ca4..00000000
+index d9d65ca43..000000000
 --- a/assets/js/Components/RepLogHelper.js
 +++ /dev/null
 @@ -1,34 +0,0 @@
@@ -260,7 +260,7 @@ index d9d65ca4..00000000
 -export default Helper;
 diff --git a/assets/js/rep_log.js b/assets/js/rep_log.js
 deleted file mode 100644
-index c9b9521d..00000000
+index c9b9521d4..000000000
 --- a/assets/js/rep_log.js
 +++ /dev/null
 @@ -1,9 +0,0 @@
@@ -275,7 +275,7 @@ index c9b9521d..00000000
 -});
 diff --git a/templates/lift/_form.html.twig b/templates/lift/_form.html.twig
 deleted file mode 100644
-index 722a71f3..00000000
+index 722a71f3f..000000000
 --- a/templates/lift/_form.html.twig
 +++ /dev/null
 @@ -1,29 +0,0 @@
@@ -309,7 +309,7 @@ index 722a71f3..00000000
 -    <button type="submit" class="btn btn-primary">I Lifted it!</button>
 -</form>
 diff --git a/templates/lift/index.html.twig b/templates/lift/index.html.twig
-index 87ee4ddf..e8e3efef 100644
+index 87ee4ddf0..e8e3efef8 100644
 --- a/templates/lift/index.html.twig
 +++ b/templates/lift/index.html.twig
 @@ -3,43 +3,7 @@
@@ -364,7 +364,7 @@ index 87ee4ddf..e8e3efef 100644
      <script src="{{ asset('build/rep_log_react.js') }}"></script>
  {% endblock %}
 diff --git a/webpack.config.js b/webpack.config.js
-index 37e9ea75..3cb10a9c 100644
+index 1bc7cc491..bd3bf204c 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -9,7 +9,6 @@ Encore

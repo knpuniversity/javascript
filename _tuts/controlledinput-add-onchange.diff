@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index db2b1eb8..2042c466 100644
+index db2b1eb85..2042c466f 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -19,6 +19,7 @@ export default class RepLogApp extends Component {
@@ -32,7 +32,7 @@ index db2b1eb8..2042c466 100644
          )
      }
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index f0691e0c..82943b0d 100644
+index b47e793ba..dd0fe1f10 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -21,7 +21,8 @@ export default function RepLogs(props) {
