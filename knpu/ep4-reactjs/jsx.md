@@ -11,6 +11,8 @@ example, what if we could say `const el = ` then write an `h2` tag with `Lift St
 and add a `span` tag inside with a heart. I mean, that's *exactly* what we're
 ultimately building with `React.createElement()`!
 
+[[[ code('7b754f7699') ]]]
+
 But, of course, this is *not* real JavaScript code: it's just me hacking HTML right
 into the middle of my JavaScript file. So, no surprise: PhpStorm is *so* angry with
 me. And, if you move back to the terminal tab that is running Webpack, oh, it's
@@ -27,6 +29,8 @@ JavaScript that all browsers can understand.
 To teach it how to parse JSX, open your `webpack.config.js` file. In normal Webpack,
 you need to install and enable a React Babel *preset*: a rule that understands
 JSX. In Encore, you can do this by adding `.enableReactPreset()`.
+
+[[[ code('d892a6d0e8') ]]]
 
 To make this take affect, go stop Encore and restart it:
 
@@ -55,6 +59,8 @@ Bah! It fails again - but this is my fault: I forgot to remove my extra `el`
 constant. After removing that, *yea*! Encore builds successfully! This means
 that it *actually* understands our crazy JSX code! Try it - move to your browser
 and refresh!
+
+[[[ code('bc5c6ae0d6') ]]]
 
 ## JSX Vs React.createElement()
 
