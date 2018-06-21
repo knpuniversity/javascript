@@ -1,29 +1,71 @@
-# Rep Logs State
+# Moving the Rep Logs to State
 
-Coming soon...
+Communication always flows *down* in React: data lives in one component and is passed
+*down* to its children as props. Actually, both data *and* callbacks are passed
+from parent to child: child components use callbacks to communicate back up to the
+parent when something happens. For example, `RepLogs` passes an `onRowClick` to
+`RepLogList`. It uses that to tell its parent when that interaction occurs.
 
-I want to talk again about how communication flows through react components. Communication always flows down from react components. You have some data on a top level components. You Pass it in to the child components. Parents pass data and call backs down to child components. Rep Log app does this to rep logs. Rep logs, passes more stuff down to rep log list. Child components use callbacks to communicate back to the parent. So rep logs, passes an unreal click and rep log list. It's child uses that call back to communicate back up to the parent. So a real key thing here is that data always flows from the top down to the bottom. Parents pass data to their children, but parents do not. It is possible, but parents do not ask the child for Info. So what I mean as rep logs passes a highlighted row id down to rep logs. It works that way, but rep log APP doesn't ever ask rep logs, can't ask rep logs, can you give me some data that's inside of you? 
+So, parents pass data *to* their children. But, parents do *not*, *ask* children
+for information. Well, it's technically possible, but it's not the normal flow.
 
-For that reason, in general, we want data state to live as a high in the hierarchy as possible because when a piece of state changes, like highlighted row id, this may actually affect many components in the tree, so if, because it's not top of our component tree, if highlighted row id changes and we passed that down into many different components, all of those components will just update, but if a piece of state lived in each child components, but we wanted to use that in the Ui of its parents, that doesn't really work. That's just not the react way. The parent doesn't ask the child about the changes. We want things to happen the other way around. Because of this, it makes sense to put state as high as possible. In your component tree, we're going to put all of our state in our top level components. 
+For example, `RepLogApp` passes the `highlightedRowId` to `RepLogs`. But,
+`RepLogApp` does *not* ever *ask* `RepLogs` to give it any data that lives inside
+`RepLogs`. Information only flows down.
 
-That's not by any means an absolute rule and we're going to talk about when you would. You might put state in other components, but for now that's a nice rule of thumb to follow. Keep your state at the top level of your components on the top level components. So on that note, one of the most important pieces of state that we have in our application is actually going to be the rep logs themselves. This is something that's going to change as we interact with our application, so therefore it must be state right now, the rep logs are coded inside of rep log list, so we need to make these state and we're going to put that state in our top level rep log APP, so I'm actually going to copy our dummy rep logs right here, going to rep log APP, and inside of the constructor I'm going to give a create a new rep log state that set to this array. Now eventually we're gonna. We could set that rep logs to be an empty array, but just to make our application more interesting while we're still developing, I'm going to for now give it this dummy data. 
+## Why state Lives up High
 
-Now that this state is up on the top level, we need to use a dental rep log list, which means that we're going to pass it down the component hierarchy down below. We'll fetch rep logs out of the state. Then we'll pass that down as a prop with the same name just for sanity as rep locks. So this means that our rep locks component and a rep log list component. Those are both going to need to receive a rep logs prop, so I'm gonna, go down to my prop types and set that to prop that prep types, that array that is required because we do need this to be passed through a copy of that and go ahead and also put that in rep log list because we definitely needed there. Now Rep log APP is passing. Read blogs, read blogs, prop into it's child, so up here I'll go fetch that rep logs out of the props and then do the dance of passing this down to the rep log list. And then finally in rep log list, we will get this out of our props and we can delete the hard coated ones. And now check this out. We are reading the Rep logs here that are actually coming from the state on the top level. So if we didn't mess anything up, whenever we refresh everything still looks exactly the same. But check this out. If we go to our react Dev tools and you look at the top level, 
+For that reason, in general, we need the `state` of our application to live as
+*high* up the component hierarchy as possible. Why? Because we can pass a piece of
+state *down* to all of the components that need to use it. When that state changes,
+that change naturally flows down and everything updates beautifully.
 
-this now has the rep log app state and we can actually mess with it. So I'm gonna change the reps here to 50 and boom, the Ui instantly updates. Heck, let's even a any changes we make here or running instantly show up in that list. So even though we don't have any UI elements of this, that state, now the state is written in a really powerful way 
+But, imagine if a piece of state lived in a *child* component, but we wanted to use
+it in the `render()` method of a parent. Well, that just won't work! The parent
+can't ask the child for that data: information does not flow up.
 
-by the way. And before we get to adding some Ui to change that. If you look at rep log app, you're going to notice something interesting. Rep Log APP has two pieces of state in one prop, all of which were passing into our child components. And actually for a smart components, remember this is a smart stateful component, so it's main purpose is to have logic in state, but not to have any markup and when you have, because all the markup is done in rep logs. When you have a smart components, it's really common that you're actually going to pass all of your state and prompts into your child component because your entire purpose is just to process data, hold that state in, pass everything to your child components so that it can use that stuff to actually render the Ui. So there's a trick because eventually this is going to get pretty tedious. Check this out, delete all of your variables from the state above and then delete all of them below and instead you can use these spread operate here dot that dot this dot props, and then the next line that that, that this, that state 
+*This* is the reason why we will put *all* of our state in the top level component:
+`RepLogApp`. Again, this is not an absolute rule, but it's a great rule to follow
+for now. We'll talk later about when it's ok to move state lower, into a child component.
 
-and that's it. That is actually going to pass every single prop as an attribute and every single piece of state as an attribute, which is pretty cool. The only thing that we still need to do is passing whatever I'm callbacks that we need, so if you go back right now and refresh, that still works completely fine. Everything passes down. I love that. While we're here, we're going to do one other little piece of homework and that is that now that we have this rep log state, we can really fill in this to do here. This is going to be the total amount of the total of this column and it's going to change as as rep logs are added to it. Now we don't need to actually store the total weight as state because we can calculate the total weight just by adding up the rows. So this is going to happen inside of rep logs because this is actually what holds the table and this is where it holds the to do down there. Now you notice this is just a. to get this total, we're actually going to need to loop over all of a rep logs and add them up and get the final numbers. So there's a little bit of logic to do this. 
+## Moving RepLogs to state
 
-What I might, if this were a class when I might normally do, is actually add like a new method to my class that maybe calculated this stuff for me, but in a function we can't do that, but actually you totally can. There's nothing stopping us from going above the function and just adding a nice utility function here, calculate total weight lifted, and we'll expect 
+Anyways, the *most* important piece of data in our app is the rep logs themselves.
+And, these *will* need to change dynamically as the user adds new rep logs and deletes
+old ones. That means, rep logs need to be stored as *state*.
 
-the rep logs to be passed to this. Then I'm just going to copy and some code here that 
+To get the static version of our app up and running, we just hardcoded these inside
+`RepLogList`. Time to move this to state! Copy the dummy rep log data and go to
+`RepLogApp`. Whenever we have new state, we need to initialize it in the constructor.
+Add a new `repLogs` key to this array and paste!
 
-in the most boring way possible, just loops over all the rep logs, totals up their total weight lifted and returns it. Now we can take this function name and down here the bottom of our table where we have to do, we'll just call that function and we'll pass it the rep logs because remember we are past the rep logs as a property to this class so we can totally use them down here to total that up. So if you move over and refresh, boom, that is totally updating and if we start messing with our state here, like changed changes to 200. That updates instantly. The state causes a rerender, the re rendered does the new total and we've got it now, not just to make things a tiny bit more interesting. I'm actually going to write another function that does the exact same thing, but I'm going to use a crazy syntax do it not to show off, but actually to get you used to a little bit of the insane syntax a commonly used these days. So check this out. We're going to say const calculate total weight, fancier equals rep logs. Equal Arrow rep logs that reduce 
+Yea, eventually the `repLogs` state will start empty, and we'll then populate it
+by making an AJAX call to the server for the existing rep logs. But, until then,
+the dummy data makes building things easier.
 
-total log, 
+## Passing the RepLogs State Down
 
-total weight lifted, comma zero end. And actually even I messed this up, I missed eight open parentheses right there 
+The new state lives in the top-level component. But... we need to use it down in
+`RepLogList`. No problem! We just need to pass this down our tree. Fetch the
+`repLogs` out of state, then pass this as a prop to `RepLogs`.
 
-before we break down that madness, but not cocky copy my calculate total weight fancier. We paste it, move over our pages refreshes and it still works just fine. So check this out. This is nothing new, but you'll start to see this sometime. I don't necessarily love it, but I want you to be able to see it. So what we're saying here is we're creating a variable. It is equal to a function because recognize this Arrow here. It means that this is a function and that function, except one argument, the function body is actually the rest of this, and since we don't have curly braces, this means that the function body is actually returning. This rep logs dot reduce thing, rep lungs. That reduced itself, takes a callback which has two arguments and the body of the function is this long stuff here. It doesn't make any sense to you, don't worry, but this is kind of the craziest example of how you can have call backs inside call backs and you have to read it carefully. I'm not advocating that you use that syntax, but I want you to be used to seeing it. Uh, every, you know, it's so fancy that for me, it's a little bit hard to read. But if that reads well to you, then by all means, go ahead and use it.
+In `RepLogs`, before using the new prop, head down to the bottom: we want to define
+all props in `propTypes`. Add `repLogs` set to `PropTypes.array.isRequired`.
+
+Copy that, because, `RepLogList` will receive the same prop.
+
+Ok! We *are* passing the `repLogs` prop to the `RepLogs` component. At the top
+of `render()`, read `repLogs` out of props. And then, do the prop-passing dance:
+send this straight into `RepLogList`.
+
+*Finally*, in that component, get `repLogs` out of props and... delete the
+hardcoded stuff.
+
+This is sweet! Move back to your browser and refresh! Hey hey! It's not broken!
+Check out the React dev tools, and look at the top `RepLogApp` component. Yep!
+You can see the `repLogs` state. Now... mess with it! Change the reps from 25
+to 50.... boom! The UI on the child component updates instantly!
+
+But, look back at `RepLogApp`, it has two pieces of state & one prop. And... it's
+passing *all* of that into its child as props. With a trick, we can be lazier, and
+do this automatically.

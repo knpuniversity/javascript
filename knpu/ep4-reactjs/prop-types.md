@@ -6,12 +6,12 @@ us from *forgetting* to pass those two *exact* props from `RepLogs`?
 
 The answer is... absolutely nothing! In PHP, when you instantiate an object, if
 that object has a constructor with required arguments, we are forced to pass those
-arguments. But, with React components, there is nothing like that. There is simply
-no guarantee that we are passed *any* of these props. There's also no way for a
-component to easily document, or advertise what props it requires.
+arguments. But, with React components, it's the wild west! There is nothing like
+that. There is simply no guarantee that we are passed *any* of these props. There's
+also no way for a component to easily document, or advertise what props it needs.
 
-This is an especially big problem  `onRowClick`, because, if we don't pass this
-prop, our whole app will break when someone clicks on a row.
+This is an especially big problem with `onRowClick`, because, if we forget to pass
+this prop, our whole app will break when someone clicks on a row.
 
 ## Introducing PropTypes
 
@@ -38,8 +38,8 @@ are a string.
 Let's see this in action! Go back to `RepLogs` and, instead of passing in a function,
 be devious: pass a string!
 
-Check it out: move back to your browser! An error! Oh, and, notice: the page actually
-refreshed automatically before we got here. That's thanks to the `dev-server` we're
+Check it out: move back to your browser! An error! Oh, and, notice: the page refreshed
+automatically *before* we got here. That's thanks to the Encore `dev-server` we're
 running: when we save a file, our browser automatically refreshes, which, is kinda
 nice.
 
@@ -52,15 +52,13 @@ mess up a lot!
 
 ## Required PropTypes
 
-Oh, and like I mentioned earlier, the `highlightedRowId` prop in `RepLogList` is
-technically an *optional* prop: if we forget to pass it... no problem! No rows
-are highlighted.
+The `highlightedRowId` prop in `RepLogList` is technically an *optional* prop: if
+we forget to pass it... no problem! No rows are highlighted. But the `onRowClick`
+prop... that's a different story: if we forget this, boom! Our code will explode
+in grand fashion when the user clicks a row.
 
-But the `onRowClick` prop... that's a different story: if we forget this, boom!
-Our code will explode in grand fashion when the user clicks a row.
-
-By default, all the propTypes are optional. To make one required, just add
-`isSuperDuperImportant`. I'm kidding, it's `isRequired`. But, I feel like my name
+By default, all propTypes are optional. To make one required, just add
+`.isSuperDuperImportant`. I'm kidding, add `.isRequired`. But, I feel like my name
 would have been much more awesome.
 
 Back in `RepLogs`, let's mess with stuff! "Forget": to pass that prop entirely.
@@ -70,9 +68,8 @@ Move to your browser and... yep!
 
 ## PhpStorm ❤️'s PropTypes!
 
-I love it! Enough fun: let's re-add the prop. But check it out! We're getting
-auto-complete!! Yeaaa! PhpStorm *reads* the `propTypes` and uses them to help us
-out. Booya!
+I love it! Enough fun: let's re-add the prop. Woh! We're now getting auto-complete!!
+Yeaaa! PhpStorm *reads* the `propTypes` and uses them to help us out.
 
 *And*, in `RepLogList`, before, we had big red warnings when we referenced our
 props. That came from ESLint: it was telling us that we forgot to add the prop
@@ -88,23 +85,23 @@ talking about:
 
 You guys know the drill! First, import `PropTypes` from `prop-types`. Then, at
 the bottom, `RepLogApp.propTypes =` an object with `withHeart` set to `PropTypes.bool`.
-The prop isn't *really* required, so we'll leave it optional.
+The prop isn't *really* required, so I'll leave it optional.
 
 The *last* place we need propTypes is in `RepLogs`: we depend on 3. Go copy the
-import statement from `RepLogApp`, and paste it here. At the bottom, add the
+import statement from `RepLogApp`, and paste! At the bottom, add the
 `RepLogs.propTypes = ` part.
 
-The 3 props are: `withHeart`, `highlightedId` and `rowClick`. Copy `withHeart`
-from `RepLogApp` and paste it here. Then, copy the other two from `RepLogList`
+The 3 props are: `withHeart`, `highlightedRowId` and `onRowClick`. Steal `withHeart`
+from `RepLogApp` and paste. Then, more stealing! Get the other two from `RepLogList`
 and put those here too.
 
-Hmm, this shows off a common pattern in React. Frequently, you will pass props
-into one component, just so that it can pass them into another component. For
-example, in `RepLogApp`, we 3 props. But, two of them aren't really used in
-`RepLogs`: they're just passed down to a child.
+Hmm, this shows off *another* common thing in React. Frequently, you'll pass props
+into one component, just so that it can pass them into *another* component. For
+example, in `RepLogApp`, we pass 3 props. But, two of them aren't event used in
+`RepLogs`! We just pass them straight to `RepLogList`!
 
-This "prop passing" can he kind of annoying. But, it's not necessarily a sign of
-a bad design. It's just part of using React, There *are* ways to organize our code
+This "props passing" can be kind of annoying. But, it's not necessarily a sign of
+bad design. It's just part of using React, There *are* ways to organize our code
 to help this, but many are more advanced. The point is: this is ok.
 
 Next, let's make a small production optimization with prop types.
