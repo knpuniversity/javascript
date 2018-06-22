@@ -1,6 +1,6 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
 new file mode 100644
-index 00000000..a3233c2b
+index 000000000..a3233c2bc
 --- /dev/null
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -0,0 +1,7 @@

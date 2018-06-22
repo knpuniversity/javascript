@@ -1,5 +1,5 @@
 diff --git a/assets/js/Components/Button.js b/assets/js/Components/Button.js
-index 627c75ee..36db0038 100644
+index 627c75ee3..36db00382 100644
 --- a/assets/js/Components/Button.js
 +++ b/assets/js/Components/Button.js
 @@ -4,8 +4,15 @@ import PropTypes from 'prop-types';
@@ -20,7 +20,7 @@ index 627c75ee..36db0038 100644
 +    className: ''
 +};
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 1e7ec2d9..da923695 100644
+index 1e7ec2d9f..da923695f 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -86,7 +86,7 @@ export default class RepLogCreator extends Component {

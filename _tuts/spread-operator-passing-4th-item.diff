@@ -1,5 +1,5 @@
 diff --git a/play.js b/play.js
-index 548a19bf..ab67c0da 100644
+index 548a19bf3..ab67c0da0 100644
 --- a/play.js
 +++ b/play.js
 @@ -2,6 +2,6 @@ let printThreeThings = function(thing1, thing2, thing3) {

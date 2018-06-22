@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 8124d698..c1a1bccf 100644
+index 8124d6989..c1a1bccfd 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -3,6 +3,40 @@ import PropTypes from 'prop-types';
@@ -45,7 +45,7 @@ index 8124d698..c1a1bccf 100644
      );
  }
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 6459b1f3..0b5cf4ab 100644
+index 2e309f169..e0334f555 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -60,42 +60,6 @@ export default function RepLogs(props) {

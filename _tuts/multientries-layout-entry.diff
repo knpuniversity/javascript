@@ -1,5 +1,5 @@
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 7d6993ad..6c6daac2 100644
+index 7d6993ad6..6c6daac2d 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -102,7 +102,7 @@
@@ -12,7 +12,7 @@ index 7d6993ad..6c6daac2 100644
  
  </body>
 diff --git a/webpack.config.js b/webpack.config.js
-index fde8e582..ac02bd98 100644
+index fde8e582f..ac02bd98e 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -9,6 +9,7 @@ Encore

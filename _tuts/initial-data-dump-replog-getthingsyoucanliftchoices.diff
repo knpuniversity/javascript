@@ -1,5 +1,5 @@
 diff --git a/src/Controller/LiftController.php b/src/Controller/LiftController.php
-index d39bbd4d..b49e991f 100644
+index d39bbd4dd..b49e991f5 100644
 --- a/src/Controller/LiftController.php
 +++ b/src/Controller/LiftController.php
 @@ -20,6 +20,8 @@ class LiftController extends BaseController

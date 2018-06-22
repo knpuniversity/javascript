@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 931058ce..b59e74c3 100644
+index 931058ce6..b59e74c3f 100644
 --- a/package.json
 +++ b/package.json
 @@ -1,6 +1,7 @@
@@ -11,7 +11,7 @@ index 931058ce..b59e74c3 100644
    }
  }
 diff --git a/public/assets/js/RepLogApp.js b/public/assets/js/RepLogApp.js
-index fd7333bf..d9e06416 100644
+index fd7333bf0..d9e06416d 100644
 --- a/public/assets/js/RepLogApp.js
 +++ b/public/assets/js/RepLogApp.js
 @@ -1,8 +1,9 @@
@@ -32,7 +32,7 @@ index fd7333bf..d9e06416 100644
 -})(window, jQuery, Routing, swal);
 +})(window, Routing, swal);
 diff --git a/yarn.lock b/yarn.lock
-index 9bd2e225..874a6414 100644
+index 9bd2e225a..874a6414a 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -2771,6 +2771,10 @@ isstream@~0.1.2:

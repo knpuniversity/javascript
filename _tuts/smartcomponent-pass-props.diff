@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 55a973aa..3db9f868 100644
+index 55a973aad..3db9f8684 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -1,5 +1,4 @@
@@ -23,12 +23,12 @@ index 55a973aa..3db9f868 100644
      }
  }
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 918f5e64..8ebb3dec 100644
+index 918f5e643..3935c27ed 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -1,6 +1,9 @@
  import React from 'react';
-+import RepLogList from './RepLogs';
++import RepLogList from './RepLogList';
  
  export default function RepLogs(props) {
 +    const { withHeart, highlightedRowId, onRowClick } = props;

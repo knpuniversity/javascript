@@ -3,7 +3,7 @@ similarity index 100%
 rename from assets/images/dumbbell.png
 rename to assets/static/dumbbell.png
 diff --git a/templates/bundles/FOSUserBundle/Security/login.html.twig b/templates/bundles/FOSUserBundle/Security/login.html.twig
-index a0bf8e68..df23dcae 100644
+index a0bf8e688..df23dcaea 100644
 --- a/templates/bundles/FOSUserBundle/Security/login.html.twig
 +++ b/templates/bundles/FOSUserBundle/Security/login.html.twig
 @@ -18,7 +18,7 @@
@@ -16,7 +16,7 @@ index a0bf8e68..df23dcae 100644
                      <a href="#" class="js-show-login">Don't know the login?</a>
                      <div class="js-recommended-login-details" style="display: none;">
 diff --git a/templates/lift/index.html.twig b/templates/lift/index.html.twig
-index 7f8c825f..6342f651 100644
+index 7f8c825f4..6342f6510 100644
 --- a/templates/lift/index.html.twig
 +++ b/templates/lift/index.html.twig
 @@ -35,7 +35,7 @@
@@ -29,7 +29,7 @@ index 7f8c825f..6342f651 100644
                  </h2>
  
 diff --git a/webpack.config.js b/webpack.config.js
-index 55a8c5b0..83700013 100644
+index 55a8c5b08..837000133 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -1,4 +1,5 @@

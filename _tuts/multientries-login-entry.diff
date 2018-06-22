@@ -1,5 +1,5 @@
 diff --git a/public/assets/js/login.js b/public/assets/js/login.js
-index c07e0d7e..7daf09dc 100644
+index c07e0d7e3..7daf09dc9 100644
 --- a/public/assets/js/login.js
 +++ b/public/assets/js/login.js
 @@ -1,22 +1,22 @@
@@ -42,7 +42,7 @@ index c07e0d7e..7daf09dc 100644
 -})(window, jQuery);
 +});
 diff --git a/templates/bundles/FOSUserBundle/Security/login.html.twig b/templates/bundles/FOSUserBundle/Security/login.html.twig
-index f180c02b..4ec9b201 100644
+index f180c02b0..4ec9b2014 100644
 --- a/templates/bundles/FOSUserBundle/Security/login.html.twig
 +++ b/templates/bundles/FOSUserBundle/Security/login.html.twig
 @@ -11,7 +11,7 @@
@@ -55,7 +55,7 @@ index f180c02b..4ec9b201 100644
  
  {% block fos_user_content %}
 diff --git a/webpack.config.js b/webpack.config.js
-index eba23d52..fde8e582 100644
+index eba23d52c..fde8e582f 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -8,6 +8,7 @@ Encore

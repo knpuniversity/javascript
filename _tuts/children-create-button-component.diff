@@ -1,6 +1,6 @@
 diff --git a/assets/js/Components/Button.js b/assets/js/Components/Button.js
 new file mode 100644
-index 00000000..595101cc
+index 000000000..595101ccc
 --- /dev/null
 +++ b/assets/js/Components/Button.js
 @@ -0,0 +1,15 @@
@@ -20,7 +20,7 @@ index 00000000..595101cc
 +    text: PropTypes.string.isRequired
 +};
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index fd7cd271..6f9c2ac2 100644
+index fd7cd2710..6f9c2ac28 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -1,5 +1,6 @@

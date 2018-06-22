@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 3db9f868..462e6f8f 100644
+index 3db9f8684..462e6f8f4 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -1,5 +1,6 @@
@@ -19,12 +19,12 @@ index 3db9f868..462e6f8f 100644
 +}
 \ No newline at end of file
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 8ebb3dec..a260bdd4 100644
+index 3935c27ed..29181523c 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -1,5 +1,6 @@
  import React from 'react';
- import RepLogList from './RepLogs';
+ import RepLogList from './RepLogList';
 +import PropTypes from 'prop-types';
  
  export default function RepLogs(props) {

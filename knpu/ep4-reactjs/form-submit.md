@@ -1,33 +1,117 @@
-# Form Submit
+# Handling a Form Submit
 
-Coming soon...
+Hey! Our `repLogs` live in state! And so, I think it's finally time to add some
+magic to our form and get it functional. Here's our *next* goal: when the user submits
+this form, we want to take its data and *update* the `repLogs` state so that a
+new row is rendered in the table.
 
-Now that we have a rep log state and the top level, I think it's time to actually make our form works some magic because the goal is when we submit this form, we want to take that data and modify the Rep log state so that we see a new row go onto the table. The form itself lives in, rep logs down near the bottom, but when the form submits, we're going to need to modify the Rep log state which lives on the parent components. So that means we're going to need to communicate up the tree via a callback the same way we're doing that with, by passing in the on row click. 
+The form itself lives in `RepLogs`, near the bottom. But, the state we need to
+modify lives in our parent: `RepLogApp`. To communicate back *up* the tree, we'll
+follow a familiar pattern: pass a *callback* from parent to child, just like we
+did with `onRowClick`.
 
-So let's start by adding a new handle function into our rep log app called handle new items, submit and this will accept and the, the event object, um, from the submit event on the form. And we'll say event that prevent default, which you need to do, just like normal javascript will do that. So the form submit, and then we'll just log a couple of things here. Love when a good form submits, that's also console dot log event.target, because ultimately the form is going to submit, so event that target should represent the form on the DM, which we're going to need because we're going to ultimately need to read off the values of the fields on the form, so now that we have our callback, we need to pass this into rep logs so that rep logs can call it when the form is submitted, so I'll pass in a new prop called on new items. Submit equals this dot handle new items, submit. Now notice I am getting a little bit of naming convention here. I like to name my methods, handle something, and then when I passed them on us props, it's on new, something totally optional, but it's a nice way to go. Of course, now we're in rep logs. We have a new prop called on new items Smith. Let's go ahead and add that down to our prop types as a required function. 
+## Adding the onSubmit Behavior
 
-Perfect. We'll pop back up and do our rendering function here. We'll add that as another prop on a new item summits and quite literally now we can say on submit equals on new items, submit. It's that easy, so go back right now the page already refreshed and if we fill out the form here, hit enter, 
+Start in `RepLogApp`: add the handler function: `handleNewItemSubmit()` with an
+event object. To prevent the form from *actually* trying to submit, use
+`event.preventDefault()`, just like normal JavaScript.
 
-nevermind. 
+For now, log some stuff! I love when a good form submits! Oh, and *also* log
+`event.target`. Because this function will handle the `form` element's submit,
+`event.target` will be the form itself. We're going to need that so we can read
+the values from its fields.
 
-So if we can move over and refresh, then we'll select an item, felons to numbers, and there it is. Every time we submit via enter or click it hits our log and check this out. As promised when we're logging the events that target that actually represents the dom element. That is the form itself, the thing that's submitting when you use normal javascript, a lot of times you need to use event data, current target, but in react to the event object has been changed slightly. So that event, that target is always the element that you found the listener too. So it's always going to be the forum, which is perfect. 
+Pass this callback as a new prop: `onNewItemSubmit = {this.handleNewItemSubmit}`.
+And, hey! We're starting to see a naming convention. This isn't anything official,
+but I like to name my *methods* "handleSomeEvent" and my *props* "onSomeEvent".
 
-So the next question is how can we read off, for example, our textbox feet field here? Well, if you look, there's our select, here's our input in it has a name on the element called Reps. so we can actually just use normal javascript in the in our browser to go and read that value off of the form. Now, by the way, is if you've read a little bit about forms and react to this, might not feel like what you expected in. Don't worry yet. I'm going to tell a whole story of a couple of different ways to handle forms and reacts in all have their pros and cons, but for now, don't think about this form being anything other than just an html form and when you put data into it, you can read data off of it. So in rep log APP, 
+In `RepLogs`, head *straight* down to `propTypes` to describe the prop:
+`onNewItemSubmit` is a required function.
 
-the way to do to get an element off of eight h, you may or may not be familiar with it, but you can say event.target, that elements, that named item. Then you can give it the name of the item. In this case it's reps and now that you have that element, you can say that value, maybe not too familiar, but it's pretty simple to figure that out. So go over and refresh. Select the night men put 50 and enter and there's our 50 read off of our form field. Now before we go further, I want to talk about something philosophical here. Our Rep log APP is all about handling all of our logic and our application, but not doing anything with our markup, so it's a little bit weird because suddenly our handle new items submit is aware that a form was just submitted and that that form has a field in it called reps that were reading off of basically our components. Our Rep log APP component is actually dependent on there being a exact structure down here in red blocks and really the form is actually the responsibility of the rep logs to say it. Another way I'll rep log app really cares about is that when a new rep log is created, however it's created with a form that looks one way or a form that looks another way. Whenever a rep log is created in the system, 
+*Love* it! Back in render, destructure this into a variable. So: how can we attach
+a "submit" listener to the form? Ah... it's just `onSubmit={onNewItemSubmit}`.
 
-it's handled. New items, submit method should be called. In other words, all of the logic of the form though, reading the elements off the form of even preventing this submit. That's the responsibility of rep logs. So check this out. I'm actually going to copy the inside of this function and I'm going to move most of this call back into rep logs and since this is just a function, I'll put the function up here. Call new function called handle form submit. I'll give that same event argument is normal, and then I'm gonna paste my logic inside of there. 
+So simple! Go over to the browser and give it a nice refresh! Select an item...
+fill in a number and... we got it! Every time we submit by pressing enter or clicking
+the button, we see our insightful message. And as promised, the `event.target` that
+we're logging is *literally* the raw, form DOM element.
 
-No, 
+This is actually really nice. React *always* guarantees that `event.target` will
+be the element that you attached the listener to.
 
-I'm going to create a new function, but I'm actually going to put the function right inside of my render. It's going to look a little weird at first. We'll call it function handle form, submit and give it our normal event argument, and then I'm going to paste the logic inside of there. Then down below on the submit, instead of calling the on new items Smith, we're going to call our handle form. Submit. 
+## Reading the Form Data
 
-Yeah. 
+Next question! How can we read the values from our fields? Look at the form in
+`RepLogs`: there's the select element and... the textarea. Check it out: it has a
+*name* attribute: `reps`. We can use that and normal, boring JavaScript to find that
+field and get its value.
 
-They had a form summit is now responsible for calling event that prevent default. It's even smart enough to know about the form structure, so reads off the names of the fields and then at the bottom it can finally call on new items, submit. That's actually why I put the function inside of render so that we have access to are on new items, summit props and eventually we're actually going to. I'm not going to do it yet, but we'll actually pass in the actual data that was, um, from our form here. And then up in on new items summit. I'm actually just going to make it empty for now with the console dot log to do eventually this will have little receive at the bottom. We can call the handle form, submit and we can actually pass it. The item that was selected right now I'm just going to hard code one end so you can see what I mean. And then you know the actual number of reps and then above and the apparent class, that means we'll actually, I'm going to delete everything here. This is just going to receive kind of like, um, item name and rep count 
+By the way... if you've read a little bit about forms and React, this might not
+be what you were expecting. Don't worry. I'm going to show you a *few* different
+ways to get the values from form fields, including the pros and cons of each, and
+which method I recommend and when.
 
-reps 
+But right now, forget about React, and remember that, under the hood, there is a
+boring HTML form sitting on the page that we can interact with.
 
-and then I'll just put a little to do there and we'll actually print out that data. So you see now like our rep log app still has this call back that they want to be called, but now it can. It's agnostic of there being a form. It doesn't care how new rep logs are credited, it just says when a new rep log is created, you should call me. And all of our logic for handling it is the foreign stuff is handled down here. So if we go back right now and refresh, we can fill in some items here and you see our data. Okay. The big fat cat is just hard coded but 45 comes through because that was actually passed or parent element. 
+In `RepLogApp`, it's time to flex our native JavaScript muscles! To read the
+`reps` textarea, use `event.target` - that's the form - `.elements.namedItem('reps')`.
+This will give us the `textarea` element. Reads its value with `.value`.
 
-So yeah, let's leave it there.
+Let's go try it! Move over, refresh... select "My Laptop" and lift it 50 times.
+Yes! There's the 50! Victory!
+
+## Keep your Smart Component Unaware of Markup
+
+But, before we go further, I need to ask an important philosophical question:
+
+> If your shirt isn't tucked into your pants, are your pants tucked into your shirt?
+
+Hmm. Thought provoking. And also: if our smart component - `RepLogApp` - should not
+be responsible for rendering *any* HTML, should its `onNewItemSubmit()` method
+be aware that there is an HTML form and a field with a `name="reps"` attribute
+inside?
+
+Actually... no! It makes no sense for `onNewItemSubmit()` to suddenly be aware
+of a specific HTML structure that's rendered by its child. In fact, *all* `RepLogApp`
+should care about is that, when - *somehow* - a new rep log is created in the app,
+its `onNewItemSubmit()` function is called so that it can update the `repLogs` state.
+If it's created with a form, or with some random fields during a 10-step process
+or just with black magic... `RepLogApp` should not care!
+
+So, check this out: copy the inside of the function: I'm going to move most of
+this callback into `RepLogs` as a *new* handler function. *Inside* `render()`,
+add a new function: `handleFormSubmit()` with our normal event argument. Then,
+paste the logic.
+
+Down in `onSubmit`, instead of calling the parent handler, call the new function:
+`handleFormSubmit`.
+
+Yep, this feels *much* better. `handleFormSubmit()` is responsible for calling
+`event.preventDefault()` and uses the form structure - which is created right
+inside this component - to read the names of the fields. Finally, at the bottom,
+call the parent handler: `onNewItemSubmit()`.
+
+Actually, *this* is the reason why I put the new function *inside* of `render()`
+instead of above the function like I did with `calculateTotalWeightFancier()`:
+our callback needs access to the props.
+
+Here's the last important part: instead of passing the event object or the form
+element to the parent `onNewItemSubmit()` callback, only pass it what it needs: the
+new rep log's raw data. For now, hardcode an item name - "Big fat cat" - but copy
+the number of true rep logs and paste.
+
+Back in `RepLogApp`, clear out `handleNewItemSubmit` and give it two fresh args:
+`itemName` and `repCount`. Log a todo below: we will eventually use this to update
+the state. And log those values so we can check things!
+
+I love it! `RepLogApp` still has a callback, but it's now unaware of the form. It
+doesn't care *how* rep logs are created, it only cares that its callback is executed
+when that happens. All the form logic is *right* where it should be.
+
+Try it out! Refresh the page, select an item, enter 45 and... submit! The Big
+fat cat is hardcoded, but the 45 is our real data.
+
+As *simple* as it is to read the values of the fields by using the `name` attribute,
+you probably won't do this in practice. Instead, we'll learn two other ways:
+refs & state. We'll jump into `refs` next.

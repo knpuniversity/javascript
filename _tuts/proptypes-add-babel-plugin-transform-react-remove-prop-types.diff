@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index e8e67a07..4f41d5d0 100644
+index e8e67a079..4f41d5d0e 100644
 --- a/package.json
 +++ b/package.json
 @@ -1,6 +1,7 @@
@@ -11,7 +11,7 @@ index e8e67a07..4f41d5d0 100644
      "bootstrap": "3",
      "copy-webpack-plugin": "^4.4.1",
 diff --git a/webpack.config.js b/webpack.config.js
-index 96848a7e..30bfd6d2 100644
+index 96848a7e8..30bfd6d2a 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -27,6 +27,13 @@ Encore
@@ -29,7 +29,7 @@ index 96848a7e..30bfd6d2 100644
  
  // export the final configuration
 diff --git a/yarn.lock b/yarn.lock
-index c4fd90fe..d8ce2c97 100644
+index c4fd90fe9..d8ce2c97e 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -745,6 +745,10 @@ babel-plugin-transform-react-jsx@^6.24.1:

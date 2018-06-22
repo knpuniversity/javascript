@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogList.js b/assets/js/RepLog/RepLogList.js
-index 6a02498d..2ecc1e32 100644
+index 6a02498da..2ecc1e327 100644
 --- a/assets/js/RepLog/RepLogList.js
 +++ b/assets/js/RepLog/RepLogList.js
 @@ -1,4 +1,5 @@
@@ -18,7 +18,7 @@ index 6a02498d..2ecc1e32 100644
 +    onRowClick: PropTypes.func
 +};
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 8ebb3dec..6c690928 100644
+index 3935c27ed..b07224b05 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -24,7 +24,7 @@ export default function RepLogs(props) {

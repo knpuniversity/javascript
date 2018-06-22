@@ -1,6 +1,6 @@
 diff --git a/.eslintrc.js b/.eslintrc.js
 new file mode 100644
-index 00000000..61df8708
+index 000000000..61df87087
 --- /dev/null
 +++ b/.eslintrc.js
 @@ -0,0 +1,19 @@
@@ -24,7 +24,7 @@ index 00000000..61df8708
 +    }
 +};
 diff --git a/package.json b/package.json
-index efcfd263..859717de 100644
+index efcfd2636..859717dea 100644
 --- a/package.json
 +++ b/package.json
 @@ -3,6 +3,7 @@
@@ -36,7 +36,7 @@ index efcfd263..859717de 100644
      "jquery": "^3.3.1",
      "node-sass": "^4.7.2",
 diff --git a/yarn.lock b/yarn.lock
-index dae58241..8e84673b 100644
+index dae582410..8e84673bb 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -68,11 +68,21 @@ acorn-dynamic-import@^2.0.0:

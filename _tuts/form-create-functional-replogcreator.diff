@@ -1,6 +1,6 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
 new file mode 100644
-index 00000000..8124d698
+index 000000000..8124d6989
 --- /dev/null
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -0,0 +1,8 @@
@@ -13,12 +13,12 @@ index 00000000..8124d698
 +    );
 +}
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 66adb75b..6459b1f3 100644
+index c93e5a074..2e309f169 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -1,6 +1,7 @@
  import React from 'react';
- import RepLogList from './RepLogs';
+ import RepLogList from './RepLogList';
  import PropTypes from 'prop-types';
 +import RepLogCreator from './RepLogCreator';
  

@@ -15,4 +15,5 @@ chapters:
     - prop-types
     - prop-types-optimization
     - rep-logs-state
+    - spread-attributes
     - form-submit
