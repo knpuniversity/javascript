@@ -36,7 +36,7 @@ an attribute: `withHeart` - I'm just making that name up - equals `{shouldShowHe
 
 Woh. Wait. Something crazy just happened. We are inside of JSX on this line.
 And, because JSX is like HTML, we know that we could, of course, say something
-like `withHeart="food"`. That's true, but whenever you're in JSX, if you write `{}`,
+like `withHeart="foo"`. That's true, but whenever you're in JSX, if you write `{}`,
 that puts you back into JavaScript mode! Once inside, You can write literally *any*
 valid JavaScript: like reference the `shouldShowHeart` variable or even add expressions.
 We'll do this *all* the time.
