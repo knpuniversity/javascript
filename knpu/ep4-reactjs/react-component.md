@@ -8,11 +8,17 @@ It looks like this: create a class called `RepLogApp` and extend something calle
 return whatever element objects you want. In this case I'm going to copy my JSX
 from above and, here, say `return` and paste.
 
+[[[ code('0197a4db8a') ]]]
+
 *This* is a React component. Below, I'm going to use `console.log()` and then
 treat my `RepLogApp` as if it were an element: `<RepLogApp />`.
 
+[[[ code('e46082cff9') ]]]
+
 Finally, below, instead of rendering an *element*, we can render the *component*
 with that same JSX syntax: `<RepLogApp />`.
+
+[[[ code('e84f1dbf01') ]]]
 
 Ok, go back and refresh! Awesome! We get the *exact* same thing as before! *And*,
 check out the console! The component becomes a React element!
@@ -44,6 +50,8 @@ on the `React` object. The way we have things now is fine. But, commonly, you'll
 React imported like this: `import React` then `{ Component }` from `react`. Thanks
 to this, you can just extend `Component`.
 
+[[[ code('b427ca5547') ]]]
+
 This is pretty much just a style thing. And... honestly... it's one of the things
 that can make React frustrating. What I mean is, React developers like to use
 a *lot* of the newer, fancier ES6 syntaxes. In this case, the `react` module
@@ -57,6 +65,8 @@ a React app. And we definitely don't want that!
 We can do the same thing with `react-dom`. Because, notice, we're *only* using
 the `render` key. So instead of importing *all* of `react-dom`, import
 `{ render }` from `react-dom`. Below, use the `render()` function directly.
+
+[[[ code('f27106f860') ]]]
 
 This change is a *little* bit more important because Webpack should be smart enough
 to perform something called "tree shaking". That's not because Webpack hates nature,
@@ -83,6 +93,8 @@ lives in its own file. In the `assets/js` directory, create a new `RepLog` direc
 this will hold all of the code for our React app. Inside, create a new file called
 `RepLogApp`. Copy our entire component class into that file.
 
+[[[ code('c588ac8a4f') ]]]
+
 Woh. Something weird just happened. Did you see it? We *only* copied the `RepLogApp`
 class. But when we pasted, PhpStorm auto-magically added the import for us! Thanks
 PhpStorm! Gold star!
@@ -97,9 +109,13 @@ from ESLint. Update the import to *also* import `React`.
 Now, to make this class available to other files, use
 `export default class RepLogApp`.
 
+[[[ code('bd15a8e695') ]]]
+
 Back in `rep_log_react.js`, delete the class and, instead, `import RepLogApp` from
 `./RepLog/RepLogApp`. Oh, and it's not too important, but we're actually *not*
 using the `Component` import anymore. So, trash it.
+
+[[[ code('e9e1d3ef01') ]]]
 
 Awesome! Our code is a bit more organized! And when we refresh, it's *not* broken,
 which is always my favorite.
