@@ -1,8 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogCreatorControlledComponents.js b/assets/js/RepLog/RepLogCreatorControlledComponents.js
-index 3ebc2894f..09fd777e5 100644
+index 3ebc2894f..03f84ecf5 100644
 --- a/assets/js/RepLog/RepLogCreatorControlledComponents.js
 +++ b/assets/js/RepLog/RepLogCreatorControlledComponents.js
-@@ -6,6 +6,8 @@ export default class RepLogCreator extends Component {
+@@ -6,12 +6,11 @@ export default class RepLogCreator extends Component {
          super(props);
  
          this.state = {
@@ -11,21 +11,36 @@ index 3ebc2894f..09fd777e5 100644
              quantityInputError: ''
          };
  
-@@ -61,7 +63,7 @@ export default class RepLogCreator extends Component {
+-        this.quantityInput = React.createRef();
+-        this.itemSelect = React.createRef();
+-
+         this.itemOptions = [
+             { id: 'cat', text: 'Cat' },
+             { id: 'fat_cat', text: 'Big Fat Cat' },
+@@ -51,7 +50,7 @@ export default class RepLogCreator extends Component {
+     }
+ 
+     render() {
+-        const { quantityInputError } = this.state;
++        const { quantityInputError, selectedItemId, quantityValue } = this.state;
+ 
+         return (
+             <form onSubmit={this.handleFormSubmit}>
+@@ -61,7 +60,7 @@ export default class RepLogCreator extends Component {
                          What did you lift?
                      </label>
                      <select id="rep_log_item"
 -                            ref={this.itemSelect}
-+                            value={this.state.selectedItemId}
++                            value={selectedItemId}
                              required="required"
                              className="form-control">
                          <option value="">What did you
-@@ -79,7 +81,7 @@ export default class RepLogCreator extends Component {
+@@ -79,7 +78,7 @@ export default class RepLogCreator extends Component {
                          How many times?
                      </label>
                      <input type="number" id="rep_log_reps"
 -                           ref={this.quantityInput}
-+                           value={this.state.quantityValue}
++                           value={quantityValue}
                             required="required"
                             placeholder="How many times?"
                             className="form-control"/>

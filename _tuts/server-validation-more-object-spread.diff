@@ -1,0 +1,13 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 0ae768e30..1e0056a55 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -98,7 +98,7 @@ export default class RepLogApp extends Component {
+                         return repLog;
+                     }
+ 
+-                    return Object.assign({}, {isDeleting: true}, repLog);
++                    return {...repLog, isDeleting: true};
+                 })
+             };
+         });

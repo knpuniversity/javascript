@@ -1,0 +1,15 @@
+diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
+index de4fe6f6c..97bfd1fa0 100644
+--- a/assets/js/RepLog/RepLogs.js
++++ b/assets/js/RepLog/RepLogs.js
+@@ -1,8 +1,8 @@
+ import React from 'react';
+ import RepLogList from './RepLogList';
+ import PropTypes from 'prop-types';
+-//import RepLogCreator from './RepLogCreator';
+-import RepLogCreator from './RepLogCreatorControlledComponents';
++import RepLogCreator from './RepLogCreator';
++//import RepLogCreator from './RepLogCreatorControlledComponents';
+ 
+ function calculateTotalWeightLifted(repLogs) {
+     let total = 0;

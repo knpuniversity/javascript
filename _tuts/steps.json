@@ -1611,6 +1611,11 @@
             "description": null
         },
         {
+            "id": "creatorwithstate-use-old-component",
+            "name": "CreatorWithState: Use old component",
+            "description": null
+        },
+        {
             "id": "delete-add-delete-link",
             "name": "Delete: Add delete link",
             "description": null
@@ -1706,6 +1711,26 @@
             "description": null
         },
         {
+            "id": "loading-change-delete-state-after-ajax",
+            "name": "Loading: Change delete state after AJAX",
+            "description": null
+        },
+        {
+            "id": "loading-setting-isdeleting-row-state",
+            "name": "Loading: Setting isDeleting row state",
+            "description": null
+        },
+        {
+            "id": "loading-remove-tmp-return-stmt",
+            "name": "Loading: Remove tmp return stmt",
+            "description": null
+        },
+        {
+            "id": "loading-empty-delete-me-2",
+            "name": "Loading: Empty delete me 2",
+            "description": null
+        },
+        {
             "id": "server-validation-throw-on-api-errors",
             "name": "Server Validation: Throw on API errors",
             "description": null
@@ -1733,6 +1758,11 @@
         {
             "id": "server-validation-use-object-spread",
             "name": "Server Validation: Use object spread",
+            "description": null
+        },
+        {
+            "id": "server-validation-more-object-spread",
+            "name": "Server Validation: More object spread",
             "description": null
         },
         {
@@ -1806,5 +1836,5 @@
             "description": null
         }
     ],
-    "sha": "5c8f98787be75e42fd538280ac10ea0c8169b597"
+    "sha": "14a292fc8ceb18260ba056789c1a6c864ca8fcd4"
 }
