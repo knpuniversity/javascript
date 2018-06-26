@@ -63,7 +63,7 @@ Below, inside the `tbody`, we basically want to convert each "rep log" into a
 `tr` React element with the data printed inside of it. To do that, we're going to
 use a *really* common pattern in React... which might feel a bit weird at first.
 
-Above `render()`, create a new constant called `repLogElements` set to `repLogs.map()`.
+Above `render()`, create a new constant called `repLogElement` set to `repLogs.map()`.
 Pass this a callback function with one argument: `repLog`. I'll use the arrow syntax
 for the callback. Inside, we're going to return a React element via JSX: add
 parenthesis so we can use multiple lines. Then, just build out the row: `<tr>`,
@@ -71,8 +71,8 @@ then `<td>` with `{repLog.itemLabel}`.
 
 If you're not familiar with the `map` function, that's ok: it's much less common
 in PHP. Basically, it loops over each element in `repLogs`, calls our function,
-and then, whatever our function returns, is added to the `repLogElements` array.
-So, ultimately, `repLogElements` will be an array of `<tr>` React element objects.
+and then, whatever our function returns, is added to the `repLogElement` array.
+So, ultimately, `repLogElement` will be an array of `<tr>` React element objects.
 
 Add the next `<td>`. Let's see... ah, this column is "How Many". Fill in the second
 column with `{repLog.reps}`, then another `<td>` with `{repLog.totalWeightLifted}`
@@ -83,7 +83,7 @@ prop. We'll talk about that in a minute. Until then, ignore that silly warning! 
 could go wrong?!
 
 Now that we have an array of React element objects, this is pretty sweet: go down,
-delete the hardcoded row and - wait for it - just print `repLogElements`.
+delete the hardcoded row and - wait for it - just print `repLogElement`.
 
 Yea, it looks a bit crazy: we're literally printing an array of React elements!
 But, try it - go back to your browser and refresh! It works! It prints each
