@@ -8,6 +8,8 @@ lives in this included template. Copy the *entire* old markup. Then, go back to
 form yet... so remove that. Oh, and I kinda liked the `withHeart` feature, so let's
 make sure we're still printing `{heart}`.
 
+[[[ code('0e56f3ea66') ]]]
+
 ## class -> className
 
 Sweet! Once again, PhpStorm just did an amazing thing - automagically - when we pasted
@@ -40,6 +42,8 @@ And finally, *just* to see how it looks with data, let's hack in one fake row fu
 of invented stuff. Use ... for the last column: someday, we'll add a delete link
 here.
 
+[[[ code('5993192a7d') ]]]
+
 Cool! Building a static version of your app first is a *great* way to start. And
 JSX makes that really easy.
 
@@ -56,6 +60,8 @@ data, you should *first* make your app render using static data. Check this out,
 inside `render()`, create a new constant called `repLogs` and then set that to some
 fake data that matches the format of your API. We now have 3 fake rep logs with
 `id`, `itemLabel` and `totalWeight`.
+
+[[[ code('da061af437') ]]]
 
 ## Rendering a Collection
 
@@ -78,12 +84,14 @@ Add the next `<td>`. Let's see... ah, this column is "How Many". Fill in the sec
 column with `{repLog.reps}`, then another `<td>` with `{repLog.totalWeightLifted}`
 and finally one more with `...`: this will be the delete link... someday.
 
+.[[[ code('1c68fa9881') ]]]
+
 Great! Wait... but the `tr` has a little warning: something about a missing `key`
 prop. We'll talk about that in a minute. Until then, ignore that silly warning! What
 could go wrong?!
 
 Now that we have an array of React element objects, this is pretty sweet: go down,
-delete the hardcoded row and - wait for it - just print `repLogElement`.
+delete the hardcoded row and - wait for it - just print `repLogElements`.
 
 Yea, it looks a bit crazy: we're literally printing an array of React elements!
 But, try it - go back to your browser and refresh! It works! It prints each
