@@ -8,6 +8,8 @@ lives in this included template. Copy the *entire* old markup. Then, go back to
 form yet... so remove that. Oh, and I kinda liked the `withHeart` feature, so let's
 make sure we're still printing `{heart}`.
 
+[[[ code('0e56f3ea66') ]]]
+
 ## class -> className
 
 Sweet! Once again, PhpStorm just did an amazing thing - automagically - when we pasted
@@ -40,6 +42,8 @@ And finally, *just* to see how it looks with data, let's hack in one fake row fu
 of invented stuff. Use ... for the last column: someday, we'll add a delete link
 here.
 
+[[[ code('5993192a7d') ]]]
+
 Cool! Building a static version of your app first is a *great* way to start. And
 JSX makes that really easy.
 
@@ -57,13 +61,15 @@ inside `render()`, create a new constant called `repLogs` and then set that to s
 fake data that matches the format of your API. We now have 3 fake rep logs with
 `id`, `itemLabel` and `totalWeight`.
 
+[[[ code('da061af437') ]]]
+
 ## Rendering a Collection
 
 Below, inside the `tbody`, we basically want to convert each "rep log" into a
 `tr` React element with the data printed inside of it. To do that, we're going to
 use a *really* common pattern in React... which might feel a bit weird at first.
 
-Above `render()`, create a new constant called `repLogElements` set to `repLogs.map()`.
+Above `render()`, create a new constant called `repLogElement` set to `repLogs.map()`.
 Pass this a callback function with one argument: `repLog`. I'll use the arrow syntax
 for the callback. Inside, we're going to return a React element via JSX: add
 parenthesis so we can use multiple lines. Then, just build out the row: `<tr>`,
@@ -71,12 +77,14 @@ then `<td>` with `{repLog.itemLabel}`.
 
 If you're not familiar with the `map` function, that's ok: it's much less common
 in PHP. Basically, it loops over each element in `repLogs`, calls our function,
-and then, whatever our function returns, is added to the `repLogElements` array.
-So, ultimately, `repLogElements` will be an array of `<tr>` React element objects.
+and then, whatever our function returns, is added to the `repLogElement` array.
+So, ultimately, `repLogElement` will be an array of `<tr>` React element objects.
 
 Add the next `<td>`. Let's see... ah, this column is "How Many". Fill in the second
 column with `{repLog.reps}`, then another `<td>` with `{repLog.totalWeightLifted}`
 and finally one more with `...`: this will be the delete link... someday.
+
+.[[[ code('1c68fa9881') ]]]
 
 Great! Wait... but the `tr` has a little warning: something about a missing `key`
 prop. We'll talk about that in a minute. Until then, ignore that silly warning! What

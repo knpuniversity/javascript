@@ -29,8 +29,12 @@ heart.
 Inside `rep_log_react.js`, create a new `const shouldShowHeart = true`. I'll also
 update the render code to use multiple lines, just to keep things clear.
 
+[[[ code('f0fd38dc75') ]]]
+
 So, how can we pass this variable into `RepLogApp`? By adding what *looks* like
 an attribute: `withHeart` - I'm just making that name up - equals `{shouldShowHeart}`.
+
+[[[ code('660a01e766') ]]]
 
 ## The JSX {JavaScript} Syntax
 
@@ -52,6 +56,8 @@ Check this out: in `render()` create a new variable called `heart` and set it to
 empty quotes. Then, if `this.props.withHeart` - referencing the prop we passed
 in - say `heart =`, copy the `span` JSX from below, and paste it here.
 
+[[[ code('93d9c611c1') ]]]
+
 Oh, and notice that when we use `this.props.withHeart`, we have an error from ESLint
 about some missing prop validation. That's just a warning, and we're going to talk
 about it later. For now, *totally* ignore it.
@@ -64,14 +70,18 @@ Finally, instead of the span, we want to print the `heart` variable. How? Use
 `{heart}`. Based on the value of the prop, this will print an empty string or a
 React element.
 
+[[[ code('92287cd0ed') ]]]
+
 Right now, `withHeart` is equal to true. So let's see if this work: find your browser
-and refresh! Yes! We still see the heart! Change `shouldShowHeart` to false and
+and refresh! Yes! We still see the heart! Change `shouldShowHeart` to `false` and
 try it again. The heart is gone!
 
 ## Rendering a Component Multiple Times
 
 To *really* show off, change that value back to true, but let's see if we can render
 `RepLogApp` *multiple* times. Copy the JSX, paste, and set `withHeart` to `false`.
+
+[[[ code('73bd849a51') ]]]
 
 But, as *soon* as we do this, the Webpack build fails! Find your terminal to see
 what it's complaining about:
@@ -86,6 +96,8 @@ And, `RepLogApp` already is: it has one top-level element: the `h2`.
 To put just *one* element at the top of our element tree, there's a simple fix:
 add a `div` and render both components inside. Oh, and I completely forgot to use
 `{}` around my "false" - `false` is JavaScript.
+
+[[[ code('fc1f9b6a23') ]]]
 
 Now that Webpack is happy again, go back and refresh! Sweet! Our component is
 rendered *twice*: each is its own object with its own data.
