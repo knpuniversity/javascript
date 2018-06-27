@@ -23,6 +23,8 @@ in a database table has a primary key. To do this, go to the outer-element of ea
 item and literally add a `key` prop. This needs to be something that is unique *and*
 won't change. So, basically, it should be the `id`.
 
+[[[ code('0d71597e9e') ]]]
+
 Solved! This `key` prop isn't a big deal, it's just a chore you need to handle
 each time you render a collection. But don't worry: if you forget, React will
 remind you!
@@ -42,6 +44,8 @@ And, we *can* do that... by being a bit clever. Copy the `repLogs.map()` code, t
 delete the `repLogElements` variable entirely. Back inside JSX, clear out the variable
 and... paste!
 
+[[[ code('9107b59bd8') ]]]
+
 That's it! It's really the *same* thing we had before! This loops over the
 `repLogs` array, builds an array of "rep log" element objects, then... prints them!
 
@@ -60,6 +64,8 @@ Because the arrow function is, um, a *function*, we usually surround the body of
 the function with curly braces. But, if the only line in your function is the return
 statement, you can *remove* the curly braces and just put the code for the return.
 Oops, I have one extra curly brace.
+
+[[[ code('0ebefae5a9') ]]]
 
 We now have a function with one argument that *returns* this JSX element.
 
