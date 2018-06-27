@@ -1,18 +1,8 @@
 diff --git a/assets/js/RepLog/RepLogCreatorControlledComponents.js b/assets/js/RepLog/RepLogCreatorControlledComponents.js
-index 09fd777e5..d16b949df 100644
+index 03f84ecf5..5e12a19bb 100644
 --- a/assets/js/RepLog/RepLogCreatorControlledComponents.js
 +++ b/assets/js/RepLog/RepLogCreatorControlledComponents.js
-@@ -11,9 +11,6 @@ export default class RepLogCreator extends Component {
-             quantityInputError: ''
-         };
- 
--        this.quantityInput = React.createRef();
--        this.itemSelect = React.createRef();
--
-         this.itemOptions = [
-             { id: 'cat', text: 'Cat' },
-             { id: 'fat_cat', text: 'Big Fat Cat' },
-@@ -22,16 +19,15 @@ export default class RepLogCreator extends Component {
+@@ -19,16 +19,16 @@ export default class RepLogCreator extends Component {
          ];
  
          this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -23,23 +13,24 @@ index 09fd777e5..d16b949df 100644
      handleFormSubmit(event) {
          event.preventDefault();
          const { onAddRepLog } = this.props;
++        const { selectedItemId, quantityValue } = this.state;
  
 -        const quantityInput = this.quantityInput.current;
 -        const itemSelect = this.itemSelect.current;
 -
 -        if (quantityInput.value <= 0) {
-+        if (this.state.quantityValue <= 0) {
++        if (quantityValue <= 0) {
              this.setState({
                  quantityInputError: 'Please enter a value greater than 0'
              });
-@@ -41,17 +37,29 @@ export default class RepLogCreator extends Component {
+@@ -38,17 +38,29 @@ export default class RepLogCreator extends Component {
          }
  
          onAddRepLog(
 -            itemSelect.options[itemSelect.selectedIndex].text,
 -            quantityInput.value
 +            'TODO - just wait a second!',
-+            this.state.quantityValue
++            quantityValue
          );
  
 -        quantityInput.value = '';
@@ -64,20 +55,20 @@ index 09fd777e5..d16b949df 100644
 +    }
 +
      render() {
-         const { quantityInputError } = this.state;
+         const { quantityInputError, selectedItemId, quantityValue } = this.state;
  
-@@ -64,6 +72,7 @@ export default class RepLogCreator extends Component {
+@@ -61,6 +73,7 @@ export default class RepLogCreator extends Component {
                      </label>
                      <select id="rep_log_item"
-                             value={this.state.selectedItemId}
+                             value={selectedItemId}
 +                            onChange={this.handleSelectedItemChange}
                              required="required"
                              className="form-control">
                          <option value="">What did you
-@@ -82,6 +91,7 @@ export default class RepLogCreator extends Component {
+@@ -79,6 +92,7 @@ export default class RepLogCreator extends Component {
                      </label>
                      <input type="number" id="rep_log_reps"
-                            value={this.state.quantityValue}
+                            value={quantityValue}
 +                           onChange={this.handleQuantityInputChange}
                             required="required"
                             placeholder="How many times?"

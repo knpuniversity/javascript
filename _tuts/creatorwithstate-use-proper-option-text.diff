@@ -1,24 +1,24 @@
 diff --git a/assets/js/RepLog/RepLogCreatorControlledComponents.js b/assets/js/RepLog/RepLogCreatorControlledComponents.js
-index d16b949df..3e0b00471 100644
+index 5e12a19bb..8ac6cf7e7 100644
 --- a/assets/js/RepLog/RepLogCreatorControlledComponents.js
 +++ b/assets/js/RepLog/RepLogCreatorControlledComponents.js
-@@ -27,6 +27,10 @@ export default class RepLogCreator extends Component {
-         event.preventDefault();
+@@ -28,6 +28,10 @@ export default class RepLogCreator extends Component {
          const { onAddRepLog } = this.props;
+         const { selectedItemId, quantityValue } = this.state;
  
 +        const itemLabel = this.itemOptions.find((option) => {
 +            return option.id === this.state.selectedItemId
 +        }).text;
 +
-         if (this.state.quantityValue <= 0) {
+         if (quantityValue <= 0) {
              this.setState({
                  quantityInputError: 'Please enter a value greater than 0'
-@@ -37,7 +41,7 @@ export default class RepLogCreator extends Component {
+@@ -38,7 +42,7 @@ export default class RepLogCreator extends Component {
          }
  
          onAddRepLog(
 -            'TODO - just wait a second!',
 +            itemLabel,
-             this.state.quantityValue
+             quantityValue
          );
  

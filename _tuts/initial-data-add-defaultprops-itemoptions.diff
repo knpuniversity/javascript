@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index d3764cdd7..04ae3bd1c 100644
+index 0b8d5dc6b..f07a334bc 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -16,13 +16,7 @@ export default class RepLogApp extends Component {
@@ -17,7 +17,7 @@ index d3764cdd7..04ae3bd1c 100644
          };
          this.clearSuccessMessageTimeout = 0;
  
-@@ -141,5 +135,10 @@ export default class RepLogApp extends Component {
+@@ -153,5 +147,10 @@ export default class RepLogApp extends Component {
  }
  
  RepLogApp.propTypes = {

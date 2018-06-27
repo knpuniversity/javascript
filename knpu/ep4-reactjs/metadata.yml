@@ -17,3 +17,16 @@ chapters:
     - rep-logs-state
     - spread-attributes
     - form-submit
+    - creator-component
+    - refs
+    - immutable-state
+    - validation-state
+    - controlled-input
+    - controlled-component-form
+    - deleting-items
+    - fetch
+    - loading-animation
+    - delete-api
+    - create-api
+    - polyfills
+    - success-messages

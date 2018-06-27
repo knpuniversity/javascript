@@ -1,0 +1,14 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index edbaede7c..001c0f878 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -87,9 +87,6 @@ export default class RepLogApp extends Component {
+             };
+         });
+ 
+-        // temporary return
+-        return;
+-
+         deleteRepLog(id)
+             .then(() => {
+                 // remove the rep log without mutating state

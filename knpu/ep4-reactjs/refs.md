@@ -1,0 +1,47 @@
+# Refs
+
+Coming soon...
+
+We're using the name attribute on our form fields right now to get the underlying dom element and then fetch it's value, but react as a much better. Most of the time in react. You communicate down to your elements or even your child's components via props and rendering props and rendering variables, 
+
+but occasionally like in this case, you actually want to get to the underlying dom elements so that you can do something with it. Examples are when you want to read the value off of a form field or if you want to manage focus or text selection or media playback on a using the native media features of a browser, or if you're integrating with a third party javascript library and that javascript library, you need the underlying dom elements. You can pass it to that javascript library, so even though most of the time you render react element objects and react handles the job of creating the underlying dom elements. There are plenty of valid use cases when you actually want to go directly to that underlying dom element and read some information off of it or do something on it. 
+
+When that happens, react is a great way of handling it and it's called refs and the best way of doing raps actually require a class, which is why we refactored our rep log creator into a class. So here's how it works. We need to reps and when I wrap that points, we want be able to get the select element and we also want to be able to get our input. So in our constructor we're gonna create two new properties. This doc wants a t input equals react. That creates ref, and this stock items select equals react that create a ref. So whenever you need a wrap, you first want to initialize it by Kong. React dot great rep instead of on a new property on your object. Now to actually bind that to the underlying element, you'll go down and for example, now remove the name property and instead we'll say ref equals, and then you say this dot items, select that easy. Now we'll go down to the input and we'll do the same thing. I'll put the required on online. Delete the name attribute and say [inaudible] equals this dot. One of the input. 
+
+Perfect. All right, so let's see what this looks like. Let's go into our online submit. I'm actually going to temporarily comment out calling the parent function since our code is going to be broken and for now let's say console dot log. 
+
+This dot wanted the input and counselor 
+
+is that items select? Cool. Let's try it. Move over. React artery refreshed. Let's fill out some fields. Hit Enter and cool. All right, so you can see our print here which you get back is actually an object with a key called current, which I know feels a little bit weird, but that's how the rep system works and that current is set to the underlying dom element. Is that the underlying dom elements, so that's perfect. That's just a shortcut, a better way of getting that element. 
+
+No, thanks to that. Let's go up and let's say const quantity input equals this dot quantity input dot current and will say const. I am select equals this dot. I'm select that current. So we'll get those dom element objects as local variables. And then down here, let's see, we can get say quantity and put that value to get the value of the quantity and then for the items select it's a little bit more difficult. It's items, select dot options which will give you the array of options and then the the the key. We want his items like that selected index and then we want to call that value on that would. That should give us as actually the underlying value attribute on whatever option is selected so it already refreshed. So we'll select big fat cat, say 50 it enter and as we got to 50 and there is the value of the option. Guys, this is big. We can finally actually use this information to properly update our rep log state down on the bottom. An uncommon on new items submit. We'll use multiple lines here 
+
+and for the first 
+
+big fat cat will actually use this code here except for now I'm actually going to use instead of that value, I'm used text. I'll talk more about that in a second. That why should return the text of the elements, the option, and then for the other arguments that this will be just the input that value, and then we will remove the console that logs, so the whole time the plan was to ultimately call the parent function with the pieces of information that we have is onto item submit eventually points to this handle. New Items, submit function. I'm actually going to update this to item label now in era. Our job ultimately is to update our rep log state. Now there's. Then this code might look a little bit weird at first, but let's get through it. Say constant rep logs equals this dot state, that rep logs. We'll read off the existing wrapped box. Then we'll create our new rep log, a new rep log, new rep 
+
+equals and this one need the same fields this before, so we'll say id, but the tricky thing is we don't have an id yet, so I'm just going to put a to do right there. We'll talk more about that. Second wraps was that the reps item label set to the item label and then total weight lifted. This is another one that's tricky. Each. Each underlying different item type has a different weight. So if I lift something 10 times and it weighs 18 pounds, then you get a certain total weight lifted. But our javascript APP, javascript APP, we don't actually know that information. So right now I'm actually going to fake this with a random number. What's really happening here is that okay, 
+
+sometimes when you have a form when the you, the user submits all the information you need in that forum and that is enough to update your rep log state, but in this case ultimately we're going to need to submit the new rep information to the server so that the server can choose the new id and the server can tell us the total weight lifted and return that from us. So we have this to do code in here because until we involve the server, which we will do, we don't really have all the information yet, so we're just going to put dummy information in there for now. So finally to update the state will say rep logs that push new rep. I'll put it on then to that right. Then this, that set state, and remember we always pass the one key. We want to update it, so rep logs, so rep log set to rep locks. Now there is a problem with how we're setting the state here. We're going to talk about that next. This will actually work right? Try It, move over, refresh 
+
+belt form and it explodes with a very familiar air. CanNot read property. State of undefined Rep log App Line Twenty six. Every time you were in a handler function and you get something where you get. Henry referenced this and this is undefined. It's because you forgot to bind this function to this. This.in the constructor. This dot handle new items submits equals this dot handle new items. Submit that, bind this. I've been lazy about doing that because I want to see the air a few times, but in the future, every time we add a handler function, we're going to find it immediately so we don't have this 
+
+problem. Now move over, refresh. 
+
+We got it. Awesome. It actually updates are states. Of course, if we do it a second time, it also updates their state, but suddenly we have the air and countered to children with the same key to do dash id. That's because this ID is ultimately used inside of rep log list when it goes over the rows as the key and as we know when whenever we have a collection of things, they all need to have a key and my key needs to be unique so we knew that just putting this id to do idea was not going to be good enough. As I mentioned. Ultimately we're going to need ultimately there's two ways to create ids. Either you can use a. either you can make an Ajax request to the server before updating the state and allow the server to assign you an id or you can just use a u you id 
+
+and 
+
+and then when you send your Ajax requests you can actually send the Id to the server and the server uses that as it's your uid. Both are valid and we're going to see a mixture of approaches. For now, I'm actually going to assign this a you, you id, and to do that I'm going to install library, so of our new terminal and say yarn, add Uid, Dash, Dash, Dev. When that finishes move back over at the top of reblog apple, say import Uid 
+
+from 
+
+you. Uid Slash v for a couple of different versions of you [inaudible] that do slightly different things. Version four is what we need in our case now, down here, I'm going to be consistent everywhere. Let's use you ideas even in our dummy data, and then we use it down here on our new thing. Perfect. Move over, react already refreshed, and now we can add as many as we want. 
+
+Nevermind, nevermind 
+
+over refresh. Now we can add as many as we want, which highlights one last tiny little problem here, which is the form really needs to reset itself after we submit in Rep log creator and the same way that we're getting references to the actual dom elements and then reading values off of them. We can also do that to set the values, so after we have a successful form submit, we'll say quantity input. That value equals empty quotes and items. Select that selected index people's zero, so move over, refresh 
+
+and Oh, wrong one, Ryan refresh and 
+
+got it. We can still fill in multiple things, but it clears it every time. Sweet.
