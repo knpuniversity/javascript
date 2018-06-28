@@ -30,3 +30,8 @@ chapters:
     - create-api
     - polyfills
     - success-messages
+    - deep-state-update
+    - server-side-validation
+    - object-rest-spread
+    - passing-server-data
+    - reusable-component

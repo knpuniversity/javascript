@@ -1,0 +1,43 @@
+# Reusable Component
+
+Coming soon...
+
+Okay, 
+
+reacts entire architecture center is around making reusable components, especially the DM presentational components because all they do is receive some prompts and then effectively render things, but so far this is a bit like in Php, well we build classes 
+
+that do one job and in theory could be reused in many places. Now in reality, you may or may not reuse your components and in multiple places and so far things like replied, Creator Rep, live lists and rep logs. We're not going to use those in other parts of our site in any other ways. They're kind of single off things, but there are a lot of use cases for building your own reusable tools and react. For example, it's pretty simple, but suppose we had a lot of submit buttons so we wanted to actually turn the submit button itself until react component that we can totally do that and it's actually pretty awesome. A button with bootstrap that styling any assets, js directory. I'm going to create a new directory called components inside of there, a new file called button dot js, so I'm not putting this in rep log because this might be actually used in other parts of my site. Now this is going to be a a, a just a functional presentational dumb presentational components. So I'm going to copy the important lines from the top of rep log creator, and then we'll say export default 
+
+function button 
+
+with the normal props argument 
+
+inside 
+
+return. Basically mark up for button. So we'll have a button tag and we'll say a class name equals btn because every class always has at least that. 
+
+Then before I finish this in rep log creator, this is actually where we're going to use this. So if you look down here, there's our button and you could see that it actually has a type equals submit. Not all buttons. We could just put type equals submit here, but not all buttons are going to need type equals submit. So this is actually something that I want to allow to be passed in as a prop. In fact, we might need to pass in lots of different attributes as props, so to handle that we're actually going to use the spread operator and say dot.dot props. So basically whatever props are passed to us, we're going to render those as attributes and then we'll say, and then for the actual text, hm, well feel good that we need to basically somehow pass in this text right here. So at least right now, the simplest way to that is via some prop, so maybe work. So let's actually say that we're going to have a new prop called props that 
+
+text, 
+
+and then we'll close the button because we have that down on the bottom I'll say button that prop types equals will say prep types. We'll say a text set to prop types. That string that is required. 
+
+Perfect. 
+
+Now in rep log creator, since we need this button up top, we can just import important button button from that dot slash components slash button. 
+
+Okay. 
+
+Then all the way down here, now we can just say button type equals submit because we need to pass on that one prep and then text equals and we will pass in our. I lifted it. Now notice we are temporarily going to lose our button primary. That's a problem. So we're going to need to worry about that in a second, but so far we move over and refresh. Yep. It still works. 
+
+We can click the button and you'll see a button. You can see the class there and you can see the I lifted it. Then you can also see we have a weird text attribute here and that makes perfect sense because we added text as a prop so that's something we want to fix, but actually there's a bigger problem. Suppose I actually want to put a little icon on here. I found awesome icon. Well, to do that I would normally make like a span tag with class name equals f a dash something, you know. But this is weird because we're actually putting html inside of this strip and in fact it causes problems and it's just not good. What if instead we could remove this text attribute and treat this like a normal html element? What I mean is that that feels really good actually. That's totally possible and even more than totally possible. This is ideal because then don't even allows us to. We can put whatever stuff we want in the middle of this. Heck, we can even render some other future component inside of there and it would work just fine. Now to make this work inside of that, Jay. Yes. Here's the trick. Whenever you pass, whenever you pass something into a tag that's known as its children and you can access it automatically via props dot children, it's that simple. 
+
+Now, have you noticed this is happening is it's missing props. Validation. You can define it as props validation if you want, but children is something that's just naturally passed in, so I don't usually do it. In fact, let's get rid of the prop types for now. Alright, so we'll move over. Refresh and it looks good. In fact, I really wanted to do to test. This was actually. Yeah, let's add that span. I was talking about class name equals f a F, a dashed circle, f a dash plus dashed circle. Perfect. Got It. All right, so we're still missing the button primary class and this one's a little bit trickier because we can't just pass a in their class name attribute here because in button we are already specifying the class name, so no problem. We can use a little, just a little bit trickier. We use javascript here. I'll use the ticks and tax and we'll say btn and now will allow there to be a prop that class name passed in and that should take care of it. If you try this without passing anything and refresh, you're actually going to see a problem. You're gonna. See? Undefined. Which is which we never want. Even if we use the button and don't pass in that prop, we don't want it to be undefined. So we have two things here we could make first because we have this new class and I'm. I am going to do button that prop types. 
+
+Okay. 
+
+And sat class name as prop types that string. Now if I wanted to, I could make it required, but it doesn't really need to be required, so why make it required? But we also don't want that undefined to go there. So to fix that, I'm going to say button dot default props equals once that class name to an empty string. Now if we don't define it, move over and refresh. Yes, you got the class name there except it's empty except it's empty. Why is that? This is a bit tricky and in fact, if we go back to rep blog creator, let's actually add the class name here. We want Btn dash primary. If you move back and refresh now it gets just that class. Ah, so what happens here is instead of button class name is a prop. Well what happens is, because we have thought that that props, it actually reports the class name proper after this and whenever you have two attributes after each other and written Jsx, the second one replaces the first one. So we effectively want to remove the class name from the props and we could reorder these. But in general that's not the right order. You actually do want your props to normally override whatever as hard coated inside the component. So for the fixed with this is kind of cool up top, we're just going to use our normal destructuring, say const 
+
+const, curly braces and d, structure out our class name, so that takes care of our class name, but then to get all of the other prompts, we can say comma, dot, dot, dot, other props and replace that down here with other props so that gets out and the one that we named and then it gets out the rest of them. All right, so move over, refresh. And we've got it. It looks perfect. Uh, so I hope this little tiny class here gets you excited about the possibilities with react. Um, especially when you start adding nice behavior, you can really start seeing yourself building up really awesome tools, right guys, we are done with this. React to Oriel with everything you've learned. There's pretty much no front end. You can't go and build now and I want to hear about all the crazy things that you're building and react now. Yes, there is more that we can cover. We could talk about react router, which is really useful for single page apps. We could talk about redux and the flux pattern, which is a more complex but cleaner way to handle the state. It's also something that avoids the prompts passed on. Problem we're having currently were some components simply exists just to pass down to other components 
+
+and we can talk about things like higher order components or context or even suicide rendering. If you want to hear more about those topics or something else, let us know and we will cover them in a future detour.
