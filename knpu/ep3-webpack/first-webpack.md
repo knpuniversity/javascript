@@ -58,7 +58,7 @@ file - `web/build/rep_log.js` - a different filename to avoid confusion.
 Deep breath. Run webpack:
 
 ```terminal-silent
-./node_modules/.bin/webpack web/assets/RepLogApp.js web/build/rep_log.js
+./node_modules/.bin/webpack web/assets/js/RepLogApp.js web/build/rep_log.js
 ```
 
 Yes! No errors... and it looks like it did something. Check the `web/build` directory...
