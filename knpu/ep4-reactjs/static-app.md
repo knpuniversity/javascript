@@ -20,11 +20,15 @@ template: `_form.html.twig`. Open that: it's just a normal, boring HTML form.
 That's perfect! Copy *all* of it, close the file, go back into `RepLogApp` and,
 under the table, paste!
 
+[[[ code('194902c4f9') ]]]
+
 Except, scroll up a little bit, because we need to do some cleanup! The form doesn't
 need this class anymore: that was used by the old JavaScript. The same is true for
 the `data-url` element. And `noValidate` disables HTML5 validation. But, HTML5 validation
 is nice to have: it will enforce the `required` attribute on the fields. So, remove
 it.
+
+[[[ code('c5389b9797') ]]]
 
 Oh, but I want you to notice something! The attribute was `noValidate` with a capital
 "V"! In the original template, it was `novalidate` with a lowercase "v": that's how
@@ -58,6 +62,8 @@ everything renders "smashed" together.
 The fix is both simple... and ugly: use JavaScript to print an extra space. Do it
 in both places. Yep, weird, but honestly, I *rarely* need to do this: it's just not
 a problem you have very often.
+
+[[[ code('8ef9d48848') ]]]
 
 Try it again... yep! It looks *much* better! And we have our static app!
 
