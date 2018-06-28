@@ -15,7 +15,7 @@ index 595101ccc..627c75ee3 100644
 -    text: PropTypes.string.isRequired
 -};
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 6f9c2ac28..1e7ec2d9f 100644
+index a58d35cda..93437c561 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -86,7 +86,9 @@ export default class RepLogCreator extends Component {

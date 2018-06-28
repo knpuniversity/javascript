@@ -1,16 +1,3 @@
-diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index f07a334bc..21137a380 100644
---- a/assets/js/RepLog/RepLogApp.js
-+++ b/assets/js/RepLog/RepLogApp.js
-@@ -16,7 +16,7 @@ export default class RepLogApp extends Component {
-             isSavingNewRepLog: false,
-             successMessage: '',
-             newRepLogValidationErrorMessage: '',
--            itemOptions: this.props.itemOptions
-+            itemOptions: this.props.itemOptions,
-         };
-         this.clearSuccessMessageTimeout = 0;
- 
 diff --git a/assets/js/rep_log_react.js b/assets/js/rep_log_react.js
 index 1a65693b4..3ed1614c1 100644
 --- a/assets/js/rep_log_react.js

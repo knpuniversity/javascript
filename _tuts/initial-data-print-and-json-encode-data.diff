@@ -1,24 +1,20 @@
 diff --git a/src/Controller/LiftController.php b/src/Controller/LiftController.php
-index d0898c1c4..5c3cf7991 100644
+index ea33a442e..5c3cf7991 100644
 --- a/src/Controller/LiftController.php
 +++ b/src/Controller/LiftController.php
-@@ -21,19 +21,20 @@ class LiftController extends BaseController
-     {
+@@ -22,6 +22,7 @@ class LiftController extends BaseController
          $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
  
--        $repLogAppState = [
-+        $repLogAppProps = [
+         $repLogAppProps = [
 +            'withHeart' => true,
              'itemOptions' => [],
          ];
          foreach (RepLog::getThingsYouCanLiftChoices() as $label => $id) {
--            $repLogAppState['itemOptions'][] = [
-+            $repLogAppProps['itemOptions'][] = [
-                 'id' => $id,
+@@ -30,10 +31,10 @@ class LiftController extends BaseController
                  'text' => $translator->trans($label),
              ];
          }
--        dump($repLogAppState);die;
+-        dump($repLogAppProps);die;
  
          return $this->render('lift/index.html.twig', array(
              'leaderboard' => $this->getLeaders($replogRepo, $userRepo),

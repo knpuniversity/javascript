@@ -1701,8 +1701,18 @@
             "description": null
         },
         {
-            "id": "loading-cleartimeout",
-            "name": "Loading: clearTimeout",
+            "id": "loading-settimeout-hide-success",
+            "name": "Loading: setTimeout hide success",
+            "description": null
+        },
+        {
+            "id": "loading-cleartimeout-on-success",
+            "name": "Loading: clearTimeout on success",
+            "description": null
+        },
+        {
+            "id": "loading-fix-delete-json-error",
+            "name": "Loading: Fix delete JSON error",
             "description": null
         },
         {
@@ -1776,6 +1786,11 @@
             "description": null
         },
         {
+            "id": "initial-data-default-props",
+            "name": "Initial Data: default props",
+            "description": null
+        },
+        {
             "id": "initial-data-pass-in-initialstate",
             "name": "Initial Data: Pass in initialState",
             "description": null
@@ -1836,5 +1851,5 @@
             "description": null
         }
     ],
-    "sha": "14a292fc8ceb18260ba056789c1a6c864ca8fcd4"
+    "sha": "fdd274d5037f3720ec14b2fc437ee2581be2f3b3"
 }

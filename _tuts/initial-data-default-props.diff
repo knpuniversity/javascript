@@ -1,0 +1,13 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index fae48f6a4..e39c5c608 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -149,3 +149,7 @@ RepLogApp.propTypes = {
+     withHeart: PropTypes.bool,
+     itemOptions: PropTypes.array,
+ };
++
++RepLogApp.defaultProps = {
++    itemOptions: []
++};
+\ No newline at end of file

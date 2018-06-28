@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index ca273abbb..249f3d796 100644
+index 791b4c7d6..151172a65 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -14,7 +14,8 @@ export default class RepLogApp extends Component {
@@ -10,7 +10,7 @@ index ca273abbb..249f3d796 100644
 +            successMessage: '',
 +            newRepLogValidationErrorMessage: ''
          };
-         this.clearSuccessMessageTimeout = 0;
+         this.successMessageTimeoutHandle = 0;
  
 @@ -60,6 +61,7 @@ export default class RepLogApp extends Component {
                      return {
@@ -35,7 +35,7 @@ index ca273abbb..249f3d796 100644
              })
          ;
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index ee2e47ea5..b2e0748ee 100644
+index ee2e47ea5..3e89b247f 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -53,9 +53,15 @@ export default class RepLogCreator extends Component {
@@ -46,11 +46,11 @@ index ee2e47ea5..b2e0748ee 100644
  
          return (
              <form onSubmit={this.handleFormSubmit}>
-+                {validationErrorMessage ? (
++                {validationErrorMessage && (
 +                    <div className="alert alert-danger">
 +                        {validationErrorMessage}
 +                    </div>
-+                ) : null}
++                )}
                  <div className="form-group">
                      <label className="sr-only control-label required"
                             htmlFor="rep_log_item">
@@ -61,7 +61,7 @@ index ee2e47ea5..b2e0748ee 100644
 +    validationErrorMessage: PropTypes.string.isRequired,
  };
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index b7f04966e..14f6840a4 100644
+index 005b6bc18..44152cb90 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -27,7 +27,8 @@ export default function RepLogs(props) {
@@ -74,7 +74,7 @@ index b7f04966e..14f6840a4 100644
      } = props;
  
      let heart = '';
-@@ -87,6 +88,7 @@ export default function RepLogs(props) {
+@@ -86,6 +87,7 @@ export default function RepLogs(props) {
                  <div className="col-md-6">
                      <RepLogCreator
                          onAddRepLog={onAddRepLog}
@@ -82,7 +82,7 @@ index b7f04966e..14f6840a4 100644
                      />
                  </div>
              </div>
-@@ -105,5 +107,6 @@ RepLogs.propTypes = {
+@@ -104,5 +106,6 @@ RepLogs.propTypes = {
      onDeleteRepLog: PropTypes.func.isRequired,
      isLoaded: PropTypes.bool.isRequired,
      isSavingNewRepLog: PropTypes.bool.isRequired,

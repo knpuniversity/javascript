@@ -1,5 +1,5 @@
 diff --git a/src/Controller/LiftController.php b/src/Controller/LiftController.php
-index b49e991f5..d0898c1c4 100644
+index b49e991f5..ea33a442e 100644
 --- a/src/Controller/LiftController.php
 +++ b/src/Controller/LiftController.php
 @@ -10,17 +10,27 @@ use App\Repository\UserRepository;
@@ -19,16 +19,16 @@ index b49e991f5..d0898c1c4 100644
          $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
  
 -        dump(RepLog::getThingsYouCanLiftChoices());die;
-+        $repLogAppState = [
++        $repLogAppProps = [
 +            'itemOptions' => [],
 +        ];
 +        foreach (RepLog::getThingsYouCanLiftChoices() as $label => $id) {
-+            $repLogAppState['itemOptions'][] = [
++            $repLogAppProps['itemOptions'][] = [
 +                'id' => $id,
 +                'text' => $translator->trans($label),
 +            ];
 +        }
-+        dump($repLogAppState);die;
++        dump($repLogAppProps);die;
  
          return $this->render('lift/index.html.twig', array(
              'leaderboard' => $this->getLeaders($replogRepo, $userRepo),

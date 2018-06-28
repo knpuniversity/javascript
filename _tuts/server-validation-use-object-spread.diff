@@ -1,5 +1,19 @@
+diff --git a/.eslintrc.js b/.eslintrc.js
+index 0e1bad13b..e7518b42d 100644
+--- a/.eslintrc.js
++++ b/.eslintrc.js
+@@ -4,7 +4,8 @@ module.exports = {
+         ecmaVersion: 6,
+         sourceType: 'module',
+         ecmaFeatures: {
+-            jsx: true
++            jsx: true,
++            experimentalObjectRestSpread: true
+         }
+     },
+     env: {
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 513614c6f..0ae768e30 100644
+index 7bec0becf..ebc22a35a 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -61,10 +61,11 @@ export default class RepLogApp extends Component {

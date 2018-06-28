@@ -20,7 +20,7 @@ index 000000000..595101ccc
 +    text: PropTypes.string.isRequired
 +};
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index fd7cd2710..6f9c2ac28 100644
+index 7d0bc0e04..a58d35cda 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -1,5 +1,6 @@

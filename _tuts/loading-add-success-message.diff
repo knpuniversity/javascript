@@ -23,7 +23,7 @@ index 50ca7e437..4c6029adb 100644
                  })
              })
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 66d55d1c4..b7f04966e 100644
+index 66d55d1c4..005b6bc18 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -26,7 +26,8 @@ export default function RepLogs(props) {
@@ -36,30 +36,22 @@ index 66d55d1c4..b7f04966e 100644
      } = props;
  
      let heart = '';
-@@ -34,6 +35,11 @@ export default function RepLogs(props) {
-         heart = <span>{'❤️'.repeat(numberOfHearts)}</span>;
-     }
- 
-+    let successMessageElement = '';
-+    if (successMessage) {
-+        successMessageElement = <div className="alert alert-success text-center">{successMessage}</div>
-+    }
-+
-     return (
-         <div className="col-md-7">
-             <h2>Lift Stuff! {heart}</h2>
-@@ -46,6 +52,10 @@ export default function RepLogs(props) {
+@@ -46,6 +47,14 @@ export default function RepLogs(props) {
                  }}
              />
  
 +            <hr/>
 +
-+            {successMessageElement}
++            {successMessage && (
++                <div className="alert alert-success text-center">
++                    {successMessage}
++                </div>
++            )}
 +
              <table className="table table-striped">
                  <thead>
                  <tr>
-@@ -95,4 +105,5 @@ RepLogs.propTypes = {
+@@ -95,4 +104,5 @@ RepLogs.propTypes = {
      onDeleteRepLog: PropTypes.func.isRequired,
      isLoaded: PropTypes.bool.isRequired,
      isSavingNewRepLog: PropTypes.bool.isRequired,

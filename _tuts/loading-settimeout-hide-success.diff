@@ -1,0 +1,36 @@
+diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
+index 4c6029adb..179967971 100644
+--- a/assets/js/RepLog/RepLogApp.js
++++ b/assets/js/RepLog/RepLogApp.js
+@@ -55,9 +55,10 @@ export default class RepLogApp extends Component {
+                     return {
+                         repLogs: newRepLogs,
+                         isSavingNewRepLog: false,
+-                        successMessage: 'Rep Log Saved!'
+                     };
+-                })
++                });
++
++                this.setSuccessMessage('Rep Log Saved!');
+             })
+         ;
+     }
+@@ -80,6 +81,18 @@ export default class RepLogApp extends Component {
+         });
+     }
+ 
++    setSuccessMessage(message) {
++        this.setState({
++            successMessage: message
++        });
++
++        setTimeout(() => {
++            this.setState({
++                successMessage: ''
++            });
++        }, 3000)
++    }
++
+     render() {
+         return (
+             <RepLogs

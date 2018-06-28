@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 1e0056a55..0b8d5dc6b 100644
+index b097ee341..f87aa8874 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -15,7 +15,14 @@ export default class RepLogApp extends Component {
@@ -16,10 +16,10 @@ index 1e0056a55..0b8d5dc6b 100644
 +                {id: 'invalid_item', text: 'Dark Matter'}
 +            ]
          };
-         this.clearSuccessMessageTimeout = 0;
+         this.successMessageTimeoutHandle = 0;
  
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index b2e0748ee..fd7cd2710 100644
+index 3e89b247f..7d0bc0e04 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -12,14 +12,6 @@ export default class RepLogCreator extends Component {
@@ -62,7 +62,7 @@ index b2e0748ee..fd7cd2710 100644
 +    itemOptions: PropTypes.array.isRequired
  };
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 14f6840a4..50cad561d 100644
+index 44152cb90..f565a0847 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -28,7 +28,8 @@ export default function RepLogs(props) {
@@ -75,7 +75,7 @@ index 14f6840a4..50cad561d 100644
      } = props;
  
      let heart = '';
-@@ -89,6 +90,7 @@ export default function RepLogs(props) {
+@@ -88,6 +89,7 @@ export default function RepLogs(props) {
                      <RepLogCreator
                          onAddRepLog={onAddRepLog}
                          validationErrorMessage={newRepLogValidationErrorMessage}
@@ -83,7 +83,7 @@ index 14f6840a4..50cad561d 100644
                      />
                  </div>
              </div>
-@@ -109,4 +111,5 @@ RepLogs.propTypes = {
+@@ -108,4 +110,5 @@ RepLogs.propTypes = {
      isSavingNewRepLog: PropTypes.bool.isRequired,
      successMessage: PropTypes.string.isRequired,
      newRepLogValidationErrorMessage: PropTypes.string.isRequired,

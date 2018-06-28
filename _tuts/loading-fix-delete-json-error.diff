@@ -1,0 +1,15 @@
+diff --git a/assets/js/api/rep_log_api.js b/assets/js/api/rep_log_api.js
+index 43728282b..b92e8e3c5 100644
+--- a/assets/js/api/rep_log_api.js
++++ b/assets/js/api/rep_log_api.js
+@@ -3,7 +3,9 @@ function fetchJson(url, options) {
+         credentials: 'same-origin',
+     }, options))
+         .then(response => {
+-            return response.json();
++            // decode JSON, but avoid problems with empty responses
++            return response.text()
++                .then(text => text ? JSON.parse(text) : '')
+         });
+ }
+ 

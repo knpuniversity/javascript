@@ -1,12 +1,12 @@
 diff --git a/assets/js/Components/Button.js b/assets/js/Components/Button.js
-index 36db00382..433dfd920 100644
+index 36db00382..9fe8f8150 100644
 --- a/assets/js/Components/Button.js
 +++ b/assets/js/Components/Button.js
 @@ -2,10 +2,12 @@ import React from 'react';
  import PropTypes from 'prop-types';
  
  export default function Button(props) {
-+    const { className, otherProps } = props;
++    const { className, ...otherProps } = props;
 +
      return (
          <button

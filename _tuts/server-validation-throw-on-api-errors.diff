@@ -11,21 +11,23 @@ index 06d44bce5..ee2e47ea5 100644
  
          this.handleFormSubmit = this.handleFormSubmit.bind(this);
 diff --git a/assets/js/api/rep_log_api.js b/assets/js/api/rep_log_api.js
-index 43728282b..9789046f7 100644
+index b92e8e3c5..3aa8e0005 100644
 --- a/assets/js/api/rep_log_api.js
 +++ b/assets/js/api/rep_log_api.js
-@@ -2,11 +2,23 @@ function fetchJson(url, options) {
+@@ -2,6 +2,7 @@ function fetchJson(url, options) {
      return fetch(url, Object.assign({
          credentials: 'same-origin',
      }, options))
 +        .then(checkStatus)
          .then(response => {
-             return response.json();
+             // decode JSON, but avoid problems with empty responses
+             return response.text()
+@@ -9,6 +10,17 @@ function fetchJson(url, options) {
          });
  }
  
 +function checkStatus(response) {
-+    if (response.status >= 200 && response.status < 300) {
++    if (response.status >= 200 && response.status < 400) {
 +        return response;
 +    }
 +
