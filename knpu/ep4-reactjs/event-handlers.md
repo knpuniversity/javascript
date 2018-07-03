@@ -11,6 +11,8 @@ simple! To add a click handler to this `tr` add... `onClick` and pass this a
 function. I'll use an arrow function and, for now, just
 `console.log('OMG - an onClick!')`.
 
+[[[ code('37834378ec') ]]]
+
 Move over, refresh, click, and... find the terminal. Boom!
 
 ## Updating with this.setState()
@@ -21,6 +23,8 @@ would re-render and take care of the rest! Easy! Inside the arrow function, upda
 the state with `this.setState()`. Pass this an object with the state key or keys
 that you want to change. For us, `highlightedRowId` set to the id of *this* rep
 log: `repLog.id`.
+
+[[[ code('4e2e6cce65') ]]]
 
 Coolio! But, an important note! In the constructor, we initialized the state by
 setting the `this.state` property directly. This is the *only* place, *ever*,
@@ -45,6 +49,8 @@ native DOM "event" object. React passes you what's called a "SyntheticEvent": an
 event object that wraps the normal event, has all the same methods and properties,
 but adds a few things to make life easier.
 
+[[[ code('df5cea1c47') ]]]
+
 ## Moving the Handler to the Class
 
 Putting all this logic inline is fine... but it can become hard to read. So, instead,
@@ -56,7 +62,11 @@ Next, steal the state-setting code and paste it here, but with `highlightedRowId
 set to `repLogId`. And... we should probably close the method so Webpack isn't
 so mad at me!
 
+[[[ code('ea02583b86') ]]]
+
 Below, call it: `this.handleRowClick()` with `repLog.id` and `event`.
+
+[[[ code('5ed004f2b7') ]]]
 
 I like it! Let's make sure we didn't bork our cool app: back to the browser! Refresh!
 Yea! It *still* works! 

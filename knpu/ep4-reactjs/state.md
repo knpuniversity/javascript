@@ -50,11 +50,15 @@ To set the initial `state`, just set the property directly: `this.state` equals
 an object, with, how about, a `highlightedRowId` key set to null. Nothing will
 be highlighted at first.
 
+[[[ code('18df3e7c2e') ]]]
+
 ## Using State in render()
 
 Cool! Down in render, we can use this data *just* like we do with props. But, let's
 use object destructuring to get this value as a variable:
 `const { highlightedRowId } = this.state`.
+
+[[[ code('68cf13bcb8') ]]]
 
 This is another common React pattern. Instead of referring to
 `this.state.highlightedRowId` down below, we use destructuring so that we can
@@ -64,6 +68,8 @@ I'll break the `tr` onto multiple lines. *If* this row should be highlighted,
 we'll give it a special class: add `className={}` and use the ternary syntax:
 if `highlightedRowId === ` *this* repLog's id, then add an `info` class. Otherwise,
 print no class. This `info` class already exists in the CSS of our app.
+
+[[[ code('0e2e8be232') ]]]
 
 Cool! If we try it now, we, of course, don't expect anything to be highlighted:
 we initialized the state to `null`. And, yep! It works... probably: none of the
@@ -119,6 +125,8 @@ tools. Nope, we want to update the state when the user clicks a row.
 Before we do that, there is *one* small housekeeping item. In addition to
 destructuring state, I like to do the same with props. Add
 `const { withHeart } = this.props`. Then below, use if `withHeart`.
+
+[[[ code('62a2cde61d') ]]]
 
 It's a small detail, but it's nice to setup *all* the variables right on top.
 

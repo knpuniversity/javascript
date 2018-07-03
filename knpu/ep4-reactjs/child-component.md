@@ -23,6 +23,8 @@ Inside, every React component begins the same way: import `React` and `{ Compone
 from `react`. Then, `export default class RepLogList extends Component`. Add
 the *one* required method: `render()`.
 
+[[[ code('b6c1385edd') ]]]
+
 So... hmm...  I basically want to move my rep log rows into that component. We
 could move the whole table, or just the inside - don't over-think it. Let's copy
 all of the `tbody`. Then, return, add parenthesis so we can use multiple lines
@@ -32,11 +34,15 @@ Cool! Of course, we're missing the `repLogs` variable! Right now, because that's
 still hardcoded, let's just move that variable over into the `render()` method
 of the new component.
 
+[[[ code('57285e7743') ]]]
+
 But, we *do* still have one problem: `highlightedRowId`. Um, ignore that for a
 minute. Back in `RepLogApp`, delete the `tbody`. At the top, this is cool:
 `import RepLogList from './RepLogList'`. And because `RepLogList` is a component,
 we can render it just like we did with `RepLogApp`: go into the middle of the
 markup and add `<RepLogList />`.
+
+[[[ code('695e04e481') ]]]
 
 ## Leaving State at the Top Level (for now)
 
@@ -71,10 +77,14 @@ a component: *props*. We have the `highlightedRowId` variable that's coming from
 state. Scroll down to `RepLogList` and add a new prop: `highlightedRowId={}` and
 pass that variable. 
 
+[[[ code('4312958363') ]]]
+
 And *now* we can go back into `RepLogList` and use this in `render()`! At the top,
 let's continue to destructure our props & state:
 `const { highlightedRowId } = this.props`. And, just like earlier, *ignore* this
 error about props validation: we'll talk about that soon.
+
+[[[ code('0a3f9b740b') ]]]
 
 Ok... we're done! Move back to your browser and, refresh! It works! And if you check
 out the React dev tools, you can still see `RepLogApp` on top... but down here,
@@ -101,7 +111,7 @@ the props of `RepLogList` and *that* causes it to *also* re-render. Which, is
 But, earlier, I told you that props are immutable: that props can never be changed.
 That's true, but it's maybe not the best way to explain it. In `RepLogApp`, when
 the `highlightedRowId` state changes, we *will* pass a *new* value to `RepLogList`
-for the `highlightedRowId` prop. But, here's the important part: once `RepLostList`
+for the `highlightedRowId` prop. But, here's the important part: once `RepLogList`
 receives that prop, it never changes it. You will *never* change something on
 `this.props`.
 
