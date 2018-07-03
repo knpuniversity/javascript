@@ -1,21 +1,116 @@
-# Immutable State
+# Immutability / Don't Mutate my State!
 
-Coming soon...
+Ok... so.... there's this annoying... but super important rule in React that
+we're *totally* violating. The rule is: the *only* time you're allowed to set
+or change the state property directly is when you're initializing it in the
+`constructor`. *Everywhere* else, you *must* call `setState()` instead of changing
+it directly.
 
-There's this annoying but super important rule and react that we're actually violating right now. The rule is that the only time that you're allowed to set the state property directly is when you're initializing it and the constructor. Once you do that, you always have to call set state. Another way to say this is that these state property should never be changed other than set state. It should never be mutated and that's the part that we're violating right now. It was really subtle, but when we grabbed the rep logs off of the state and called rep logs, that push that actually mutated the state, the state changed even before we call this dot set state. Now, is that really a problem? Basically? Yes. This is something you want to avoid. There's two reasons that's a problem. Both are kind of subtle. First set state is technically a synchronous and when I mean is a really complex app. You could have multiple things calling set state at almost the same time. What react does it actually runs them one after another, so if we call set states here, it might not actually update the state until a few milliseconds later. If two things. This makes it possible for 
+Here's another way to say it: `this.state` should be *immutable*. And *that* is
+the part we're violating. It was really subtle! First, unlike PHP, in JavaScript
+arrays are *objects*. And so, like all objects, if you modify `repLogs`, that also
+modifies `this.state.repLogs` because... they're the same object!
 
-something to actually override our rep log state so that we ended up setting it to a different value. Poorly explained. Also mutated in the state is going to prevent you from making certain performance optimizations later. The point is we need to not update state and a lot of times it's really simple when you have simple scalar values like highlighted row id. It's simple when you have objects or a raise, which are of course objects. It's a bit more complex. So we just need a couple of strategies on how to mutate states how to update the state without mutating it. So for a raise, here's a great way of doing it. Instead of getting the reading the state for various, simply going to say constant new rep logs equals create a brand new array and new use.dot dot. This dot state dot rep logs to read out all of the existing rep logs and then add the new rep that gives us a new array object and we can set the new array object on the states and we have not mutated it. It's that easy. 
+And that's *exactly* what we did when we called `repLogs.push`: this changed, or
+*mutated*, the `repLogs` key on `this.state`! Yep! We *changed* the state before
+calling `this.setState()`.
 
-So this totally. This totally fixes our problem. Now while we're here, I need to add one other small complication. Whenever most of the time when you set state, you're just setting state to a new value, but sometimes when you set state be new state depends on the existing state and that's actually our situation here. Our new states depends on whatever rep logs are in the existing state. Whenever you're new state, depends on some old state you should probably. It's probably will be okay if you skip this, but you should actually use set state as a callback. Check this out so you can say this, that set state and instead of passing of the state, you pass it a callback where they previous state arguments. Inside here, you actually create the new state, so we'll say constantly rep logs equals dot that that previous state, and then here you actually return the new state that you want. So we'll say return 
+## Do I *really* need to Avoid Mutating State?
 
-an object with rep log set to new rep logs. This is subtle and maybe not that important, but again, because set state is asynchronous, it's possible this is the safest way to set it because whenever your estate is finally actually set, it will call your callback and pass the exact current state yet at that time. So those are the two rules. Avoid mutating state and if you depend on previous state, make sure you use a call back. Now while we're here, I want to clean do a couple of quick cleanup things that are unrelated. The first thing is our callback is called handle a new items submit, but we did, but as we've talked about, rep log APP has no idea that there is a form being used to create new rep logs and it doesn't care. So I actually want to rename this bumps, do handle ad rep log, because rep log app is really our logical container. Whenever somebody, whenever anything in the system adds new rep log, this is the call back that should be called. So because of that we need to update our bind up here. 
+Now, is that *really* a problem? I mean, everything seems to work. Basically...
+yes, but, honestly, it's subtle. There are two problems with mutating the state.
+First, `setState()` is actually asynchronous: meaning, React doesn't handle your
+state change immediately. For example, if two parts of your code called `setState()`
+at almost the same moment, React would process the first state change, re-render
+React, and *then* process the second state change. Because of this, if you mutate
+the state accidentally, it's possible that it will get overwritten in a way you
+didn't expect. It's unlikely, but we're trying to avoid a WTF moment.
 
-Whoops. 
+The second reason is that if you mutate your state, it may prevent you from making
+some performance optimizations in the future.
 
-And then download. We passed the property and we'll also pass it there, but I'm also going to rename the property for clarity to on ad rep log links of that, there's a number of small changes we need to make. Need to update the prop type in rep logs and then up in the restructuring you can see it highlighting because that prop doesn't exist anymore. We'll use on add new rep log and then down on our forum we will do the same thing. Will pass that new thing that new on Ad Rep log and also name the property is the same there. And repeat this process in Rep la Creator renamed the prop 
+Honestly, when you're learning React, the reasons for "why" you shouldn't mutate
+your state are hard to understand. The point is: you should *avoid* it, and we'll
+learn how. Well, if you're updating a scalar value like `highlightedRowId`, it's
+simple! But when your state is an object or an array, which, *is* an object, it's
+harder.
 
-these structured the new prop and then use the new function name. It's more clear what we're doing everywhere. Also in rep logs, you'll notice that our destructuring is getting really long when that happens, just for your own sanity. It is okay, and I like to move all of my props onto their own line. That's gonna. Help us out going forward. Finally, last little cleanup thing in rep log creator. All of our options down right here are hard coded right now and that's not necessarily a problem, but eventually we're actually going to load these options from the server because the server is actually aware of what all the valid options are. So just for now, I'm actually going to. 
+If you need to "add" to an array without, updating it, here's how:
+`const newRepLogs = `, create a *new* array, use `...this.state.repLogs` to put the
+existing repLogs into it and then, add `newRep`. Yep, this is a *new* array: we did
+*not* change state. This solves our problem.
 
-So we're going to make these values a little bit more dynamic right now just to help plan for the future. This is more of a housekeeping work than anything else up in the constructor. I'm going to create a new property called the item options set to a data structure. With those four options. Notice I'm not making this prompts and I'm not making this state because this stuff doesn't need to change yet. The server is not supplying this information yet. We're just taking advantage of our nice class structure here. To be able to put the item options on top, now down below and remove those four item options and replace it with one of our fancy map structures. So say this dot item options that map bowel received an item arguments. Then here we're going to return option with value equals option dot ID. We're also gonna need a key on here since this is an array, will also use option that id and then inside the text we'll use option that text and then we will close the option. Perfect. Alright, so let's try all of us move over. I'll give us a fresh refresh. Everything still looks good. The options are still there 
+## Using the setState() Callback
 
-and the form freaks out. And whoa, when I submit all my existing state disappears. So we messed something up. Let's go back and look at rep log APP. This is going to be in how we handle our state. Of course not previous state. The previous state dot rep logs my bad. Alright, let's try that one more time over. Refresh. Let's fill out things and we got it.
+Except... there is *one* other tiny, annoying rule. Most of the time, when you
+set state, you set it to some new, specific value. But, if the *new* state *depends*
+on the old state - like our new `repLogs` depends on the current `repLogs` -
+then you need to use `setState()` as a callback.
+
+Check it out: call `this.setState()`, but instead of passing data, pass a callback
+with a `prevState` argument. Inside, create the array:
+`const newRepLogs = [...prevState.repLogs, newRep]`, and *return* the new state:
+`repLogs` set to `newRepLogs`.
+
+Why the heck are we doing this? Remember how I said that `setState()` is asynchronous?
+Because of that, if you call `setState()` now, React may not *use* that state
+until a few milliseconds later. And, if something *else* added a new repLog between
+now and then... well... with our previous code, our new state would override and
+*remove* that new repLog!
+
+I know, I know! Oof, again, it's subtle and probably won't bite you, and you'll
+probably see people skip this. To keep it simple, just remember the rule: *if* setting
+new state involves you *using* data on `this.state`, pass a callback instead. Then,
+you'll *know* you're safe.
+
+## Smarter Method & Prop Names
+
+While we're here, something is bothering me. Our callback method is named
+`handleNewItemSubmit()`. But... we purposely designed `RepLogApp` so that it
+doesn't know or care that a form is being used to create rep logs. So let's
+rename this method: `handleAddRepLog()`.
+
+Yea. Make sure to also update the `bind()` call in the constructor. Below, when
+we pass the prop - update it here too. But... I think we should also rename the
+prop: `onAddRepLog()`.
+
+And, if we change that, we need to update a few other spots: in `RepLogs`, change
+the `propType`. And, up where we destructure, PhpStorm is highlighting that this
+prop doesn't exist anymore. Cool! Change it to `onAddRepLog`, scroll down, and
+make the same change `onAddRepLog={onAddRepLog}`.
+
+Repeat this process in `RepLogCreator`: rename the `propType`, update the variable name,
+and use the new function.
+
+Oh, also, in `RepLogs`, the destructuring line is getting *crazy* long. To keep
+me sane, let's move each variable onto its own line.
+
+## Moving the "itemOptions" onto a Property
+
+Finally, we need to make one other small change. In `RepLogCreator`, all of our
+options are hardcoded. And, that's not necessarily a problem: we'll talk later
+about whether or not we should load these dynamically from the server.
+
+But, to help show off some features we're about to work on, we need make these a
+*little* bit more systematic. In the `constructor`, create a new property: `this.itemOptions`
+set to a data structure that represents the 4 items.
+
+Notice, I'm not making this props or state: we don't need these options to actually
+*change*. Nope, we're just taking advantage of the fact that we have a class, so,
+if we want to, we can store some data on it.
+
+Back in `render()`, delete the 4 options and replace it with one of our fancy `map`
+structures: `this.itemOptions.map()` with an `item` argument. In the function,
+return an `<option>` element with `id={option.id}`, `key={option.id}` - we need
+that for any array of elements - and, for the text, use `{option.text}`. 
+
+Nice! Let's make sure it works - refresh! It works and... yea - the options are
+still there.
+
+When we submit... woh! All our state disappears! This smells like a Ryan bug,
+and it will be *something* wrong with how we're setting the state. Ah, yep! This
+should be `prevState.repLogs`.
+
+Ok, try it again. Refresh, fill out the form and... we're good! 
+
+Let's talk about some validation!

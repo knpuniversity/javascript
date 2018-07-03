@@ -1,31 +1,94 @@
-# Delete Api
+# Hitting the DELETE Endpoint
 
-Coming soon...
+We did *all* the hard work in the beginning: setting up our components and passing
+around state & callbacks. So now that it's time to hook up our React app to an
+API, well, life is fun!
 
-Now he's actually get kind of fun. We did all the hard work in the beginning of getting all of our components set up, getting all of our state passing. By the time we hook up our API, it's pretty simple and pretty fun. So check this out. I want to hook next. I'm going to hook up the delete button so you can actually start bleeding rep logs inside of our rep log controller. You can see we already have an end point for that. Delete rep log action it slash rep slash the ID. We Allow Symphony to query for the rep log object and then we remove it and delete it. And in this case we decided to return an empty response, but it doesn't really matter. So if we want to make a call to a new API endpoint, where are you going to go back into our rep log API and created a second function, export function, delete rep log, and of course we'll need some of the passes, the idea that we want to delete and then I'm going to cheat and copy the beginning of the other ones. So what we're going to fetch from, but instead of slash reps, I'm actually gonna use the ticks here so we can say it slashed or wraps slash daughter. Send over Menzies Id. Now 
+Let's hook up the delete link to our API next. On `RepLogController`, we already
+have an endpoint for this: a DELETE method to `/reps/{id}`.
 
-notice this might seem strange to you. I'm so far. I'm hard coding the urls slash reps and I'm doing slash rep slash id in symphony, whenever we generate a url to something we always use, we never hard for the you were out. We always generate the url based on the route. 
+Symfony queries for the `RepLog` entity object and we delete it. Oh, and then we
+return an *empty* Response. 
 
-When you're working with react and your or your front end in general, it's up to you. You have two options. Either a, you can hard code your were like I am, or b, you can generate them dynamically from the server. Somehow you can do that with fsgs routing bundle, which I quite like, um, or you can do something else where you passed the, you were ells as data into your react components. And we'll actually look at that a bit later. We're going to show how we can, uh, pass some data into our react components. But honestly, hard to go to the urls is not, it's not. It's actually, in my opinion, it's fine. Your Api and your javascript art partners, which means if you change your Api, need to realize that, that you might need to change your javascript to up to reflect that. So there's a contract between them. So as long as you're aware of that contract that they work together, then you'll know that if you change the url, you need to go into your javascript and change it. And as long as you keep your you where else all your Ajax calls organized into one spot, it's no big deal. 
+In JavaScript, find `rep_log_api.js`: *this* is our home for *all* API requests
+related to rep logs. Create a second function: `export function deleteRepLog()`
+with an `id` argument. Let's cheat and copy the code from `getRepLogs()`. But,
+for the URL, use ticks and say `/reps/${id}`.
 
-Anyways. The other thing we needed to do with this is we need to send a delete request instead of a get request. So to do that, there's another option to call method delete, 
+## Hardcoding URLs?
 
-and that's it. 
+If you're a hardcore Symfony users... this might look strange: we're *hardcoding*
+our URLs! In Symfony, we *never* do this. Instead, we always *generate* a URL
+by using it's route - like with the `path()` function in Twig.
 
-So over and rep log APP. Let's look at our sub here. Whenever something is deleted, we have a handle delete rep log, which takes care of removing that from our state. Now we also need to call our API end point. So first let's go to the top of our components. And we're not going to import get rep logs and also delete rep log and back down in our handle, delete. We'll just say delete rep log ID. And that's it. Let's try this real quick and move over. Make sure the page is fully refreshed 
+When you're working in React - or inside JavaScript of any code - you have two
+options when it comes to URLs. Either, (A) hardcode the URLs like I'm doing or
+(B) somehow generate them dynamically. To generate them, you could use
+FOSJsRoutingBundle, which is a great option, or set them to a JavaScript variable
+in Twig and pass them as props. You'll learn how to pass data from Twig to JavaScript
+later.
 
-and 
+But honestly, hardcoding URLs in JavaScript is fine. Your API and your JavaScript
+are partners: they work together. That means, if you change something in your API,
+like a URL - or even a field name - you need to realize that something will probably
+*also* need to change in JavaScript. As long as you keep this in mind, it's no
+big deal. It's even *less* of a big deal because we're organizing all of our
+API calls into one spot.
 
-deletes. Yes, you can actually see down here fetched, finished loading, delete. That actually looks like it worked. And notice another thing I want to show you is that when you're fetch calls are successful in your network tools. They are located under x hr, so you can see here the type is fetch anything considered elite requests and our get request earlier. So then normally under Xhr, but if something goes wrong they might be under other. Now we have just three and when we refresh, yes, we still have just those three. Now, one thing I want to mention is that we're making the Ajax call here and then we're immediately updating the state. So the state is actually updating before the Ajax call finishes and it's possible that the Ajax call could fail. This is called, 
+## Calling the Endpoint
 
-I can't remember the term 
+Anyways, the *other* change is that we need to make a `DELETE` request. Do that
+with another option: `method: 'DELETE'`.
 
-optimistic Ui updating where you actually update the state of your Ui before the servers updated and actually there's nothing wrong with it. It's a great way to do things, but in a second we're going to talk about. We're gonna. Talk a little bit more about this because what you might want to do depending on your situation is not actually update your state until the rep log is deleted and I'll show you how to do that, but it's going to involve adding another. I'll show you how to do that, but first in rep log API, that Js, we've started to have a problem which is that we're starting to repeat ourselves, knows we have the credentials, same origin in two different locations. That doesn't seem like a big deal, but if we were, for example, always we had an api token and we always needed to pass an api token as a header on every single API request. This would start to become a problem. So I want to create a new function, central function 
+Alright! Now, back to `RepLogApp` to put this in action! When a rep log is deleted,
+`handleDeleteRepLog` is called, which removes it from state. Now we also need to
+call our API endpoint. Head to the top and *also* import `deleteRepLog`. Down
+below, say `deleteRepLog(id)`.
 
-that 
+That, is, nice! Try it: move over, refresh and... click delete! Check it out!
 
-I always go through so that it can add this credentials flag or my api token, whatever I need for authentication. So the top of his class credit and normal function call Jason and this will take the two things that fetch needs, which is the you were out, and whatever options we need to pass to fetch like credentials or the method. Instead of here, we're going to say return fetch, fetch the url, and then for the uh, options use object that assign passed this in a way with credentials set the same origin. 
+> Fetch loading finished: DELETE /reps/27
 
-And then 
+I think it worked! Because this "fetch" call was *successful*, you can find it
+under the XHR filter. To make sure it *really* deleted: refresh. Yep! Just these
+*3* rep logs remain.
 
-comma options. So object that assign is basically the array merge of Java script. So we're gonna take whatever options we pass in, we're going to merge it by adding that credentials key and those will become our final options. Then since we're always getting back, Jason, let's say that then, and we can do our jason personally right here. So this is going to return to get a response. And here we'll say return response dot Jason. So just like that, we now have a nice utility function that will set the whatever our credentials are for us and also decaux the response. So down here this gets much easier. We're going to say return fetch and Jason Slash reps and then we still want to add a dot ben on here because we want to make sure we get just the items key off. So we'll say that Ben and what does it bring up that argument from earlier. So I'll make this and then when it finishes return a promise that has just the items on it. So that's the exact same thing that we had before. Then down here we'll do the same thing. Fetch Jason, pass it that same url, but now we only need to pass the method because the credentials will be set automatically for us. So let's flip over, refresh the page at least make sure that it loads and it does. Awesome.
+## Optimistic UI Updating
+
+I want to point something out: notice that we *start* the AJAX request, but then
+*immediately* update the state... even before it finishes. This is called an
+"optimistic UI update": it's where you update your state & UI *before* your server
+*actually* saves or deletes the data.
+
+I think this is great, but in some situations, you might want to *wait* to update
+the state, until the AJAX call finishes. For example, if the AJAX call might fail
+due to some failed validation. We'll talk more about this later.
+
+## Centralizing the fetch Call()
+
+But first, it's time to centralize some logic! In `rep_log_api.js`, we're starting
+to repeat ourselves! We now have `credentials: 'same-origin'` in two places. That
+may not *seem* like a big deal. But, if you were sending an API token and *always*
+needed to set a header, centralizing this code would be super important.
+
+Let's create a new utility function that *everything* else will use. At the top
+of this file, create a normal function called `fetchJson()` with the two arguments
+fetch needs: the URL and options. Inside, return `fetch()`, the URL, and, for the
+options, use `Object.assign()` passing it an object with `credentials` set to
+`same-origin`, comma, `options`.
+
+`Object.assign()` is JavaScript's equivalent of `array_merge()` when dealing with
+objects: it takes any options *we* might pass in and merges them onto this object.
+So, `credentials` will always be in the final options.
+
+Then, because every endpoint will return JSON, we can `.then()` to transform the
+Promise data from the `response` object into JSON.
+
+And just like that, we have a nice utility function that will set our credentials
+*and* JSON-decode the response. In `getRepLogs()`, now we can say return
+`fetchJson('/reps)`. To *only* return the `items` key, add `.then(data => data.items)`.
+This function now returns the same thing as before.
+
+For `deleteRepLog()`, use `fetchJson()` and then remove the `credentials` key.
+
+Ok, try it out! When we refresh... yep! Everything works fine.

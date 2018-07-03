@@ -1,37 +1,98 @@
-# Fetch
+# API Setup & AJAX with fetch()
 
-Coming soon...
+Ok people: it's time to make our React app *legit*, by loading and saving data
+to the server via AJAX. Our Symfony app already has a functional set of API endpoints
+to load, delete and save rep logs. We're not going to spend a lot of time talking
+about the API side of things: we'll save that for a future tutorial. That's when
+we'll also talk about other great tools - like ApiPlatform - that you *won't* see
+used here.
 
-Now that our APP is getting pretty functional, it's finally time to talk about actually making Ajax calls and talking to our API and actually our Sylvia already has an api for rep blocks and we're not going to spend a lot of time talking about the Api side of things and this tutorial. I'll save that for future tutorial, but I want to take you through at least the basics. So if you look in source control, our rep log controller, we have API endpoints that for returning all of the wreck longs for a user, a single rep log, deleting a rep log, adding a new rep log, and so on. So you can see this if you go back to your browser and go to slash reps. boom. There you see our nice setup. So I'm going to show you just a little bit of how this works. 
+Anyways, I want to at least take you through the basics of my simple, but very
+functional, setup.
 
-In this method, we actually call a method that lives in the base controller, so I'll hold command or control and click into that. And you can see this goes over to base controller with find all user rep log models. So the really important thing to understand about this setup is that I have two classes, I have my rep log entity which stores all the underlying information in the database, and then I actually have in my api directory another class called Rep log Api model, and this is actually the class that we use directly for the API. You can recognize that it has the same fields that you see over here in our final Api. So in the find all users rep log models, 
+## The API Setup
 
-we basically query for all the rep log entity objects. Then I loop over each one and convert that into a rep log API model with another method that lives right above this. And this is super boring. There's nothing fancy about this code at all. It simply takes the rep log entity object and piece by piece converts this into the Rep log API model. The nice thing about this is it makes it very easy to make your api look exactly how you want. There's no magic. You can put whatever data you want on your underlying rep log API model. And finally, so back in get rep logs action when we call this method, this returns an array of rep log, Api model objects, and then we pass this to create api response that also lives inside of the base controller in very simply that uses symphony serializer to serialize that into Jason and then puts that into a Jason Response 
+Open `src/Controller/RepLogController.php`. As you an see, we already have API
+endpoints for returning all of the rep logs for a user, a single rep log, deleting
+a rep log and adding a new rep log. Go back to the browser to check this out:
+`/reps`. Boom! A JSON list of the rep logs.
 
-and a future tutorial. We're going to talk a lot more about aps and the symphony. This is kind of the the most boring, but my favorite setup for having apis which is using the serializer and when you need to creating a separate model class instead of serializing your instinct directly because that gives you a bit more flexibility. All right, so we want to make an API request to slash reps, so let's do that. Inside of my assets to Js Directory, I'm looking at a new directory called Api and then the new file in there called Api, sorry, Rep log Api. That js. The idea is that we might have this, this new file will be a utility for making Ajax requests to the rep logs, Api end points. So it might have other files for other API resources lately and then we can use those from whatever javascript we need. You noticed the finally of is lowercase because instead of we're actually going to export functions from this class. So I'm just following a naming convention inside. Say export function, get rep logs, get rep locks. So one of the first questions you have when you use Ajax outside of jquery is what library do I use to make Ajax calls. And there are several great ones, but there's actually a built in function to modern browsers called fetch where you can make eight extra calls without making any that using any external libraries. 
+This endpoint is powered by `getRepLogsAction()`. The `findAllUsersRepLogModels()`
+method lives in the parent class - `BaseController`, which lives in this same
+directory. Hold Command or Ctrl and click to jump to it.
 
-And yes we are going to need to worry about. So it looks like this return fetch slash reps, this, the fetch, the fetch function x returns a promise object, which is an object we talked a lot about in a previous tutorial. So we're actually going to do some processing on this. So we'll say that. Then the callback is past the response. They fetch response object and here we're going to say return response that Jason. So what this means is that our function is actually going to return a response object, uh, I promise object, but the, anybody that calls that then on this promise object, they're going to be past the raw data from our Api because response that Jason Actually parses that. 
+The *really* important part is this: I have *two* rep log classes. First, the
+`RepLog` entity stores all the data in the database. Second, in the `Api` directory,
+I have *another* class called `RepLogApiModel`. *This* is the class that's transformed
+into JSON and used for the API: you can see that it has the same fields that you
+see over here in JSON.
 
-Now I mentioned that fetch is something that works automatically in all modern browsers. So yes, we do need to worry about what happens in older browsers and who will add a polyfill later to handle this. All right, so over in our rep log APP, here's the goal we're going to in our old APP, whenever we reload the page, an Ajax call was made immediately to slash reps and that data was used to populate the table. We want to do the same thing as soon as our component loads in rep log app. We want to make an API request to slash reps and use the return as our initial state for our rep locks. So just for now in the constructor, let's say we're going to call that function. Of course, first we need to import it. So we'll say import and say get read logs from that, that slash api slash rep log API. Two interesting things about this for the first time. We're not using a default important, we're not saying export default function. We're actually exporting named functions and we'll as we work, we're going to add more and more utility functions for the other API end points. The other thing that was cool is that because of the way that I typed my import Petri storm actually added the audit, completed the file name for me that was not video magic. All right, now down here, let's say get rep logs 
+The `findAllUsersRepLogModels` first queries for the `RepLog` entity objects. Then,
+it loops over each and *transforms* it into a `RepLogApiModel` object by calling
+another method, which lives right above this. The code is *super* boring and not
+fancy at all: it simply takes the `RepLog` entity object and, piece by piece,
+converts it into the `RepLogApiModel`.
 
-that then 
+Finally, back in `getRepLogsAction()`, we return `$this->createApiResponse()` and
+pass it that array of `RepLogApiModel` objects. This method also lives inside
+`BaseController` and it's dead-simple: it uses Symfony's serializer to turn the
+objects to JSON, then puts them into a `Response`.
 
-and this. Now we will receive that, the raw data and we'll say console dot log 
+That's it! The most interesting part is that I'm using *two* classes: the entity
+and a separate class for the serializer. Having 2 classes means that you need to
+do some extra work. However... it makes it *really* easy to make your API look
+*exactly* how you like! But, in a lot of cases, serializing your entity object
+directly will probably work great.
 
-data. 
+## Using fetch()
 
-Let's just see what that does. Let's move over, refresh, and second, 
+So here's our first goal: make an API request to `/reps` and use that to populate
+our initial `repLogs` state so that they render in the table.
 
-let's move over. Refresh and Oh, we get an error. Unexpected token in Jason at position zero. So what that tells me is probably it's the dot Jason Part. When we're telling the library to parse the Jason, that's failing for some reason. Now you noticed on here you can see the xhr request for slash reps and if you go to the network Tab Xhr, you can see our reps call and it looks like it was successful, but this is actually not the correct api call. This last reps API call is actually coming from our old application. Our Ajax call is over here, under the other tab there it is. Wraps. Why? Because the. When you use fetch, it's not technically an xhr request. It's actually a fair request and so for that reason it doesn't show up. Her ex hr, it shows up under other. That's just something that you need to be aware of. There's not any other real important difference. Now, interestingly, if you look at it, it returned a three, oh two 
+In the `assets/js` directory, create a new folder called `api` and then a new file
+called `rep_log_api.js`. This new file will contain all of the logic we need for
+making API requests related to the rep log API endpoints. As our app grows, we
+might create *other* files to talk to *other* resources, like "users" or "products".
 
-and if you go into the headers, check this out. It actually redirected to the login page, which is why we see a second request here down for the login. So for some reason our authentication is failing, which is weird because if we just go to class reps, it totally works. This is one of the really cool things about fetch and that is that fetch does not automatically send any authentication information in our browser. If you look at our controller, this controller does require login and the only reason we're allowed to go to it in our browser is that a browser is automatically sending the session cookie, so api authentication is a big topic, but one way or another before you make every single api requests, you're going to need to send some sort of authentication. Either it's a session cookie or maybe it's an API token that you finished early or maybe it's an Api token that you fetched some other way so the process looks like and what are the big questions I get is like how should I do my api authentication? And honestly, if you're building an API front end for your own site that a lot of times using the session based authentication like we did, I'll log out and then log back in. 
+You probably also noticed that the filename is lowercase. That's because, instead
+of exporting a class, this module will export some functions... so that's just a
+naming convention. Inside, export function `getRepLogs()`.
 
-It's actually a great way to do it. We log in that sets the session cookie, and then all of our age, Ajax calls will work as long as we send that session cookie. Now, if you do want to use some sort of an API token like Jwt or o off, that's totally fine. It just means that when you do your authentication, you need to take that final token and you need to store it somewhere. The best practice for storing that is actually a local storage need to check that to be sure, so one way or another, when you go to make your API call here, you're already going to have access to either an API token that you've stored or you know that the users should be logged in via a session cookie. So if you want to send the session cookie, you actually will modify the second argument here and say credentials and set that to same dash origin. Send my credentials to the same ordinance and my cookies. If you had a header, there's also a header is key here and you would set that to an object and you would set your a token header that you need to set and later we're going to refactor our codes that you're going to see how it's easy to make sure that the same credentials are set on every single April at Api requests that you make. 
+The question now is... how do we make AJAX calls? There are several great libraries
+that can help with this. But... actually... we don't need them! All modern browsers
+have a built-in function that makes AJAX calls *easy*. It's called `fetch()`.
 
-All right? With this, if go back and refresh, boom, no errors in. Check out the console. Yes, we have our items. Notice that the way my api works is everything is inside of an items key first and we can see that here. There's items key and there are four rep logs which have the same fields that we have in our state and our application. That was no accident. When we put the static data there, we wanted that static data to look like our API would ultimately look. So this is cool, so if we get the items key off of here, that is our initial state. So in Rep log Api, let's actually do a little bit more work here response that Jason, although it itself is actually something that returns a promise. So if we want to do a little bit more processing on that, we can say that Ben Data and say data that items. 
+Try this: return `fetch('/reps')`. `fetch()` returns a `Promise` object, which
+is a *super* important but kinda-confusing object we talked a lot about in previous
+tutorials. To *decode* the JSON from our API into a JavaScript object, we can
+add a success handler: `.then()`, passing it an arrow function with a `response`
+argument. Inside, return `response.json()`.
 
-Okay, 
+With this code, our `getRepLogs()` function will *still* return a `Promise`. But
+the "data" for that should now be the decoded JSON. Don't worry, we'll show this
+in action.
 
-so it's a little confusing. But basically when the ads call finishes, call our first function here. In that first function, we want to decode the Jason Fung response. When that finishes, I want to actually grab the items key off of the data and return that. This promise stuff can be tricky, but ultimately this now returns a promise object where the data on that, on that, the data that's passed to the handlers is actually our ra rep logs data. Basically what's on this items key and when I move on, when I move over, my page is actually already refreshed and you can see that it's now logging just the individual items. So awesome. We can use this to set our initial state. So first clear out set rep logs state to just empty quotes. Now it's not. Now we could actually set the state and right inside of this call back inside of the constructor, but typically instead I'm going to copy this and below the constructor I'm going to add another method called components did mount. Then I'm a paste that code there and then inside I'm going to say this, that set state rep logs and we'll set that to data. 
+By the way, I mentioned that `fetch` is available in all modern browsers. So yes,
+we *do* need to worry about what happens in older browsers. We'll handle that later.
 
-Okay, let's move over to try that. Refresh and boom, we have real data. The same data that you see down here on our original application now component did mount is so far the only method on a rep on a rack component that is special is the render method. We know that cause calls our render methods to render and of course because it's a class, it also can have a constructor but react to several other methods that are called other important method names that do other things and they're called lifecycle methods and they're basically ways for you to execute code as your component is added to the page or removed from page. So component did, mount is called right after your component is mounted or added to the page, and this happens to be the best practice spot for making any Ajax calls you need to set your initial state. We could also put it in a constructor. They're effectively the same and there's some debate over that. Um, it doesn't really matter, but this is what the flow looks like.
+Go back to `RepLogApp`. Ok, as *soon* as the page loads, we want to make an AJAX
+call to `/reps` and use that to populate the state. The constructor is a good place
+for that code. Oh, but first, import it: `import { getRepLogs }`
+from `../api/rep_log_api`. For the first time, we're not exporting a `default`
+value: we're exporting a *named* function. And we'll export more named functions
+later, for inserting and deleting rep logs.
+
+Oh, and, did you see how PhpStorm auto-completed that for me? That wasn't video
+magic: PhpStorm was awesome enough to guess that correct import path.
+
+Ok, down below, add `getRepLogs()` and chain `.then()`. Because we decoded the
+JSON in the other file, this should receive that decoded `data`. Just log it
+for now.
+
+Ok... let's try it! Move over and, refresh! Oof! An error:
+
+> Unexpected token in JSON at position zero
+
+Hmm. It *seems* like our AJAX call might be working... but it's having a problem
+*decoding* the JSON. It turns out, the problem is authentication. Let's learn how
+to debug this and how to authenticate our React API requests next.

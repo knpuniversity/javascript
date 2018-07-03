@@ -20,11 +20,13 @@ chapters:
     - creator-component
     - refs
     - immutable-state
+    - dumb-component-state
     - validation-state
     - controlled-input
     - controlled-component-form
     - deleting-items
     - fetch
+    - api-authentication
     - loading-animation
     - delete-api
     - create-api

@@ -1,19 +1,85 @@
 # Deleting Items
 
-Coming soon...
+Our app is looking great! But I know, we're missing *one* big piece: actually making
+AJAX requests so that all of this saves to the server. That is coming *very* soon.
+But, we have one more piece of homework first: adding the ability to delete rep logs.
 
-All right, sorry, I have a starting to look pretty good. I know we don't have any of the Ajax stuff yet. We're couldn't do that in one very soon. The last thing I want to add before then is to actually fill in our delete wic because when we think we should now be able to actually remove this rep log from our state. So let's move over to let's move over and opened a rep log list. This is actually where we have that dot, dot dot. Now we can do a little bit better. I'll turn this into a, an anchor tag inside a span with class name equals f a f a dash trash. Cool. And that should be able to get us our fancy new trash icon. Awesome. Okay, so we're going to go through a process that's going to feel a fairly familiar at this point, which is good. And that is that from rep log list. We ultimately need to update the state from rep log APP, which means we need to pass a handler from rep log app into rep logs and past that, handle our again into rep log list. So let's start with the handle function itself. So in rep log APP had a new handle, delete rep log where you were now always using language that has nothing to do with forms or links. It's all about the data. This is the callback Sunday should call when they want to delete a rep log and they'll pass the ID. 
+Open up `RepLogList`. This is where we have a little "..." TODO. Turn this into an
+anchor tag with a span inside: `className="fa fa-trash"`.
 
-Yeah, I'll be lazy for a second and just put it on there. When we had a handler, we're of course going to go and find that handler to this. Perfect. Now we'll pass that down here as a another callback called on delete rep log. 
+Cool! That should get us our fancy new trash icon. Awesome.
 
-This dot handled leave rep lot. Perfect. Next. Now that we're passing this on into rep logs, this new prop and went down to the bottom and we will add this on the lien rep log is equal to that is required. Then we'll go up and inside of our function will destructure out on delete reblog and finally we can use that down here when you read the form or rather when we render our rep log list will pass in onto the rep log equals on delete rep lock. And then one last thing in rep block list, because it is getting passed a new prop well set on the rep log as a new prop past this as you structure that out into a new variable. And then ultimately we need to add a handler function to the on click that handle. The function's going to need access to the envoy rep log APP. So like we often do with these functional components, I'm going to create a new function right here, so I'll call it constant handled, delete, click, set that to a function will take in the event and the Rep log id because this is a an a. because this is a link tag, we actually need to call event that prevent default. 
+To hook this up, we're going to go through a process that should be starting to feel
+familiar... almost boring. Here it is: when the user clicks this link in
+`RepLogList`,
+we ultimately need to update the state that lives in `RepLogApp`. *That* means that
+we need to pass a handler callback from `RepLogApp` into `RepLogs` and again into
+`RepLogList`.
 
-They're not here, we're just so caught on delete rep log and we'll pass in the rep log idea. So we'll handle the kind of the dom or html specific part. They'll preventing the default in a quick and then just pass up the pure value to our parent function. Now down here on the link tag, what does sounded normal on click and inside of here I can't call our function directly because I need to actually include the rep log id. So instead I'm actually going to pass a car in line callback right here and we'll call handled delete, 
+## Adding & Calling the Delete Handler Function
 
-click. 
+In `RepLogApp`, create that new function: `deleteRepLog`, which is a *great* name,
+because we know that this component doesn't know and doesn't care that a link will
+be used to delete rep logs. Nope, it's all about the data. Give this an `id` argument
+so we know *which* rep log to delete. Be lazy and log a todo.
 
-Let me get past him whenever arguments we want. So because we're in this loop, we have a rep log. Well passing the event because we're in the loop, we'll just pass on rep log.id. Perfect. And that makes my package very happy. Okay, let's try this out. Make sure we didn't buy anything. That was a lot of work. Refresh. Everything looks fine. Quick delete. Nothing happens. But the console, yes. It says to do. Awesome. So now is the fun part. We just need to go back into rep log APP and inside of our function here we just need to 
+Next, because we have a new handler method, make sure to bind it to `this`.
 
-re removed that rep log from state. But remember, we don't want to modify the state, so I don't want to just go and find the correct rep prologue in this rep logs and remove it because that would mutate this rep log state. So this is one of those other tricky parts where you need to do a little bit of research to figure out how do I remove an element from an array without changing state. There's no wrong answer, but in this case we can say this dot set, state passing set rep log state to this state, that rep logs dot filter and passes a callback with one argument which will be the rep log. And if the rep logs id equals the idea that we passed in, then we want to remove that rep log. So the key thing here is that we are on remove the ref log without mutating state. And that filter returns a new array. So filter is now going to loop over every item instead of rep logs. And if the ID matched daddy passed, then it will be removed. Oh, and this should be just not equals id. That'll make more sense. 
+And finally, pass this as a new prop: `onDeleteRepLog={this.handleDeleteRepLog}`.
 
-It we'll keep everything that does not equal that id, so it all effectively remove the one element that matches that Id. Now this will work, but you might also notice one familiar problem in that is that like we saw before, if the new state depends on the old state, you really need to pass set state a callback instead, and I know this is subtle and it's probably not going to bite you, but the problem is that the moment you call set state between the time you call set state and won that state and one react to actually uses that data. It's possible that this state, that rep blocks has changed some of my past just like for a callback previous state. And what we're gonna do is actually returned this same array down here. So I'll say turn paste that. Oh, and then instead of this state will say previous state that rep locks. All right, perfect. Let's give us a try. Head over refresh, and I buy deleted. Of course the power of react is that, you know, if you add a new item here, there's going to be no problem. Just deleting that new item because everything's based on state, so there's no surprises when you add new elements. Awesome. Alright. Let's talk about actually making Ajax requests and saving this stuff to our server.
+Our work here is done. Now, move to `RepLogList`. First, at the bottom, add this
+to `propTypes`: `onDeleteRepLog` is a `PropTypes.func.isRequired`.
+
+Above in the function, destructure  `onDeleteRepLog`, find `RepLogList`, and
+pass this again as a prop: `onDeleteRepLog={onDeleteRepLog}`.
+
+Finally, move to `RepLogList`. Start the same: add the new prop to `propTypes` and
+destructure the variable. 
+
+Ultimately, we need to call this, `onClick()` of the link. We have a choice here:
+create an inline arrow function, or add a function above render. Honestly, if the
+logic is simple, both are fine. Add a a new `handleDeleteClick` function with two
+arguments: the `event` and `repLogId`. Start with `event.preventDefault()` so the
+browser doesn't try to follow the link. Then, yep, just `onDeleteRepLog(repLogId)`.
+
+Scroll down to hook this up: `onClick={}`. Hmm, we can't call `handleDeleteClick`
+directly... because we *also* need to pass it the id. No worries: use an arrow
+function with `(event) => handleDeleteClick()` passing it `event` and - because
+we're inside the loop, `repLog.id`.
+
+Let's try it! Refresh! It looks good... and click delete. Nothing happens, but 
+check the console. Go it! There is our todo.
+
+## Updating State: Delete from an Array without Mutating
+
+*Now* for the fun part! Go back to `RepLogApp`. Inside the handler, we need to
+remove *one* of the `repLog` objects from the `repLogs` state. But... we do *not*
+want to *modify* the state. So, the question is: how can we *remove* in item from
+an array without *changing* that array?
+
+Here's one great way: call `this.setState()` and pass it the key we want to set:
+`repLogs`. Set *this* to `this.state.repLogs.filter()`, passing this a callback
+with a `repLog` argument. For the body, because I didn't add curly braces, we are
+*returning* `repLog.id !== id`.
+
+That's it! The key is that the `filter` function returns a *new* array. Oh, and,
+whoops - that should be `!==`.
+
+The `filter` function loops over each `repLog`, calls our function, and if it returns
+*true*, that `repLog` is added to the new array. This will give us a new, *identical*
+array... except without the *one* item.
+
+This will work... but! You might also notice another, familiar problem. Because
+the *new* state depends on the existing state, we should pass `setState()` a callback
+to avoid *potential* race conditions with state being set at almost the same moment.
+
+Call, `this.setState()` again, but with a callback that receives a `prevState`
+argument. Copy the object from below, delete all of that code, and *return* this
+from our callback.
+
+That's it! Let's try it! Refresh and... click the trash! It's gone! we got it!
+And, because React is *awesome*, there is *no* doubt that if I add a new item
+and try to delete it... yep - it works too. Because everything is based on state,
+there are no surprises.
+
+Ok - it's finally time to start using AJAX to communicate with the server.
