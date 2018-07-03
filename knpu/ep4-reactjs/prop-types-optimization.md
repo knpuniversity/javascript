@@ -30,7 +30,7 @@ you logged the `babelConfig` object, you would see that Encore doesn't include a
 Oh wait, actually, I made a mistake! This totally won't work! That's because we can't
 rely on Babel to know whether or not we're creating our production build. Instead,
 use if `Encore.isProduction()`. Then, inside, add the plugin with
-`babel.plugins.push()`, copy the plugin name, and paste!
+`babelConfig.plugins.push()`, copy the plugin name, and paste!
 
 Remove the stuff below. This is simpler anyways: *if* we're building for production,
 add this handy plugin.
