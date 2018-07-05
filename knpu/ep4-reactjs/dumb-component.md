@@ -29,6 +29,8 @@ Update this to: `export default function RepLogList`, but now without
 `extends Component`. When a component is a function, React passes you one arg:
 `props`. Now, we can remove one function level and... I'll unindent everything.
 
+[[[ code('75e7cf389f') ]]]
+
 Yep, the component is now *just* the render function... because that's all we needed!
 Refresh to try it! Oh, big error:
 
@@ -37,6 +39,8 @@ Refresh to try it! Oh, big error:
 Of course! Once a component is a function, there is no `this` anymore! That's fine,
 just change the code to use `props`. Hmm, destructuring everything in one place
 made that easy...
+
+[[[ code('e98dd6e9c7') ]]]
 
 Try it again! Move over and... reload! Yeehaw! Success!
 
@@ -64,14 +68,20 @@ and another will all the markup. Create a new file called `RepLogs.js`: this wil
 be our stateless, dumb component. So, this will look a lot like `RepLogList`: import
 `React` from `react`. And then, `export default function RepLogs`.
 
+[[[ code('8df3fdcf60') ]]]
+
 Next, go copy *all* of the code from RepLogApp's `render()` function and, paste
 it here.
+
+[[[ code('b5f349c854') ]]]
 
 This new component has basically no logic, except for a tiny bit on top that's
 related to the markup itself.
 
 Back in `RepLogApp`, delete all of that code! Instead, on top, import
 `RepLogs` from `./RepLogs`. And then, in render, all we need is `<RepLogs />`.
+
+[[[ code('2a38cf11d2') ]]]
 
 That is it! Oh, it's great: look how pure & clean the top level component is!
 Our business logic is *much* easier to read. And all the markup responsibilities
@@ -91,16 +101,24 @@ for the `handleRowClick` callback: *that* method *also* lives in `RepLogApp`.
 But, before we fix that, add the missing import on top: `import RepLogList`
 from `./RepLogList`.
 
+[[[ code('97a7b7a478') ]]]
+
 Then, while we're here, let's destructure the props we're about to receive:
 `const { withHeart, highlightedRowId, onRowClick } = props`.
 
+[[[ code('9db47da88b') ]]]
+
 Use the new `onRowClick` variable down below: pass *this* into `RepLogList`.
+
+[[[ code('69d7ad0eea') ]]]
 
 Finally, head back to `RepLogApp` so that we can pass these props. I'll break things
 onto multiple lines, then add: `withHeart={withHeart}`,
 `highlightedRowId={highlightedRowId}` and `onRowClick={this.handleRowClick}`...
 being sure not to actually *call* that function, even though PhpStorm is trying
 to trick us!
+
+[[[ code('cd981f5ffc') ]]]
 
 Oh, and I made a big ugly mistake! In `RepLogs`, import from `RepLogList`: I was
 trying to import myself! Strange and creepy things happen if you try that...
