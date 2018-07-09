@@ -29,6 +29,8 @@ different props this component might have. But first, back on top, import
 `PropTypes` from `prop-types`. And... back down below, add `highlightedRowId` set
 to `PropTypes.any`. Then, `onRowClick` set to `PropTypes.func`.
 
+[[[ code('737c019cfd') ]]]
+
 For `highlightedRowId`, we could have used `PropTypes.number`, because, it *is*
 a number right now. But later, we're going to refactor our ids to be uuid's, which
 are a string.
@@ -61,6 +63,8 @@ By default, all propTypes are optional. To make one required, just add
 `.isSuperDuperImportant`. I'm kidding, add `.isRequired`. But, I feel like my name
 would have been much more awesome.
 
+[[[ code('cc1e901a0a') ]]]
+
 Back in `RepLogs`, let's mess with stuff! "Forget": to pass that prop entirely.
 Move to your browser and... yep!
 
@@ -87,13 +91,19 @@ You guys know the drill! First, import `PropTypes` from `prop-types`. Then, at
 the bottom, `RepLogApp.propTypes =` an object with `withHeart` set to `PropTypes.bool`.
 The prop isn't *really* required, so I'll leave it optional.
 
+[[[ code('1d75936441') ]]]
+
 The *last* place we need propTypes is in `RepLogs`: we depend on 3. Go copy the
 import statement from `RepLogApp`, and paste! At the bottom, add the
 `RepLogs.propTypes = ` part.
 
+[[[ code('aaaf6842e2') ]]]
+
 The 3 props are: `withHeart`, `highlightedRowId` and `onRowClick`. Steal `withHeart`
 from `RepLogApp` and paste. Then, more stealing! Get the other two from `RepLogList`
 and put those here too.
+
+[[[ code('b90d6deb9e') ]]]
 
 Hmm, this shows off *another* common thing in React. Frequently, you'll pass props
 into one component, just so that it can pass them into *another* component. For
@@ -101,7 +111,7 @@ example, in `RepLogApp`, we pass 3 props. But, two of them aren't event used in
 `RepLogs`! We just pass them straight to `RepLogList`!
 
 This "props passing" can be kind of annoying. But, it's not necessarily a sign of
-bad design. It's just part of using React, There *are* ways to organize our code
+bad design. It's just part of using React. There *are* ways to organize our code
 to help this, but many are more advanced. The point is: this is ok.
 
 Next, let's make a small production optimization with prop types.
