@@ -1,0 +1,40 @@
+diff --git a/src/Api/ApiRoute.php b/src/Api/ApiRoute.php
+new file mode 100644
+index 000000000..cc84aec79
+--- /dev/null
++++ b/src/Api/ApiRoute.php
+@@ -0,0 +1,12 @@
++<?php
++
++namespace App\Api;
++
++use Symfony\Component\Routing\Annotation\Route;
++
++/**
++ * @Annotation
++ */
++class ApiRoute extends Route
++{
++}
+\ No newline at end of file
+diff --git a/src/Controller/RepLogController.php b/src/Controller/RepLogController.php
+index 7d6425bb8..7a6284db5 100644
+--- a/src/Controller/RepLogController.php
++++ b/src/Controller/RepLogController.php
+@@ -2,6 +2,7 @@
+ 
+ namespace App\Controller;
+ 
++use App\Api\ApiRoute;
+ use App\Entity\RepLog;
+ use App\Form\Type\RepLogType;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+@@ -13,7 +14,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+ 
+ /**
+  * @IsGranted("ROLE_USER")
+- * @Route(defaults={"_is_api": true})
++ * @ApiRoute(defaults={"_is_api": true})
+  */
+ class RepLogController extends BaseController
+ {

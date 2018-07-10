@@ -1,0 +1,27 @@
+diff --git a/src/EventSubscriber/ApiCsrfValidationSubscriber.php b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
+new file mode 100644
+index 000000000..696e53250
+--- /dev/null
++++ b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
+@@ -0,0 +1,21 @@
++<?php
++
++namespace App\EventSubscriber;
++
++use Symfony\Component\EventDispatcher\EventSubscriberInterface;
++use Symfony\Component\HttpKernel\Event\GetResponseEvent;
++
++class ApiCsrfValidationSubscriber implements EventSubscriberInterface
++{
++    public function onKernelRequest(GetResponseEvent $event)
++    {
++        // ...
++    }
++
++    public static function getSubscribedEvents()
++    {
++        return [
++           'kernel.request' => 'onKernelRequest',
++        ];
++    }
++}

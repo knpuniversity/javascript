@@ -1,0 +1,22 @@
+diff --git a/src/EventSubscriber/ApiCsrfValidationSubscriber.php b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
+index 39b074c5e..0bd31c8f4 100644
+--- a/src/EventSubscriber/ApiCsrfValidationSubscriber.php
++++ b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
+@@ -21,6 +21,7 @@ class ApiCsrfValidationSubscriber implements EventSubscriberInterface
+     public function onKernelRequest(GetResponseEvent $event)
+     {
+         $request = $event->getRequest();
++        $session = $request->getSession();
+ 
+         // no validation needed on safe methods
+         if ($request->isMethodSafe(false)) {
+@@ -45,6 +46,9 @@ class ApiCsrfValidationSubscriber implements EventSubscriberInterface
+         if (!$this->csrfTokenManager->isTokenValid(new CsrfToken('api', $csrfToken))) {
+             throw new AccessDeniedException('Invalid CSRF Token');
+         }
++
++        // regenerate the csrf id
++        $this->csrfTokenManager->refreshToken('api');
+     }
+ 
+     public static function getSubscribedEvents()

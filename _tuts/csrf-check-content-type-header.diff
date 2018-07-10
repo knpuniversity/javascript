@@ -1,0 +1,59 @@
+diff --git a/assets/js/api/rep_log_api.js b/assets/js/api/rep_log_api.js
+index 3aa8e0005..95b6309d9 100644
+--- a/assets/js/api/rep_log_api.js
++++ b/assets/js/api/rep_log_api.js
+@@ -1,6 +1,13 @@
+ function fetchJson(url, options) {
++    let headers = {'Content-Type': 'application/json'};
++    if (options && options.headers) {
++        delete options.headers;
++        headers = {...options.headers, headers};
++    }
++
+     return fetch(url, Object.assign({
+         credentials: 'same-origin',
++        headers: headers,
+     }, options))
+         .then(checkStatus)
+         .then(response => {
+@@ -40,9 +47,6 @@ export function deleteRepLog(id) {
+ export function createRepLog(repLog) {
+     return fetchJson('/reps', {
+         method: 'POST',
+-        body: JSON.stringify(repLog),
+-        headers: {
+-            'Content-Type': 'application/json'
+-        }
++        body: JSON.stringify(repLog)
+     });
+ }
+\ No newline at end of file
+diff --git a/src/EventSubscriber/ApiCsrfValidationSubscriber.php b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
+index fc45b8224..ea14b191f 100644
+--- a/src/EventSubscriber/ApiCsrfValidationSubscriber.php
++++ b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
+@@ -3,6 +3,7 @@
+ namespace App\EventSubscriber;
+ 
+ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
++use Symfony\Component\HttpFoundation\JsonResponse;
+ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+ 
+ class ApiCsrfValidationSubscriber implements EventSubscriberInterface
+@@ -20,7 +21,15 @@ class ApiCsrfValidationSubscriber implements EventSubscriberInterface
+             return;
+         }
+ 
+-        // TODO
++        if ($request->headers->get('Content-Type') != 'application/json') {
++            $response = new JsonResponse([
++                'message' => 'Invalid Content-Type'
++            ], 415);
++
++            $event->setResponse($response);
++
++            return;
++        }
+     }
+ 
+     public static function getSubscribedEvents()

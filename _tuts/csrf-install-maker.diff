@@ -1,0 +1,169 @@
+diff --git a/composer.json b/composer.json
+index 5d0239f1c..9ae0f7d89 100644
+--- a/composer.json
++++ b/composer.json
+@@ -40,6 +40,7 @@
+     "require-dev": {
+         "symfony/debug-pack": "^1.0",
+         "symfony/dotenv": "^4.0",
++        "symfony/maker-bundle": "^1.5",
+         "symfony/phpunit-bridge": "^4.0",
+         "symfony/web-server-bundle": "^4.0"
+     },
+diff --git a/composer.lock b/composer.lock
+index 813a4990d..9f3fa48cc 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -1,10 +1,10 @@
+ {
+     "_readme": [
+         "This file locks the dependencies of your project to a known state",
+-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
++        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "43423759580a7e81acf90ddab7b4cb4b",
++    "content-hash": "2027ed50952bc6547226c1c28296aff2",
+     "packages": [
+         {
+             "name": "doctrine/annotations",
+@@ -4948,6 +4948,57 @@
+             ],
+             "time": "2018-01-10T08:34:20+00:00"
+         },
++        {
++            "name": "nikic/php-parser",
++            "version": "v4.0.2",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/nikic/PHP-Parser.git",
++                "reference": "35b8caf75e791ba1b2d24fec1552168d72692b12"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/35b8caf75e791ba1b2d24fec1552168d72692b12",
++                "reference": "35b8caf75e791ba1b2d24fec1552168d72692b12",
++                "shasum": ""
++            },
++            "require": {
++                "ext-tokenizer": "*",
++                "php": ">=7.0"
++            },
++            "require-dev": {
++                "phpunit/phpunit": "^6.5 || ^7.0"
++            },
++            "bin": [
++                "bin/php-parse"
++            ],
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "4.0-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "PhpParser\\": "lib/PhpParser"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "BSD-3-Clause"
++            ],
++            "authors": [
++                {
++                    "name": "Nikita Popov"
++                }
++            ],
++            "description": "A PHP parser written in PHP",
++            "keywords": [
++                "parser",
++                "php"
++            ],
++            "time": "2018-06-03T11:33:10+00:00"
++        },
+         {
+             "name": "symfony/debug-bundle",
+             "version": "v4.1.0",
+@@ -5100,6 +5151,71 @@
+             ],
+             "time": "2018-05-30T07:26:09+00:00"
+         },
++        {
++            "name": "symfony/maker-bundle",
++            "version": "v1.5.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/maker-bundle.git",
++                "reference": "bb0485a3b2eecc561eff735109316677e18fb1d1"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/bb0485a3b2eecc561eff735109316677e18fb1d1",
++                "reference": "bb0485a3b2eecc561eff735109316677e18fb1d1",
++                "shasum": ""
++            },
++            "require": {
++                "doctrine/inflector": "^1.2",
++                "nikic/php-parser": "^4.0",
++                "php": "^7.0.8",
++                "symfony/config": "^3.4|^4.0",
++                "symfony/console": "^3.4|^4.0",
++                "symfony/dependency-injection": "^3.4|^4.0",
++                "symfony/filesystem": "^3.4|^4.0",
++                "symfony/finder": "^3.4|^4.0",
++                "symfony/framework-bundle": "^3.4|^4.0",
++                "symfony/http-kernel": "^3.4|^4.0"
++            },
++            "require-dev": {
++                "allocine/twigcs": "^3.0",
++                "doctrine/doctrine-bundle": "^1.8",
++                "doctrine/orm": "^2.3",
++                "friendsofphp/php-cs-fixer": "^2.8",
++                "symfony/phpunit-bridge": "^3.4|^4.0",
++                "symfony/process": "^3.4|^4.0"
++            },
++            "type": "symfony-bundle",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "1.0-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\Bundle\\MakerBundle\\": "src/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Symfony Maker helps you create empty commands, controllers, form classes, tests and more so you can forget about writing boilerplate code.",
++            "homepage": "https://symfony.com/doc/current/bundles/SymfonyMakerBundle/index.html",
++            "keywords": [
++                "code generator",
++                "generator",
++                "scaffold",
++                "scaffolding"
++            ],
++            "time": "2018-05-17T19:26:29+00:00"
++        },
+         {
+             "name": "symfony/phpunit-bridge",
+             "version": "v4.1.0",
+diff --git a/config/bundles.php b/config/bundles.php
+index 0ee330c5e..ff7a55951 100644
+--- a/config/bundles.php
++++ b/config/bundles.php
+@@ -16,4 +16,5 @@ return [
+     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
+     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true, 'test' => true],
+     Symfony\Bundle\WebServerBundle\WebServerBundle::class => ['dev' => true],
++    Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true, 'test' => true],
+ ];

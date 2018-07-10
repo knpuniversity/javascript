@@ -1,0 +1,58 @@
+diff --git a/assets/js/api/rep_log_api.js b/assets/js/api/rep_log_api.js
+index be164703e..227c06f50 100644
+--- a/assets/js/api/rep_log_api.js
++++ b/assets/js/api/rep_log_api.js
+@@ -15,6 +15,10 @@ function fetchJson(url, options) {
+     }, options))
+         .then(checkStatus)
+         .then(response => {
++            if (response.headers.has('X-CSRF-TOKEN')) {
++                window.CSRF_TOKEN = response.headers.get('X-CSRF-TOKEN');
++            }
++
+             // decode JSON, but avoid problems with empty responses
+             return response.text()
+                 .then(text => text ? JSON.parse(text) : '')
+diff --git a/src/EventSubscriber/ApiCsrfValidationSubscriber.php b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
+index 0bd31c8f4..713064924 100644
+--- a/src/EventSubscriber/ApiCsrfValidationSubscriber.php
++++ b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
+@@ -4,6 +4,7 @@ namespace App\EventSubscriber;
+ 
+ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+ use Symfony\Component\HttpFoundation\JsonResponse;
++use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+ use Symfony\Component\Security\Csrf\CsrfToken;
+@@ -12,6 +13,7 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
+ class ApiCsrfValidationSubscriber implements EventSubscriberInterface
+ {
+     private $csrfTokenManager;
++    private $newToken;
+ 
+     public function __construct(CsrfTokenManagerInterface $csrfTokenManager)
+     {
+@@ -48,13 +50,21 @@ class ApiCsrfValidationSubscriber implements EventSubscriberInterface
+         }
+ 
+         // regenerate the csrf id
+-        $this->csrfTokenManager->refreshToken('api');
++        $this->newToken = $this->csrfTokenManager->refreshToken('api');
++    }
++
++    public function onKernelResponse(FilterResponseEvent $event)
++    {
++        if ($this->newToken) {
++            $event->getResponse()->headers->set('X-CSRF-TOKEN', $this->newToken);
++        }
+     }
+ 
+     public static function getSubscribedEvents()
+     {
+         return [
+            'kernel.request' => 'onKernelRequest',
++            'kernel.response' => 'onKernelResponse'
+         ];
+     }
+ }

@@ -1,0 +1,36 @@
+diff --git a/src/EventSubscriber/ApiCsrfValidationSubscriber.php b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
+index ea14b191f..39b074c5e 100644
+--- a/src/EventSubscriber/ApiCsrfValidationSubscriber.php
++++ b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
+@@ -5,9 +5,19 @@ namespace App\EventSubscriber;
+ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+ use Symfony\Component\HttpFoundation\JsonResponse;
+ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
++use Symfony\Component\Security\Core\Exception\AccessDeniedException;
++use Symfony\Component\Security\Csrf\CsrfToken;
++use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
+ 
+ class ApiCsrfValidationSubscriber implements EventSubscriberInterface
+ {
++    private $csrfTokenManager;
++
++    public function __construct(CsrfTokenManagerInterface $csrfTokenManager)
++    {
++        $this->csrfTokenManager = $csrfTokenManager;
++    }
++
+     public function onKernelRequest(GetResponseEvent $event)
+     {
+         $request = $event->getRequest();
+@@ -30,6 +40,11 @@ class ApiCsrfValidationSubscriber implements EventSubscriberInterface
+ 
+             return;
+         }
++
++        $csrfToken = $request->headers->get('X-CSRF-TOKEN');
++        if (!$this->csrfTokenManager->isTokenValid(new CsrfToken('api', $csrfToken))) {
++            throw new AccessDeniedException('Invalid CSRF Token');
++        }
+     }
+ 
+     public static function getSubscribedEvents()

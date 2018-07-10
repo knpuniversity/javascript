@@ -1,0 +1,24 @@
+diff --git a/src/Controller/RepLogController.php b/src/Controller/RepLogController.php
+index baa1601ef..7d6425bb8 100644
+--- a/src/Controller/RepLogController.php
++++ b/src/Controller/RepLogController.php
+@@ -13,6 +13,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+ 
+ /**
+  * @IsGranted("ROLE_USER")
++ * @Route(defaults={"_is_api": true})
+  */
+ class RepLogController extends BaseController
+ {
+diff --git a/src/EventSubscriber/ApiCsrfValidationSubscriber.php b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
+index a8b166c55..ce3f3d0d1 100644
+--- a/src/EventSubscriber/ApiCsrfValidationSubscriber.php
++++ b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
+@@ -10,6 +10,7 @@ class ApiCsrfValidationSubscriber implements EventSubscriberInterface
+     public function onKernelRequest(GetResponseEvent $event)
+     {
+         $request = $event->getRequest();
++        dump($request->attributes->all());die;
+ 
+         // no validation needed on safe methods
+         if ($request->isMethodSafe(false)) {

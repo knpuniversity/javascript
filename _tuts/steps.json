@@ -1849,7 +1849,67 @@
             "id": "children-destructure-classname-separately",
             "name": "Children: Destructure className separately",
             "description": null
+        },
+        {
+            "id": "csrf-install-maker",
+            "name": "CSRF: Install maker",
+            "description": null
+        },
+        {
+            "id": "csrf-generate-subscriber",
+            "name": "CSRF: Generate subscriber",
+            "description": null
+        },
+        {
+            "id": "csrf-avoid-safe-methods",
+            "name": "CSRF: Avoid safe methods",
+            "description": null
+        },
+        {
+            "id": "csrf-annotate-route",
+            "name": "CSRF: Annotate route",
+            "description": null
+        },
+        {
+            "id": "csrf-add-apiroute",
+            "name": "CSRF: Add ApiRoute",
+            "description": null
+        },
+        {
+            "id": "csrf-finish-apiroute",
+            "name": "CSRF: Finish ApiRoute",
+            "description": null
+        },
+        {
+            "id": "csrf-avoid-non-api-routes",
+            "name": "CSRF: Avoid non-API routes",
+            "description": null
+        },
+        {
+            "id": "csrf-check-content-type-header",
+            "name": "CSRF: Check Content-Type header",
+            "description": null
+        },
+        {
+            "id": "csrf-checking-the-csrf-token",
+            "name": "CSRF: Checking the CSRF Token",
+            "description": null
+        },
+        {
+            "id": "csrf-pass-csrf-in-ajax",
+            "name": "CSRF: Pass CSRF in AJAX",
+            "description": null
+        },
+        {
+            "id": "csrf-use-new-id-each-time",
+            "name": "CSRF: Use new id each time",
+            "description": null
+        },
+        {
+            "id": "csrf-store-new-token-in-javascript",
+            "name": "CSRF: Store new token in JavaScript",
+            "description": null
         }
     ],
-    "sha": "fdd274d5037f3720ec14b2fc437ee2581be2f3b3"
+    "sha": "b51dce21cf4af15bf91a74a1643ba04ae5e9be4d"
 }

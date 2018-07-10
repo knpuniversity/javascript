@@ -1,0 +1,31 @@
+diff --git a/src/Api/ApiRoute.php b/src/Api/ApiRoute.php
+index cc84aec79..4d9df7ac3 100644
+--- a/src/Api/ApiRoute.php
++++ b/src/Api/ApiRoute.php
+@@ -9,4 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
+  */
+ class ApiRoute extends Route
+ {
+-}
+\ No newline at end of file
++    public function getDefaults()
++    {
++        return array_merge(
++            ['_is_api' => true],
++            parent::getDefaults()
++        );
++    }
++}
+diff --git a/src/Controller/RepLogController.php b/src/Controller/RepLogController.php
+index 7a6284db5..b235c37fb 100644
+--- a/src/Controller/RepLogController.php
++++ b/src/Controller/RepLogController.php
+@@ -14,7 +14,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+ 
+ /**
+  * @IsGranted("ROLE_USER")
+- * @ApiRoute(defaults={"_is_api": true})
++ * @ApiRoute()
+  */
+ class RepLogController extends BaseController
+ {

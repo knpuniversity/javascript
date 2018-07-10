@@ -1,0 +1,30 @@
+diff --git a/assets/js/api/rep_log_api.js b/assets/js/api/rep_log_api.js
+index 95b6309d9..be164703e 100644
+--- a/assets/js/api/rep_log_api.js
++++ b/assets/js/api/rep_log_api.js
+@@ -1,5 +1,9 @@
+ function fetchJson(url, options) {
+-    let headers = {'Content-Type': 'application/json'};
++    let headers = {
++        'Content-Type': 'application/json',
++        'X-Csrf-Token': window.CSRF_TOKEN,
++    };
++
+     if (options && options.headers) {
+         delete options.headers;
+         headers = {...options.headers, headers};
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 3526e289e..9f628d3fc 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -95,6 +95,10 @@
+ <!-- /container -->
+ 
+ {% block javascripts %}
++    <script>
++        window.CSRF_TOKEN = '{{ csrf_token('api') }}';
++    </script>
++
+     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.0.5/es6-promise.auto.min.js"></script>
