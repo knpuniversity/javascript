@@ -1,12 +1,16 @@
 diff --git a/src/EventSubscriber/ApiCsrfValidationSubscriber.php b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
-index 696e53250..a8b166c55 100644
+index 696e53250..ffab74828 100644
 --- a/src/EventSubscriber/ApiCsrfValidationSubscriber.php
 +++ b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
-@@ -9,7 +9,12 @@ class ApiCsrfValidationSubscriber implements EventSubscriberInterface
+@@ -9,7 +9,16 @@ class ApiCsrfValidationSubscriber implements EventSubscriberInterface
  {
      public function onKernelRequest(GetResponseEvent $event)
      {
 -        // ...
++        if (!$event->isMasterRequest()) {
++            return;
++        }
++
 +        $request = $event->getRequest();
 +
 +        // no validation needed on safe methods

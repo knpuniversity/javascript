@@ -11,12 +11,12 @@ index baa1601ef..7d6425bb8 100644
  class RepLogController extends BaseController
  {
 diff --git a/src/EventSubscriber/ApiCsrfValidationSubscriber.php b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
-index a8b166c55..ce3f3d0d1 100644
+index ffab74828..9eb516601 100644
 --- a/src/EventSubscriber/ApiCsrfValidationSubscriber.php
 +++ b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
-@@ -10,6 +10,7 @@ class ApiCsrfValidationSubscriber implements EventSubscriberInterface
-     public function onKernelRequest(GetResponseEvent $event)
-     {
+@@ -14,6 +14,7 @@ class ApiCsrfValidationSubscriber implements EventSubscriberInterface
+         }
+ 
          $request = $event->getRequest();
 +        dump($request->attributes->all());die;
  

@@ -1,10 +1,10 @@
 diff --git a/src/EventSubscriber/ApiCsrfValidationSubscriber.php b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
-index ce3f3d0d1..fc45b8224 100644
+index 9eb516601..2bdbabf76 100644
 --- a/src/EventSubscriber/ApiCsrfValidationSubscriber.php
 +++ b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
-@@ -10,12 +10,17 @@ class ApiCsrfValidationSubscriber implements EventSubscriberInterface
-     public function onKernelRequest(GetResponseEvent $event)
-     {
+@@ -14,12 +14,17 @@ class ApiCsrfValidationSubscriber implements EventSubscriberInterface
+         }
+ 
          $request = $event->getRequest();
 -        dump($request->attributes->all());die;
  

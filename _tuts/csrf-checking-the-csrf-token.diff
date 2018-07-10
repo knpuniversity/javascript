@@ -1,5 +1,5 @@
 diff --git a/src/EventSubscriber/ApiCsrfValidationSubscriber.php b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
-index ea14b191f..39b074c5e 100644
+index 23589e789..479a22a37 100644
 --- a/src/EventSubscriber/ApiCsrfValidationSubscriber.php
 +++ b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
 @@ -5,9 +5,19 @@ namespace App\EventSubscriber;
@@ -21,8 +21,8 @@ index ea14b191f..39b074c5e 100644
 +
      public function onKernelRequest(GetResponseEvent $event)
      {
-         $request = $event->getRequest();
-@@ -30,6 +40,11 @@ class ApiCsrfValidationSubscriber implements EventSubscriberInterface
+         if (!$event->isMasterRequest()) {
+@@ -34,6 +44,11 @@ class ApiCsrfValidationSubscriber implements EventSubscriberInterface
  
              return;
          }
