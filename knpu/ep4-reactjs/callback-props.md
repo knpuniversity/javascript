@@ -45,11 +45,15 @@ where we render `RepLogList`, let's break this into multiple lines. Then pass in
 another prop called `onRowClick` set to `this.handleRowClick`. But, make sure you
 don't *call* that function: just pass it as a reference.
 
+[[[ code('9f43b965b6') ]]]
+
 Thanks to this, in the child component, *we* have a fancy new `onRowClick` prop.
 Destructure this into a new variable. Then, `onClick`, we're dumb: we don't know
 *anything* about state, but we *do* know that we're passed an `onRowClick` prop,
 and that we're supposed to call this when the row is clicked! Cool! Call it
 and pass it `repLog.id`.
+
+[[[ code('5625f525b1') ]]]
 
 That's it! When the user clicks the row, our dumb component will execute the callback
 and pass the rep log id. The parent maintains complete control of what to do when
@@ -63,6 +67,8 @@ Whoops! Whenever we have a callback handler function, we need to guarantee that
 the `this` keyword is bound to this object. There are a few ways to do this, but
 I usually fix this in one consistent way: go to the constructor and add
 `this.handleRowClick = this.handleRowClick.bind(this)`.
+
+[[[ code('5a58a98999') ]]]
 
 Now, no matter *who* calls this method, `this` will always refer to this
 `RepLogApp` instance.
