@@ -1,25 +1,119 @@
-# Create Api
+# The POST Create API
 
-Coming soon...
+We now GET *and* DELETE the rep logs via the API. The last task is to allow them
+to be *created* through our form. Look back at `RepLogController`: we can POST
+to `/reps` to create a new rep log. And, I want to show you *just* a little bit
+about how this works.
 
-We're loading real rep logs or table, we can delete them. So finally it's time to actually create rep logs from our form. So for this we're going to use our post endpoint. If you look back and rep lock controller, there is an end point where you can post to slash reps. and again I want to show you just a little bit about how this is done. This endpoint expects the data to be sent as Jason so you can see me Jason Decode that. And then behind the scenes we actually used the symphony form system, so we have a forum called Brep lock type and in this field reps and item on it, and this is actually bound to directly to the rep log entity class. So in this case we're using a form to buy directly to the entity. Instead of the model class I'm using, the form system is optional. You can also just grab the data, use the data manually to hire objects, or you can use the d serializer to de serialize the data directly into an object. Either way, we always end up with our either way by the end down here, we end up with a rep log object which is populated with the data. I assigned this to the user and then we just flush that to the database. Then on the end, remember our Api always wants to return. 
+## About the POST API Code
 
-We always serialize this rep log api model and that's what were returned from the API. So once I've saved their rep, locked the database, I actually used that raft log to create a rep log api model and then just like before I turned that into a internet to Jason and return it. 
+The endpoint expects the data to be sent as JSON the *first* thing we do is
+`json_decode` it. Then, we use Symfony's form system: we have a form called
+`RepLogType` with two fields: `reps` and `item`. This is bound directly to the
+`RepLog` entity class, not the model class.
 
-I also have some validation up here, which we'll talk about a little bit later. Okay, so the point is we want to make a post request to slash reps. so step one is we're going to go back into our rep log API and create a third function export function, create rep log. Those will take a rep log argument so it will take the object with all the fields that we need to send to the API and we'll use our new fetch days on method to go to slash reps. that method needs to be post and then this case we actually need to send, uh, the body as Jason, so jason, that string of Phi to string of Phi, that rep log. And then finally I'm also going to set a header to content type application slash Jason. My server may or may not care about that, but that's a best practice to advertise it. We're sending Jason as the body. Awesome. So we have that here. Let's go back into rep log APP and of course we have the handle function here and this is where we're going to put the Ajax call for that. We're already updating the state now. We just need the Ajax call. So up top, let's import our create rep log, then back down and handle ad rep log. Right after we create the new rep, we will call create reblog and pass in our new rep. 
+Using the form system is optional. You could also just use the raw data to manually
+populate a new `RepLog` entity object. You could *also* use the serializer to
+*deserialize* the data directly to a `RepLog` object.
 
-Okay. There's a few things to talk about here, but first let's just try this. Oh, great rep log, new rep, and then I'll say that. Then I just want to see what the data looks like that we get back. So a console dot log the data. So there's a few things to say about this, but let's just try it first. So I'll go over and make sure that I'm fully refreshed. 
+These are all great options, and whatever you choose, you'll ultimately have a
+`RepLog` entity object populated with data. I attach this to our user, then flush
+it to the database.
 
-Okay. 
+For the response, we *always* serialize `RepLogApiModel` objects. So, after saving,
+we convert the `RepLog` *into* a `RepLogApiModel`, turn that into JSON and return
+it.
 
-The down here we'll select big fat cat. That's it 10 times and it fails post 400 air. It failed with a 400 error. And if you look at that, ah, interesting. We get an error is this form should not contain extra fields, so something is not right. One way in symphony to figure that out because I'm using the form system is I can go and actually look at the profiler for that specific Ajax request. Then I can go down into the form system. We can get more information about those errors. So first on the top level you can see that it shows this form should not contain extra fields and you can actually see what the data is. It's sending, we're sending ID, item label and total weight lifted a. The problem is that if you look at our form, only fields are reps and the item, so it's actually to that, so this says that the form should not contain extra fields and if you look at that air, it'll actually tell you the extra fields. We have ID item label on total weight lifted. Those are three fields that we're sending, but if you look in our rep log type a yeah, those fields are not included on here. The form, the only thing circle wants to know is how many reps in which item from the dropdown was set. We're not supposed to send the ID, we're not supposed to send the item label or the total weight lifted. 
+I also have a bit of validation above, which we'll handle in React later.
 
-In fact, I didn't label. Instead of being called item label, it should be called item, but instead of it being the actual text, well the server wants is actually the items from the dropdown. The values from the options, so it wants things like fat underscore cap because that's the key on the server. So we have a little bit of extra of work cleanup work that we actually need to do here. So back in rep log APP. First thing I'm gonna do is clean up this new rep so it has this stuff we need. So we're going to get rid of ID. We don't need to send their total weight lifted and instead of item label it should be item and actually one handle app ad rep log is called mostly going to rename the argument to handle advert blog to item because that should really be the item key in rep log creator. We call this down here on ad rep log and instead of the text we're going to do that value. So that passes the value of the option. 
+## Fetching to POST /reps
 
-The only problem with this is it's really interesting is that this will be the data that actually we do need to send to our Ajax call, but you notice that this new rep down here, we know we can no longer just add it to state. It turns out that at the time we submit, we don't have all of the data we need to update the state. In fact, we never did. We were just using a random value for total weight lifted before. So this is a case where we can't update the state until we get more information back from the server. So I'm temporarily good score. Just going to comment out this dot set state. So let's go back and refresh and I at least want to see if we can add my big fat cat 55 times. Hit Enter and cool. No errors. Everything looks good here. And this log is actually coming from the response from that. So you can see it 30 and this gives us the item label. It figures out the total weight lifted nine slash 90. And when we refresh. Yup, you've got it right there. So the point is we can use what comes back from the server and use that to update our state. 
+To make the API request in React, start, as we *always* do, in `rep_log_api.js`.
+Create a *third* function: `export function createRepLog`. This needs a `repLog`
+argument: this will be an object that has all the fields we need to send to the
+API.
 
-So I'm a great rep log. We know that this data here is actually the reblog. So we can say this duset set state, and here I want to pass the call back with a previous state because once again the new state is going to be the old rep logs plus the new rep log. So whenever you need to set state based on previous date and you remember you needed a callback method like this here, we'll say constant new rep logs equals and we'll use the spread syntax to create a new array of the rep logs and then we'll say rep log and then we'll return the new state. 
+Use the new `fetchJson()` function to `/reps` with a `method` set to `POST`. This
+time, we *also* need to set the `body` of the request: use `JSON.stringify(repLog)`.
+Set one more option: a `headers` key with `Content-Type` set to `application/json`.
+This is optional: my API doesn't actually read or care about this. But, because
+we *are* sending JSON, it's a best-practice to advertise this. And, other API's
+might need this.
 
-We're just going to be rep log set doing new rep logs and that's it. Down here. I can remove all of my comment that out stuff and let's try this. I'll make sure that page is refreshed. Let's lift our normal cat this time 10 times and boom, we've got it. Now, one thing I wanna point out here is that this is a situation where we needed to finish the Ajax call before we updated the state because the server, there's certain information that we don't have in our client side App that the server has. And actually if you think about it, this is going to happen every single time you create any new resource because there's always one piece of data that your javascript app does not have, and that is the next auto incremented id in the database. Yep. We will always need to create a new item in the API so that the API can send us back the new ID and then we use that to update the state. 
+Ok, API function done! Head back to `RepLogApp` and scroll up: import `createRepLog`.
+Then, down in `handleAddRepLog`, use this! `createRepLog(newRep)`. To see what
+we get back, add `.then()` with `data`: `console.log()` that.
 
-The problem is if the ID is the only field that you need from the server, then that's kind of annoying to have. To do that. It would be easier just to update the state immediately and then send the Ajax request. So for that reason, one of the things I recommend looking into is using you. You Ids instead of primary keys. When you use [inaudible], it means that your javascript can assign a an ID. We can use our you ID library up here, and if we did that, we can actually assign the Id right here and then let me send that to the server. The server would be set up to just use our you uid after validating it to make sure that it was a value. You Id the UNC system is just nice because that means that there's not one space, there's not one thing, one entity where that, that that can create the ideas. Anyone can great ideas and they can just reuse them everywhere.
+Well... let's see what happens! Move over and refresh. Okay, select "Big Fat Cat",
+10 times and... submit! Boo! The POST failed! A 400 error!
+
+## Matching the Client Data to the API
+
+Go check it out. Interesting... we get an error that this form should not contain
+extra fields. Something is not right. In Symfony, you can look at the profiler
+for *any* AJAX request. Click into this one and go to the "Forms" tab. Ah, the error
+is attached to the *top* of the form. Click `ConstraintViolation` to get more
+details. Ah... this `value` key holds the secret. Our React app is sending `id`,
+`itemLabel` and `totalWeightLifted` to the API. But, look at the form! The only
+fields are `reps` and `item`! We shouldn't be sending *any* of these other fields!
+
+Actually, `itemLabel` is *almost* correct. It *should* be called `item`. And instead
+of being the *text*, the server wants the `value` from the options - something like
+`fat_cat`.
+
+Ok, so we have a little bit of work to do. Head back to `RepLogApp`. First: remove
+the stuff we *don't* need: we don't need `id` and we're not responsible for sending
+the `totalWeightLifted`. Then, rename `itemLabel` to `item`. Rename the argument
+too for clarity. This function is eventually called in `RepLogCreator` as
+`onAddRepLog`. Instead of the `text`, pass the value.
+
+## Updating State *after* the AJAX Call
+
+In `RepLogApp`, `newRep` *now* contains the data our API needs! Woohoo! But...
+interesting. It turns out that, at the moment the user submits the form, we don't
+have all the data we need to update the state. In fact, we never did! We were just
+faking it by using a random value for `totalWeightLifted`.
+
+*This* is a case where we *can't* perform an optimistic UI update: we *can't*
+update the state until we get more info back from the server. This is not big
+deal, it just requires a bit more work.
+
+Comment out the `setState()` call. Let's refresh and *at least* see if the API
+call works. Lift my big fat cat 55 times and hit enter. Yes! No errors! The
+console log is coming from POST response... it looks perfect! Id 30, *it* returns
+the `itemLabel` and also calculates the `totalWeightLifted`. Refresh, yep! There
+is the new rep log!
+
+Ok, let's update the state. Because our API rocks, *we* know that the `data` is
+actually a `repLog`! Use `this.setState()` but pass it a callback with `prevState`.
+Once again, the *new* state depends on the *existing* state.
+
+To add the new rep log without mutating the state, use `const newRepLogs =` an
+array with `...prevState.repLogs, repLog`. Return the new state: `repLogs: newRepLogs`.
+Remove all the old code below.
+
+Let's try this! Make sure the page is refreshed. Lift our normal cat this time,
+10 times, and boom! We've got it!
+
+## Using UUID's?
+
+This was the *first* time that our React app did *not* have all the data it needed
+to update state immediately. It needed to wait until the AJAX request finished
+to have everything.
+
+Hmm... if you think about it, this will happen *every* time your React app needs
+*create* something through your API... because, there is *always* one piece of data
+your JavaScript app doesn't have before saving: the database id! Yep, we will
+*always* need to create a new item in the API first so that the API can send us
+back the new id so that *we* can update the state.
+
+Again, that's no *huge* deal... but it's a bit more work, and it will you'll need
+to add more "loading" screens so that it looks like your app is working. It's
+*simpler* if you can update the state immediately.
+
+And *that* is why UUID's can be awesome. If you configure your Doctrine entities to
+use UUID's instead of auto-increment ids, you *can* generate valid UUID's in JavaScript,
+update the state immediately, and send the new UUID on the POST request. The server
+could then make sure the UUID has a valid format and use it.
+
+If you're creating a lot of resources, keep this in mind!

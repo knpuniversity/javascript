@@ -1,27 +1,80 @@
-# Polyfills
+# Polyfills: fetch & Promise
 
-Coming soon...
+The `fetch()` function is built into all modern browsers... which is cool because
+we didn't need to install *any* outside library to make AJAX requests. Yay! Except...
+what about older browsers? I'm looking at you IE! Google for "caniuse fetch". 
 
-Because we're using the API, which is an actual built in functionality on browsers. We don't need an external library to make Ajax calls. Yay. Except that we need to sit. Probably need to support older browsers. If you look at, can I use for fetch? 
+The *good* news is that `fetch()` is *almost* universal... ahem, IE 11. So... you
+might be ok to do nothing! But, for the rest of us that *do* have a few users on
+IE, yea, using `fetch()` will be a problem. But, a problem we can fix!
 
-Yeah. 
+When we use new JavaScript syntaxes - like the arrow function - behind the scenes,
+Babel *transpiles* - basically *rewrites* - that code into old, boring syntax that
+all browsers support. So, that is already handled. But, when there is a totally
+new *feature*, like `fetch()`, Babel doesn't handle that. Instead, you need a
+polyfill: a fancy word for a library that *adds* a feature if it's missing.
 
-You can get a good idea about whether or not this is something that you're actually gonna need to. 
+## The fetch Polyfill
 
-Um, 
+Google for "fetch polyfill" to find a library from GitHub. Scroll down to find
+the library name: `whatwg-fetch`. Copy that, find your open terminal and:
 
-whether or not this is going to be something that's going to be a problem. As you can see, I 11 does not support fetch. Um, so it might be something that causes a problem. So what do you do if you need a sport fetch? Well, like anything, if there's a new. 
+```terminal
+yarn add whatwg-fetch --dev
+```
 
-Well, 
+To use a JavaScript polyfill, all *we* need to do is import the file. Internally,
+*it* will figure out whether or not the current browser has the feature, like
+the global `fetch()` function. If it does *not*, it adds it.
 
-if you use a new syntax in Java script, like the Arrow function, we use Babel behind the scenes to transliterate to rewrite that. Go back to old javascript. So that's taken care of. But when you use a whole new feature, like a fetch battle can't take care of that for you. Instead you need a refill, which is a fancy word of saying that you are actually going to get a down. Use a javascript library that will add this global function if it doesn't exist. So check this out. Go for fetch polyfill and you'll find a library actually from get hub all about this. So if you scroll down, you can see the name of the library is what wg that's fresh. So I'm gonna copy that move back over to my terminal and say yarn, add that library, Dash, Dash, Dev. Now the width it polyfills work is you just need to import the file and that file, we'll figure out whether or not be current browser has the missing feature fetch. And if it doesn't, it will add that global function to the window object. 
+Super easy! To make sure `fetch()` is available everywhere, we can import it from
+our entry point: `rep_log_react.js`. Then, it will *definitely* be available in
+`rep_log_api.js`. But... I like to get *even* crazier! Open `layout.js`. Then
+look inside `webpack.config.js`. `layout` is configured as my "shared" entry...
+which is a fancy way of saying that `layout.js` is included on *every* page and
+so its code will *always* run. Inside that file, `import 'whatwg-fetch'`.
 
-So literally all we need to do, it's just important the library. Now, where do we import it from where we could actually import it from our main entry point rep log, react that would make sure that it's right at the very beginning. We guarantee that the fish libraries available and then it's included everywhere. Or we could even do it from rap log Api since that's where we're using the match function. Um, but actually what I do is, since I use a lot, I'm actually going to go into my layout file now. The significance of this is that if you look at my Westpac, I can fit that js, this is what's known as the shared entry and encore and that's basically a fancy way of saying that anything inside of layout dot js is actually going to be included on every single page. So I'm going to actually import the polyfill from layout dot js so that everywhere in my application I can safely rely on the fact that there will be the fetch function available. So inside of layout dot Js, I'm just going to say important what wg Dash Fetch, and to really prove what this is doing, you can go to node modules. 
+*Every* part of my app can now safely rely on the fact that the global `fetch()`
+function will be available.
 
-I'm going to surf search for what wg fetch and if you look inside of there, it's just a single file fetch dot js. And if you look all the way at the bottom, this is a self executing function, but basically it passes this into the self executing function, which in a browser environment is the global window object. Then up here on top, the window object is passed and as a self variable and then it literally checks to see, hey, does the global environment have a fetch function on it? So if you're not familiar with this index, when we call fetch like this, that's actually anytime you call a global function, that global function actually lives on a window object. So here it's checking to see, hey, does the window object have the fetch function? If it does, it just returns. If it doesn't, the whole rest of this code here is basically code to add the fetch function. So in fact you can see self dot fetch equals that's where it actually modifies and ads that global function. So that's how polyfills work. Now while we're here, you'll also notice if you look back, it says you will also need a promise poly fill for older browsers. Actually, we should have looked at that. If you look inside of here, it actually uses the promise object internally, which we know because we're taking advantage of that already. 
+Oh, and because I *love* digging in to see how things work, let's look at the
+polyfill! Open `node_modules`, search for `whatwg`, expand its directory and open
+`fetch.js`. *This* is the file we just imported.
 
-Yeah, 
+Look *all* the way at the bottom: it's a self-executing function. It passes `this`
+into the function, which in a browser environment, is the global `window` object.
+Then, on top, that `window` object is passed as a `self`. Then, because all global
+variables & functions are actually *properties* in the `window` object, it's able
+to ask:
 
-promises. Also another object that may or may not exist in your browsers. So let's poly fill it also just in case. So here they point to another library. This is a very similar, we'll just copy the name of the library, move over and say yarn, add promise, Pie fell, Dash, Dash, Dev 
+> Hey! Does the window variable have the global `fetch()` function on it or not?
 
-and moved back over. And in this case if you look, you'll see two different imports here. The difference is that if you want to, you can actually just import the promise object like normal so you can actually get back to the same way we've been important things. You can import the promise object and if you do it this way, it doesn't actually add a global function. It just the function well because this is a polyfill, we're gonna use the first one. This is the one that actually modifies the global scope and actually adds that global function so that anybody can just use the polyfill. And that's it. So just to make sure we didn't break anything, let's go back to our tablet runs encore. We'll rerun yarn, run encore and Dev Dash Server. Perfect. And we now know that we support a older browsers.
+If it does, it just returns. If it does not, the rest of this code works to define
+and add it. There it is: `self.fetch =`. This is a polyfill in action - kinda cool.
+
+## The Promise Polyfill
+
+Go back to the `fetch` polyfill docs. Ah, it says that we *also* need to use a
+`Promise` polyfill for older browsers. We can *literally* see this inside of the
+`fetch` polyfill: it assumes there is a `Promise` object available.
+
+Let's polyfill it to be safe: click to the library they recommend. Cool: copy the
+name, move over, and:
+
+```terminal
+yarn add promise-polyfill --dev
+```
+
+When it finishes, head back on the docs. Interesting: this shows two different
+import options. You can use the *second* one to *import* a `Promise` object, but
+*without* adding a new global variable. Because we *do* want to guarantee that a
+global `Promise` variable exists, copy the first one. In `layout.js`, paste!
+
+To make sure we didn't break anything, go back to the tab that's running encore
+and restart it:
+
+```terminal-silent
+yarn run encore dev-server
+```
+
+Perfect! We know support older browsers... ahem, IE.

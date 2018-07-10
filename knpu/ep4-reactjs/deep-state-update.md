@@ -1,29 +1,93 @@
-# Deep State Update
+# Updating Deep State Data
 
-Coming soon...
+Oh man, I let a bug crawl into our app. When we delete a rep log, it goes away,
+but, yuck, we get a big error:
 
-There's a little tiny bug in our code when you delete things, I hit delete. It goes away, but actually we get this air down here. Unexpected end of Jason Input, which you might recognize. This is actually coming from our rep log API. When we call response dot Jason. This is the area you get if the response is actually not Jason, and the problem is that our delete endpoint returns no content. So there's actually nothing is no jason to decode. So this is just a minor problem with our setup. We could create two different functions up here, one that decodes the Jason on one that doesn't, but I'm just going to make this code a little bit fancy here so it doesn't explode. If the content is empty, what we can say, his response to that text that gives you the, that returns that were just. That will just return to the text of the response in inside of a promise. So then we need to say that then and then say if there's text, then use Jason Dot parse the text else. You an empty string. So in this case, we are ultimately going to return a promise object whose data is either the parsed jason or an empty string. 
+> Unexpected end of JSON input
 
-So if we go back and refresh it explodes, which is cool. 
+This comes from `rep_log_api.js`. We call `response.json()`... which works *great*
+when the response is *actually* JSON. But, our delete endpoint returns *nothing*.
 
-Return 
+To fix this, we could create two different functions: one that decodes JSON and
+one that doesn't. But, I'll just make our code a bit fancier so it doesn't explode.
 
-response to a text and that then tax equal Arrow text. If there is text jason that parse text else an empty string when we refresh it works and okay, good. Now we can actually delete. Thanks. Okay, so we have this cool system now where we can lift our cats 26 times and we get this temporary saved message. So we might as well do the same thing when we hit delete, we'll add a little success message up here. So this is easy to do. Instead of rep log app down in handled delete rep log, we can just chain off of this and say that. Then pass this a callback it inside. We'll say this data set success message item was Annette lifted. 
+Use `return response.text()`: this returns a Promise where the data is the raw response
+content. Chain `.then` and use an arrow function with a `text` argument. Then,
+if `text`, return `JSON.parse(text)`, else empty quotes.
 
-Cool. 
+Go over, refresh and... delete! Ok, much better.
 
-So move back, try that. And yes, we can actually delete an item. Now with all these details of success messages and loading things, it's all about how fancy you want to get. Technically speaking, we actually set the success message, we actually delete the rep log of row, but then only later when the Ajax call is finished, do we actually set the success message? If you want to have happen in a more synchronized way, we could actually not remove these state until the ags call finishes. It's totally up to you. The problem with this is that now if you reload, it's pretty quick, but after you hit delete, there's a slight pause between when the. When you click in, when the rose deleted, which means we're going to need some sort of a, a indicator that the operation is currently taking place. So here's our plan. I'll add a couple more items to our list really quickly so we have more things to delete. Here's the plan and when I hit delete, I actually want you to change the opacity on that row to really alo be between the time that happens and the ags calls happening. 
+## Success Message on Delete
 
-To do that, we need to go into rep log list because this is actually where we rented the tr. So what if there was a new field on rep log called is deleting such a true or false? Let's pretend like that field already exists because if it did, we can say style equals passed this in array an object and say opacity set to rep log. That is deleting. If it is, we'll set this to point three. Otherwise we'll set this to one. 
+We have this cool system now where we can lift our cat 26 times and see this
+temporary success message. So, we might as well do the same thing for delete. And
+this is easy! Inside of `RepLogApp`, down in `handleDeleteRepLog`, chain off the
+delete: `.then()`, an arrow function, and `this.setSuccessMessage()`: Item was
+Un-lifted.
 
-Okay, 
+Cool! Move back and try it! Success!
 
-so that part of it, this is really easy. The interesting part of this exercise is actually how do we do this? So basically right at the top of handled delete rep log, before we call the age x, we want to update the state of one of our rep logs. So you can almost imagine this dot state dot rep logs. This is actually a little bit tricky because first we need to find the rep log inside of the first. We need to find the rep log and then we actually need to update it, but without mutating the state. Uh, all right, so check this out. Let's do it like this, this thought set state, and because the, because our current state that we're going to set is going to depend on the current state. I'm going to pass this as a callback and instead of here we want to return the new state. So we're going to return an array and object and we know that we want the rep logs property. That's what we're going to update. So the question now is how do we, how can we basically clone the existing rep logs array and all of the objects inside of it? 
+## "Ghosting" the Deleting Row
 
-How can we, how can we set this without changing the existing state? The answer is by using the map function. So previous state, that rep logs that map. This will take a rep log argument and we'll set it to a function. 
+We *could* be satisfied with our loading & success message setup. But... if you
+want... we can get even fancier. Right now, we delete the rep log state immediately,
+but we don't show the success message until *after* the AJAX call finishes. If you
+want that to feel more synchronized, we *could* move the `setState()` call so that
+it fires once the rep log is *actually* deleted.
 
-So rep logs dot the map function will return a new array so it won't modify the existing right inside this, we can say if rep log, that id does not equal the ID that's being deleted. Then just return rep log. So for every other item in the rep logs array, we'll just use the existing object because we're not modifying it for the one object that we need that we need to update. We just need to basically, we need to affectively clone that object in and then change the object on the new data. The way to do that in javascript is with return object that assign past this empty curly braces. Then the field or on the update is deleting true. Then the rep log. So this is a little bit tricky. This is basically an array merge. It will array merge rep log, uh, empty quotes rep log then is deleting true. So this is basically an array merge. It's going to emerge. This is deleting objects onto our rep log and then merge that onto an empty object. The reason we need this first empty object is because it's because it's key to creating a new is because this object here is actually the one that will ultimately be returned. So if we didn't have an argument, um, 
+But, we're *trading* problems. Refresh again. When you click delete, there's a
+slight pause before the user gets *any* feedback. I'll add a few more items to
+the list real quick so we can keep playing with things.
 
-right, 
+Anyways, here's how we could improve this: when the user clicks delete, let's
+immediately change the *opacity* on the row that's being deleted, as a sort of
+"loading" indication.
 
-the rep logs data, the way this works is we start with the first argument, which is the empty object that creates a new object, then it merges rep logs data onto the new object. So the new object is actually the one that's modified, then emerges the third argument, those fields onto that new object. So it's basically a big object merge, but the end result is that it creates a new rep log object without modifying anything. So the encoder is fairly simple, but uh, it's just one of those really tricky. This is about as tricky as it gets because you shouldn't necessarily your state any deeper than this. And it's actually why I wanted to show this. Let's temporarily put a return statement at the bottom because I want to see the state change on our screen. So we'll go back, refresh, and awesome. You can see that update perfectly. So now we can take off the return statement and our feature works.
+Go into `RepLogList`: *this* is where we render the `tr` elements. So, imagine
+if there were a field on each `repLog` called `isDeleting`. If there were, we
+could say `style={}`, create an object, and set `opacity`: if `isDeleting` is
+true, use .3 else 1.
+
+*This* was easy. The interesting part of this problem is *how* we can add that
+new `isDeleting` field. Well, it *looks* simple at first: at the top of
+`handleDeleteRepoLog`, before we call `deleteRepLog()`, we want to set the state
+of *one* of our rep logs to have `isDeleting: true`.
+
+But... hmm... this is tricky. First, we need to find the *one* rep log by its id.
+Then, we need to set this flag, but without *mutating* that object or the array
+that it's inside of! Woh!
+
+Here's the trick: use `this.setState()`, but pass it an arrow function with the
+`prevState` arg. We're doing this because our new state will *depend* on the old
+state. Return the new state we want to set, which is the `repLogs` key.
+
+So, to *not* mutate the state, we basically want to create a *new* array, put all
+the existing rep logs inside of it, and update the *one* rep logs... um... without
+actually updating it. Sheesh.
+
+This is another one of those moments where you can understand why React can be so
+hard! But, the fix is easy, and it's an old friend of our's: map! Use.
+`prevState.repLogs.map()` with a `repLog` argument to the arrow function.
+
+The map function will return a *new* array, so that handles *part* of the problem.
+Inside, if `repLog.id !== id` that's being deleted, just return `repLog`. And finally,
+we need basically "clone" this last rep log and set the flag on the new object.
+The way to do that is with return `Object.assign()` passing it an empty object,
+`repLog`, then the fields to update: `isDeleting: true`.
+
+This is a lot like an `array_merge` in PHP: the 3rd argument is merged on top of
+the second, and then that's merged onto the first. The *key* is that strange first
+argument: the empty object. Thanks to that, we're creating that *new* object,
+and then all the data is merged onto *it*. The `repLog` is *not* modified.
+
+Phew! But... awesome! We've now learned how to *add* to an array, remove from an
+array, and even *change* something inside an array, *all* without mutating it.
+If your state structure is deeper than a simple object inside an array, it's probably
+too deep. In other words, you now know how to handle the most common, tough,
+state-setting situations.
+
+Let's temporarily add a return statement below this so we can *really* see if this
+is working. Ok, move over and refresh! Hit delete: that looks awesome! Our update
+worked perfectly.
+
+Go back and remove the `return`.

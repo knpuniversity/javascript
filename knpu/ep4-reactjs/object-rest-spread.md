@@ -1,23 +1,96 @@
-# Object Rest Spread
+# ...Object Rest Spread
 
-Coming soon...
+When a user submit an invalid form, we get a nice error message... but our cool
+"lifting to the database" message stays! That's confusing! It looks like we're
+*still* trying to save the new rep log. Let's fix that!
 
-Okay, 
+In `RepLogApp`, the state that controls this is called `isSavingNewRepLog`. When
+the AJAX call is successful, we set this back to `false`. We need to *also* set
+this back to false inside the `catch`. And yes, fixing this is as *easy* as just
+copying this key and pasting it below. Sure, this would duplicate that key in two
+places... but, that's *super-minor* duplication: no big deal.
 
-when you felt a forum with an invalid, uh, when somebody that feels service, I validation. Um, it's cool you get the error message, but our cool little lifting to the database message, which is meant to be, stays. This should actually go away. It looks like we're still trying to save the rep log, but no, it's failed. So that needs to go away very simply. In Rep log app, there is a 
+Except... I want to learn a super-fun language feature. To show that, let's fix
+this in a *slightly* fancier way. Above the AJAX call, set `const newState =` an
+object with `savingNewRepLog` set to false.
 
-piece of state called is saving new rep log, which we're currently setting back to false. After we're successful, we need to also set this back to false down here in the catch. And yes, it's as easy to as to just setting it down their shirt. We're duplicating it in two places, but that's no big deal. However, I am going to show you one slightly fancier way because it's going to touch on something else that I want to show you. We'll do instead as above, this will say const new state equals and we'll say is saving new rep log to false. So basically this is some new state that we want to apply in all situations. So effectively want to merge this into whatever is being said here and merge it into whatever is being set down and catch the way that you merge objects is something we've used once before, which is object that that assign. So here we can say return object dot assign and I'll pass that the two keys that we need, which our rep logs and new rep log validation error message. And then here we'll pass it new steak. So the data, a new state when merge into our data and it would ultimately return it. Then we can do the same thing down here in 
+This represents the new state that we want to apply in *all* situations: success
+or failure. In other words, we want to *merge* this state into whatever is being
+set in success and also down in catch.
 
-the catch this, that set state, then object thought sign. And we're going to merge that array with art new state. 
+How can you merge objects in JavaScript? We've seen it once before: `Object.assign()`.
+Check it out: `return Object.assign()`. For the first argument, copy the new state
+and paste. For the second argument, use `newState`.
 
-Cool. 
+`Object.assign()` will merge the data from `newState` *into* the first object and
+return it. It's JavaScript's `array_merge` for objects!
 
-So object to sign is a little bit. Uh, so first let's check if this works. All right. When we refresh and put, validate it in there. Yeah, you can see the messages there, then it goes away. And if we fail validation. Yep. Cool. It shows for just a second, then it disappears. So object assigned is a really, really powerful thing because it's very common a to need to merge a race. It was also used earlier for us to actually merge two arrays without modifying the original ray. Well, the good news it w what would be even better is if we could use. The only problem the object assign is it's just not very. It doesn't look very good. It's a little confusing to look at. We wake whore. If we could, for example, do this return just a normal object, but the top we can say that that that new state, right? This is something we already do all the time for a raise. We can say dot.dot the item in a race and it explodes out and we can use it and it's super great. Well, turns out that doesn't work with objects though, but you can totally make it work. Google for Babel Plugin, transform object, rest, spread. That feature that we were just talking about 
+Repeat this in catch: add `Objet.assign()`, then `newState`.
 
-is any late draft, which means it's likely that it will get accepted as real javascript in a future version, but if you want to use it now you can by installing this plugin. So I'll copy the name of the package who move over and say yarn, add that long. Package name, Dash, dash depth. Now, just like before in future version, this will actually be called Babel slash plugin transform object rest spread. So if you see that new packets in the future, don't worry. It's the same thing. Now, once again, when you work with Babble, you typically, um, configure it where they babble our c file for. In our case, instead of using the c file we're going to use, 
+Let's go make sure this works: refresh, select our bad data and... cool. It shows
+for just a second, then disappears.
 
-we use, we're using encore and it allows us to hook into that process. So I'm gonna copy the name of the plugin that I'll move over Goto my webpack dot config file. And from earlier we already have it configured babble function. We've called an encore, actually passes us the finished babble configuration and then we can modify it if we want to. So here in all cases will say babble, config that plugins that push and then we'll pace that. If you do download the future library with the new name, the name of the plugin is also a different. It's aunt babbles slash it's the name, same name as the library. Alright. With that in place we'll go back, find her tablets running encore. You can see it's super pissed off at us, but when we rerun encore it works. Babble now understands that syntax. Of course peach storm is still unhappy about this. It says he es lint parsing error. So actually we need to also tell he es lint about this, which we can do by going in there under the ecmo features and saying experimental object rests spread. Sure. Now to go back and rep log APP. 
+## Installing & Configuring babel-plugin-transform-object-rest-spread
 
-Okay. 
+Object.assign() is really great. We also used it earlier to merge two objects
+*without* modifying the original object. *That* was *super* important.
 
-Yep. Awesome. It goes away. Sweet. So let's finish this. We can also do the same thing in that catch, which will be, once again, this does set state with a simple array. We can say that I that new state. And then the one other place that we did things before is down on. We're actually deleting the rep log, so we don't need this big object assign thing anymore. We just want to merge is deleting into rep log. We can say return open curly brace. Thought that that rep log is deleting. True. That's it. Love this. So let's move over and just make sure we didn't mess anything up. Yep. Everything looks awesome.
+The only problem with `Object.assign()` is that it's... kinda confusing to look
+at, *especially* if you need to use it to avoid mutation.
+
+Ok, idea time: what if we could this: remove the `Object.assign()`, return a normal
+object, but then, add `...newState`.
+
+That would be cool, right? I mean, we *already* do this for arrays! But... Webpack
+explodes: the "spread" syntax does *not* work for objects.
+
+Or does it?! Google for "babel plugin transform object rest spread" and find the
+Babel documentation page. The feature we're "dreaming" about is called
+"object rest spread". It is *not* an official ECMAScript feature. But, it's currently
+a proposed, "draft" feature that's in a late stage. There's no promises, but that
+means it will *likely* become a real in a future ECMAScript version.
+
+But, because the JS world is a bit nuts, you don't *need* to wait! We can *teach*
+Babel how to understand this syntax. Copy the package name, find your terminal
+and run:
+
+```terminal
+yarn add babel-plugin-transform-object-rest-spread --dev
+```
+
+Oh, and as I mentioned before, most of these Babel plugins will have a slightly
+new name in the future: `@babel/plugin-transform-object-rest-spread`. But, it's
+really the same library.
+
+When you work with Babel, you typically configure it with a `.babelrc` file. But,
+Encore does this for us! Open `webpack.config.js`: the `configureBabelFunction()`
+allows us to *extend* its configuration. Add `babelConfig.plugins.push()` and
+paste the name.
+
+In the future, if you download the new `@babel/plugin-transform-object-rest-spread`
+library, the plugin name will be the full library name, starting with the `@babel`
+part. Just follow the docs.
+
+Head back to the tab that's running Encore. Yep, it's *super* angry. Stop and re-run
+this command:
+
+```terminal-silent
+yarn run encore dev-server
+```
+And... it works! That's aesome! Babel now understands this syntax.
+
+But... PhpStorm is still angry: ESLine parsing error. No problem: we just need to
+tell ESLint that this syntax is ok. Open `.eslintrc.js`. Under `ecmaFeatures`, add
+`experimentalObjectRestSpread` to true.
+
+Deep breath: go back to RepLogApp. And... sweet! The error is gone!
+
+## Using the Object Rest Spread
+
+Let's finish this! Go down to `catch`, remove `Object.assign()`, remove the second
+argument and add `...newState`.
+
+And one more time: scroll down to `handleDeleteRepLog()`. We don't need this weird
+code anymore! Just return a new object with `...repLog` then `isDeleting: true`.
+
+I *love* that. And even better, when we refresh, it's not broken! We rock!

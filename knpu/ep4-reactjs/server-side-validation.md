@@ -1,39 +1,90 @@
-# Server Side Validation
+# Server Validation & fetch Failing
 
-Coming soon...
+Earlier, we talked about the three types of validation. First, HTML5 validation
+with things like the `required` attribute. It's dead-simple to setup, but it's
+limited. Second, custom client-side validation, which we added because we wanted
+to make sure the user entered a *positive* quantity. And third, *of course*, the
+*one* type of validation you *must* have: server-side validation.
 
-Earlier we talked about the three types of validation. You have html, five 
+## Our Server Side Validation
 
-html, five validation where with things like the required attribute, which is just really easy to set up. Then if you want to you can add some custom client side validation, which we did by validating it's negative numbers, but the one type of validation that you have to have of course is server side validation and our application already does have service side validation. For example, if you look at our rep log entity in it, we have some basic things that make sure that the reps is not blank and then it's a positive number and that the item is not blank, so because it's quite possible and because there must be service. I validation on the front end unless we completely made it impossible other than a hacker to hit our service side validation on the front end, we're going to need to be able to read those validation errors from the server and respond to that. Right now, the way that validation has done it in our application, if you look in the rep log controller, 
+For example, look at the `RepLog` entity. We already have a few important constraints:
+the `reps` cannot be blank and needs to be a positive number, and the `item` also
+cannot be blank.
 
-you can see we're actually using the form system, but that's not important. The point is we're ultimately getting back a rep log object and then we're running that through the validation system. The form is doing that for us, but if you were using the d serializer, it will be the same process. You would get a rep log, you de serialize to a rep log object, you pass that to the validation system and ultimately you would get back in array of errors. And this application I added a little shortcut method here called get errors from form which lives in the base controller in it basically goes over, iterates over the airs in a recursive way and creates a big array of all the heirs or the key is the name as the name of the field. And then it has an array of areas below that. So that's basically what's going to be what's going to be returned from our API because our, um, 
+Thanks to HTML5 validation & client-side validation, we are *already* preventing
+these bad values from *even* being submitted to the server. And, yea, if some
+annoying hacker wants to send bad values to the API, sure, *then* our server-side
+validation is there to tell them to bugger off.
 
-okay. 
+But, a lot of the time, I either skip client-side validation entirely, or just add
+it for a *few* things, but not *everything*. And, in that case, if API request
+fails because of failed validation, our React app needs to read those errors from
+the server and tell the user.
 
-One other one other type of validation is actually on the form itself and Rep log type. The item is a choice type, which means that any choices are set to this rep log, get things you can lift choices, which if we do a little digging, you know I'm not going to show this. One other type of validation that is built into our form is actually the items in this dropdown. If, if a, a hacker comes in here, for example and adds an item that doesn't exist, that will fail on the server. So actually for testing purposes, I want to make that very, very easy. So go into rep log creator and near the top it's actually add in a new fake item. The key of invalid item and text of dark matter. The server will not like this value. I have to check it out. Go over select dark matter 10, hit enter and things totally explode. All right, two things here. First, you can see the 400 bad request, so our validation is working on the service side and you can see the message coming back, but also in react eventually. It actually explodes on something about each child in an array or iterate a chevy unique key prop, and that's coming from rep log list. This is a bit confusing at first, 
+Check out `RepLogController`. We're using the form system, but that's no important.
+Nope, the *really* important thing is that we, somehow, get a `RepLog` object that's
+populated with data, and run it through the validation system. The form does this
+for us. But if you were manually setting up the object or using the serializer to
+deserialize, you could pass the object directly to the validation system to get
+back a collection of errors.
 
-but there's actually a very simple explanation. Go into rep log API. The simple explanation is that fetch 
+In this application, I added a shortcut method called `getErrorsFromForm`, which
+lives in `BaseController`. This recursively loops over my errors to create a big
+array of errors, where the key is the name of the field. This is what's returned
+from our API.
 
-hmm. 
+When you use the form system, there is *one* other way to add validation, which
+is often forgotten: on the form itself: `RepLogType`. The `ChoiceType` is normally
+used to render a `select` element where `choices` is where you define the valid
+options. When used in an API, if we submit a valid that is *not* in choices, the
+form will fail validation.
 
-Unlike Jay, if you use jquery Ajax function, if you get a non 200 status code, Jacory throws an error that says your age x call failed, but fetch never does that. Even if you get a 400 or 500 error back fetch sees everything as success and it calls your dot Ben Function, which meant our application actually parsed that Jason thought it was a rep log in, try to add it to our state, so one of the things that I do is customized my, my usage so that it does throw an exception. If I have a 400 or 500 status code, I'm going to paste in a new function called check status. If we call this in the status quo is not 200 or $300, then it's actually going to create an error object. Put the response on the air and throw an error. By the way, you could change this to 300 level status code as well. I'm 300 level status codes in general means success. It depends on what you want to do. Then they called us up and fetch Jason. Just say that. Then 
+## Sending a Bad "Item"
 
-check status and that's it. 
+For testing purposes, let's purposely make this easy to do. In `RepLogCreator`,
+find the `itemOptions` array: these items match what's configured inside the form.
+Add a fake one: `invalid_item` with text `Dark Matter`.
 
-Now I've moved back and refresh. We'll do the same thing. Will select an item, put a negative number. Well, call me, refresh. She was dark matter. Put it in a number and awesome. This time you can see we actually get a on caught in promise air. Bad request at check status. So this is giving us a better error. So ultimately our goal is that in rep log APP, inside of handle ad rep log. If this create rep log fails, we want to grab those validation error messages and put them on the screen somehow. Now that our promise can fail, we can do this by adding a dot. Catch. This case will be past the air and just to make sure there's no surprises. Will console that log error, that response. Go back, refresh, tried dark matter again, and awesome. Now we are catching that response and we are printing out the response object, which is great because now we can decode it. So kind of like we did before, now we can say error dot response to that Jason, which returns a promise object that then, and we'll say, errors that equal Arrow and repass a function and here when they counseled at log errors data. So let's see what that data inside of the, uh, response actually looks like. 
+The server will *not* like this value. Let's try it anyways! Move over, select
+"Dark Matter", 10 and... ah! Run! Woh!
 
-Same thing, we'll check dark matter 10 times and okay, perfect. There isn't errors key. And then below that we have item which is the actually the name of our drop down field. So this is awesome. So how do we print this onto the screen? Well, that depends on exactly how fancy you want to get. You could actually match each individual key on the air to each individual field and render it next to that. We're not going to get that fancy. What I want to do is actually just grab or you could actually get all of the error messages and print them in a list of analyst somewhere. We're basically going to do that, but not even that fancy. We're just going to get the first error message that comes back and print that to the screen. To do that, we need new state instead of rep log app to keep track of the current rep log validation error message, so up in our estate, that's initialize a new one called new rep log validation error message. 
+Ok, two things. First, you can see the request failed: 400 bad request. Great!
+Our server-side validation is working and you can see the message in the response.
+But, second, React exploded in a crazy way! Something aobut how each child in an
+array should have a unique "key" prop from `RepLogList`.
 
-Yeah, 
+We know that error... but why is it suddenly happening?
 
-set to empty quotes. Unlike our client side validation, which we could actually store a state and log creator. This needs to be stored up on rep log app because this is something. This is a piece of information that only rep log app knows about. This is the era that it got back from the API, so it's something that it needs to handle. It's actually business logic. Now. I'll copy that name. Then down below in handle ad rep log. First of all, if we're successful, we're going to make sure that that's set to empty quotes. So if you have a validation error message, then you fix it. We want to set it back to normal. Then down catch, we'll say constant errors equals errors. Data that errors because everything was on an air is key. And then to get the first our item off of the array, I'll say constant first error equals and this and this is a little ugly errors, left square bracket, object that keys errors, and then get the first key and use that to get the item off of that. That's because areas is not in array. Errors is actually keyed with the individual, 
+## Fetch is Afraid of Failure
 
-uh, 
+There's *one* simple explanation and it's hiding in `rep_log_api.js`. If you used
+jQuery's AJAX function, you might remember that if the server returns an error
+status code, a failure callback is executed instead of your `.then()`, success
+callbacks. That makes sense: the request failed!
 
-names. And finally we'll say this, set state and will set new rep log validation error message to the first error. Perfect. So now that we are managing this state inside of this class, the state is automatically passed down into our child component rep logs, but we actually need to use it in rep log creator because my goal is to print the validation message right above the form. So that means we're going to need to use it right down here instead of render. So because these state, allstate is passive rep logs at the bottom, let's set that prop type to a string. 
+But... `fetch()` does *not* do this. *Even* if the server sends back a 400 or 500
+error... fetch thinks:
 
-Then 
+> We did it! We made a request! Yaaay! Let's execute the `.then()` success callbacks!
 
-like always we will destructure it and then down below one of you run to the form we're going to pass it in. But I'm going to change the name of the prop here to just validation error message equals that because as a subtle reason, if you about it, there's nothing, even though it's called reblog creator, there's nothing about the form that actually needs to be used only for creating rep logs. We can reuse that component later for updating rep logs. So from the perspective of that component makes it a little bit more sense just to call the, um, the proper validation error message. So now this is an rep blog creator or without at the bottom, we'll add the validation error message. Prop two are required string, then we'll go up and look these structure, this validation error message. Then inside here, right in the forum, we will say validation, error, message. And, and so if that's true, we will print out a div with alert, alert dash danger, 
+Thanks to that, our app parsed the JSON, thought it contained a rep log, tried to
+add it to state, and things went bananas.
 
-and then we'll print validation error message. So we're just printing out the first error message, but you can see how very easily instead you could store all of the error messages in state and then you could loop over them here. That's stuff that we've done very easily in the past. All right, so let's try it. Flip over. Let's make sure everything is refreshed. Select dark matter 10. And yes we got it. Except that since we're not printing out which field this is attached to, we're not printing it out right next to it. The error message is a little bit unclear. So to fix that, I'm actually going to change the air message on the server. You actually go to forum type Rep log type. This error message is actually coming from the form itself, not actually the normal validation rules. So of customize it, you can say invalid message to please lift something that is understood by our scientists. So I'll give it an error message that fully explains what is wrong with the form. Alright, refresh that dark matter and got it. So next, let's fix the fact that when you do get an error message, it still looks like we're stuck in the saving mode.
+## Making fetch Fail
+
+This behavior isn't great. So, let's fix it: I'll paste in a new function called
+`checkStatus()`. If we call this function and the status code is not 200 or 300,
+it creates an `Error` object, puts the response on it, and *throws* it. By the way,
+you could change this logic to *also* throw an error for 300-level errors, that's
+actually how jQuery works.
+
+To use this, back up at `fetchJson()`, add this handler: `.then(checkStatus)`.
+
+Let's try it! Refresh, select our bad item, a number and... yes! This is a much
+more obvious message:
+ 
+> Uncaught (in promise) Error: Bad Request at `checkStatus`
+
+Now that `fetch` is behaving better, let's *use* this error response to add the
+error to our app.

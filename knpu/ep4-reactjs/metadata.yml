@@ -31,9 +31,13 @@ chapters:
     - delete-api
     - create-api
     - polyfills
+    - loading-row-style
     - success-messages
     - deep-state-update
     - server-side-validation
+    - displaying-server-errors
     - object-rest-spread
     - passing-server-data
+    - server-pass-props
     - reusable-component
+    - csrf-security

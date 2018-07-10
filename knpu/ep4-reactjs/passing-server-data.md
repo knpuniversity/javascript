@@ -1,59 +1,102 @@
-# Passing Server Data
+# Passing Data from your Server to React
 
-Coming soon...
+Look inside `RepLogCreator`. The items in the drop-down are hardcoded. But, in
+reality, we can't just put whatever we want here: there is a specific set of valid
+options stored in our backend code.
 
-If you look in rep log creator, as we know the actual items that end up inside of our dropdown are actually hard coded, but there's a specific set of valid options in our server is actually what knows these options. Can we prove this by? Because when we added this last inbound item option, when we try to send that to the server, the server hits us with a validation error message. So the question is should we instead, instead of hard coding these options, should we load them from the server? And the answer is maybe honestly just a tiny bit of hard coding here to master your server is not that big of a deal. So in real life I might just feel comfortable keeping this unless I know that these values are going to change with some frequency, so don't worry about having some hard coded stuff in your javascript are. The advantage of that is simplicity, but if we did want to load this from the server, I want to show you two ways to do that. The first way is going to be to move the item options to state in rep log APP, 
+We *already* know this is true because the last option is totally fake! When we
+send that to the server, it hits us with a validation error.
 
-so quite literally, let's copy our item options here with our rep log creator that I'm rep log APP. On Top, I will initialize a new item options state, 
+So, here is the question: instead of hardcoding these options, should we load them
+dynamically from the server?
 
-sat to that set to that ray 
+The answer is... maybe? If these options won't ever change or change often, it's
+*really* not that big of a deal. The advantage is... simplicity!
 
-because this estate, this is automatically passed down as a prop to rep logs so we can meet. They're going to rep logs and add item options as a prop type that array that is required and then the structure that along with the many other options item options, and then we'll pass that down into our rep log, the Creator as item options equals item options. Then I'll copy the prop type because we'll need to do the same thing in rep blog creator at the bottom, defined that pop type. Go to the top of my runner function, will restructure this out of our props item options, and then that's it. Then below we just need to do our map function on the local variable. Just like that. Look, a little bit of luck. We now have our items stored as state trains weekend. You change them, it shows up. Cool, so that small step makes us very powerful because the two ways to load this data from the server initially, the first way to do it is to do it the same way that we let our rep logs, which means changes to an empty array and then inside component that amount just make an Ajax call. For those items, we would need to create an Api upon Api end point that returns those, but that would work just fine. The second option 
+But, if they *will* change often, or if having an invalid one on accident would
+cause a *hugely* critical or embarrassing bug, then yea, you *should* load them
+dynamically... so that you can sleep soundly at night.
 
-is to not is to actually dump the dump the item options immediately inside of our html as a javascript variable and then read that from our react app. The advantage to this is that you can see your application with some server, some data from your server, and that data is available instantly without needing to make any Ajax call. So check this out. I'm going to copy of my options again and I'm actually going to go up into my entry point rep log. React. This is not going to be the final resting place for these options, but for now I'm just going to create a new item options variable there and paste them in. What I'm doing here is moving them out of my react application. Then I'm going to pass them in as a new prop item. Options equals item options. Thanks to this, our rep log app is now going to receive this new item options prop, so different options prop. I'm going to remove the state entirely and notice originally I said it as state because it was going to need to change the Ajax even though it wasn't gonna change after it's still technically state. That's a note for earlier down at the bottom and prop types will set item options to prop types that array and you could make that required. I'll talk about that in a second. 
+## Refactoring Data to the Top Level Component
 
-So we deleted the item options state and added an item options prop. And the cool thing is since we're passing all of our prop in all of our state, the rest of the application doesn't care about this. It just works the same prop as being passed down to our children components, so this is pretty cool. Now, by the way, I sometimes I deleted the state, but if our item options really did need to be state, we could still use this strategy and we could use this item options prop as the initial value of our state so that here's what it looks like is you still do have an item options state up here and it's set to this dot props dot item options, so that's just used to populate the initial state and if you do have a state and a proper the same name, that's fine. You'll notice down and render the way that restructuring we're doing our proper spread is that any. If you do have duplicate state of our prop, the state will override the prep because it comes after. So it was small item. Now I noticed that below I made the item options as an array, but I didn't make it required in a real application. I wouldn't make it required, but if you knew that you were using this component and sometimes the item options, we might not be passed in, well that's a problem 
+Whenever your JavaScript app needs server data, there are two options. But, they
+both start the same way: by moving our `itemOptions` up into `RepLogApp`, which
+is the only component that's even *aware* a server exists!
 
-because that means that our code would fail. We'll be undefined in that code fail and this was passed down as a prop, so if you do want it to be optional, but you want to give the default value, you can actually do that with rep log app. That default props equals, and here you can see item options, Oscar Bragan racket, so if you do really ever have truly optional props, it's a good idea to give them a default value. Now let's talk, but we need to finish this because I still have my item options. Hardcoded in Rep log react, and that means they're still not being loaded from the server. So we're going to go one step further here. I'm going to copy these item options once again. Then I'm going to go into the template that renders this page, which is 
+Copy the `itemOptions` and then open `RepLogApp`. On top, initialize a new
+`itemOptions` state set to that array.
 
-templates, 
+Because all state is automatically passed as props to `RepLogs`, go there and add
+the new prop type: `itemOptions` as an array that is required.
 
-lift index, dot html dot twig. Down at the bottom you can see where my script tags are loaded before those on make a new script tag. 
+Above, destructure that, then, below, pass it down to `RepLogCreator` as
+`itemOptions={itemptions}`.
 
-Yeah, 
+Copy the prop type, then do the same in `RepLogCreator`: define the prop type
+at the bottom, then go to the top of the function to destructure out `itemOptions`.
 
-and create a new variable window, new global variables, so I'll set it on window window. That rep log APP prompts equals 
+Below, use the local `itemOptions` variable for the `map` function.
 
-yeah, 
+Cool! When we refresh... cool! The options aren't dynamic yet, but they *are*
+stored as state. If you change a value... yep! it shows up.
 
-it inside there. I'll add an item options key set to our item options. There's. Notice I'm using uppercase letters there. No, there's no reason for that. That's just kind of a naming in this case. Thanks to this, we can go into rep log, react to lead the old constant. 
+## Two Ways to Load Server Data
 
-Okay. 
+Now that the data lives in our top-level component, let's talk about the *two*
+ways we can load this dynamically from the server. Actually, we already know the
+first way - we did it with `repLogs`! We could set `itemOptions` to an empty
+array, then make an AJAX call from inside `componentDidMount()`. Of course, we
+would *also* need to create an API endpoint, but that's no big deal.
 
-Down below we can say window. That rep log APP prompts that item. Options in that will work. Now, one question you might have is why didn't we just basically copy this code and use it down in rep log creator instead of passing all the props down all the levels. That's a bit of a best practice. I want all of my react components to not use any global window objects. The only place I want you to feel safe using global window objects is inside of your entry point. It should grab all of the things from the global window object and pass them down into your react components. Now notice that's the way we've written it right now. We could in theory actually add other things in here. Like for example, we could say what if maybe we want to. We want to be able to control any of the props that are being passed into our components. So in Rep log react, we do have with heart thing, so of course we could do window that rep log APP stop heart above their butts. We can do something cooler, we can take advantage of our object destructuring and just say dot.dot window. That rep log APP props. Suddenly all the keys on that will be passed in as props. 
+Or, you could use the second option: render a global variable inside Twig and read
+it in JavaScript. The advantage is that *this* data is available immediately: you
+can populate your app with some initial data, without waiting for the AJAX call.
 
-And the cool thing is if we set, this should show hard to false. This is pretty interesting because we're now passing a prep call with heart equals false. But then thanks to this prop here, we're also, we're passing it again as true. The way that prompts work is the one that comes later always wins. So we do see our heart. So this is a cool way of rendering a component with your default prompts that you want to pass in, but then you can actually grab them from somewhere else and they might override it. All right. Finally, now that we have our item options inside of our template, we can make them truly dynamic from the server. 
+## Passing the Options as Props
 
-Yeah, 
+Copy the options again and go into the *entry* file: `rep_log_react.js`. This will
+*not* be the final home for these options - but it will get us one step closer.
+Create a new `itemOptions` variable and paste! *Now*, pass these as a new prop:
+`itemOptions={itemOptions}`.
 
-if you look at our form, so source form type rep, log type, you can see the choices come from a another method called rep log. Get things you can live choices. So I've already created a central method that holds, uh, those items in some way. So I'm actually going to copy this and let's go into the controller that renders this page, which is source controller, lift controller. It's the index action here. Let's do this. Let's say, let's dump that to see what it looks like. 
+Thanks to this, `RepLogApp` will now *receive* a new `itemOptions` prop. Remove
+the state *entirely*.
 
-And we'll say die. 
+At the bottom, set this prop type: `itemOptions` is an array, and you *could*
+make it required - I'll talk more about that in a minute.
 
-So if you move over and refresh. Ah, interesting. So there's two things going on here. First of all, the value that we want. If you look, look at this and compare it to the structure that we want. We want an ID set, the cat or fat cat, you can see the value over here and then we need a text key. My application is actually using the transit or component, so what we have over here is actually the text, but we need to run it through the translator. These details aren't important to. The big picture is in my application. I do have the choices and now I need to transform them into the format that is needed by my react application. To do that, go back into the controller. I'm actually going to paste in some code here. This code uses the translator, so actually to get the translator, I'm gonna. Go Up and add a translator interface type and translator. I have a couple of other unused arguments, but that's okay and you can see this actually is aiming to create the same structure that we have down here with our props. We have an item options key. We loop over them. We said the idea of the text and we send them to the translator, so now when we refresh, 
+Oh, and this is cool! We deleted the `itemOptions` state but *added* an `itemOptions`
+prop. And because we're passing *all* props & state to `RepLogs`, it is *still*
+receiving an `itemOptions` prop. In other words, this just works.
 
-the dumped code does look like we need it to. Now we are in business, in fact, we can even take our with heart key here. Now let's add with heart truth because we liked the heart with 
+Side note: I *originally* set `itemOptions` to state because this is *needed* if
+you wanted to make an AJAX call to populate them: they would be empty at first,
+then *change* a moment later when the request finished. But really, `itemOptions`
+don't ever need to change. So once we passed them as props, we could remove the
+state.
 
-heart 
+But, if the item options really *did* need to be state - if this was something
+that changed throughout the life of our app - we could *still* use this strategy.
+We could use the `itemOptions` prop to set the *initial* value of the state.
+This literally means that you *would* still have an `itemOptions` state, and it
+would be initialized to `this.props.itemOptions`.
 
-equals true. I'll get rid of my statements and we'll pass them the new variable 
+I might even call the prop `initialItemOptions` for clarity... though if you *do*
+have a state and prop with the same name, that's fine. If you look down in `render()`,
+the state would override the prop, because the `...state` comes second.
 
-called 
+## Setting Initial Props
 
-Rep log. App. Props set to that same rep log app prompts property, so now that we have, as in the perfect format, 
+Anyways, down in `propTypes`, I did *not* make `itemOptions` a *required* prop.
+In a real application, I probably would: I don't want the select to *ever* be
+empty. But sometimes, you *will* create a component where you want a prop to be
+truly optional. And in those cases, you need to be careful: if we didn't pass the
+`itemOptions` prop, our code would explode! `itemOptions` would be undefined instead
+of an array... which would be a problem when `RepLogCreator` calls `.map` on it.
 
-we can go back into a template and say window dot rep log app prompts equals curly curly rep log app prompts, pipe Jason encode pipe raw. That will literally print it out as a jason structure that can be read by Java script. This is a great way to pass in dynamic values into your applications and those dynamic values can even be used at, can just be red or they can be used as the initial state and it works perfectly. So guys, our APP, it's basically working there. I think it's time that we actually delete our old code and put this into the correct spot. The celebrate. So first I'm gonna. Delete this entire old components directory. That was all code used by the old APP that I'm going to delete the old entry point for epilogue that js and instead of index dot html dot twig, we can remove a bunch of old markup. This is all old stuff all the way down here. And now I'll put the list up right into the same app as a leader board. Uh, we can also delete the other templates underscore form, dot html dot twig, which was just used by that markup. And at the bottom here we can remove the old script tag. Wow. 
+To solve this, you can give any prop a default value. It's super easy: add
+`RepLogApp.defaultProps =` an object with `itemOptions` set to an empty array.
 
-And in our webpack file, I'm going to remove the old entry. So after all of that, webpack is going to be angry because it's missing that entry file. So I'll restart webpack. 
-
-Yeah, perfect. It builds, go back, refresh and it's alive. It works perfectly, except there's one small little weird thing which is that the leaderboard jumps over there before this is loaded. And actually there's a related weird thing about that and that is that if you look inside of our rep logs component. So this is our main, our main presentation on component that gives us all the markup. It has a call md seven on it. Now it's not wrong to put a bootstrap layout classes instead of react, but it is a little bit weird that even if we use this in different places on our site, it would always start with this call mb seven. It makes us a little bit more portable. We can actually remove that and instead in index dot html dot twig, we'll add the class there, will say, look, let's put the columns markup inside of here. You can see the column b seven and a call md five, and then our react to apple does fit inside of that. There's also fixes our problem of it jumping around. Sweet.
+Ok: we have *removed* the hardcoded `itemOptions` from our React app entirely.
+But... we're not done: they're still hardcoded in `rep_log_react.js`. We need to
+fetch this value dynamically from the server. Let's do that next!
