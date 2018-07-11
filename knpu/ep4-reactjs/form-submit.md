@@ -75,7 +75,7 @@ inside?
 Actually... no! It makes no sense for `handleNewItemSubmit()` to suddenly be aware
 of a specific HTML structure that's rendered by its child. In fact, *all* `RepLogApp`
 should care about is that, when - *somehow* - a new rep log is created in the app,
-its `onNewItemSubmit()` function is called so that it can update the `repLogs` state.
+its `handleNewItemSubmit()` function is called so that it can update the `repLogs` state.
 If it's created with a form, or with some random fields during a 10-step process
 or just with black magic... `RepLogApp` should not care!
 
