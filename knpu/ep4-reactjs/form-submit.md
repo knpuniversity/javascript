@@ -102,7 +102,7 @@ new rep log's raw data. For now, hardcode an item name - "Big fat cat" - but cop
 the number of true rep logs and paste.
 
 Back in `RepLogApp`, clear out `handleNewItemSubmit` and give it two fresh args:
-`itemName` and `repCount`. Log a todo below: we will eventually use this to update
+`itemName` and `reps`. Log a todo below: we will eventually use this to update
 the state. And log those values so we can check things!
 
 I love it! `RepLogApp` still has a callback, but it's now unaware of the form. It
