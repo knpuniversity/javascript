@@ -68,11 +68,11 @@ But, before we go further, I need to ask an important philosophical question:
 > If your shirt isn't tucked into your pants, are your pants tucked into your shirt?
 
 Hmm. Thought provoking. And also: if our smart component - `RepLogApp` - should not
-be responsible for rendering *any* HTML, should its `onNewItemSubmit()` method
+be responsible for rendering *any* HTML, should its `handleNewItemSubmit()` method
 be aware that there is an HTML form and a field with a `name="reps"` attribute
 inside?
 
-Actually... no! It makes no sense for `onNewItemSubmit()` to suddenly be aware
+Actually... no! It makes no sense for `handleNewItemSubmit()` to suddenly be aware
 of a specific HTML structure that's rendered by its child. In fact, *all* `RepLogApp`
 should care about is that, when - *somehow* - a new rep log is created in the app,
 its `onNewItemSubmit()` function is called so that it can update the `repLogs` state.
