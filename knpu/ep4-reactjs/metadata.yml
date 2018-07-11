@@ -40,4 +40,5 @@ chapters:
     - passing-server-data
     - server-pass-props
     - reusable-component
-    - csrf-security
+    - csrf-protection
+    - csrf-protection2
