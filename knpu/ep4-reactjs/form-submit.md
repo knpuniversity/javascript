@@ -42,7 +42,7 @@ be the element that you attached the listener to.
 ## Reading the Form Data
 
 Next question! How can we read the values from our fields? Look at the form in
-`RepLogs`: there's the select element and... the textarea. Check it out: it has a
+`RepLogs`: there's the select element and... the text area. Check it out: it has a
 *name* attribute: `reps`. We can use that and normal, boring JavaScript to find that
 field and get its value.
 
@@ -56,7 +56,7 @@ boring HTML form sitting on the page that we can interact with.
 
 In `RepLogApp`, it's time to flex our native JavaScript muscles! To read the
 `reps` textarea, use `event.target` - that's the form - `.elements.namedItem('reps')`.
-This will give us the `textarea` element. Reads its value with `.value`.
+This will give us the `text` element. Reads its value with `.value`.
 
 Let's go try it! Move over, refresh... select "My Laptop" and lift it 50 times.
 Yes! There's the 50! Victory!
