@@ -38,8 +38,9 @@ I like this because it *forces* you to ask yourself:
 API authentication is a big topic. So we're going to skip it! I'm kidding: it's
 too important.
 
-One way or another, *every* API request will have *some* sort of authentication
-data attached to it - maybe a session cookie or an API token set on a header.
+One way or another, *every* API request that needs authentication will have *some*
+sort of authentication data attached to it - maybe a session cookie or an API token
+set on a header.
 
 So... what type of authentication *should* you use for your API? Honestly, if you're
 building an API that will be consumed by your own JavaScript front-end, using session
@@ -102,7 +103,7 @@ yes, yes! We're showing the *same* data as our original app!
 Back to the code! Until this moment, `render()` was the only "special", React-specific,
 method in our class. But there are a *few* other special methods called "lifecycle"
 methods. The `componentDidMount()` method is one of those: if this exists, React
-calls it right *after* our component is rendered to the DOM. And *this* is best
+calls it right *after* our component is rendered to the DOM. And *this* is the best
 place to make any AJAX requests needed to populate your initial state.
 
 Actually, we *could* have left this code in the `constructor()`. Because we're

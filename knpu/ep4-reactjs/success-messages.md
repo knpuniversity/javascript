@@ -4,24 +4,25 @@ That success message is cool... but it should probably disappear after a few sec
 No problem! We can use the native `setTimeout()` function to change the state *back*
 to empty after a few seconds.
 
-Go back to `RepLogApp`. Let's refactor things a bit first: create a new method
-called `setSuccessMessage` with a message argument. Inside, set the state.
+Go back to `RepLogApp`. Let's refactor things first: create a new method called
+`setSuccessMessage` with a message argument. Inside, set the state.
 
 We're making this change so that we can re-use our cool success message feature
-easily in multiple places. Above, instead of setting the `successMessage` in the
+in the future. Above, instead of setting the `successMessage` in the
 object, use `this.setSuccessMessage()` and paste the text there.
 
 ## Watch out for Multiple Re-Renders
 
-But! There is a downside to this approach! *Every* time you change the state, React
-re-renders out component. Thanks to this change, it's going to re-render once for
-this state and then *again* right after. That is *probably* not something you need
-to worry about. But, as your applications grow bigger and bigger and bigger, you
-*should* be aware when you're triggering your app to re-render. This is *especially*
+But! There is a downside to what we just did! *Every* time you change the state,
+React re-renders our component. Thanks to this change, it's going to re-render once
+for this state and then *again* right after. That is *probably* not something you
+need to worry about. But, as your applications grow bigger and bigger and bigger,
+you *should* be aware when you're triggering your app to re-render. This is *especially*
 important because, when a component like `RepLogApp` re-renders, *all* of its children
 are *also* re-rendered, even if the props being passed to them don't change. And
 yes, there *are* ways to optimize this. But, for now, just be aware that re-rendering
-can be costly for performance. Then later, there *are* ways to optimize.
+requires CPU. If you re-render a big app too often, it could slow down. But, there
+*are* ways to optimize.
 
 ## Clearing the Message with setTimeout()
 
@@ -41,11 +42,11 @@ this better.
 
 Basically, *before* we call `setTimeout`, we want to make sure to *clear* any previous
 timeout that may be waiting to fire. The `setTimeout()` function returns an integer,
-which we can use to clear it. to keep track of that value, in the constructor,
+which we can use to clear it. To keep track of that value, in the constructor,
 initialize a new property: `this.successMessageTimeoutHandler = 0`.
 
 This has *nothing* to do with React: we're just taking advantage of our object to
-store some state. Oh, and the value 0 is just a "null" value in disguise: if we
+store some data. Oh, and the value 0 is just a "null" value in disguise: if we
 pass this to `clearTimeout()`, nothing will happen.
 
 Back down in `setSuccessMessage`, before `setTimeout`, add
@@ -64,8 +65,8 @@ tiny problem... and *this* time, it's special to React.
 Right now, `RepLogApp` will *always* be rendered on the page. But, that's not true
 of React components in general. For example, we could choose to *only* render the
 `RepLogCreator` component after clicking a button. Or, if you're using React Router
-so that your user can navigate to different "pages", then even `RepLogApp` would
-be rendered and unrendered as the user navigates.
+so that users can navigate to different "pages", then even `RepLogApp` would be
+rendered and unrendered as the user navigates.
 
 Because of this, *if* your component is removed form the page, you need to ask
 yourself:

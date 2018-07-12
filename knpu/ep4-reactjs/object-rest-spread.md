@@ -1,7 +1,7 @@
 # ...Object Rest Spread
 
 When a user submit an invalid form, we get a nice error message... but our cool
-"lifting to the database" message stays! That's confusing! It looks like we're
+"lifting to the database" message stays! Totally confusing! It looks like we're
 *still* trying to save the new rep log. Let's fix that!
 
 In `RepLogApp`, the state that controls this is called `isSavingNewRepLog`. When
@@ -10,7 +10,7 @@ this back to false inside the `catch`. And yes, fixing this is as *easy* as just
 copying this key and pasting it below. Sure, this would duplicate that key in two
 places... but, that's *super-minor* duplication: no big deal.
 
-Except... I want to learn a super-fun language feature. To show that, let's fix
+Except... I want to learn a super-fun new language feature. To show that, let's fix
 this in a *slightly* fancier way. Above the AJAX call, set `const newState =` an
 object with `savingNewRepLog` set to false.
 
@@ -18,14 +18,14 @@ This represents the new state that we want to apply in *all* situations: success
 or failure. In other words, we want to *merge* this state into whatever is being
 set in success and also down in catch.
 
-How can you merge objects in JavaScript? We've seen it once before: `Object.assign()`.
+How can you merge objects in JavaScript? We've seen it before: `Object.assign()`.
 Check it out: `return Object.assign()`. For the first argument, copy the new state
 and paste. For the second argument, use `newState`.
 
 `Object.assign()` will merge the data from `newState` *into* the first object and
-return it. It's JavaScript's `array_merge` for objects!
+return it. Perfect!
 
-Repeat this in catch: add `Objet.assign()`, then `newState`.
+Repeat this in catch: add `Object.assign()`, then `newState`.
 
 Let's go make sure this works: refresh, select our bad data and... cool. It shows
 for just a second, then disappears.
@@ -38,7 +38,7 @@ Object.assign() is really great. We also used it earlier to merge two objects
 The only problem with `Object.assign()` is that it's... kinda confusing to look
 at, *especially* if you need to use it to avoid mutation.
 
-Ok, idea time: what if we could this: remove the `Object.assign()`, return a normal
+Ok, idea time: what if we could do this: remove the `Object.assign()`, return a normal
 object, but then, add `...newState`.
 
 That would be cool, right? I mean, we *already* do this for arrays! But... Webpack
@@ -48,9 +48,9 @@ Or does it?! Google for "babel plugin transform object rest spread" and find the
 Babel documentation page. The feature we're "dreaming" about is called
 "object rest spread". It is *not* an official ECMAScript feature. But, it's currently
 a proposed, "draft" feature that's in a late stage. There's no promises, but that
-means it will *likely* become a real in a future ECMAScript version.
+means it will *likely* become a real feature in a future ECMAScript version.
 
-But, because the JS world is a bit nuts, you don't *need* to wait! We can *teach*
+And, because the JS world is a bit nuts, you don't *need* to wait! We can *teach*
 Babel how to understand this syntax. Copy the package name, find your terminal
 and run:
 
@@ -63,7 +63,7 @@ new name in the future: `@babel/plugin-transform-object-rest-spread`. But, it's
 really the same library.
 
 When you work with Babel, you typically configure it with a `.babelrc` file. But,
-Encore does this for us! Open `webpack.config.js`: the `configureBabelFunction()`
+Encore does this for us! Open `webpack.config.js`: the `configureBabel()` function
 allows us to *extend* its configuration. Add `babelConfig.plugins.push()` and
 paste the name.
 
@@ -77,17 +77,18 @@ this command:
 ```terminal-silent
 yarn run encore dev-server
 ```
-And... it works! That's aesome! Babel now understands this syntax.
 
-But... PhpStorm is still angry: ESLine parsing error. No problem: we just need to
-tell ESLint that this syntax is ok. Open `.eslintrc.js`. Under `ecmaFeatures`, add
-`experimentalObjectRestSpread` to true.
+And... it works! That's awesome! Babel now understands this syntax.
+
+But... PhpStorm is still angry: ESLint parsing error. No worries: we just need to
+tell ESLint that this syntax is cool with us. Open `.eslintrc.js`. Under `ecmaFeatures`,
+add `experimentalObjectRestSpread` set to true.
 
 Deep breath: go back to RepLogApp. And... sweet! The error is gone!
 
 ## Using the Object Rest Spread
 
-Let's finish this! Go down to `catch`, remove `Object.assign()`, remove the second
+Let's finish this! Down in `catch`, remove `Object.assign()`, remove the second
 argument and add `...newState`.
 
 And one more time: scroll down to `handleDeleteRepLog()`. We don't need this weird

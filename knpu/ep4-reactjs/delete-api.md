@@ -17,7 +17,7 @@ for the URL, use ticks and say `/reps/${id}`.
 
 ## Hardcoding URLs?
 
-If you're a hardcore Symfony users... you might hate this! We're *hardcoding*
+If you're a hardcore Symfony user... you might hate this! We're *hardcoding*
 our URLs! Ah! In Symfony, we *never* do this. Nope, we always *generate* a URL
 by using its route - like with the `path()` function in Twig.
 

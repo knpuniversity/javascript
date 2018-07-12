@@ -31,7 +31,7 @@ the prop type and go up to destructure the variable.
 
 Ok, this is interesting: if the app is *not* loaded yet, we don't need to run *any*
 of this code down here. So, we can short-circuit the entire process: if `!isLoaded`,
-then return a completely new set of JSX, with a `tobdy`, `tr` and
+then return a completely new set of JSX, with a `tbody`, `tr` and
 `<td colSpan="4" className="text-center">`. Say, "Loading...".
 
 Oh, and notice that this is `colSpan` with a *capital* "S". This is another, uncommon,
