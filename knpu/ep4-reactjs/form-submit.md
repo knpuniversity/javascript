@@ -16,20 +16,30 @@ Start in `RepLogApp`: add the handler function: `handleNewItemSubmit()` with an
 event object. To prevent the form from *actually* trying to submit, use
 `event.preventDefault()`, just like normal JavaScript.
 
+[[[ code('5919a7607c') ]]]
+
 For now, log some stuff! I love when a good form submits! Oh, and *also* log
 `event.target`. Because this function will handle the `form` element's submit,
 `event.target` will be the form itself. We're going to need that so we can read
 the values from its fields.
 
+[[[ code('c53067d04e') ]]]
+
 Pass this callback as a new prop: `onNewItemSubmit = {this.handleNewItemSubmit}`.
 And, hey! We're starting to see a naming convention. This isn't anything official,
 but I like to name my *methods* "handleSomeEvent" and my *props* "onSomeEvent".
 
+[[[ code('869b11926b') ]]]
+
 In `RepLogs`, head *straight* down to `propTypes` to describe the prop:
 `onNewItemSubmit` is a required function.
 
+[[[ code('8de72caacd') ]]]
+
 *Love* it! Back in render, destructure this into a variable. So: how can we attach
 a "submit" listener to the form? Ah... it's just `onSubmit={onNewItemSubmit}`.
+
+[[[ code('874523a464') ]]]
 
 So simple! Go over to the browser and give it a nice refresh! Select an item...
 fill in a number and... we got it! Every time we submit by pressing enter or clicking
@@ -58,6 +68,8 @@ In `RepLogApp`, it's time to flex our native JavaScript muscles! To read the
 `reps` textarea, use `event.target` - that's the form - `.elements.namedItem('reps')`.
 This will give us the `text` element. Reads its value with `.value`.
 
+[[[ code('5535cf49d3') ]]]
+
 Let's go try it! Move over, refresh... select "My Laptop" and lift it 50 times.
 Yes! There's the 50! Victory!
 
@@ -84,13 +96,19 @@ this callback into `RepLogs` as a *new* handler function. *Inside* `render()`,
 add a new function: `handleFormSubmit()` with our normal event argument. Then,
 paste the logic.
 
+[[[ code('a073159c4f') ]]]
+
 Down in `onSubmit`, instead of calling the parent handler, call the new function:
 `handleFormSubmit`.
+
+[[[ code('b4fce2f7be') ]]]
 
 Yep, this feels *much* better. `handleFormSubmit()` is responsible for calling
 `event.preventDefault()` and uses the form structure - which is created right
 inside this component - to read the names of the fields. Finally, at the bottom,
 call the parent handler: `onNewItemSubmit()`.
+
+[[[ code('73971518f0') ]]]
 
 Actually, *this* is the reason why I put the new function *inside* of `render()`
 instead of above the function like I did with `calculateTotalWeightFancier()`:
@@ -101,9 +119,13 @@ element to the parent `onNewItemSubmit()` callback, only pass it what it needs: 
 new rep log's raw data. For now, hardcode an item name - "Big fat cat" - but copy
 the number of true rep logs and paste.
 
+[[[ code('ff5856bc9a') ]]]
+
 Back in `RepLogApp`, clear out `handleNewItemSubmit` and give it two fresh args:
 `itemName` and `reps`. Log a todo below: we will eventually use this to update
 the state. And log those values so we can check things!
+
+[[[ code('1525252a39') ]]]
 
 I love it! `RepLogApp` still has a callback, but it's now unaware of the form. It
 doesn't care *how* rep logs are created, it only cares that its callback is executed
