@@ -25,7 +25,7 @@ working by returning a hardcoded div!
 Love it! Back in `RepLogs`, on top, `import RepLogCreator` from `./RepLogCreator`.
 Then, down in render, above the form, use `<RepLogCreator />`.
 
-Ok, let's go check it out - give the page a nice refresh! So far, so good.
+Ok, let's go check it out! So far, so good.
 
 Next, copy *all* of the form markup, delete it, go to `RepLogCreator` and... paste!
 That *looks* cool... but, come on. We know that nothing ever works on the first try.
