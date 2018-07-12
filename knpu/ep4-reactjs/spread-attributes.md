@@ -19,6 +19,8 @@ all of the props we're passing to `RepLogs`, except for the callback. Instead,
 here's the awesome part, use the spread operator: `{...this.props}` and
 `{...this.state}`.
 
+[[[ code('c994da3bf1') ]]]
+
 That's it! Every prop and state is now being passed to the child as a prop. The
 only things we need to pass by hand are any callbacks we need.
 
@@ -46,9 +48,13 @@ we will need to pass that in.
 To do the calculation, I'll paste in some boooooring code: it loops over the
 `repLogs`, adds up the `totalWeightLifted` for each and... returns.
 
+[[[ code('ef1ed92b4b') ]]]
+
 Copy the function name, move down to the TODO, and call it!
 `{calculateTotalWeightLifted()}` passing it `repLogs`. The `repLogs` live inside
 props, but we already destructured that into a variable.
+
+[[[ code('4d0ded2540') ]]]
 
 Moment of truth: refresh! Boom! We have a total! Let's mess with the state, like
 change this to 200. Yes! It updates! The state change on `RepLogApp` causes both
@@ -65,8 +71,12 @@ calculation... but with some crazy, fancy syntax. Check this out:
 will *return* `total + log.totalWeightLifted`. Start the `reduce` function with
 a 0 value.
 
+[[[ code('b20f440ca6') ]]]
+
 Phew! Before we understand this madness, copy the new function name, move down,
 and paste! Find your browser - ah, the page is already reloading... and... it works!
+
+[[[ code('b7424fdc76') ]]]
 
 This fancier function doesn't contain anything new. But wow, even for me, this
 is hard to understand. So, why are we doing this? Because, in the React world, you

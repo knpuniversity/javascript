@@ -39,6 +39,8 @@ To get the static version of our app up and running, we just hardcoded these ins
 `RepLogApp`. Whenever we have new state, we need to initialize it in the constructor.
 Add a new `repLogs` key to this array and paste!
 
+[[[ code('3c1345f499') ]]]
+
 Yea, eventually the `repLogs` state will start empty, and we'll then populate it
 by making an AJAX call to the server for the existing rep logs. But, until then,
 the dummy data makes building things easier.
@@ -49,17 +51,27 @@ The new state lives in the top-level component. But... we need to use it down in
 `RepLogList`. No problem! We just need to pass this down our tree. Fetch the
 `repLogs` out of state, then pass this as a prop to `RepLogs`.
 
+[[[ code('9d043b400b') ]]]
+
 In `RepLogs`, before using the new prop, head down to the bottom: we want to define
 all props in `propTypes`. Add `repLogs` set to `PropTypes.array.isRequired`.
 
+[[[ code('db7c1b1682') ]]]
+
 Copy that, because, `RepLogList` will receive the same prop.
+
+[[[ code('ce7cdd1d95') ]]]
 
 Ok! We *are* passing the `repLogs` prop to the `RepLogs` component. At the top
 of `render()`, read `repLogs` out of props. And then, do the prop-passing dance:
 send this straight into `RepLogList`.
 
+[[[ code('e6039c834a') ]]]
+
 *Finally*, in that component, get `repLogs` out of props and... delete the
 hardcoded stuff.
+
+[[[ code('407b7f281f') ]]]
 
 This is sweet! Move back to your browser and refresh! Hey hey! It's not broken!
 Check out the React dev tools, and look at the top `RepLogApp` component. Yep!

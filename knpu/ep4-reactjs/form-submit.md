@@ -68,14 +68,14 @@ But, before we go further, I need to ask an important philosophical question:
 > If your shirt isn't tucked into your pants, are your pants tucked into your shirt?
 
 Hmm. Thought provoking. And also: if our smart component - `RepLogApp` - should not
-be responsible for rendering *any* HTML, should its `onNewItemSubmit()` method
+be responsible for rendering *any* HTML, should its `handleNewItemSubmit()` method
 be aware that there is an HTML form and a field with a `name="reps"` attribute
 inside?
 
-Actually... no! It makes no sense for `onNewItemSubmit()` to suddenly be aware
+Actually... no! It makes no sense for `handleNewItemSubmit()` to suddenly be aware
 of a specific HTML structure that's rendered by its child. In fact, *all* `RepLogApp`
 should care about is that, when - *somehow* - a new rep log is created in the app,
-its `onNewItemSubmit()` function is called so that it can update the `repLogs` state.
+its `handleNewItemSubmit()` function is called so that it can update the `repLogs` state.
 If it's created with a form, or with some random fields during a 10-step process
 or just with black magic... `RepLogApp` should not care!
 
@@ -102,7 +102,7 @@ new rep log's raw data. For now, hardcode an item name - "Big fat cat" - but cop
 the number of true rep logs and paste.
 
 Back in `RepLogApp`, clear out `handleNewItemSubmit` and give it two fresh args:
-`itemName` and `repCount`. Log a todo below: we will eventually use this to update
+`itemName` and `reps`. Log a todo below: we will eventually use this to update
 the state. And log those values so we can check things!
 
 I love it! `RepLogApp` still has a callback, but it's now unaware of the form. It
