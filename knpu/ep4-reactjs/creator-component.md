@@ -22,12 +22,19 @@ working by returning a hardcoded div!
 
 > I'm going to be a form when I grow up!
 
+[[[ code('26203b1af9') ]]]
+
 Love it! Back in `RepLogs`, on top, `import RepLogCreator` from `./RepLogCreator`.
 Then, down in render, above the form, use `<RepLogCreator />`.
+
+[[[ code('20428fc12a') ]]]
 
 Ok, let's go check it out! So far, so good.
 
 Next, copy *all* of the form markup, delete it, go to `RepLogCreator` and... paste!
+
+[[[ code('9253df6b49') ]]]
+
 That *looks* cool... but, come on. We know that nothing ever works on the first try.
 Try it - yep... we are rewarded with a nice big error!
 
@@ -37,16 +44,24 @@ coming from `RepLogCreator` line 6: it's our `onSubmit`! I totally forgot about 
 Go grab it from `RepLogs` - and, by the way - check out how *small* this component
 is looking - then, inside `RepLogCreator`, paste.
 
+[[[ code('f0f9ad20ea') ]]]
+
 The *last* missing piece is the `onNewItemSubmit()` callback: this is passed from
 `RepLogApp` to `RepLogs`. And now, we need to pass it once again to `RepLogCreator`.
 Because we need a new prop, define it first at the bottom in `propTypes`:
 `RepLogCreator.propTypes = ` an object and... go steal this code from `RepLogs`.
 
+[[[ code('3e91f02c54') ]]]
+
 Excellent! Now that we are *requiring* this prop, head back up to `render()` and
 destructure it: `const { onNewItemSubmit } = props`.
 
+[[[ code('8ae75fdebf') ]]]
+
 Cool! *Finally*, in `RepLogs`, nice! PhpStorm is already telling us that we're
 missing a required prop: pass this `onNewItemSubmit={onNewItemSubmit}`.
+
+[[[ code('8a2ede49b2') ]]]
 
 And... we're done! Probably... Let's go find out: refresh. The form renders... we
 can select something and... it *does* print. Awesome!
@@ -76,6 +91,8 @@ from React. Then, `export default class RepLogCreator extends Component`. And, o
 course, we *now* need to put all of this inside a `render()` function. Let's indent
 everything one level, and close the function.
 
+[[[ code('9e89a9447b') ]]]
+
 Yep! Webpack is happy! Now that we have a proper class, we don't need to put
 `handleFormSubmit()` *inside* of `render()` anymore. Nope, we can access the props
 from anywhere as `this.props`.
@@ -84,7 +101,11 @@ So, copy that function & the `const`, paste it in the class, turn it into a prop
 and move the `const` *into* the function. Oh, and try not to mess up the syntax
 like I just did.
 
+[[[ code('e17f649e93') ]]]
+
 Better! Back in `render()`, *now* we'll call `this.handleFormSubmit`.
+
+[[[ code('55c99bfbb4') ]]]
 
 Let's go check it out! Head back to the browser refresh! It loads... and when you
 submit... error! Woh! And then the page reloaded! Oh no!
@@ -104,6 +125,8 @@ it was because this error killed our code even *before* we called `event.prevent
 We know the fix: *whenever* you have a handler function that's a property on your
 class, we need to create a constructor, call `super(props)`, then bind that function
 with `this.handleFormSubmit = this.handleFormSubmit.bind(this)`.
+
+[[[ code('5072195a63') ]]]
 
 That should do it! Move back, refresh, fill in the form and... yes! Our app logs
 correctly again. It's time to use `refs` to finish our form logic so we can update
