@@ -40,6 +40,8 @@ If you need to "add" to an array without, updating it, here's how:
 existing repLogs into it and then, add `newRep`. Yep, this is a *new* array: we did
 *not* change state. This solves our problem.
 
+[[[ code('192c8e498f') ]]]
+
 ## Using the setState() Callback
 
 Except... there is *one* other tiny, annoying rule. Most of the time, when you
@@ -51,6 +53,8 @@ Check it out: call `this.setState()`, but instead of passing data, pass a callba
 with a `prevState` argument. Inside, create the array:
 `const newRepLogs = [...prevState.repLogs, newRep]`, and *return* the new state:
 `repLogs` set to `newRepLogs`.
+
+[[[ code('f7cef609a6') ]]]
 
 Why the heck are we doing this? Remember how I said that `setState()` is asynchronous?
 Because of that, if you call `setState()` now, React may not *use* that state
@@ -70,20 +74,30 @@ While we're here, something is bothering me. Our callback method is named
 doesn't know or care that a form is being used to create rep logs. So let's
 rename this method: `handleAddRepLog()`.
 
+[[[ code('d2f8d5e87f') ]]]
+
 Yea. Make sure to also update the `bind()` call in the constructor. Below, when
 we pass the prop - update it here too. But... I think we should also rename the
 prop: `onAddRepLog()`.
+
+[[[ code('95f014eb33') ]]]
 
 And, if we change that, we need to update a few other spots: in `RepLogs`, change
 the `propType`. And, up where we destructure, PhpStorm is highlighting that this
 prop doesn't exist anymore. Cool! Change it to `onAddRepLog`, scroll down, and
 make the same change `onAddRepLog={onAddRepLog}`.
 
+[[[ code('88d09951d7') ]]]
+
 Repeat this process in `RepLogCreator`: rename the `propType`, update the variable name,
 and use the new function.
 
+[[[ code('f27a5fc6cd') ]]]
+
 Oh, also, in `RepLogs`, the destructuring line is getting *crazy* long. To keep
 me sane, let's move each variable onto its own line.
+
+[[[ code('3ec47e8e28') ]]]
 
 ## Moving the "itemOptions" onto a Property
 
@@ -91,9 +105,11 @@ Finally, we need to make one other small change. In `RepLogCreator`, all of our
 options are hardcoded. And, that's not necessarily a problem: we'll talk later
 about whether or not we should load these dynamically from the server.
 
-But, to help show off some features we're about to work on, we need make these a
+But, to help show off some features we're about to work on, we need to make these a
 *little* bit more systematic. In the `constructor`, create a new property: `this.itemOptions`
 set to a data structure that represents the 4 items.
+
+[[[ code('9994d71fc1') ]]]
 
 Notice, I'm not making this props or state: we don't need these options to actually
 *change*. Nope, we're just taking advantage of the fact that we have a class, so,
@@ -103,6 +119,8 @@ Back in `render()`, delete the 4 options and replace it with one of our fancy `m
 structures: `this.itemOptions.map()` with an `item` argument. In the function,
 return an `<option>` element with `value={option.id}`, `key={option.id}` - we need
 that for any array of elements - and, for the text, use `{option.text}`. 
+
+[[[ code('fbc3774161') ]]]
 
 Nice! Let's make sure it works - refresh! It works and... yea - the options are
 still there.
