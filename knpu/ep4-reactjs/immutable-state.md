@@ -6,10 +6,10 @@ or change the state property directly is when you're initializing it in the
 `constructor`. *Everywhere* else, you *must* call `setState()` instead of changing
 it directly.
 
-Here's another way to say it: `this.state` should be *immutable*. And *that* is
-the part we're violating. It was really subtle! First, unlike PHP, in JavaScript
-arrays are *objects*. And so, like all objects, if you modify `repLogs`, that also
-modifies `this.state.repLogs` because... they're the same object!
+Here's another way to say it: each piece of data on `this.state` should be *immutable*.
+And *that* is the part we're violating. It was really subtle! First, unlike PHP,
+in JavaScript arrays are *objects*. And so, like all objects, if you modify `repLogs`,
+that also modifies `this.state.repLogs` because... they're the same object!
 
 And that's *exactly* what we did when we called `repLogs.push`: this changed, or
 *mutated*, the `repLogs` key on `this.state`! Yep! We *changed* the state before
