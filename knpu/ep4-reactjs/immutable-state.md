@@ -101,7 +101,7 @@ if we want to, we can store some data on it.
 
 Back in `render()`, delete the 4 options and replace it with one of our fancy `map`
 structures: `this.itemOptions.map()` with an `item` argument. In the function,
-return an `<option>` element with `id={option.id}`, `key={option.id}` - we need
+return an `<option>` element with `value={option.id}`, `key={option.id}` - we need
 that for any array of elements - and, for the text, use `{option.text}`. 
 
 Nice! Let's make sure it works - refresh! It works and... yea - the options are
