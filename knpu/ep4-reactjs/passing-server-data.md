@@ -23,22 +23,22 @@ Whenever your JavaScript app needs server data, there are two options. But, they
 both start the same way: by moving our `itemOptions` up into `RepLogApp`, which
 is the only component that's even *aware* a server exists!
 
-Copy the `itemOptions` and then open `RepLogApp`. On top, initialize a new
+Copy `itemOptions` and then open `RepLogApp`. On top, initialize a new
 `itemOptions` state set to that array.
 
 Because all state is automatically passed as props to `RepLogs`, go there and add
 the new prop type: `itemOptions` as an array that is required.
 
 Above, destructure that, then, below, pass it down to `RepLogCreator` as
-`itemOptions={itemptions}`.
+`itemOptions={itemOptions}`.
 
 Copy the prop type, then do the same in `RepLogCreator`: define the prop type
 at the bottom, then go to the top of the function to destructure out `itemOptions`.
 
 Below, use the local `itemOptions` variable for the `map` function.
 
-Cool! When we refresh... cool! The options aren't dynamic yet, but they *are*
-stored as state. If you change a value... yep! it shows up.
+When we refresh... cool! The options aren't dynamic yet, but they *are*
+stored as state. If you change a value... yep! It shows up.
 
 ## Two Ways to Load Server Data
 

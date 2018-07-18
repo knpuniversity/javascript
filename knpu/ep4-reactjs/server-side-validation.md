@@ -3,7 +3,7 @@
 Earlier, we talked about the three types of validation. First, HTML5 validation
 with things like the `required` attribute. It's dead-simple to setup, but limited.
 Second, custom client-side validation, which we added because we wanted to make sure
-the user entered a *positive* quantity. And third, *of course*, the *one* type of
+the users enter a *positive* quantity. And third, *of course*, the *one* type of
 validation you *must* have: server-side validation.
 
 ## Our Server Side Validation
@@ -52,7 +52,7 @@ The server will *not* like this value. Let's try it anyways! Move over, select
 Ok, two things. First, you can see the request failed: 400 bad request. Great!
 Our server-side validation is working and you can see the message in the response.
 But, second, React exploded in a crazy way! Something about how each child in an
-array should have a unique "key" prop ,from `RepLogList`.
+array should have a unique "key" prop, from `RepLogList`.
 
 We know that error... but why is it suddenly happening?
 

@@ -93,7 +93,7 @@ header.
 Oh my gosh.... we're done! That's it, that's everything! If you've made it all
 the way through, you rock! You have the tools to create the craziest frontend
 you can think of! And yes, there *are* more things in React that we could cover,
-like the React router or Redux, which adds are more complex architecture on top
+like the React router or Redux, which adds a more complex architecture on top
 of React, but helps solve the problem of passing around so many props.
 
 But, these are extras - go get some *real-world* success with React and report

@@ -66,7 +66,7 @@ the existing rep logs inside of it, and update the *one* rep log... um... withou
 actually updating it. Sheesh.
 
 This is another one of those moments where you can understand why React can be so
-darn hard! But, the fix is easy, and it's an old friend: map! Use.
+darn hard! But, the fix is easy, and it's an old friend: map! Use
 `prevState.repLogs.map()` with a `repLog` argument to the arrow function.
 
 The map function will return a *new* array, so that handles *part* of the problem.

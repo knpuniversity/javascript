@@ -9,7 +9,7 @@ set its `action=""` attribute to a URL on *our* site. Then, what if some user, l
 me, who is logged into our site, was tricked into submitting that form? Well, the
 form would submit, I would of course be authenticated, and the request would be
 successful! That's a problem! The malicious user was basically able to make a request
-to the our site logged in as me! They could have done anything!
+to our site logged in as me! They could have done anything!
 
 The other possible attack vector is if a malicious user runs JavaScript on their
 site that makes an AJAX call to our site. The result is exactly the same.
@@ -44,8 +44,9 @@ API token, you're also good!
 
 ## Creating the Event Susbcriber
 
-We're going to do this by creating an event subscriber, so that we don't need to
-add this code in *every* controller. First, to speed things up, install MakerBundle:
+We're going to require the `Content-Type` header by creating an event subscriber,
+so that we don't need to add this code in *every* controller. First, to speed things
+up, install MakerBundle:
 
 ```terminal
 composer require maker --dev
@@ -65,7 +66,7 @@ method will be called on every request, *before* the controller. At the top of
 the method, first say if `!$event->isMasterRequest()`, then return. That's an internal
 detail to make sure we only run this code for a real request.
 
-Next, do not need to require the `Content-Type` header for safe HTTP methods,
+Next, we do not need to require the `Content-Type` header for safe HTTP methods,
 like GET or HEAD, because, unless we do something awful in our code, these requests
 don't *change* anything on the server. Add `$request = $event->getRequest()`. Then,
 if `$request->isMethodSafe(false)`, just return again.
