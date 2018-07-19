@@ -50,12 +50,12 @@ Then, go into the controller that renders this page - `LiftController` and find
 `indexAction()`. First, let's `dump()` that function to see what it looks like.
 
 Move over and refresh! Interesting! It's an array... but it doesn't quite look
-right. Let's compare this to the structure we want. Ok, each item has an ide
+right. Let's compare this to the structure we want. Ok, each item has an id
 like `cat` or `fat_cat`. That is the *value* on the array. We also need a `text`
 key. My app is using the translator component. The *keys* on the dumped array
 need to be run through the translator to be turned into the English text.
 
-Actually, the details aren't important to. The point is this: our app *does* have
+Actually, the details aren't important. The point is this: our app *does* have
 the data we need... but we need to "tweak" it a little bit to match what our
 React app is expecting.
 
@@ -64,8 +64,8 @@ in some code. This code uses the `$translator`. To get that, add a new controlle
 argument: `TranslatorInterface $translator`.
 
 Cool! This code builds the structure we need: it has an `itemOptions` key, we
-loop over each, and create the `id` and `text` keys. *Now* when we refresh, yep!
-the dumped code looks *exactly* like our `REP_LOG_APP_PROPS` JavaScript structure!
+loop over each, and create the `id` and `text` keys. *Now* when we refresh, Yep!
+The dumped code looks *exactly* like our `REP_LOG_APP_PROPS` JavaScript structure!
 Heck, we can add `withHeart => true`... because I like the heart.
 
 Remove the `die` and pass this into twig as a new `repLogAppProps` variable.

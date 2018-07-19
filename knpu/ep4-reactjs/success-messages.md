@@ -68,7 +68,7 @@ of React components in general. For example, we could choose to *only* render th
 so that users can navigate to different "pages", then even `RepLogApp` would be
 rendered and unrendered as the user navigates.
 
-Because of this, *if* your component is removed form the page, you need to ask
+Because of this, *if* your component is removed from the page, you need to ask
 yourself:
 
 > Is there anything I need to clean up?

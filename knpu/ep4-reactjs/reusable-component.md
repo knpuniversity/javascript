@@ -1,13 +1,13 @@
 # Reusable Components
 
-React's entire architecture is centered around making that are reusable. This is
+React's entire architecture is centered around making components that are reusable. This is
 *especially* easy to see with the dumb, presentational components: all they do is
 receive props and... render! It would be *very* easy to render those components
 with *different* props in different places.
 
 But, in reality, a lot of components aren't really meant to be reused: `RepLogCreator`,
 `RepLogList` and `RepLogs`... yea, it's *pretty* unlikely we'll use those on other
-parts of our site... except maybe fore `RepLogCreator`, which could be used to
+parts of our site... except maybe for `RepLogCreator`, which could be used to
 *edit* rep logs.
 
 But, there *are* a lot of nice use-cases for building truly, re-usable components,
@@ -33,7 +33,7 @@ need to pass a *bunch* of different attributes as props.
 
 To allow that, use the attribute spread operator `...props`. It's simple: any prop
 passed to this component will be rendered as an attribute. And for the text, hmm:
-how about a prop called `text`: `props.text`. Close the button tag. And the bottom,
+how about a prop called `text`: `props.text`. Close the button tag. At the bottom,
 add `Button.propTypes =` and define `text` as a string that's required.
 
 Perfect!
@@ -59,16 +59,17 @@ But... this doesn't look right: I'm putting HTML inside of this string. And, act
 this wouldn't even *work*, because React escapes HTML tags in strings.
 
 New idea: what if we could remove this `text` prop and treat the `Button` like a
-*true* HTML element by putting the t ext *inside*. That looks *awesome*. This is
+*true* HTML element by putting the text *inside*. That looks *awesome*. This is
 not only possible, this is *ideal*! By doing it this way, we can include text,
 HTML elements or even other React components! Woh!
 
 If you pass something in the body of a Component, that is known as its *children*,
 and you can access it automatically with `props.children`. It's that simple.
 
-Oh, and ESLint is angry because we're missing props validation for `children`. I
-won't do it, but yea, it's probably a good idea to add this as a prop type: that
-will serve as documentation that your component accepts children.
+Oh, and ESLint is angry because we're missing props validation for `children`. I'm
+going to ignore that because the children prop is a special case and, we don't really
+care of its text, a component or something else. But, you could add it with the
+PropTypes "any" type.
 
 Remove the propTypes for now. Let's try it! Move over and refresh! Looking good.
 To prove that using children is awesome, add a new `<span>` with
