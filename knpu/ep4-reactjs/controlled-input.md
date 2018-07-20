@@ -25,18 +25,27 @@ hearts they want to see. If they enter 50, we'll heart them 50 times!
 
 In `RepLogs`, right after the `h1`, add a simple `<input type="number" />`.
 
+[[[ code('b15117d940') ]]]
+
 Nothing interesting yet. Yep, hello, new, empty field. Next, we need to know how
 *many* hearts the user wants. That means we need some new *state*. We *could* put
 that state inside `RepLogs`. After all, the number of hearts is a pretty not-important,
 UI-related state. But, to keep `RepLogs` simple, let's put it in `RepLogApp`.
 
 Initialize `numberOfHearts` to 1. As *soon* as we do this, thanks to *how* we're
-rendering `RepLogs`, this new state is automatically passed as a prop. Awesome!
-Copy `numberOfHearts` and head down to add it as a new prop type: `numberOfHearts`
+rendering `RepLogs`, this new state is automatically passed as a prop.
+
+[[[ code('ee6087d6e1') ]]]
+
+Awesome! Copy `numberOfHearts` and head down to add it as a new prop type: `numberOfHearts`
 set to `PropTypes.number.isRequired`.
+
+[[[ code('2d39b40db4') ]]]
 
 Above, destructure this value out, and then, this looks a little crazy, copy the
 heart, enter JavaScript, paste the heart in some quotes and `.repeat(numberOfHearts)`.
+
+[[[ code('8a97de57f5') ]]]
 
 We haven't bound the state to the field yet, but we should *already* be able to
 play with this! Refresh the page. One heart. Find the React tools and change the
@@ -57,6 +66,8 @@ have access to it.
 
 *Anyways*, to use the *second*, state-based approach, literally say
 `value={numberOfHearts}`.
+
+[[[ code('157c8bd268') ]]]
 
 Try it! Refresh. And, hey! We see a value of 1! But in the console... a huge
 error! Wah, wah. Oh, and the field is *stuck* at 1: I can't change it. The error
@@ -80,18 +91,28 @@ argument: the new `heartCount`.
 
 Inside, set the state! `this.setState()` with `numberOfHearts` set to `heartCount`.
 
+[[[ code('f9ca604d51') ]]]
+
 And because we just added a handler function, don't forget to go up to the constructor
 and add `this.handleHeartChange = this.handleHeartChange.bind(this)`.
+
+[[[ code('3a46c3ca34') ]]]
 
 Back down in `render`, all our state and props are automatically passed. The only
 things we need to pass manually are the handlers: `onHeartChange={this.handleHeartChange}`.
 
+[[[ code('5a502afe7e') ]]]
+
 Finally, open `RepLogs` and scroll down to `propTypes`: we're now expect an
 `onHeartChange` function that is required. Back up, destructure that new variable.
+
+[[[ code('9e4d156b2a') ]]]
 
 We need to update the state *whenever* the field changes. This means we need an
 `onChange`. Set it to an arrow function with an `e` argument. Inside, it's so nice:
 `onHeartChange(e.target.value)`.
+
+[[[ code('8331f14855') ]]]
 
 We *do* reference the DOM element - `e.target` - but just for a moment so that we
 can call the handler & update the state.
@@ -114,6 +135,8 @@ the `numberOfHearts` state becomes a string and *that* is passed down as a prop.
 Let's clean that up: we could do that right here, or inside the handler function.
 To do it here, oh, this is bizarre, add a `+` before the variable.
 
+[[[ code('b326551579') ]]]
+
 That will *change* the string to a number. There are other ways to do this -
 JavaScript is weird - but this is one way.
 
@@ -124,6 +147,9 @@ Welcome to the world of "controlled components"! It feels really good... but it
 to use this strategy versus the original.
 
 Oh, but to make this a little bit more fun, change this to `input type="range"`.
+
+[[[ code('1b104cbd18') ]]]
+
 Try it! Super-fun-heart-slider!!!
 
 Next, let's refactor `RepLogCreator` to use controlled components. This will
