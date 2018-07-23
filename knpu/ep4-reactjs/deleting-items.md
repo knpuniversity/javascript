@@ -27,7 +27,7 @@ Next, because we have a new handler method, make sure to bind it to `this`.
 
 And finally, pass this as a new prop: `onDeleteRepLog={this.handleDeleteRepLog}`.
 
-Our work here is done. Now, move to `RepLogList`. First, at the bottom, add this
+Our work here is done. Now, move to `RepLogs`. First, at the bottom, add this
 to `propTypes`: `onDeleteRepLog` is `PropTypes.func.isRequired`.
 
 Above in the function, destructure `onDeleteRepLog`, find `RepLogList`, and
