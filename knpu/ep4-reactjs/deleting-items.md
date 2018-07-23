@@ -18,7 +18,7 @@ we need to pass a handler callback from `RepLogApp` into `RepLogs` and again int
 
 ## Adding & Calling the Delete Handler Function
 
-In `RepLogApp`, create that new function: `deleteRepLog`, which is a *great* name,
+In `RepLogApp`, create that new function: `handleDeleteRepLog`, which is a *great* name,
 because this component doesn't know and doesn't care that a *link* will be used
 to delete rep logs. Nope, it's all about the data. Give this an `id` argument
 so we know *which* rep log to delete. Be lazy and log a todo.
