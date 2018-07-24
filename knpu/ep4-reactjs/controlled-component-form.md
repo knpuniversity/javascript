@@ -17,14 +17,23 @@ Copy `RepLogCreator` and create a *new* file: `RepLogCreatorControlledComponents
 Next, in `RepLogs`, copy the import statement, comment it out and, instead, import
 `RepLogCreator` from this new file.
 
+[[[ code('09d776268c') ]]]
+
+[[[ code('0ca12edb68') ]]]
+
 ## Adding the new State
 
 Perfect! Because our form has two fields - the select & the input - we need two
 new pieces of state. On top, add `selectedItemId` set to empty quotes and
 `quantityValue` set to 0. Delete the old refs stuff.
 
+[[[ code('8a90e13ce3') ]]]
+
 In `render()` destructure these out of state, and use them below: instead of `ref=`,
 use `value={selectedItemId}`. On the input, the same thing: `value={quantityValue}`.
+
+[[[ code('073444b37a') ]]]
+
 Oh, this is cool: when you use a controlled component with a select element, you
 add the `value=` to the *select* element itself! That's *not* how HTML works. Normally,
 you need to add a `selected` attribute to the correct `option`. But in React, you
@@ -38,8 +47,12 @@ need to do is set state: `this.setState()` with `selectedItemId` set to
 `event.target.value`. `event.target` gives us the *select* DOM element, and then
 we use `.value`. We don't need to read the `selectedIndex` like before.
 
+[[[ code('c094960fcf') ]]]
+
 Copy this function, paste, and call it `handleQuantityInputChange`. This time, update
 `quantityValue`... but the `event.target.value` part can stay the same. Nice!
+
+[[[ code('fce8f61d8f') ]]]
 
 Before we use these functions in render, head up to the constructor and bind both
 of them to this.
@@ -47,6 +60,8 @@ of them to this.
 *Finally*, head back down to hook up the handlers:
 `onChange={this.handleSelectedItemChange}` and for the input,
 `onChange={this.handleQuantityInputChange}`.
+
+[[[ code('e359c3b970') ]]]
 
 Ok: the controlled components are setup! Move over, refresh, inspect element to
 find the text input, click it, and *then* go over to React. The dev tools show
@@ -62,12 +77,18 @@ at the DOM elements themselves... we can just read the state! On top, destructur
 what we need: `const { selectedItemId, quantityValue } = this.state`. Delete the
 old refs stuff.
 
+[[[ code('3101a503e3') ]]]
+
 Then, in the if statement, it's just if `quantityValue`. That *is* nice.
+
+[[[ code('608687bac0') ]]]
 
 Use that again below for `onAddRepLog`. For the first argument, put a TODO *just*
 for a minute. Then, at the bottom, *clearing* the form fields is also easier:
 delete the old code, then re-set the `selectedItemId` and `quantityValue` state
 back to their original values.
+
+[[[ code('6ea4c5560d') ]]]
 
 Ok, back to that `onAddRepLog()` call. The first argument is the item *label*:
 that's the visual part of the option, not its value. But our state - `selectedItemId`
@@ -77,7 +98,11 @@ use the option id to find the text. I'll create a new `itemLabel` variable and p
 in some code. This is *super* not important: it just *finds* the item by id, and,
 at the end, we call `.text` to get that property.
 
+[[[ code('8e6b6b4185') ]]]
+
 Use that below: `itemLabel`.
+
+[[[ code('2ad9443672') ]]]
 
 And... I think we're ready! Move over and refresh. Lift our big fat cat 25 times.
 We got it! Try some coffee while we're at it.
