@@ -59,6 +59,8 @@ This is because, instead of exporting a class, this module
 will export some functions... so that's just a naming convention. Inside, export
 function `getRepLogs()`.
 
+[[[ code('0d5b5d8ecf') ]]]
+
 The question now is... how do we make AJAX calls? There are several great libraries
 that can help with this. But... actually... we don't need them! All modern browsers
 have a built-in function that makes AJAX calls *super* easy. It's called `fetch()`!
@@ -68,6 +70,8 @@ is a *super* important, but kinda-confusing object we talked a lot about in our
 ES6 tutorial. To *decode* the JSON from our API into a JavaScript object, we can
 add a success handler: `.then()`, passing it an arrow function with a `response`
 argument. Inside, return `response.json()`.
+
+[[[ code('7b5046815e') ]]]
 
 With this code, our `getRepLogs()` function will *still* return a `Promise`. But
 the "data" for that should now be the decoded JSON. Don't worry, we'll show this
@@ -83,12 +87,16 @@ from `../api/rep_log_api`. For the first time, we're not exporting a `default`
 value: we're exporting a *named* function. We'll export more named functions
 later, for inserting and deleting rep logs.
 
+[[[ code('a9c9760af1') ]]]
+
 Oh, and, did you see how PhpStorm auto-completed that for me? That was awesome!
 And it wasn't video magic: PhpStorm was cool enough to guess that correct import
 path.
 
 Down below, add `getRepLogs()` and chain `.then()`. Because we decoded the JSON
 already, this should receive that decoded `data`. Just log it for now.
+
+[[[ code('7332c9a709') ]]]
 
 Ok... let's try it! Move over and, refresh! Oof! An error:
 

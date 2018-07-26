@@ -54,7 +54,6 @@ use the `credentials` option that I'm about to show you for that AJAX call.
 Of course, if you want, you can also create an API token authentication system,
 like JWT or OAuth. That's totally fine, but that truly *is* a separate topic.
 
-
 Whatever you choose, when it's time to make your API call, you will *attach* the
 authentication info to the request: either by sending the session cookie or your
 API token as a header.
@@ -64,6 +63,8 @@ API token as a header.
 To send the session cookie, fetch has a second options argument. Add `credentials`
 set to `same-origin`. Thanks to this, `fetch()` will send cookies to any requests
 made back to *our* domain.
+
+[[[ code('a31b5fa49a') ]]]
 
 ***TIP
 The default value of `credentials` may change to `same-origin` in the future.
@@ -82,6 +83,8 @@ contains the *array* of rep logs... without that `items` key. To do that, it's
 a bit weird. The `.json()` method returns another Promise. So, to do further processing,
 chain a `.then()` from it and, inside the callback, return `data.items`.
 
+[[[ code('821e4de452') ]]]
+
 Promises on top of promises! Yaaaay! When `fetch()` finishes, it executes our first
 callback. Then, when the JSON decode finishes, it executes our *second* callback,
 where we read off the `.items` key. Ultimately, `getRepLogs()` returns a `Promise`
@@ -96,6 +99,8 @@ Awesome! Let's use this to set our initial state! First, set the initial `repLog
 state to an empty array. Next, copy the `getRepLogs()` call and remove it. Instead,
 create a new method called `componentDidMount()` and paste this there. In the callback,
 use `this.setState()` to set `repLogs` to `data`.
+
+[[[ code('d7de8eda00') ]]]
 
 Before we talk about this, let's try it. Refresh! Woh! We have *real* data! Yes,
 yes, yes! We're showing the *same* data as our original app!
