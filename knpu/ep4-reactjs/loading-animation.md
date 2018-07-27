@@ -16,7 +16,11 @@ not the AJAX call has finished... and *that* is something that only `RepLogApp` 
 To keep track of whether or not the AJAX call is finished, we need new state. On
 top, add some new state `isLoaded: false`.
 
+[[[ code('7daa1dc10a') ]]]
+
 Then, down below, when `fetch()` finishes, set `isLoaded` to `true`!
+
+[[[ code('3da50dd71b') ]]]
 
 State, done! And thanks to how we're rendering `RepLogs`, this state is automatically
 pass as a prop. And *now* we start the prop-passing dance! In `RepLogs`, add the
@@ -25,14 +29,24 @@ noticed that I like to make pretty much *everything* required. That's a personal
 preference. Because this is *my* app, if I forget to pass a prop, it's probably a
 typo and I want to know.
 
+[[[ code('2ccda1092c') ]]]
+
 Next, scroll up, destructure the `isLoaded` variable, find `RepLogList`, and pass
-that prop: `isLoaded={isLoaded}`. Finally, do the same in that component: I'll steal
-the prop type and go up to destructure the variable.
+that prop: `isLoaded={isLoaded}`.
+
+[[[ code('9e223cee58') ]]]
+
+Finally, do the same in that component: I'll steal the prop type
+and go up to destructure the variable.
+
+[[[ code('fc9f0d66d5') ]]]
 
 Ok, this is interesting: if the app is *not* loaded yet, we don't need to run *any*
 of this code down here. So, we can short-circuit the entire process: if `!isLoaded`,
 then return a completely new set of JSX, with a `tbody`, `tr` and
 `<td colSpan="4" className="text-center">`. Say, "Loading...".
+
+[[[ code('4b01b3266a') ]]]
 
 Oh, and notice that this is `colSpan` with a *capital* "S". This is another, uncommon,
 case where the prop is slightly different than the HTML attribute. PhpStorm made
