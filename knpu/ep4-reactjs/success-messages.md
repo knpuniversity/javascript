@@ -43,18 +43,18 @@ this better.
 Basically, *before* we call `setTimeout`, we want to make sure to *clear* any previous
 timeout that may be waiting to fire. The `setTimeout()` function returns an integer,
 which we can use to clear it. To keep track of that value, in the constructor,
-initialize a new property: `this.successMessageTimeoutHandler = 0`.
+initialize a new property: `this.successMessageTimeoutHandle = 0`.
 
 This has *nothing* to do with React: we're just taking advantage of our object to
 store some data. Oh, and the value 0 is just a "null" value in disguise: if we
 pass this to `clearTimeout()`, nothing will happen.
 
 Back down in `setSuccessMessage`, before `setTimeout`, add
-`clearTimeout(this.successMessageTimeoutHandler)`. To set that property, add
-`this.successMessageTimeoutHandler =` before `setTimeout()`.
+`clearTimeout(this.successMessageTimeoutHandle)`. To set that property, add
+`this.successMessageTimeoutHandle =` before `setTimeout()`.
 
 And finally, to be *completely* on top of things, inside the callback, after we
-reset the state, set the timeout handler back to 0.
+reset the state, set the timeout handle back to 0.
 
 ## Cleaning up Your Component: componentWillUnmount()
 
@@ -85,7 +85,7 @@ This is another one of those magic lifecycle functions: `componentDidMount` is
 called right after your component is rendered to the page. `componentWillUnmount`
 is called right before it's *removed*. It's your chance to clean stuff up.
 
-Let's do that: `clearTimeout(this.successMessageTimeoutHandler)`.
+Let's do that: `clearTimeout(this.successMessageTimeoutHandle)`.
 
 Honestly, this isn't that common. But, keep it in mind. Another example could be
 if you used an external library to add some cool feature directly to a DOM element.
