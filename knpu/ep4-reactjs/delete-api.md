@@ -15,6 +15,8 @@ related to rep logs. Create a second function: `export function deleteRepLog()`
 with an `id` argument. Let's cheat and copy the code from `getRepLogs()`. But,
 for the URL, use ticks and say `/reps/${id}`.
 
+[[[ code('2d22b3d6c0') ]]]
+
 ## Hardcoding URLs?
 
 If you're a hardcore Symfony user... you might hate this! We're *hardcoding*
@@ -39,10 +41,14 @@ API calls into one spot.
 Anyways, the *other* change is that we need to make a `DELETE` request. Do that
 with another option: `method: 'DELETE'`.
 
+[[[ code('920df2e369') ]]]
+
 Alright! Back to `RepLogApp` to put this in action! When a rep log is deleted,
 `handleDeleteRepLog` is called and that removes it from state. Now, we also need to
 call our endpoint. Head to the top and *also* import `deleteRepLog`. Down
 below, do it: `deleteRepLog(id)`.
+
+[[[ code('7f678e044f') ]]]
 
 That, is, nice! Try it: move over, refresh and... click delete! Check it out!
 
@@ -76,6 +82,8 @@ fetch needs: the URL and options. Inside, return `fetch()`, the URL, and, for th
 options, use `Object.assign()` passing it an object with `credentials` set to
 `same-origin`, comma, `options`.
 
+[[[ code('59231d08bf') ]]]
+
 `Object.assign()` is JavaScript's equivalent of `array_merge()` when dealing with
 objects: it takes any options *we* might pass in and merges them into this object.
 So, `credentials` will always be in the final options.
@@ -83,12 +91,18 @@ So, `credentials` will always be in the final options.
 Then, because every endpoint will return JSON, we can `.then()` to transform the
 Promise data from the `response` object into JSON.
 
+[[[ code('280c92522e') ]]]
+
 And just like that, we have a nice utility function that will set our credentials
 *and* JSON-decode the response. We're awesome! In `getRepLogs()`, simplify:
 `fetchJson('/reps')`. To *only* return the `items` key, add `.then(data => data.items)`.
 This function now returns the same thing as before.
 
+[[[ code('592945b53e') ]]]
+
 For `deleteRepLog()`, use `fetchJson()` and remove the `credentials` key.
+
+[[[ code('d4ee11b458') ]]]
 
 Ok, try it out! Refresh! Yep! Everything works fine. Time to connect our *form*
 with the rep log *create* API endoint.
