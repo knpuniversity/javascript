@@ -33,6 +33,8 @@ Create a *third* function: `export function createRepLog`. This needs a `repLog`
 argument, which will be an object that has all the fields that should be sent to
 the API.
 
+[[[ code('eb5a34a850') ]]]
+
 Use the new `fetchJson()` function to `/reps` with a `method` set to `POST`. This
 time, we *also* need to set the `body` of the request: use `JSON.stringify(repLog)`.
 Set one more option: a `headers` key with `Content-Type` set to `application/json`.
@@ -40,9 +42,13 @@ This is optional: my API doesn't actually read or care about this. But, because
 we *are* sending JSON, it's a best-practice to say this. And, later, our API
 *will* start requiring this.
 
+[[[ code('92b4888dec') ]]]
+
 Ok, API function done! Head back to `RepLogApp` and scroll up: import `createRepLog`.
 Then, down in `handleAddRepLog`, use it! `createRepLog(newRep)`. To see what
 we get back, add `.then()` with `data`. `console.log()` that.
+
+[[[ code('767694e81f') ]]]
 
 Well... let's see what happens! Move over and refresh. Okay, select "Big Fat Cat",
 10 times and... submit! Boo! The POST failed! A 400 error!
@@ -64,8 +70,14 @@ like `fat_cat`.
 Ok, so we have some work to do. Head back to `RepLogApp`. First: remove the stuff
 we *don't* need: we don't need `id` and we're not responsible for sending the
 `totalWeightLifted`. Then, rename `itemLabel` to `item`. Rename the argument
-too, because this *now* needs to be the option value. This function is eventually
-called in `RepLogCreator` as `onAddRepLog`. Instead of `text`, pass `value`.
+too, because this *now* needs to be the option value.
+
+[[[ code('1d5954edaf') ]]]
+
+This function is eventually called in `RepLogCreator` as `onAddRepLog`.
+Instead of `text`, pass `value`.
+
+[[[ code('7900533256') ]]]
 
 ## Updating State *after* the AJAX Call
 
@@ -78,19 +90,26 @@ faking it by using a random value for `totalWeightLifted`.
 update the state *until* we get more info back from the server. This is no big
 deal, it just requires a bit more work.
 
-Comment out the `setState()` call. Let's refresh and *at least* see if the API
-call works. Lift my big fat cat 55 times and hit enter. Yes! No errors! The
-console log is coming from the POST response... it looks perfect! Id 30, *it* returns
-the `itemLabel` and also calculates the `totalWeightLifted`. Refresh, yep! There
-is the new rep log!
+Comment out the `setState()` call.
+
+[[[ code('74e3f87f96') ]]]
+
+Let's refresh and *at least* see if the API call works. Lift my
+big fat cat 55 times and hit enter. Yes! No errors! The console log is coming
+from the POST response... it looks perfect! Id 30, *it* returns the `itemLabel`
+and also calculates the `totalWeightLifted`. Refresh, yep! There is the new rep log!
 
 Ok, let's update the state. Because our API rocks, *we* know that the `data` is
 actually a `repLog`! Use `this.setState()` but pass it a callback with `prevState`.
 Once again, the *new* state depends on the *existing* state.
 
+[[[ code('469a78e688') ]]]
+
 To add the new rep log without mutating the state, use `const newRepLogs =` an
 array with `...prevState.repLogs, repLog`. Return the new state: `repLogs: newRepLogs`.
 Remove all the old code below.
+
+[[[ code('6daa526b8a') ]]]
 
 Let's try it! Make sure the page is refreshed. Lift our normal cat this time,
 10 times, and boom! We've got it!
