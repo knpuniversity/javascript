@@ -34,6 +34,8 @@ look inside `webpack.config.js`. `layout` is configured as my "shared" entry...
 which is a fancy way of saying that `layout.js` is included on *every* page and
 so its code will *always* run. Inside that file, `import 'whatwg-fetch'`.
 
+[[[ code('a0156b7dc8') ]]]
+
 *Every* part of my app can now safely rely on the fact that the global `fetch()`
 function will be available.
 
@@ -69,6 +71,8 @@ When it finishes, head back to the docs. Interesting: this shows two different
 import options. You can use the *second* one to *import* a `Promise` object, but
 *without* adding a new global variable. Because we *do* want to guarantee that a
 global `Promise` variable exists, copy the first one. In `layout.js`, paste!
+
+[[[ code('2a93188a94') ]]]
 
 To make sure we didn't break anything, go back to the tab that's running encore
 and restart it:
