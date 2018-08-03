@@ -7,9 +7,13 @@ to empty after a few seconds.
 Go back to `RepLogApp`. Let's refactor things first: create a new method called
 `setSuccessMessage` with a message argument. Inside, set the state.
 
+[[[ code('7df11fb460') ]]]
+
 We're making this change so that we can re-use our cool success message feature
 in the future. Above, instead of setting the `successMessage` in the
 object, use `this.setSuccessMessage()` and paste the text there.
+
+[[[ code('27173f6e72') ]]]
 
 ## Watch out for Multiple Re-Renders
 
@@ -30,6 +34,8 @@ Back in `setSuccessMessage()`, to clear the message, use `setTimeout()`, pass it
 an arrow function, and use `this.setState()` to reset `successMessage` back to
 empty quotes. Let's do that after 3 seconds.
 
+[[[ code('732a19b8fe') ]]]
+
 Ok! Let's give this a try! Refresh and lift my big fat cat 5 times. Success! And...
 gone!
 
@@ -45,6 +51,8 @@ timeout that may be waiting to fire. The `setTimeout()` function returns an inte
 which we can use to clear it. To keep track of that value, in the constructor,
 initialize a new property: `this.successMessageTimeoutHandle = 0`.
 
+[[[ code('c279e3e779') ]]]
+
 This has *nothing* to do with React: we're just taking advantage of our object to
 store some data. Oh, and the value 0 is just a "null" value in disguise: if we
 pass this to `clearTimeout()`, nothing will happen.
@@ -53,8 +61,12 @@ Back down in `setSuccessMessage`, before `setTimeout`, add
 `clearTimeout(this.successMessageTimeoutHandle)`. To set that property, add
 `this.successMessageTimeoutHandle =` before `setTimeout()`.
 
+[[[ code('3a11de0c85') ]]]
+
 And finally, to be *completely* on top of things, inside the callback, after we
 reset the state, set the timeout handle back to 0.
+
+[[[ code('9faac4dc79') ]]]
 
 ## Cleaning up Your Component: componentWillUnmount()
 
@@ -81,11 +93,15 @@ component was removed right after setting a success message.
 It's not a big deal, but let's clean this up. Scroll up to `componentDidMount()`
 and add a new method: `componentWillUnmount()`.
 
+[[[ code('2c07c0101c') ]]]
+
 This is another one of those magic lifecycle functions: `componentDidMount` is
 called right after your component is rendered to the page. `componentWillUnmount`
 is called right before it's *removed*. It's your chance to clean stuff up.
 
 Let's do that: `clearTimeout(this.successMessageTimeoutHandle)`.
+
+[[[ code('67d9ab8a7a') ]]]
 
 Honestly, this isn't that common. But, keep it in mind. Another example could be
 if you used an external library to add some cool feature directly to a DOM element.
