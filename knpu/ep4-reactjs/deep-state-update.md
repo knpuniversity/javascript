@@ -15,6 +15,8 @@ Use `return response.text()`: this returns a Promise where the data is the raw r
 content. Chain `.then` and use an arrow function with a `text` argument. Here,
 if `text`, return `JSON.parse(text)`, else empty quotes.
 
+[[[ code('7490f69f09') ]]]
+
 Go over, refresh and... delete! Ok, much better.
 
 ## Success Message on Delete
@@ -25,6 +27,8 @@ is easy! Inside of `RepLogApp`, down in `handleDeleteRepLog`, chain off the
 delete: `.then()`, an arrow function, and `this.setSuccessMessage()`: Item was
 Un-lifted.
 
+[[[ code('df42347fb1') ]]]
+
 Cool! Move back and try it! Success... message.
 
 ## "Ghosting" the Deleting Row
@@ -34,6 +38,8 @@ want... we can get fancier! Right now, we delete the rep log state immediately,
 but we don't show the success message until *after* the AJAX call finishes. If you
 want that to feel more synchronized, we *could* move the `setState()` call so that
 it fires only when the rep log is *actually* deleted.
+
+[[[ code('2bf34cbad7') ]]]
 
 But, we're *trading* problems. Refresh again. When you click delete, there's a
 slight pause before the user gets *any* feedback. I'll add a few more items to
@@ -48,6 +54,8 @@ if there were a field on each `repLog` called `isDeleting`. If there were, we
 could say `style={}`, create an object, and set `opacity`: if `isDeleting` is
 true, use .3 else 1.
 
+[[[ code('a19e83eec0') ]]]
+
 *This* was easy. The interesting part of this problem is *how* we can add that
 new `isDeleting` field. Well, it *looks* simple at first: at the top of
 `handleDeleteRepLog`, before we call `deleteRepLog()`, we want to set the state
@@ -61,6 +69,8 @@ Here's the trick: use `this.setState()`, but pass it an arrow function with the
 `prevState` arg. We're doing this because our new state will *depend* on the old
 state. Return the new state we want to set, which is the `repLogs` key.
 
+[[[ code('625a090964') ]]]
+
 To *not* mutate the state, we basically want to create a *new* array, put all
 the existing rep logs inside of it, and update the *one* rep log... um... without
 actually updating it. Sheesh.
@@ -69,11 +79,15 @@ This is another one of those moments where you can understand why React can be s
 darn hard! But, the fix is easy, and it's an old friend: map! Use
 `prevState.repLogs.map()` with a `repLog` argument to the arrow function.
 
+[[[ code('a43539d04d') ]]]
+
 The map function will return a *new* array, so that handles *part* of the problem.
 Inside, if `repLog.id !==` the `id` that's being deleted, just return `repLog`. And
 finally, we need to basically "clone" this last rep log and set the `isDeleting`
 flag on the new object. The way to do that is with return `Object.assign()` passing
 it an empty object, `repLog`, then the fields to update: `isDeleting: true`.
+
+[[[ code('f7dd959d89') ]]]
 
 As I mentioned earlier, `Object.assign()` is like `array_merge` in PHP: the 3rd argument
 is merged into the second, and then that's merged into the first. The *key* is the
