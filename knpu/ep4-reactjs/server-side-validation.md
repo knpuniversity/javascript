@@ -46,6 +46,8 @@ For testing purposes, let's purposely make this easy to do. In `RepLogCreator`,
 find the `itemOptions` array: these items match what's configured inside the form.
 Add a fake one: `invalid_item` with text `Dark Matter`.
 
+[[[ code('a3c95bfcd0') ]]]
+
 The server will *not* like this value. Let's try it anyways! Move over, select
 "Dark Matter", 10 and... ah! Run! Woh!
 
@@ -79,7 +81,11 @@ it creates an `Error` object, puts the response onto it, and *throws* it. By the
 you could change this logic to *also* throw an error for 300-level status codes,
 that's actually how jQuery works.
 
+[[[ code('e48ec5459e') ]]]
+
 To use this, back up in `fetchJson()`, add this handler: `.then(checkStatus)`.
+
+[[[ code('cb14eb24fc') ]]]
 
 Let's try it! Refresh, select our bad item, a number and... yes! This is a much
 more obvious message:
