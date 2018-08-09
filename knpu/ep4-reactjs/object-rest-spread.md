@@ -14,6 +14,8 @@ Except... I want to learn a super-fun new language feature. To show that, let's 
 this in a *slightly* fancier way. Above the AJAX call, set `const newState =` an
 object with `savingNewRepLog` set to false.
 
+[[[ code('48fa5617f9') ]]]
+
 This represents the new state that we want to apply in *all* situations: success
 or failure. In other words, we want to *merge* this state into whatever is being
 set in success and also down in catch.
@@ -22,10 +24,14 @@ How can you merge objects in JavaScript? We've seen it before: `Object.assign()`
 Check it out: `return Object.assign()`. For the first argument, copy the new state
 and paste. For the second argument, use `newState`.
 
+[[[ code('26ddf0eb51') ]]]
+
 `Object.assign()` will merge the data from `newState` *into* the first object and
 return it. Perfect!
 
 Repeat this in catch: add `Object.assign()`, then `newState`.
+
+[[[ code('e8c0c885fd') ]]]
 
 Let's go make sure this works: refresh, select our bad data and... cool. It shows
 for just a second, then disappears.
@@ -40,6 +46,8 @@ at, *especially* if you need to use it to avoid mutation.
 
 Ok, idea time: what if we could do this: remove the `Object.assign()`, return a normal
 object, but then, add `...newState`.
+
+[[[ code('d6abdcbda4') ]]]
 
 That would be cool, right? I mean, we *already* do this for arrays! But... Webpack
 explodes: the "spread" syntax does *not* work for objects.
@@ -67,6 +75,8 @@ Encore does this for us! Open `webpack.config.js`: the `configureBabel()` functi
 allows us to *extend* its configuration. Add `babelConfig.plugins.push()` and
 paste the name.
 
+[[[ code('bbb2252539') ]]]
+
 In the future, if you download the new `@babel/plugin-transform-object-rest-spread`
 library, the plugin name will be the full library name, starting with the `@babel`
 part. Just follow the docs.
@@ -84,6 +94,8 @@ But... PhpStorm is still angry: ESLint parsing error. No worries: we just need t
 tell ESLint that this syntax is cool with us. Open `.eslintrc.js`. Under `ecmaFeatures`,
 add `experimentalObjectRestSpread` set to true.
 
+[[[ code('30c58b7147') ]]]
+
 Deep breath: go back to RepLogApp. And... sweet! The error is gone!
 
 ## Using the Object Rest Spread
@@ -91,7 +103,11 @@ Deep breath: go back to RepLogApp. And... sweet! The error is gone!
 Let's finish this! Down in `catch`, remove `Object.assign()`, remove the second
 argument and add `...newState`.
 
+[[[ code('a7fde36082') ]]]
+
 And one more time: scroll down to `handleDeleteRepLog()`. We don't need this weird
 code anymore! Just return a new object with `...repLog` then `isDeleting: true`.
+
+[[[ code('dc578d8662') ]]]
 
 I *love* that. And even better, when we refresh, it's not broken! We rock!
