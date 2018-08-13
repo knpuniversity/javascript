@@ -26,16 +26,26 @@ is the only component that's even *aware* a server exists!
 Copy `itemOptions` and then open `RepLogApp`. On top, initialize a new
 `itemOptions` state set to that array.
 
+[[[ code('1dd7912984') ]]]
+
 Because all state is automatically passed as props to `RepLogs`, go there and add
 the new prop type: `itemOptions` as an array that is required.
+
+[[[ code('f5d42869b5') ]]]
 
 Above, destructure that, then, below, pass it down to `RepLogCreator` as
 `itemOptions={itemOptions}`.
 
+[[[ code('29644076a8') ]]]
+
 Copy the prop type, then do the same in `RepLogCreator`: define the prop type
 at the bottom, then go to the top of the function to destructure out `itemOptions`.
 
+[[[ code('c421bb40d6') ]]]
+
 Below, use the local `itemOptions` variable for the `map` function.
+
+[[[ code('44282040ff') ]]]
 
 When we refresh... cool! The options aren't dynamic yet, but they *are*
 stored as state. If you change a value... yep! It shows up.
@@ -59,11 +69,15 @@ Copy the options again and go into the *entry* file: `rep_log_react.js`. This wi
 Create a new `itemOptions` variable and paste! *Now*, pass these as a new prop:
 `itemOptions={itemOptions}`.
 
+[[[ code('0ee4dd0bab') ]]]
+
 Thanks to this, `RepLogApp` will now *receive* a new `itemOptions` prop. Remove
 the state *entirely*.
 
 At the bottom, set this prop type: `itemOptions` is an array, and you *could*
 make it required - I'll talk more about that in a minute.
+
+[[[ code('a7fba284c0') ]]]
 
 Oh, and this is cool! We deleted the `itemOptions` state but *added* an `itemOptions`
 prop. And because we're passing *all* props & state to `RepLogs`, it is *still*
@@ -96,6 +110,8 @@ of an array... which would be a problem when `RepLogCreator` calls `.map` on it.
 
 To solve this, you can give any prop a default value. It's super easy: add
 `RepLogApp.defaultProps =` an object with `itemOptions` set to an empty array.
+
+[[[ code('f26ac4ef94') ]]]
 
 Ok: we have *removed* the hardcoded `itemOptions` from our React app entirely.
 But... we're not done: they're still hardcoded in `rep_log_react.js`. We need to
