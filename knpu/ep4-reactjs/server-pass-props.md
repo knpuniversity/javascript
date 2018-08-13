@@ -7,8 +7,12 @@ At the bottom, you'll find the script that loads our app. *Before* this, create
 a new *global* variable. So, use the `window` object: `window.REP_LOG_APP_PROPS =`
 an object with `itemOptions` set to our options.
 
+[[[ code('7ee9bdf3ba') ]]]
+
 *Now*, go back to `rep_log_react.js` delete the old constant and, below, use
 `window.REP_LOG_APP_PROPS.itemOptions`.
+
+[[[ code('e7b029e6b4') ]]]
 
 ## When is it Ok to Use window?
 
@@ -27,13 +31,20 @@ that's it.
 ## Spreading all of the Props
 
 Back in the template, I built the `REP_LOG_APP_PROPS` variable so that we could,
-in theory, set *other* props on it. For example, add `withHeart: true`. In the
-entry file, to read this, we could of course use `window.REP_LOG_APP_PROPS.withHeart`.
+in theory, set *other* props on it. For example, add `withHeart: true`.
+
+[[[ code('2dca0a1acb') ]]]
+
+In the entry file, to read this, we could of course use `window.REP_LOG_APP_PROPS.withHeart`.
 Or... we can be way cooler! Use spread attributes: `...window.REP_LOG_APP_PROPS`.
+
+[[[ code('c55d781001') ]]]
 
 Suddenly! All of the keys on that object will be passed as props! And this is cool:
 set `shouldShowHeart` to false. Hmm: we're now passing `withHeart=false`... but
 thanks to the spread prop, we're passing that prop *again* as true.
+
+[[[ code('762d44f691') ]]]
 
 When you do this, the *last* prop always wins. Yep, we *do* see the heart.
 
@@ -49,6 +60,8 @@ want to send to React. Copy `RepLog::getThingsYouCanLiftChoices()`.
 Then, go into the controller that renders this page - `LiftController` and find
 `indexAction()`. First, let's `dump()` that function to see what it looks like.
 
+[[[ code('6ea6f90f28') ]]]
+
 Move over and refresh! Interesting! It's an array... but it doesn't quite look
 right. Let's compare this to the structure we want. Ok, each item has an id
 like `cat` or `fat_cat`. That is the *value* on the array. We also need a `text`
@@ -63,20 +76,28 @@ To do that, go back to the controller. To save us some tedious work, I'll paste
 in some code. This code uses the `$translator`. To get that, add a new controller
 argument: `TranslatorInterface $translator`.
 
+[[[ code('e9b6f99d8d') ]]]
+
 Cool! This code builds the structure we need: it has an `itemOptions` key, we
 loop over each, and create the `id` and `text` keys. *Now* when we refresh, Yep!
 The dumped code looks *exactly* like our `REP_LOG_APP_PROPS` JavaScript structure!
 Heck, we can add `withHeart => true`... because I like the heart.
 
+[[[ code('55f73885d4') ]]]
+
 Remove the `die` and pass this into twig as a new `repLogAppProps` variable.
+
+[[[ code('9dd810d4cb') ]]]
 
 Ready for the last piece? Delete the old JavaScript object and replace it with:
 `{{ repLogAppProps|json_encode|raw }}`.
 
+[[[ code('46e4806e28') ]]]
+
 That will print that array as JSON... which of course, is the same as JavaScript.
 
 Ah, do you love it? It's now *very* easy to pass dynamic values or initial state
-into your app. Try it: refresh! Heck it even works!
+into your app. Try it: refresh!
 
 ## Removing the Old Code!
 
@@ -88,6 +109,8 @@ Start by deleting this entire old `Components` directory: all of that code was
 used by the old app. Delete the old entry file - `rep_log.js` and inside of
 the template, we can remove a *ton* of old markup. The new `lift-stuff-app` div
 *now* lives *right* next to the leaderboard.
+
+[[[ code('35925c42cd') ]]]
 
 Oh, and delete `_form.html.twig` too - more old markup. At the bottom, remove the
 original script tag.
@@ -110,6 +133,8 @@ top-level grid class *is* a bit weird: if we tried to use this component in a di
 place in our site, it would *always* have that `col-md-7`. It makes more sense
 sense to *remove* that class and, instead, in `index.html.twig`, add the class
 there. Now, our React app will just fit inside this.
+
+[[[ code('b8c83c2e45') ]]]
 
 And when you reload the page, yes: no annoying jumping!
 
