@@ -24,6 +24,8 @@ top of `RepLogCreator`, and then say `export default function Button` with the
 normal `props` argument. Inside, return the markup for a button with `className="btn"`,
 because every button at *least* has that class.
 
+[[[ code('b4384954c7') ]]]
+
 ## Spreading the Props
 
 Go back to `RepLogCreator` and scroll down. Ok, this button has `type="submit"`.
@@ -36,13 +38,19 @@ passed to this component will be rendered as an attribute. And for the text, hmm
 how about a prop called `text`: `props.text`. Close the button tag. At the bottom,
 add `Button.propTypes =` and define `text` as a string that's required.
 
+[[[ code('c95f38fcb5') ]]]
+
 Perfect!
 
 Back in `RepLogCreator`, head up top and bring this in: `import Button` from
 `./Components/Button`.
 
+[[[ code('fe65995d88') ]]]
+
 Then *all* the way down at the bottom, use `<Button type="submit" />` and also
 the `text` prop. Copy the original text and paste it here.
+
+[[[ code('2818199f9e') ]]]
 
 We *are* going to temporarily lose the `btn-primary` class. That *is* a problem,
 and we'll fix it soon. Delete the old button. This should work! Move over and
@@ -66,6 +74,8 @@ HTML elements or even other React components! Woh!
 If you pass something in the body of a Component, that is known as its *children*,
 and you can access it automatically with `props.children`. It's that simple.
 
+[[[ code('ec9cc7ae6b') ]]]
+
 Oh, and ESLint is angry because we're missing props validation for `children`. I'm
 going to ignore that because the children prop is a special case and, we don't really
 care of its text, a component or something else. But, you could add it with the
@@ -74,6 +84,8 @@ PropTypes "any" type.
 Remove the propTypes for now. Let's try it! Move over and refresh! Looking good.
 To prove that using children is awesome, add a new `<span>` with
 `className="fa fa-plus-circle"`.
+
+[[[ code('8b913788a4') ]]]
 
 Go check that out. Nice!
 
@@ -84,6 +96,8 @@ just pass a `className` prop here, because, in the `Button`, we're *already*
 passing a `className` prop. So, let's just be smarter! Enter JavaScript, add ticks,
 then print `btn`, then `${props.className}`.
 
+[[[ code('810130e360') ]]]
+
 That should do it! We're not passing this prop yet, but try it: refresh. Oh man,
 `undefined`! Of course! Let's go clean things up.
 
@@ -92,9 +106,13 @@ a string. We *could* make this required... *or* we can allow it to be optional,
 but fix that `undefined` problem. To do that, set `Button.defaultProps` to an
 object with `className` set to empty quotes.
 
+[[[ code('e6aaa131c8') ]]]
+
 Problem solved! Try it again. Wait! What? Now the `class` attribute is empty?
 How is that even possible? To see why, go back to `RepLogCreator` and pass a
 `className` prop here: `btn-primary`.
+
+[[[ code('22a83c7f8f') ]]]
 
 Go refresh again. Huh, now it has *that* class... but not the `btn` class.
 Here's the deal: sure, we have this `className` prop here. But, thanks to the
@@ -108,6 +126,8 @@ So, hmm: we basically want to print *all* of the props here... *except* for
 
 *Then* - this is the cool part - destructure a second variable, `...otherProps`.
 Use *that* below in the button.
+
+[[[ code('aa477e157f') ]]]
 
 Yep, the `...otherProps` will be *all* of the props, *except* for any that we
 *specifically* destructured before it. It's an *awesome* little trick.
