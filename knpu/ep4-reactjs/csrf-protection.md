@@ -61,15 +61,21 @@ php bin/console make:subscriber
 Call it `ApiCsrfValidationSubscriber`. And, listen to the `kernel.request` event.
 Done! This made one change: it created a new class in `src/EventSubscriber`.
 
+[[[ code('68a3c54dfd') ]]]
+
 Awesome! Because we're listening to `kernel.request`, the `onKernelRequest()`
 method will be called on every request, *before* the controller. At the top of
 the method, first say if `!$event->isMasterRequest()`, then return. That's an internal
 detail to make sure we only run this code for a real request.
 
+[[[ code('e8d97e0549') ]]]
+
 Next, we do not need to require the `Content-Type` header for safe HTTP methods,
 like GET or HEAD, because, unless we do something awful in our code, these requests
 don't *change* anything on the server. Add `$request = $event->getRequest()`. Then,
 if `$request->isMethodSafe(false)`, just return again.
+
+[[[ code('2574d354c2') ]]]
 
 The `false` part isn't important: that's a flag for a backwards-compatibility layer.
 
