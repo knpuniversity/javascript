@@ -14,9 +14,13 @@ But, in our app, let's use a different trick... which is gonna be kinda fun.
 Above the controller class, add `@Route()` with `defaults={}` and a new flag that
 I'm inventing: `_is_api` set to `true`.
 
+[[[ code('7872014977') ]]]
+
 When you put an `@Route` annotation above the controller class, it means its config
 will be applied to all of the routes below it. Now, inside of the subscriber, we
 can read this config. To see how, add `dump($request->attributes->all())` then die.
+
+[[[ code('fd2596898e') ]]]
 
 If you refresh the main page... no `_is_api` here. But now go to `/reps`. There
 it is! Any `defaults` flags that we set are available in `$request->attributes`.
@@ -30,12 +34,18 @@ the normal `Route` annotation class.
 Yep, we're creating a brand new, customized route annotation. Add `@Annotation`
 above the class.
 
+[[[ code('9bcf54870a') ]]]
+
 If we did nothing else, we could at least go into our controller and use it:
 `@ApiRoute()`.
+
+[[[ code('cceff0d871') ]]]
 
 Try it! Nothing changes. But *now*, in `ApiRoute`, go to the Code -> Generate menu -
 or Command+N on a Mac - and override the `getDefaults()` method. Return a merge
 of `_is_api` set to true and `parent::getDefaults()`.
+
+[[[ code('af97fcb7b1') ]]]
 
 Nice, right? Back in the controller, remove the ugly `defaults` stuff. Oh, and
 if you want to mark just *one* route as an API route, you can also use this new
@@ -54,6 +64,8 @@ The data we send back doesn't matter - I'll add a message that says what went
 wrong. But, give this a 415 status code: this means "Unsupported Media Type".
 Finish this with `$event->setResponse($response)`. This will completely stop the
 request: this response will be returned *without* even calling your controller.
+
+[[[ code('7c382ab4d7') ]]]
 
 Ok, let's try this! Find the `rep_log_api.js` file and look down at `createRepLog`.
 We *are* setting this `Content-Type` header. So, this should work! Move over,
@@ -81,6 +93,8 @@ Add `let headers = ` and set this to the `Content-Type` header. Then, if
 `options && options.headers` - so, if the user passes a custom header, merge them
 together: `headers = `, `...options.headers` then `headers`. Then, delete that
 property and, below, pass `headers` to `headers`.
+
+[[[ code('cffd715ced') ]]]
 
 Try it! Move over - looks like the page already refreshed. And... yes! We can
 delete again!
