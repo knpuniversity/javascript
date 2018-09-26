@@ -1143,11 +1143,15 @@ index b5518e9..5d0239f 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index dbab2f7..8651e70 100644
+index dbab2f7..649f1b5 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -4,79 +4,20 @@
-         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+@@ -1,82 +1,23 @@
+ {
+     "_readme": [
+         "This file locks the dependencies of your project to a known state",
+-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
++        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
 -    "content-hash": "0818f03c11954ee512b7cb0cd4a4418c",
@@ -3750,20 +3754,20 @@ index dbab2f7..8651e70 100644
 -            "name": "willdurand/jsonp-callback-validator",
 -            "version": "v1.1.0",
 +            "name": "symfony/flex",
-+            "version": "v1.0.68",
++            "version": "v1.1.1",
              "source": {
                  "type": "git",
 -                "url": "https://github.com/willdurand/JsonpCallbackValidator.git",
 -                "reference": "1a7d388bb521959e612ef50c5c7b1691b097e909"
 +                "url": "https://github.com/symfony/flex.git",
-+                "reference": "0241b2acbb58df29e633b03fb56eb349a207613f"
++                "reference": "9fb60f232af0764d58002e7872acb43a74506d25"
              },
              "dist": {
                  "type": "zip",
 -                "url": "https://api.github.com/repos/willdurand/JsonpCallbackValidator/zipball/1a7d388bb521959e612ef50c5c7b1691b097e909",
 -                "reference": "1a7d388bb521959e612ef50c5c7b1691b097e909",
-+                "url": "https://api.github.com/repos/symfony/flex/zipball/0241b2acbb58df29e633b03fb56eb349a207613f",
-+                "reference": "0241b2acbb58df29e633b03fb56eb349a207613f",
++                "url": "https://api.github.com/repos/symfony/flex/zipball/9fb60f232af0764d58002e7872acb43a74506d25",
++                "reference": "9fb60f232af0764d58002e7872acb43a74506d25",
                  "shasum": ""
              },
              "require": {
@@ -3779,7 +3783,7 @@ index dbab2f7..8651e70 100644
 +            "type": "composer-plugin",
 +            "extra": {
 +                "branch-alias": {
-+                    "dev-master": "1.0-dev"
++                    "dev-master": "1.1-dev"
 +                },
 +                "class": "Symfony\\Flex\\Flex"
              },
@@ -3792,7 +3796,7 @@ index dbab2f7..8651e70 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -2789,159 +2654,236 @@
+@@ -2789,159 +2654,237 @@
              ],
              "authors": [
                  {
@@ -3805,7 +3809,8 @@ index dbab2f7..8651e70 100644
              ],
 -            "description": "JSONP callback validator.",
 -            "time": "2014-01-20T22:35:06+00:00"
-+            "time": "2018-01-31T19:34:57+00:00"
++            "description": "Composer plugin for Symfony",
++            "time": "2018-09-03T08:17:12+00:00"
          },
          {
 -            "name": "zendframework/zend-code",
@@ -4109,7 +4114,7 @@ index dbab2f7..8651e70 100644
                  },
                  "exclude-from-classmap": [
                      "/Tests/"
-@@ -2955,30 +2897,2146 @@
+@@ -2955,30 +2898,2137 @@
                  {
                      "name": "Fabien Potencier",
                      "email": "fabien@symfony.com"
@@ -4354,17 +4359,6 @@ index dbab2f7..8651e70 100644
 +        {
 +            "name": "symfony/lts",
 +            "version": "dev-master",
-+            "source": {
-+                "type": "git",
-+                "url": "https://github.com/symfony/lts.git",
-+                "reference": "396c5fca8d73d01186df37d7031321a3c0c2bf92"
-+            },
-+            "dist": {
-+                "type": "zip",
-+                "url": "https://api.github.com/repos/symfony/lts/zipball/396c5fca8d73d01186df37d7031321a3c0c2bf92",
-+                "reference": "396c5fca8d73d01186df37d7031321a3c0c2bf92",
-+                "shasum": ""
-+            },
 +            "conflict": {
 +                "symfony/asset": ">=5",
 +                "symfony/browser-kit": ">=5",
@@ -4391,6 +4385,7 @@ index dbab2f7..8651e70 100644
 +                "symfony/intl": ">=5",
 +                "symfony/ldap": ">=5",
 +                "symfony/lock": ">=5",
++                "symfony/messenger": ">=5",
 +                "symfony/monolog-bridge": ">=5",
 +                "symfony/options-resolver": ">=5",
 +                "symfony/process": ">=5",
@@ -4441,7 +4436,8 @@ index dbab2f7..8651e70 100644
 +            ],
 +            "description": "Enforces Long Term Supported versions of Symfony components",
 +            "homepage": "https://symfony.com",
-+            "time": "2017-10-19T02:16:32+00:00"
++            "abandoned": "symfony/flex",
++            "time": "2018-09-13T17:13:03+00:00"
 +        },
 +        {
 +            "name": "symfony/monolog-bridge",
@@ -6266,7 +6262,7 @@ index dbab2f7..8651e70 100644
              },
              "suggest": {
                  "ext-zip": "Zip support is required when using bin/simple-phpunit",
-@@ -2987,18 +5045,268 @@
+@@ -2987,18 +5037,268 @@
              "bin": [
                  "bin/simple-phpunit"
              ],
@@ -6538,7 +6534,7 @@ index dbab2f7..8651e70 100644
                  },
                  "exclude-from-classmap": [
                      "/Tests/"
-@@ -3018,18 +5326,150 @@
+@@ -3018,18 +5318,150 @@
                      "homepage": "https://symfony.com/contributors"
                  }
              ],
