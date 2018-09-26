@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index b59e74c3f..a41a736aa 100644
+index b59e74c..a41a736 100644
 --- a/package.json
 +++ b/package.json
 @@ -2,6 +2,7 @@
@@ -11,7 +11,7 @@ index b59e74c3f..a41a736aa 100644
    }
  }
 diff --git a/public/assets/js/RepLogApp.js b/public/assets/js/RepLogApp.js
-index d9e06416d..2285a7a60 100644
+index d9e0641..2285a7a 100644
 --- a/public/assets/js/RepLogApp.js
 +++ b/public/assets/js/RepLogApp.js
 @@ -2,8 +2,9 @@
@@ -32,7 +32,7 @@ index d9e06416d..2285a7a60 100644
 -})(window, Routing, swal);
 +})(window, Routing);
 diff --git a/templates/lift/index.html.twig b/templates/lift/index.html.twig
-index 000960176..6cae22bde 100644
+index 0009601..6cae22b 100644
 --- a/templates/lift/index.html.twig
 +++ b/templates/lift/index.html.twig
 @@ -54,7 +54,6 @@
@@ -44,7 +44,7 @@ index 000960176..6cae22bde 100644
  
      <script>
 diff --git a/yarn.lock b/yarn.lock
-index 874a6414a..26d824e97 100644
+index 874a641..26d824e 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -4774,6 +4774,10 @@ svgo@^0.7.0:

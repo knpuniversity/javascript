@@ -1,5 +1,5 @@
 diff --git a/.eslintrc.js b/.eslintrc.js
-index 61df87087..0e1bad13b 100644
+index 61df870..0e1bad1 100644
 --- a/.eslintrc.js
 +++ b/.eslintrc.js
 @@ -1,5 +1,5 @@
@@ -10,7 +10,7 @@ index 61df87087..0e1bad13b 100644
          ecmaVersion: 6,
          sourceType: 'module',
 diff --git a/package.json b/package.json
-index e2345ab84..d540d5b9f 100644
+index e2345ab..d540d5b 100644
 --- a/package.json
 +++ b/package.json
 @@ -5,6 +5,7 @@
@@ -22,7 +22,7 @@ index e2345ab84..d540d5b9f 100644
      "jquery": "^3.3.1",
      "node-sass": "^4.7.2",
 diff --git a/yarn.lock b/yarn.lock
-index 882ca63c4..c27e0ad48 100644
+index 882ca63..c27e0ad 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -1842,7 +1842,7 @@ dns-txt@^2.0.2:

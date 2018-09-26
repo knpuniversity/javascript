@@ -1,5 +1,5 @@
 diff --git a/play.js b/play.js
-index a92ea777e..e708486e8 100644
+index a92ea77..e708486 100644
 --- a/play.js
 +++ b/play.js
 @@ -1,5 +1,9 @@
@@ -13,7 +13,7 @@ index a92ea777e..e708486e8 100644
      console.log(aGreatNumber);
  }, 1000);
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index 84d72053c..9021a2073 100644
+index 84d7205..9021a20 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -180,7 +180,6 @@

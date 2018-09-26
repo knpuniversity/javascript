@@ -1,5 +1,5 @@
 diff --git a/assets/js/api/rep_log_api.js b/assets/js/api/rep_log_api.js
-index 3aa8e0005..f46f6f090 100644
+index 3aa8e00..f46f6f0 100644
 --- a/assets/js/api/rep_log_api.js
 +++ b/assets/js/api/rep_log_api.js
 @@ -1,6 +1,13 @@
@@ -29,7 +29,7 @@ index 3aa8e0005..f46f6f090 100644
  }
 \ No newline at end of file
 diff --git a/src/EventSubscriber/ApiCsrfValidationSubscriber.php b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
-index 2bdbabf76..23589e789 100644
+index 2bdbabf..23589e7 100644
 --- a/src/EventSubscriber/ApiCsrfValidationSubscriber.php
 +++ b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
 @@ -3,6 +3,7 @@

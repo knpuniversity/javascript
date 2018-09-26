@@ -1,5 +1,5 @@
 diff --git a/public/assets/js/layout.js b/public/assets/js/layout.js
-index e9d87b70b..7c3bb5c3a 100644
+index e9d87b7..7c3bb5c 100644
 --- a/public/assets/js/layout.js
 +++ b/public/assets/js/layout.js
 @@ -2,6 +2,7 @@
@@ -11,7 +11,7 @@ index e9d87b70b..7c3bb5c3a 100644
  $(document).ready(function() {
      $('[data-toggle="tooltip"]').tooltip();
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 385bf770e..3c87e18d5 100644
+index 385bf77..3c87e18 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -11,7 +11,7 @@

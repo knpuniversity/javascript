@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 1a3581ba2..e4bbcb411 100644
+index 1a3581b..e4bbcb4 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -15,7 +15,13 @@ function calculateTotalWeightLifted(repLogs) {
