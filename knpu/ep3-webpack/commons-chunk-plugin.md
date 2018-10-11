@@ -28,9 +28,25 @@ How can we do that? Magic. Or, the CommonsChunkPlugin.
 
 ## Adding the CommonsChunkPlugin
 
+>!!!This section is only for webpack@3
+
 Open `webpack.config.js`. Under the `plugins` section, add
 `new webpack.optimize.CommonsChunkPlugin()` and pass that an object with two keys:
 `name` set to `vendor` and `minChunks` set to 2:
+
+> Webpack@4 code
+> ```
+>     optimization: {
+>         splitChunks: {
+>             cacheGroups: {
+>                 commons: {
+>                     minChunks: 2,
+>                     name: "vendor"
+>                 }
+>             }
+>         }
+>     },
+> ```
 
 [[[ code('bbfe38ed6e') ]]]
 
@@ -71,6 +87,21 @@ And if you looked at the other built files, you would *not* find it anymore.
 That's amazing right? Let's make our entry files even smaller. Here's another
 common configuration. Instead of `minChunks` set to a number, you can pass a callback
 function with a `module` argument. I'll paste a bit of code:
+
+>!Don't know what is the best solution for this code block webpack@4
+>```
+>    optimization: {
+>        splitChunks: {
+>            cacheGroups: {
+>                vendor: {
+>                    test: /[\\/]node_modules[\\/]/,
+>                    name: "vendor",
+>                    chunks: "all"
+>                }
+>            }
+>        }
+>    },
+>```
 
 [[[ code('2301849b80') ]]]
 

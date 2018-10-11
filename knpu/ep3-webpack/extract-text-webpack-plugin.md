@@ -13,6 +13,9 @@ it outputs a *real* CSS file, instead of embedding CSS in JavaScript.
 
 Let's get it rocking! Find your terminal and run
 
+> Yeah for webpack@4 the only way is to use beta version of plugin 
+> `extract-text-webpack-plugin@4.0.0-beta.0`
+
 ```terminal
 yarn add extract-text-webpack-plugin --dev
 ```

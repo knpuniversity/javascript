@@ -11,6 +11,8 @@ that tells it to compile in dev or production mode.
 
 ## Using NODE_ENV
 
+> Here I think we need to link webpack.mode var with NODE_ENV
+
 In Node applications, there's a standard way to *signal* the environment to your
 apps: by setting an environment variable called `NODE_ENV`. To read this, you can
 say `process.env.NODE_ENV`:
@@ -47,9 +49,19 @@ Then, all the way at the bottom, export this: `module.exports = webpackConfig`:
 
 [[[ code('c0705c446c') ]]]
 
+> Here we need to install `uglifyjs-webpack-plugin`
+
 Before that, add an if statement: if `process.env.NODE_ENV === 'production')`, then
 we will add a new plugin. So, `webpackConfig.plugins.push()` then
 `new webpack.optimize.UglifyJsPlugin`:
+
+>```
+>const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+>
+>if (process.env.NODE_ENV === 'production') {
+>    webpackConfig.optimization.minimizer = [new UglifyJsPlugin()];
+>}
+>```
 
 [[[ code('cc717660bc') ]]]
 
@@ -84,6 +96,9 @@ long, *before* adding the `NODE_ENV` stuff! My fingers are so tired...
 There's a *great* way to improve this. Open `package.json`. Add a new key called
 `scripts` set to a hash. Inside, you can put something like `dev` set to
 `NODE_ENV=dev webpack`:
+
+> I don't know how to be here, webpack.mode wants only "development", "production" 
+> or "none" key to work
 
 [[[ code('f746244c91') ]]]
 

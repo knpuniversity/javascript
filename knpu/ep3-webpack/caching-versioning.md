@@ -55,6 +55,8 @@ And this outputs just the first 6 characters.
 To control the CSS filenames, find the `plugins` section. For `ExtractTextPlugin`,
 add `useVersioning`. If it's on, use `[name].[contenthash:6].css`:
 
+> Here we need to use [md5:contenthash:hex:6] for webpack@4
+
 [[[ code('2b589790b0') ]]]
 
 ExtractTextPlugin exposes a `[contenthash]` wildcard.

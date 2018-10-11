@@ -8,6 +8,8 @@ file with exactly this name, Webpack will automatically find it.
 And what does this file look like? Oh, you're going to love this: we use, yep `module.exports`
 to *export* a configuration object!
 
+> Somewhere here we need to add `mode` key set with `development value`
+
 [[[ code('b0483ae6f7') ]]]
 
 Inside, that config needs two major things. First, an `entry` key set to

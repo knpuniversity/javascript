@@ -23,8 +23,10 @@ Copy the `yarn add` line, though we already have `webpack` installed.
 
 Find your terminal and run it with `--dev` on the end:
 
+>Here we have problem! We need to use babel-loader@7!
+
 ```terminal-silent
-yarn add babel-loader babel-core babel-preset-env --dev
+yarn add babel-loader@7 babel-core babel-preset-env --dev
 ```
 
 This installs Babel itself and the `env` preset: both things we installed in the
