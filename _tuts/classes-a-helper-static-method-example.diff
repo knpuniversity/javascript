@@ -1,5 +1,5 @@
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index d665a86..140a90d 100644
+index 7b467a9..06d9f02 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -184,12 +184,9 @@

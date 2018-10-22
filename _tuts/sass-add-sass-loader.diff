@@ -15,11 +15,10 @@ diff --git a/webpack.config.js b/webpack.config.js
 index 503d9c9..92b1f38 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
-@@ -32,6 +32,14 @@ module.exports = {
-                     'css-loader',
+@@ -33,6 +33,14 @@ module.exports = {
                  ]
              },
-+            {
+             {
 +                test: /\.scss$/,
 +                use: [
 +                    'style-loader',
@@ -27,9 +26,10 @@ index 503d9c9..92b1f38 100644
 +                    'sass-loader',
 +                ]
 +            },
-             {
++            {
                  test: /\.(png|jpg|jpeg|gif|ico|svg)$/,
                  use: [
+                     {
 diff --git a/yarn.lock b/yarn.lock
 index 26d2643..781b75c 100644
 --- a/yarn.lock
