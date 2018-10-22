@@ -87,7 +87,7 @@ we also need to add a class to this. Find it with `var $wrapper = $(this).closes
 Perfect!
 
 Then, if there is *not* any `data[fieldName]`, the field doesn't have an error.
-Just return:
+Just `continue`:
 
 [[[ code('9da82c046f') ]]]
 
