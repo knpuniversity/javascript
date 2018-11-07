@@ -29,13 +29,21 @@ And so is `node_modules/`. We're starting from scratch.
 Now, add webpack:
 
 ***TIP
-This tutorial uses Webpack v3, so please double check that you do too, otherwise, you will run into some troubles in further chapters
-***
+This tutorial uses Webpack v3, so please double check that you do too, otherwise, 
+follow the TIPs, they will show you how to use the force of Webpack
 
-> Cli is not installed by default we can install it here or Enter "yes" on first webpack run
+And the first tip is: Run
 
 ```terminal
-yarn add webpack webpack-cli
+yarn add webpack webpack-cli --dev
+```
+
+If you does not mentioned `webpack-cli` package, No worries! You will be prompted to 
+install it on first run.
+***
+
+```terminal
+yarn add webpack@3 --dev
 ```
 
 As it's downloading, let's talk strategy. Webpack is an executable, and we will point
@@ -59,12 +67,18 @@ file - `web/build/rep_log.js` - a different filename to avoid confusion.
 
 Deep breath. Run webpack:
 
-> If we have not installed webpack-cli we'll be asked for doing it here,
-> additionally we need to use `-o`(!required) flag to set output file and `--mode` 
-> to remove warning about running mode.
+***TIP
+We are using Webpack@4, that's why we need to specify `--mode` and `-o` parameters.
+Now it looks better.
 
 ```terminal-silent
-./node_modules/.bin/webpack web/assets/js/RepLogApp.js -o web/build/rep_log.js `-mode` development
+./node_modules/.bin/webpack web/assets/js/RepLogApp.js -o web/build/rep_log.js --mode development
+```
+
+***
+
+```terminal-silent
+./node_modules/.bin/webpack web/assets/js/RepLogApp.js web/build/rep_log.js
 ```
 
 Yes! No errors... and it looks like it did something. Check the `web/build` directory...
