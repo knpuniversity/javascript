@@ -1,5 +1,5 @@
 diff --git a/assets/js/Components/RepLogApp.js b/assets/js/Components/RepLogApp.js
-index da07846..ea478fd 100644
+index 5e94cdb..661a62f 100644
 --- a/assets/js/Components/RepLogApp.js
 +++ b/assets/js/Components/RepLogApp.js
 @@ -5,7 +5,7 @@ const $ = require('jquery');

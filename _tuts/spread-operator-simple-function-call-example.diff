@@ -38,7 +38,7 @@ index 4b6ee5d..548a19b 100644
 -);
 +printThreeThings(...yummyThings);
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index 12ad8c9..cd14d90 100644
+index 60f9490..7b578c4 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -165,8 +165,9 @@

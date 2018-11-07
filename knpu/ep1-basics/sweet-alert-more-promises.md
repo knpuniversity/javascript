@@ -93,4 +93,4 @@ chain a `.catch()` onto this:
 [[[ code('3bb3d0fee7') ]]]
 
 
-[sweetalert2]: https://limonte.github.io/sweetalert2/
+[sweetalert2]: https://sweetalert2.github.io/

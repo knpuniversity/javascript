@@ -61,11 +61,10 @@ index c60db7c..4dde369 100644
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -1029,6 +1029,64 @@
-             ],
+@@ -1030,6 +1030,64 @@
              "time": "2016-09-10T18:51:13+00:00"
          },
-+        {
+         {
 +            "name": "friendsofsymfony/jsrouting-bundle",
 +            "version": "1.6.0",
 +            "source": {
@@ -123,14 +122,14 @@ index c60db7c..4dde369 100644
 +            ],
 +            "time": "2015-10-28T15:08:39+00:00"
 +        },
-         {
++        {
              "name": "friendsofsymfony/user-bundle",
              "version": "dev-master",
-@@ -2363,6 +2421,46 @@
-             ],
+             "source": {
+@@ -2364,6 +2422,46 @@
              "time": "2018-04-02T09:24:19+00:00"
          },
-+        {
+         {
 +            "name": "willdurand/jsonp-callback-validator",
 +            "version": "v1.1.0",
 +            "source": {
@@ -170,9 +169,10 @@ index c60db7c..4dde369 100644
 +            "description": "JSONP callback validator.",
 +            "time": "2014-01-20T22:35:06+00:00"
 +        },
-         {
++        {
              "name": "zendframework/zend-code",
              "version": "2.6.3",
+             "source": {
 diff --git a/src/AppBundle/Controller/RepLogController.php b/src/AppBundle/Controller/RepLogController.php
 index c1335f9..44cc485 100644
 --- a/src/AppBundle/Controller/RepLogController.php
@@ -187,7 +187,7 @@ index c1335f9..44cc485 100644
       */
      public function getRepLogsAction()
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index 6a3ef10..a9d1c8b 100644
+index 716de9a..38b0b75 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -1,10 +1,12 @@

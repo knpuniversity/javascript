@@ -47,14 +47,14 @@ diff --git a/composer.lock b/composer.lock
 index 7dcbc3d..458f1fb 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -4,8 +4,67 @@
+@@ -4,9 +4,68 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
 -    "content-hash": "a22c25027740892ca785c9261aac013d",
 +    "content-hash": "0818f03c11954ee512b7cb0cd4a4418c",
      "packages": [
-+        {
+         {
 +            "name": "composer/ca-bundle",
 +            "version": "1.0.7",
 +            "source": {
@@ -113,9 +113,10 @@ index 7dcbc3d..458f1fb 100644
 +            ],
 +            "time": "2017-03-06T11:59:08+00:00"
 +        },
-         {
++        {
              "name": "doctrine/annotations",
              "version": "v1.6.0",
+             "source": {
 @@ -349,16 +408,16 @@
          },
          {
@@ -203,11 +204,10 @@ index 7dcbc3d..458f1fb 100644
          },
          {
              "name": "doctrine/doctrine-cache-bundle",
-@@ -1030,6 +1089,60 @@
-             ],
+@@ -1031,6 +1090,60 @@
              "time": "2016-12-18T15:42:34+00:00"
          },
-+        {
+         {
 +            "name": "fig/link-util",
 +            "version": "1.0.0",
 +            "source": {
@@ -261,9 +261,10 @@ index 7dcbc3d..458f1fb 100644
 +            ],
 +            "time": "2016-10-17T18:31:11+00:00"
 +        },
-         {
++        {
              "name": "friendsofsymfony/jsrouting-bundle",
              "version": "1.6.0",
+             "source": {
 @@ -1090,26 +1203,28 @@
          },
          {
@@ -503,11 +504,10 @@ index 7dcbc3d..458f1fb 100644
          },
          {
              "name": "paragonie/random_compat",
-@@ -1500,6 +1667,104 @@
-             ],
+@@ -1501,6 +1668,104 @@
              "time": "2016-08-06T20:24:11+00:00"
          },
-+        {
+         {
 +            "name": "psr/container",
 +            "version": "1.0.0",
 +            "source": {
@@ -605,14 +605,14 @@ index 7dcbc3d..458f1fb 100644
 +            ],
 +            "time": "2016-10-28T16:06:13+00:00"
 +        },
-         {
++        {
              "name": "psr/log",
              "version": "1.0.2",
-@@ -1547,18 +1812,66 @@
-             ],
+             "source": {
+@@ -1548,17 +1813,65 @@
              "time": "2016-10-10T12:19:37+00:00"
          },
-+        {
+         {
 +            "name": "psr/simple-cache",
 +            "version": "1.0.1",
 +            "source": {
@@ -660,7 +660,7 @@ index 7dcbc3d..458f1fb 100644
 +            ],
 +            "time": "2017-10-23T01:57:42+00:00"
 +        },
-         {
++        {
              "name": "sensio/distribution-bundle",
 -            "version": "v5.0.18",
 +            "version": "v5.0.20",
@@ -1182,19 +1182,19 @@ diff --git a/var/SymfonyRequirements.php b/var/SymfonyRequirements.php
 index 7e7a99d..3b14a40 100644
 --- a/var/SymfonyRequirements.php
 +++ b/var/SymfonyRequirements.php
-@@ -633,12 +633,6 @@ class SymfonyRequirements extends RequirementCollection
-             'Install and enable the <strong>mbstring</strong> extension.'
+@@ -634,12 +634,6 @@ class SymfonyRequirements extends RequirementCollection
          );
  
--        $this->addRecommendation(
+         $this->addRecommendation(
 -            function_exists('iconv'),
 -            'iconv() should be available',
 -            'Install and enable the <strong>iconv</strong> extension.'
 -        );
 -
-         $this->addRecommendation(
+-        $this->addRecommendation(
              function_exists('utf8_decode'),
              'utf8_decode() should be available',
+             'Install and enable the <strong>XML</strong> extension.'
 diff --git a/web/config.php b/web/config.php
 index 69df43c..fd7e17e 100644
 --- a/web/config.php
