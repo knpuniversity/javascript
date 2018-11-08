@@ -29,7 +29,7 @@ And so is `node_modules/`. We're starting from scratch.
 Now, add webpack:
 
 ***TIP
-This tutorial uses Webpack v3, so please double check that you do too, otherwise, you will run into some troubles in further chapters
+This tutorial uses Webpack v3. If you're coding along, make sure to install version 3 with `yarn add webpack@3 --dev`.
 ***
 
 ```terminal
