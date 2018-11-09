@@ -45,6 +45,12 @@ the name of the final file, `.js` - so `rep_log.js`.
 
 And... that's it! Find your terminal. Encore has its own executable. To use it, run:
 
+***TIP
+Wait! Before running encore, first delete the `.babelrc` file (if you have one). This
+is left-over from the previous tutorial and causes issues with the latest version of
+Encore. We delete it later anyways.
+***
+
 ```terminal
 ./node_modules/.bin/encore dev
 ```
