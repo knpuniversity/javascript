@@ -40,6 +40,11 @@ place.
 
 ## Installing copy-webpack-plugin
 
+***TIP
+Great news! The latest version of Encore has a `copyFiles()`! You can use this
+instead of installing this plugin.
+***
+
 To do this, we can take advantage of a Webpack *plugin* that can copy the file
 for us. Google for `copy-webpack-plugin` to find its [GitHub page][copy_webpack_plugin].
 Encore gives you *a lot* of features... but it doesn't give you *everything*. But...
