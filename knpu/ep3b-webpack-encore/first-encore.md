@@ -47,8 +47,7 @@ And... that's it! Find your terminal. Encore has its own executable. To use it, 
 
 ***TIP
 Wait! Before running encore, first delete the `.babelrc` file (if you have one). This
-is left-over from the previous tutorial and causes issues with the latest version of
-Encore. We delete it later anyways.
+is left-over from the previous tutorial and is not needed: Encore handles it for us.
 ***
 
 ```terminal
