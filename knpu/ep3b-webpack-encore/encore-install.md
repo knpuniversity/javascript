@@ -134,6 +134,11 @@ Then, find your terminal, open a fresh new tab, lift your cat, and then run:
 yarn add @symfony/webpack-encore --dev
 ```
 
+***TIP
+Encore version 0.21.0 contains a few cool changes. Don't worry, we'll tell you in
+this tutorial where anything is now different.
+***
+
 If you're a Symfony user, there is also a composer line you can use. Actually,
 all it *really* does is install a Flex recipe that creates a few files for you
 to get you started faster. We'll do everything manually so that we can see how it
