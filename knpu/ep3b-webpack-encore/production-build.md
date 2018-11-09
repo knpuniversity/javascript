@@ -20,6 +20,12 @@ Our users should *only* need to download jQuery *one* time.
 
 ## The Shared Entry
 
+***TIP
+The `createdSharedEntry()` feature still works great, but in the latest version of
+Encore, there is a new way to solve this problem called `splitChunks()`. Read about
+it here: https://symfony.com/doc/current/frontend/encore/split-chunks.html
+***
+
 No problem! Webpack has an *awesome* solution. Open `webpack.config.js`. Move the
 layout entry to the top - though, order doesn't matter. Now, change the method to
 `createSharedEntry()`:
