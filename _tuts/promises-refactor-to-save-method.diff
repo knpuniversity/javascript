@@ -12,7 +12,7 @@ index 44cc485..f93e19f 100644
       */
      public function newRepLogAction(Request $request)
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index c63f688..1b6dd90 100644
+index 8e9a68f..04e736c 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -84,11 +84,8 @@

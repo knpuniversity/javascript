@@ -1,8 +1,8 @@
 diff --git a/assets/js/Components/RepLogApp.js b/assets/js/Components/RepLogApp.js
-index 57751c5..9976944 100644
+index 911cab7..f6a85db 100644
 --- a/assets/js/Components/RepLogApp.js
 +++ b/assets/js/Components/RepLogApp.js
-@@ -211,4 +211,4 @@ const rowTemplate = (repLog) => `
+@@ -216,4 +216,4 @@ const rowTemplate = (repLog) => `
  </tr>
  `;
  
