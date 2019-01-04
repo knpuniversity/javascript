@@ -3,7 +3,7 @@ Javascript for PHP Geeks Tutorial
 
 This repository holds the screencast code, script and all the AJAX
 you can eat for the [Modern JavaScript Tutorials](http://knpuniversity.com/tracks/javascript#modern-javascript)
-on KnpUniversity.
+on KnpUniversity. 
 
 ## Setup
 
