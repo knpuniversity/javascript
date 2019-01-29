@@ -1,8 +1,8 @@
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index accad2b..14c7b46 100644
+index accad2b..3917c20 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
-@@ -4,215 +4,212 @@ const Helper = require('./RepLogAppHelper');
+@@ -4,215 +4,217 @@ const Helper = require('./RepLogAppHelper');
  const $ = require('jquery');
  const swal = require('sweetalert2');
  
@@ -191,30 +191,30 @@ index accad2b..14c7b46 100644
 -                });
 -            })
 -        }
--
--        handleRowClick() {
--            console.log('row clicked!');
--        }
 +        })
 +    }
  
--        handleNewFormSubmit(e) {
--            e.preventDefault();
+-        handleRowClick() {
+-            console.log('row clicked!');
+-        }
 +    handleRowClick() {
 +        console.log('row clicked!');
 +    }
  
--            const $form = $(e.currentTarget);
--            const formData = {};
+-        handleNewFormSubmit(e) {
+-            e.preventDefault();
 +    handleNewFormSubmit(e) {
 +        e.preventDefault();
+ 
+-            const $form = $(e.currentTarget);
+-            const formData = {};
++        const $form = $(e.currentTarget);
++        const formData = {};
  
 -            for (let fieldData of $form.serializeArray()) {
 -                formData[fieldData.name] = fieldData.value
 -            }
-+        const $form = $(e.currentTarget);
-+        const formData = {};
- 
+-
 -            this._saveRepLog(formData)
 -            .then((data) => {
 -                this._clearForm();
@@ -237,11 +237,11 @@ index accad2b..14c7b46 100644
 +            this._mapErrorsToForm(errorData.errors);
 +        });
 +    }
-+
+ 
 +    _saveRepLog(data) {
 +        return new Promise((resolve, reject) => {
 +            const url = Routing.generate('rep_log_new');
- 
++
 +            $.ajax({
 +                url,
 +                method: 'POST',
@@ -275,6 +275,10 @@ index accad2b..14c7b46 100644
 -        }
 +        });
 +    }
++
++    _mapErrorsToForm(errorData) {
++        this._removeFormErrors();
++        const $form = this.$wrapper.find(RepLogApp._selectors.newRepForm);
  
 -        _mapErrorsToForm(errorData) {
 -            this._removeFormErrors();
@@ -292,10 +296,6 @@ index accad2b..14c7b46 100644
 -                $error.html(errorData[fieldName]);
 -                $wrapper.append($error);
 -                $wrapper.addClass('has-error');
-+    _mapErrorsToForm(errorData) {
-+        this._removeFormErrors();
-+        const $form = this.$wrapper.find(RepLogApp._selectors.newRepForm);
-+
 +        for (let element of $form.find(':input')) {
 +            const fieldName = $(element).attr('name');
 +            const $wrapper = $(element).closest('.form-group');
@@ -314,24 +314,22 @@ index accad2b..14c7b46 100644
 +            $wrapper.append($error);
 +            $wrapper.addClass('has-error');
          }
-+    }
-+
-+    _removeFormErrors() {
-+        const $form = this.$wrapper.find(RepLogApp._selectors.newRepForm);
-+        $form.find('.js-field-error').remove();
-+        $form.find('.form-group').removeClass('has-error');
-+    }
  
 -        _clearForm() {
 -            this._removeFormErrors();
-+    _clearForm() {
-+        this._removeFormErrors();
++        const $error = $('<span class="js-field-error help-block"></span>');
++        $error.html(errorData[fieldName]);
++        $wrapper.append($error);
++        $wrapper.addClass('has-error');
++    }
  
 -            const $form = this.$wrapper.find(RepLogApp._selectors.newRepForm);
 -            $form[0].reset();
 -        }
++    _removeFormErrors() {
 +        const $form = this.$wrapper.find(RepLogApp._selectors.newRepForm);
-+        $form[0].reset();
++        $form.find('.js-field-error').remove();
++        $form.find('.form-group').removeClass('has-error');
 +    }
  
 -        _addRow(repLog) {
@@ -339,25 +337,32 @@ index accad2b..14c7b46 100644
 -            // destructuring example
 -            // let {id, itemLabel, reps, totallyMadeUpKey = 'whatever!'} = repLog;
 -            // console.log(id, itemLabel, reps, totallyMadeUpKey);
-+    _addRow(repLog) {
-+        this.repLogs.push(repLog);
-+        // destructuring example
-+        // let {id, itemLabel, reps, totallyMadeUpKey = 'whatever!'} = repLog;
-+        // console.log(id, itemLabel, reps, totallyMadeUpKey);
++    _clearForm() {
++        this._removeFormErrors();
  
 -            const html = rowTemplate(repLog);
 -            const $row = $($.parseHTML(html));
 -            // store the repLogs index
 -            $row.data('key', this.repLogs.length - 1);
 -            this.$wrapper.find('tbody').append($row);
++        const $form = this.$wrapper.find(RepLogApp._selectors.newRepForm);
++        $form[0].reset();
++    }
+ 
+-            this.updateTotalWeightLifted();
+-        }
++    _addRow(repLog) {
++        this.repLogs.push(repLog);
++        // destructuring example
++        // let {id, itemLabel, reps, totallyMadeUpKey = 'whatever!'} = repLog;
++        // console.log(id, itemLabel, reps, totallyMadeUpKey);
++
 +        const html = rowTemplate(repLog);
 +        const $row = $($.parseHTML(html));
 +        // store the repLogs index
 +        $row.data('key', this.repLogs.length - 1);
 +        this.$wrapper.find('tbody').append($row);
- 
--            this.updateTotalWeightLifted();
--        }
++
 +        this.updateTotalWeightLifted();
      }
 +}

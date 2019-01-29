@@ -36,7 +36,7 @@ index 7b403e9..99ab475 100644
 +    </script>
  {% endblock %}
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index b71f7f4..716de9a 100644
+index 2fc2505..6a3ef10 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -120,7 +120,13 @@

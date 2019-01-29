@@ -1,5 +1,5 @@
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index 296cb8a..9fe1099 100644
+index 7c7501d..5637614 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -48,7 +48,7 @@
@@ -56,7 +56,7 @@ index 296cb8a..9fe1099 100644
 +                const $wrapper = $(element).closest('.form-group');
                  if (!errorData[fieldName]) {
                      // no error!
-                     continue;
+                     return;
                  }
  
 -                let $error = $('<span class="js-field-error help-block"></span>');

@@ -40,6 +40,7 @@ yarn add webpack webpack-cli --dev
 
 If you does not mentioned `webpack-cli` package, No worries! You will be prompted to 
 install it on first run.
+This tutorial uses Webpack v3. If you're coding along, make sure to install version 3 with `yarn add webpack@3 --dev`.
 ***
 
 ```terminal

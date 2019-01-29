@@ -1,5 +1,5 @@
 diff --git a/assets/js/Components/RepLogApp.js b/assets/js/Components/RepLogApp.js
-index 5170f5d..b9235e7 100644
+index 6c287f6..42e6f5b 100644
 --- a/assets/js/Components/RepLogApp.js
 +++ b/assets/js/Components/RepLogApp.js
 @@ -8,13 +8,15 @@ require('sweetalert2/dist/sweetalert2.css');

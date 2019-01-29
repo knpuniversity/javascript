@@ -89,23 +89,23 @@ Perfect!
 Then, if there is *not* any `data[fieldName]`, the field doesn't have an error.
 Just `continue`:
 
-[[[ code('9da82c046f') ]]]
+[[[ code('05d9f3f2b0') ]]]
 
 If there *is* an error, we need to add some HTML to the page. The easy way to do
 that is by creating a new jQuery element. Set `var $error` to `$()` and then the
 HTML you want: a span with a `js-field-error` class and a `help-block` class:
 
-[[[ code('c37ec8b376') ]]]
+[[[ code('c5d4088617') ]]]
 
 I left the span blank because it's cleaner to add the text on the next line:
 `$error.html(errorsData[fieldName])`:
 
-[[[ code('a1a8195464') ]]]
+[[[ code('d12ffdd796') ]]]
 
 This jQuery object is now done! But it's not on the page yet. Add it with
 `$wrapper.append($error)`. Also call `$wrapper.addClass('has-error')`:
 
-[[[ code('afb7396a41') ]]]
+[[[ code('f4b4af62c2') ]]]
 
 Yes! Let's try it! Refresh and submit! There it is!
 
@@ -116,7 +116,7 @@ No problem: at the top, use `$form.find()` to find all the `.js-field-error` ele
 And, remove those. Next, find all the `form-group` elements and remove the `has-error`
 class:
 
-[[[ code('27722f4cf4') ]]]
+[[[ code('aebb270077') ]]]
 
 Refresh now, and re-submit! Errors! Fill in one... beautiful!
 

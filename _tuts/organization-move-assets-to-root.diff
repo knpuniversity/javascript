@@ -262,10 +262,10 @@ HcmV?d00001
 
 diff --git a/assets/js/Components/RepLogApp.js b/assets/js/Components/RepLogApp.js
 new file mode 100644
-index 0000000..5170f5d
+index 0000000..6c287f6
 --- /dev/null
 +++ b/assets/js/Components/RepLogApp.js
-@@ -0,0 +1,216 @@
+@@ -0,0 +1,221 @@
 +'use strict';
 +
 +const Helper = require('./RepLogAppHelper');
@@ -434,6 +434,11 @@ index 0000000..5170f5d
 +            $wrapper.append($error);
 +            $wrapper.addClass('has-error');
 +        }
++
++        const $error = $('<span class="js-field-error help-block"></span>');
++        $error.html(errorData[fieldName]);
++        $wrapper.append($error);
++        $wrapper.addClass('has-error');
 +    }
 +
 +    _removeFormErrors() {
@@ -851,10 +856,10 @@ LMmqUd?f>ylU!$AF
 
 diff --git a/web/assets/js/Components/RepLogApp.js b/web/assets/js/Components/RepLogApp.js
 deleted file mode 100644
-index 5170f5d..0000000
+index 6c287f6..0000000
 --- a/web/assets/js/Components/RepLogApp.js
 +++ /dev/null
-@@ -1,216 +0,0 @@
+@@ -1,221 +0,0 @@
 -'use strict';
 -
 -const Helper = require('./RepLogAppHelper');
@@ -1023,6 +1028,11 @@ index 5170f5d..0000000
 -            $wrapper.append($error);
 -            $wrapper.addClass('has-error');
 -        }
+-
+-        const $error = $('<span class="js-field-error help-block"></span>');
+-        $error.html(errorData[fieldName]);
+-        $wrapper.append($error);
+-        $wrapper.addClass('has-error');
 -    }
 -
 -    _removeFormErrors() {

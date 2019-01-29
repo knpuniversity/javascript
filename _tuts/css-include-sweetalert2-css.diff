@@ -16,7 +16,7 @@ index a8f2a3c..2c1fe8a 100644
      {{ parent() }}
  
 diff --git a/web/assets/js/Components/RepLogApp.js b/web/assets/js/Components/RepLogApp.js
-index 7eb4ff1..5170f5d 100644
+index 51ba1d2..6c287f6 100644
 --- a/web/assets/js/Components/RepLogApp.js
 +++ b/web/assets/js/Components/RepLogApp.js
 @@ -3,6 +3,7 @@

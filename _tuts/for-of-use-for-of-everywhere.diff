@@ -1,5 +1,5 @@
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index 219dd02..6e38621 100644
+index 1998b33..6e38621 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -39,9 +39,9 @@
@@ -27,7 +27,7 @@ index 219dd02..6e38621 100644
  
              this._saveRepLog(formData)
              .then((data) => {
-@@ -137,7 +138,7 @@
+@@ -137,19 +138,19 @@
              this._removeFormErrors();
              const $form = this.$wrapper.find(RepLogApp._selectors.newRepForm);
  
@@ -36,7 +36,12 @@ index 219dd02..6e38621 100644
                  const fieldName = $(element).attr('name');
                  const $wrapper = $(element).closest('.form-group');
                  if (!errorData[fieldName]) {
-@@ -149,7 +150,7 @@
+                     // no error!
+-                    return;
++                    continue;
+                 }
+ 
+                 const $error = $('<span class="js-field-error help-block"></span>');
                  $error.html(errorData[fieldName]);
                  $wrapper.append($error);
                  $wrapper.addClass('has-error');
