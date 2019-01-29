@@ -1,4 +1,4 @@
-# Babel: Transliterating to Old JavaScript
+# Babel: Transpiling to Old JavaScript
 
 Time to use Babel! How? At your terminal, type
 
