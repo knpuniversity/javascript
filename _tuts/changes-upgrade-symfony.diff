@@ -1,5 +1,5 @@
 diff --git a/app/AppKernel.php b/app/AppKernel.php
-index cee04bd..b4269cf 100644
+index cee04bd3d..b4269cfe9 100644
 --- a/app/AppKernel.php
 +++ b/app/AppKernel.php
 @@ -29,6 +29,7 @@ class AppKernel extends Kernel
@@ -11,7 +11,7 @@ index cee04bd..b4269cf 100644
  
          return $bundles;
 diff --git a/app/config/config.yml b/app/config/config.yml
-index 4d12f1b..20d4525 100644
+index 4d12f1b7a..20d4525e6 100644
 --- a/app/config/config.yml
 +++ b/app/config/config.yml
 @@ -79,3 +79,6 @@ fos_user:
@@ -22,7 +22,7 @@ index 4d12f1b..20d4525 100644
 +        address: 'ryan@pumpup.example.com'
 +        sender_name: Ryan
 diff --git a/composer.json b/composer.json
-index 74731cd..b5518e9 100644
+index 74731cd42..b5518e986 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -18,7 +18,7 @@
@@ -44,7 +44,7 @@ index 74731cd..b5518e9 100644
          "doctrine/doctrine-migrations-bundle": "^1.2",
          "friendsofsymfony/jsrouting-bundle": "^1.6"
 diff --git a/composer.lock b/composer.lock
-index c6665ef..dbab2f7 100644
+index c6665efd1..dbab2f7ed 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,34 +4,93 @@
@@ -54,7 +54,7 @@ index c6665ef..dbab2f7 100644
 -    "content-hash": "a22c25027740892ca785c9261aac013d",
 +    "content-hash": "0818f03c11954ee512b7cb0cd4a4418c",
      "packages": [
-         {
++        {
 +            "name": "composer/ca-bundle",
 +            "version": "1.0.7",
 +            "source": {
@@ -113,7 +113,7 @@ index c6665ef..dbab2f7 100644
 +            ],
 +            "time": "2017-03-06T11:59:08+00:00"
 +        },
-+        {
+         {
              "name": "doctrine/annotations",
 -            "version": "v1.3.1",
 +            "version": "v1.5.0",
@@ -406,10 +406,11 @@ index c6665ef..dbab2f7 100644
          },
          {
              "name": "doctrine/instantiator",
-@@ -1027,6 +1090,60 @@
+@@ -1026,6 +1089,60 @@
+             ],
              "time": "2016-12-18T15:42:34+00:00"
          },
-         {
++        {
 +            "name": "fig/link-util",
 +            "version": "1.0.0",
 +            "source": {
@@ -463,10 +464,9 @@ index c6665ef..dbab2f7 100644
 +            ],
 +            "time": "2016-10-17T18:31:11+00:00"
 +        },
-+        {
+         {
              "name": "friendsofsymfony/jsrouting-bundle",
              "version": "1.6.0",
-             "source": {
 @@ -1086,16 +1203,16 @@
          },
          {
@@ -698,10 +698,11 @@ index c6665ef..dbab2f7 100644
          },
          {
              "name": "psr/cache",
-@@ -1497,6 +1669,104 @@
+@@ -1496,6 +1668,104 @@
+             ],
              "time": "2016-08-06T20:24:11+00:00"
          },
-         {
++        {
 +            "name": "psr/container",
 +            "version": "1.0.0",
 +            "source": {
@@ -799,14 +800,14 @@ index c6665ef..dbab2f7 100644
 +            ],
 +            "time": "2016-10-28T16:06:13+00:00"
 +        },
-+        {
+         {
              "name": "psr/log",
              "version": "1.0.2",
-             "source": {
-@@ -1544,17 +1814,65 @@
+@@ -1543,18 +1813,66 @@
+             ],
              "time": "2016-10-10T12:19:37+00:00"
          },
-         {
++        {
 +            "name": "psr/simple-cache",
 +            "version": "1.0.0",
 +            "source": {
@@ -854,7 +855,7 @@ index c6665ef..dbab2f7 100644
 +            ],
 +            "time": "2017-01-02T13:31:39+00:00"
 +        },
-+        {
+         {
              "name": "sensio/distribution-bundle",
 -            "version": "v5.0.18",
 +            "version": "v5.0.20",
@@ -1599,24 +1600,24 @@ index c6665ef..dbab2f7 100644
      "prefer-lowest": false,
      "platform": {
 diff --git a/var/SymfonyRequirements.php b/var/SymfonyRequirements.php
-index 7e7a99d..3b14a40 100644
+index 7e7a99de9..3b14a4022 100644
 --- a/var/SymfonyRequirements.php
 +++ b/var/SymfonyRequirements.php
-@@ -634,12 +634,6 @@ class SymfonyRequirements extends RequirementCollection
+@@ -633,12 +633,6 @@ class SymfonyRequirements extends RequirementCollection
+             'Install and enable the <strong>mbstring</strong> extension.'
          );
  
-         $this->addRecommendation(
+-        $this->addRecommendation(
 -            function_exists('iconv'),
 -            'iconv() should be available',
 -            'Install and enable the <strong>iconv</strong> extension.'
 -        );
 -
--        $this->addRecommendation(
+         $this->addRecommendation(
              function_exists('utf8_decode'),
              'utf8_decode() should be available',
-             'Install and enable the <strong>XML</strong> extension.'
 diff --git a/web/config.php b/web/config.php
-index 69df43c..fd7e17e 100644
+index 69df43cf7..fd7e17e6b 100644
 --- a/web/config.php
 +++ b/web/config.php
 @@ -11,7 +11,7 @@

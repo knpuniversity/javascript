@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index 42ff146..afc861a 100644
+index 42ff14639..afc861ad0 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -1,22 +1,3 @@
@@ -27,7 +27,7 @@ index 42ff146..afc861a 100644
  /public/bundles/
 diff --git a/package.json b/package.json
 deleted file mode 100644
-index a1c42b9..0000000
+index a1c42b9f0..000000000
 --- a/package.json
 +++ /dev/null
 @@ -1,12 +0,0 @@
@@ -45,7 +45,7 @@ index a1c42b9..0000000
 -}
 diff --git a/tutorial/upper.js b/tutorial/upper.js
 deleted file mode 100644
-index fc5b9ca..0000000
+index fc5b9ca27..000000000
 --- a/tutorial/upper.js
 +++ /dev/null
 @@ -1,5 +0,0 @@
@@ -56,7 +56,7 @@ index fc5b9ca..0000000
 -}
 diff --git a/yarn.lock b/yarn.lock
 deleted file mode 100644
-index a6c2de2..0000000
+index a6c2de2e1..000000000
 --- a/yarn.lock
 +++ /dev/null
 @@ -1,1609 +0,0 @@

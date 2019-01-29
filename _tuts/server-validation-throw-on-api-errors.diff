@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 06d44bc..ee2e47e 100644
+index 06d44bce5..ee2e47ea5 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -17,6 +17,7 @@ export default class RepLogCreator extends Component {
@@ -11,7 +11,7 @@ index 06d44bc..ee2e47e 100644
  
          this.handleFormSubmit = this.handleFormSubmit.bind(this);
 diff --git a/assets/js/api/rep_log_api.js b/assets/js/api/rep_log_api.js
-index b92e8e3..3aa8e00 100644
+index b92e8e3c5..3aa8e0005 100644
 --- a/assets/js/api/rep_log_api.js
 +++ b/assets/js/api/rep_log_api.js
 @@ -2,6 +2,7 @@ function fetchJson(url, options) {

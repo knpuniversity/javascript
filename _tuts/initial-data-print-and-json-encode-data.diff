@@ -1,5 +1,5 @@
 diff --git a/src/Controller/LiftController.php b/src/Controller/LiftController.php
-index ea33a44..5c3cf79 100644
+index ea33a442e..5c3cf7991 100644
 --- a/src/Controller/LiftController.php
 +++ b/src/Controller/LiftController.php
 @@ -22,6 +22,7 @@ class LiftController extends BaseController
@@ -23,7 +23,7 @@ index ea33a44..5c3cf79 100644
      }
  
 diff --git a/templates/lift/index.html.twig b/templates/lift/index.html.twig
-index eddda19..87ee4dd 100644
+index eddda19d4..87ee4ddf0 100644
 --- a/templates/lift/index.html.twig
 +++ b/templates/lift/index.html.twig
 @@ -65,16 +65,7 @@

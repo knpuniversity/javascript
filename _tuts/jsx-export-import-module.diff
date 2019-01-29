@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index a3233c2..c328427 100644
+index a3233c2bc..c32842766 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -1,6 +1,6 @@
@@ -11,7 +11,7 @@ index a3233c2..c328427 100644
          return <h2>Lift Stuff! <span>❤️</span></h2>;
      }
 diff --git a/assets/js/rep_log_react.js b/assets/js/rep_log_react.js
-index 1e66772..9cb54ac 100644
+index 1e66772ac..9cb54ac43 100644
 --- a/assets/js/rep_log_react.js
 +++ b/assets/js/rep_log_react.js
 @@ -1,11 +1,6 @@

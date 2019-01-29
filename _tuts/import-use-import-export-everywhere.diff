@@ -1,5 +1,5 @@
 diff --git a/assets/js/Components/RepLogApp.js b/assets/js/Components/RepLogApp.js
-index 99eec81..43c1035 100644
+index 99eec81a3..43c103565 100644
 --- a/assets/js/Components/RepLogApp.js
 +++ b/assets/js/Components/RepLogApp.js
 @@ -1,9 +1,9 @@
@@ -22,7 +22,7 @@ index 99eec81..43c1035 100644
 -module.exports = RepLogApp;
 +export default RepLogApp;
 diff --git a/assets/js/Components/Routing.js b/assets/js/Components/Routing.js
-index 09c7674..1e18488 100644
+index 09c7674a0..1e1848866 100644
 --- a/assets/js/Components/Routing.js
 +++ b/assets/js/Components/Routing.js
 @@ -2,4 +2,4 @@
@@ -32,7 +32,7 @@ index 09c7674..1e18488 100644
 -module.exports = window.Routing;
 +export default window.Routing;
 diff --git a/assets/js/layout.js b/assets/js/layout.js
-index 0cc3a1a..8d4c5ce 100644
+index 0cc3a1acb..8d4c5cec7 100644
 --- a/assets/js/layout.js
 +++ b/assets/js/layout.js
 @@ -1,10 +1,10 @@
@@ -52,7 +52,7 @@ index 0cc3a1a..8d4c5ce 100644
  $(document).ready(function() {
      $('[data-toggle="tooltip"]').tooltip();
 diff --git a/assets/js/login.js b/assets/js/login.js
-index 479c6e3..afb516d 100644
+index 479c6e39c..afb516d4d 100644
 --- a/assets/js/login.js
 +++ b/assets/js/login.js
 @@ -1,7 +1,7 @@
@@ -66,7 +66,7 @@ index 479c6e3..afb516d 100644
  $(document).ready(function() {
      $('.js-recommended-login').on('click', '.js-show-login', function(e) {
 diff --git a/assets/js/rep_log.js b/assets/js/rep_log.js
-index 00bdc5a..c9b9521 100644
+index 00bdc5a20..c9b9521d4 100644
 --- a/assets/js/rep_log.js
 +++ b/assets/js/rep_log.js
 @@ -1,7 +1,7 @@

@@ -1,5 +1,5 @@
 diff --git a/play.js b/play.js
-index 4053392..ff9415a 100644
+index 405339206..ff9415a53 100644
 --- a/play.js
 +++ b/play.js
 @@ -9,7 +9,11 @@ class AGreatClass {

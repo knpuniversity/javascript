@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 9571bad..44c6b25 100644
+index 9571bad32..44c6b25ce 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -22,12 +22,20 @@ export default class RepLogApp extends Component {
@@ -24,7 +24,7 @@ index 9571bad..44c6b25 100644
          )
      }
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index fcbe969..ddf0245 100644
+index fcbe96990..ddf024546 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -14,7 +14,7 @@ function calculateTotalWeightLifted(repLogs) {

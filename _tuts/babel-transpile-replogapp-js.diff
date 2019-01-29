@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index a4a3e16..1d0cb59 100644
+index a4a3e1659..1d0cb59e7 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -58,7 +58,7 @@
@@ -13,10 +13,10 @@ index a4a3e16..1d0cb59 100644
          $(document).ready(function() {
 diff --git a/web/assets/dist/RepLogApp.js b/web/assets/dist/RepLogApp.js
 new file mode 100644
-index 0000000..27c120d
+index 000000000..cf4466b73
 --- /dev/null
 +++ b/web/assets/dist/RepLogApp.js
-@@ -0,0 +1,217 @@
+@@ -0,0 +1,225 @@
 +'use strict';
 +
 +(function (window, $, Routing, swal) {
@@ -26,7 +26,7 @@ index 0000000..27c120d
 +    class RepLogApp {
 +        constructor($wrapper) {
 +            this.$wrapper = $wrapper;
-+            this.repLogs = new Set();
++            this.repLogs = [];
 +
 +            HelperInstances.set(this, new Helper(this.repLogs));
 +
@@ -88,7 +88,12 @@ index 0000000..27c120d
 +                method: 'DELETE'
 +            }).then(() => {
 +                $row.fadeOut('normal', () => {
++                    // we need to remove the repLog from this.repLogs
++                    // the "key" is the index to this repLog on this.repLogs
++                    this.repLogs.splice($row.data('key'), 1);
++
 +                    $row.remove();
++
 +                    this.updateTotalWeightLifted();
 +                });
 +            });
@@ -172,13 +177,16 @@ index 0000000..27c120d
 +        }
 +
 +        _addRow(repLog) {
-+            this.repLogs.add(repLog);
++            this.repLogs.push(repLog);
 +            // destructuring example
 +            // let {id, itemLabel, reps, totallyMadeUpKey = 'whatever!'} = repLog;
 +            // console.log(id, itemLabel, reps, totallyMadeUpKey);
 +
 +            const html = rowTemplate(repLog);
-+            this.$wrapper.find('tbody').append($.parseHTML(html));
++            const $row = $($.parseHTML(html));
++            // store the repLogs index
++            $row.data('key', this.repLogs.length - 1);
++            this.$wrapper.find('tbody').append($row);
 +
 +            this.updateTotalWeightLifted();
 +        }
@@ -188,12 +196,12 @@ index 0000000..27c120d
 +     * A "private" object
 +     */
 +    class Helper {
-+        constructor(repLogSet) {
-+            this.repLogSet = repLogSet;
++        constructor(repLogs) {
++            this.repLogs = repLogs;
 +        }
 +
 +        calculateTotalWeight() {
-+            return Helper._calculateWeights(this.repLogSet);
++            return Helper._calculateWeights(this.repLogs);
 +        }
 +
 +        getTotalWeightString(maxWeight = 500) {
@@ -206,9 +214,9 @@ index 0000000..27c120d
 +            return weight + ' lbs';
 +        }
 +
-+        static _calculateWeights(repLogSet) {
++        static _calculateWeights(repLogs) {
 +            let totalWeight = 0;
-+            for (let repLog of repLogSet) {
++            for (let repLog of repLogs) {
 +                totalWeight += repLog.totalWeightLifted;
 +            }
 +

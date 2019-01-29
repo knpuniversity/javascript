@@ -1,5 +1,5 @@
 diff --git a/templates/lift/_form.html.twig b/templates/lift/_form.html.twig
-index a98b268..722a71f 100644
+index a98b26840..722a71f3f 100644
 --- a/templates/lift/_form.html.twig
 +++ b/templates/lift/_form.html.twig
 @@ -12,7 +12,8 @@

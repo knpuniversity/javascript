@@ -1,6 +1,6 @@
 diff --git a/.env.dist b/.env.dist
 new file mode 100644
-index 0000000..6c455a8
+index 000000000..6c455a8a7
 --- /dev/null
 +++ b/.env.dist
 @@ -0,0 +1,24 @@
@@ -29,7 +29,7 @@ index 0000000..6c455a8
 +MAILER_URL=null://localhost
 +###< symfony/swiftmailer-bundle ###
 diff --git a/.gitignore b/.gitignore
-index 0654fa2..42ff146 100644
+index 0654fa26a..42ff14639 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -15,3 +15,20 @@
@@ -54,7 +54,7 @@ index 0654fa2..42ff146 100644
 +.web-server-pid
 +###< symfony/web-server-bundle ###
 diff --git a/README.md b/README.md
-index 0b933c5..393dedd 100644
+index 0b933c5a9..393dedd37 100644
 --- a/README.md
 +++ b/README.md
 @@ -11,15 +11,6 @@ If you've just downloaded the code, congratulations!
@@ -89,7 +89,7 @@ index 0b933c5..393dedd 100644
  php bin/console doctrine:database:create
 diff --git a/app/.htaccess b/app/.htaccess
 deleted file mode 100644
-index fb1de45..0000000
+index fb1de45bd..000000000
 --- a/app/.htaccess
 +++ /dev/null
 @@ -1,7 +0,0 @@
@@ -102,7 +102,7 @@ index fb1de45..0000000
 -</IfModule>
 diff --git a/app/AppCache.php b/app/AppCache.php
 deleted file mode 100644
-index 639ec2c..0000000
+index 639ec2cd7..000000000
 --- a/app/AppCache.php
 +++ /dev/null
 @@ -1,7 +0,0 @@
@@ -115,7 +115,7 @@ index 639ec2c..0000000
 -}
 diff --git a/app/AppKernel.php b/app/AppKernel.php
 deleted file mode 100644
-index b4269cf..0000000
+index b4269cfe9..000000000
 --- a/app/AppKernel.php
 +++ /dev/null
 @@ -1,57 +0,0 @@
@@ -176,455 +176,9 @@ index b4269cf..0000000
 -        $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
 -    }
 -}
-diff --git a/app/DoctrineMigrations/Version20161115100817.php b/app/DoctrineMigrations/Version20161115100817.php
-deleted file mode 100644
-index 7bfb4c9..0000000
---- a/app/DoctrineMigrations/Version20161115100817.php
-+++ /dev/null
-@@ -1,38 +0,0 @@
--<?php
--
--namespace Application\Migrations;
--
--use Doctrine\DBAL\Migrations\AbstractMigration;
--use Doctrine\DBAL\Schema\Schema;
--
--/**
-- * Auto-generated Migration: Please modify to your needs!
-- */
--class Version20161115100817 extends AbstractMigration
--{
--    /**
--     * @param Schema $schema
--     */
--    public function up(Schema $schema)
--    {
--        // this up() migration is auto-generated, please modify it to your needs
--        $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
--
--        $this->addSql('CREATE TABLE rep_log (id INT AUTO_INCREMENT NOT NULL, user_id INT NOT NULL, reps INT NOT NULL, item VARCHAR(50) NOT NULL, totalWeightLifted DOUBLE PRECISION NOT NULL, INDEX IDX_A460CE79A76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
--        $this->addSql('CREATE TABLE tough_user (id INT AUTO_INCREMENT NOT NULL, username VARCHAR(180) NOT NULL, username_canonical VARCHAR(180) NOT NULL, email VARCHAR(180) NOT NULL, email_canonical VARCHAR(180) NOT NULL, enabled TINYINT(1) NOT NULL, salt VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, last_login DATETIME DEFAULT NULL, locked TINYINT(1) NOT NULL, expired TINYINT(1) NOT NULL, expires_at DATETIME DEFAULT NULL, confirmation_token VARCHAR(180) DEFAULT NULL, password_requested_at DATETIME DEFAULT NULL, roles LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', credentials_expired TINYINT(1) NOT NULL, credentials_expire_at DATETIME DEFAULT NULL, first_name VARCHAR(255) NOT NULL, last_name VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_C760320692FC23A8 (username_canonical), UNIQUE INDEX UNIQ_C7603206A0D96FBF (email_canonical), UNIQUE INDEX UNIQ_C7603206C05FB297 (confirmation_token), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
--        $this->addSql('ALTER TABLE rep_log ADD CONSTRAINT FK_A460CE79A76ED395 FOREIGN KEY (user_id) REFERENCES tough_user (id)');
--    }
--
--    /**
--     * @param Schema $schema
--     */
--    public function down(Schema $schema)
--    {
--        // this down() migration is auto-generated, please modify it to your needs
--        $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
--
--        $this->addSql('ALTER TABLE rep_log DROP FOREIGN KEY FK_A460CE79A76ED395');
--        $this->addSql('DROP TABLE rep_log');
--        $this->addSql('DROP TABLE tough_user');
--    }
--}
-diff --git a/app/DoctrineMigrations/Version20170119105442.php b/app/DoctrineMigrations/Version20170119105442.php
-deleted file mode 100644
-index c8f68a3..0000000
---- a/app/DoctrineMigrations/Version20170119105442.php
-+++ /dev/null
-@@ -1,34 +0,0 @@
--<?php
--
--namespace Application\Migrations;
--
--use Doctrine\DBAL\Migrations\AbstractMigration;
--use Doctrine\DBAL\Schema\Schema;
--
--/**
-- * Auto-generated Migration: Please modify to your needs!
-- */
--class Version20170119105442 extends AbstractMigration
--{
--    /**
--     * @param Schema $schema
--     */
--    public function up(Schema $schema)
--    {
--        // this up() migration is auto-generated, please modify it to your needs
--        $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
--
--        $this->addSql('ALTER TABLE tough_user DROP locked, DROP expired, DROP expires_at, DROP credentials_expired, DROP credentials_expire_at, CHANGE salt salt VARCHAR(255) DEFAULT NULL');
--    }
--
--    /**
--     * @param Schema $schema
--     */
--    public function down(Schema $schema)
--    {
--        // this down() migration is auto-generated, please modify it to your needs
--        $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
--
--        $this->addSql('ALTER TABLE tough_user ADD locked TINYINT(1) NOT NULL, ADD expired TINYINT(1) NOT NULL, ADD expires_at DATETIME DEFAULT NULL, ADD credentials_expired TINYINT(1) NOT NULL, ADD credentials_expire_at DATETIME DEFAULT NULL, CHANGE salt salt VARCHAR(255) NOT NULL COLLATE utf8_unicode_ci');
--    }
--}
-diff --git a/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig b/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig
-deleted file mode 100644
-index d959e03..0000000
---- a/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig
-+++ /dev/null
-@@ -1,8 +0,0 @@
--{% trans_default_domain 'FOSUserBundle' %}
--
--{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
--    {{ form_widget(form) }}
--    <div>
--        <input type="submit" value="{{ 'registration.submit'|trans }}" class="btn btn-primary" />
--    </div>
--{{ form_end(form) }}
-diff --git a/app/Resources/FOSUserBundle/views/Security/login.html.twig b/app/Resources/FOSUserBundle/views/Security/login.html.twig
-deleted file mode 100644
-index e79438b..0000000
---- a/app/Resources/FOSUserBundle/views/Security/login.html.twig
-+++ /dev/null
-@@ -1,71 +0,0 @@
--{% extends "FOSUserBundle::layout.html.twig" %}
--
--{% trans_default_domain 'FOSUserBundle' %}
--
--{% block stylesheets %}
--    {{ parent() }}
--
--    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}" />
--{% endblock %}
--
--{% block javascripts %}
--    {{ parent() }}
--
--    <script src="{{ asset('assets/js/login.js') }}"></script>
--{% endblock %}
--
--{% block fos_user_content %}
--    <div class="container">
--        <div class="wrapper">
--            <form action="{{ path("fos_user_security_check") }}" method="post" class="form-signin">
--                <h3><img class="dumbbell" src="{{ asset('assets/images/dumbbell.png') }}">Login! Start Lifting!</h3>
--                <div class="js-recommended-login">
--                    <a href="#" class="js-show-login">Don't know the login?</a>
--                    <div class="js-recommended-login-details" style="display: none;">
--                        Sir or madam, might I recommend that you try the following login details:
--                        <table class="table">
--                            <tbody>
--                                <tr>
--                                    <th>Username</th>
--                                    <td>cindy_clawford</td>
--                                </tr>
--                                <tr>
--                                    <th>Password</th>
--                                    <td>pumpup</td>
--                                </tr>
--                            </tbody>
--                        </table>
--                    </div>
--                </div>
--                <hr class="colorgraph" />
--
--                <br/>
--
--                {% if error %}
--                    <div class="alert alert-block alert-danger">{{ error.messageKey|trans }}</div>
--                {% endif %}
--
--                <input type="text"
--                       class="form-control js-login-field-username"
--                       name="_username"
--                       value="{{ last_username }}"
--                       required="required"
--                       placeholder="{{ 'security.login.username'|trans }}"
--                />
--                <input type="password"
--                       class="form-control"
--                       name="_password"
--                       required="required"
--                       placeholder="{{ 'security.login.password'|trans }}"
--                />
--
--                <input type="checkbox" name="_remember_me" checked style="display: none;" />
--
--                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
--                <button type="submit" class="btn btn-primary btn-lg btn-block">
--                    Login
--                </button>
--            </form>
--        </div>
--    </div>
--{% endblock fos_user_content %}
-diff --git a/app/Resources/FOSUserBundle/views/layout.html.twig b/app/Resources/FOSUserBundle/views/layout.html.twig
-deleted file mode 100644
-index 612f2d7..0000000
---- a/app/Resources/FOSUserBundle/views/layout.html.twig
-+++ /dev/null
-@@ -1,9 +0,0 @@
--{% extends 'base.html.twig' %}
--
--{% block body %}
--    <div class="row">
--        <div class="col-md-12">
--            {% block fos_user_content %}{% endblock %}
--        </div>
--    </div>
--{% endblock %}
-diff --git a/app/Resources/translations/messages.en.yml b/app/Resources/translations/messages.en.yml
-deleted file mode 100644
-index 4d6cc66..0000000
---- a/app/Resources/translations/messages.en.yml
-+++ /dev/null
-@@ -1,5 +0,0 @@
--liftable_thing:
--    cat: Cat
--    fat_cat: Big Fat Cat
--    laptop: My Laptop
--    coffee_cup: Coffee Cup
-diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
-deleted file mode 100644
-index 7d6993a..0000000
---- a/app/Resources/views/base.html.twig
-+++ /dev/null
-@@ -1,109 +0,0 @@
--<!DOCTYPE html>
--<html lang="en">
--<head>
--    <meta charset="utf-8">
--    <meta http-equiv="X-UA-Compatible" content="IE=edge">
--    <meta name="viewport"
--          content="width=device-width, initial-scale=1.0">
--
--    <title>{% block title %}Find Something to Lift!{% endblock %}</title>
--
--    {% block stylesheets %}
--        <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
--        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
--        <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" />
--    {% endblock %}
--
--    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
--</head>
--
--<body>
--
--<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
--    <div class="container">
--        <div class="navbar-header">
--            <button type="button" class="navbar-toggle"
--                    data-toggle="collapse"
--                    data-target=".navbar-collapse">
--                <span class="sr-only">Toggle navigation</span>
--                <span class="icon-bar"></span>
--                <span class="icon-bar"></span>
--                <span class="icon-bar"></span>
--            </button>
--            <a class="navbar-brand"
--               href="{{ path('homepage') }}"
--               data-toggle="tooltip"
--               data-placement="bottom"
--               title="DO IT! LIFT STUFF!!!">Lift Stuff</a>
--        </div>
--        <div class="navbar-collapse collapse">
--            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
--                <ul class="nav navbar-nav navbar-right">
--                    <li class="drop-down" data-toggle="tooltip" data-placement="left" title="Welcome back {{ app.user.firstName }}">
--                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
--                            <span class="fa fa-user"></span>
--                            <strong>{{ app.user.username }}</strong>
--                            <span class="caret"></span>
--                        </a>
--                        <ul class="dropdown-menu">
--                            <li>
--                                <a href="{{ path('lift') }}">
--                                    Lift Stuff
--                                    <span class="mini-dumbbell"></span>
--                                </a>
--                            </li>
--                            <li>
--                                <a href="{{ path('fos_user_security_logout') }}">
--                                    <span class="fa fa-sign-out"></span>
--                                    Logout
--                                </a>
--                            </li>
--                        </ul>
--                    </li>
--                </ul>
--            {% else %}
--                <ul class="nav navbar-nav navbar-right">
--                    <li>
--                        <a href="{{ path('fos_user_registration_register') }}">
--                            Register
--                        </a>
--                    </li>
--                </ul>
--            {% endif %}
--        </div>
--        <!--/.navbar-collapse -->
--    </div>
--</div>
--
--{% block hero %}{% endblock %}
--
--<div class="container main-content">
--    {% for type, messages in app.session.flashbag.all() %}
--        {% for message in messages %}
--            <div class="flash-{{ type }} alert alert-info">
--                {{ message }}
--            </div>
--        {% endfor %}
--    {% endfor %}
--
--    {% block body %}{% endblock %}
--
--    <footer class="footer">
--        <hr />
--
--        <p>&copy; LiftStuff {{ ''|date('Y') }}</p>
--    </footer>
--</div>
--<!-- /container -->
--
--{% block javascripts %}
--    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
--    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
--    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
--    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.0.5/es6-promise.auto.min.js"></script>
--    <script src="{{ asset('assets/js/layout.js') }}"></script>
--{% endblock %}
--
--</body>
--</html>
-diff --git a/app/Resources/views/lift/_form.html.twig b/app/Resources/views/lift/_form.html.twig
-deleted file mode 100644
-index a98b268..0000000
---- a/app/Resources/views/lift/_form.html.twig
-+++ /dev/null
-@@ -1,28 +0,0 @@
--<form class="form-inline js-new-rep-log-form" novalidate data-url="{{ path('rep_log_new') }}">
--    <div class="form-group">
--        <label class="sr-only control-label required" for="rep_log_item">
--            What did you lift?
--        </label>
--        <select id="rep_log_item"
--                name="item"
--                required="required"
--                class="form-control">
--            <option value="" selected="selected">What did you lift?</option>
--            <option value="cat">Cat</option>
--            <option value="fat_cat">Big Fat Cat</option>
--            <option value="laptop">My Laptop</option>
--            <option value="coffee_cup">Coffee Cup</option>
--        </select></div>
--
--    <div class="form-group">
--        <label class="sr-only control-label required" for="rep_log_reps">
--            How many times?
--        </label>
--        <input type="number" id="rep_log_reps"
--               name="reps" required="required"
--               placeholder="How many times?"
--               class="form-control"/>
--    </div>
--
--    <button type="submit" class="btn btn-primary">I Lifted it!</button>
--</form>
-diff --git a/app/Resources/views/lift/_leaderboard.html.twig b/app/Resources/views/lift/_leaderboard.html.twig
-deleted file mode 100644
-index 754ec83..0000000
---- a/app/Resources/views/lift/_leaderboard.html.twig
-+++ /dev/null
-@@ -1,18 +0,0 @@
--<table class="table leaderboard-table-striped leaderboard-table-hover leaderboard-table">
--    <thead>
--    <tr>
--        <th class="text-center">Username</th>
--        <th class="text-center">Weight Lifted</th>
--        <th class="text-center">Cat Equivalent</th>
--    </tr>
--    </thead>
--    <tbody>
--    {% for leader in leaderboard %}
--        <tr>
--            <td class="text-center">{{ leader.username }}</td>
--            <td class="text-center">{{ leader.weight }}lbs</td>
--            <td class="text-center">{{ leader.in_cats }} fat cats</td>
--        </tr>
--    {% endfor %}
--    </tbody>
--</table>
-diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-deleted file mode 100644
-index 508eb8f..0000000
---- a/app/Resources/views/lift/index.html.twig
-+++ /dev/null
-@@ -1,66 +0,0 @@
--{% extends 'base.html.twig' %}
--
--{% block body %}
--    <div class="row">
--        <div class="col-md-7 js-rep-log-table">
--            <h2>
--                Lift History
--            </h2>
--
--            <table class="table table-striped">
--                <thead>
--                <tr>
--                    <th>What</th>
--                    <th>How many times?</th>
--                    <th>Weight</th>
--                    <th>&nbsp;</th>
--                </tr>
--                </thead>
--                <tbody>
--                </tbody>
--                <tfoot>
--                    <tr>
--                        <td>&nbsp;</td>
--                        <th>Total</th>
--                        <th class="js-total-weight"></th>
--                        <td>&nbsp;</td>
--                    </tr>
--                </tfoot>
--            </table>
--
--            <div class="js-new-rep-log-form-wrapper">
--                {{ include('lift/_form.html.twig') }}
--            </div>
--        </div>
--        <div class="col-md-5">
--            <div class="leaderboard">
--                <h2 class="text-center">
--                    <img class="dumbbell" src="{{ asset('assets/images/dumbbell.png') }}" />
--                    Leaderboard
--                </h2>
--
--                {{ include('lift/_leaderboard.html.twig') }}
--            </div>
--        </div>
--    </div>
--{% endblock %}
--
--{% block stylesheets %}
--    {{ parent() }}
--
--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/6.1.0/sweetalert2.min.css" />
--{% endblock %}
--
--{% block javascripts %}
--    {{ parent() }}
--
--    <script src="https://cdn.jsdelivr.net/sweetalert2/6.1.0/sweetalert2.min.js"></script>
--    <script src="{{ asset('assets/dist/RepLogApp.js') }}"></script>
--
--    <script>
--        $(document).ready(function() {
--            var $wrapper = $('.js-rep-log-table');
--            var repLogApp = new RepLogApp($wrapper);
--        });
--    </script>
--{% endblock %}
 diff --git a/app/autoload.php b/app/autoload.php
 deleted file mode 100644
-index 31321fa..0000000
+index 31321faa5..000000000
 --- a/app/autoload.php
 +++ /dev/null
 @@ -1,11 +0,0 @@
@@ -641,7 +195,7 @@ index 31321fa..0000000
 -return $loader;
 diff --git a/app/config/config.yml b/app/config/config.yml
 deleted file mode 100644
-index 20d4525..0000000
+index 20d4525e6..000000000
 --- a/app/config/config.yml
 +++ /dev/null
 @@ -1,84 +0,0 @@
@@ -731,7 +285,7 @@ index 20d4525..0000000
 -        sender_name: Ryan
 diff --git a/app/config/config_dev.yml b/app/config/config_dev.yml
 deleted file mode 100644
-index 7eb4739..0000000
+index 7eb4739c0..000000000
 --- a/app/config/config_dev.yml
 +++ /dev/null
 @@ -1,34 +0,0 @@
@@ -771,7 +325,7 @@ index 7eb4739..0000000
 -#    delivery_address: me@example.com
 diff --git a/app/config/config_prod.yml b/app/config/config_prod.yml
 deleted file mode 100644
-index 192f0c5..0000000
+index 192f0c5c6..000000000
 --- a/app/config/config_prod.yml
 +++ /dev/null
 @@ -1,21 +0,0 @@
@@ -798,7 +352,7 @@ index 192f0c5..0000000
 -            type:  console
 diff --git a/app/config/config_test.yml b/app/config/config_test.yml
 deleted file mode 100644
-index 2f6d925..0000000
+index 2f6d92503..000000000
 --- a/app/config/config_test.yml
 +++ /dev/null
 @@ -1,16 +0,0 @@
@@ -820,7 +374,7 @@ index 2f6d925..0000000
 -    disable_delivery: true
 diff --git a/app/config/parameters.yml.dist b/app/config/parameters.yml.dist
 deleted file mode 100644
-index 156580c..0000000
+index 156580cae..000000000
 --- a/app/config/parameters.yml.dist
 +++ /dev/null
 @@ -1,14 +0,0 @@
@@ -838,30 +392,9 @@ index 156580c..0000000
 -
 -    # A secret key that's used to generate certain security-related tokens
 -    secret:            ThisTokenIsNotSoSecretChangeIt
-diff --git a/app/config/routing.yml b/app/config/routing.yml
-deleted file mode 100644
-index aed8f22..0000000
---- a/app/config/routing.yml
-+++ /dev/null
-@@ -1,15 +0,0 @@
--app:
--    resource: "@AppBundle/Controller/"
--    type:     annotation
--    prefix:   /
--
--# FOSUserBundle routes
--fos_user_security:
--    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
--
--fos_user_register:
--    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
--    prefix: /register
--
--fos_js_routing:
--    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 diff --git a/app/config/routing_dev.yml b/app/config/routing_dev.yml
 deleted file mode 100644
-index 404f6a3..0000000
+index 404f6a3bc..000000000
 --- a/app/config/routing_dev.yml
 +++ /dev/null
 @@ -1,14 +0,0 @@
@@ -879,52 +412,9 @@ index 404f6a3..0000000
 -
 -_main:
 -    resource: routing.yml
-diff --git a/app/config/security.yml b/app/config/security.yml
-deleted file mode 100644
-index 2009c4b..0000000
---- a/app/config/security.yml
-+++ /dev/null
-@@ -1,36 +0,0 @@
--# To get started with security, check out the documentation:
--# http://symfony.com/doc/current/book/security.html
--security:
--    encoders:
--        FOS\UserBundle\Model\UserInterface: bcrypt
--
--    role_hierarchy:
--        ROLE_ADMIN:       ROLE_USER
--        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
--
--    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
--    providers:
--        fos_userbundle:
--            id: fos_user.user_provider.username
--
--    firewalls:
--        # disables authentication for assets and the profiler, adapt it according to your needs
--        dev:
--            pattern: ^/(_(profiler|wdt)|css|images|js)/
--            security: false
--
--        main:
--            form_login:
--                provider: fos_userbundle
--            logout: ~
--            anonymous: ~
--            # activate different ways to authenticate
--
--            # http_basic: ~
--            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
--
--            # form_login: ~
--            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
--
--    access_control:
--        - { path: ^/lift, role: ROLE_USER }
-\ No newline at end of file
 diff --git a/app/config/services.yml b/app/config/services.yml
 deleted file mode 100644
-index 52b43c1..0000000
+index 52b43c11e..000000000
 --- a/app/config/services.yml
 +++ /dev/null
 @@ -1,12 +0,0 @@
@@ -941,7 +431,7 @@ index 52b43c1..0000000
 -        tags:
 -            - { name: form.type }
 diff --git a/bin/console b/bin/console
-index 3cb1462..85ecef5 100755
+index 3cb146241..85ecef5a0 100755
 --- a/bin/console
 +++ b/bin/console
 @@ -1,27 +1,39 @@
@@ -998,7 +488,7 @@ index 3cb1462..85ecef5 100755
 \ No newline at end of file
 diff --git a/bin/phpunit b/bin/phpunit
 new file mode 100755
-index 0000000..75d5be8
+index 000000000..75d5be85a
 --- /dev/null
 +++ b/bin/phpunit
 @@ -0,0 +1,18 @@
@@ -1021,7 +511,7 @@ index 0000000..75d5be8
 +
 +require dirname(__DIR__).'/vendor/symfony/phpunit-bridge/bin/simple-phpunit';
 diff --git a/composer.json b/composer.json
-index b5518e9..5d0239f 100644
+index b5518e986..5d0239f1c 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -4,65 +4,76 @@
@@ -1143,7 +633,7 @@ index b5518e9..5d0239f 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index dbab2f7..649f1b5 100644
+index dbab2f7ed..649f1b5a5 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -1,82 +1,23 @@
@@ -1157,7 +647,7 @@ index dbab2f7..649f1b5 100644
 -    "content-hash": "0818f03c11954ee512b7cb0cd4a4418c",
 +    "content-hash": "43423759580a7e81acf90ddab7b4cb4b",
      "packages": [
-         {
+-        {
 -            "name": "composer/ca-bundle",
 -            "version": "1.0.7",
 -            "source": {
@@ -1216,7 +706,7 @@ index dbab2f7..649f1b5 100644
 -            ],
 -            "time": "2017-03-06T11:59:08+00:00"
 -        },
--        {
+         {
              "name": "doctrine/annotations",
 -            "version": "v1.5.0",
 +            "version": "v1.6.0",
@@ -2795,7 +2285,7 @@ index dbab2f7..649f1b5 100644
                  }
              },
              "autoload": {
-@@ -2074,51 +1986,51 @@
+@@ -2074,100 +1986,115 @@
                  }
              ],
              "description": "Swiftmailer, free feature-rich PHP mailer",
@@ -2868,14 +2358,14 @@ index dbab2f7..649f1b5 100644
              },
              "notification-url": "https://packagist.org/downloads/",
              "license": [
-@@ -2126,48 +2038,63 @@
+                 "MIT"
              ],
              "authors": [
-                 {
+-                {
 -                    "name": "Symfony Community",
 -                    "homepage": "http://symfony.com/contributors"
 -                },
--                {
+                 {
                      "name": "Fabien Potencier",
                      "email": "fabien@symfony.com"
 +                },
@@ -3291,7 +2781,7 @@ index dbab2f7..649f1b5 100644
                  ]
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -2409,116 +2362,141 @@
+@@ -2409,265 +2362,189 @@
              ],
              "authors": [
                  {
@@ -3485,14 +2975,14 @@ index dbab2f7..649f1b5 100644
              },
              "notification-url": "https://packagist.org/downloads/",
              "license": [
-@@ -2526,148 +2504,47 @@
+                 "MIT"
              ],
              "authors": [
-                 {
+-                {
 -                    "name": "Symfony Community",
 -                    "homepage": "http://symfony.com/contributors"
 -                },
--                {
+                 {
                      "name": "Fabien Potencier",
                      "email": "fabien@symfony.com"
 +                },
@@ -6691,7 +6181,7 @@ index dbab2f7..649f1b5 100644
  }
 diff --git a/config/bundles.php b/config/bundles.php
 new file mode 100644
-index 0000000..0ee330c
+index 000000000..0ee330c5e
 --- /dev/null
 +++ b/config/bundles.php
 @@ -0,0 +1,19 @@
@@ -6716,7 +6206,7 @@ index 0000000..0ee330c
 +];
 diff --git a/config/packages/dev/easy_log_handler.yaml b/config/packages/dev/easy_log_handler.yaml
 new file mode 100644
-index 0000000..27bfc60
+index 000000000..27bfc6087
 --- /dev/null
 +++ b/config/packages/dev/easy_log_handler.yaml
 @@ -0,0 +1,16 @@
@@ -6738,7 +6228,7 @@ index 0000000..27bfc60
 +#            id:   EasyCorp\EasyLog\EasyLogHandler
 diff --git a/config/packages/dev/monolog.yaml b/config/packages/dev/monolog.yaml
 new file mode 100644
-index 0000000..3662592
+index 000000000..366259288
 --- /dev/null
 +++ b/config/packages/dev/monolog.yaml
 @@ -0,0 +1,19 @@
@@ -6763,7 +6253,7 @@ index 0000000..3662592
 +            channels: ["!event", "!doctrine", "!console"]
 diff --git a/config/packages/dev/routing.yaml b/config/packages/dev/routing.yaml
 new file mode 100644
-index 0000000..4116679
+index 000000000..4116679a2
 --- /dev/null
 +++ b/config/packages/dev/routing.yaml
 @@ -0,0 +1,3 @@
@@ -6772,7 +6262,7 @@ index 0000000..4116679
 +        strict_requirements: true
 diff --git a/config/packages/dev/swiftmailer.yaml b/config/packages/dev/swiftmailer.yaml
 new file mode 100644
-index 0000000..b98158e
+index 000000000..b98158ee1
 --- /dev/null
 +++ b/config/packages/dev/swiftmailer.yaml
 @@ -0,0 +1,4 @@
@@ -6782,7 +6272,7 @@ index 0000000..b98158e
 +    #delivery_addresses: ['me@example.com']
 diff --git a/config/packages/dev/web_profiler.yaml b/config/packages/dev/web_profiler.yaml
 new file mode 100644
-index 0000000..e92166a
+index 000000000..e92166a7f
 --- /dev/null
 +++ b/config/packages/dev/web_profiler.yaml
 @@ -0,0 +1,6 @@
@@ -6794,7 +6284,7 @@ index 0000000..e92166a
 +    profiler: { only_exceptions: false }
 diff --git a/config/packages/doctrine.yaml b/config/packages/doctrine.yaml
 new file mode 100644
-index 0000000..ee77d61
+index 000000000..ee77d6182
 --- /dev/null
 +++ b/config/packages/doctrine.yaml
 @@ -0,0 +1,27 @@
@@ -6827,7 +6317,7 @@ index 0000000..ee77d61
 +                alias: App
 diff --git a/config/packages/doctrine_migrations.yaml b/config/packages/doctrine_migrations.yaml
 new file mode 100644
-index 0000000..3bf0fbc
+index 000000000..3bf0fbcae
 --- /dev/null
 +++ b/config/packages/doctrine_migrations.yaml
 @@ -0,0 +1,5 @@
@@ -6838,7 +6328,7 @@ index 0000000..3bf0fbc
 +    namespace: DoctrineMigrations
 diff --git a/config/packages/fos_user.yaml b/config/packages/fos_user.yaml
 new file mode 100644
-index 0000000..e035924
+index 000000000..e035924f7
 --- /dev/null
 +++ b/config/packages/fos_user.yaml
 @@ -0,0 +1,10 @@
@@ -6854,7 +6344,7 @@ index 0000000..e035924
 +        sender_name: Ryan
 diff --git a/config/packages/framework.yaml b/config/packages/framework.yaml
 new file mode 100644
-index 0000000..33b52e4
+index 000000000..33b52e449
 --- /dev/null
 +++ b/config/packages/framework.yaml
 @@ -0,0 +1,37 @@
@@ -6897,7 +6387,7 @@ index 0000000..33b52e4
 +        json_manifest_path: '%kernel.project_dir%/web/build/manifest.json'
 diff --git a/config/packages/prod/doctrine.yaml b/config/packages/prod/doctrine.yaml
 new file mode 100644
-index 0000000..2f16f0f
+index 000000000..2f16f0fde
 --- /dev/null
 +++ b/config/packages/prod/doctrine.yaml
 @@ -0,0 +1,31 @@
@@ -6934,7 +6424,7 @@ index 0000000..2f16f0f
 +                adapter: cache.system
 diff --git a/config/packages/prod/monolog.yaml b/config/packages/prod/monolog.yaml
 new file mode 100644
-index 0000000..90e1a4c
+index 000000000..90e1a4c19
 --- /dev/null
 +++ b/config/packages/prod/monolog.yaml
 @@ -0,0 +1,17 @@
@@ -6957,58 +6447,30 @@ index 0000000..90e1a4c
 +            channels: ["!event", "!doctrine"]
 diff --git a/config/packages/routing.yaml b/config/packages/routing.yaml
 new file mode 100644
-index 0000000..368bc7f
+index 000000000..368bc7f49
 --- /dev/null
 +++ b/config/packages/routing.yaml
 @@ -0,0 +1,3 @@
 +framework:
 +    router:
 +        strict_requirements: ~
-diff --git a/config/packages/security.yaml b/config/packages/security.yaml
-new file mode 100644
-index 0000000..7423fd0
---- /dev/null
+diff --git a/app/config/security.yml b/config/packages/security.yaml
+similarity index 96%
+rename from app/config/security.yml
+rename to config/packages/security.yaml
+index 2009c4b1b..7423fd053 100644
+--- a/app/config/security.yml
 +++ b/config/packages/security.yaml
-@@ -0,0 +1,36 @@
-+# To get started with security, check out the documentation:
-+# http://symfony.com/doc/current/book/security.html
-+security:
-+    encoders:
-+        FOS\UserBundle\Model\UserInterface: bcrypt
-+
-+    role_hierarchy:
-+        ROLE_ADMIN:       ROLE_USER
-+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
-+
-+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
-+    providers:
-+        fos_userbundle:
-+            id: fos_user.user_provider.username
-+
-+    firewalls:
-+        # disables authentication for assets and the profiler, adapt it according to your needs
-+        dev:
-+            pattern: ^/(_(profiler|wdt)|css|images|js)/
-+            security: false
-+
-+        main:
-+            form_login:
-+                provider: fos_userbundle
-+            logout: ~
-+            anonymous: ~
-+            # activate different ways to authenticate
-+
-+            # http_basic: ~
-+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-+
-+            # form_login: ~
-+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
-+
-+    access_control:
+@@ -33,4 +33,4 @@ security:
+             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+ 
+     access_control:
+-        - { path: ^/lift, role: ROLE_USER }
+\ No newline at end of file
 +        - { path: ^/lift, role: ROLE_USER }
 diff --git a/config/packages/swiftmailer.yaml b/config/packages/swiftmailer.yaml
 new file mode 100644
-index 0000000..cae6508
+index 000000000..cae65084a
 --- /dev/null
 +++ b/config/packages/swiftmailer.yaml
 @@ -0,0 +1,3 @@
@@ -7017,7 +6479,7 @@ index 0000000..cae6508
 +    spool: { type: 'memory' }
 diff --git a/config/packages/test/framework.yaml b/config/packages/test/framework.yaml
 new file mode 100644
-index 0000000..d051c84
+index 000000000..d051c8400
 --- /dev/null
 +++ b/config/packages/test/framework.yaml
 @@ -0,0 +1,4 @@
@@ -7027,7 +6489,7 @@ index 0000000..d051c84
 +        storage_id: session.storage.mock_file
 diff --git a/config/packages/test/monolog.yaml b/config/packages/test/monolog.yaml
 new file mode 100644
-index 0000000..2762653
+index 000000000..2762653c8
 --- /dev/null
 +++ b/config/packages/test/monolog.yaml
 @@ -0,0 +1,7 @@
@@ -7040,7 +6502,7 @@ index 0000000..2762653
 +            channels: ["!event"]
 diff --git a/config/packages/test/swiftmailer.yaml b/config/packages/test/swiftmailer.yaml
 new file mode 100644
-index 0000000..f438078
+index 000000000..f43807805
 --- /dev/null
 +++ b/config/packages/test/swiftmailer.yaml
 @@ -0,0 +1,2 @@
@@ -7048,7 +6510,7 @@ index 0000000..f438078
 +    disable_delivery: true
 diff --git a/config/packages/test/web_profiler.yaml b/config/packages/test/web_profiler.yaml
 new file mode 100644
-index 0000000..03752de
+index 000000000..03752de21
 --- /dev/null
 +++ b/config/packages/test/web_profiler.yaml
 @@ -0,0 +1,6 @@
@@ -7060,7 +6522,7 @@ index 0000000..03752de
 +    profiler: { collect: false }
 diff --git a/config/packages/translation.yaml b/config/packages/translation.yaml
 new file mode 100644
-index 0000000..1edfbe2
+index 000000000..1edfbe236
 --- /dev/null
 +++ b/config/packages/translation.yaml
 @@ -0,0 +1,7 @@
@@ -7073,7 +6535,7 @@ index 0000000..1edfbe2
 +            - '%locale%'
 diff --git a/config/packages/twig.yaml b/config/packages/twig.yaml
 new file mode 100644
-index 0000000..1ab96b6
+index 000000000..1ab96b632
 --- /dev/null
 +++ b/config/packages/twig.yaml
 @@ -0,0 +1,6 @@
@@ -7085,7 +6547,7 @@ index 0000000..1ab96b6
 +        - bootstrap_3_layout.html.twig
 diff --git a/config/routes.yaml b/config/routes.yaml
 new file mode 100644
-index 0000000..c3283aa
+index 000000000..c3283aa2e
 --- /dev/null
 +++ b/config/routes.yaml
 @@ -0,0 +1,3 @@
@@ -7094,7 +6556,7 @@ index 0000000..c3283aa
 +#    controller: App\Controller\DefaultController::index
 diff --git a/config/routes/annotations.yaml b/config/routes/annotations.yaml
 new file mode 100644
-index 0000000..d49a502
+index 000000000..d49a502a8
 --- /dev/null
 +++ b/config/routes/annotations.yaml
 @@ -0,0 +1,3 @@
@@ -7103,7 +6565,7 @@ index 0000000..d49a502
 +    type: annotation
 diff --git a/config/routes/dev/twig.yaml b/config/routes/dev/twig.yaml
 new file mode 100644
-index 0000000..f4ee839
+index 000000000..f4ee83960
 --- /dev/null
 +++ b/config/routes/dev/twig.yaml
 @@ -0,0 +1,3 @@
@@ -7112,7 +6574,7 @@ index 0000000..f4ee839
 +    prefix: /_error
 diff --git a/config/routes/dev/web_profiler.yaml b/config/routes/dev/web_profiler.yaml
 new file mode 100644
-index 0000000..c82beff
+index 000000000..c82beff2f
 --- /dev/null
 +++ b/config/routes/dev/web_profiler.yaml
 @@ -0,0 +1,7 @@
@@ -7125,28 +6587,38 @@ index 0000000..c82beff
 +    prefix: /_profiler
 diff --git a/config/routes/fos_js_routing.yaml b/config/routes/fos_js_routing.yaml
 new file mode 100644
-index 0000000..c699b65
+index 000000000..c699b65f7
 --- /dev/null
 +++ b/config/routes/fos_js_routing.yaml
 @@ -0,0 +1,2 @@
 +fos_js_routing:
 +    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
-diff --git a/config/routes/fos_user.yaml b/config/routes/fos_user.yaml
-new file mode 100644
-index 0000000..ab5d3c6
---- /dev/null
+diff --git a/app/config/routing.yml b/config/routes/fos_user.yaml
+similarity index 56%
+rename from app/config/routing.yml
+rename to config/routes/fos_user.yaml
+index aed8f228f..ab5d3c661 100644
+--- a/app/config/routing.yml
 +++ b/config/routes/fos_user.yaml
-@@ -0,0 +1,7 @@
-+# FOSUserBundle routes
-+fos_user_security:
-+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
-+
-+fos_user_register:
-+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
-+    prefix: /register
+@@ -1,8 +1,3 @@
+-app:
+-    resource: "@AppBundle/Controller/"
+-    type:     annotation
+-    prefix:   /
+-
+ # FOSUserBundle routes
+ fos_user_security:
+     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+@@ -10,6 +5,3 @@ fos_user_security:
+ fos_user_register:
+     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+     prefix: /register
+-
+-fos_js_routing:
+-    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 diff --git a/config/services.yaml b/config/services.yaml
 new file mode 100644
-index 0000000..be506bd
+index 000000000..be506bd69
 --- /dev/null
 +++ b/config/services.yaml
 @@ -0,0 +1,32 @@
@@ -7184,7 +6656,7 @@ index 0000000..be506bd
 +            $class: '%fos_user.model.user.class%'
 diff --git a/config/services_test.yaml b/config/services_test.yaml
 new file mode 100644
-index 0000000..876c36b
+index 000000000..876c36bda
 --- /dev/null
 +++ b/config/services_test.yaml
 @@ -0,0 +1,9 @@
@@ -7198,7 +6670,7 @@ index 0000000..876c36b
 +    #
 +    # test.App\Service\MyService: '@App\Service\MyService'
 diff --git a/phpunit.xml.dist b/phpunit.xml.dist
-index 65e9082..6913f98 100644
+index 65e90821d..6913f98b7 100644
 --- a/phpunit.xml.dist
 +++ b/phpunit.xml.dist
 @@ -10,6 +10,27 @@
@@ -7229,62 +6701,13 @@ index 65e9082..6913f98 100644
      </php>
  
      <testsuites>
-diff --git a/public/favicon.ico b/public/favicon.ico
-new file mode 100644
-index 0000000000000000000000000000000000000000..479f7f50f404ada1e42c536097521d19f2c22f35
-GIT binary patch
-literal 6518
-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
-BFLeL_
-
-literal 0
-HcmV?d00001
-
+diff --git a/web/favicon.ico b/public/favicon.ico
+similarity index 100%
+rename from web/favicon.ico
+rename to public/favicon.ico
 diff --git a/public/index.php b/public/index.php
 new file mode 100644
-index 0000000..ab41c26
+index 000000000..ab41c26e4
 --- /dev/null
 +++ b/public/index.php
 @@ -0,0 +1,39 @@
@@ -7327,75 +6750,24 @@ index 0000000..ab41c26
 +$response = $kernel->handle($request);
 +$response->send();
 +$kernel->terminate($request, $response);
-diff --git a/src/Api/RepLogApiModel.php b/src/Api/RepLogApiModel.php
-new file mode 100644
-index 0000000..fc829d1
---- /dev/null
-+++ b/src/Api/RepLogApiModel.php
-@@ -0,0 +1,26 @@
-+<?php
-+
-+namespace App\Api;
-+
-+class RepLogApiModel
-+{
-+    public $id;
-+
-+    public $reps;
-+
-+    public $itemLabel;
-+
-+    public $totalWeightLifted;
-+
-+    private $links = [];
-+
-+    public function addLink($ref, $url)
-+    {
-+        $this->links[$ref] = $url;
-+    }
-+
-+    public function getLinks()
-+    {
-+        return $this->links;
-+    }
-+}
-\ No newline at end of file
-diff --git a/src/AppBundle/Api/RepLogApiModel.php b/src/AppBundle/Api/RepLogApiModel.php
-deleted file mode 100644
-index 3444565..0000000
+diff --git a/src/AppBundle/Api/RepLogApiModel.php b/src/Api/RepLogApiModel.php
+similarity index 92%
+rename from src/AppBundle/Api/RepLogApiModel.php
+rename to src/Api/RepLogApiModel.php
+index 34445659b..fc829d1d1 100644
 --- a/src/AppBundle/Api/RepLogApiModel.php
-+++ /dev/null
-@@ -1,26 +0,0 @@
--<?php
--
++++ b/src/Api/RepLogApiModel.php
+@@ -1,6 +1,6 @@
+ <?php
+ 
 -namespace AppBundle\Api;
--
--class RepLogApiModel
--{
--    public $id;
--
--    public $reps;
--
--    public $itemLabel;
--
--    public $totalWeightLifted;
--
--    private $links = [];
--
--    public function addLink($ref, $url)
--    {
--        $this->links[$ref] = $url;
--    }
--
--    public function getLinks()
--    {
--        return $this->links;
--    }
--}
-\ No newline at end of file
++namespace App\Api;
+ 
+ class RepLogApiModel
+ {
 diff --git a/src/AppBundle/AppBundle.php b/src/AppBundle/AppBundle.php
 deleted file mode 100644
-index 05123b6..0000000
+index 05123b678..000000000
 --- a/src/AppBundle/AppBundle.php
 +++ /dev/null
 @@ -1,9 +0,0 @@
@@ -7408,733 +6780,9 @@ index 05123b6..0000000
 -class AppBundle extends Bundle
 -{
 -}
-diff --git a/src/AppBundle/Controller/BaseController.php b/src/AppBundle/Controller/BaseController.php
-deleted file mode 100644
-index 30f376a..0000000
---- a/src/AppBundle/Controller/BaseController.php
-+++ /dev/null
-@@ -1,103 +0,0 @@
--<?php
--
--namespace AppBundle\Controller;
--
--use AppBundle\Api\RepLogApiModel;
--use AppBundle\Entity\RepLog;
--use Symfony\Bundle\FrameworkBundle\Controller\Controller;
--use Symfony\Component\Form\FormInterface;
--use Symfony\Component\HttpFoundation\JsonResponse;
--
--class BaseController extends Controller
--{
--    /**
--     * @param mixed $data Usually an object you want to serialize
--     * @param int $statusCode
--     * @return JsonResponse
--     */
--    protected function createApiResponse($data, $statusCode = 200)
--    {
--        $json = $this->get('serializer')
--            ->serialize($data, 'json');
--
--        return new JsonResponse($json, $statusCode, [], true);
--    }
--
--    /**
--     * Returns an associative array of validation errors
--     *
--     * {
--     *     'firstName': 'This value is required',
--     *     'subForm': {
--     *         'someField': 'Invalid value'
--     *     }
--     * }
--     *
--     * @param FormInterface $form
--     * @return array|string
--     */
--    protected function getErrorsFromForm(FormInterface $form)
--    {
--        foreach ($form->getErrors() as $error) {
--            // only supporting 1 error per field
--            // and not supporting a "field" with errors, that has more
--            // fields with errors below it
--            return $error->getMessage();
--        }
--
--        $errors = array();
--        foreach ($form->all() as $childForm) {
--            if ($childForm instanceof FormInterface) {
--                if ($childError = $this->getErrorsFromForm($childForm)) {
--                    $errors[$childForm->getName()] = $childError;
--                }
--            }
--        }
--
--        return $errors;
--    }
--
--    /**
--     * Turns a RepLog into a RepLogApiModel for the API.
--     *
--     * This could be moved into a service if it needed to be
--     * re-used elsewhere.
--     *
--     * @param RepLog $repLog
--     * @return RepLogApiModel
--     */
--    protected function createRepLogApiModel(RepLog $repLog)
--    {
--        $model = new RepLogApiModel();
--        $model->id = $repLog->getId();
--        $model->reps = $repLog->getReps();
--        $model->itemLabel = $this->get('translator')
--            ->trans($repLog->getItemLabel());
--        $model->totalWeightLifted = $repLog->getTotalWeightLifted();
--
--        $selfUrl = $this->generateUrl(
--            'rep_log_get',
--            ['id' => $repLog->getId()]
--        );
--        $model->addLink('_self', $selfUrl);
--
--        return $model;
--    }
--
--    /**
--     * @return RepLogApiModel[]
--     */
--    protected function findAllUsersRepLogModels()
--    {
--        $repLogs = $this->getDoctrine()->getRepository('AppBundle:RepLog')
--            ->findBy(array('user' => $this->getUser()))
--        ;
--
--        $models = [];
--        foreach ($repLogs as $repLog) {
--            $models[] = $this->createRepLogApiModel($repLog);
--        }
--
--        return $models;
--    }
--}
-\ No newline at end of file
-diff --git a/src/AppBundle/Controller/DefaultController.php b/src/AppBundle/Controller/DefaultController.php
-deleted file mode 100644
-index 380d1ee..0000000
---- a/src/AppBundle/Controller/DefaultController.php
-+++ /dev/null
-@@ -1,16 +0,0 @@
--<?php
--
--namespace AppBundle\Controller;
--
--use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
--
--class DefaultController extends BaseController
--{
--    /**
--     * @Route("/", name="homepage")
--     */
--    public function indexAction()
--    {
--        return $this->redirectToRoute('lift');
--    }
--}
-diff --git a/src/AppBundle/Controller/LiftController.php b/src/AppBundle/Controller/LiftController.php
-deleted file mode 100644
-index 86c0f86..0000000
---- a/src/AppBundle/Controller/LiftController.php
-+++ /dev/null
-@@ -1,70 +0,0 @@
--<?php
--
--namespace AppBundle\Controller;
--
--use AppBundle\Entity\RepLog;
--use AppBundle\Form\Type\RepLogType;
--use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
--use Symfony\Component\HttpFoundation\Request;
--use Symfony\Component\HttpFoundation\Response;
--
--class LiftController extends BaseController
--{
--    /**
--     * @Route("/lift", name="lift")
--     */
--    public function indexAction(Request $request)
--    {
--        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
--
--        $form = $this->createForm(RepLogType::class);
--        $form->handleRequest($request);
--
--        if ($form->isValid()) {
--            $em = $this->getDoctrine()->getManager();
--            $repLog = $form->getData();
--            $repLog->setUser($this->getUser());
--
--            $em->persist($repLog);
--            $em->flush();
--
--            $this->addFlash('notice', 'Reps crunched!');
--
--            return $this->redirectToRoute('lift');
--        }
--
--        return $this->render('lift/index.html.twig', array(
--            'form' => $form->createView(),
--            'leaderboard' => $this->getLeaders(),
--        ));
--    }
--
--    /**
--     * Returns an array of leader information
--     *
--     * @return array
--     */
--    private function getLeaders()
--    {
--        $leaderboardDetails = $this->getDoctrine()->getRepository('AppBundle:RepLog')
--            ->getLeaderboardDetails()
--        ;
--
--        $userRepo = $this->getDoctrine()->getRepository('AppBundle:User');
--        $leaderboard = array();
--        foreach ($leaderboardDetails as $details) {
--            if (!$user = $userRepo->find($details['user_id'])) {
--                // interesting, this user is missing...
--                continue;
--            }
--
--            $leaderboard[] = array(
--                'username' => $user->getUsername(),
--                'weight' => $details['weightSum'],
--                'in_cats' => number_format($details['weightSum']/RepLog::WEIGHT_FAT_CAT),
--            );
--        }
--
--        return $leaderboard;
--    }
--}
-diff --git a/src/AppBundle/Controller/RepLogController.php b/src/AppBundle/Controller/RepLogController.php
-deleted file mode 100644
-index 76b2bd1..0000000
---- a/src/AppBundle/Controller/RepLogController.php
-+++ /dev/null
-@@ -1,97 +0,0 @@
--<?php
--
--namespace AppBundle\Controller;
--
--use AppBundle\Api\RepLogApiModel;
--use AppBundle\Entity\RepLog;
--use AppBundle\Form\Type\RepLogType;
--use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
--use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
--use Symfony\Component\HttpFoundation\Request;
--use Symfony\Component\HttpFoundation\Response;
--use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
--
--class RepLogController extends BaseController
--{
--    /**
--     * @Route("/reps", name="rep_log_list", options={"expose" = true})
--     * @Method("GET")
--     */
--    public function getRepLogsAction()
--    {
--        $models = $this->findAllUsersRepLogModels();
--
--        return $this->createApiResponse([
--            'items' => $models
--        ]);
--    }
--
--    /**
--     * @Route("/reps/{id}", name="rep_log_get")
--     * @Method("GET")
--     */
--    public function getRepLogAction(RepLog $repLog)
--    {
--        $apiModel = $this->createRepLogApiModel($repLog);
--
--        return $this->createApiResponse($apiModel);
--    }
--
--    /**
--     * @Route("/reps/{id}", name="rep_log_delete")
--     * @Method("DELETE")
--     */
--    public function deleteRepLogAction(RepLog $repLog)
--    {
--        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
--        $em = $this->getDoctrine()->getManager();
--        $em->remove($repLog);
--        $em->flush();
--
--        return new Response(null, 204);
--    }
--
--    /**
--     * @Route("/reps", name="rep_log_new", options={"expose" = true})
--     * @Method("POST")
--     */
--    public function newRepLogAction(Request $request)
--    {
--        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
--        $data = json_decode($request->getContent(), true);
--        if ($data === null) {
--            throw new BadRequestHttpException('Invalid JSON');
--        }
--
--        $form = $this->createForm(RepLogType::class, null, [
--            'csrf_protection' => false,
--        ]);
--        $form->submit($data);
--        if (!$form->isValid()) {
--            $errors = $this->getErrorsFromForm($form);
--
--            return $this->createApiResponse([
--                'errors' => $errors
--            ], 400);
--        }
--
--        /** @var RepLog $repLog */
--        $repLog = $form->getData();
--        $repLog->setUser($this->getUser());
--        $em = $this->getDoctrine()->getManager();
--        $em->persist($repLog);
--        $em->flush();
--
--        $apiModel = $this->createRepLogApiModel($repLog);
--
--        //$response = $this->createApiResponse($apiModel);
--        $response = new Response(null, 204);
--        // setting the Location header... it's a best-practice
--        $response->headers->set(
--            'Location',
--            $this->generateUrl('rep_log_get', ['id' => $repLog->getId()])
--        );
--
--        return $response;
--    }
--}
-diff --git a/src/AppBundle/DataFixtures/ORM/LoadReps.php b/src/AppBundle/DataFixtures/ORM/LoadReps.php
-deleted file mode 100644
-index 6158591..0000000
---- a/src/AppBundle/DataFixtures/ORM/LoadReps.php
-+++ /dev/null
-@@ -1,60 +0,0 @@
--<?php
--
--namespace AppBundle\DataFixtures\ORM;
--
--use Doctrine\Common\DataFixtures\FixtureInterface;
--use Doctrine\Common\Persistence\ObjectManager;
--use AppBundle\Entity\User;
--use AppBundle\Entity\RepLog;
--
--class LoadReps implements FixtureInterface
--{
--    /**
--     * {@inheritDoc}
--     */
--    public function load(ObjectManager $manager)
--    {
--        $items = array_flip(RepLog::getThingsYouCanLiftChoices());
--
--        $names = array(
--            array('Brad', 'Kitt'),
--            array('Cat', 'Middleton'),
--            array('Cindy', 'Clawford'),
--            array('Diane', 'Kitten'),
--            array('Fuzz', 'Aldrin'),
--            array('Hunter S.', 'Thomcat'),
--            array('J.R.R', 'Tollkitten'),
--            array('Madelion', 'Albright'),
--            array('Meowly', 'Cyrus'),
--            array('Ron', 'Furgandy'),
--        );
--
--        foreach ($names as $name) {
--            $firstName = $name[0];
--            $lastName = $name[1];
--
--            $user = new User();
--            $username = sprintf('%s_%s', $firstName, $lastName);
--            $username = strtolower($username);
--            $username = str_replace(' ', '', $username);
--            $username = str_replace('.', '', $username);
--            $user->setUsername($username);
--            $user->setEmail($user->getUsername().'@example.com');
--            $user->setPlainPassword('pumpup');
--            $user->setFirstName($firstName);
--            $user->setLastName($lastName);
--            $user->setEnabled(true);
--            $manager->persist($user);
--
--            for ($j = 0; $j < rand(1, 5); $j++) {
--                $repLog = new RepLog();
--                $repLog->setUser($user);
--                $repLog->setReps(rand(1, 30));
--                $repLog->setItem(array_rand($items));
--                $manager->persist($repLog);
--            }
--        }
--
--        $manager->flush();
--    }
--}
-\ No newline at end of file
-diff --git a/src/AppBundle/Entity/RepLog.php b/src/AppBundle/Entity/RepLog.php
-deleted file mode 100644
-index e967192..0000000
---- a/src/AppBundle/Entity/RepLog.php
-+++ /dev/null
-@@ -1,199 +0,0 @@
--<?php
--
--namespace AppBundle\Entity;
--
--use Doctrine\ORM\Mapping as ORM;
--use Symfony\Component\Serializer\Annotation as Serializer;
--use Symfony\Component\Validator\Constraints as Assert;
--
--/**
-- * RepLog
-- *
-- * @ORM\Table(name="rep_log")
-- * @ORM\Entity(repositoryClass="AppBundle\Repository\RepLogRepository")
-- */
--class RepLog
--{
--    const ITEM_LABEL_PREFIX = 'liftable_thing.';
--
--    const WEIGHT_FAT_CAT = 18;
--
--    private static $thingsYouCanLift = array(
--        'cat' => '9',
--        'fat_cat' => self::WEIGHT_FAT_CAT,
--        'laptop' => '4.5',
--        'coffee_cup' => '.5',
--    );
--
--    /**
--     * @var integer
--     *
--     * @Serializer\Groups({"Default"})
--     * @ORM\Column(name="id", type="integer")
--     * @ORM\Id
--     * @ORM\GeneratedValue(strategy="AUTO")
--     */
--    private $id;
--
--    /**
--     * @var integer
--     *
--     * @Serializer\Groups({"Default"})
--     * @ORM\Column(name="reps", type="integer")
--     * @Assert\NotBlank(message="How many times did you lift this?")
--     * @Assert\GreaterThan(value=0, message="You can certainly life more than just 0!")
--     */
--    private $reps;
--
--    /**
--     * @var string
--     *
--     * @Serializer\Groups({"Default"})
--     * @ORM\Column(name="item", type="string", length=50)
--     * @Assert\NotBlank(message="What did you lift?")
--     */
--    private $item;
--
--    /**
--     * @var float
--     *
--     * @Serializer\Groups({"Default"})
--     * @ORM\Column(name="totalWeightLifted", type="float")
--     */
--    private $totalWeightLifted;
--
--    /**
--     * The user who lifted these items
--     *
--     * @var User
--     *
--     * @ORM\ManyToOne(targetEntity="User")
--     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
--     */
--    private $user;
--
--    /**
--     * Get id
--     *
--     * @return integer 
--     */
--    public function getId()
--    {
--        return $this->id;
--    }
--
--    /**
--     * Set reps
--     *
--     * @param integer $reps
--     * @return RepLog
--     */
--    public function setReps($reps)
--    {
--        $this->reps = $reps;
--
--        $this->calculateTotalLifted();
--
--        return $this;
--    }
--
--    /**
--     * Get reps
--     *
--     * @return integer 
--     */
--    public function getReps()
--    {
--        return $this->reps;
--    }
--
--    /**
--     * Set item
--     *
--     * @param string $item
--     * @return RepLog
--     */
--    public function setItem($item)
--    {
--        if (!isset(self::$thingsYouCanLift[$item])) {
--            throw new \InvalidArgumentException(sprintf('You can\'t lift a "%s"!', $item));
--        }
--
--        $this->item = $item;
--        $this->calculateTotalLifted();
--
--        return $this;
--    }
--
--    /**
--     * Get item
--     *
--     * @return string 
--     */
--    public function getItem()
--    {
--        return $this->item;
--    }
--
--    public function getItemLabel()
--    {
--        return self::ITEM_LABEL_PREFIX.$this->getItem();
--    }
--
--    /**
--     * Get totalWeightLifted
--     *
--     * @return float 
--     */
--    public function getTotalWeightLifted()
--    {
--        return $this->totalWeightLifted;
--    }
--
--    /**
--     * Returns an array that an be used in a form drop down
--     *
--     * @return array
--     */
--    public static function getThingsYouCanLiftChoices()
--    {
--        $things = array_keys(self::$thingsYouCanLift);
--        $choices = array();
--        foreach ($things as $thingKey) {
--            $choices[self::ITEM_LABEL_PREFIX.$thingKey] = $thingKey;
--        }
--
--        return $choices;
--    }
--
--    /**
--     * Calculates the total weight lifted and sets it on the property
--     */
--    private function calculateTotalLifted()
--    {
--        if (!$this->getItem()) {
--            return;
--        }
--
--        $weight = self::$thingsYouCanLift[$this->getItem()];
--        $totalWeight = $weight * $this->getReps();
--
--        $this->totalWeightLifted = $totalWeight;
--    }
--
--    /**
--     * @return \AppBundle\Entity\User
--     */
--    public function getUser()
--    {
--        return $this->user;
--    }
--
--    /**
--     * @param \AppBundle\Entity\User $user
--     */
--    public function setUser($user)
--    {
--        $this->user = $user;
--    }
--}
-diff --git a/src/AppBundle/Entity/User.php b/src/AppBundle/Entity/User.php
-deleted file mode 100644
-index 5157b3a..0000000
---- a/src/AppBundle/Entity/User.php
-+++ /dev/null
-@@ -1,70 +0,0 @@
--<?php
--
--namespace AppBundle\Entity;
--
--use FOS\UserBundle\Model\User as BaseUser;
--use Doctrine\ORM\Mapping as ORM;
--use Symfony\Component\Validator\Constraints as Assert;
--
--/**
-- * @ORM\Entity
-- * @ORM\Table(name="tough_user")
-- */
--class User extends BaseUser
--{
--    /**
--     * @ORM\Id
--     * @ORM\Column(type="integer")
--     * @ORM\GeneratedValue(strategy="AUTO")
--     */
--    protected $id;
--
--    /**
--     * @Assert\NotBlank
--     * @ORM\Column(name="first_name", type="string", length=255)
--     */
--    protected $firstName;
--
--    /**
--     * @Assert\NotBlank
--     * @ORM\Column(name="last_name", type="string", length=255)
--     */
--    protected $lastName;
--
--    public function getAvatar()
--    {
--        return 'http://thecatapi.com/api/images/get?format=src&type=gif&r='.rand(100, 999);
--    }
--
--    /**
--     * @return mixed
--     */
--    public function getFirstName()
--    {
--        return $this->firstName;
--    }
--
--    /**
--     * @param mixed $firstName
--     */
--    public function setFirstName($firstName)
--    {
--        $this->firstName = $firstName;
--    }
--
--    /**
--     * @return mixed
--     */
--    public function getLastName()
--    {
--        return $this->lastName;
--    }
--
--    /**
--     * @param mixed $lastName
--     */
--    public function setLastName($lastName)
--    {
--        $this->lastName = $lastName;
--    }
--}
-\ No newline at end of file
-diff --git a/src/AppBundle/Form/Type/RegistrationType.php b/src/AppBundle/Form/Type/RegistrationType.php
-deleted file mode 100644
-index d6792b0..0000000
---- a/src/AppBundle/Form/Type/RegistrationType.php
-+++ /dev/null
-@@ -1,19 +0,0 @@
--<?php
--
--namespace AppBundle\Form\Type;
--
--use Symfony\Component\Form\Extension\Core\Type\TextType;
--use Symfony\Component\Form\FormBuilderInterface;
--use FOS\UserBundle\Form\Type\RegistrationFormType;
--
--class RegistrationType extends RegistrationFormType
--{
--    public function buildForm(FormBuilderInterface $builder, array $options)
--    {
--        parent::buildForm($builder, $options);
--
--        $builder->add('firstName', TextType::class)
--            ->add('lastName', TextType::class)
--        ;
--    }
--} 
-\ No newline at end of file
-diff --git a/src/AppBundle/Form/Type/RepLogType.php b/src/AppBundle/Form/Type/RepLogType.php
-deleted file mode 100644
-index 122ce59..0000000
---- a/src/AppBundle/Form/Type/RepLogType.php
-+++ /dev/null
-@@ -1,31 +0,0 @@
--<?php
--
--namespace AppBundle\Form\Type;
--
--use AppBundle\Entity\RepLog;
--use Symfony\Component\Form\AbstractType;
--use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
--use Symfony\Component\Form\Extension\Core\Type\IntegerType;
--use Symfony\Component\Form\FormBuilderInterface;
--use Symfony\Component\OptionsResolver\OptionsResolver;
--
--class RepLogType extends AbstractType
--{
--    public function buildForm(FormBuilderInterface $builder, array $options)
--    {
--        $builder
--            ->add('reps', IntegerType::class)
--            ->add('item', ChoiceType::class, array(
--                'choices' => RepLog::getThingsYouCanLiftChoices(),
--                'placeholder' => 'What did you lift?'
--            ))
--        ;
--    }
--
--    public function configureOptions(OptionsResolver $resolver)
--    {
--        $resolver->setDefaults(array(
--            'data_class' => RepLog::class
--        ));
--    }
--} 
-\ No newline at end of file
 diff --git a/src/AppBundle/Repository/RepLogRepository.php b/src/AppBundle/Repository/RepLogRepository.php
 deleted file mode 100644
-index 8403d7e..0000000
+index 8403d7e68..000000000
 --- a/src/AppBundle/Repository/RepLogRepository.php
 +++ /dev/null
 @@ -1,25 +0,0 @@
@@ -8163,739 +6811,264 @@ index 8403d7e..0000000
 -        ;
 -    }
 -}
-diff --git a/src/Controller/.gitignore b/src/Controller/.gitignore
-new file mode 100644
-index 0000000..e69de29
-diff --git a/src/Controller/BaseController.php b/src/Controller/BaseController.php
-new file mode 100644
-index 0000000..1615573
---- /dev/null
+diff --git a/var/logs/.gitkeep b/src/Controller/.gitignore
+similarity index 100%
+rename from var/logs/.gitkeep
+rename to src/Controller/.gitignore
+diff --git a/src/AppBundle/Controller/BaseController.php b/src/Controller/BaseController.php
+similarity index 93%
+rename from src/AppBundle/Controller/BaseController.php
+rename to src/Controller/BaseController.php
+index 30f376afd..16155734e 100644
+--- a/src/AppBundle/Controller/BaseController.php
 +++ b/src/Controller/BaseController.php
-@@ -0,0 +1,104 @@
-+<?php
-+
+@@ -1,9 +1,10 @@
+ <?php
+ 
+-namespace AppBundle\Controller;
 +namespace App\Controller;
-+
+ 
+-use AppBundle\Api\RepLogApiModel;
+-use AppBundle\Entity\RepLog;
 +use App\Api\RepLogApiModel;
 +use App\Entity\RepLog;
 +use App\Repository\RepLogRepository;
-+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-+use Symfony\Component\Form\FormInterface;
-+use Symfony\Component\HttpFoundation\JsonResponse;
-+
-+class BaseController extends Controller
-+{
-+    /**
-+     * @param mixed $data Usually an object you want to serialize
-+     * @param int $statusCode
-+     * @return JsonResponse
-+     */
-+    protected function createApiResponse($data, $statusCode = 200)
-+    {
-+        $json = $this->get('serializer')
-+            ->serialize($data, 'json');
-+
-+        return new JsonResponse($json, $statusCode, [], true);
-+    }
-+
-+    /**
-+     * Returns an associative array of validation errors
-+     *
-+     * {
-+     *     'firstName': 'This value is required',
-+     *     'subForm': {
-+     *         'someField': 'Invalid value'
-+     *     }
-+     * }
-+     *
-+     * @param FormInterface $form
-+     * @return array|string
-+     */
-+    protected function getErrorsFromForm(FormInterface $form)
-+    {
-+        foreach ($form->getErrors() as $error) {
-+            // only supporting 1 error per field
-+            // and not supporting a "field" with errors, that has more
-+            // fields with errors below it
-+            return $error->getMessage();
-+        }
-+
-+        $errors = array();
-+        foreach ($form->all() as $childForm) {
-+            if ($childForm instanceof FormInterface) {
-+                if ($childError = $this->getErrorsFromForm($childForm)) {
-+                    $errors[$childForm->getName()] = $childError;
-+                }
-+            }
-+        }
-+
-+        return $errors;
-+    }
-+
-+    /**
-+     * Turns a RepLog into a RepLogApiModel for the API.
-+     *
-+     * This could be moved into a service if it needed to be
-+     * re-used elsewhere.
-+     *
-+     * @param RepLog $repLog
-+     * @return RepLogApiModel
-+     */
-+    protected function createRepLogApiModel(RepLog $repLog)
-+    {
-+        $model = new RepLogApiModel();
-+        $model->id = $repLog->getId();
-+        $model->reps = $repLog->getReps();
-+        $model->itemLabel = $this->get('translator')
-+            ->trans($repLog->getItemLabel());
-+        $model->totalWeightLifted = $repLog->getTotalWeightLifted();
-+
-+        $selfUrl = $this->generateUrl(
-+            'rep_log_get',
-+            ['id' => $repLog->getId()]
-+        );
-+        $model->addLink('_self', $selfUrl);
-+
-+        return $model;
-+    }
-+
-+    /**
-+     * @return RepLogApiModel[]
-+     */
-+    protected function findAllUsersRepLogModels()
-+    {
+ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+ use Symfony\Component\Form\FormInterface;
+ use Symfony\Component\HttpFoundation\JsonResponse;
+@@ -89,7 +90,7 @@ class BaseController extends Controller
+      */
+     protected function findAllUsersRepLogModels()
+     {
+-        $repLogs = $this->getDoctrine()->getRepository('AppBundle:RepLog')
 +        $repLogs = $this->getDoctrine()->getRepository(RepLog::class)
-+            ->findBy(array('user' => $this->getUser()))
-+        ;
-+
-+        $models = [];
-+        foreach ($repLogs as $repLog) {
-+            $models[] = $this->createRepLogApiModel($repLog);
-+        }
-+
-+        return $models;
-+    }
-+}
-\ No newline at end of file
-diff --git a/src/Controller/DefaultController.php b/src/Controller/DefaultController.php
-new file mode 100644
-index 0000000..1e1d63e
---- /dev/null
+             ->findBy(array('user' => $this->getUser()))
+         ;
+ 
+diff --git a/src/AppBundle/Controller/DefaultController.php b/src/Controller/DefaultController.php
+similarity index 89%
+rename from src/AppBundle/Controller/DefaultController.php
+rename to src/Controller/DefaultController.php
+index 380d1eee9..1e1d63eff 100644
+--- a/src/AppBundle/Controller/DefaultController.php
 +++ b/src/Controller/DefaultController.php
-@@ -0,0 +1,16 @@
-+<?php
-+
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace AppBundle\Controller;
 +namespace App\Controller;
-+
-+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-+
-+class DefaultController extends BaseController
-+{
-+    /**
-+     * @Route("/", name="homepage")
-+     */
-+    public function indexAction()
-+    {
-+        return $this->redirectToRoute('lift');
-+    }
-+}
-diff --git a/src/Controller/LiftController.php b/src/Controller/LiftController.php
-new file mode 100644
-index 0000000..9fcce61
---- /dev/null
+ 
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+ 
+diff --git a/src/AppBundle/Controller/LiftController.php b/src/Controller/LiftController.php
+similarity index 72%
+rename from src/AppBundle/Controller/LiftController.php
+rename to src/Controller/LiftController.php
+index 86c0f86d3..9fcce6131 100644
+--- a/src/AppBundle/Controller/LiftController.php
 +++ b/src/Controller/LiftController.php
-@@ -0,0 +1,70 @@
-+<?php
-+
+@@ -1,9 +1,12 @@
+ <?php
+ 
+-namespace AppBundle\Controller;
 +namespace App\Controller;
-+
+ 
+-use AppBundle\Entity\RepLog;
+-use AppBundle\Form\Type\RepLogType;
 +use App\Entity\RepLog;
 +use App\Entity\User;
 +use App\Form\Type\RepLogType;
 +use App\Repository\RepLogRepository;
 +use App\Repository\UserRepository;
-+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-+use Symfony\Component\HttpFoundation\Request;
-+use Symfony\Component\HttpFoundation\Response;
-+
-+class LiftController extends BaseController
-+{
-+    /**
-+     * @Route("/lift", name="lift")
-+     */
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\HttpFoundation\Response;
+@@ -13,14 +16,14 @@ class LiftController extends BaseController
+     /**
+      * @Route("/lift", name="lift")
+      */
+-    public function indexAction(Request $request)
 +    public function indexAction(Request $request, RepLogRepository $replogRepo, UserRepository $userRepo)
-+    {
-+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
-+
-+        $form = $this->createForm(RepLogType::class);
-+        $form->handleRequest($request);
-+
+     {
+         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
+ 
+         $form = $this->createForm(RepLogType::class);
+         $form->handleRequest($request);
+ 
+-        if ($form->isValid()) {
 +        if ($form->isSubmitted() && $form->isValid()) {
-+            $em = $this->getDoctrine()->getManager();
-+            $repLog = $form->getData();
-+            $repLog->setUser($this->getUser());
-+
-+            $em->persist($repLog);
-+            $em->flush();
-+
-+            $this->addFlash('notice', 'Reps crunched!');
-+
-+            return $this->redirectToRoute('lift');
-+        }
-+
-+        return $this->render('lift/index.html.twig', array(
-+            'form' => $form->createView(),
+             $em = $this->getDoctrine()->getManager();
+             $repLog = $form->getData();
+             $repLog->setUser($this->getUser());
+@@ -35,7 +38,7 @@ class LiftController extends BaseController
+ 
+         return $this->render('lift/index.html.twig', array(
+             'form' => $form->createView(),
+-            'leaderboard' => $this->getLeaders(),
 +            'leaderboard' => $this->getLeaders($replogRepo, $userRepo),
-+        ));
-+    }
-+
-+    /**
-+     * Returns an array of leader information
-+     *
-+     * @return array
-+     */
+         ));
+     }
+ 
+@@ -44,13 +47,10 @@ class LiftController extends BaseController
+      *
+      * @return array
+      */
+-    private function getLeaders()
 +    private function getLeaders(RepLogRepository $replogRepo, UserRepository $userRepo)
-+    {
+     {
+-        $leaderboardDetails = $this->getDoctrine()->getRepository('AppBundle:RepLog')
+-            ->getLeaderboardDetails()
+-        ;
 +        $leaderboardDetails = $replogRepo->getLeaderboardDetails();
-+
-+        $leaderboard = array();
-+        foreach ($leaderboardDetails as $details) {
-+            if (!$user = $userRepo->find($details['user_id'])) {
-+                // interesting, this user is missing...
-+                continue;
-+            }
-+
-+            $leaderboard[] = array(
-+                'username' => $user->getUsername(),
-+                'weight' => $details['weightSum'],
-+                'in_cats' => number_format($details['weightSum']/RepLog::WEIGHT_FAT_CAT),
-+            );
-+        }
-+
-+        return $leaderboard;
-+    }
-+}
-diff --git a/src/Controller/RepLogController.php b/src/Controller/RepLogController.php
-new file mode 100644
-index 0000000..1175335
---- /dev/null
+ 
+-        $userRepo = $this->getDoctrine()->getRepository('AppBundle:User');
+         $leaderboard = array();
+         foreach ($leaderboardDetails as $details) {
+             if (!$user = $userRepo->find($details['user_id'])) {
+diff --git a/src/AppBundle/Controller/RepLogController.php b/src/Controller/RepLogController.php
+similarity index 95%
+rename from src/AppBundle/Controller/RepLogController.php
+rename to src/Controller/RepLogController.php
+index 76b2bd13c..117533541 100644
+--- a/src/AppBundle/Controller/RepLogController.php
 +++ b/src/Controller/RepLogController.php
-@@ -0,0 +1,96 @@
-+<?php
-+
+@@ -1,10 +1,9 @@
+ <?php
+ 
+-namespace AppBundle\Controller;
 +namespace App\Controller;
-+
+ 
+-use AppBundle\Api\RepLogApiModel;
+-use AppBundle\Entity\RepLog;
+-use AppBundle\Form\Type\RepLogType;
 +use App\Entity\RepLog;
 +use App\Form\Type\RepLogType;
-+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-+use Symfony\Component\HttpFoundation\Request;
-+use Symfony\Component\HttpFoundation\Response;
-+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-+
-+class RepLogController extends BaseController
-+{
-+    /**
-+     * @Route("/reps", name="rep_log_list", options={"expose" = true})
-+     * @Method("GET")
-+     */
-+    public function getRepLogsAction()
-+    {
-+        $models = $this->findAllUsersRepLogModels();
-+
-+        return $this->createApiResponse([
-+            'items' => $models
-+        ]);
-+    }
-+
-+    /**
-+     * @Route("/reps/{id}", name="rep_log_get")
-+     * @Method("GET")
-+     */
-+    public function getRepLogAction(RepLog $repLog)
-+    {
-+        $apiModel = $this->createRepLogApiModel($repLog);
-+
-+        return $this->createApiResponse($apiModel);
-+    }
-+
-+    /**
-+     * @Route("/reps/{id}", name="rep_log_delete")
-+     * @Method("DELETE")
-+     */
-+    public function deleteRepLogAction(RepLog $repLog)
-+    {
-+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
-+        $em = $this->getDoctrine()->getManager();
-+        $em->remove($repLog);
-+        $em->flush();
-+
-+        return new Response(null, 204);
-+    }
-+
-+    /**
-+     * @Route("/reps", name="rep_log_new", options={"expose" = true})
-+     * @Method("POST")
-+     */
-+    public function newRepLogAction(Request $request)
-+    {
-+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
-+        $data = json_decode($request->getContent(), true);
-+        if ($data === null) {
-+            throw new BadRequestHttpException('Invalid JSON');
-+        }
-+
-+        $form = $this->createForm(RepLogType::class, null, [
-+            'csrf_protection' => false,
-+        ]);
-+        $form->submit($data);
-+        if (!$form->isValid()) {
-+            $errors = $this->getErrorsFromForm($form);
-+
-+            return $this->createApiResponse([
-+                'errors' => $errors
-+            ], 400);
-+        }
-+
-+        /** @var RepLog $repLog */
-+        $repLog = $form->getData();
-+        $repLog->setUser($this->getUser());
-+        $em = $this->getDoctrine()->getManager();
-+        $em->persist($repLog);
-+        $em->flush();
-+
-+        $apiModel = $this->createRepLogApiModel($repLog);
-+
-+        //$response = $this->createApiResponse($apiModel);
-+        $response = new Response(null, 204);
-+        // setting the Location header... it's a best-practice
-+        $response->headers->set(
-+            'Location',
-+            $this->generateUrl('rep_log_get', ['id' => $repLog->getId()])
-+        );
-+
-+        return $response;
-+    }
-+}
-diff --git a/src/DataFixtures/ORM/LoadReps.php b/src/DataFixtures/ORM/LoadReps.php
-new file mode 100644
-index 0000000..06fc932
---- /dev/null
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+ use Symfony\Component\HttpFoundation\Request;
+diff --git a/src/AppBundle/DataFixtures/ORM/LoadReps.php b/src/DataFixtures/ORM/LoadReps.php
+similarity index 89%
+rename from src/AppBundle/DataFixtures/ORM/LoadReps.php
+rename to src/DataFixtures/ORM/LoadReps.php
+index 615859166..06fc9326e 100644
+--- a/src/AppBundle/DataFixtures/ORM/LoadReps.php
 +++ b/src/DataFixtures/ORM/LoadReps.php
-@@ -0,0 +1,60 @@
-+<?php
-+
+@@ -1,13 +1,13 @@
+ <?php
+ 
+-namespace AppBundle\DataFixtures\ORM;
 +namespace App\DataFixtures\ORM;
-+
+ 
+-use Doctrine\Common\DataFixtures\FixtureInterface;
 +use Doctrine\Bundle\FixturesBundle\Fixture;
-+use Doctrine\Common\Persistence\ObjectManager;
+ use Doctrine\Common\Persistence\ObjectManager;
+-use AppBundle\Entity\User;
+-use AppBundle\Entity\RepLog;
 +use App\Entity\User;
 +use App\Entity\RepLog;
-+
+ 
+-class LoadReps implements FixtureInterface
 +class LoadReps extends Fixture
-+{
-+    /**
-+     * {@inheritDoc}
-+     */
-+    public function load(ObjectManager $manager)
-+    {
-+        $items = array_flip(RepLog::getThingsYouCanLiftChoices());
-+
-+        $names = array(
-+            array('Brad', 'Kitt'),
-+            array('Cat', 'Middleton'),
-+            array('Cindy', 'Clawford'),
-+            array('Diane', 'Kitten'),
-+            array('Fuzz', 'Aldrin'),
-+            array('Hunter S.', 'Thomcat'),
-+            array('J.R.R', 'Tollkitten'),
-+            array('Madelion', 'Albright'),
-+            array('Meowly', 'Cyrus'),
-+            array('Ron', 'Furgandy'),
-+        );
-+
-+        foreach ($names as $name) {
-+            $firstName = $name[0];
-+            $lastName = $name[1];
-+
-+            $user = new User();
-+            $username = sprintf('%s_%s', $firstName, $lastName);
-+            $username = strtolower($username);
-+            $username = str_replace(' ', '', $username);
-+            $username = str_replace('.', '', $username);
-+            $user->setUsername($username);
-+            $user->setEmail($user->getUsername().'@example.com');
-+            $user->setPlainPassword('pumpup');
-+            $user->setFirstName($firstName);
-+            $user->setLastName($lastName);
-+            $user->setEnabled(true);
-+            $manager->persist($user);
-+
-+            for ($j = 0; $j < rand(1, 5); $j++) {
-+                $repLog = new RepLog();
-+                $repLog->setUser($user);
-+                $repLog->setReps(rand(1, 30));
-+                $repLog->setItem(array_rand($items));
-+                $manager->persist($repLog);
-+            }
-+        }
-+
-+        $manager->flush();
-+    }
-+}
-\ No newline at end of file
-diff --git a/src/Entity/.gitignore b/src/Entity/.gitignore
-new file mode 100644
-index 0000000..e69de29
-diff --git a/src/Entity/RepLog.php b/src/Entity/RepLog.php
-new file mode 100644
-index 0000000..d2a27e5
---- /dev/null
+ {
+     /**
+      * {@inheritDoc}
+diff --git a/var/sessions/.gitkeep b/src/Entity/.gitignore
+similarity index 100%
+rename from var/sessions/.gitkeep
+rename to src/Entity/.gitignore
+diff --git a/src/AppBundle/Entity/RepLog.php b/src/Entity/RepLog.php
+similarity index 95%
+rename from src/AppBundle/Entity/RepLog.php
+rename to src/Entity/RepLog.php
+index e9671921d..d2a27e568 100644
+--- a/src/AppBundle/Entity/RepLog.php
 +++ b/src/Entity/RepLog.php
-@@ -0,0 +1,199 @@
-+<?php
-+
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace AppBundle\Entity;
 +namespace App\Entity;
-+
-+use Doctrine\ORM\Mapping as ORM;
-+use Symfony\Component\Serializer\Annotation as Serializer;
-+use Symfony\Component\Validator\Constraints as Assert;
-+
-+/**
-+ * RepLog
-+ *
-+ * @ORM\Table(name="rep_log")
+ 
+ use Doctrine\ORM\Mapping as ORM;
+ use Symfony\Component\Serializer\Annotation as Serializer;
+@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
+  * RepLog
+  *
+  * @ORM\Table(name="rep_log")
+- * @ORM\Entity(repositoryClass="AppBundle\Repository\RepLogRepository")
 + * @ORM\Entity(repositoryClass="App\Repository\RepLogRepository")
-+ */
-+class RepLog
-+{
-+    const ITEM_LABEL_PREFIX = 'liftable_thing.';
-+
-+    const WEIGHT_FAT_CAT = 18;
-+
-+    private static $thingsYouCanLift = array(
-+        'cat' => '9',
-+        'fat_cat' => self::WEIGHT_FAT_CAT,
-+        'laptop' => '4.5',
-+        'coffee_cup' => '.5',
-+    );
-+
-+    /**
-+     * @var integer
-+     *
-+     * @Serializer\Groups({"Default"})
-+     * @ORM\Column(name="id", type="integer")
-+     * @ORM\Id
-+     * @ORM\GeneratedValue(strategy="AUTO")
-+     */
-+    private $id;
-+
-+    /**
-+     * @var integer
-+     *
-+     * @Serializer\Groups({"Default"})
-+     * @ORM\Column(name="reps", type="integer")
-+     * @Assert\NotBlank(message="How many times did you lift this?")
-+     * @Assert\GreaterThan(value=0, message="You can certainly life more than just 0!")
-+     */
-+    private $reps;
-+
-+    /**
-+     * @var string
-+     *
-+     * @Serializer\Groups({"Default"})
-+     * @ORM\Column(name="item", type="string", length=50)
-+     * @Assert\NotBlank(message="What did you lift?")
-+     */
-+    private $item;
-+
-+    /**
-+     * @var float
-+     *
-+     * @Serializer\Groups({"Default"})
-+     * @ORM\Column(name="totalWeightLifted", type="float")
-+     */
-+    private $totalWeightLifted;
-+
-+    /**
-+     * The user who lifted these items
-+     *
-+     * @var User
-+     *
-+     * @ORM\ManyToOne(targetEntity="User")
-+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
-+     */
-+    private $user;
-+
-+    /**
-+     * Get id
-+     *
-+     * @return integer 
-+     */
-+    public function getId()
-+    {
-+        return $this->id;
-+    }
-+
-+    /**
-+     * Set reps
-+     *
-+     * @param integer $reps
-+     * @return RepLog
-+     */
-+    public function setReps($reps)
-+    {
-+        $this->reps = $reps;
-+
-+        $this->calculateTotalLifted();
-+
-+        return $this;
-+    }
-+
-+    /**
-+     * Get reps
-+     *
-+     * @return integer 
-+     */
-+    public function getReps()
-+    {
-+        return $this->reps;
-+    }
-+
-+    /**
-+     * Set item
-+     *
-+     * @param string $item
-+     * @return RepLog
-+     */
-+    public function setItem($item)
-+    {
-+        if (!isset(self::$thingsYouCanLift[$item])) {
-+            throw new \InvalidArgumentException(sprintf('You can\'t lift a "%s"!', $item));
-+        }
-+
-+        $this->item = $item;
-+        $this->calculateTotalLifted();
-+
-+        return $this;
-+    }
-+
-+    /**
-+     * Get item
-+     *
-+     * @return string 
-+     */
-+    public function getItem()
-+    {
-+        return $this->item;
-+    }
-+
-+    public function getItemLabel()
-+    {
-+        return self::ITEM_LABEL_PREFIX.$this->getItem();
-+    }
-+
-+    /**
-+     * Get totalWeightLifted
-+     *
-+     * @return float 
-+     */
-+    public function getTotalWeightLifted()
-+    {
-+        return $this->totalWeightLifted;
-+    }
-+
-+    /**
-+     * Returns an array that an be used in a form drop down
-+     *
-+     * @return array
-+     */
-+    public static function getThingsYouCanLiftChoices()
-+    {
-+        $things = array_keys(self::$thingsYouCanLift);
-+        $choices = array();
-+        foreach ($things as $thingKey) {
-+            $choices[self::ITEM_LABEL_PREFIX.$thingKey] = $thingKey;
-+        }
-+
-+        return $choices;
-+    }
-+
-+    /**
-+     * Calculates the total weight lifted and sets it on the property
-+     */
-+    private function calculateTotalLifted()
-+    {
-+        if (!$this->getItem()) {
-+            return;
-+        }
-+
-+        $weight = self::$thingsYouCanLift[$this->getItem()];
-+        $totalWeight = $weight * $this->getReps();
-+
-+        $this->totalWeightLifted = $totalWeight;
-+    }
-+
-+    /**
+  */
+ class RepLog
+ {
+@@ -182,7 +182,7 @@ class RepLog
+     }
+ 
+     /**
+-     * @return \AppBundle\Entity\User
 +     * @return \App\Entity\User
-+     */
-+    public function getUser()
-+    {
-+        return $this->user;
-+    }
-+
-+    /**
+      */
+     public function getUser()
+     {
+@@ -190,7 +190,7 @@ class RepLog
+     }
+ 
+     /**
+-     * @param \AppBundle\Entity\User $user
 +     * @param \App\Entity\User $user
-+     */
-+    public function setUser($user)
-+    {
-+        $this->user = $user;
-+    }
-+}
-diff --git a/src/Entity/User.php b/src/Entity/User.php
-new file mode 100644
-index 0000000..69c3fd7
---- /dev/null
+      */
+     public function setUser($user)
+     {
+diff --git a/src/AppBundle/Entity/User.php b/src/Entity/User.php
+similarity index 97%
+rename from src/AppBundle/Entity/User.php
+rename to src/Entity/User.php
+index 5157b3ae0..69c3fd78f 100644
+--- a/src/AppBundle/Entity/User.php
 +++ b/src/Entity/User.php
-@@ -0,0 +1,70 @@
-+<?php
-+
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace AppBundle\Entity;
 +namespace App\Entity;
-+
-+use FOS\UserBundle\Model\User as BaseUser;
-+use Doctrine\ORM\Mapping as ORM;
-+use Symfony\Component\Validator\Constraints as Assert;
-+
-+/**
-+ * @ORM\Entity
-+ * @ORM\Table(name="tough_user")
-+ */
-+class User extends BaseUser
-+{
-+    /**
-+     * @ORM\Id
-+     * @ORM\Column(type="integer")
-+     * @ORM\GeneratedValue(strategy="AUTO")
-+     */
-+    protected $id;
-+
-+    /**
-+     * @Assert\NotBlank
-+     * @ORM\Column(name="first_name", type="string", length=255)
-+     */
-+    protected $firstName;
-+
-+    /**
-+     * @Assert\NotBlank
-+     * @ORM\Column(name="last_name", type="string", length=255)
-+     */
-+    protected $lastName;
-+
-+    public function getAvatar()
-+    {
-+        return 'http://thecatapi.com/api/images/get?format=src&type=gif&r='.rand(100, 999);
-+    }
-+
-+    /**
-+     * @return mixed
-+     */
-+    public function getFirstName()
-+    {
-+        return $this->firstName;
-+    }
-+
-+    /**
-+     * @param mixed $firstName
-+     */
-+    public function setFirstName($firstName)
-+    {
-+        $this->firstName = $firstName;
-+    }
-+
-+    /**
-+     * @return mixed
-+     */
-+    public function getLastName()
-+    {
-+        return $this->lastName;
-+    }
-+
-+    /**
-+     * @param mixed $lastName
-+     */
-+    public function setLastName($lastName)
-+    {
-+        $this->lastName = $lastName;
-+    }
-+}
-\ No newline at end of file
-diff --git a/src/Form/Type/RegistrationType.php b/src/Form/Type/RegistrationType.php
-new file mode 100644
-index 0000000..d87f0da
---- /dev/null
+ 
+ use FOS\UserBundle\Model\User as BaseUser;
+ use Doctrine\ORM\Mapping as ORM;
+diff --git a/src/AppBundle/Form/Type/RegistrationType.php b/src/Form/Type/RegistrationType.php
+similarity index 93%
+rename from src/AppBundle/Form/Type/RegistrationType.php
+rename to src/Form/Type/RegistrationType.php
+index d6792b027..d87f0dab1 100644
+--- a/src/AppBundle/Form/Type/RegistrationType.php
 +++ b/src/Form/Type/RegistrationType.php
-@@ -0,0 +1,19 @@
-+<?php
-+
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace AppBundle\Form\Type;
 +namespace App\Form\Type;
-+
-+use Symfony\Component\Form\Extension\Core\Type\TextType;
-+use Symfony\Component\Form\FormBuilderInterface;
-+use FOS\UserBundle\Form\Type\RegistrationFormType;
-+
-+class RegistrationType extends RegistrationFormType
-+{
-+    public function buildForm(FormBuilderInterface $builder, array $options)
-+    {
-+        parent::buildForm($builder, $options);
-+
-+        $builder->add('firstName', TextType::class)
-+            ->add('lastName', TextType::class)
-+        ;
-+    }
-+} 
-\ No newline at end of file
-diff --git a/src/Form/Type/RepLogType.php b/src/Form/Type/RepLogType.php
-new file mode 100644
-index 0000000..296d24d
---- /dev/null
+ 
+ use Symfony\Component\Form\Extension\Core\Type\TextType;
+ use Symfony\Component\Form\FormBuilderInterface;
+diff --git a/src/AppBundle/Form/Type/RepLogType.php b/src/Form/Type/RepLogType.php
+similarity index 93%
+rename from src/AppBundle/Form/Type/RepLogType.php
+rename to src/Form/Type/RepLogType.php
+index 122ce59e6..296d24d41 100644
+--- a/src/AppBundle/Form/Type/RepLogType.php
 +++ b/src/Form/Type/RepLogType.php
-@@ -0,0 +1,31 @@
-+<?php
-+
+@@ -1,8 +1,8 @@
+ <?php
+ 
+-namespace AppBundle\Form\Type;
 +namespace App\Form\Type;
-+
+ 
+-use AppBundle\Entity\RepLog;
 +use App\Entity\RepLog;
-+use Symfony\Component\Form\AbstractType;
-+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-+use Symfony\Component\Form\FormBuilderInterface;
-+use Symfony\Component\OptionsResolver\OptionsResolver;
-+
-+class RepLogType extends AbstractType
-+{
-+    public function buildForm(FormBuilderInterface $builder, array $options)
-+    {
-+        $builder
-+            ->add('reps', IntegerType::class)
-+            ->add('item', ChoiceType::class, array(
-+                'choices' => RepLog::getThingsYouCanLiftChoices(),
-+                'placeholder' => 'What did you lift?'
-+            ))
-+        ;
-+    }
-+
-+    public function configureOptions(OptionsResolver $resolver)
-+    {
-+        $resolver->setDefaults(array(
-+            'data_class' => RepLog::class
-+        ));
-+    }
-+} 
-\ No newline at end of file
+ use Symfony\Component\Form\AbstractType;
+ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 diff --git a/src/Kernel.php b/src/Kernel.php
 new file mode 100644
-index 0000000..815d4b8
+index 000000000..815d4b86b
 --- /dev/null
 +++ b/src/Kernel.php
 @@ -0,0 +1,57 @@
@@ -8958,97 +7131,43 @@ index 0000000..815d4b8
 +}
 diff --git a/src/Migrations/.gitignore b/src/Migrations/.gitignore
 new file mode 100644
-index 0000000..e69de29
-diff --git a/src/Migrations/Version20161115100817.php b/src/Migrations/Version20161115100817.php
-new file mode 100644
-index 0000000..f2580b4
---- /dev/null
+index 000000000..e69de29bb
+diff --git a/app/DoctrineMigrations/Version20161115100817.php b/src/Migrations/Version20161115100817.php
+similarity index 98%
+rename from app/DoctrineMigrations/Version20161115100817.php
+rename to src/Migrations/Version20161115100817.php
+index 7bfb4c910..f2580b4b0 100644
+--- a/app/DoctrineMigrations/Version20161115100817.php
 +++ b/src/Migrations/Version20161115100817.php
-@@ -0,0 +1,38 @@
-+<?php
-+
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace Application\Migrations;
 +namespace DoctrineMigrations;
-+
-+use Doctrine\DBAL\Migrations\AbstractMigration;
-+use Doctrine\DBAL\Schema\Schema;
-+
-+/**
-+ * Auto-generated Migration: Please modify to your needs!
-+ */
-+class Version20161115100817 extends AbstractMigration
-+{
-+    /**
-+     * @param Schema $schema
-+     */
-+    public function up(Schema $schema)
-+    {
-+        // this up() migration is auto-generated, please modify it to your needs
-+        $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
-+
-+        $this->addSql('CREATE TABLE rep_log (id INT AUTO_INCREMENT NOT NULL, user_id INT NOT NULL, reps INT NOT NULL, item VARCHAR(50) NOT NULL, totalWeightLifted DOUBLE PRECISION NOT NULL, INDEX IDX_A460CE79A76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
-+        $this->addSql('CREATE TABLE tough_user (id INT AUTO_INCREMENT NOT NULL, username VARCHAR(180) NOT NULL, username_canonical VARCHAR(180) NOT NULL, email VARCHAR(180) NOT NULL, email_canonical VARCHAR(180) NOT NULL, enabled TINYINT(1) NOT NULL, salt VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, last_login DATETIME DEFAULT NULL, locked TINYINT(1) NOT NULL, expired TINYINT(1) NOT NULL, expires_at DATETIME DEFAULT NULL, confirmation_token VARCHAR(180) DEFAULT NULL, password_requested_at DATETIME DEFAULT NULL, roles LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', credentials_expired TINYINT(1) NOT NULL, credentials_expire_at DATETIME DEFAULT NULL, first_name VARCHAR(255) NOT NULL, last_name VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_C760320692FC23A8 (username_canonical), UNIQUE INDEX UNIQ_C7603206A0D96FBF (email_canonical), UNIQUE INDEX UNIQ_C7603206C05FB297 (confirmation_token), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
-+        $this->addSql('ALTER TABLE rep_log ADD CONSTRAINT FK_A460CE79A76ED395 FOREIGN KEY (user_id) REFERENCES tough_user (id)');
-+    }
-+
-+    /**
-+     * @param Schema $schema
-+     */
-+    public function down(Schema $schema)
-+    {
-+        // this down() migration is auto-generated, please modify it to your needs
-+        $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
-+
-+        $this->addSql('ALTER TABLE rep_log DROP FOREIGN KEY FK_A460CE79A76ED395');
-+        $this->addSql('DROP TABLE rep_log');
-+        $this->addSql('DROP TABLE tough_user');
-+    }
-+}
-diff --git a/src/Migrations/Version20170119105442.php b/src/Migrations/Version20170119105442.php
-new file mode 100644
-index 0000000..8245e1a
---- /dev/null
+ 
+ use Doctrine\DBAL\Migrations\AbstractMigration;
+ use Doctrine\DBAL\Schema\Schema;
+diff --git a/app/DoctrineMigrations/Version20170119105442.php b/src/Migrations/Version20170119105442.php
+similarity index 97%
+rename from app/DoctrineMigrations/Version20170119105442.php
+rename to src/Migrations/Version20170119105442.php
+index c8f68a358..8245e1ac3 100644
+--- a/app/DoctrineMigrations/Version20170119105442.php
 +++ b/src/Migrations/Version20170119105442.php
-@@ -0,0 +1,34 @@
-+<?php
-+
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace Application\Migrations;
 +namespace DoctrineMigrations;
-+
-+use Doctrine\DBAL\Migrations\AbstractMigration;
-+use Doctrine\DBAL\Schema\Schema;
-+
-+/**
-+ * Auto-generated Migration: Please modify to your needs!
-+ */
-+class Version20170119105442 extends AbstractMigration
-+{
-+    /**
-+     * @param Schema $schema
-+     */
-+    public function up(Schema $schema)
-+    {
-+        // this up() migration is auto-generated, please modify it to your needs
-+        $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
-+
-+        $this->addSql('ALTER TABLE tough_user DROP locked, DROP expired, DROP expires_at, DROP credentials_expired, DROP credentials_expire_at, CHANGE salt salt VARCHAR(255) DEFAULT NULL');
-+    }
-+
-+    /**
-+     * @param Schema $schema
-+     */
-+    public function down(Schema $schema)
-+    {
-+        // this down() migration is auto-generated, please modify it to your needs
-+        $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
-+
-+        $this->addSql('ALTER TABLE tough_user ADD locked TINYINT(1) NOT NULL, ADD expired TINYINT(1) NOT NULL, ADD expires_at DATETIME DEFAULT NULL, ADD credentials_expired TINYINT(1) NOT NULL, ADD credentials_expire_at DATETIME DEFAULT NULL, CHANGE salt salt VARCHAR(255) NOT NULL COLLATE utf8_unicode_ci');
-+    }
-+}
+ 
+ use Doctrine\DBAL\Migrations\AbstractMigration;
+ use Doctrine\DBAL\Schema\Schema;
 diff --git a/src/Repository/.gitignore b/src/Repository/.gitignore
 new file mode 100644
-index 0000000..e69de29
+index 000000000..e69de29bb
 diff --git a/src/Repository/RepLogRepository.php b/src/Repository/RepLogRepository.php
 new file mode 100644
-index 0000000..56d7b2a
+index 000000000..56d7b2afa
 --- /dev/null
 +++ b/src/Repository/RepLogRepository.php
 @@ -0,0 +1,26 @@
@@ -9080,7 +7199,7 @@ index 0000000..56d7b2a
 +}
 diff --git a/src/Repository/UserRepository.php b/src/Repository/UserRepository.php
 new file mode 100644
-index 0000000..9e0d923
+index 000000000..9e0d923c7
 --- /dev/null
 +++ b/src/Repository/UserRepository.php
 @@ -0,0 +1,15 @@
@@ -9101,7 +7220,7 @@ index 0000000..9e0d923
 +}
 diff --git a/symfony.lock b/symfony.lock
 new file mode 100644
-index 0000000..7b8d7a3
+index 000000000..7b8d7a3b3
 --- /dev/null
 +++ b/symfony.lock
 @@ -0,0 +1,374 @@
@@ -9479,425 +7598,71 @@ index 0000000..7b8d7a3
 +        "version": "3.2.0"
 +    }
 +}
-diff --git a/templates/base.html.twig b/templates/base.html.twig
-new file mode 100644
-index 0000000..7d6993a
---- /dev/null
-+++ b/templates/base.html.twig
-@@ -0,0 +1,109 @@
-+<!DOCTYPE html>
-+<html lang="en">
-+<head>
-+    <meta charset="utf-8">
-+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-+    <meta name="viewport"
-+          content="width=device-width, initial-scale=1.0">
-+
-+    <title>{% block title %}Find Something to Lift!{% endblock %}</title>
-+
-+    {% block stylesheets %}
-+        <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
-+        <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" />
-+    {% endblock %}
-+
-+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-+</head>
-+
-+<body>
-+
-+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-+    <div class="container">
-+        <div class="navbar-header">
-+            <button type="button" class="navbar-toggle"
-+                    data-toggle="collapse"
-+                    data-target=".navbar-collapse">
-+                <span class="sr-only">Toggle navigation</span>
-+                <span class="icon-bar"></span>
-+                <span class="icon-bar"></span>
-+                <span class="icon-bar"></span>
-+            </button>
-+            <a class="navbar-brand"
-+               href="{{ path('homepage') }}"
-+               data-toggle="tooltip"
-+               data-placement="bottom"
-+               title="DO IT! LIFT STUFF!!!">Lift Stuff</a>
-+        </div>
-+        <div class="navbar-collapse collapse">
-+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-+                <ul class="nav navbar-nav navbar-right">
-+                    <li class="drop-down" data-toggle="tooltip" data-placement="left" title="Welcome back {{ app.user.firstName }}">
-+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-+                            <span class="fa fa-user"></span>
-+                            <strong>{{ app.user.username }}</strong>
-+                            <span class="caret"></span>
-+                        </a>
-+                        <ul class="dropdown-menu">
-+                            <li>
-+                                <a href="{{ path('lift') }}">
-+                                    Lift Stuff
-+                                    <span class="mini-dumbbell"></span>
-+                                </a>
-+                            </li>
-+                            <li>
-+                                <a href="{{ path('fos_user_security_logout') }}">
-+                                    <span class="fa fa-sign-out"></span>
-+                                    Logout
-+                                </a>
-+                            </li>
-+                        </ul>
-+                    </li>
-+                </ul>
-+            {% else %}
-+                <ul class="nav navbar-nav navbar-right">
-+                    <li>
-+                        <a href="{{ path('fos_user_registration_register') }}">
-+                            Register
-+                        </a>
-+                    </li>
-+                </ul>
-+            {% endif %}
-+        </div>
-+        <!--/.navbar-collapse -->
-+    </div>
-+</div>
-+
-+{% block hero %}{% endblock %}
-+
-+<div class="container main-content">
-+    {% for type, messages in app.session.flashbag.all() %}
-+        {% for message in messages %}
-+            <div class="flash-{{ type }} alert alert-info">
-+                {{ message }}
-+            </div>
-+        {% endfor %}
-+    {% endfor %}
-+
-+    {% block body %}{% endblock %}
-+
-+    <footer class="footer">
-+        <hr />
-+
-+        <p>&copy; LiftStuff {{ ''|date('Y') }}</p>
-+    </footer>
-+</div>
-+<!-- /container -->
-+
-+{% block javascripts %}
-+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.0.5/es6-promise.auto.min.js"></script>
-+    <script src="{{ asset('assets/js/layout.js') }}"></script>
-+{% endblock %}
-+
-+</body>
-+</html>
-diff --git a/templates/bundles/FOSUserBundle/Registration/register_content.html.twig b/templates/bundles/FOSUserBundle/Registration/register_content.html.twig
-new file mode 100644
-index 0000000..d959e03
---- /dev/null
-+++ b/templates/bundles/FOSUserBundle/Registration/register_content.html.twig
-@@ -0,0 +1,8 @@
-+{% trans_default_domain 'FOSUserBundle' %}
-+
-+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-+    {{ form_widget(form) }}
-+    <div>
-+        <input type="submit" value="{{ 'registration.submit'|trans }}" class="btn btn-primary" />
-+    </div>
-+{{ form_end(form) }}
-diff --git a/templates/bundles/FOSUserBundle/Security/login.html.twig b/templates/bundles/FOSUserBundle/Security/login.html.twig
-new file mode 100644
-index 0000000..f180c02
---- /dev/null
+diff --git a/app/Resources/views/base.html.twig b/templates/base.html.twig
+similarity index 100%
+rename from app/Resources/views/base.html.twig
+rename to templates/base.html.twig
+diff --git a/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig b/templates/bundles/FOSUserBundle/Registration/register_content.html.twig
+similarity index 100%
+rename from app/Resources/FOSUserBundle/views/Registration/register_content.html.twig
+rename to templates/bundles/FOSUserBundle/Registration/register_content.html.twig
+diff --git a/app/Resources/FOSUserBundle/views/Security/login.html.twig b/templates/bundles/FOSUserBundle/Security/login.html.twig
+similarity index 98%
+rename from app/Resources/FOSUserBundle/views/Security/login.html.twig
+rename to templates/bundles/FOSUserBundle/Security/login.html.twig
+index e79438bce..f180c02b0 100644
+--- a/app/Resources/FOSUserBundle/views/Security/login.html.twig
 +++ b/templates/bundles/FOSUserBundle/Security/login.html.twig
-@@ -0,0 +1,71 @@
+@@ -1,4 +1,4 @@
+-{% extends "FOSUserBundle::layout.html.twig" %}
 +{% extends '@FOSUser/layout.html.twig' %}
-+
-+{% trans_default_domain 'FOSUserBundle' %}
-+
-+{% block stylesheets %}
-+    {{ parent() }}
-+
-+    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}" />
-+{% endblock %}
-+
-+{% block javascripts %}
-+    {{ parent() }}
-+
-+    <script src="{{ asset('assets/js/login.js') }}"></script>
-+{% endblock %}
-+
-+{% block fos_user_content %}
-+    <div class="container">
-+        <div class="wrapper">
-+            <form action="{{ path("fos_user_security_check") }}" method="post" class="form-signin">
-+                <h3><img class="dumbbell" src="{{ asset('assets/images/dumbbell.png') }}">Login! Start Lifting!</h3>
-+                <div class="js-recommended-login">
-+                    <a href="#" class="js-show-login">Don't know the login?</a>
-+                    <div class="js-recommended-login-details" style="display: none;">
-+                        Sir or madam, might I recommend that you try the following login details:
-+                        <table class="table">
-+                            <tbody>
-+                                <tr>
-+                                    <th>Username</th>
-+                                    <td>cindy_clawford</td>
-+                                </tr>
-+                                <tr>
-+                                    <th>Password</th>
-+                                    <td>pumpup</td>
-+                                </tr>
-+                            </tbody>
-+                        </table>
-+                    </div>
-+                </div>
-+                <hr class="colorgraph" />
-+
-+                <br/>
-+
-+                {% if error %}
-+                    <div class="alert alert-block alert-danger">{{ error.messageKey|trans }}</div>
-+                {% endif %}
-+
-+                <input type="text"
-+                       class="form-control js-login-field-username"
-+                       name="_username"
-+                       value="{{ last_username }}"
-+                       required="required"
-+                       placeholder="{{ 'security.login.username'|trans }}"
-+                />
-+                <input type="password"
-+                       class="form-control"
-+                       name="_password"
-+                       required="required"
-+                       placeholder="{{ 'security.login.password'|trans }}"
-+                />
-+
-+                <input type="checkbox" name="_remember_me" checked style="display: none;" />
-+
-+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-+                <button type="submit" class="btn btn-primary btn-lg btn-block">
-+                    Login
-+                </button>
-+            </form>
-+        </div>
-+    </div>
-+{% endblock fos_user_content %}
-diff --git a/templates/bundles/FOSUserBundle/layout.html.twig b/templates/bundles/FOSUserBundle/layout.html.twig
-new file mode 100644
-index 0000000..612f2d7
---- /dev/null
-+++ b/templates/bundles/FOSUserBundle/layout.html.twig
-@@ -0,0 +1,9 @@
-+{% extends 'base.html.twig' %}
-+
-+{% block body %}
-+    <div class="row">
-+        <div class="col-md-12">
-+            {% block fos_user_content %}{% endblock %}
-+        </div>
-+    </div>
-+{% endblock %}
-diff --git a/templates/lift/_form.html.twig b/templates/lift/_form.html.twig
-new file mode 100644
-index 0000000..a98b268
---- /dev/null
-+++ b/templates/lift/_form.html.twig
-@@ -0,0 +1,28 @@
-+<form class="form-inline js-new-rep-log-form" novalidate data-url="{{ path('rep_log_new') }}">
-+    <div class="form-group">
-+        <label class="sr-only control-label required" for="rep_log_item">
-+            What did you lift?
-+        </label>
-+        <select id="rep_log_item"
-+                name="item"
-+                required="required"
-+                class="form-control">
-+            <option value="" selected="selected">What did you lift?</option>
-+            <option value="cat">Cat</option>
-+            <option value="fat_cat">Big Fat Cat</option>
-+            <option value="laptop">My Laptop</option>
-+            <option value="coffee_cup">Coffee Cup</option>
-+        </select></div>
-+
-+    <div class="form-group">
-+        <label class="sr-only control-label required" for="rep_log_reps">
-+            How many times?
-+        </label>
-+        <input type="number" id="rep_log_reps"
-+               name="reps" required="required"
-+               placeholder="How many times?"
-+               class="form-control"/>
-+    </div>
-+
-+    <button type="submit" class="btn btn-primary">I Lifted it!</button>
-+</form>
-diff --git a/templates/lift/_leaderboard.html.twig b/templates/lift/_leaderboard.html.twig
-new file mode 100644
-index 0000000..754ec83
---- /dev/null
-+++ b/templates/lift/_leaderboard.html.twig
-@@ -0,0 +1,18 @@
-+<table class="table leaderboard-table-striped leaderboard-table-hover leaderboard-table">
-+    <thead>
-+    <tr>
-+        <th class="text-center">Username</th>
-+        <th class="text-center">Weight Lifted</th>
-+        <th class="text-center">Cat Equivalent</th>
-+    </tr>
-+    </thead>
-+    <tbody>
-+    {% for leader in leaderboard %}
-+        <tr>
-+            <td class="text-center">{{ leader.username }}</td>
-+            <td class="text-center">{{ leader.weight }}lbs</td>
-+            <td class="text-center">{{ leader.in_cats }} fat cats</td>
-+        </tr>
-+    {% endfor %}
-+    </tbody>
-+</table>
-diff --git a/templates/lift/index.html.twig b/templates/lift/index.html.twig
-new file mode 100644
-index 0000000..508eb8f
---- /dev/null
-+++ b/templates/lift/index.html.twig
-@@ -0,0 +1,66 @@
-+{% extends 'base.html.twig' %}
-+
-+{% block body %}
-+    <div class="row">
-+        <div class="col-md-7 js-rep-log-table">
-+            <h2>
-+                Lift History
-+            </h2>
-+
-+            <table class="table table-striped">
-+                <thead>
-+                <tr>
-+                    <th>What</th>
-+                    <th>How many times?</th>
-+                    <th>Weight</th>
-+                    <th>&nbsp;</th>
-+                </tr>
-+                </thead>
-+                <tbody>
-+                </tbody>
-+                <tfoot>
-+                    <tr>
-+                        <td>&nbsp;</td>
-+                        <th>Total</th>
-+                        <th class="js-total-weight"></th>
-+                        <td>&nbsp;</td>
-+                    </tr>
-+                </tfoot>
-+            </table>
-+
-+            <div class="js-new-rep-log-form-wrapper">
-+                {{ include('lift/_form.html.twig') }}
-+            </div>
-+        </div>
-+        <div class="col-md-5">
-+            <div class="leaderboard">
-+                <h2 class="text-center">
-+                    <img class="dumbbell" src="{{ asset('assets/images/dumbbell.png') }}" />
-+                    Leaderboard
-+                </h2>
-+
-+                {{ include('lift/_leaderboard.html.twig') }}
-+            </div>
-+        </div>
-+    </div>
-+{% endblock %}
-+
-+{% block stylesheets %}
-+    {{ parent() }}
-+
-+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/6.1.0/sweetalert2.min.css" />
-+{% endblock %}
-+
-+{% block javascripts %}
-+    {{ parent() }}
-+
-+    <script src="https://cdn.jsdelivr.net/sweetalert2/6.1.0/sweetalert2.min.js"></script>
-+    <script src="{{ asset('assets/dist/RepLogApp.js') }}"></script>
-+
-+    <script>
-+        $(document).ready(function() {
-+            var $wrapper = $('.js-rep-log-table');
-+            var repLogApp = new RepLogApp($wrapper);
-+        });
-+    </script>
-+{% endblock %}
+ 
+ {% trans_default_domain 'FOSUserBundle' %}
+ 
+diff --git a/app/Resources/FOSUserBundle/views/layout.html.twig b/templates/bundles/FOSUserBundle/layout.html.twig
+similarity index 100%
+rename from app/Resources/FOSUserBundle/views/layout.html.twig
+rename to templates/bundles/FOSUserBundle/layout.html.twig
+diff --git a/app/Resources/views/lift/_form.html.twig b/templates/lift/_form.html.twig
+similarity index 100%
+rename from app/Resources/views/lift/_form.html.twig
+rename to templates/lift/_form.html.twig
+diff --git a/app/Resources/views/lift/_leaderboard.html.twig b/templates/lift/_leaderboard.html.twig
+similarity index 100%
+rename from app/Resources/views/lift/_leaderboard.html.twig
+rename to templates/lift/_leaderboard.html.twig
+diff --git a/app/Resources/views/lift/index.html.twig b/templates/lift/index.html.twig
+similarity index 100%
+rename from app/Resources/views/lift/index.html.twig
+rename to templates/lift/index.html.twig
 diff --git a/tests/.gitignore b/tests/.gitignore
 new file mode 100644
-index 0000000..e69de29
-diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/AppBundle/Controller/DefaultControllerTest.php
-deleted file mode 100644
-index 594803c..0000000
+index 000000000..e69de29bb
+diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/Controller/DefaultControllerTest.php
+similarity index 91%
+rename from tests/AppBundle/Controller/DefaultControllerTest.php
+rename to tests/Controller/DefaultControllerTest.php
+index 594803cce..9172986c4 100644
 --- a/tests/AppBundle/Controller/DefaultControllerTest.php
-+++ /dev/null
-@@ -1,18 +0,0 @@
--<?php
--
--namespace Tests\AppBundle\Controller;
--
--use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
--
--class DefaultControllerTest extends WebTestCase
--{
--    public function testIndex()
--    {
--        $client = static::createClient();
--
--        $crawler = $client->request('GET', '/');
--
--        $this->assertEquals(200, $client->getResponse()->getStatusCode());
--        $this->assertContains('Welcome to Symfony', $crawler->filter('#container h1')->text());
--    }
--}
-diff --git a/tests/Controller/DefaultControllerTest.php b/tests/Controller/DefaultControllerTest.php
-new file mode 100644
-index 0000000..9172986
---- /dev/null
 +++ b/tests/Controller/DefaultControllerTest.php
-@@ -0,0 +1,18 @@
-+<?php
-+
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace Tests\AppBundle\Controller;
 +namespace App\Tests\Controller;
-+
-+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-+
-+class DefaultControllerTest extends WebTestCase
-+{
-+    public function testIndex()
-+    {
-+        $client = static::createClient();
-+
-+        $crawler = $client->request('GET', '/');
-+
-+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-+        $this->assertContains('Welcome to Symfony', $crawler->filter('#container h1')->text());
-+    }
-+}
+ 
+ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+ 
 diff --git a/translations/.gitignore b/translations/.gitignore
 new file mode 100644
-index 0000000..e69de29
-diff --git a/translations/messages.en.yml b/translations/messages.en.yml
-new file mode 100644
-index 0000000..4d6cc66
---- /dev/null
-+++ b/translations/messages.en.yml
-@@ -0,0 +1,5 @@
-+liftable_thing:
-+    cat: Cat
-+    fat_cat: Big Fat Cat
-+    laptop: My Laptop
-+    coffee_cup: Coffee Cup
+index 000000000..e69de29bb
+diff --git a/app/Resources/translations/messages.en.yml b/translations/messages.en.yml
+similarity index 100%
+rename from app/Resources/translations/messages.en.yml
+rename to translations/messages.en.yml
 diff --git a/var/SymfonyRequirements.php b/var/SymfonyRequirements.php
 deleted file mode 100644
-index 3b14a40..0000000
+index 3b14a4022..000000000
 --- a/var/SymfonyRequirements.php
 +++ /dev/null
 @@ -1,817 +0,0 @@
@@ -10718,15 +8483,9 @@ index 3b14a40..0000000
 -        return false;
 -    }
 -}
-diff --git a/var/logs/.gitkeep b/var/logs/.gitkeep
-deleted file mode 100644
-index e69de29..0000000
-diff --git a/var/sessions/.gitkeep b/var/sessions/.gitkeep
-deleted file mode 100644
-index e69de29..0000000
 diff --git a/web/.htaccess b/web/.htaccess
 deleted file mode 100644
-index 4dc7251..0000000
+index 4dc725167..000000000
 --- a/web/.htaccess
 +++ /dev/null
 @@ -1,68 +0,0 @@
@@ -10800,7 +8559,7 @@ index 4dc7251..0000000
 -</IfModule>
 diff --git a/web/app.php b/web/app.php
 deleted file mode 100644
-index 6bd0ea0..0000000
+index 6bd0ea016..000000000
 --- a/web/app.php
 +++ /dev/null
 @@ -1,18 +0,0 @@
@@ -10824,7 +8583,7 @@ index 6bd0ea0..0000000
 -$kernel->terminate($request, $response);
 diff --git a/web/app_dev.php b/web/app_dev.php
 deleted file mode 100644
-index 133f3e5..0000000
+index 133f3e5bc..000000000
 --- a/web/app_dev.php
 +++ /dev/null
 @@ -1,30 +0,0 @@
@@ -10910,7 +8669,7 @@ WxVC;$>&KA*0000<MNUMnLSTY*m&I@Z
 
 diff --git a/web/config.php b/web/config.php
 deleted file mode 100644
-index fd7e17e..0000000
+index fd7e17e6b..000000000
 --- a/web/config.php
 +++ /dev/null
 @@ -1,422 +0,0 @@
@@ -11336,62 +9095,9 @@ index fd7e17e..0000000
 -        </div>
 -    </body>
 -</html>
-diff --git a/web/favicon.ico b/web/favicon.ico
-deleted file mode 100644
-index 479f7f50f404ada1e42c536097521d19f2c22f35..0000000000000000000000000000000000000000
-GIT binary patch
-literal 0
-HcmV?d00001
-
-literal 6518
-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
-BFLeL_
-
 diff --git a/web/robots.txt b/web/robots.txt
 deleted file mode 100644
-index 4665fca..0000000
+index 4665fcae3..000000000
 --- a/web/robots.txt
 +++ /dev/null
 @@ -1,5 +0,0 @@

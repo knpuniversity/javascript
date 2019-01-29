@@ -1,6 +1,6 @@
 diff --git a/.babelrc b/.babelrc
 new file mode 100644
-index 0000000..002b4aa
+index 000000000..002b4aa0d
 --- /dev/null
 +++ b/.babelrc
 @@ -0,0 +1,3 @@
@@ -8,7 +8,7 @@ index 0000000..002b4aa
 +  "presets": ["env"]
 +}
 diff --git a/package.json b/package.json
-index 72cba68..a1c42b9 100644
+index 72cba6883..a1c42b9f0 100644
 --- a/package.json
 +++ b/package.json
 @@ -6,6 +6,7 @@
@@ -21,7 +21,7 @@ index 72cba68..a1c42b9 100644
    }
  }
 diff --git a/web/assets/dist/RepLogApp.js b/web/assets/dist/RepLogApp.js
-index 27c120d..6c09a54 100644
+index cf4466b73..f769fb71a 100644
 --- a/web/assets/dist/RepLogApp.js
 +++ b/web/assets/dist/RepLogApp.js
 @@ -1,11 +1,17 @@
@@ -43,9 +43,9 @@ index 27c120d..6c09a54 100644
 -    class RepLogApp {
 -        constructor($wrapper) {
              this.$wrapper = $wrapper;
-             this.repLogs = new Set();
+             this.repLogs = [];
  
-@@ -21,197 +27,310 @@
+@@ -21,205 +27,318 @@
          /**
           * Call like this.selectors
           */
@@ -54,7 +54,7 @@ index 27c120d..6c09a54 100644
 -                newRepForm: '.js-new-rep-log-form'
 -            };
 -        }
--
+ 
 -        loadRepLogs() {
 -            $.ajax({
 -                url: Routing.generate('rep_log_list')
@@ -68,10 +68,14 @@ index 27c120d..6c09a54 100644
 -        updateTotalWeightLifted() {
 -            this.$wrapper.find('.js-total-weight').html(HelperInstances.get(this).getTotalWeightString());
 -        }
--
+ 
 -        handleRepLogDelete(e) {
 -            e.preventDefault();
--
++        _createClass(RepLogApp, [{
++            key: 'loadRepLogs',
++            value: function loadRepLogs() {
++                var _this = this;
+ 
 -            const $link = $(e.currentTarget);
 -
 -            swal({
@@ -84,25 +88,6 @@ index 27c120d..6c09a54 100644
 -                // canceling is cool!
 -            });
 -        }
- 
--        _deleteRepLog($link) {
--            $link.addClass('text-danger');
--            $link.find('.fa').removeClass('fa-trash').addClass('fa-spinner').addClass('fa-spin');
- 
--            const deleteUrl = $link.data('url');
--            const $row = $link.closest('tr');
-+        _createClass(RepLogApp, [{
-+            key: 'loadRepLogs',
-+            value: function loadRepLogs() {
-+                var _this = this;
- 
--            return $.ajax({
--                url: deleteUrl,
--                method: 'DELETE'
--            }).then(() => {
--                $row.fadeOut('normal', () => {
--                    $row.remove();
--                    this.updateTotalWeightLifted();
 +                $.ajax({
 +                    url: Routing.generate('rep_log_list')
 +                }).then(function (data) {
@@ -130,23 +115,8 @@ index 27c120d..6c09a54 100644
 +                            }
 +                        }
 +                    }
-                 });
--            });
--        }
--
--        handleRowClick() {
--            console.log('row clicked!');
--        }
--
--        handleNewFormSubmit(e) {
--            e.preventDefault();
--
--            const $form = $(e.currentTarget);
--            const formData = {};
--
--            for (let fieldData of $form.serializeArray()) {
--                formData[fieldData.name] = fieldData.value;
-             }
++                });
++            }
 +        }, {
 +            key: 'updateTotalWeightLifted',
 +            value: function updateTotalWeightLifted() {
@@ -177,23 +147,58 @@ index 27c120d..6c09a54 100644
 +            key: '_deleteRepLog',
 +            value: function _deleteRepLog($link) {
 +                var _this3 = this;
-+
+ 
+-        _deleteRepLog($link) {
+-            $link.addClass('text-danger');
+-            $link.find('.fa').removeClass('fa-trash').addClass('fa-spinner').addClass('fa-spin');
 +                $link.addClass('text-danger');
 +                $link.find('.fa').removeClass('fa-trash').addClass('fa-spinner').addClass('fa-spin');
-+
+ 
+-            const deleteUrl = $link.data('url');
+-            const $row = $link.closest('tr');
 +                var deleteUrl = $link.data('url');
 +                var $row = $link.closest('tr');
-+
+ 
+-            return $.ajax({
+-                url: deleteUrl,
+-                method: 'DELETE'
+-            }).then(() => {
+-                $row.fadeOut('normal', () => {
+-                    // we need to remove the repLog from this.repLogs
+-                    // the "key" is the index to this repLog on this.repLogs
+-                    this.repLogs.splice($row.data('key'), 1);
 +                return $.ajax({
 +                    url: deleteUrl,
 +                    method: 'DELETE'
 +                }).then(function () {
 +                    $row.fadeOut('normal', function () {
++                        // we need to remove the repLog from this.repLogs
++                        // the "key" is the index to this repLog on this.repLogs
++                        _this3.repLogs.splice($row.data('key'), 1);
+ 
+-                    $row.remove();
 +                        $row.remove();
+ 
+-                    this.updateTotalWeightLifted();
 +                        _this3.updateTotalWeightLifted();
 +                    });
-+                });
-+            }
+                 });
+-            });
+-        }
+-
+-        handleRowClick() {
+-            console.log('row clicked!');
+-        }
+-
+-        handleNewFormSubmit(e) {
+-            e.preventDefault();
+-
+-            const $form = $(e.currentTarget);
+-            const formData = {};
+-
+-            for (let fieldData of $form.serializeArray()) {
+-                formData[fieldData.name] = fieldData.value;
+             }
 +        }, {
 +            key: 'handleRowClick',
 +            value: function handleRowClick() {
@@ -364,7 +369,7 @@ index 27c120d..6c09a54 100644
 -        }
 -
 -        _addRow(repLog) {
--            this.repLogs.add(repLog);
+-            this.repLogs.push(repLog);
 -            // destructuring example
 -            // let {id, itemLabel, reps, totallyMadeUpKey = 'whatever!'} = repLog;
 -            // console.log(id, itemLabel, reps, totallyMadeUpKey);
@@ -381,20 +386,26 @@ index 27c120d..6c09a54 100644
 +                this._removeFormErrors();
  
 -            const html = rowTemplate(repLog);
--            this.$wrapper.find('tbody').append($.parseHTML(html));
+-            const $row = $($.parseHTML(html));
+-            // store the repLogs index
+-            $row.data('key', this.repLogs.length - 1);
+-            this.$wrapper.find('tbody').append($row);
 +                var $form = this.$wrapper.find(RepLogApp._selectors.newRepForm);
 +                $form[0].reset();
 +            }
 +        }, {
 +            key: '_addRow',
 +            value: function _addRow(repLog) {
-+                this.repLogs.add(repLog);
++                this.repLogs.push(repLog);
 +                // destructuring example
 +                // let {id, itemLabel, reps, totallyMadeUpKey = 'whatever!'} = repLog;
 +                // console.log(id, itemLabel, reps, totallyMadeUpKey);
 +
 +                var html = rowTemplate(repLog);
-+                this.$wrapper.find('tbody').append($.parseHTML(html));
++                var $row = $($.parseHTML(html));
++                // store the repLogs index
++                $row.data('key', this.repLogs.length - 1);
++                this.$wrapper.find('tbody').append($row);
 +
 +                this.updateTotalWeightLifted();
 +            }
@@ -417,23 +428,23 @@ index 27c120d..6c09a54 100644
       * A "private" object
       */
 -    class Helper {
--        constructor(repLogSet) {
+-        constructor(repLogs) {
 +
 +
 +    var Helper = function () {
-+        function Helper(repLogSet) {
++        function Helper(repLogs) {
 +            _classCallCheck(this, Helper);
 +
-             this.repLogSet = repLogSet;
+             this.repLogs = repLogs;
          }
  
 -        calculateTotalWeight() {
--            return Helper._calculateWeights(this.repLogSet);
+-            return Helper._calculateWeights(this.repLogs);
 -        }
 +        _createClass(Helper, [{
 +            key: 'calculateTotalWeight',
 +            value: function calculateTotalWeight() {
-+                return Helper._calculateWeights(this.repLogSet);
++                return Helper._calculateWeights(this.repLogs);
 +            }
 +        }, {
 +            key: 'getTotalWeightString',
@@ -457,14 +468,14 @@ index 27c120d..6c09a54 100644
 +            }
 +        }], [{
 +            key: '_calculateWeights',
-+            value: function _calculateWeights(repLogSet) {
++            value: function _calculateWeights(repLogs) {
 +                var totalWeight = 0;
 +                var _iteratorNormalCompletion4 = true;
 +                var _didIteratorError4 = false;
 +                var _iteratorError4 = undefined;
 +
 +                try {
-+                    for (var _iterator4 = repLogSet[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
++                    for (var _iterator4 = repLogs[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
 +                        var repLog = _step4.value;
 +
 +                        totalWeight += repLog.totalWeightLifted;
@@ -484,9 +495,9 @@ index 27c120d..6c09a54 100644
 +                    }
 +                }
  
--        static _calculateWeights(repLogSet) {
+-        static _calculateWeights(repLogs) {
 -            let totalWeight = 0;
--            for (let repLog of repLogSet) {
+-            for (let repLog of repLogs) {
 -                totalWeight += repLog.totalWeightLifted;
 +                return totalWeight;
              }
@@ -521,7 +532,7 @@ index 27c120d..6c09a54 100644
      window.RepLogApp = RepLogApp;
  })(window, jQuery, Routing, swal);
 diff --git a/yarn.lock b/yarn.lock
-index 6747626..a6c2de2 100644
+index 6747626ab..a6c2de2e1 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -143,6 +143,100 @@ babel-generator@^6.22.0:

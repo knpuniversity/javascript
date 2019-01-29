@@ -1,6 +1,6 @@
 diff --git a/.babelrc b/.babelrc
 deleted file mode 100644
-index 002b4aa..0000000
+index 002b4aa0d..000000000
 --- a/.babelrc
 +++ /dev/null
 @@ -1,3 +0,0 @@
