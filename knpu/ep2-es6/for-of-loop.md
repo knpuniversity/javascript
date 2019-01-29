@@ -30,6 +30,7 @@ Now, things are cleaner!
 
 ***TIP
 Since we are in a `for` loop now, we need to also update the `return` statement to be `continue`.
+***
 
 Make this same change in two more places: for `$element of $form.find(':input')`.
 Ah, don't forget your `let` or `var`:
