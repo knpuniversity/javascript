@@ -28,6 +28,9 @@ Before, the anonymous function received a key and *then* the `fieldData`. But,
 we didn't actually need the key: the `$.each()` function just forced us to add it.
 Now, things are cleaner!
 
+***TIP
+Since we are in a `for` loop now, we need to also update the `return` statement to be `continue`.
+
 Make this same change in two more places: for `$element of $form.find(':input')`.
 Ah, don't forget your `let` or `var`:
 
