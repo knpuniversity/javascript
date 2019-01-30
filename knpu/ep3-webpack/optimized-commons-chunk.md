@@ -76,23 +76,6 @@ can happily remain unchanged even when the internal module ids change. To do tha
 open `webpack.config.js` and go to the `CommonsChunkPlugin`. Change the `name` option
 to an array, with `layout` and a new entry called `manifest`:
 
-> Webpack@4 manifest code
-> ```
-> optimization: {
->         splitChunks: {
->            cacheGroups: {
->                layout: {
->                    name: "layout",
->                    minChunks: Infinity
->                }
->            }
->        },
->        runtimeChunk: {
->            name: "manifest",
->        },
->    },
->```
-
 [[[ code('59e7503062') ]]]
 
 I'll move my first comment down a bit, and then add a new comment above `manifest`:

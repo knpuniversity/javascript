@@ -49,21 +49,25 @@ Then, all the way at the bottom, export this: `module.exports = webpackConfig`:
 
 [[[ code('c0705c446c') ]]]
 
-> Here we need to install `uglifyjs-webpack-plugin`
-
 Before that, add an if statement: if `process.env.NODE_ENV === 'production')`, then
 we will add a new plugin. So, `webpackConfig.plugins.push()` then
 `new webpack.optimize.UglifyJsPlugin`:
 
->```
->const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
->
->if (process.env.NODE_ENV === 'production') {
->    webpackConfig.optimization.minimizer = [new UglifyJsPlugin()];
->}
->```
-
 [[[ code('cc717660bc') ]]]
+
+***TIP
+This is for Webpack 4. First install `uglifyjs-webpack-plugin` Also, in the great 
+land of things ALWAYS changing in JavaScript, the UglifyJsPlugin has been replaced 
+by the TerserPlugin https://github.com/webpack-contrib/terser-webpack-plugin
+
+```
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
+if (process.env.NODE_ENV === 'production') {
+    webpackConfig.optimization.minimizer = [new UglifyJsPlugin()];
+}
+```
+***
 
 And... that's it!
 

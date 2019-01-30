@@ -29,23 +29,19 @@ And so is `node_modules/`. We're starting from scratch.
 Now, add webpack:
 
 ***TIP
-This tutorial uses Webpack v3, so please double check that you do too, otherwise, 
-follow the TIPs, they will show you how to use the force of Webpack
-
-And the first tip is: Run
-
-```terminal
-yarn add webpack webpack-cli --dev
-```
-
-If you does not mentioned `webpack-cli` package, No worries! You will be prompted to 
-install it on first run.
-This tutorial uses Webpack v3. If you're coding along, make sure to install version 3 with `yarn add webpack@3 --dev`.
+This tutorial uses Webpack v3, so please double check that you install that version. If you
+do want to use Webpack 4, we've done our best to add tips throughout the tutorial to help you.
 ***
 
 ```terminal
 yarn add webpack@3 --dev
 ```
+
+***TIP
+```terminal
+yarn add webpack webpack-cli --dev
+```
+***
 
 As it's downloading, let's talk strategy. Webpack is an executable, and we will point
 it at `RepLogApp.js`. Webpack is amazing because it will actually *read* the `require()`
@@ -68,19 +64,17 @@ file - `web/build/rep_log.js` - a different filename to avoid confusion.
 
 Deep breath. Run webpack:
 
+```terminal-silent
+./node_modules/.bin/webpack web/assets/js/RepLogApp.js web/build/rep_log.js
+```
+
 ***TIP
-We are using Webpack@4, that's why we need to specify `--mode` and `-o` parameters.
-Now it looks better.
+If you are using Webpack version 4, add the --mode and -o options:
 
 ```terminal-silent
 ./node_modules/.bin/webpack web/assets/js/RepLogApp.js -o web/build/rep_log.js --mode development
 ```
-
 ***
-
-```terminal-silent
-./node_modules/.bin/webpack web/assets/js/RepLogApp.js web/build/rep_log.js
-```
 
 Yes! No errors... and it looks like it did something. Check the `web/build` directory...
 we *do* have a `rep_log.js` file. In `index.html.twig`, update the script `src`
