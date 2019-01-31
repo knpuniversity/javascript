@@ -7,8 +7,6 @@ up its sleeves.
 
 First, install it
 
-> For webpack@4 not necessary to use `@2` everything working
-
 ```terminal
 yarn add webpack-dev-server@2 --dev
 ```

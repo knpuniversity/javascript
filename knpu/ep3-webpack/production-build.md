@@ -11,7 +11,12 @@ that tells it to compile in dev or production mode.
 
 ## Using NODE_ENV
 
-> Here I think we need to link webpack.mode var with NODE_ENV
+***TIP
+If you are using Webpack 4 use this to configure webpack mode
+```
+mode: process.env.NODE_ENV === 'production' ? 'production' : 'development'
+```
+***
 
 In Node applications, there's a standard way to *signal* the environment to your
 apps: by setting an environment variable called `NODE_ENV`. To read this, you can
