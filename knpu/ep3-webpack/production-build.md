@@ -106,9 +106,6 @@ There's a *great* way to improve this. Open `package.json`. Add a new key called
 `scripts` set to a hash. Inside, you can put something like `dev` set to
 `NODE_ENV=dev webpack`:
 
-> I don't know how to be here, webpack.mode wants only "development", "production" 
-> or "none" key to work
-
 [[[ code('f746244c91') ]]]
 
 Thanks to that, we have a shortcut! Just run:
