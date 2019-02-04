@@ -29,8 +29,8 @@ How can we do that? Magic. Or, the CommonsChunkPlugin.
 ## Adding the CommonsChunkPlugin
 
 ***TIP
-There is a different solution for Webpack 4 called `SplitChunkPlugin`. Feel free 
-to ask questions if you want to know how to get it work. The easiest way is to use
+There is a different solution for Webpack 4 called `SplitChunksPlugin`. Feel free 
+to ask questions if you want to know how to get it working. The easiest way is to use
 Webpack Encore, which supports this feature out-of-the box.
 ***
 

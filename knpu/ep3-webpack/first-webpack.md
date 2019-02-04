@@ -30,7 +30,8 @@ Now, add webpack:
 
 ***TIP
 This tutorial uses Webpack v3, so please double check that you install that version. If you
-do want to use Webpack 4, we've done our best to add tips throughout the tutorial to help you.
+do want to use Webpack 4 or higher, we've done our best to add tips throughout the tutorial 
+to help you.
 ***
 
 ```terminal
@@ -38,6 +39,8 @@ yarn add webpack@3 --dev
 ```
 
 ***TIP
+If you're install Webpack 4 (or higher), you also need to install webpack-cli:
+
 ```terminal
 yarn add webpack webpack-cli --dev
 ```
@@ -69,7 +72,7 @@ Deep breath. Run webpack:
 ```
 
 ***TIP
-If you are using Webpack version 4, add the --mode and -o options:
+If you are using Webpack 4 or higher, add the --mode and -o options:
 
 ```terminal-silent
 ./node_modules/.bin/webpack web/assets/js/RepLogApp.js -o web/build/rep_log.js --mode development

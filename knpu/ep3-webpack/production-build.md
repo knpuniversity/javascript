@@ -12,7 +12,8 @@ that tells it to compile in dev or production mode.
 ## Using NODE_ENV
 
 ***TIP
-If you are using Webpack 4 use this to configure webpack mode
+If you are using Webpack 4 or higher, use this to configure the Webpack mode:
+
 ```
 mode: process.env.NODE_ENV === 'production' ? 'production' : 'development'
 ```

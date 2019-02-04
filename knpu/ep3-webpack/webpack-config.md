@@ -9,7 +9,7 @@ And what does this file look like? Oh, you're going to love this: we use, yep `m
 to *export* a configuration object!
 
 ***TIP
-If you're using Webpack 4, add a `mode: 'development'` key. This tells Webpack you're 
+If you're using Webpack 4 or higher, add a `mode: 'development'` key. This tells Webpack you're 
 building in "development" mode. We'll talk later about production builds.
 ***
 

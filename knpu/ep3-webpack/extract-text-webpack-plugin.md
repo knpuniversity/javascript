@@ -12,8 +12,8 @@ one of the most *important* plugins in all of Webpack: the
 it outputs a *real* CSS file, instead of embedding CSS in JavaScript.
 
 ***TIP
-In Webpack 4 you can use beta version `extract-text-webpack-plugin@4.0.0-beta.0` or
-there is a new way to do it with new https://webpack.js.org/plugins/mini-css-extract-plugin/
+In Webpack 4 you can use the beta version `extract-text-webpack-plugin@4.0.0-beta.0` or
+there is a new way to extract CSS to files with https://webpack.js.org/plugins/mini-css-extract-plugin/
 ***
 
 Let's get it rocking! Find your terminal and run
