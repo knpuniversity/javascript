@@ -91,6 +91,10 @@ So, `credentials` will always be in the final options.
 Then, because every endpoint will return JSON, we can `.then()` to transform the
 Promise data from the `response` object into JSON.
 
+***TIP
+This introduces a bug when the response is null. We'll handle it in chapter 35 (https://symfonycasts.com/screencast/reactjs/deep-state-update)
+***
+
 [[[ code('280c92522e') ]]]
 
 And just like that, we have a nice utility function that will set our credentials
