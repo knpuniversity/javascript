@@ -27,11 +27,8 @@ library we're using.
 
 So go get it peeps! Find your terminal and run:
 
-> Here we have some version confuse =) I think we need to write a note that it will 
-> install lastest version and it will be not the same as in tutorial
-
 ```terminal
-yarn add sweetalert2 --dev
+yarn add sweetalert2@6.6.6 --dev
 ```
 
 ## Require sweetalert2
@@ -63,8 +60,6 @@ loading the CSS file from a CDN... but at a *different*, slightly less evil vers
 `6.1.0`:
 
 [[[ code('2b48728e78') ]]]
-
-> maybe here we will have some problems with versions
 
 Change this to `6.6.0` - that's a close enough version:
 

@@ -23,7 +23,9 @@ Copy the `yarn add` line, though we already have `webpack` installed.
 
 Find your terminal and run it with `--dev` on the end:
 
->Here we have problem! We need to use babel-loader@7!
+***TIP
+Latest version of babel-loader requires a newer version of Babel - so we’re staying on version 7
+***
 
 ```terminal-silent
 yarn add babel-loader@7 babel-core babel-preset-env --dev

@@ -102,11 +102,13 @@ the font files relative to `main.scss`, not `_glyphicons.scss`
 The most important thing is to fix this nonsense. How? With another loader.
 Find your terminal and run
 
-> Here we have problem! we need to use `resolve-url-loader@2` lastest version cause 
-> multiple errors
+***TIP
+Latest `resolve-url-loader` has few breaking changes, that's why we will stay with
+version 2
+***
 
 ```terminal
-yarn add resolve-url-loader --dev
+yarn add resolve-url-loader@2 --dev
 ```
 
 ***TIP

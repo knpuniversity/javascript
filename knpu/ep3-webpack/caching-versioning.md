@@ -58,20 +58,9 @@ add `useVersioning`. If it's on, use `[name].[contenthash:6].css`:
 [[[ code('2b589790b0') ]]]
 
 ***TIP
-Hey! If you're using Webpack 4, you'll need to make the following change
-
-```javascript
-   const useVersioning = true;
-   // ...
-   const webpackConfig = {
-       // ...
-       plugins: [
-           new ExtractTextPlugin(
-               useVersioning ? '[name].[md5:contenthash:hex:6].css' : '[name].css'
-           ),
-       ],
-   };
-```
+If you're using Webpack 4 or higher, we recommend using the mini-css-extract-plugin 
+instead of ExtractTextPlugin. However, if you do use ExtractTextPlugin, 
+use `[name].[md5:contenthash:hex:6]` to avoid an issue with changes in Webpack 4.
 ***
 
 ExtractTextPlugin exposes a `[contenthash]` wildcard.

@@ -62,15 +62,16 @@ we will add a new plugin. So, `webpackConfig.plugins.push()` then
 [[[ code('cc717660bc') ]]]
 
 ***TIP
-This is for Webpack 4. First install `uglifyjs-webpack-plugin` Also, in the great 
-land of things ALWAYS changing in JavaScript, the UglifyJsPlugin has been replaced 
-by the TerserPlugin https://github.com/webpack-contrib/terser-webpack-plugin
+This is for Webpack 4 or higher. First install `terser-webpack-plugin` and then use
+following configuration
 
 ```
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+
+//...
 
 if (process.env.NODE_ENV === 'production') {
-    webpackConfig.optimization.minimizer = [new UglifyJsPlugin()];
+    webpackConfig.optimization.minimizer = [new TerserPlugin()];
 }
 ```
 ***
