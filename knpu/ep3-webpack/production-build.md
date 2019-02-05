@@ -14,8 +14,13 @@ that tells it to compile in dev or production mode.
 ***TIP
 If you are using Webpack 4 or higher, use this to configure the Webpack mode:
 
-```
-mode: process.env.NODE_ENV === 'production' ? 'production' : 'development'
+```javascript
+// webpack.config.js
+//...
+const webpackConfig = {
+    mode: process.env.NODE_ENV === 'production' ? 'production' : 'development'
+    //...
+}
 ```
 ***
 
@@ -62,10 +67,12 @@ we will add a new plugin. So, `webpackConfig.plugins.push()` then
 [[[ code('cc717660bc') ]]]
 
 ***TIP
-This is for Webpack 4 or higher. First install `terser-webpack-plugin` and then use
-following configuration
+This is for Webpack 4 or higher. At first install `terser-webpack-plugin` and then use
+the following configuration
 
-```
+```javascript
+// webpack.config.js
+//...
 const TerserPlugin = require('terser-webpack-plugin');
 
 //...

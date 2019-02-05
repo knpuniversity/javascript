@@ -28,18 +28,14 @@ And so is `node_modules/`. We're starting from scratch.
 
 Now, add webpack:
 
-***TIP
-This tutorial uses Webpack v3, so please double check that you install that version. If you
-do want to use Webpack 4 or higher, we've done our best to add tips throughout the tutorial 
-to help you.
-***
-
 ```terminal
 yarn add webpack@3 --dev
 ```
 
 ***TIP
-If you're install Webpack 4 (or higher), you also need to install webpack-cli:
+This tutorial uses Webpack v3, so please double check that you install that version. If you
+do want to use Webpack 4 or higher, we've done our best to add tips throughout the tutorial 
+to help you. If you're install Webpack 4 (or higher), you also need to install `webpack-cli`:
 
 ```terminal
 yarn add webpack webpack-cli --dev
