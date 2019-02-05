@@ -31,7 +31,8 @@ How can we do that? Magic. Or, the CommonsChunkPlugin.
 ***TIP
 There is a different solution for Webpack 4 called `SplitChunksPlugin`. Feel free 
 to ask questions if you want to know how to get it working. The easiest way is to use
-Webpack Encore, which supports this feature out-of-the box.
+[Webpack Encore](https://symfonycasts.com/screencast/webpack-encore), which supports 
+this feature out-of-the-box.
 ***
 
 Open `webpack.config.js`. Under the `plugins` section, add

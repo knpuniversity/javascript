@@ -18,7 +18,7 @@ If you are using Webpack 4 or higher, use this to configure the Webpack mode:
 // webpack.config.js
 //...
 const webpackConfig = {
-    mode: process.env.NODE_ENV === 'production' ? 'production' : 'development'
+    mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     //...
 }
 ```
@@ -67,7 +67,7 @@ we will add a new plugin. So, `webpackConfig.plugins.push()` then
 [[[ code('cc717660bc') ]]]
 
 ***TIP
-This is for Webpack 4 or higher. At first install `terser-webpack-plugin` and then use
+This is for Webpack 4 or higher. At first, install `terser-webpack-plugin` and then use
 the following configuration
 
 ```javascript

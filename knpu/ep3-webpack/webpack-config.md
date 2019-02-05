@@ -17,7 +17,7 @@ If you're using Webpack 4 or higher, add `mode` key:
 // webpack.config.js
 
 module.exports = {
-    mode: 'development'
+    mode: 'development',
     //...
 };
 ```
