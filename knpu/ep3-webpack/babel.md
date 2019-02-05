@@ -24,7 +24,8 @@ Copy the `yarn add` line, though we already have `webpack` installed.
 Find your terminal and run it with `--dev` on the end:
 
 ***TIP
-Latest version of babel-loader requires a newer version of Babel - so we’re staying on version 7
+Latest version of `babel-loader` requires a newer version of Babel - so 
+we’re staying on version 7
 ***
 
 ```terminal-silent

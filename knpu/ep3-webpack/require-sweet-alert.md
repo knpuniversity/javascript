@@ -27,6 +27,10 @@ library we're using.
 
 So go get it peeps! Find your terminal and run:
 
+***TIP
+To follow the tutorial exactly, install the exact same version with `yarn add sweetalert2@6.6.6 --dev`
+***
+
 ```terminal
 yarn add sweetalert2@6.6.6 --dev
 ```

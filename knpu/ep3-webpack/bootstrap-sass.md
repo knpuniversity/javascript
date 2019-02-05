@@ -103,8 +103,8 @@ The most important thing is to fix this nonsense. How? With another loader.
 Find your terminal and run
 
 ***TIP
-Latest `resolve-url-loader` has few breaking changes, that's why we will stay with
-version 2
+Latest `resolve-url-loader` has a few breaking changes. Stay on version 2 
+to keep things working.
 ***
 
 ```terminal

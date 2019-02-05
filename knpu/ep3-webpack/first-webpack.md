@@ -72,7 +72,7 @@ Deep breath. Run webpack:
 ```
 
 ***TIP
-If you are using Webpack 4 or higher, add the --mode and -o options:
+If you are using Webpack 4 or higher, add the `--mode` and `-o` options:
 
 ```terminal-silent
 ./node_modules/.bin/webpack web/assets/js/RepLogApp.js -o web/build/rep_log.js --mode development
