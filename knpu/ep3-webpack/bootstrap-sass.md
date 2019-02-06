@@ -103,8 +103,13 @@ The most important thing is to fix this nonsense. How? With another loader.
 Find your terminal and run
 
 ```terminal
-yarn add resolve-url-loader --dev
+yarn add resolve-url-loader@2 --dev
 ```
+
+***TIP
+Latest `resolve-url-loader` has a few breaking changes. Stay on version 2 
+to keep things working.
+***
 
 ***TIP
 An alternative way to fix this is to override the `$icon-font-path` variable and

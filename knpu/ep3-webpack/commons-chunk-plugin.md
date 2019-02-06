@@ -28,6 +28,13 @@ How can we do that? Magic. Or, the CommonsChunkPlugin.
 
 ## Adding the CommonsChunkPlugin
 
+***TIP
+There is a different solution for Webpack 4 called `SplitChunksPlugin`. Feel free 
+to ask questions if you want to know how to get it working. The easiest way is to use
+[Webpack Encore](https://symfonycasts.com/screencast/webpack-encore), which supports 
+this feature out-of-the-box.
+***
+
 Open `webpack.config.js`. Under the `plugins` section, add
 `new webpack.optimize.CommonsChunkPlugin()` and pass that an object with two keys:
 `name` set to `vendor` and `minChunks` set to 2:

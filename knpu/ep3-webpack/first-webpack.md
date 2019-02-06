@@ -28,13 +28,19 @@ And so is `node_modules/`. We're starting from scratch.
 
 Now, add webpack:
 
-***TIP
-This tutorial uses Webpack v3. If you're coding along, make sure to install version 3 with `yarn add webpack@3 --dev`.
-***
-
 ```terminal
 yarn add webpack@3 --dev
 ```
+
+***TIP
+This tutorial uses Webpack v3, so please double check that you install that version. If you
+do want to use Webpack 4 or higher, we've done our best to add tips throughout the tutorial 
+to help you. If you're installing Webpack 4 (or higher), you also need to install `webpack-cli`:
+
+```terminal
+yarn add webpack webpack-cli --dev
+```
+***
 
 As it's downloading, let's talk strategy. Webpack is an executable, and we will point
 it at `RepLogApp.js`. Webpack is amazing because it will actually *read* the `require()`
@@ -60,6 +66,14 @@ Deep breath. Run webpack:
 ```terminal-silent
 ./node_modules/.bin/webpack web/assets/js/RepLogApp.js web/build/rep_log.js
 ```
+
+***TIP
+If you are using Webpack 4 or higher, add the `--mode` and `-o` options:
+
+```terminal-silent
+./node_modules/.bin/webpack web/assets/js/RepLogApp.js -o web/build/rep_log.js --mode development
+```
+***
 
 Yes! No errors... and it looks like it did something. Check the `web/build` directory...
 we *do* have a `rep_log.js` file. In `index.html.twig`, update the script `src`

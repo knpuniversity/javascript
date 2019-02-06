@@ -11,6 +11,19 @@ that tells it to compile in dev or production mode.
 
 ## Using NODE_ENV
 
+***TIP
+If you are using Webpack 4 or higher, use this to configure the Webpack mode:
+
+```javascript
+// webpack.config.js
+//...
+const webpackConfig = {
+    mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+    //...
+}
+```
+***
+
 In Node applications, there's a standard way to *signal* the environment to your
 apps: by setting an environment variable called `NODE_ENV`. To read this, you can
 say `process.env.NODE_ENV`:
@@ -52,6 +65,23 @@ we will add a new plugin. So, `webpackConfig.plugins.push()` then
 `new webpack.optimize.UglifyJsPlugin`:
 
 [[[ code('cc717660bc') ]]]
+
+***TIP
+This is for Webpack 4 or higher. At first, install `terser-webpack-plugin` and then use
+the following configuration
+
+```javascript
+// webpack.config.js
+//...
+const TerserPlugin = require('terser-webpack-plugin');
+
+//...
+
+if (process.env.NODE_ENV === 'production') {
+    webpackConfig.optimization.minimizer = [new TerserPlugin()];
+}
+```
+***
 
 And... that's it!
 
