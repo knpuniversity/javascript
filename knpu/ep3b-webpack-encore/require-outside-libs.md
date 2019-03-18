@@ -91,7 +91,7 @@ If you search for this package, you'll find out that it's called `sweetalert2`.
 Let's install it:
 
 ```terminal
-yarn add sweetalert2 --dev
+yarn add sweetalert2@^7.11.0 --dev
 ```
 
 This time, delete the script tag entirely. We can't remove the jQuery script tag
