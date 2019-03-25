@@ -110,6 +110,11 @@ You can probably guess the next step. To the `plugins` section! Add
 That's a *glob* pattern: the `**` says look at `web/build` recursively, and the
 `*.*` says "delete all files"... but not directories.
 
+***TIP
+Version 2 of this plugin doesn't require any arguments: it knows automatically to delete
+any output files.
+***
+
 Try it! Run:
 
 ```terminal
