@@ -57,7 +57,7 @@ Let's get it installed! Copy the name of the package. Then, in your favorite ope
 terminal tab, run:
 
 ```terminal
-yarn add copy-webpack-plugin --dev
+yarn add copy-webpack-plugin@4 --dev
 ```
 
 Back in the documentation, copy the `require` line. In our `webpack.config.js`, paste
