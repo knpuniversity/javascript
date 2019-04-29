@@ -19,6 +19,14 @@ site that makes an AJAX call to our site. The result is exactly the same.
 So, how can we protect against this in an API? The answer... you might not need
 to. If you follow two rules, then CSRF attacks are not possible.
 
+***TIP
+Update: While this section *may* be true - especially if you add a CORS
+same-origin policy, relying on the `Content-Type` for CSRF protection is
+not recommended: new browsers may (and have) introduced new features that
+make this protection incomplete. The best practice is to use CSRF tokens,
+as we'll show!
+***
+
 First, disallow AJAX requests from all domains except for your domain. Actually,
 this is just how the Internet works: you can't make AJAX requests across domains.
 *If* you *do* need to allow other domains to make AJAX requests to your domain,
