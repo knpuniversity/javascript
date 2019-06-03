@@ -20,11 +20,10 @@ So, how can we protect against this in an API? The answer... you might not need
 to. If you follow two rules, then CSRF attacks are not possible.
 
 ***TIP
-Update: While this section *may* be true - especially if you add a CORS
-same-origin policy, relying on the `Content-Type` for CSRF protection is
-not recommended: new browsers may (and have) introduced new features that
-make this protection incomplete. The best practice is to use CSRF tokens,
-as we'll show!
+Update: A more secure option is now available: to use SameSite cookies, which
+are now supported by most browsers and can be enabled in Symfony:
+https://symfony.com/blog/new-in-symfony-4-2-samesite-cookie-configuration. If
+you need to support older browsers, using CSRF tokens is best.
 ***
 
 First, disallow AJAX requests from all domains except for your domain. Actually,
