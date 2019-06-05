@@ -44,6 +44,10 @@ can read that file type.
 In your browser, google for [css-loader][css_loader] and open its GitHub page.
 Copy the name of the library: let's get it installed! In your open terminal, run:
 
+```terminal
+yarn add css-loader style-loader --dev
+```
+
 ***TIP
 To avoid incompatibility problems in further chapters make sure to install `css-loader`
 version 0.28:
@@ -52,10 +56,6 @@ version 0.28:
 yarn add css-loader@0.28 --dev
 ```
 ***
-
-```terminal
-yarn add css-loader style-loader --dev
-```
 
 We'll need `style-loader` in a minute.
 
