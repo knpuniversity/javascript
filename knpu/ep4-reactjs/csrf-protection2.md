@@ -94,7 +94,7 @@ Add `let headers = ` and set this to the `Content-Type` header. Then, if
 together: `headers = `, `...options.headers` then `...headers`. Then, delete that
 property and, below, pass `headers` to `headers`.
 
-[[[ code('cffd715ced') ]]]
+[[[ code('4c36d1ebd8') ]]]
 
 Try it! Move over - looks like the page already refreshed. And... yes! We can
 delete again!
