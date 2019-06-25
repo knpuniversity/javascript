@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 89fef629f..4e85b0f9b 100644
+index 89fef62..4e85b0f 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -35,12 +35,10 @@ export default class RepLogApp extends Component {
@@ -35,7 +35,7 @@ index 89fef629f..4e85b0f9b 100644
  
      handleHeartChange(heartCount) {
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index 3ebc2894f..06d44bce5 100644
+index 3ebc289..06d44bc 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -39,7 +39,7 @@ export default class RepLogCreator extends Component {

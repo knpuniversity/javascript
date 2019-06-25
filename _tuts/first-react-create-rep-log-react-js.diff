@@ -1,12 +1,12 @@
 diff --git a/assets/js/rep_log_react.js b/assets/js/rep_log_react.js
 new file mode 100644
-index 000000000..b9cd21c1c
+index 0000000..b9cd21c
 --- /dev/null
 +++ b/assets/js/rep_log_react.js
 @@ -0,0 +1 @@
 +console.log('Oh hallo React peeps! 🏋️');
 diff --git a/templates/lift/index.html.twig b/templates/lift/index.html.twig
-index e3dfa10e8..fb49e8edd 100644
+index e3dfa10..fb49e8e 100644
 --- a/templates/lift/index.html.twig
 +++ b/templates/lift/index.html.twig
 @@ -57,4 +57,5 @@
@@ -16,7 +16,7 @@ index e3dfa10e8..fb49e8edd 100644
 +    <script src="{{ asset('build/rep_log_react.js') }}"></script>
  {% endblock %}
 diff --git a/webpack.config.js b/webpack.config.js
-index 0ad3d2450..9276beb70 100644
+index 0ad3d24..9276beb 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -10,6 +10,7 @@ Encore

@@ -1,5 +1,5 @@
 diff --git a/README.md b/README.md
-index 393dedd37..e55155585 100644
+index 393dedd..e551555 100644
 --- a/README.md
 +++ b/README.md
 @@ -40,6 +40,16 @@ If you get an error that the database exists, that should

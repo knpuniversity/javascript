@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 5ab6dc7b6..2f452a0a3 100644
+index 5ab6dc7..2f452a0 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -8,18 +8,9 @@ export default class RepLogApp extends Component {
@@ -39,7 +39,7 @@ index 5ab6dc7b6..2f452a0a3 100644
          this.setState({highlightedRowId: repLogId});
      }
 diff --git a/assets/js/api/rep_log_api.js b/assets/js/api/rep_log_api.js
-index ea1a68fc8..b59b59a64 100644
+index ea1a68f..b59b59a 100644
 --- a/assets/js/api/rep_log_api.js
 +++ b/assets/js/api/rep_log_api.js
 @@ -8,6 +8,6 @@ export function getRepLogs() {

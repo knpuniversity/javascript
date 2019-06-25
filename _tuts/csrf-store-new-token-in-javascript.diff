@@ -1,5 +1,5 @@
 diff --git a/assets/js/api/rep_log_api.js b/assets/js/api/rep_log_api.js
-index 5f151a871..89e6803f2 100644
+index 9bd8d76..5dd3f5a 100644
 --- a/assets/js/api/rep_log_api.js
 +++ b/assets/js/api/rep_log_api.js
 @@ -15,6 +15,10 @@ function fetchJson(url, options) {
@@ -14,7 +14,7 @@ index 5f151a871..89e6803f2 100644
              return response.text()
                  .then(text => text ? JSON.parse(text) : '')
 diff --git a/src/EventSubscriber/ApiCsrfValidationSubscriber.php b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
-index 63887ff62..c31260146 100644
+index 63887ff..c312601 100644
 --- a/src/EventSubscriber/ApiCsrfValidationSubscriber.php
 +++ b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
 @@ -4,6 +4,7 @@ namespace App\EventSubscriber;

@@ -1,5 +1,5 @@
 diff --git a/src/EventSubscriber/ApiCsrfValidationSubscriber.php b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
-index 696e53250..ffab74828 100644
+index 696e532..ffab748 100644
 --- a/src/EventSubscriber/ApiCsrfValidationSubscriber.php
 +++ b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
 @@ -9,7 +9,16 @@ class ApiCsrfValidationSubscriber implements EventSubscriberInterface

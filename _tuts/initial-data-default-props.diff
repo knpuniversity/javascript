@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index fae48f6a4..e39c5c608 100644
+index fae48f6..e39c5c6 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -149,3 +149,7 @@ RepLogApp.propTypes = {
