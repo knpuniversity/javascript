@@ -91,7 +91,7 @@ and we don't want to override that.
 
 Add `let headers = ` and set this to the `Content-Type` header. Then, if
 `options && options.headers` - so, if the user passes a custom header, merge them
-together: `headers = `, `...options.headers` then `headers`. Then, delete that
+together: `headers = `, `...options.headers` then `...headers`. Then, delete that
 property and, below, pass `headers` to `headers`.
 
 [[[ code('cffd715ced') ]]]
