@@ -11,7 +11,7 @@ index 5d0239f..9ae0f7d 100644
          "symfony/web-server-bundle": "^4.0"
      },
 diff --git a/composer.lock b/composer.lock
-index ef805b7..9ede723 100644
+index 22f5549..607e8c6 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -23,7 +23,7 @@ index ef805b7..9ede723 100644
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -5186,6 +5186,57 @@
+@@ -5214,6 +5214,57 @@
              ],
              "time": "2018-07-27T15:41:37+00:00"
          },
@@ -81,7 +81,7 @@ index ef805b7..9ede723 100644
          {
              "name": "symfony/debug-bundle",
              "version": "v4.1.4",
-@@ -5338,6 +5389,71 @@
+@@ -5366,6 +5417,71 @@
              ],
              "time": "2018-07-26T11:24:31+00:00"
          },
