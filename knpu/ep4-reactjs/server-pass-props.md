@@ -40,7 +40,7 @@ Or... we can be way cooler! Use spread attributes: `...window.REP_LOG_APP_PROPS`
 
 [[[ code('c55d781001') ]]]
 
-Suddenly! All of the keys on that object will be passed as props! And this is cool:
+Suddenly all of the keys on that object will be passed as props! And this is cool:
 set `shouldShowHeart` to false. Hmm: we're now passing `withHeart=false`... but
 thanks to the spread prop, we're passing that prop *again* as true.
 
