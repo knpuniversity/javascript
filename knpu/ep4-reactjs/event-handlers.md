@@ -11,7 +11,7 @@ simple! To add a click handler to this `tr` add... `onClick` and pass this a
 function. I'll use an arrow function and, for now, just
 `console.log('OMG - an onClick!')`.
 
-[[[ code('37834378ec') ]]]
+[[[ code('96990c344b') ]]]
 
 Move over, refresh, click, and... find the terminal. Boom!
 
