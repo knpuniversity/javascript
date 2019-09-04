@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 59778e0..74731cd 100644
+index 59778e0d5..74731cd42 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -18,7 +18,7 @@
@@ -12,7 +12,7 @@ index 59778e0..74731cd 100644
          "doctrine/doctrine-bundle": "^1.6",
          "doctrine/doctrine-cache-bundle": "^1.2",
 diff --git a/composer.lock b/composer.lock
-index 85c55e1..c6665ef 100644
+index 85c55e13b..c6665efd1 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,20 +4,20 @@
@@ -1034,7 +1034,7 @@ index 85c55e1..c6665ef 100644
      ],
      "aliases": [],
 diff --git a/var/SymfonyRequirements.php b/var/SymfonyRequirements.php
-index 7e7723a..7e7a99d 100644
+index 7e7723af3..7e7a99de9 100644
 --- a/var/SymfonyRequirements.php
 +++ b/var/SymfonyRequirements.php
 @@ -780,7 +780,11 @@ class SymfonyRequirements extends RequirementCollection
@@ -1051,7 +1051,7 @@ index 7e7723a..7e7a99d 100644
              case 'g':
                  return $size * 1024 * 1024 * 1024;
 diff --git a/web/config.php b/web/config.php
-index a031a3a..69df43c 100644
+index a031a3a1e..69df43cf7 100644
 --- a/web/config.php
 +++ b/web/config.php
 @@ -270,7 +270,7 @@ $hasMinorProblems = (bool) count($minorProblems);

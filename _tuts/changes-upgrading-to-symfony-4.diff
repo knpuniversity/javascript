@@ -1,6 +1,6 @@
 diff --git a/.env.dist b/.env.dist
 new file mode 100644
-index 0000000..6c455a8
+index 000000000..6c455a8a7
 --- /dev/null
 +++ b/.env.dist
 @@ -0,0 +1,24 @@
@@ -29,7 +29,7 @@ index 0000000..6c455a8
 +MAILER_URL=null://localhost
 +###< symfony/swiftmailer-bundle ###
 diff --git a/.gitignore b/.gitignore
-index 0654fa2..42ff146 100644
+index 0654fa26a..42ff14639 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -15,3 +15,20 @@
@@ -54,7 +54,7 @@ index 0654fa2..42ff146 100644
 +.web-server-pid
 +###< symfony/web-server-bundle ###
 diff --git a/README.md b/README.md
-index 0b933c5..393dedd 100644
+index 0b933c5a9..393dedd37 100644
 --- a/README.md
 +++ b/README.md
 @@ -11,15 +11,6 @@ If you've just downloaded the code, congratulations!
@@ -89,7 +89,7 @@ index 0b933c5..393dedd 100644
  php bin/console doctrine:database:create
 diff --git a/app/.htaccess b/app/.htaccess
 deleted file mode 100644
-index fb1de45..0000000
+index fb1de45bd..000000000
 --- a/app/.htaccess
 +++ /dev/null
 @@ -1,7 +0,0 @@
@@ -102,7 +102,7 @@ index fb1de45..0000000
 -</IfModule>
 diff --git a/app/AppCache.php b/app/AppCache.php
 deleted file mode 100644
-index 639ec2c..0000000
+index 639ec2cd7..000000000
 --- a/app/AppCache.php
 +++ /dev/null
 @@ -1,7 +0,0 @@
@@ -115,7 +115,7 @@ index 639ec2c..0000000
 -}
 diff --git a/app/AppKernel.php b/app/AppKernel.php
 deleted file mode 100644
-index b4269cf..0000000
+index b4269cfe9..000000000
 --- a/app/AppKernel.php
 +++ /dev/null
 @@ -1,57 +0,0 @@
@@ -178,7 +178,7 @@ index b4269cf..0000000
 -}
 diff --git a/app/autoload.php b/app/autoload.php
 deleted file mode 100644
-index 31321fa..0000000
+index 31321faa5..000000000
 --- a/app/autoload.php
 +++ /dev/null
 @@ -1,11 +0,0 @@
@@ -195,7 +195,7 @@ index 31321fa..0000000
 -return $loader;
 diff --git a/app/config/config.yml b/app/config/config.yml
 deleted file mode 100644
-index 20d4525..0000000
+index 20d4525e6..000000000
 --- a/app/config/config.yml
 +++ /dev/null
 @@ -1,84 +0,0 @@
@@ -285,7 +285,7 @@ index 20d4525..0000000
 -        sender_name: Ryan
 diff --git a/app/config/config_dev.yml b/app/config/config_dev.yml
 deleted file mode 100644
-index 7eb4739..0000000
+index 7eb4739c0..000000000
 --- a/app/config/config_dev.yml
 +++ /dev/null
 @@ -1,34 +0,0 @@
@@ -325,7 +325,7 @@ index 7eb4739..0000000
 -#    delivery_address: me@example.com
 diff --git a/app/config/config_prod.yml b/app/config/config_prod.yml
 deleted file mode 100644
-index 192f0c5..0000000
+index 192f0c5c6..000000000
 --- a/app/config/config_prod.yml
 +++ /dev/null
 @@ -1,21 +0,0 @@
@@ -352,7 +352,7 @@ index 192f0c5..0000000
 -            type:  console
 diff --git a/app/config/config_test.yml b/app/config/config_test.yml
 deleted file mode 100644
-index 2f6d925..0000000
+index 2f6d92503..000000000
 --- a/app/config/config_test.yml
 +++ /dev/null
 @@ -1,16 +0,0 @@
@@ -374,7 +374,7 @@ index 2f6d925..0000000
 -    disable_delivery: true
 diff --git a/app/config/parameters.yml.dist b/app/config/parameters.yml.dist
 deleted file mode 100644
-index 156580c..0000000
+index 156580cae..000000000
 --- a/app/config/parameters.yml.dist
 +++ /dev/null
 @@ -1,14 +0,0 @@
@@ -394,7 +394,7 @@ index 156580c..0000000
 -    secret:            ThisTokenIsNotSoSecretChangeIt
 diff --git a/app/config/routing_dev.yml b/app/config/routing_dev.yml
 deleted file mode 100644
-index 404f6a3..0000000
+index 404f6a3bc..000000000
 --- a/app/config/routing_dev.yml
 +++ /dev/null
 @@ -1,14 +0,0 @@
@@ -414,7 +414,7 @@ index 404f6a3..0000000
 -    resource: routing.yml
 diff --git a/app/config/services.yml b/app/config/services.yml
 deleted file mode 100644
-index 52b43c1..0000000
+index 52b43c11e..000000000
 --- a/app/config/services.yml
 +++ /dev/null
 @@ -1,12 +0,0 @@
@@ -431,7 +431,7 @@ index 52b43c1..0000000
 -        tags:
 -            - { name: form.type }
 diff --git a/bin/console b/bin/console
-index 3cb1462..85ecef5 100755
+index 3cb146241..85ecef5a0 100755
 --- a/bin/console
 +++ b/bin/console
 @@ -1,27 +1,39 @@
@@ -488,7 +488,7 @@ index 3cb1462..85ecef5 100755
 \ No newline at end of file
 diff --git a/bin/phpunit b/bin/phpunit
 new file mode 100644
-index 0000000..75d5be8
+index 000000000..75d5be85a
 --- /dev/null
 +++ b/bin/phpunit
 @@ -0,0 +1,18 @@
@@ -511,7 +511,7 @@ index 0000000..75d5be8
 +
 +require dirname(__DIR__).'/vendor/symfony/phpunit-bridge/bin/simple-phpunit';
 diff --git a/composer.json b/composer.json
-index b5518e9..5d0239f 100644
+index b5518e986..5d0239f1c 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -4,65 +4,76 @@
@@ -633,7 +633,7 @@ index b5518e9..5d0239f 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index dbab2f7..649f1b5 100644
+index dbab2f7ed..649f1b5a5 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -1,82 +1,23 @@
@@ -6181,7 +6181,7 @@ index dbab2f7..649f1b5 100644
  }
 diff --git a/config/bundles.php b/config/bundles.php
 new file mode 100644
-index 0000000..0ee330c
+index 000000000..0ee330c5e
 --- /dev/null
 +++ b/config/bundles.php
 @@ -0,0 +1,19 @@
@@ -6206,7 +6206,7 @@ index 0000000..0ee330c
 +];
 diff --git a/config/packages/dev/easy_log_handler.yaml b/config/packages/dev/easy_log_handler.yaml
 new file mode 100644
-index 0000000..27bfc60
+index 000000000..27bfc6087
 --- /dev/null
 +++ b/config/packages/dev/easy_log_handler.yaml
 @@ -0,0 +1,16 @@
@@ -6228,7 +6228,7 @@ index 0000000..27bfc60
 +#            id:   EasyCorp\EasyLog\EasyLogHandler
 diff --git a/config/packages/dev/monolog.yaml b/config/packages/dev/monolog.yaml
 new file mode 100644
-index 0000000..3662592
+index 000000000..366259288
 --- /dev/null
 +++ b/config/packages/dev/monolog.yaml
 @@ -0,0 +1,19 @@
@@ -6253,7 +6253,7 @@ index 0000000..3662592
 +            channels: ["!event", "!doctrine", "!console"]
 diff --git a/config/packages/dev/routing.yaml b/config/packages/dev/routing.yaml
 new file mode 100644
-index 0000000..4116679
+index 000000000..4116679a2
 --- /dev/null
 +++ b/config/packages/dev/routing.yaml
 @@ -0,0 +1,3 @@
@@ -6262,7 +6262,7 @@ index 0000000..4116679
 +        strict_requirements: true
 diff --git a/config/packages/dev/swiftmailer.yaml b/config/packages/dev/swiftmailer.yaml
 new file mode 100644
-index 0000000..b98158e
+index 000000000..b98158ee1
 --- /dev/null
 +++ b/config/packages/dev/swiftmailer.yaml
 @@ -0,0 +1,4 @@
@@ -6272,7 +6272,7 @@ index 0000000..b98158e
 +    #delivery_addresses: ['me@example.com']
 diff --git a/config/packages/dev/web_profiler.yaml b/config/packages/dev/web_profiler.yaml
 new file mode 100644
-index 0000000..e92166a
+index 000000000..e92166a7f
 --- /dev/null
 +++ b/config/packages/dev/web_profiler.yaml
 @@ -0,0 +1,6 @@
@@ -6284,7 +6284,7 @@ index 0000000..e92166a
 +    profiler: { only_exceptions: false }
 diff --git a/config/packages/doctrine.yaml b/config/packages/doctrine.yaml
 new file mode 100644
-index 0000000..ee77d61
+index 000000000..ee77d6182
 --- /dev/null
 +++ b/config/packages/doctrine.yaml
 @@ -0,0 +1,27 @@
@@ -6317,7 +6317,7 @@ index 0000000..ee77d61
 +                alias: App
 diff --git a/config/packages/doctrine_migrations.yaml b/config/packages/doctrine_migrations.yaml
 new file mode 100644
-index 0000000..3bf0fbc
+index 000000000..3bf0fbcae
 --- /dev/null
 +++ b/config/packages/doctrine_migrations.yaml
 @@ -0,0 +1,5 @@
@@ -6328,7 +6328,7 @@ index 0000000..3bf0fbc
 +    namespace: DoctrineMigrations
 diff --git a/config/packages/fos_user.yaml b/config/packages/fos_user.yaml
 new file mode 100644
-index 0000000..e035924
+index 000000000..e035924f7
 --- /dev/null
 +++ b/config/packages/fos_user.yaml
 @@ -0,0 +1,10 @@
@@ -6344,7 +6344,7 @@ index 0000000..e035924
 +        sender_name: Ryan
 diff --git a/config/packages/framework.yaml b/config/packages/framework.yaml
 new file mode 100644
-index 0000000..33b52e4
+index 000000000..33b52e449
 --- /dev/null
 +++ b/config/packages/framework.yaml
 @@ -0,0 +1,37 @@
@@ -6387,7 +6387,7 @@ index 0000000..33b52e4
 +        json_manifest_path: '%kernel.project_dir%/web/build/manifest.json'
 diff --git a/config/packages/prod/doctrine.yaml b/config/packages/prod/doctrine.yaml
 new file mode 100644
-index 0000000..2f16f0f
+index 000000000..2f16f0fde
 --- /dev/null
 +++ b/config/packages/prod/doctrine.yaml
 @@ -0,0 +1,31 @@
@@ -6424,7 +6424,7 @@ index 0000000..2f16f0f
 +                adapter: cache.system
 diff --git a/config/packages/prod/monolog.yaml b/config/packages/prod/monolog.yaml
 new file mode 100644
-index 0000000..90e1a4c
+index 000000000..90e1a4c19
 --- /dev/null
 +++ b/config/packages/prod/monolog.yaml
 @@ -0,0 +1,17 @@
@@ -6447,7 +6447,7 @@ index 0000000..90e1a4c
 +            channels: ["!event", "!doctrine"]
 diff --git a/config/packages/routing.yaml b/config/packages/routing.yaml
 new file mode 100644
-index 0000000..368bc7f
+index 000000000..368bc7f49
 --- /dev/null
 +++ b/config/packages/routing.yaml
 @@ -0,0 +1,3 @@
@@ -6458,7 +6458,7 @@ diff --git a/app/config/security.yml b/config/packages/security.yaml
 similarity index 96%
 rename from app/config/security.yml
 rename to config/packages/security.yaml
-index 2009c4b..7423fd0 100644
+index 2009c4b1b..7423fd053 100644
 --- a/app/config/security.yml
 +++ b/config/packages/security.yaml
 @@ -33,4 +33,4 @@ security:
@@ -6470,7 +6470,7 @@ index 2009c4b..7423fd0 100644
 +        - { path: ^/lift, role: ROLE_USER }
 diff --git a/config/packages/swiftmailer.yaml b/config/packages/swiftmailer.yaml
 new file mode 100644
-index 0000000..cae6508
+index 000000000..cae65084a
 --- /dev/null
 +++ b/config/packages/swiftmailer.yaml
 @@ -0,0 +1,3 @@
@@ -6479,7 +6479,7 @@ index 0000000..cae6508
 +    spool: { type: 'memory' }
 diff --git a/config/packages/test/framework.yaml b/config/packages/test/framework.yaml
 new file mode 100644
-index 0000000..d051c84
+index 000000000..d051c8400
 --- /dev/null
 +++ b/config/packages/test/framework.yaml
 @@ -0,0 +1,4 @@
@@ -6489,7 +6489,7 @@ index 0000000..d051c84
 +        storage_id: session.storage.mock_file
 diff --git a/config/packages/test/monolog.yaml b/config/packages/test/monolog.yaml
 new file mode 100644
-index 0000000..2762653
+index 000000000..2762653c8
 --- /dev/null
 +++ b/config/packages/test/monolog.yaml
 @@ -0,0 +1,7 @@
@@ -6502,7 +6502,7 @@ index 0000000..2762653
 +            channels: ["!event"]
 diff --git a/config/packages/test/swiftmailer.yaml b/config/packages/test/swiftmailer.yaml
 new file mode 100644
-index 0000000..f438078
+index 000000000..f43807805
 --- /dev/null
 +++ b/config/packages/test/swiftmailer.yaml
 @@ -0,0 +1,2 @@
@@ -6510,7 +6510,7 @@ index 0000000..f438078
 +    disable_delivery: true
 diff --git a/config/packages/test/web_profiler.yaml b/config/packages/test/web_profiler.yaml
 new file mode 100644
-index 0000000..03752de
+index 000000000..03752de21
 --- /dev/null
 +++ b/config/packages/test/web_profiler.yaml
 @@ -0,0 +1,6 @@
@@ -6522,7 +6522,7 @@ index 0000000..03752de
 +    profiler: { collect: false }
 diff --git a/config/packages/translation.yaml b/config/packages/translation.yaml
 new file mode 100644
-index 0000000..1edfbe2
+index 000000000..1edfbe236
 --- /dev/null
 +++ b/config/packages/translation.yaml
 @@ -0,0 +1,7 @@
@@ -6535,7 +6535,7 @@ index 0000000..1edfbe2
 +            - '%locale%'
 diff --git a/config/packages/twig.yaml b/config/packages/twig.yaml
 new file mode 100644
-index 0000000..1ab96b6
+index 000000000..1ab96b632
 --- /dev/null
 +++ b/config/packages/twig.yaml
 @@ -0,0 +1,6 @@
@@ -6547,7 +6547,7 @@ index 0000000..1ab96b6
 +        - bootstrap_3_layout.html.twig
 diff --git a/config/routes.yaml b/config/routes.yaml
 new file mode 100644
-index 0000000..c3283aa
+index 000000000..c3283aa2e
 --- /dev/null
 +++ b/config/routes.yaml
 @@ -0,0 +1,3 @@
@@ -6556,7 +6556,7 @@ index 0000000..c3283aa
 +#    controller: App\Controller\DefaultController::index
 diff --git a/config/routes/annotations.yaml b/config/routes/annotations.yaml
 new file mode 100644
-index 0000000..d49a502
+index 000000000..d49a502a8
 --- /dev/null
 +++ b/config/routes/annotations.yaml
 @@ -0,0 +1,3 @@
@@ -6565,7 +6565,7 @@ index 0000000..d49a502
 +    type: annotation
 diff --git a/config/routes/dev/twig.yaml b/config/routes/dev/twig.yaml
 new file mode 100644
-index 0000000..f4ee839
+index 000000000..f4ee83960
 --- /dev/null
 +++ b/config/routes/dev/twig.yaml
 @@ -0,0 +1,3 @@
@@ -6574,7 +6574,7 @@ index 0000000..f4ee839
 +    prefix: /_error
 diff --git a/config/routes/dev/web_profiler.yaml b/config/routes/dev/web_profiler.yaml
 new file mode 100644
-index 0000000..c82beff
+index 000000000..c82beff2f
 --- /dev/null
 +++ b/config/routes/dev/web_profiler.yaml
 @@ -0,0 +1,7 @@
@@ -6587,7 +6587,7 @@ index 0000000..c82beff
 +    prefix: /_profiler
 diff --git a/config/routes/fos_js_routing.yaml b/config/routes/fos_js_routing.yaml
 new file mode 100644
-index 0000000..c699b65
+index 000000000..c699b65f7
 --- /dev/null
 +++ b/config/routes/fos_js_routing.yaml
 @@ -0,0 +1,2 @@
@@ -6597,7 +6597,7 @@ diff --git a/app/config/routing.yml b/config/routes/fos_user.yaml
 similarity index 56%
 rename from app/config/routing.yml
 rename to config/routes/fos_user.yaml
-index aed8f22..ab5d3c6 100644
+index aed8f228f..ab5d3c661 100644
 --- a/app/config/routing.yml
 +++ b/config/routes/fos_user.yaml
 @@ -1,8 +1,3 @@
@@ -6618,7 +6618,7 @@ index aed8f22..ab5d3c6 100644
 -    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 diff --git a/config/services.yaml b/config/services.yaml
 new file mode 100644
-index 0000000..be506bd
+index 000000000..be506bd69
 --- /dev/null
 +++ b/config/services.yaml
 @@ -0,0 +1,32 @@
@@ -6656,7 +6656,7 @@ index 0000000..be506bd
 +            $class: '%fos_user.model.user.class%'
 diff --git a/config/services_test.yaml b/config/services_test.yaml
 new file mode 100644
-index 0000000..876c36b
+index 000000000..876c36bda
 --- /dev/null
 +++ b/config/services_test.yaml
 @@ -0,0 +1,9 @@
@@ -6670,7 +6670,7 @@ index 0000000..876c36b
 +    #
 +    # test.App\Service\MyService: '@App\Service\MyService'
 diff --git a/phpunit.xml.dist b/phpunit.xml.dist
-index 65e9082..6913f98 100644
+index 65e90821d..6913f98b7 100644
 --- a/phpunit.xml.dist
 +++ b/phpunit.xml.dist
 @@ -10,6 +10,27 @@
@@ -6707,7 +6707,7 @@ rename from web/favicon.ico
 rename to public/favicon.ico
 diff --git a/public/index.php b/public/index.php
 new file mode 100644
-index 0000000..ab41c26
+index 000000000..ab41c26e4
 --- /dev/null
 +++ b/public/index.php
 @@ -0,0 +1,39 @@
@@ -6754,7 +6754,7 @@ diff --git a/src/AppBundle/Api/RepLogApiModel.php b/src/Api/RepLogApiModel.php
 similarity index 92%
 rename from src/AppBundle/Api/RepLogApiModel.php
 rename to src/Api/RepLogApiModel.php
-index 3444565..fc829d1 100644
+index 34445659b..fc829d1d1 100644
 --- a/src/AppBundle/Api/RepLogApiModel.php
 +++ b/src/Api/RepLogApiModel.php
 @@ -1,6 +1,6 @@
@@ -6767,7 +6767,7 @@ index 3444565..fc829d1 100644
  {
 diff --git a/src/AppBundle/AppBundle.php b/src/AppBundle/AppBundle.php
 deleted file mode 100644
-index 05123b6..0000000
+index 05123b678..000000000
 --- a/src/AppBundle/AppBundle.php
 +++ /dev/null
 @@ -1,9 +0,0 @@
@@ -6782,7 +6782,7 @@ index 05123b6..0000000
 -}
 diff --git a/src/AppBundle/Repository/RepLogRepository.php b/src/AppBundle/Repository/RepLogRepository.php
 deleted file mode 100644
-index 8403d7e..0000000
+index 8403d7e68..000000000
 --- a/src/AppBundle/Repository/RepLogRepository.php
 +++ /dev/null
 @@ -1,25 +0,0 @@
@@ -6819,7 +6819,7 @@ diff --git a/src/AppBundle/Controller/BaseController.php b/src/Controller/BaseCo
 similarity index 93%
 rename from src/AppBundle/Controller/BaseController.php
 rename to src/Controller/BaseController.php
-index 30f376a..1615573 100644
+index 30f376afd..16155734e 100644
 --- a/src/AppBundle/Controller/BaseController.php
 +++ b/src/Controller/BaseController.php
 @@ -1,9 +1,10 @@
@@ -6849,7 +6849,7 @@ diff --git a/src/AppBundle/Controller/DefaultController.php b/src/Controller/Def
 similarity index 89%
 rename from src/AppBundle/Controller/DefaultController.php
 rename to src/Controller/DefaultController.php
-index 380d1ee..1e1d63e 100644
+index 380d1eee9..1e1d63eff 100644
 --- a/src/AppBundle/Controller/DefaultController.php
 +++ b/src/Controller/DefaultController.php
 @@ -1,6 +1,6 @@
@@ -6864,7 +6864,7 @@ diff --git a/src/AppBundle/Controller/LiftController.php b/src/Controller/LiftCo
 similarity index 72%
 rename from src/AppBundle/Controller/LiftController.php
 rename to src/Controller/LiftController.php
-index 86c0f86..9fcce61 100644
+index 86c0f86d3..9fcce6131 100644
 --- a/src/AppBundle/Controller/LiftController.php
 +++ b/src/Controller/LiftController.php
 @@ -1,9 +1,12 @@
@@ -6929,7 +6929,7 @@ diff --git a/src/AppBundle/Controller/RepLogController.php b/src/Controller/RepL
 similarity index 95%
 rename from src/AppBundle/Controller/RepLogController.php
 rename to src/Controller/RepLogController.php
-index 76b2bd1..1175335 100644
+index 76b2bd13c..117533541 100644
 --- a/src/AppBundle/Controller/RepLogController.php
 +++ b/src/Controller/RepLogController.php
 @@ -1,10 +1,9 @@
@@ -6950,7 +6950,7 @@ diff --git a/src/AppBundle/DataFixtures/ORM/LoadReps.php b/src/DataFixtures/ORM/
 similarity index 89%
 rename from src/AppBundle/DataFixtures/ORM/LoadReps.php
 rename to src/DataFixtures/ORM/LoadReps.php
-index 6158591..06fc932 100644
+index 615859166..06fc9326e 100644
 --- a/src/AppBundle/DataFixtures/ORM/LoadReps.php
 +++ b/src/DataFixtures/ORM/LoadReps.php
 @@ -1,13 +1,13 @@
@@ -6980,7 +6980,7 @@ diff --git a/src/AppBundle/Entity/RepLog.php b/src/Entity/RepLog.php
 similarity index 95%
 rename from src/AppBundle/Entity/RepLog.php
 rename to src/Entity/RepLog.php
-index e967192..d2a27e5 100644
+index e9671921d..d2a27e568 100644
 --- a/src/AppBundle/Entity/RepLog.php
 +++ b/src/Entity/RepLog.php
 @@ -1,6 +1,6 @@
@@ -7022,7 +7022,7 @@ diff --git a/src/AppBundle/Entity/User.php b/src/Entity/User.php
 similarity index 97%
 rename from src/AppBundle/Entity/User.php
 rename to src/Entity/User.php
-index 5157b3a..69c3fd7 100644
+index 5157b3ae0..69c3fd78f 100644
 --- a/src/AppBundle/Entity/User.php
 +++ b/src/Entity/User.php
 @@ -1,6 +1,6 @@
@@ -7037,7 +7037,7 @@ diff --git a/src/AppBundle/Form/Type/RegistrationType.php b/src/Form/Type/Regist
 similarity index 93%
 rename from src/AppBundle/Form/Type/RegistrationType.php
 rename to src/Form/Type/RegistrationType.php
-index d6792b0..d87f0da 100644
+index d6792b027..d87f0dab1 100644
 --- a/src/AppBundle/Form/Type/RegistrationType.php
 +++ b/src/Form/Type/RegistrationType.php
 @@ -1,6 +1,6 @@
@@ -7052,7 +7052,7 @@ diff --git a/src/AppBundle/Form/Type/RepLogType.php b/src/Form/Type/RepLogType.p
 similarity index 93%
 rename from src/AppBundle/Form/Type/RepLogType.php
 rename to src/Form/Type/RepLogType.php
-index 122ce59..296d24d 100644
+index 122ce59e6..296d24d41 100644
 --- a/src/AppBundle/Form/Type/RepLogType.php
 +++ b/src/Form/Type/RepLogType.php
 @@ -1,8 +1,8 @@
@@ -7068,7 +7068,7 @@ index 122ce59..296d24d 100644
  use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 diff --git a/src/Kernel.php b/src/Kernel.php
 new file mode 100644
-index 0000000..815d4b8
+index 000000000..815d4b86b
 --- /dev/null
 +++ b/src/Kernel.php
 @@ -0,0 +1,57 @@
@@ -7131,12 +7131,12 @@ index 0000000..815d4b8
 +}
 diff --git a/src/Migrations/.gitignore b/src/Migrations/.gitignore
 new file mode 100644
-index 0000000..e69de29
+index 000000000..e69de29bb
 diff --git a/app/DoctrineMigrations/Version20161115100817.php b/src/Migrations/Version20161115100817.php
 similarity index 98%
 rename from app/DoctrineMigrations/Version20161115100817.php
 rename to src/Migrations/Version20161115100817.php
-index 7bfb4c9..f2580b4 100644
+index 7bfb4c910..f2580b4b0 100644
 --- a/app/DoctrineMigrations/Version20161115100817.php
 +++ b/src/Migrations/Version20161115100817.php
 @@ -1,6 +1,6 @@
@@ -7151,7 +7151,7 @@ diff --git a/app/DoctrineMigrations/Version20170119105442.php b/src/Migrations/V
 similarity index 97%
 rename from app/DoctrineMigrations/Version20170119105442.php
 rename to src/Migrations/Version20170119105442.php
-index c8f68a3..8245e1a 100644
+index c8f68a358..8245e1ac3 100644
 --- a/app/DoctrineMigrations/Version20170119105442.php
 +++ b/src/Migrations/Version20170119105442.php
 @@ -1,6 +1,6 @@
@@ -7164,10 +7164,10 @@ index c8f68a3..8245e1a 100644
  use Doctrine\DBAL\Schema\Schema;
 diff --git a/src/Repository/.gitignore b/src/Repository/.gitignore
 new file mode 100644
-index 0000000..e69de29
+index 000000000..e69de29bb
 diff --git a/src/Repository/RepLogRepository.php b/src/Repository/RepLogRepository.php
 new file mode 100644
-index 0000000..56d7b2a
+index 000000000..56d7b2afa
 --- /dev/null
 +++ b/src/Repository/RepLogRepository.php
 @@ -0,0 +1,26 @@
@@ -7199,7 +7199,7 @@ index 0000000..56d7b2a
 +}
 diff --git a/src/Repository/UserRepository.php b/src/Repository/UserRepository.php
 new file mode 100644
-index 0000000..9e0d923
+index 000000000..9e0d923c7
 --- /dev/null
 +++ b/src/Repository/UserRepository.php
 @@ -0,0 +1,15 @@
@@ -7220,7 +7220,7 @@ index 0000000..9e0d923
 +}
 diff --git a/symfony.lock b/symfony.lock
 new file mode 100644
-index 0000000..7b8d7a3
+index 000000000..7b8d7a3b3
 --- /dev/null
 +++ b/symfony.lock
 @@ -0,0 +1,374 @@
@@ -7610,7 +7610,7 @@ diff --git a/app/Resources/FOSUserBundle/views/Security/login.html.twig b/templa
 similarity index 98%
 rename from app/Resources/FOSUserBundle/views/Security/login.html.twig
 rename to templates/bundles/FOSUserBundle/Security/login.html.twig
-index e79438b..f180c02 100644
+index e79438bce..f180c02b0 100644
 --- a/app/Resources/FOSUserBundle/views/Security/login.html.twig
 +++ b/templates/bundles/FOSUserBundle/Security/login.html.twig
 @@ -1,4 +1,4 @@
@@ -7637,12 +7637,12 @@ rename from app/Resources/views/lift/index.html.twig
 rename to templates/lift/index.html.twig
 diff --git a/tests/.gitignore b/tests/.gitignore
 new file mode 100644
-index 0000000..e69de29
+index 000000000..e69de29bb
 diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/Controller/DefaultControllerTest.php
 similarity index 91%
 rename from tests/AppBundle/Controller/DefaultControllerTest.php
 rename to tests/Controller/DefaultControllerTest.php
-index 594803c..9172986 100644
+index 594803cce..9172986c4 100644
 --- a/tests/AppBundle/Controller/DefaultControllerTest.php
 +++ b/tests/Controller/DefaultControllerTest.php
 @@ -1,6 +1,6 @@
@@ -7655,14 +7655,14 @@ index 594803c..9172986 100644
  
 diff --git a/translations/.gitignore b/translations/.gitignore
 new file mode 100644
-index 0000000..e69de29
+index 000000000..e69de29bb
 diff --git a/app/Resources/translations/messages.en.yml b/translations/messages.en.yml
 similarity index 100%
 rename from app/Resources/translations/messages.en.yml
 rename to translations/messages.en.yml
 diff --git a/var/SymfonyRequirements.php b/var/SymfonyRequirements.php
 deleted file mode 100644
-index 3b14a40..0000000
+index 3b14a4022..000000000
 --- a/var/SymfonyRequirements.php
 +++ /dev/null
 @@ -1,817 +0,0 @@
@@ -8485,7 +8485,7 @@ index 3b14a40..0000000
 -}
 diff --git a/web/.htaccess b/web/.htaccess
 deleted file mode 100644
-index 4dc7251..0000000
+index 4dc725167..000000000
 --- a/web/.htaccess
 +++ /dev/null
 @@ -1,68 +0,0 @@
@@ -8559,7 +8559,7 @@ index 4dc7251..0000000
 -</IfModule>
 diff --git a/web/app.php b/web/app.php
 deleted file mode 100644
-index 6bd0ea0..0000000
+index 6bd0ea016..000000000
 --- a/web/app.php
 +++ /dev/null
 @@ -1,18 +0,0 @@
@@ -8583,7 +8583,7 @@ index 6bd0ea0..0000000
 -$kernel->terminate($request, $response);
 diff --git a/web/app_dev.php b/web/app_dev.php
 deleted file mode 100644
-index 133f3e5..0000000
+index 133f3e5bc..000000000
 --- a/web/app_dev.php
 +++ /dev/null
 @@ -1,30 +0,0 @@
@@ -8669,7 +8669,7 @@ WxVC;$>&KA*0000<MNUMnLSTY*m&I@Z
 
 diff --git a/web/config.php b/web/config.php
 deleted file mode 100644
-index fd7e17e..0000000
+index fd7e17e6b..000000000
 --- a/web/config.php
 +++ /dev/null
 @@ -1,422 +0,0 @@
@@ -9097,7 +9097,7 @@ index fd7e17e..0000000
 -</html>
 diff --git a/web/robots.txt b/web/robots.txt
 deleted file mode 100644
-index 4665fca..0000000
+index 4665fcae3..000000000
 --- a/web/robots.txt
 +++ /dev/null
 @@ -1,5 +0,0 @@

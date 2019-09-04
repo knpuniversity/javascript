@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index f8d1420..db51075 100644
+index f8d1420fb..db510752e 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -75,6 +75,21 @@ export default class RepLogApp extends Component {
@@ -25,7 +25,7 @@ index f8d1420..db51075 100644
              .then(() => {
                  // remove the rep log without mutating state
 diff --git a/assets/js/RepLog/RepLogList.js b/assets/js/RepLog/RepLogList.js
-index 995535c..e6b64da 100644
+index 995535c3b..e6b64da5c 100644
 --- a/assets/js/RepLog/RepLogList.js
 +++ b/assets/js/RepLog/RepLogList.js
 @@ -27,6 +27,9 @@ export default function RepLogList(props) {

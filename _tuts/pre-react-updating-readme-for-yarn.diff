@@ -1,5 +1,5 @@
 diff --git a/README.md b/README.md
-index 393dedd..e551555 100644
+index 393dedd37..e55155585 100644
 --- a/README.md
 +++ b/README.md
 @@ -40,6 +40,16 @@ If you get an error that the database exists, that should
@@ -20,7 +20,7 @@ index 393dedd..e551555 100644
  
  You can use Nginx or Apache, but the built-in web server works
 diff --git a/composer.lock b/composer.lock
-index ef805b7..22f5549 100644
+index ef805b713..22f5549f8 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -8,16 +8,16 @@

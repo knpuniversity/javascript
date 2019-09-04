@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index cdd762f..3ebc289 100644
+index cdd762f3c..3ebc2894f 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -54,7 +54,7 @@ export default class RepLogCreator extends Component {
@@ -12,7 +12,7 @@ index cdd762f..3ebc289 100644
                      <label className="sr-only control-label required"
                             htmlFor="rep_log_item">
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index e4bbcb4..e77b327 100644
+index e4bbcb411..e77b32702 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -56,9 +56,13 @@ export default function RepLogs(props) {

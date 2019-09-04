@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 5d0239f..9ae0f7d 100644
+index 5d0239f1c..9ae0f7d89 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -40,6 +40,7 @@
@@ -11,7 +11,7 @@ index 5d0239f..9ae0f7d 100644
          "symfony/web-server-bundle": "^4.0"
      },
 diff --git a/composer.lock b/composer.lock
-index 22f5549..607e8c6 100644
+index 22f5549f8..607e8c6ff 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -154,7 +154,7 @@ index 22f5549..607e8c6 100644
              "name": "symfony/phpunit-bridge",
              "version": "v4.1.4",
 diff --git a/config/bundles.php b/config/bundles.php
-index 0ee330c..ff7a559 100644
+index 0ee330c5e..ff7a55951 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -16,4 +16,5 @@ return [
