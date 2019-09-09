@@ -34,7 +34,7 @@ needs itself - `sass-loader` - but also another package called `node-sass`.
 Copy both of those. Then, in your terminal, run:
 
 ```terminal
-yarn add sass-loader node-sass --dev
+yarn add sass-loader@^6.0 node-sass --dev
 ```
 
 Next, in `webpack.config.js`, we just need to setup our `.scss` loader. Copy the
