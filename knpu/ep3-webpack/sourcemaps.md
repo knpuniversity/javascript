@@ -99,6 +99,11 @@ sourcemaps in each. Literally, that means we can add the same option to each one
 
 [[[ code('579e899dd2') ]]]
 
+***TIP
+If you're using `style-loader` 1.0.0 or newer, do *not* include the `sourceMap` option:
+the loader automatically detects if it should render the source maps.
+***
+
 Ok! Restart Webpack! Then, refresh. Inspect the Leaderboard one more time. And...
 yeehaw! The color comes from `main.scss` on line 48. We just got the debugging band
 back together.
