@@ -102,6 +102,13 @@ Copy that package name. Inside `webpack.config.js`, on top, require it:
 
 [[[ code('e1dd76ff09') ]]]
 
+***TIP
+Starting with v3.0.0 of `clean-webpack-plugin` you need to import it as:
+```javascript
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+```
+***
+
 You can probably guess the next step. To the `plugins` section! Add
 `new CleanWebpackPlugin()` and pass it the path to clean: `web/build/**/*.*`:
 
