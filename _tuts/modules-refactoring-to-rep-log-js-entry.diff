@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 2702274..a8f2a3c 100644
+index 27022741..a8f2a3c4 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -55,11 +55,4 @@
@@ -15,7 +15,7 @@ index 2702274..a8f2a3c 100644
 -    </script>
  {% endblock %}
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index 3917c20..51ba1d2 100644
+index 3917c207..51ba1d2d 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -217,4 +217,4 @@ const rowTemplate = (repLog) => `
@@ -26,7 +26,7 @@ index 3917c20..51ba1d2 100644
 +module.exports = RepLogApp;
 diff --git a/web/assets/js/rep_log.js b/web/assets/js/rep_log.js
 new file mode 100644
-index 0000000..b8460ca
+index 00000000..b8460cab
 --- /dev/null
 +++ b/web/assets/js/rep_log.js
 @@ -0,0 +1,7 @@
@@ -38,7 +38,7 @@ index 0000000..b8460ca
 +    var repLogApp = new RepLogApp($wrapper);
 +});
 diff --git a/webpack.config.js b/webpack.config.js
-index 38724e7..2f389cc 100644
+index 38724e7a..2f389cc1 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -1,7 +1,7 @@

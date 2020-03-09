@@ -1,170 +1,30 @@
-diff --git a/assets/css/main.css b/assets/css/main.css
-deleted file mode 100644
-index c1c072b..0000000
+diff --git a/assets/css/main.css b/assets/css/main.scss
+similarity index 91%
+rename from assets/css/main.css
+rename to assets/css/main.scss
+index c1c072b1..977dd995 100644
 --- a/assets/css/main.css
-+++ /dev/null
-@@ -1,77 +0,0 @@
--.main-content {
--    margin-top: 80px;
--}
--footer.footer {
--    margin-top: 100px;
--}
--
--.mini-dumbbell {
--    width: 13px;
--    height: 13px;
--    background: url('../images/dumbbell-mini.png') center center  no-repeat;
--    display: inline-block;
--}
--
--/*LOGIN*/
--
--.btn-login {
--    background-color: #59B2E0;
--    outline: none;
--    color: #fff;
--    font-size: 14px;
--    height: auto;
--    font-weight: normal;
--    padding: 14px 0;
--    text-transform: uppercase;
--    border-color: #59B2E6;
++++ b/assets/css/main.scss
+@@ -24,12 +24,11 @@ footer.footer {
+     padding: 14px 0;
+     text-transform: uppercase;
+     border-color: #59B2E6;
 -}
 -.btn-login:hover,
 -.btn-login:focus {
 -    color: #fff;
 -    background-color: #53A3CD;
 -    border-color: #53A3CD;
--}
--
--/*INDEX*/
--
--.dumbbell {
--    height: 25px;
--    width: auto;
--    padding-right: 10px;
--}
--
--.leaderboard {
--    background-color: #FFDF00;
--    padding: 10px;
--    border-radius: 5px;
--}
--
--.leaderboard-table {
--    border: 2px solid #000;
--}
--
--.leaderboard-table-striped>tbody>tr:nth-of-type(odd) {
--    background-color: #f9f9f9;
--}
--
--.leaderboard-table-striped>tbody>tr:nth-of-type(even) {
--    background-color: #C6C6C6;
--}
--
--.leaderboard-table > thead > tr > th {
--    border-bottom: 2px solid #000;
--    background-color: #145ACC;
--    color: #fff;
--}
--
--.leaderboard-table > tbody > tr > td {
--    border-top: 1px solid #000;
--}
--
--.leaderboard-table-hover>tbody>tr:hover {
--    background-color: #797979;
--}
--
--.cat-count {
--    font-size: .9em;
--}
-diff --git a/assets/css/main.scss b/assets/css/main.scss
-new file mode 100644
-index 0000000..977dd99
---- /dev/null
-+++ b/assets/css/main.scss
-@@ -0,0 +1,76 @@
-+.main-content {
-+    margin-top: 80px;
-+}
-+footer.footer {
-+    margin-top: 100px;
-+}
-+
-+.mini-dumbbell {
-+    width: 13px;
-+    height: 13px;
-+    background: url('../images/dumbbell-mini.png') center center  no-repeat;
-+    display: inline-block;
-+}
-+
-+/*LOGIN*/
-+
-+.btn-login {
-+    background-color: #59B2E0;
-+    outline: none;
-+    color: #fff;
-+    font-size: 14px;
-+    height: auto;
-+    font-weight: normal;
-+    padding: 14px 0;
-+    text-transform: uppercase;
-+    border-color: #59B2E6;
 +    &:hover,&:focus {
 +        color: #fff;
 +        background-color: #53A3CD;
 +        border-color: #53A3CD;
 +    }
-+}
-+
-+/*INDEX*/
-+
-+.dumbbell {
-+    height: 25px;
-+    width: auto;
-+    padding-right: 10px;
-+}
-+
-+.leaderboard {
-+    background-color: #FFDF00;
-+    padding: 10px;
-+    border-radius: 5px;
-+}
-+
-+.leaderboard-table {
-+    border: 2px solid #000;
-+}
-+
-+.leaderboard-table-striped>tbody>tr:nth-of-type(odd) {
-+    background-color: #f9f9f9;
-+}
-+
-+.leaderboard-table-striped>tbody>tr:nth-of-type(even) {
-+    background-color: #C6C6C6;
-+}
-+
-+.leaderboard-table > thead > tr > th {
-+    border-bottom: 2px solid #000;
-+    background-color: #145ACC;
-+    color: #fff;
-+}
-+
-+.leaderboard-table > tbody > tr > td {
-+    border-top: 1px solid #000;
-+}
-+
-+.leaderboard-table-hover>tbody>tr:hover {
-+    background-color: #797979;
-+}
-+
-+.cat-count {
-+    font-size: .9em;
-+}
+ }
+ 
+ /*INDEX*/
 diff --git a/assets/js/layout.js b/assets/js/layout.js
-index 83bb08c..9817410 100644
+index 83bb08c9..9817410b 100644
 --- a/assets/js/layout.js
 +++ b/assets/js/layout.js
 @@ -7,7 +7,7 @@ require('babel-polyfill');

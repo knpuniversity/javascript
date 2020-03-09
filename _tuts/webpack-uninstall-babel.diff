@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index a1c42b9..68a4720 100644
+index a1c42b9f..68a4720c 100644
 --- a/package.json
 +++ b/package.json
 @@ -5,8 +5,5 @@
@@ -13,7 +13,7 @@ index a1c42b9..68a4720 100644
 +  "devDependencies": {}
  }
 diff --git a/yarn.lock b/yarn.lock
-index a6c2de2..fb57ccd 100644
+index a6c2de2e..fb57ccd1 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -2,1608 +2,3 @@

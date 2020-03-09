@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 0ff7bd5..ef5c18e 100644
+index 0ff7bd5e..ef5c18e2 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -2,7 +2,7 @@
@@ -12,7 +12,7 @@ index 0ff7bd5..ef5c18e 100644
                  Lift History
              </h2>
 diff --git a/assets/js/rep_log.js b/assets/js/rep_log.js
-index 26e6084..be2c3d2 100644
+index 26e60844..be2c3d29 100644
 --- a/assets/js/rep_log.js
 +++ b/assets/js/rep_log.js
 @@ -6,24 +6,7 @@ const RepLogApp = require('./Components/RepLogApp');
@@ -42,7 +42,7 @@ index 26e6084..be2c3d2 100644
 +    var repLogApp = new RepLogApp($wrapper, $wrapper.data('rep-logs'));
  });
 diff --git a/src/AppBundle/Controller/LiftController.php b/src/AppBundle/Controller/LiftController.php
-index 86c0f86..c9ef61b 100644
+index 86c0f86d..c9ef61b5 100644
 --- a/src/AppBundle/Controller/LiftController.php
 +++ b/src/AppBundle/Controller/LiftController.php
 @@ -33,9 +33,14 @@ class LiftController extends BaseController

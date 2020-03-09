@@ -1,6 +1,6 @@
 diff --git a/assets/css/_bootstrap.scss b/assets/css/_bootstrap.scss
 new file mode 100644
-index 0000000..4ebd094
+index 00000000..4ebd0948
 --- /dev/null
 +++ b/assets/css/_bootstrap.scss
 @@ -0,0 +1,50 @@
@@ -55,7 +55,7 @@ index 0000000..4ebd094
 +@import "~bootstrap-sass/assets/stylesheets/bootstrap/utilities";
 +@import "~bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities";
 diff --git a/assets/css/main.scss b/assets/css/main.scss
-index dce2479..a80fed3 100644
+index dce24798..a80fed32 100644
 --- a/assets/css/main.scss
 +++ b/assets/css/main.scss
 @@ -1,6 +1,6 @@

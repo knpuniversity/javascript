@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 508eb8f..739833b 100644
+index 508eb8f9..739833b3 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -55,7 +55,7 @@
@@ -13,7 +13,7 @@ index 508eb8f..739833b 100644
          $(document).ready(function() {
 diff --git a/web/assets/dist/RepLogApp.js b/web/assets/dist/RepLogApp.js
 deleted file mode 100644
-index 6c09a54..0000000
+index 6c09a54f..00000000
 --- a/web/assets/dist/RepLogApp.js
 +++ /dev/null
 @@ -1,336 +0,0 @@

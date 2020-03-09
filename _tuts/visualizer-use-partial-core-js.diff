@@ -1,5 +1,5 @@
 diff --git a/assets/js/layout.js b/assets/js/layout.js
-index 68b87f5..a736820 100644
+index 68b87f5a..a7368205 100644
 --- a/assets/js/layout.js
 +++ b/assets/js/layout.js
 @@ -3,7 +3,7 @@
@@ -12,7 +12,7 @@ index 68b87f5..a736820 100644
  
  $(document).ready(function() {
 diff --git a/package.json b/package.json
-index ade7cef..352f6cd 100644
+index ade7cef5..352f6cd0 100644
 --- a/package.json
 +++ b/package.json
 @@ -14,11 +14,11 @@
@@ -29,7 +29,7 @@ index ade7cef..352f6cd 100644
      "extract-text-webpack-plugin": "^3.0.0",
      "file-loader": "^0.11.2",
 diff --git a/yarn.lock b/yarn.lock
-index dd72b59..72e0f79 100644
+index dd72b59d..72e0f795 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -607,14 +607,6 @@ babel-plugin-transform-strict-mode@^6.24.1:

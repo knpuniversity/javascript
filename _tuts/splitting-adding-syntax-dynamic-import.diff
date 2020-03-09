@@ -1,5 +1,5 @@
 diff --git a/.babelrc b/.babelrc
-index 002b4aa..aa75e7d 100644
+index 002b4aa0..aa75e7d7 100644
 --- a/.babelrc
 +++ b/.babelrc
 @@ -1,3 +1,4 @@
@@ -9,7 +9,7 @@ index 002b4aa..aa75e7d 100644
 +  "plugins": ["syntax-dynamic-import"]
  }
 diff --git a/package.json b/package.json
-index 1765609..ade7cef 100644
+index 17656092..ade7cef5 100644
 --- a/package.json
 +++ b/package.json
 @@ -13,6 +13,7 @@
@@ -21,7 +21,7 @@ index 1765609..ade7cef 100644
      "babel-preset-env": "^1.6.0",
      "bootstrap-sass": "^3.3.7",
 diff --git a/yarn.lock b/yarn.lock
-index 540a424..dd72b59 100644
+index 540a424b..dd72b59d 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -398,6 +398,10 @@ babel-plugin-syntax-async-functions@^6.8.0:

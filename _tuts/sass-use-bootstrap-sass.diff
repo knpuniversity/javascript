@@ -1,5 +1,5 @@
 diff --git a/assets/js/layout.js b/assets/js/layout.js
-index 9817410..997dc3d 100644
+index 9817410b..997dc3d8 100644
 --- a/assets/js/layout.js
 +++ b/assets/js/layout.js
 @@ -1,11 +1,11 @@
@@ -17,7 +17,7 @@ index 9817410..997dc3d 100644
  require('../css/main.scss');
  
 diff --git a/package.json b/package.json
-index 770aa53..37cd4b0 100644
+index 770aa53a..37cd4b05 100644
 --- a/package.json
 +++ b/package.json
 @@ -10,7 +10,7 @@
@@ -38,7 +38,7 @@ index 770aa53..37cd4b0 100644
 +  "dependencies": {}
  }
 diff --git a/yarn.lock b/yarn.lock
-index 781b75c..2a9b04d 100644
+index 781b75c3..2a9b04db 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -699,9 +699,9 @@ boom@2.x.x:

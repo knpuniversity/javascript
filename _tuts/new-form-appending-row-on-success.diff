@@ -1,6 +1,6 @@
 diff --git a/app/Resources/views/lift/_repRow.html.twig b/app/Resources/views/lift/_repRow.html.twig
 new file mode 100644
-index 0000000..f7ea867
+index 00000000..f7ea8679
 --- /dev/null
 +++ b/app/Resources/views/lift/_repRow.html.twig
 @@ -0,0 +1,13 @@
@@ -18,7 +18,7 @@ index 0000000..f7ea867
 +    </td>
 +</tr>
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 2d9f71a..7b403e9 100644
+index 2d9f71af..7b403e9b 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -21,19 +21,7 @@
@@ -43,7 +43,7 @@ index 2d9f71a..7b403e9 100644
                      <tr>
                          <td colspan="4">Get liftin'!</td>
 diff --git a/src/AppBundle/Controller/LiftController.php b/src/AppBundle/Controller/LiftController.php
-index 654f3bb..31a9f43 100644
+index 654f3bbc..31a9f435 100644
 --- a/src/AppBundle/Controller/LiftController.php
 +++ b/src/AppBundle/Controller/LiftController.php
 @@ -6,6 +6,7 @@ use AppBundle\Entity\RepLog;
@@ -82,7 +82,7 @@ index 654f3bb..31a9f43 100644
  
          return $this->render('lift/index.html.twig', array(
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index 85a67a3..4265be8 100644
+index 85a67a35..4265be89 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -60,12 +60,17 @@

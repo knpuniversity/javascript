@@ -1,5 +1,5 @@
 diff --git a/assets/css/main.scss b/assets/css/main.scss
-index 977dd99..21794ee 100644
+index 977dd995..21794eec 100644
 --- a/assets/css/main.scss
 +++ b/assets/css/main.scss
 @@ -1,3 +1,6 @@
@@ -10,7 +10,7 @@ index 977dd99..21794ee 100644
      margin-top: 80px;
  }
 diff --git a/assets/js/layout.js b/assets/js/layout.js
-index 997dc3d..d0cd111 100644
+index 997dc3d8..d0cd1118 100644
 --- a/assets/js/layout.js
 +++ b/assets/js/layout.js
 @@ -4,9 +4,6 @@ const $ = require('jquery');
