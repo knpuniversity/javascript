@@ -56,3 +56,33 @@ index 63887ff..c312601 100644
          ];
      }
  }
+diff --git a/symfony.lock b/symfony.lock
+index 819af05..844e9dc 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -101,6 +101,9 @@
+     "monolog/monolog": {
+         "version": "1.23.0"
+     },
++    "nikic/php-parser": {
++        "version": "v4.0.2"
++    },
+     "ocramius/proxy-manager": {
+         "version": "2.1.1"
+     },
+@@ -227,6 +230,15 @@
+     "symfony/lts": {
+         "version": "4-dev"
+     },
++    "symfony/maker-bundle": {
++        "version": "1.0",
++        "recipe": {
++            "repo": "github.com/symfony/recipes",
++            "branch": "master",
++            "version": "1.0",
++            "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
++        }
++    },
+     "symfony/monolog-bridge": {
+         "version": "v4.0.4"
+     },
