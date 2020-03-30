@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index ad484ee65..5798212a3 100644
+index ad484ee..5798212 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -2,6 +2,8 @@ import React from 'react';
@@ -20,7 +20,7 @@ index ad484ee65..5798212a3 100644
 +    onNewItemSubmit: PropTypes.func.isRequired,
 +};
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 7f7c4b448..8f9bf8054 100644
+index 7f7c4b4..8f9bf80 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -50,7 +50,9 @@ export default function RepLogs(props) {

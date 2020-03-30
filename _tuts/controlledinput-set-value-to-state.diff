@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 604538847..db2b1eb85 100644
+index 6045388..db2b1eb 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -13,7 +13,8 @@ export default class RepLogApp extends Component {
@@ -13,7 +13,7 @@ index 604538847..db2b1eb85 100644
  
          this.handleRowClick = this.handleRowClick.bind(this);
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 3097e6de9..b47e793ba 100644
+index 3097e6d..b47e793 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -20,19 +20,23 @@ export default function RepLogs(props) {

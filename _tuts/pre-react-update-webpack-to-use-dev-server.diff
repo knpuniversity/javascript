@@ -1,5 +1,5 @@
 diff --git a/templates/lift/index.html.twig b/templates/lift/index.html.twig
-index 6342f6510..e3dfa10e8 100644
+index 6342f65..e3dfa10 100644
 --- a/templates/lift/index.html.twig
 +++ b/templates/lift/index.html.twig
 @@ -35,7 +35,9 @@
@@ -13,7 +13,7 @@ index 6342f6510..e3dfa10e8 100644
                  </h2>
  
 diff --git a/webpack.config.js b/webpack.config.js
-index c300f1157..0ad3d2450 100644
+index c300f11..0ad3d24 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -24,7 +24,7 @@ Encore

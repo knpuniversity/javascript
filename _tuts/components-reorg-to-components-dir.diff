@@ -7,7 +7,7 @@ similarity index 100%
 rename from public/assets/js/RepLogHelper.js
 rename to public/assets/js/Components/RepLogHelper.js
 diff --git a/public/assets/js/rep_log.js b/public/assets/js/rep_log.js
-index 1069d4cf0..00bdc5a20 100644
+index 1069d4c..00bdc5a 100644
 --- a/public/assets/js/rep_log.js
 +++ b/public/assets/js/rep_log.js
 @@ -1,7 +1,7 @@

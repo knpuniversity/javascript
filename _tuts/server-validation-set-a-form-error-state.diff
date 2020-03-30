@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 791b4c7d6..151172a65 100644
+index 791b4c7..151172a 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -14,7 +14,8 @@ export default class RepLogApp extends Component {
@@ -35,7 +35,7 @@ index 791b4c7d6..151172a65 100644
              })
          ;
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index ee2e47ea5..3e89b247f 100644
+index ee2e47e..3e89b24 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -53,9 +53,15 @@ export default class RepLogCreator extends Component {
@@ -61,7 +61,7 @@ index ee2e47ea5..3e89b247f 100644
 +    validationErrorMessage: PropTypes.string.isRequired,
  };
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 005b6bc18..44152cb90 100644
+index 005b6bc..44152cb 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -27,7 +27,8 @@ export default function RepLogs(props) {
@@ -91,7 +91,7 @@ index 005b6bc18..44152cb90 100644
 +    newRepLogValidationErrorMessage: PropTypes.string.isRequired,
  };
 diff --git a/src/Form/Type/RepLogType.php b/src/Form/Type/RepLogType.php
-index 296d24d41..494cadc36 100644
+index 296d24d..494cadc 100644
 --- a/src/Form/Type/RepLogType.php
 +++ b/src/Form/Type/RepLogType.php
 @@ -17,7 +17,8 @@ class RepLogType extends AbstractType

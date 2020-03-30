@@ -1,5 +1,5 @@
 diff --git a/assets/js/Components/Button.js b/assets/js/Components/Button.js
-index 595101ccc..627c75ee3 100644
+index 595101c..627c75e 100644
 --- a/assets/js/Components/Button.js
 +++ b/assets/js/Components/Button.js
 @@ -6,10 +6,6 @@ export default function Button(props) {
@@ -15,7 +15,7 @@ index 595101ccc..627c75ee3 100644
 -    text: PropTypes.string.isRequired
 -};
 diff --git a/assets/js/RepLog/RepLogCreator.js b/assets/js/RepLog/RepLogCreator.js
-index a58d35cda..93437c561 100644
+index a58d35c..93437c5 100644
 --- a/assets/js/RepLog/RepLogCreator.js
 +++ b/assets/js/RepLog/RepLogCreator.js
 @@ -86,7 +86,9 @@ export default class RepLogCreator extends Component {

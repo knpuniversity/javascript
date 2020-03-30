@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/_form.html.twig b/app/Resources/views/lift/_form.html.twig
-index a98040892..b0f12f64f 100644
+index a980408..b0f12f6 100644
 --- a/app/Resources/views/lift/_form.html.twig
 +++ b/app/Resources/views/lift/_form.html.twig
 @@ -1,21 +1,28 @@

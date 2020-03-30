@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index ad255b944..a196cb980 100644
+index ad255b9..a196cb9 100644
 --- a/package.json
 +++ b/package.json
 @@ -2,6 +2,7 @@
@@ -11,7 +11,7 @@ index ad255b944..a196cb980 100644
      "sweetalert2": "^7.11.0",
      "webpack-notifier": "^1.5.1"
 diff --git a/public/assets/js/layout.js b/public/assets/js/layout.js
-index 7a3268917..40529aef7 100644
+index 7a32689..40529ae 100644
 --- a/public/assets/js/layout.js
 +++ b/public/assets/js/layout.js
 @@ -3,6 +3,7 @@
@@ -23,7 +23,7 @@ index 7a3268917..40529aef7 100644
  
  $(document).ready(function() {
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index de0b848e9..5250b8af3 100644
+index de0b848..5250b8a 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -9,7 +9,6 @@
@@ -35,7 +35,7 @@ index de0b848e9..5250b8af3 100644
      {% endblock %}
  
 diff --git a/yarn.lock b/yarn.lock
-index 8f5e0b065..41ed6dce3 100644
+index 8f5e0b0..41ed6dc 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -2083,6 +2083,10 @@ flatten@^1.0.2:

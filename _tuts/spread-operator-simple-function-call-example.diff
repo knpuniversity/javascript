@@ -1,5 +1,5 @@
 diff --git a/play.js b/play.js
-index 4b6ee5d24..548a19bf3 100644
+index 4b6ee5d..548a19b 100644
 --- a/play.js
 +++ b/play.js
 @@ -1,29 +1,7 @@
@@ -38,7 +38,7 @@ index 4b6ee5d24..548a19bf3 100644
 -);
 +printThreeThings(...yummyThings);
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index 12ad8c96c..cd14d90d8 100644
+index 12ad8c9..cd14d90 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -165,8 +165,9 @@

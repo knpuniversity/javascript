@@ -1,5 +1,5 @@
 diff --git a/config/packages/framework.yaml b/config/packages/framework.yaml
-index 33b52e449..97407de71 100644
+index 33b52e4..97407de 100644
 --- a/config/packages/framework.yaml
 +++ b/config/packages/framework.yaml
 @@ -32,6 +32,3 @@ framework:
@@ -38,7 +38,7 @@ similarity index 100%
 rename from web/assets/js/login.js
 rename to public/assets/js/login.js
 diff --git a/templates/lift/index.html.twig b/templates/lift/index.html.twig
-index f34e53026..9939e1398 100644
+index f34e530..9939e13 100644
 --- a/templates/lift/index.html.twig
 +++ b/templates/lift/index.html.twig
 @@ -55,7 +55,7 @@
@@ -52,7 +52,7 @@ index f34e53026..9939e1398 100644
          $(document).ready(function() {
 diff --git a/web/assets/dist/RepLogApp.js b/web/assets/dist/RepLogApp.js
 deleted file mode 100644
-index f769fb71a..000000000
+index f769fb7..0000000
 --- a/web/assets/dist/RepLogApp.js
 +++ /dev/null
 @@ -1,344 +0,0 @@

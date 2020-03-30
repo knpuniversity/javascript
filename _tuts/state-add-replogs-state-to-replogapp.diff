@@ -1,5 +1,5 @@
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 462e6f8f4..b600119bf 100644
+index 462e6f8..b600119 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -7,7 +7,12 @@ export default class RepLogApp extends Component {
@@ -34,7 +34,7 @@ index 462e6f8f4..b600119bf 100644
          )
      }
 diff --git a/assets/js/RepLog/RepLogs.js b/assets/js/RepLog/RepLogs.js
-index 29181523c..15ad0715f 100644
+index 2918152..15ad071 100644
 --- a/assets/js/RepLog/RepLogs.js
 +++ b/assets/js/RepLog/RepLogs.js
 @@ -3,7 +3,7 @@ import RepLogList from './RepLogList';
