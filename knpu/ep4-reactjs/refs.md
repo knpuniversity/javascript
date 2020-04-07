@@ -114,7 +114,10 @@ yarn add uuid --dev
 ```
 
 ***TIP
-In the latest version of `uuid`, you should import the `uuid` package like this: `import { v4 as uuid } from 'uuid';`
+In the latest version of `uuid`, you should import the `uuid` package like this:
+```javascript
+import { v4 as uuid } from 'uuid';
+```
 ***
 
 Wait for that to finish... then go to `RepLogApp` and import `uuid` from
