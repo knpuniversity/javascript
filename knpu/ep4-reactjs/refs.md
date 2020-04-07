@@ -113,6 +113,10 @@ To generate a UUID, find your terminal and install a library:
 yarn add uuid --dev
 ```
 
+***TIP
+In the latest version of `uuid`, you should import the `uuid` package like this: `import { v4 as uuid } from 'uuid';`
+***
+
 Wait for that to finish... then go to `RepLogApp` and import `uuid` from
 `uuid/v4`. There are a few versions of UUID that behave slightly differently.
 It turns out, we want v4.
