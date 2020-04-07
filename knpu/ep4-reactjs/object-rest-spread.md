@@ -94,6 +94,10 @@ But... PhpStorm is still angry: ESLint parsing error. No worries: we just need t
 tell ESLint that this syntax is cool with us. Open `.eslintrc.js`. Under `ecmaFeatures`,
 add `experimentalObjectRestSpread` set to true.
 
+***TIP
+On ESLint version 6 or higher, you only need to change the ecmaVersion to 2018. You do not need to add the experimentalObjectRestSpread option because it's already enabled.
+***
+
 [[[ code('30c58b7147') ]]]
 
 Deep breath: go back to RepLogApp. And... sweet! The error is gone!
