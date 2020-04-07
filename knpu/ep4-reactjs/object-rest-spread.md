@@ -95,7 +95,7 @@ tell ESLint that this syntax is cool with us. Open `.eslintrc.js`. Under `ecmaFe
 add `experimentalObjectRestSpread` set to true.
 
 ***TIP
-On ESLint version 6 or higher, you only need to change the ecmaVersion to 2018. You do not need to add the experimentalObjectRestSpread option because it's already enabled.
+On `ESLint` version 6 or higher, you only need to change the `ecmaVersion` to 2018. You do not need to add the `experimentalObjectRestSpread` option because it's already enabled.
 ***
 
 [[[ code('30c58b7147') ]]]
