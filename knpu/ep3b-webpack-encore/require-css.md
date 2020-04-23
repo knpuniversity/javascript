@@ -100,6 +100,23 @@ for any background images or fonts. When it finds one, it moves *it* into a
 `build/images/` directory and rewrites the path inside the final CSS file to
 point there.
 
+***TIP
+The `file-loader` has `esModule: true` by default since v5.0.0. If the generated
+URL looks like `[object Module]` - you will need to set `esModule` to `false`:
+```javascript
+// webpack.config.js
+
+Encore
+   // ...
+   .configureUrlLoader({
+       images: {
+           esModule: false
+       }
+   })
+   // ...
+```
+***
+
 The point is: all *we* need to do is write our CSS files correctly and... well...
 Webpack takes care of the rest!
 
