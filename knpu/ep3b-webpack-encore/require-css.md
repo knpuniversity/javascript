@@ -107,13 +107,13 @@ URL looks like `[object Module]` - you will need to set `esModule` to `false`:
 // webpack.config.js
 
 Encore
-   // ...
-   .configureUrlLoader({
-       images: {
-           esModule: false
-       }
-   })
-   // ...
+    // ...
+    .configureUrlLoader({
+        images: {
+            esModule: false
+        }
+    })
+    // ...
 ```
 ***
 
