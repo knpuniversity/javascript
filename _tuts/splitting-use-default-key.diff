@@ -1,5 +1,5 @@
 diff --git a/assets/js/login.js b/assets/js/login.js
-index 0615f07f..076a2293 100644
+index 0615f07ff..076a22937 100644
 --- a/assets/js/login.js
 +++ b/assets/js/login.js
 @@ -18,8 +18,7 @@ $(document).ready(function() {

@@ -1,5 +1,5 @@
 diff --git a/app/config/config_dev.yml b/app/config/config_dev.yml
-index 588916ff..d9608bc5 100644
+index 588916ff7..d9608bc56 100644
 --- a/app/config/config_dev.yml
 +++ b/app/config/config_dev.yml
 @@ -6,8 +6,8 @@ framework:
@@ -14,7 +14,7 @@ index 588916ff..d9608bc5 100644
  web_profiler:
      toolbar: true
 diff --git a/webpack.config.js b/webpack.config.js
-index e90ab4f0..cf26af27 100644
+index e90ab4f03..cf26af277 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -3,7 +3,7 @@ const webpack = require('webpack');

@@ -1,5 +1,5 @@
 diff --git a/webpack.config.js b/webpack.config.js
-index 24c81521..c2a07b2b 100644
+index 24c815215..c2a07b2b1 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -34,13 +34,23 @@ module.exports = {

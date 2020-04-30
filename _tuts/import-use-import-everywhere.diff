@@ -1,5 +1,5 @@
 diff --git a/assets/js/Components/RepLogApp.js b/assets/js/Components/RepLogApp.js
-index 79cbbb4a..911cab76 100644
+index 79cbbb4a5..911cab76e 100644
 --- a/assets/js/Components/RepLogApp.js
 +++ b/assets/js/Components/RepLogApp.js
 @@ -1,10 +1,10 @@
@@ -19,7 +19,7 @@ index 79cbbb4a..911cab76 100644
  
  let HelperInstances = new WeakMap();
 diff --git a/assets/js/layout.js b/assets/js/layout.js
-index d0cd1118..68b87f5a 100644
+index d0cd11180..68b87f5a9 100644
 --- a/assets/js/layout.js
 +++ b/assets/js/layout.js
 @@ -1,10 +1,10 @@
@@ -38,7 +38,7 @@ index d0cd1118..68b87f5a 100644
  $(document).ready(function() {
      $('[data-toggle="tooltip"]').tooltip();
 diff --git a/assets/js/login.js b/assets/js/login.js
-index 479c6e39..afb516d4 100644
+index 479c6e39c..afb516d4d 100644
 --- a/assets/js/login.js
 +++ b/assets/js/login.js
 @@ -1,7 +1,7 @@
@@ -52,7 +52,7 @@ index 479c6e39..afb516d4 100644
  $(document).ready(function() {
      $('.js-recommended-login').on('click', '.js-show-login', function(e) {
 diff --git a/assets/js/rep_log.js b/assets/js/rep_log.js
-index be2c3d29..54e470b7 100644
+index be2c3d295..54e470b7c 100644
 --- a/assets/js/rep_log.js
 +++ b/assets/js/rep_log.js
 @@ -1,6 +1,6 @@

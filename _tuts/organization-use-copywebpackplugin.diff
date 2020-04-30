@@ -1,5 +1,5 @@
 diff --git a/app/Resources/FOSUserBundle/views/Security/login.html.twig b/app/Resources/FOSUserBundle/views/Security/login.html.twig
-index e982bbd7..88951e6a 100644
+index e982bbd7e..88951e6ae 100644
 --- a/app/Resources/FOSUserBundle/views/Security/login.html.twig
 +++ b/app/Resources/FOSUserBundle/views/Security/login.html.twig
 @@ -12,7 +12,7 @@
@@ -12,7 +12,7 @@ index e982bbd7..88951e6a 100644
                      <a href="#" class="js-show-login">Don't know the login?</a>
                      <div class="js-recommended-login-details" style="display: none;">
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 2c1fe8a8..8ead14ac 100644
+index 2c1fe8a80..8ead14ac5 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -35,7 +35,7 @@
@@ -29,7 +29,7 @@ similarity index 100%
 rename from assets/images/dumbbell.png
 rename to assets/static/dumbbell.png
 diff --git a/package.json b/package.json
-index 3ebe96c0..564f7d70 100644
+index 3ebe96c04..564f7d70f 100644
 --- a/package.json
 +++ b/package.json
 @@ -11,6 +11,7 @@
@@ -41,7 +41,7 @@ index 3ebe96c0..564f7d70 100644
      "file-loader": "^0.11.2",
      "font-awesome": "^4.7.0",
 diff --git a/webpack.config.js b/webpack.config.js
-index 67b2e313..503d9c96 100644
+index 67b2e3139..503d9c960 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -1,5 +1,6 @@
@@ -65,7 +65,7 @@ index 67b2e313..503d9c96 100644
      ]
  };
 diff --git a/yarn.lock b/yarn.lock
-index 32022398..26d26437 100644
+index 32022398a..26d26437d 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -673,6 +673,10 @@ block-stream@*:

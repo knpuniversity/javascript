@@ -1,5 +1,5 @@
 diff --git a/webpack.config.js b/webpack.config.js
-index f19249e6..86d8731c 100644
+index f19249e62..86d8731c4 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -5,17 +5,19 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');

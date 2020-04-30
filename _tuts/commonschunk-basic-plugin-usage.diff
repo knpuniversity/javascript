@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
-index 1205992a..a3cb3dc3 100644
+index 1205992a2..a3cb3dc3f 100644
 --- a/app/Resources/views/base.html.twig
 +++ b/app/Resources/views/base.html.twig
 @@ -95,6 +95,7 @@
@@ -11,7 +11,7 @@ index 1205992a..a3cb3dc3 100644
  {% endblock %}
  
 diff --git a/webpack.config.js b/webpack.config.js
-index ef77a49b..65db612e 100644
+index ef77a49b8..65db612e8 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -102,6 +102,11 @@ module.exports = {

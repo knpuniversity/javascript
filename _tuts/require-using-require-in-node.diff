@@ -1,6 +1,6 @@
 diff --git a/foods.js b/foods.js
 new file mode 100644
-index 00000000..2d7ef38b
+index 000000000..2d7ef38bc
 --- /dev/null
 +++ b/foods.js
 @@ -0,0 +1,6 @@
@@ -11,7 +11,7 @@ index 00000000..2d7ef38b
 +
 +module.exports = foods;
 diff --git a/play.js b/play.js
-index c97b3b72..bc106008 100644
+index c97b3b728..bc106008b 100644
 --- a/play.js
 +++ b/play.js
 @@ -1,6 +1,3 @@

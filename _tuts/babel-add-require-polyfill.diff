@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
-index 385bf770..5af3b1e2 100644
+index 385bf770e..5af3b1e27 100644
 --- a/app/Resources/views/base.html.twig
 +++ b/app/Resources/views/base.html.twig
 @@ -99,7 +99,6 @@
@@ -11,7 +11,7 @@ index 385bf770..5af3b1e2 100644
  {% endblock %}
  
 diff --git a/package.json b/package.json
-index e8833e34..39dd53ba 100644
+index e8833e340..39dd53ba2 100644
 --- a/package.json
 +++ b/package.json
 @@ -8,6 +8,7 @@
@@ -23,7 +23,7 @@ index e8833e34..39dd53ba 100644
      "bootstrap": "^3.3.7",
      "jquery": "^3.2.1",
 diff --git a/web/assets/js/layout.js b/web/assets/js/layout.js
-index e9d87b70..6df59b1f 100644
+index e9d87b70b..6df59b1f3 100644
 --- a/web/assets/js/layout.js
 +++ b/web/assets/js/layout.js
 @@ -2,6 +2,8 @@
@@ -36,7 +36,7 @@ index e9d87b70..6df59b1f 100644
  $(document).ready(function() {
      $('[data-toggle="tooltip"]').tooltip();
 diff --git a/yarn.lock b/yarn.lock
-index b2c97766..b3688fef 100644
+index b2c97766d..b3688fef9 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -515,6 +515,14 @@ babel-plugin-transform-strict-mode@^6.24.1:

@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index a8f2a3c4..2c1fe8a8 100644
+index a8f2a3c48..2c1fe8a80 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -45,12 +45,6 @@
@@ -16,7 +16,7 @@ index a8f2a3c4..2c1fe8a8 100644
      {{ parent() }}
  
 diff --git a/web/assets/js/Components/RepLogApp.js b/web/assets/js/Components/RepLogApp.js
-index 51ba1d2d..6c287f6b 100644
+index 51ba1d2d2..6c287f6b1 100644
 --- a/web/assets/js/Components/RepLogApp.js
 +++ b/web/assets/js/Components/RepLogApp.js
 @@ -3,6 +3,7 @@

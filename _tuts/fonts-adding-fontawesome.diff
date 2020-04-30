@@ -1,5 +1,5 @@
 diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
-index 9c3869ee..1205992a 100644
+index 9c3869ee2..1205992a2 100644
 --- a/app/Resources/views/base.html.twig
 +++ b/app/Resources/views/base.html.twig
 @@ -8,9 +8,7 @@
@@ -14,7 +14,7 @@ index 9c3869ee..1205992a 100644
      <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
  </head>
 diff --git a/package.json b/package.json
-index e4d51afe..3ebe96c0 100644
+index e4d51afe2..3ebe96c04 100644
 --- a/package.json
 +++ b/package.json
 @@ -13,6 +13,7 @@
@@ -26,7 +26,7 @@ index e4d51afe..3ebe96c0 100644
      "style-loader": "^0.18.2",
      "sweetalert2": "^6.6.6",
 diff --git a/web/assets/js/layout.js b/web/assets/js/layout.js
-index 9c611a83..83bb08c9 100644
+index 9c611a83b..83bb08c92 100644
 --- a/web/assets/js/layout.js
 +++ b/web/assets/js/layout.js
 @@ -6,6 +6,7 @@ require('bootstrap');
@@ -38,7 +38,7 @@ index 9c611a83..83bb08c9 100644
  
  $(document).ready(function() {
 diff --git a/yarn.lock b/yarn.lock
-index 46d3d8df..32022398 100644
+index 46d3d8df5..32022398a 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -1417,6 +1417,10 @@ flatten@^1.0.2:
