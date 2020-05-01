@@ -1,6 +1,6 @@
 diff --git a/app/Resources/views/lift/_repRow.html.twig b/app/Resources/views/lift/_repRow.html.twig
 deleted file mode 100644
-index f7ea867..0000000
+index f7ea86795..000000000
 --- a/app/Resources/views/lift/_repRow.html.twig
 +++ /dev/null
 @@ -1,13 +0,0 @@
@@ -18,7 +18,7 @@ index f7ea867..0000000
 -    </td>
 -</tr>
 diff --git a/app/Resources/views/lift/index.html.twig b/app/Resources/views/lift/index.html.twig
-index 99ab475..ea4c6c7 100644
+index 99ab47537..ea4c6c7f0 100644
 --- a/app/Resources/views/lift/index.html.twig
 +++ b/app/Resources/views/lift/index.html.twig
 @@ -20,19 +20,12 @@
@@ -43,7 +43,7 @@ index 99ab475..ea4c6c7 100644
                      </tr>
                  </tfoot>
 diff --git a/src/AppBundle/Controller/LiftController.php b/src/AppBundle/Controller/LiftController.php
-index 4ba1d5b..86c0f86 100644
+index 4ba1d5b1f..86c0f86d3 100644
 --- a/src/AppBundle/Controller/LiftController.php
 +++ b/src/AppBundle/Controller/LiftController.php
 @@ -33,19 +33,9 @@ class LiftController extends BaseController
@@ -67,7 +67,7 @@ index 4ba1d5b..86c0f86 100644
      }
  
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index a9d1c8b..f3dfc7b 100644
+index a9d1c8bca..f3dfc7bb4 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -30,10 +30,13 @@

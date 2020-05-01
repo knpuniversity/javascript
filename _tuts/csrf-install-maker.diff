@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 5d0239f..9ae0f7d 100644
+index 730c68cf5..1d59c5dc0 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -40,6 +40,7 @@
+@@ -41,6 +41,7 @@
      "require-dev": {
          "symfony/debug-pack": "^1.0",
          "symfony/dotenv": "^4.0",
@@ -11,20 +11,45 @@ index 5d0239f..9ae0f7d 100644
          "symfony/web-server-bundle": "^4.0"
      },
 diff --git a/composer.lock b/composer.lock
-index 56a2a6d..5c9ffd1 100644
+index bdf58c030..6cc592d3f 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "43423759580a7e81acf90ddab7b4cb4b",
-+    "content-hash": "2027ed50952bc6547226c1c28296aff2",
+-    "content-hash": "44f6abaf0d02f3a3b976e87c0b9420af",
++    "content-hash": "c74c879690b6259abaf5ccc77760fe59",
      "packages": [
          {
              "name": "doctrine/annotations",
-@@ -5252,6 +5252,57 @@
+@@ -1458,12 +1458,12 @@
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
+-                "reference": "5d2145777fa1d61ba27ba4c1e7016f3c3e7ee7ba"
++                "reference": "4125505ba6eba82ddf944378a3d636081c06da0c"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/5d2145777fa1d61ba27ba4c1e7016f3c3e7ee7ba",
+-                "reference": "5d2145777fa1d61ba27ba4c1e7016f3c3e7ee7ba",
++                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/4125505ba6eba82ddf944378a3d636081c06da0c",
++                "reference": "4125505ba6eba82ddf944378a3d636081c06da0c",
+                 "shasum": ""
+             },
+             "require": {
+@@ -1527,7 +1527,7 @@
+             "keywords": [
+                 "User management"
              ],
+-            "time": "2019-03-01T13:05:23+00:00"
++            "time": "2018-09-19T15:05:28+00:00"
+         },
+         {
+             "name": "jdorn/sql-formatter",
+@@ -5254,6 +5254,57 @@
+             "abandoned": true,
              "time": "2018-07-27T15:41:37+00:00"
          },
 +        {
@@ -81,7 +106,7 @@ index 56a2a6d..5c9ffd1 100644
          {
              "name": "symfony/debug-bundle",
              "version": "v4.1.4",
-@@ -5404,6 +5455,71 @@
+@@ -5406,6 +5457,71 @@
              ],
              "time": "2018-07-26T11:24:31+00:00"
          },
@@ -154,7 +179,7 @@ index 56a2a6d..5c9ffd1 100644
              "name": "symfony/phpunit-bridge",
              "version": "v4.1.4",
 diff --git a/config/bundles.php b/config/bundles.php
-index 0ee330c..ff7a559 100644
+index 0ee330c5e..ff7a55951 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -16,4 +16,5 @@ return [
@@ -163,3 +188,33 @@ index 0ee330c..ff7a559 100644
      Symfony\Bundle\WebServerBundle\WebServerBundle::class => ['dev' => true],
 +    Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true, 'test' => true],
  ];
+diff --git a/symfony.lock b/symfony.lock
+index 98de609dd..ebbfe33a6 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -101,6 +101,9 @@
+     "monolog/monolog": {
+         "version": "1.23.0"
+     },
++    "nikic/php-parser": {
++        "version": "v4.0.2"
++    },
+     "ocramius/proxy-manager": {
+         "version": "2.1.1"
+     },
+@@ -230,6 +233,15 @@
+     "symfony/lts": {
+         "version": "4-dev"
+     },
++    "symfony/maker-bundle": {
++        "version": "1.0",
++        "recipe": {
++            "repo": "github.com/symfony/recipes",
++            "branch": "master",
++            "version": "1.0",
++            "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
++        }
++    },
+     "symfony/monolog-bridge": {
+         "version": "v4.0.4"
+     },

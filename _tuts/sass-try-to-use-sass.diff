@@ -2,7 +2,7 @@ diff --git a/assets/css/main.css b/assets/css/main.scss
 similarity index 91%
 rename from assets/css/main.css
 rename to assets/css/main.scss
-index c1c072b..977dd99 100644
+index c1c072b18..977dd9959 100644
 --- a/assets/css/main.css
 +++ b/assets/css/main.scss
 @@ -24,12 +24,11 @@ footer.footer {
@@ -24,7 +24,7 @@ index c1c072b..977dd99 100644
  
  /*INDEX*/
 diff --git a/assets/js/layout.js b/assets/js/layout.js
-index 40529ae..0cc3a1a 100644
+index 40529aef7..0cc3a1acb 100644
 --- a/assets/js/layout.js
 +++ b/assets/js/layout.js
 @@ -4,7 +4,7 @@ const $ = require('jquery');

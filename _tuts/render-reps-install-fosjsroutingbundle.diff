@@ -1,5 +1,5 @@
 diff --git a/app/AppKernel.php b/app/AppKernel.php
-index c1756e1..cee04bd 100644
+index c1756e1bc..cee04bd3d 100644
 --- a/app/AppKernel.php
 +++ b/app/AppKernel.php
 @@ -19,6 +19,7 @@ class AppKernel extends Kernel
@@ -11,7 +11,7 @@ index c1756e1..cee04bd 100644
              new AppBundle\AppBundle(),
          ];
 diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
-index e94e1f9..f1eaafb 100644
+index e94e1f960..f1eaafb0d 100644
 --- a/app/Resources/views/base.html.twig
 +++ b/app/Resources/views/base.html.twig
 @@ -92,6 +92,8 @@
@@ -24,7 +24,7 @@ index e94e1f9..f1eaafb 100644
  
  </body>
 diff --git a/app/config/routing.yml b/app/config/routing.yml
-index d8a07cb..aed8f22 100644
+index d8a07cb3c..aed8f228f 100644
 --- a/app/config/routing.yml
 +++ b/app/config/routing.yml
 @@ -10,3 +10,6 @@ fos_user_security:
@@ -35,10 +35,10 @@ index d8a07cb..aed8f22 100644
 +fos_js_routing:
 +    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 diff --git a/composer.json b/composer.json
-index 119b9be..59778e0 100644
+index 7c85ba50d..3069217be 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -30,7 +30,8 @@
+@@ -31,7 +31,8 @@
          "incenteev/composer-parameter-handler": "^2.0",
          "friendsofsymfony/user-bundle": "~2.0@dev",
          "doctrine/doctrine-fixtures-bundle": "~2.3",
@@ -49,15 +49,15 @@ index 119b9be..59778e0 100644
      "require-dev": {
          "sensio/generator-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index 4c68000..dbb9722 100644
+index 1912fe4ea..086fc9dfb 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "0401723570fd53ac57b8e1c19fade918",
-+    "content-hash": "bc60b4b28f505533b5875aa24d2d784a",
+-    "content-hash": "3c0b2d9e8af08e94475fa6a5b9e148ad",
++    "content-hash": "e1463bf8398baa8f1dffbff0ad8016f4",
      "packages": [
          {
              "name": "doctrine/annotations",
@@ -110,7 +110,7 @@ index 4c68000..dbb9722 100644
 +                    "homepage": "https://github.com/friendsofsymfony/FOSJsRoutingBundle/contributors"
 +                },
 +                {
-+                    "name": "William Durand",
++                    "name": "William DURAND",
 +                    "email": "william.durand1@gmail.com"
 +                }
 +            ],
@@ -126,9 +126,9 @@ index 4c68000..dbb9722 100644
          {
              "name": "friendsofsymfony/user-bundle",
              "version": "dev-master",
-@@ -2712,6 +2770,46 @@
+@@ -2775,6 +2833,46 @@
              ],
-             "time": "2016-10-25T19:17:17+00:00"
+             "time": "2019-05-14T12:03:52+00:00"
          },
 +        {
 +            "name": "willdurand/jsonp-callback-validator",
@@ -174,7 +174,7 @@ index 4c68000..dbb9722 100644
              "name": "zendframework/zend-code",
              "version": "3.4.1",
 diff --git a/src/AppBundle/Controller/RepLogController.php b/src/AppBundle/Controller/RepLogController.php
-index c1335f9..44cc485 100644
+index c1335f995..44cc485d5 100644
 --- a/src/AppBundle/Controller/RepLogController.php
 +++ b/src/AppBundle/Controller/RepLogController.php
 @@ -14,7 +14,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -187,7 +187,7 @@ index c1335f9..44cc485 100644
       */
      public function getRepLogsAction()
 diff --git a/web/assets/js/RepLogApp.js b/web/assets/js/RepLogApp.js
-index 6a3ef10..a9d1c8b 100644
+index 6a3ef1069..a9d1c8bca 100644
 --- a/web/assets/js/RepLogApp.js
 +++ b/web/assets/js/RepLogApp.js
 @@ -1,10 +1,12 @@

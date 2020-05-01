@@ -1,5 +1,5 @@
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 5250b8a..3526e28 100644
+index 5250b8af3..3526e289e 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -98,6 +98,7 @@
@@ -11,7 +11,7 @@ index 5250b8a..3526e28 100644
  {% endblock %}
  
 diff --git a/webpack.config.js b/webpack.config.js
-index f72261f..0924ae8 100644
+index f72261f94..0924ae8b3 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -8,9 +8,9 @@ Encore

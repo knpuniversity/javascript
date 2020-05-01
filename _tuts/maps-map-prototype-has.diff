@@ -1,5 +1,5 @@
 diff --git a/play.js b/play.js
-index e41439b..1bff962 100644
+index e41439b64..1bff962c8 100644
 --- a/play.js
 +++ b/play.js
 @@ -3,4 +3,7 @@ foods.set('italian', 'gelato');

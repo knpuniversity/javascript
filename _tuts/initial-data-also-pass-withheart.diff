@@ -1,5 +1,5 @@
 diff --git a/assets/js/rep_log_react.js b/assets/js/rep_log_react.js
-index a931b42..6e043f3 100644
+index a931b42ea..6e043f3ac 100644
 --- a/assets/js/rep_log_react.js
 +++ b/assets/js/rep_log_react.js
 @@ -2,7 +2,7 @@ import React from 'react';
@@ -12,7 +12,7 @@ index a931b42..6e043f3 100644
  render(
      <RepLogApp
 diff --git a/templates/lift/index.html.twig b/templates/lift/index.html.twig
-index d31e058..eddda19 100644
+index d31e05817..eddda19d4 100644
 --- a/templates/lift/index.html.twig
 +++ b/templates/lift/index.html.twig
 @@ -72,7 +72,8 @@

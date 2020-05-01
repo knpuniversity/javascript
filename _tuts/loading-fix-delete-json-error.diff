@@ -1,5 +1,5 @@
 diff --git a/assets/js/api/rep_log_api.js b/assets/js/api/rep_log_api.js
-index 4372828..b92e8e3 100644
+index 43728282b..b92e8e3c5 100644
 --- a/assets/js/api/rep_log_api.js
 +++ b/assets/js/api/rep_log_api.js
 @@ -3,7 +3,9 @@ function fetchJson(url, options) {

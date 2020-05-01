@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 63b745c..1f23abd 100644
+index 63b745cad..1f23abd9b 100644
 --- a/package.json
 +++ b/package.json
 @@ -5,6 +5,8 @@
@@ -12,7 +12,7 @@ index 63b745c..1f23abd 100644
      "webpack-notifier": "^1.5.1"
    }
 diff --git a/webpack.config.js b/webpack.config.js
-index 8370001..0cb810e 100644
+index 837000133..0cb810e36 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -20,6 +20,8 @@ Encore
@@ -25,7 +25,7 @@ index 8370001..0cb810e 100644
  
  // export the final configuration
 diff --git a/yarn.lock b/yarn.lock
-index 9f14456..fec266e 100644
+index 9f14456d8..fec266ec8 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -98,7 +98,7 @@ ajv@^4.9.1:
