@@ -112,8 +112,8 @@ available to the outside world - like `RepLogApp` - and which I *don't*, like `H
 The way you do that is with - dun dun dun - an *immediately invoked function
 expression*. Also known by its friends as a *self-executing function*. Basically, that
 means we'll wrap all of our code inside a function... that calls itself. It's weird,
-but check it out: `(function() {`, then indent everything. At the bottom, add the
-`})` and then `()`:
+but check it out: `open parenthesis, function, open parenthesis, close parenthesis, open curly brace`, then indent everything. At the bottom, add the
+`closing curly, closing parenthesis` and then `()`:
 
 [[[ code('356902578e') ]]]
 
