@@ -72,7 +72,7 @@ check the console. Got it! There is our todo.
 
 *Now* for the fun part! Go back to `RepLogApp`. Inside the handler, we need to
 remove *one* of the `repLog` objects from the `repLogs` state. But... we do *not*
-want to *modify* the state. So, the question is: how can we *remove* in item from
+want to *modify* the state. So, the question is: how can we *remove* an item from
 an array without *changing* that array?
 
 Here's one great way: call `this.setState()` and pass it the key we want to set:
