@@ -23,7 +23,7 @@ Then, down below, when `fetch()` finishes, set `isLoaded` to `true`!
 [[[ code('3da50dd71b') ]]]
 
 State, done! And thanks to how we're rendering `RepLogs`, this state is automatically
-pass as a prop. And *now* we start the prop-passing dance! In `RepLogs`, add the
+passed as a prop. And *now* we start the prop-passing dance! In `RepLogs`, add the
 new prop type at the bottom: `PropTypes.bool.isRequired`. Oh, and you've probably
 noticed that I like to make pretty much *everything* required. That's a personal
 preference. Because this is *my* app, if I forget to pass a prop, it's probably a
