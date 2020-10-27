@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 3069217be..002f24e56 100644
+index 17cd69cf4..02853eee2 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -18,7 +18,7 @@
@@ -12,19 +12,19 @@ index 3069217be..002f24e56 100644
          "doctrine/orm": "^2.5",
          "doctrine/doctrine-bundle": "^1.6",
 diff --git a/composer.lock b/composer.lock
-index 6140f1931..0d63d15da 100644
+index 6561e3c91..514e2f122 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "e1463bf8398baa8f1dffbff0ad8016f4",
-+    "content-hash": "e3357ffdc01453845395dc1a4535b7d3",
+-    "content-hash": "d6955a788dafc04dfc618240ad9276c2",
++    "content-hash": "598f6b4cbe887e621892aac7a5b602c1",
      "packages": [
          {
-             "name": "doctrine/annotations",
-@@ -1400,12 +1400,12 @@
+             "name": "composer/package-versions-deprecated",
+@@ -1473,12 +1473,12 @@
              "source": {
                  "type": "git",
                  "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
@@ -40,7 +40,7 @@ index 6140f1931..0d63d15da 100644
                  "shasum": ""
              },
              "require": {
-@@ -1468,7 +1468,7 @@
+@@ -1541,7 +1541,7 @@
              "keywords": [
                  "User management"
              ],
@@ -49,7 +49,7 @@ index 6140f1931..0d63d15da 100644
          },
          {
              "name": "incenteev/composer-parameter-handler",
-@@ -1573,16 +1573,16 @@
+@@ -1646,16 +1646,16 @@
          },
          {
              "name": "monolog/monolog",
@@ -70,7 +70,7 @@ index 6140f1931..0d63d15da 100644
                  "shasum": ""
              },
              "require": {
-@@ -1593,7 +1593,7 @@
+@@ -1666,7 +1666,7 @@
                  "psr/log-implementation": "1.0.0"
              },
              "require-dev": {
@@ -79,7 +79,7 @@ index 6140f1931..0d63d15da 100644
                  "doctrine/couchdb": "~1.0@dev",
                  "graylog2/gelf-php": "~1.0",
                  "jakub-onderka/php-parallel-lint": "0.9",
-@@ -1647,7 +1647,7 @@
+@@ -1720,7 +1720,7 @@
                  "logging",
                  "psr-3"
              ],
@@ -87,8 +87,8 @@ index 6140f1931..0d63d15da 100644
 +            "time": "2016-11-26T00:15:39+00:00"
          },
          {
-             "name": "ocramius/package-versions",
-@@ -1964,16 +1964,16 @@
+             "name": "ocramius/proxy-manager",
+@@ -1987,16 +1987,16 @@
          },
          {
              "name": "sensio/framework-extra-bundle",
@@ -109,7 +109,7 @@ index 6140f1931..0d63d15da 100644
                  "shasum": ""
              },
              "require": {
-@@ -1982,14 +1982,20 @@
+@@ -2005,14 +2005,20 @@
                  "symfony/framework-bundle": "~2.3|~3.0"
              },
              "require-dev": {
@@ -132,7 +132,7 @@ index 6140f1931..0d63d15da 100644
              },
              "suggest": {
                  "symfony/expression-language": "",
-@@ -2022,7 +2028,7 @@
+@@ -2045,7 +2051,7 @@
                  "annotations",
                  "controllers"
              ],
@@ -141,7 +141,7 @@ index 6140f1931..0d63d15da 100644
          },
          {
              "name": "sensiolabs/security-checker",
-@@ -2070,23 +2076,24 @@
+@@ -2093,23 +2099,24 @@
          },
          {
              "name": "swiftmailer/swiftmailer",
@@ -171,7 +171,7 @@ index 6140f1931..0d63d15da 100644
              },
              "type": "library",
              "extra": {
-@@ -2119,20 +2126,20 @@
+@@ -2142,20 +2149,20 @@
                  "mail",
                  "mailer"
              ],
@@ -197,7 +197,7 @@ index 6140f1931..0d63d15da 100644
                  "shasum": ""
              },
              "require": {
-@@ -2179,20 +2186,20 @@
+@@ -2202,20 +2209,20 @@
                  "log",
                  "logging"
              ],
@@ -223,7 +223,7 @@ index 6140f1931..0d63d15da 100644
                  "shasum": ""
              },
              "require": {
-@@ -2201,7 +2208,7 @@
+@@ -2224,7 +2231,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -232,7 +232,7 @@ index 6140f1931..0d63d15da 100644
                  }
              },
              "autoload": {
-@@ -2232,7 +2239,7 @@
+@@ -2255,7 +2262,7 @@
                  "portable",
                  "shim"
              ],
@@ -241,7 +241,7 @@ index 6140f1931..0d63d15da 100644
          },
          {
              "name": "symfony/polyfill-ctype",
-@@ -2578,16 +2585,16 @@
+@@ -2601,16 +2608,16 @@
          },
          {
              "name": "symfony/swiftmailer-bundle",
@@ -262,7 +262,7 @@ index 6140f1931..0d63d15da 100644
                  "shasum": ""
              },
              "require": {
-@@ -2633,24 +2640,25 @@
+@@ -2656,24 +2663,25 @@
              ],
              "description": "Symfony SwiftmailerBundle",
              "homepage": "http://symfony.com",
@@ -293,7 +293,7 @@ index 6140f1931..0d63d15da 100644
                  "php": ">=5.5.9",
                  "psr/cache": "~1.0",
                  "psr/log": "~1.0",
-@@ -2659,11 +2667,12 @@
+@@ -2682,11 +2690,12 @@
                  "symfony/polyfill-php56": "~1.0",
                  "symfony/polyfill-php70": "~1.0",
                  "symfony/polyfill-util": "~1.0",
@@ -309,7 +309,7 @@ index 6140f1931..0d63d15da 100644
              },
              "provide": {
                  "psr/cache-implementation": "1.0"
-@@ -2714,6 +2723,7 @@
+@@ -2737,6 +2746,7 @@
                  "symfony/validator": "self.version",
                  "symfony/var-dumper": "self.version",
                  "symfony/web-profiler-bundle": "self.version",
@@ -317,7 +317,7 @@ index 6140f1931..0d63d15da 100644
                  "symfony/yaml": "self.version"
              },
              "require-dev": {
-@@ -2723,7 +2733,7 @@
+@@ -2746,7 +2756,7 @@
                  "doctrine/dbal": "~2.4",
                  "doctrine/doctrine-bundle": "~1.4",
                  "doctrine/orm": "~2.4,>=2.4.5",
@@ -326,7 +326,7 @@ index 6140f1931..0d63d15da 100644
                  "monolog/monolog": "~1.11",
                  "ocramius/proxy-manager": "~0.4|~1.0|~2.0",
                  "phpdocumentor/reflection-docblock": "^3.0",
-@@ -2736,7 +2746,7 @@
+@@ -2759,7 +2769,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -335,7 +335,7 @@ index 6140f1931..0d63d15da 100644
                  }
              },
              "autoload": {
-@@ -2744,7 +2754,6 @@
+@@ -2767,7 +2777,6 @@
                      "Symfony\\Bridge\\Doctrine\\": "src/Symfony/Bridge/Doctrine/",
                      "Symfony\\Bridge\\Monolog\\": "src/Symfony/Bridge/Monolog/",
                      "Symfony\\Bridge\\ProxyManager\\": "src/Symfony/Bridge/ProxyManager/",
@@ -343,7 +343,7 @@ index 6140f1931..0d63d15da 100644
                      "Symfony\\Bridge\\Twig\\": "src/Symfony/Bridge/Twig/",
                      "Symfony\\Bundle\\": "src/Symfony/Bundle/",
                      "Symfony\\Component\\": "src/Symfony/Component/"
-@@ -2775,7 +2784,7 @@
+@@ -2798,7 +2807,7 @@
              "keywords": [
                  "framework"
              ],
@@ -352,7 +352,7 @@ index 6140f1931..0d63d15da 100644
          },
          {
              "name": "twig/twig",
-@@ -2944,26 +2953,26 @@
+@@ -2967,26 +2976,26 @@
          },
          {
              "name": "zendframework/zend-eventmanager",
@@ -386,7 +386,7 @@ index 6140f1931..0d63d15da 100644
                  "zendframework/zend-stdlib": "^2.7.3 || ^3.0"
              },
              "suggest": {
-@@ -2973,8 +2982,8 @@
+@@ -2996,8 +3005,8 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -397,7 +397,7 @@ index 6140f1931..0d63d15da 100644
                  }
              },
              "autoload": {
-@@ -2995,34 +3004,34 @@
+@@ -3018,34 +3027,34 @@
                  "zf2"
              ],
              "abandoned": "laminas/laminas-eventmanager",
@@ -440,7 +440,7 @@ index 6140f1931..0d63d15da 100644
              },
              "type": "symfony-bundle",
              "extra": {
-@@ -3050,20 +3059,20 @@
+@@ -3073,20 +3082,20 @@
              ],
              "description": "This bundle generates code for you",
              "abandoned": "symfony/maker-bundle",
@@ -466,7 +466,7 @@ index 6140f1931..0d63d15da 100644
                  "shasum": ""
              },
              "require": {
-@@ -3072,10 +3081,13 @@
+@@ -3095,10 +3104,13 @@
              "suggest": {
                  "symfony/debug": "For tracking deprecated interfaces usages at runtime with DebugClassLoader"
              },
@@ -481,7 +481,7 @@ index 6140f1931..0d63d15da 100644
                  }
              },
              "autoload": {
-@@ -3105,7 +3117,7 @@
+@@ -3128,7 +3140,7 @@
              ],
              "description": "Symfony PHPUnit Bridge",
              "homepage": "https://symfony.com",
