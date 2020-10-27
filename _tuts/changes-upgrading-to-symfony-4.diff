@@ -511,10 +511,10 @@ index 000000000..75d5be85a
 +
 +require dirname(__DIR__).'/vendor/symfony/phpunit-bridge/bin/simple-phpunit';
 diff --git a/composer.json b/composer.json
-index 3f08d5c11..e87b07bcd 100644
+index 36e5a02db..3517315eb 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -4,71 +4,80 @@
+@@ -4,72 +4,81 @@
      "type": "project",
      "autoload": {
          "psr-4": {
@@ -539,6 +539,7 @@ index 3f08d5c11..e87b07bcd 100644
 -        "twig/twig": "2.10.*",
 -        "doctrine/orm": "^2.5",
 +        "ext-iconv": "*",
++        "composer/package-versions-deprecated": "^1.11",
          "doctrine/doctrine-bundle": "^1.6",
          "doctrine/doctrine-cache-bundle": "^1.2",
 -        "symfony/swiftmailer-bundle": "^2.3",
@@ -551,7 +552,8 @@ index 3f08d5c11..e87b07bcd 100644
 -        "doctrine/doctrine-fixtures-bundle": "~2.3",
 +        "doctrine/doctrine-fixtures-bundle": "~3.0",
          "doctrine/doctrine-migrations-bundle": "^1.2",
--        "friendsofsymfony/jsrouting-bundle": "^1.6"
+-        "friendsofsymfony/jsrouting-bundle": "^1.6",
+-        "composer/package-versions-deprecated": "^1.11"
 +        "doctrine/orm": "^2.5",
 +        "friendsofsymfony/jsrouting-bundle": "^2.2",
 +        "friendsofsymfony/user-bundle": "dev-master",
@@ -641,15 +643,15 @@ index 3f08d5c11..e87b07bcd 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index c7e0e436c..b9d303fff 100644
+index b2e1c5d93..fc5b5ebd7 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,67 +4,8 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "7a031f90f9882d46c32c6135cd896be7",
-+    "content-hash": "eda578f9c785899bb785c9500ded1040",
+-    "content-hash": "d784641fcaee6947c6af8f10511b17b3",
++    "content-hash": "df07fb06083fb9b7e3fc09d7edd44845",
      "packages": [
 -        {
 -            "name": "composer/ca-bundle",
@@ -711,9 +713,9 @@ index c7e0e436c..b9d303fff 100644
 -            "time": "2017-03-06T11:59:08+00:00"
 -        },
          {
-             "name": "doctrine/annotations",
-             "version": "v1.8.0",
-@@ -370,31 +311,29 @@
+             "name": "composer/package-versions-deprecated",
+             "version": "1.11.99",
+@@ -443,31 +384,29 @@
          },
          {
              "name": "doctrine/data-fixtures",
@@ -752,7 +754,7 @@ index c7e0e436c..b9d303fff 100644
                  "doctrine/mongodb-odm": "For loading MongoDB ODM fixtures",
                  "doctrine/orm": "For loading ORM fixtures",
                  "doctrine/phpcr-odm": "For loading PHPCR ODM fixtures"
-@@ -406,8 +345,8 @@
+@@ -479,8 +418,8 @@
                  }
              },
              "autoload": {
@@ -763,7 +765,7 @@ index c7e0e436c..b9d303fff 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -425,7 +364,7 @@
+@@ -498,7 +437,7 @@
              "keywords": [
                  "database"
              ],
@@ -772,7 +774,7 @@ index c7e0e436c..b9d303fff 100644
          },
          {
              "name": "doctrine/dbal",
-@@ -521,37 +460,41 @@
+@@ -594,37 +533,41 @@
          },
          {
              "name": "doctrine/doctrine-bundle",
@@ -823,7 +825,7 @@ index c7e0e436c..b9d303fff 100644
              },
              "suggest": {
                  "doctrine/orm": "The Doctrine ORM integration is optional in the bundle.",
-@@ -560,7 +503,7 @@
+@@ -633,7 +576,7 @@
              "type": "symfony-bundle",
              "extra": {
                  "branch-alias": {
@@ -832,7 +834,7 @@ index c7e0e436c..b9d303fff 100644
                  }
              },
              "autoload": {
-@@ -598,27 +541,27 @@
+@@ -671,27 +614,27 @@
                  "orm",
                  "persistence"
              ],
@@ -866,7 +868,7 @@ index c7e0e436c..b9d303fff 100644
              },
              "require-dev": {
                  "instaclick/coding-standard": "~1.1",
-@@ -626,15 +569,15 @@
+@@ -699,15 +642,15 @@
                  "instaclick/symfony2-coding-standard": "dev-remaster",
                  "phpunit/phpunit": "~4",
                  "predis/predis": "~0.8",
@@ -889,7 +891,7 @@ index c7e0e436c..b9d303fff 100644
              },
              "suggest": {
                  "symfony/security-acl": "For using this bundle to cache ACLs"
-@@ -642,7 +585,7 @@
+@@ -715,7 +658,7 @@
              "type": "symfony-bundle",
              "extra": {
                  "branch-alias": {
@@ -898,7 +900,7 @@ index c7e0e436c..b9d303fff 100644
                  }
              },
              "autoload": {
-@@ -686,32 +629,36 @@
+@@ -759,32 +702,36 @@
                  "cache",
                  "caching"
              ],
@@ -943,7 +945,7 @@ index c7e0e436c..b9d303fff 100644
                  }
              },
              "autoload": {
-@@ -743,35 +690,35 @@
+@@ -816,35 +763,35 @@
                  "Fixture",
                  "persistence"
              ],
@@ -987,7 +989,7 @@ index c7e0e436c..b9d303fff 100644
                  }
              },
              "autoload": {
-@@ -804,7 +751,7 @@
+@@ -877,7 +824,7 @@
                  "migrations",
                  "schema"
              ],
@@ -996,7 +998,7 @@ index c7e0e436c..b9d303fff 100644
          },
          {
              "name": "doctrine/event-manager",
-@@ -1069,34 +1016,32 @@
+@@ -1142,34 +1089,32 @@
          },
          {
              "name": "doctrine/migrations",
@@ -1043,7 +1045,7 @@ index c7e0e436c..b9d303fff 100644
              },
              "suggest": {
                  "jdorn/sql-formatter": "Allows to generate formatted SQL with the diff command."
-@@ -1139,7 +1084,7 @@
+@@ -1212,7 +1157,7 @@
                  "database",
                  "migrations"
              ],
@@ -1052,7 +1054,7 @@ index c7e0e436c..b9d303fff 100644
          },
          {
              "name": "doctrine/orm",
-@@ -1387,36 +1332,40 @@
+@@ -1460,36 +1405,40 @@
              "time": "2020-03-27T11:06:43+00:00"
          },
          {
@@ -1105,7 +1107,7 @@ index c7e0e436c..b9d303fff 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -1425,49 +1374,49 @@
+@@ -1498,49 +1447,49 @@
              ],
              "authors": [
                  {
@@ -1175,7 +1177,7 @@ index c7e0e436c..b9d303fff 100644
                  }
              },
              "autoload": {
-@@ -1485,8 +1434,8 @@
+@@ -1558,8 +1507,8 @@
                      "homepage": "https://github.com/friendsofsymfony/FOSJsRoutingBundle/contributors"
                  },
                  {
@@ -1186,7 +1188,7 @@ index c7e0e436c..b9d303fff 100644
                  }
              ],
              "description": "A pretty nice way to expose your Symfony2 routing to client applications.",
-@@ -1496,20 +1445,20 @@
+@@ -1569,20 +1518,20 @@
                  "javascript",
                  "routing"
              ],
@@ -1212,7 +1214,7 @@ index c7e0e436c..b9d303fff 100644
                  "shasum": ""
              },
              "require": {
-@@ -1572,58 +1521,7 @@
+@@ -1645,58 +1594,7 @@
              "keywords": [
                  "User management"
              ],
@@ -1272,7 +1274,7 @@ index c7e0e436c..b9d303fff 100644
          },
          {
              "name": "jdorn/sql-formatter",
-@@ -1875,16 +1773,16 @@
+@@ -1898,16 +1796,16 @@
          },
          {
              "name": "paragonie/random_compat",
@@ -1293,7 +1295,7 @@ index c7e0e436c..b9d303fff 100644
                  "shasum": ""
              },
              "require": {
-@@ -1919,24 +1817,27 @@
+@@ -1942,24 +1840,27 @@
                  "pseudorandom",
                  "random"
              ],
@@ -1328,7 +1330,7 @@ index c7e0e436c..b9d303fff 100644
              },
              "type": "library",
              "extra": {
-@@ -1946,7 +1847,9 @@
+@@ -1969,7 +1870,9 @@
              },
              "autoload": {
                  "psr-4": {
@@ -1339,7 +1341,7 @@ index c7e0e436c..b9d303fff 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -1955,30 +1858,131 @@
+@@ -1978,30 +1881,131 @@
              ],
              "authors": [
                  {
@@ -1484,7 +1486,7 @@ index c7e0e436c..b9d303fff 100644
                  "shasum": ""
              },
              "require": {
-@@ -1992,7 +1996,7 @@
+@@ -2015,7 +2019,7 @@
              },
              "autoload": {
                  "psr-4": {
@@ -1493,7 +1495,7 @@ index c7e0e436c..b9d303fff 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -2005,29 +2009,26 @@
+@@ -2028,29 +2032,26 @@
                      "homepage": "http://www.php-fig.org/"
                  }
              ],
@@ -1533,7 +1535,7 @@ index c7e0e436c..b9d303fff 100644
                  "shasum": ""
              },
              "require": {
-@@ -2041,7 +2042,7 @@
+@@ -2064,7 +2065,7 @@
              },
              "autoload": {
                  "psr-4": {
@@ -1542,7 +1544,7 @@ index c7e0e436c..b9d303fff 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -2054,16 +2055,16 @@
+@@ -2077,16 +2078,16 @@
                      "homepage": "http://www.php-fig.org/"
                  }
              ],
@@ -1567,7 +1569,7 @@ index c7e0e436c..b9d303fff 100644
          },
          {
              "name": "psr/log",
-@@ -2161,38 +2162,55 @@
+@@ -2184,38 +2185,55 @@
              "time": "2017-01-02T13:31:39+00:00"
          },
          {
@@ -1639,7 +1641,7 @@ index c7e0e436c..b9d303fff 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -2205,104 +2223,92 @@
+@@ -2228,104 +2246,92 @@
                      "email": "fabien@symfony.com"
                  }
              ],
@@ -1786,7 +1788,7 @@ index c7e0e436c..b9d303fff 100644
              "type": "library",
              "extra": {
                  "branch-alias": {
-@@ -2310,9 +2316,12 @@
+@@ -2333,9 +2339,12 @@
                  }
              },
              "autoload": {
@@ -1802,7 +1804,7 @@ index c7e0e436c..b9d303fff 100644
              },
              "notification-url": "https://packagist.org/downloads/",
              "license": [
-@@ -2321,42 +2330,62 @@
+@@ -2344,42 +2353,62 @@
              "authors": [
                  {
                      "name": "Fabien Potencier",
@@ -1880,7 +1882,7 @@ index c7e0e436c..b9d303fff 100644
                  ]
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -2365,108 +2394,130 @@
+@@ -2388,108 +2417,130 @@
              ],
              "authors": [
                  {
@@ -2060,7 +2062,7 @@ index c7e0e436c..b9d303fff 100644
                  ]
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -2475,57 +2526,54 @@
+@@ -2498,57 +2549,54 @@
              ],
              "authors": [
                  {
@@ -2139,7 +2141,7 @@ index c7e0e436c..b9d303fff 100644
                  ]
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -2534,54 +2582,69 @@
+@@ -2557,54 +2605,69 @@
              ],
              "authors": [
                  {
@@ -2231,7 +2233,7 @@ index c7e0e436c..b9d303fff 100644
                  ]
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -2590,58 +2653,77 @@
+@@ -2613,58 +2676,77 @@
              ],
              "authors": [
                  {
@@ -2334,7 +2336,7 @@ index c7e0e436c..b9d303fff 100644
                  ]
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -2650,55 +2732,61 @@
+@@ -2673,55 +2755,61 @@
              ],
              "authors": [
                  {
@@ -2419,7 +2421,7 @@ index c7e0e436c..b9d303fff 100644
                  ]
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -2707,57 +2795,47 @@
+@@ -2730,57 +2818,47 @@
              ],
              "authors": [
                  {
@@ -2492,7 +2494,7 @@ index c7e0e436c..b9d303fff 100644
                  ]
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -2766,51 +2844,48 @@
+@@ -2789,51 +2867,48 @@
              ],
              "authors": [
                  {
@@ -2561,7 +2563,7 @@ index c7e0e436c..b9d303fff 100644
              },
              "notification-url": "https://packagist.org/downloads/",
              "license": [
-@@ -2818,63 +2893,52 @@
+@@ -2841,63 +2916,52 @@
              ],
              "authors": [
                  {
@@ -2591,20 +2593,20 @@ index c7e0e436c..b9d303fff 100644
 -            "name": "symfony/swiftmailer-bundle",
 -            "version": "v2.6.3",
 +            "name": "symfony/flex",
-+            "version": "v1.6.2",
++            "version": "v1.9.10",
              "source": {
                  "type": "git",
 -                "url": "https://github.com/symfony/swiftmailer-bundle.git",
 -                "reference": "11555c338f3c367b0a1bd2f024a53aa813f4ce00"
 +                "url": "https://github.com/symfony/flex.git",
-+                "reference": "e4f5a2653ca503782a31486198bd1dd1c9a47f83"
++                "reference": "7335ec033995aa34133e621627333368f260b626"
              },
              "dist": {
                  "type": "zip",
 -                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/11555c338f3c367b0a1bd2f024a53aa813f4ce00",
 -                "reference": "11555c338f3c367b0a1bd2f024a53aa813f4ce00",
-+                "url": "https://api.github.com/repos/symfony/flex/zipball/e4f5a2653ca503782a31486198bd1dd1c9a47f83",
-+                "reference": "e4f5a2653ca503782a31486198bd1dd1c9a47f83",
++                "url": "https://api.github.com/repos/symfony/flex/zipball/7335ec033995aa34133e621627333368f260b626",
++                "reference": "7335ec033995aa34133e621627333368f260b626",
                  "shasum": ""
              },
              "require": {
@@ -2613,18 +2615,18 @@ index c7e0e436c..b9d303fff 100644
 -                "symfony/config": "~2.7|~3.0",
 -                "symfony/dependency-injection": "~2.7|~3.0",
 -                "symfony/http-kernel": "~2.7|~3.0"
-+                "composer-plugin-api": "^1.0",
-+                "php": "^7.0"
++                "composer-plugin-api": "^1.0|^2.0",
++                "php": ">=7.1"
              },
              "require-dev": {
 -                "symfony/console": "~2.7|~3.0",
 -                "symfony/framework-bundle": "~2.7|~3.0",
 -                "symfony/phpunit-bridge": "~3.3@dev",
 -                "symfony/yaml": "~2.7|~3.0"
-+                "composer/composer": "^1.0.2",
-+                "symfony/dotenv": "^3.4|^4.0|^5.0",
-+                "symfony/phpunit-bridge": "^3.4.19|^4.1.8|^5.0",
-+                "symfony/process": "^2.7|^3.0|^4.0|^5.0"
++                "composer/composer": "^1.0.2|^2.0",
++                "symfony/dotenv": "^4.4|^5.0",
++                "symfony/phpunit-bridge": "^4.4|^5.0",
++                "symfony/process": "^3.4|^4.4|^5.0"
              },
 -            "suggest": {
 -                "psr/log": "Allows logging"
@@ -2635,7 +2637,7 @@ index c7e0e436c..b9d303fff 100644
                  "branch-alias": {
 -                    "dev-master": "2.6-dev"
 -                }
-+                    "dev-master": "1.5-dev"
++                    "dev-main": "1.9-dev"
 +                },
 +                "class": "Symfony\\Flex\\Flex"
              },
@@ -2646,25 +2648,41 @@ index c7e0e436c..b9d303fff 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -2882,149 +2946,74 @@
-                 "MIT"
+@@ -2906,148 +2970,91 @@
              ],
              "authors": [
--                {
+                 {
 -                    "name": "Symfony Community",
 -                    "homepage": "http://symfony.com/contributors"
--                },
-                 {
-                     "name": "Fabien Potencier",
--                    "email": "fabien@symfony.com"
++                    "name": "Fabien Potencier",
 +                    "email": "fabien.potencier@gmail.com"
++                }
++            ],
++            "description": "Composer plugin for Symfony",
++            "support": {
++                "issues": "https://github.com/symfony/flex/issues",
++                "source": "https://github.com/symfony/flex/tree/v1.9.10"
++            },
++            "funding": [
++                {
++                    "url": "https://symfony.com/sponsor",
++                    "type": "custom"
+                 },
+                 {
+-                    "name": "Fabien Potencier",
+-                    "email": "fabien@symfony.com"
++                    "url": "https://github.com/fabpot",
++                    "type": "github"
++                },
++                {
++                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
++                    "type": "tidelift"
                  }
              ],
 -            "description": "Symfony SwiftmailerBundle",
 -            "homepage": "http://symfony.com",
 -            "time": "2017-07-22T07:18:13+00:00"
-+            "description": "Composer plugin for Symfony",
-+            "time": "2020-01-30T12:06:45+00:00"
++            "time": "2020-10-14T17:41:54+00:00"
          },
          {
 -            "name": "symfony/symfony",
@@ -2835,7 +2853,7 @@ index c7e0e436c..b9d303fff 100644
                  ]
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -3041,211 +3030,2128 @@
+@@ -3064,271 +3071,2580 @@
                      "homepage": "https://symfony.com/contributors"
                  }
              ],
@@ -3205,24 +3223,15 @@ index c7e0e436c..b9d303fff 100644
              },
              "require": {
 -                "php": "^5.6 || ^7.0"
--            },
++                "php": "^7.1.3"
+             },
 -            "require-dev": {
 -                "athletic/athletic": "^0.1",
 -                "container-interop/container-interop": "^1.1.0",
 -                "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1.2",
--                "zendframework/zend-coding-standard": "~1.0.0",
--                "zendframework/zend-stdlib": "^2.7.3 || ^3.0"
--            },
--            "suggest": {
--                "container-interop/container-interop": "^1.1.0, to use the lazy listeners feature",
--                "zendframework/zend-stdlib": "^2.7.3 || ^3.0, to use the FilterChain feature"
-+                "php": "^7.1.3"
-             },
-             "type": "library",
-             "extra": {
-                 "branch-alias": {
--                    "dev-master": "3.2-dev",
--                    "dev-develop": "3.3-dev"
++            "type": "library",
++            "extra": {
++                "branch-alias": {
 +                    "dev-master": "4.0-dev"
 +                }
 +            },
@@ -5056,9 +5065,12 @@ index c7e0e436c..b9d303fff 100644
 +                "athletic/athletic": "^0.1",
 +                "container-interop/container-interop": "^1.1.0",
 +                "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1.2",
-+                "zendframework/zend-coding-standard": "~1.0.0",
-+                "zendframework/zend-stdlib": "^2.7.3 || ^3.0"
-+            },
+                 "zendframework/zend-coding-standard": "~1.0.0",
+                 "zendframework/zend-stdlib": "^2.7.3 || ^3.0"
+             },
+-            "suggest": {
+-                "container-interop/container-interop": "^1.1.0, to use the lazy listeners feature",
+-                "zendframework/zend-stdlib": "^2.7.3 || ^3.0, to use the FilterChain feature"
 +            "suggest": {
 +                "container-interop/container-interop": "^1.1.0, to use the lazy listeners feature",
 +                "zendframework/zend-stdlib": "^2.7.3 || ^3.0, to use the FilterChain feature"
@@ -5068,14 +5080,15 @@ index c7e0e436c..b9d303fff 100644
 +                "branch-alias": {
 +                    "dev-master": "3.2-dev",
 +                    "dev-develop": "3.3-dev"
-                 }
-             },
-             "autoload": {
-@@ -3255,57 +5161,449 @@
-             },
-             "notification-url": "https://packagist.org/downloads/",
-             "license": [
--                "BSD-3-Clause"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Zend\\EventManager\\": "src/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
 +                "BSD-3-Clause"
 +            ],
 +            "description": "Trigger and listen to events within a PHP application",
@@ -5346,9 +5359,7 @@ index c7e0e436c..b9d303fff 100644
 +            "notification-url": "https://packagist.org/downloads/",
 +            "license": [
 +                "MIT"
-             ],
--            "description": "Trigger and listen to events within a PHP application",
--            "homepage": "https://github.com/zendframework/zend-eventmanager",
++            ],
 +            "authors": [
 +                {
 +                    "name": "Nicolas Grekas",
@@ -5379,25 +5390,32 @@ index c7e0e436c..b9d303fff 100644
 +            },
 +            "require": {
 +                "php": ">=5.3.3"
-+            },
-+            "type": "library",
-+            "extra": {
-+                "branch-alias": {
+             },
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "3.2-dev",
+-                    "dev-develop": "3.3-dev"
 +                    "dev-master": "1.7-dev"
-+                }
-+            },
-+            "autoload": {
-+                "psr-4": {
+                 }
+             },
+             "autoload": {
+                 "psr-4": {
+-                    "Zend\\EventManager\\": "src/"
+-                }
 +                    "Symfony\\Polyfill\\Php72\\": ""
 +                },
 +                "files": [
 +                    "bootstrap.php"
 +                ]
-+            },
-+            "notification-url": "https://packagist.org/downloads/",
-+            "license": [
+             },
+             "notification-url": "https://packagist.org/downloads/",
+             "license": [
+-                "BSD-3-Clause"
 +                "MIT"
-+            ],
+             ],
+-            "description": "Trigger and listen to events within a PHP application",
+-            "homepage": "https://github.com/zendframework/zend-eventmanager",
 +            "authors": [
 +                {
 +                    "name": "Nicolas Grekas",
@@ -5552,7 +5570,7 @@ index c7e0e436c..b9d303fff 100644
                  },
                  "exclude-from-classmap": [
                      "/Tests/"
-@@ -3319,51 +5617,58 @@
+@@ -3342,51 +5658,58 @@
                  {
                      "name": "Fabien Potencier",
                      "email": "fabien@symfony.com"
@@ -5630,7 +5648,7 @@ index c7e0e436c..b9d303fff 100644
                  },
                  "exclude-from-classmap": [
                      "/Tests/"
-@@ -3383,18 +5688,150 @@
+@@ -3406,18 +5729,150 @@
                      "homepage": "https://symfony.com/contributors"
                  }
              ],

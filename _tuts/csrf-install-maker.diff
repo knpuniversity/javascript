@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 730c68cf5..1d59c5dc0 100644
+index 31aad692c..ed8d64930 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -41,6 +41,7 @@
+@@ -42,6 +42,7 @@
      "require-dev": {
          "symfony/debug-pack": "^1.0",
          "symfony/dotenv": "^4.0",
@@ -11,19 +11,19 @@ index 730c68cf5..1d59c5dc0 100644
          "symfony/web-server-bundle": "^4.0"
      },
 diff --git a/composer.lock b/composer.lock
-index bdf58c030..6cc592d3f 100644
+index 4b5980bcb..3bf0f84a2 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "44f6abaf0d02f3a3b976e87c0b9420af",
-+    "content-hash": "c74c879690b6259abaf5ccc77760fe59",
+-    "content-hash": "ab502f15084d4ae47d1aeb9898862dbb",
++    "content-hash": "244d69612528d01b658db1a6215f5dd9",
      "packages": [
          {
-             "name": "doctrine/annotations",
-@@ -1458,12 +1458,12 @@
+             "name": "composer/package-versions-deprecated",
+@@ -1531,12 +1531,12 @@
              "source": {
                  "type": "git",
                  "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
@@ -39,7 +39,7 @@ index bdf58c030..6cc592d3f 100644
                  "shasum": ""
              },
              "require": {
-@@ -1527,7 +1527,7 @@
+@@ -1600,7 +1600,7 @@
              "keywords": [
                  "User management"
              ],
@@ -48,7 +48,7 @@ index bdf58c030..6cc592d3f 100644
          },
          {
              "name": "jdorn/sql-formatter",
-@@ -5254,6 +5254,57 @@
+@@ -5295,6 +5295,57 @@
              "abandoned": true,
              "time": "2018-07-27T15:41:37+00:00"
          },
@@ -106,7 +106,7 @@ index bdf58c030..6cc592d3f 100644
          {
              "name": "symfony/debug-bundle",
              "version": "v4.1.4",
-@@ -5406,6 +5457,71 @@
+@@ -5447,6 +5498,71 @@
              ],
              "time": "2018-07-26T11:24:31+00:00"
          },

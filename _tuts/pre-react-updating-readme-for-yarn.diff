@@ -20,10 +20,10 @@ index 393dedd37..e55155585 100644
  
  You can use Nginx or Apache, but the built-in web server works
 diff --git a/composer.lock b/composer.lock
-index 08e2f0790..bdf58c030 100644
+index e88254c58..4b5980bcb 100644
 --- a/composer.lock
 +++ b/composer.lock
-@@ -1458,12 +1458,12 @@
+@@ -1531,12 +1531,12 @@
              "source": {
                  "type": "git",
                  "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
@@ -39,7 +39,7 @@ index 08e2f0790..bdf58c030 100644
                  "shasum": ""
              },
              "require": {
-@@ -1473,6 +1473,7 @@
+@@ -1546,6 +1546,7 @@
                  "symfony/framework-bundle": "^2.8 || ^3.0 || ^4.0",
                  "symfony/security-bundle": "^2.8 || ^3.0 || ^4.0",
                  "symfony/templating": "^2.8 || ^3.0 || ^4.0",
@@ -47,7 +47,7 @@ index 08e2f0790..bdf58c030 100644
                  "symfony/twig-bundle": "^2.8 || ^3.0 || ^4.0",
                  "symfony/validator": "^2.8 || ^3.0 || ^4.0",
                  "twig/twig": "^1.28 || ^2.0"
-@@ -1526,7 +1527,7 @@
+@@ -1599,7 +1600,7 @@
              "keywords": [
                  "User management"
              ],

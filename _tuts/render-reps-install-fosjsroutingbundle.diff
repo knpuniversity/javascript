@@ -35,33 +35,31 @@ index d8a07cb3c..aed8f228f 100644
 +fos_js_routing:
 +    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 diff --git a/composer.json b/composer.json
-index 7c85ba50d..3069217be 100644
+index 7689e3a5a..bcd30e1d6 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -31,7 +31,8 @@
-         "incenteev/composer-parameter-handler": "^2.0",
+@@ -32,6 +32,7 @@
          "friendsofsymfony/user-bundle": "~2.0@dev",
          "doctrine/doctrine-fixtures-bundle": "~2.3",
--        "doctrine/doctrine-migrations-bundle": "^1.2"
-+        "doctrine/doctrine-migrations-bundle": "^1.2",
-+        "friendsofsymfony/jsrouting-bundle": "^1.6"
+         "doctrine/doctrine-migrations-bundle": "^1.2",
++        "friendsofsymfony/jsrouting-bundle": "^1.6",
+         "composer/package-versions-deprecated": "^1.11"
      },
      "require-dev": {
-         "sensio/generator-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index 1912fe4ea..086fc9dfb 100644
+index 66182524f..fa013aef9 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "3c0b2d9e8af08e94475fa6a5b9e148ad",
-+    "content-hash": "e1463bf8398baa8f1dffbff0ad8016f4",
+-    "content-hash": "842b98a0615549d0eba65f539435ab9b",
++    "content-hash": "dd222a446e072e71ff90fb7f5e115c40",
      "packages": [
          {
-             "name": "doctrine/annotations",
-@@ -1326,6 +1326,64 @@
+             "name": "composer/package-versions-deprecated",
+@@ -1399,6 +1399,64 @@
              ],
              "time": "2020-03-27T11:06:43+00:00"
          },
@@ -126,7 +124,7 @@ index 1912fe4ea..086fc9dfb 100644
          {
              "name": "friendsofsymfony/user-bundle",
              "version": "dev-master",
-@@ -2775,6 +2833,46 @@
+@@ -2798,6 +2856,46 @@
              ],
              "time": "2019-05-14T12:03:52+00:00"
          },
