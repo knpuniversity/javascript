@@ -63,7 +63,7 @@ Babel how to understand this syntax. Copy the package name, find your terminal
 and run:
 
 ```terminal
-yarn add babel-plugin-transform-object-rest-spread --dev
+yarn add @babel/plugin-proposal-object-rest-spread --dev
 ```
 
 Oh, and as I mentioned before, most of these Babel plugins will have a slightly
@@ -74,6 +74,12 @@ When you work with Babel, you typically configure it with a `.babelrc` file. But
 Encore does this for us! Open `webpack.config.js`: the `configureBabel()` function
 allows us to *extend* its configuration. Add `babelConfig.plugins.push()` and
 paste the name.
+
+***TIP
+If you downloaded the code (and on newer projects) make sure you installed the
+newer library - `@babel/plugin-proposal-object-rest-spread` - and use that
+name here instead.
+***
 
 [[[ code('bbb2252539') ]]]
 
