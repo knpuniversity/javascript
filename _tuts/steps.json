@@ -1161,6 +1161,11 @@
             "description": null
         },
         {
+            "id": "pre-react-replace-node-sass-with-sass",
+            "name": "PRE_REACT: replace node-sass with sass",
+            "description": null
+        },
+        {
             "id": "pre-react-updating-readme-for-yarn",
             "name": "PRE_REACT: Updating Readme for yarn",
             "description": null
@@ -1911,5 +1916,5 @@
             "description": null
         }
     ],
-    "sha": "f57ef90603a63643c85e0174c7fe6f2bb054fe91"
+    "sha": "df22fdf0d85e99f0883a97ef2ee0cd0da7296fad"
 }

@@ -1,10 +1,10 @@
 diff --git a/webpack.config.js b/webpack.config.js
-index 30bfd6d2a..270010b3e 100644
+index 9572541b9..07d8256f8 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
-@@ -28,10 +28,10 @@ Encore
-     .enableVersioning(Encore.isProduction())
+@@ -31,10 +31,10 @@ Encore
      .enableReactPreset()
+ 
      .configureBabel((babelConfig) => {
 -        babelConfig.env = {
 -            "production": {
@@ -15,5 +15,5 @@ index 30bfd6d2a..270010b3e 100644
 +                'transform-react-remove-prop-types'
 +            );
          }
-     })
- ;
+     }, {
+         useBuiltIns: 'usage',

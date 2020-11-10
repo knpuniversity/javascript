@@ -10,22 +10,38 @@ index 61df87087..0e1bad13b 100644
          ecmaVersion: 6,
          sourceType: 'module',
 diff --git a/package.json b/package.json
-index e2345ab84..d540d5b9f 100644
+index 5c29978da..16a9af9c4 100644
 --- a/package.json
 +++ b/package.json
-@@ -5,6 +5,7 @@
-     "bootstrap": "3",
+@@ -6,6 +6,7 @@
      "copy-webpack-plugin": "^4.4.1",
+     "core-js": "2",
      "eslint": "^4.19.1",
 +    "eslint-plugin-react": "^7.8.2",
      "font-awesome": "4",
      "jquery": "^3.3.1",
-     "node-sass": "^4.7.2",
+     "react": "^16.3.2",
 diff --git a/yarn.lock b/yarn.lock
-index 882ca63c4..c27e0ad48 100644
+index 72b4d61a0..caff5c99b 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -1842,7 +1842,7 @@ dns-txt@^2.0.2:
+@@ -1384,6 +1384,15 @@ array-flatten@^2.1.0:
+   version "2.1.1"
+   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-2.1.1.tgz#426bb9da84090c1838d812c8150af20a8331e296"
+ 
++array-includes@^3.0.3:
++  version "3.1.1"
++  resolved "https://registry.yarnpkg.com/array-includes/-/array-includes-3.1.1.tgz#cdd67e6852bdf9c1215460786732255ed2459348"
++  integrity sha512-c2VXaCHl7zPsvpkFsw4nxvFie4fh1ur9bpcgsVkIjqn0H/Xwdg+7fv3n2r/isyS8EBj5b06M9kHyZuIr4El6WQ==
++  dependencies:
++    define-properties "^1.1.3"
++    es-abstract "^1.17.0"
++    is-string "^1.0.5"
++
+ array-union@^1.0.1:
+   version "1.0.2"
+   resolved "https://registry.yarnpkg.com/array-union/-/array-union-1.0.2.tgz#9a34410e4f4e3da23dea375be5be70f24778ec39"
+@@ -2647,7 +2656,7 @@ dns-txt@^2.0.2:
    dependencies:
      buffer-indexof "^1.0.0"
  
@@ -34,9 +50,18 @@ index 882ca63c4..c27e0ad48 100644
    version "2.1.0"
    resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-2.1.0.tgz#5cd01fc101621b42c4cd7f5d1a66243716d3f39d"
    dependencies:
-@@ -2066,6 +2066,15 @@ escope@^3.6.0:
-     esrecurse "^4.1.0"
-     estraverse "^4.1.1"
+@@ -2812,7 +2821,7 @@ error-stack-parser@^2.0.0:
+   dependencies:
+     stackframe "^1.0.4"
+ 
+-es-abstract@^1.17.0-next.1, es-abstract@^1.17.2, es-abstract@^1.17.5:
++es-abstract@^1.17.0, es-abstract@^1.17.0-next.1, es-abstract@^1.17.2, es-abstract@^1.17.5:
+   version "1.17.7"
+   resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.17.7.tgz#a4de61b2f66989fc7421676c1cb9787573ace54c"
+   integrity sha512-VBl/gnfcJ7OercKA9MVaegWsBHFjV492syMudcnQZvt/Dw8ezpcOHYZXa/J96O8vx+g4x65YKhxOwDUh63aS5g==
+@@ -2908,6 +2917,15 @@ escape-string-regexp@^2.0.0:
+   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-2.0.0.tgz#a30304e99daa32e23b2fd20f51babd07cffca344"
+   integrity sha512-UpzcLCXolUWcNu5HtVMHYdXJjArjsF9C0aNnquZYY4uW/Vu0miy5YoWvbV345HauVvcAUnpRuhMMcqTcGOY2+w==
  
 +eslint-plugin-react@^7.8.2:
 +  version "7.8.2"
@@ -50,9 +75,21 @@ index 882ca63c4..c27e0ad48 100644
  eslint-scope@^3.7.1:
    version "3.7.1"
    resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-3.7.1.tgz#3d63c3edfda02e06e01a452ad88caacc7cdcb6e8"
-@@ -3450,6 +3459,12 @@ jsprim@^1.2.2:
-     json-schema "0.2.3"
-     verror "1.10.0"
+@@ -4169,6 +4187,11 @@ is-stream@^2.0.0:
+   resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-2.0.0.tgz#bde9c32680d6fae04129d6ac9d921ce7815f78e3"
+   integrity sha512-XCoy+WlUr7d1+Z8GgSuXmpuUFC9fOhRXglJMx+dwLKTkL44Cjd4W1Z5P+BQZpr+cR93aGP4S/s7Ftw6Nd/kiEw==
+ 
++is-string@^1.0.5:
++  version "1.0.5"
++  resolved "https://registry.yarnpkg.com/is-string/-/is-string-1.0.5.tgz#40493ed198ef3ff477b8c7f92f644ec82a5cd3a6"
++  integrity sha512-buY6VNRjhQMiF1qWDouloZlQbRhDPCebwxSjxMjxgemYT46YMd2NR0/H+fBhEfWX4A/w9TBJ+ol+okqJKFE6vQ==
++
+ is-svg@^3.0.0:
+   version "3.0.0"
+   resolved "https://registry.yarnpkg.com/is-svg/-/is-svg-3.0.0.tgz#9321dbd29c212e5ca99c4fa9794c714bcafa2f75"
+@@ -4330,6 +4353,12 @@ jsonfile@^4.0.0:
+   optionalDependencies:
+     graceful-fs "^4.1.6"
  
 +jsx-ast-utils@^2.0.1:
 +  version "2.0.1"
@@ -60,6 +97,6 @@ index 882ca63c4..c27e0ad48 100644
 +  dependencies:
 +    array-includes "^3.0.3"
 +
- killable@^1.0.0:
-   version "1.0.0"
-   resolved "https://registry.yarnpkg.com/killable/-/killable-1.0.0.tgz#da8b84bd47de5395878f95d64d02f2449fe05e6b"
+ killable@^1.0.1:
+   version "1.0.1"
+   resolved "https://registry.yarnpkg.com/killable/-/killable-1.0.1.tgz#4c8ce441187a061c7474fb87ca08e2a638194892"

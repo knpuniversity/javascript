@@ -16,7 +16,7 @@ index e3dfa10e8..fb49e8edd 100644
 +    <script src="{{ asset('build/rep_log_react.js') }}"></script>
  {% endblock %}
 diff --git a/webpack.config.js b/webpack.config.js
-index 0ad3d2450..9276beb70 100644
+index 9ccc938c3..61a5168c1 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -10,6 +10,7 @@ Encore

@@ -11,22 +11,22 @@ index 3e9ee5fe8..61dd9cdca 100644
  $(document).ready(function() {
      $('[data-toggle="tooltip"]').tooltip();
 diff --git a/package.json b/package.json
-index 68e48a4cd..ee6b99a6f 100644
+index 730899369..b68969775 100644
 --- a/package.json
 +++ b/package.json
 @@ -10,6 +10,7 @@
+     "eslint-plugin-react": "^7.8.2",
      "font-awesome": "4",
      "jquery": "^3.3.1",
-     "node-sass": "^4.7.2",
 +    "promise-polyfill": "^8.0.0",
      "prop-types": "^15.6.1",
      "react": "^16.3.2",
      "react-dom": "^16.3.2",
 diff --git a/yarn.lock b/yarn.lock
-index 72674a31d..ce7a3db4c 100644
+index afc71e09a..2357a8b6b 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -4745,6 +4745,10 @@ promise-inflight@^1.0.1:
+@@ -5727,6 +5727,10 @@ promise-inflight@^1.0.1:
    version "1.0.1"
    resolved "https://registry.yarnpkg.com/promise-inflight/-/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"
  

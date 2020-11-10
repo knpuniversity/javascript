@@ -1,45 +1,44 @@
 diff --git a/package.json b/package.json
-index e8e67a079..4f41d5d0e 100644
+index c6940379d..ed7a5ea28 100644
 --- a/package.json
 +++ b/package.json
-@@ -1,6 +1,7 @@
- {
+@@ -2,6 +2,7 @@
    "devDependencies": {
-     "@symfony/webpack-encore": "^0.19.0",
+     "@babel/preset-react": "^7.0.0",
+     "@symfony/webpack-encore": "^0.26.0",
 +    "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
-     "babel-preset-react": "^6.24.1",
      "bootstrap": "3",
      "copy-webpack-plugin": "^4.4.1",
+     "core-js": "2",
 diff --git a/webpack.config.js b/webpack.config.js
-index 96848a7e8..30bfd6d2a 100644
+index 7c5e09811..9572541b9 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
-@@ -27,6 +27,13 @@ Encore
-     .cleanupOutputBeforeBuild()
-     .enableVersioning(Encore.isProduction())
+@@ -31,7 +31,11 @@ Encore
      .enableReactPreset()
-+    .configureBabel((babelConfig) => {
+ 
+     .configureBabel((babelConfig) => {
+-
 +        babelConfig.env = {
 +            "production": {
 +              "plugins": ["transform-react-remove-prop-types"]
 +            }
 +        }
-+    })
- ;
- 
- // export the final configuration
+     }, {
+         useBuiltIns: 'usage',
+         corejs: 2,
 diff --git a/yarn.lock b/yarn.lock
-index c4fd90fe9..d8ce2c97e 100644
+index ba220d199..0b3fadfac 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -745,6 +745,10 @@ babel-plugin-transform-react-jsx@^6.24.1:
-     babel-plugin-syntax-jsx "^6.8.0"
-     babel-runtime "^6.22.0"
+@@ -1504,6 +1504,10 @@ babel-plugin-espower@^3.0.1:
+     espurify "^1.6.0"
+     estraverse "^4.1.1"
  
 +babel-plugin-transform-react-remove-prop-types@^0.4.13:
 +  version "0.4.13"
 +  resolved "https://registry.yarnpkg.com/babel-plugin-transform-react-remove-prop-types/-/babel-plugin-transform-react-remove-prop-types-0.4.13.tgz#331cfc05099a808238311d78319c27460d481189"
 +
- babel-plugin-transform-regenerator@^6.22.0:
-   version "6.26.0"
-   resolved "https://registry.yarnpkg.com/babel-plugin-transform-regenerator/-/babel-plugin-transform-regenerator-6.26.0.tgz#e0703696fbde27f0a3efcacf8b4dca2f7b3a8f2f"
+ balanced-match@^1.0.0:
+   version "1.0.0"
+   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
