@@ -41,8 +41,13 @@ yarn run encore dev --watch
 Oh, it fails! Ah, we need to install a new package: copy the command name. Then,
 paste:
 
+***TIP
+In newer versions of Encore, it will recommend that you install
+a more modern package - `@babel/preset-react` - which does the same thing.
+***
+
 ```terminal
-yarn add babel-preset-react --dev
+yarn add @babel/preset-react@^7.0.0 --dev
 ```
 
 By the way, the next version of this package will be called `@babel/preset-react`.
