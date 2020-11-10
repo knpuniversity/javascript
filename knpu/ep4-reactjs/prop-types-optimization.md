@@ -19,6 +19,12 @@ While that's downloading, go back to its docs. Usually, this is configured via a
 `.babelrc` file: this activates the plugin on the production environment. Except,
 because we're using Webpack Encore, *it* handles the Babel configuration for us.
 
+***TIP
+If you downloaded the code, the `webpack.config.js` file will now already
+have a `configureBabel()` method at the bottom. Add this between the first `{}`
+inside that call instead of adding a new `configureBabel()` call.
+***
+
 Fortunately, Encore gives us a hook to modify that config. Add `.configureBabel()`
 and pass this a function with one arg: call it `babelConfig`. Now, when Encore builds,
 it will create our Babel configuration, then call this function so we can modify
