@@ -11,6 +11,12 @@ It adds our new JavaScript code right *after* the main script tags in the base l
 View the HTML source and scroll to the bottom see that in action. Yep, jQuery and *then*
 our stuff.
 
+***TIP
+In new Symfony projects, the `<script>` elements are added up inside `<head>` but with a
+`defer` attribute. This causes the JavaScript to be executed in the same order (and at the same
+time) as what we will see here.
+***
+
 Our JavaScript lives at the bottom of the page for a reason: performance. Unless you
 add an `async` attribute, when your browser sees a `script` tag, it stops, waits
 while that file is downloaded, executes it, and *then* continues.
