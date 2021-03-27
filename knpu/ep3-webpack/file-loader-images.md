@@ -57,7 +57,7 @@ our CSS to point to it. It's pretty amazing.
 Install it first: copy the name of the module and then, in your open terminal, run:
 
 ```terminal
-yarn add file-loader --dev
+yarn add file-loader@5 --dev
 ```
 
 Back in `webpack.config.js`, we need to add a *third* loader. Copy the `css-loader`
