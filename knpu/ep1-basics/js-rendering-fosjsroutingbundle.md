@@ -56,7 +56,7 @@ This allows you to expose some of your URLs in JavaScript. Copy the composer req
 line, open up a new tab, paste that and hit enter:
 
 ```terminal
-composer require friendsofsymfony/jsrouting-bundle
+composer require "friendsofsymfony/jsrouting-bundle:^1.6"
 ```
 
 While Jordi is wrapping our package with a bow, let's finish the install instructions.
