@@ -20,7 +20,7 @@ index 393dedd37..e55155585 100644
  
  You can use Nginx or Apache, but the built-in web server works
 diff --git a/composer.lock b/composer.lock
-index e88254c58..4b5980bcb 100644
+index 4373f38b7..2c7bd190e 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -1531,12 +1531,12 @@

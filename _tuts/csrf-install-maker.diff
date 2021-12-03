@@ -11,7 +11,7 @@ index 31aad692c..ed8d64930 100644
          "symfony/web-server-bundle": "^4.0"
      },
 diff --git a/composer.lock b/composer.lock
-index 4b5980bcb..3bf0f84a2 100644
+index 2c7bd190e..f553b7e6e 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -48,7 +48,7 @@ index 4b5980bcb..3bf0f84a2 100644
          },
          {
              "name": "jdorn/sql-formatter",
-@@ -5295,6 +5295,57 @@
+@@ -5293,6 +5293,57 @@
              "abandoned": true,
              "time": "2018-07-27T15:41:37+00:00"
          },
@@ -106,7 +106,7 @@ index 4b5980bcb..3bf0f84a2 100644
          {
              "name": "symfony/debug-bundle",
              "version": "v4.1.4",
-@@ -5447,6 +5498,71 @@
+@@ -5445,6 +5496,71 @@
              ],
              "time": "2018-07-26T11:24:31+00:00"
          },

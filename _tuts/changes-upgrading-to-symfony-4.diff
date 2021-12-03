@@ -643,7 +643,7 @@ index 36e5a02db..3517315eb 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index b2e1c5d93..fc5b5ebd7 100644
+index b2e1c5d93..6d823f848 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,67 +4,8 @@
@@ -2563,7 +2563,7 @@ index b2e1c5d93..fc5b5ebd7 100644
              },
              "notification-url": "https://packagist.org/downloads/",
              "license": [
-@@ -2841,63 +2916,52 @@
+@@ -2841,63 +2916,50 @@
              ],
              "authors": [
                  {
@@ -2593,20 +2593,20 @@ index b2e1c5d93..fc5b5ebd7 100644
 -            "name": "symfony/swiftmailer-bundle",
 -            "version": "v2.6.3",
 +            "name": "symfony/flex",
-+            "version": "v1.9.10",
++            "version": "v1.17.6",
              "source": {
                  "type": "git",
 -                "url": "https://github.com/symfony/swiftmailer-bundle.git",
 -                "reference": "11555c338f3c367b0a1bd2f024a53aa813f4ce00"
 +                "url": "https://github.com/symfony/flex.git",
-+                "reference": "7335ec033995aa34133e621627333368f260b626"
++                "reference": "7a79135e1dc66b30042b4d968ecba0908f9374bc"
              },
              "dist": {
                  "type": "zip",
 -                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/11555c338f3c367b0a1bd2f024a53aa813f4ce00",
 -                "reference": "11555c338f3c367b0a1bd2f024a53aa813f4ce00",
-+                "url": "https://api.github.com/repos/symfony/flex/zipball/7335ec033995aa34133e621627333368f260b626",
-+                "reference": "7335ec033995aa34133e621627333368f260b626",
++                "url": "https://api.github.com/repos/symfony/flex/zipball/7a79135e1dc66b30042b4d968ecba0908f9374bc",
++                "reference": "7a79135e1dc66b30042b4d968ecba0908f9374bc",
                  "shasum": ""
              },
              "require": {
@@ -2624,9 +2624,10 @@ index b2e1c5d93..fc5b5ebd7 100644
 -                "symfony/phpunit-bridge": "~3.3@dev",
 -                "symfony/yaml": "~2.7|~3.0"
 +                "composer/composer": "^1.0.2|^2.0",
-+                "symfony/dotenv": "^4.4|^5.0",
-+                "symfony/phpunit-bridge": "^4.4|^5.0",
-+                "symfony/process": "^3.4|^4.4|^5.0"
++                "symfony/dotenv": "^4.4|^5.0|^6.0",
++                "symfony/filesystem": "^4.4|^5.0|^6.0",
++                "symfony/phpunit-bridge": "^4.4.12|^5.0|^6.0",
++                "symfony/process": "^4.4|^5.0|^6.0"
              },
 -            "suggest": {
 -                "psr/log": "Allows logging"
@@ -2634,11 +2635,9 @@ index b2e1c5d93..fc5b5ebd7 100644
 -            "type": "symfony-bundle",
 +            "type": "composer-plugin",
              "extra": {
-                 "branch-alias": {
+-                "branch-alias": {
 -                    "dev-master": "2.6-dev"
 -                }
-+                    "dev-main": "1.9-dev"
-+                },
 +                "class": "Symfony\\Flex\\Flex"
              },
              "autoload": {
@@ -2648,7 +2647,7 @@ index b2e1c5d93..fc5b5ebd7 100644
                  }
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -2906,148 +2970,91 @@
+@@ -2906,148 +2968,91 @@
              ],
              "authors": [
                  {
@@ -2661,7 +2660,7 @@ index b2e1c5d93..fc5b5ebd7 100644
 +            "description": "Composer plugin for Symfony",
 +            "support": {
 +                "issues": "https://github.com/symfony/flex/issues",
-+                "source": "https://github.com/symfony/flex/tree/v1.9.10"
++                "source": "https://github.com/symfony/flex/tree/v1.17.6"
 +            },
 +            "funding": [
 +                {
@@ -2682,7 +2681,7 @@ index b2e1c5d93..fc5b5ebd7 100644
 -            "description": "Symfony SwiftmailerBundle",
 -            "homepage": "http://symfony.com",
 -            "time": "2017-07-22T07:18:13+00:00"
-+            "time": "2020-10-14T17:41:54+00:00"
++            "time": "2021-11-29T15:39:37+00:00"
          },
          {
 -            "name": "symfony/symfony",
@@ -2853,7 +2852,7 @@ index b2e1c5d93..fc5b5ebd7 100644
                  ]
              },
              "notification-url": "https://packagist.org/downloads/",
-@@ -3064,271 +3071,2580 @@
+@@ -3064,271 +3069,2580 @@
                      "homepage": "https://symfony.com/contributors"
                  }
              ],
@@ -5570,7 +5569,7 @@ index b2e1c5d93..fc5b5ebd7 100644
                  },
                  "exclude-from-classmap": [
                      "/Tests/"
-@@ -3342,51 +5658,58 @@
+@@ -3342,51 +5656,58 @@
                  {
                      "name": "Fabien Potencier",
                      "email": "fabien@symfony.com"
@@ -5648,7 +5647,7 @@ index b2e1c5d93..fc5b5ebd7 100644
                  },
                  "exclude-from-classmap": [
                      "/Tests/"
-@@ -3406,18 +5729,150 @@
+@@ -3406,22 +5727,154 @@
                      "homepage": "https://symfony.com/contributors"
                  }
              ],
@@ -5803,6 +5802,11 @@ index b2e1c5d93..fc5b5ebd7 100644
      },
      "platform-dev": [],
      "platform-overrides": {
+         "php": "7.2.0"
+     },
+-    "plugin-api-version": "2.0.0"
++    "plugin-api-version": "2.1.0"
+ }
 diff --git a/config/bundles.php b/config/bundles.php
 new file mode 100644
 index 000000000..0ee330c5e
