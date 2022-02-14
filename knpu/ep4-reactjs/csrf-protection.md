@@ -56,7 +56,7 @@ so that we don't need to add this code in *every* controller. First, to speed th
 up, install MakerBundle:
 
 ```terminal
-composer require maker --dev
+composer require "maker:^1.35" --dev
 ```
 
 When that finishes, run:
