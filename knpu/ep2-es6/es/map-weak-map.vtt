@@ -1,0 +1,326 @@
+WEBVTT
+
+00:00:01.346 --> 00:00:07.786 align:middle
+Hasta ahora, todas las novedades de ES2015 han sido
+nuevas construcciones del lenguaje: ¡nuevas sintaxis
+
+00:00:07.786 --> 00:00:11.186 align:middle
+y palabras clave, como let, const y clases!
+
+00:00:11.346 --> 00:00:16.196 align:middle
+Y eso no es casualidad: estas son las cosas
+más importantes que hay que entender.
+
+00:00:17.166 --> 00:00:24.326 align:middle
+Pero ES2015 viene repleto de otras novedades,
+como nuevas funciones y nuevos objetos.
+
+00:00:24.486 --> 00:00:28.986 align:middle
+Y la mayoría son bastante fáciles
+de entender: cuando veas un objeto
+
+00:00:28.986 --> 00:00:33.216 align:middle
+o función que no reconozcas,
+búscalo, mira cómo funciona...
+
+00:00:33.216 --> 00:00:34.696 align:middle
+¡y sigue adelante!
+
+00:00:35.756 --> 00:00:38.986 align:middle
+Pero hay un conjunto de objetos...
+
+00:00:39.376 --> 00:00:40.166 align:middle
+con la intención de hacer
+un juego de palabras...
+
+00:00:40.496 --> 00:00:42.366 align:middle
+del que sí quiero hablar.
+
+00:00:42.846 --> 00:00:45.376 align:middle
+Son, Map, WeakMap y...
+
+00:00:45.706 --> 00:00:48.516 align:middle
+Set¡! Vuelve a entrar en play.js.
+
+00:00:48.516 --> 00:00:51.476 align:middle
+Experimentemos primero con Map.
+
+00:00:52.726 --> 00:00:58.296 align:middle
+Ahora mismo, cuando necesites una matriz asociativa,
+sólo tienes que crear un objeto foods = {}
+
+00:00:58.476 --> 00:01:04.906 align:middle
+y empezar a añadirle cosas
+deliciosas: foods.italian = 'gelato',
+
+00:01:06.486 --> 00:01:12.806 align:middle
+foods.mexican = 'torta' y
+foods.canadian = 'poutine'.
+
+00:01:13.496 --> 00:01:20.396 align:middle
+Poutine es súper delicioso: En el fondo, por
+supuesto, podemos registrar foods.italian:
+
+00:01:23.136 --> 00:01:26.636 align:middle
+Y no es de extrañar que nuestra consola
+nos diga que debemos comer helado.
+
+00:01:27.016 --> 00:01:27.536 align:middle
+¡Buena idea!
+
+00:01:27.906 --> 00:01:31.736 align:middle
+En ES2015, ahora tenemos una nueva herramienta:
+
+00:01:32.266 --> 00:01:36.556 align:middle
+en lugar de crear un objeto simple,
+podemos crear un nuevo objeto Map.
+
+00:01:37.666 --> 00:01:42.246 align:middle
+La sintaxis es ligeramente diferente:
+en lugar de foods.italian = 'gelato',
+
+00:01:42.506 --> 00:01:49.526 align:middle
+utiliza foods.set('italian', 'gelato'):
+Repite esto para las otras dos claves.
+
+00:01:56.296 --> 00:02:02.856 align:middle
+Y en la parte inferior, obtén el valor con
+foods.get('italian'): ¡Simple y bonito!
+
+00:02:03.206 --> 00:02:08.026 align:middle
+¡Y funciona exactamente igual que antes!
+
+00:02:09.076 --> 00:02:10.766 align:middle
+¡Genial! Así que...
+
+00:02:10.766 --> 00:02:13.706 align:middle
+tenemos un nuevo objeto Map...
+
+00:02:14.396 --> 00:02:17.526 align:middle
+y es una forma diferente de
+crear un array asociativo.
+
+00:02:18.486 --> 00:02:20.346 align:middle
+¿Pero por qué lo vamos a utilizar?
+
+00:02:21.056 --> 00:02:23.686 align:middle
+¡Porque viene con unos
+bonitos métodos de ayuda!
+
+00:02:24.176 --> 00:02:34.176 align:middle
+Por ejemplo, podemos decir
+foods.has('french'): Y eso devuelve false.
+
+00:02:34.786 --> 00:02:36.576 align:middle
+Un fastidio para nosotros.
+
+00:02:36.846 --> 00:02:42.326 align:middle
+Antes no era muy difícil comprobar si una
+clave existía, pero esto parece limpio.
+
+00:02:43.876 --> 00:02:45.786 align:middle
+El mapa tiene otra ventaja...
+
+00:02:45.996 --> 00:02:50.936 align:middle
+que es un poco loca: ¡puedes
+utilizar claves que no sean cadenas!
+
+00:02:52.316 --> 00:02:59.256 align:middle
+Prueba esto: crea una nueva variable: let
+southernUSStates fijada a una matriz de Tennessee,
+
+00:03:00.496 --> 00:03:09.156 align:middle
+Kentucky, y Texas: Ahora podemos
+decir foods.set(southernUSStates)
+
+00:03:09.746 --> 00:03:15.886 align:middle
+y fijarla a hot chicken: Sí, la
+clave es en realidad un objeto.
+
+00:03:16.296 --> 00:03:17.276 align:middle
+¡Y eso no es un problema!
+
+00:03:18.066 --> 00:03:22.556 align:middle
+Nota complementaria importante: el pollo picante es
+realmente algo que sólo debes comer en Tennessee,
+
+00:03:23.076 --> 00:03:26.366 align:middle
+pero para este ejemplo, necesitaba
+incluir algunos otros estados.
+
+00:03:26.916 --> 00:03:29.026 align:middle
+En Texas, debes comer Brisket. De
+
+00:03:30.296 --> 00:03:35.696 align:middle
+todos modos, en la parte inferior,
+utiliza foods.get(southernUSStates) para
+
+00:03:35.696 --> 00:03:40.226 align:middle
+sacar ese valor: ¡Y
+funciona tal y como queremos!
+
+00:03:40.346 --> 00:03:43.536 align:middle
+Si te preguntas cuándo será útil esto...
+
+00:03:43.746 --> 00:03:44.666 align:middle
+permanece atento.
+
+00:03:45.616 --> 00:03:48.766 align:middle
+Ah, y hay otra propiedad que deberías conocer:
+
+00:03:49.186 --> 00:03:52.626 align:middle
+foods.size: Que imprimirá 4.
+
+00:03:52.836 --> 00:03:56.476 align:middle
+¡Saluda al nuevo objeto Map!
+
+00:03:57.536 --> 00:04:03.256 align:middle
+ES2015 también nos ofrece un
+nuevo objeto muy similar: WeakMap:
+
+00:04:03.256 --> 00:04:07.466 align:middle
+Y aquí es donde las cosas
+se vuelven un poco locas.
+
+00:04:07.606 --> 00:04:10.436 align:middle
+¿Por qué tenemos un Map y un WeakMap?
+
+00:04:10.646 --> 00:04:12.446 align:middle
+¡Averigüémoslo!
+
+00:04:13.226 --> 00:04:16.066 align:middle
+Primero intenta ejecutar
+nuestro código con WeakMap.
+
+00:04:17.806 --> 00:04:19.826 align:middle
+Woh, ¡estalla!
+
+00:04:20.446 --> 00:04:26.866 align:middle
+El valor inválido utilizado como clave del mapa de
+la semana Map y WeakMap son básicamente lo mismo...
+
+00:04:27.096 --> 00:04:34.106 align:middle
+excepto que WeakMap tiene un requisito
+extra: sus claves deben ser objetos.
+
+00:04:34.406 --> 00:04:41.336 align:middle
+Así que sí, por ahora, parece que
+WeakMap es sólo una versión peor de Map.
+
+00:04:42.396 --> 00:04:44.996 align:middle
+Convierte cada clave en un
+array, que es un objeto.
+
+00:04:45.206 --> 00:04:55.656 align:middle
+En el fondo, utiliza foods.get() y pásale el array
+italian: Ahora, cuando lo ejecuto, funciona bien.
+
+00:04:56.406 --> 00:04:58.086 align:middle
+Espera, o, ¿lo hace?
+
+00:04:58.606 --> 00:05:04.136 align:middle
+Dos cosas interesantes: esto imprime
+undefined, hot chicken, undefined.
+
+00:05:04.366 --> 00:05:10.876 align:middle
+En primer lugar, aunque la matriz ['italian'] en
+get() es igual a la matriz ['italian'] utilizada
+
+00:05:10.876 --> 00:05:15.206 align:middle
+en set, no son el mismo objeto en memoria.
+
+00:05:16.076 --> 00:05:21.116 align:middle
+Son dos objetos distintos, por lo que
+parece una clave diferente a WeakMap.
+
+00:05:21.746 --> 00:05:23.056 align:middle
+Por eso se imprime undefined.
+
+00:05:24.046 --> 00:05:28.176 align:middle
+En segundo lugar, con WeakMap,
+no puedes llamar a foods.size.
+
+00:05:28.706 --> 00:05:31.316 align:middle
+Eso no funciona con WeakMap.
+
+00:05:31.416 --> 00:05:38.696 align:middle
+Permíteme mostrarte otra locura, que
+empezará a mostrarte el propósito de WeakMap.
+
+00:05:38.886 --> 00:05:45.176 align:middle
+Después de poner el southernUSStates en
+el array, voy a poner southernUSStates
+
+00:05:45.286 --> 00:05:51.476 align:middle
+en null: Cuando lo pruebes ahora, se
+imprimirá, por supuesto, "indefinido".
+
+00:05:52.656 --> 00:05:56.266 align:middle
+Eso tiene sentido: ahora estamos
+pasando null a la función get().
+
+00:05:57.496 --> 00:06:04.346 align:middle
+Pero lo que no puedes ver es que el
+objeto southernUSStates ya no existe...
+
+00:06:04.716 --> 00:06:06.026 align:middle
+¡en ningún lugar de la memoria!
+
+00:06:07.046 --> 00:06:13.166 align:middle
+¿Por qué? En JavaScript , si tienes una variable
+a la que ya no hace referencia ninguna otra cosa,
+
+00:06:13.766 --> 00:06:20.796 align:middle
+como southernUSStates, es susceptible de ser
+eliminada por la recolección de basura de JavaScript.
+
+00:06:21.306 --> 00:06:23.486 align:middle
+Lo mismo ocurre en PHP.
+
+00:06:23.566 --> 00:06:28.886 align:middle
+Pero normalmente, como establecemos
+southernUSStates como clave en WeakMap,
+
+00:06:29.416 --> 00:06:34.656 align:middle
+esta referencia a southernUSStates
+evitaría esa recogida de basura.
+
+00:06:35.786 --> 00:06:41.886 align:middle
+Eso ocurre con Map, pero no con WeakMap:
+no impide la recogida de basura. En
+
+00:06:42.906 --> 00:06:47.566 align:middle
+otras palabras, aunque southernUSStates
+siga en nuestro WeakMap,
+
+00:06:47.996 --> 00:06:50.326 align:middle
+al no estar referenciado en ningún otro sitio,
+
+00:06:50.686 --> 00:06:53.836 align:middle
+se elimina de la memoria
+gracias a la recogida de basura.
+
+00:06:54.586 --> 00:06:56.996 align:middle
+Pero, en realidad, ¿con qué
+frecuencia tienes que preocuparte
+
+00:06:56.996 --> 00:06:59.246 align:middle
+de la recogida de basura cuando
+construyes una aplicación web?
+
+00:06:59.846 --> 00:07:01.436 align:middle
+Probablemente no muy a menudo.
+
+00:07:01.596 --> 00:07:08.406 align:middle
+Así que, llegados a este punto, deberías utilizar Map
+en todas partes: es más fácil y tiene más funciones.
+
+00:07:08.576 --> 00:07:10.106 align:middle
+Y eso es cierto
+
+00:07:10.696 --> 00:07:17.056 align:middle
+Excepto para un caso de uso especial,
+fascinante y friki de WeakMap.
+
+00:07:17.726 --> 00:07:18.856 align:middle
+¡Vamos a conocerlo!
