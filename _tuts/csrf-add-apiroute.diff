@@ -1,6 +1,6 @@
 diff --git a/src/Api/ApiRoute.php b/src/Api/ApiRoute.php
 new file mode 100644
-index 000000000..cc84aec79
+index 0000000..cc84aec
 --- /dev/null
 +++ b/src/Api/ApiRoute.php
 @@ -0,0 +1,12 @@
@@ -18,7 +18,7 @@ index 000000000..cc84aec79
 +}
 \ No newline at end of file
 diff --git a/src/Controller/RepLogController.php b/src/Controller/RepLogController.php
-index 7d6425bb8..7a6284db5 100644
+index 7d6425b..7a6284d 100644
 --- a/src/Controller/RepLogController.php
 +++ b/src/Controller/RepLogController.php
 @@ -2,6 +2,7 @@

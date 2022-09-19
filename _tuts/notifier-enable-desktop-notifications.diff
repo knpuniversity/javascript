@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index a7d43eee2..931058ce6 100644
+index a7d43ee..931058c 100644
 --- a/package.json
 +++ b/package.json
 @@ -1,5 +1,6 @@
@@ -11,7 +11,7 @@ index a7d43eee2..931058ce6 100644
    }
  }
 diff --git a/webpack.config.js b/webpack.config.js
-index df27bbf76..aebb1936b 100644
+index df27bbf..aebb193 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -8,6 +8,8 @@ Encore
@@ -24,7 +24,7 @@ index df27bbf76..aebb1936b 100644
  
  // export the final configuration
 diff --git a/yarn.lock b/yarn.lock
-index 851806cfa..9bd2e225a 100644
+index 851806c..9bd2e22 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -2250,6 +2250,10 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6:

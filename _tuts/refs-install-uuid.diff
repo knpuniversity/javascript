@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index ed7a5ea28..029ae45e8 100644
+index ed7a5ea..029ae45 100644
 --- a/package.json
 +++ b/package.json
 @@ -16,6 +16,7 @@
@@ -11,7 +11,7 @@ index ed7a5ea28..029ae45e8 100644
    },
    "scripts": {
 diff --git a/yarn.lock b/yarn.lock
-index 0b3fadfac..bf78e8078 100644
+index 0b3fadf..bf78e80 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -7076,10 +7076,9 @@ utils-merge@1.0.1:

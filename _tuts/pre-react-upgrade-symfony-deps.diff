@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index e7a1938cd..82412fe85 100644
+index e7a1938..82412fe 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -3,9 +3,11 @@
@@ -15,7 +15,7 @@ index e7a1938cd..82412fe85 100644
  
  ###> symfony/phpunit-bridge ###
 diff --git a/composer.json b/composer.json
-index 3517315eb..31aad692c 100644
+index 3517315..31aad69 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -22,7 +22,7 @@
@@ -28,7 +28,7 @@ index 3517315eb..31aad692c 100644
          "symfony/asset": "^4.0",
          "symfony/console": "^4.0",
 diff --git a/composer.lock b/composer.lock
-index 6d823f848..4373f38b7 100644
+index 6d823f8..4373f38 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -2622,7 +2622,7 @@ index 6d823f848..4373f38b7 100644
      ],
      "aliases": [],
 diff --git a/symfony.lock b/symfony.lock
-index 1f9d461b3..98de609dd 100644
+index 1f9d461..98de609 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -48,7 +48,7 @@

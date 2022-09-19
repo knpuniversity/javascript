@@ -1,5 +1,5 @@
 diff --git a/public/assets/js/layout.js b/public/assets/js/layout.js
-index 7c3bb5c3a..7a3268917 100644
+index 7c3bb5c..7a32689 100644
 --- a/public/assets/js/layout.js
 +++ b/public/assets/js/layout.js
 @@ -2,6 +2,7 @@
@@ -11,7 +11,7 @@ index 7c3bb5c3a..7a3268917 100644
  
  $(document).ready(function() {
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 3c87e18d5..de0b848e9 100644
+index 3c87e18..de0b848 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -9,7 +9,6 @@

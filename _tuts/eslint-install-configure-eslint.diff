@@ -1,6 +1,6 @@
 diff --git a/.eslintrc.js b/.eslintrc.js
 new file mode 100644
-index 000000000..61df87087
+index 0000000..61df870
 --- /dev/null
 +++ b/.eslintrc.js
 @@ -0,0 +1,19 @@
@@ -24,7 +24,7 @@ index 000000000..61df87087
 +    }
 +};
 diff --git a/package.json b/package.json
-index ec798624d..e67c4bbc8 100644
+index ec79862..e67c4bb 100644
 --- a/package.json
 +++ b/package.json
 @@ -4,6 +4,7 @@
@@ -44,7 +44,7 @@ index ec798624d..e67c4bbc8 100644
 +  }
  }
 diff --git a/yarn.lock b/yarn.lock
-index 5b14bc4ab..b87b5c44c 100644
+index 5b14bc4..b87b5c4 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -1131,6 +1131,20 @@ accepts@~1.3.7:

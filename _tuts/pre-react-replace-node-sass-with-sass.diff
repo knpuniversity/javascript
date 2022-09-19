@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index efcfd2636..ec798624d 100644
+index efcfd26..ec79862 100644
 --- a/package.json
 +++ b/package.json
 @@ -1,12 +1,13 @@
@@ -28,7 +28,7 @@ index efcfd2636..ec798624d 100644
 +  "dependencies": {}
  }
 diff --git a/webpack.config.js b/webpack.config.js
-index 0ad3d2450..9ccc938c3 100644
+index 0ad3d24..9ccc938 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -16,6 +16,8 @@ Encore
@@ -55,7 +55,7 @@ index 0ad3d2450..9ccc938c3 100644
  
  // export the final configuration
 diff --git a/yarn.lock b/yarn.lock
-index dae582410..5b14bc4ab 100644
+index dae5824..5b14bc4 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -2,39 +2,937 @@

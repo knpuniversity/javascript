@@ -1,5 +1,5 @@
 diff --git a/src/Controller/RepLogController.php b/src/Controller/RepLogController.php
-index baa1601ef..7d6425bb8 100644
+index baa1601..7d6425b 100644
 --- a/src/Controller/RepLogController.php
 +++ b/src/Controller/RepLogController.php
 @@ -13,6 +13,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -11,7 +11,7 @@ index baa1601ef..7d6425bb8 100644
  class RepLogController extends BaseController
  {
 diff --git a/src/EventSubscriber/ApiCsrfValidationSubscriber.php b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
-index ffab74828..9eb516601 100644
+index ffab748..9eb5166 100644
 --- a/src/EventSubscriber/ApiCsrfValidationSubscriber.php
 +++ b/src/EventSubscriber/ApiCsrfValidationSubscriber.php
 @@ -14,6 +14,7 @@ class ApiCsrfValidationSubscriber implements EventSubscriberInterface

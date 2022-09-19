@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index c6940379d..ed7a5ea28 100644
+index c694037..ed7a5ea 100644
 --- a/package.json
 +++ b/package.json
 @@ -2,6 +2,7 @@
@@ -11,7 +11,7 @@ index c6940379d..ed7a5ea28 100644
      "copy-webpack-plugin": "^4.4.1",
      "core-js": "2",
 diff --git a/webpack.config.js b/webpack.config.js
-index 7c5e09811..9572541b9 100644
+index 7c5e098..9572541 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -31,7 +31,11 @@ Encore
@@ -28,7 +28,7 @@ index 7c5e09811..9572541b9 100644
          useBuiltIns: 'usage',
          corejs: 2,
 diff --git a/yarn.lock b/yarn.lock
-index ba220d199..0b3fadfac 100644
+index ba220d1..0b3fadf 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -1504,6 +1504,10 @@ babel-plugin-espower@^3.0.1:

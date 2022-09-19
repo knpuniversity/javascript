@@ -1,5 +1,5 @@
 diff --git a/assets/js/layout.js b/assets/js/layout.js
-index 3e9ee5fe8..61dd9cdca 100644
+index 3e9ee5f..61dd9cd 100644
 --- a/assets/js/layout.js
 +++ b/assets/js/layout.js
 @@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
@@ -11,7 +11,7 @@ index 3e9ee5fe8..61dd9cdca 100644
  $(document).ready(function() {
      $('[data-toggle="tooltip"]').tooltip();
 diff --git a/package.json b/package.json
-index 730899369..b68969775 100644
+index 7308993..b689697 100644
 --- a/package.json
 +++ b/package.json
 @@ -10,6 +10,7 @@
@@ -23,7 +23,7 @@ index 730899369..b68969775 100644
      "react": "^16.3.2",
      "react-dom": "^16.3.2",
 diff --git a/yarn.lock b/yarn.lock
-index afc71e09a..2357a8b6b 100644
+index afc71e0..2357a8b 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -5727,6 +5727,10 @@ promise-inflight@^1.0.1:

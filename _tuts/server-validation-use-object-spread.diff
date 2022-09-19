@@ -1,5 +1,5 @@
 diff --git a/.eslintrc.js b/.eslintrc.js
-index 0e1bad13b..e7518b42d 100644
+index 0e1bad1..e7518b4 100644
 --- a/.eslintrc.js
 +++ b/.eslintrc.js
 @@ -4,7 +4,8 @@ module.exports = {
@@ -13,7 +13,7 @@ index 0e1bad13b..e7518b42d 100644
      },
      env: {
 diff --git a/assets/js/RepLog/RepLogApp.js b/assets/js/RepLog/RepLogApp.js
-index 7bec0becf..ebc22a35a 100644
+index 7bec0be..ebc22a3 100644
 --- a/assets/js/RepLog/RepLogApp.js
 +++ b/assets/js/RepLog/RepLogApp.js
 @@ -61,10 +61,11 @@ export default class RepLogApp extends Component {
@@ -44,7 +44,7 @@ index 7bec0becf..ebc22a35a 100644
              })
          ;
 diff --git a/package.json b/package.json
-index b68969775..31b17fa9f 100644
+index b689697..31b17fa 100644
 --- a/package.json
 +++ b/package.json
 @@ -2,6 +2,7 @@
@@ -65,7 +65,7 @@ index b68969775..31b17fa9f 100644
    }
  }
 diff --git a/webpack.config.js b/webpack.config.js
-index 07d8256f8..ed07a8cdb 100644
+index 07d8256..ed07a8c 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
 @@ -36,6 +36,8 @@ Encore
@@ -78,7 +78,7 @@ index 07d8256f8..ed07a8cdb 100644
          useBuiltIns: 'usage',
          corejs: 2,
 diff --git a/yarn.lock b/yarn.lock
-index 2357a8b6b..a87010fe7 100644
+index 2357a8b..a87010f 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -1504,10 +1504,29 @@ babel-plugin-espower@^3.0.1:

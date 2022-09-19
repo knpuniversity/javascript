@@ -1,5 +1,5 @@
 diff --git a/play.js b/play.js
-index ea7da28e3..a1997da7f 100644
+index ea7da28..a1997da 100644
 --- a/play.js
 +++ b/play.js
 @@ -2,7 +2,7 @@ let yummyThings = ['pizza', 'gelato', 'sushi', 'cheeseburger'];

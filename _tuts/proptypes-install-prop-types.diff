@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 16a9af9c4..c6940379d 100644
+index 16a9af9..c694037 100644
 --- a/package.json
 +++ b/package.json
 @@ -9,6 +9,7 @@
@@ -11,7 +11,7 @@ index 16a9af9c4..c6940379d 100644
      "react-dom": "^16.3.2",
      "sass": "^1.29.0",
 diff --git a/yarn.lock b/yarn.lock
-index caff5c99b..ba220d199 100644
+index caff5c9..ba220d1 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -5729,7 +5729,7 @@ promise@^7.1.1:

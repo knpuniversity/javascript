@@ -1,5 +1,5 @@
 diff --git a/src/Api/ApiRoute.php b/src/Api/ApiRoute.php
-index cc84aec79..4d9df7ac3 100644
+index cc84aec..4d9df7a 100644
 --- a/src/Api/ApiRoute.php
 +++ b/src/Api/ApiRoute.php
 @@ -9,4 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
@@ -17,7 +17,7 @@ index cc84aec79..4d9df7ac3 100644
 +    }
 +}
 diff --git a/src/Controller/RepLogController.php b/src/Controller/RepLogController.php
-index 7a6284db5..b235c37fb 100644
+index 7a6284d..b235c37 100644
 --- a/src/Controller/RepLogController.php
 +++ b/src/Controller/RepLogController.php
 @@ -14,7 +14,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;

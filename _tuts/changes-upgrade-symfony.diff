@@ -1,5 +1,5 @@
 diff --git a/app/AppKernel.php b/app/AppKernel.php
-index cee04bd3d..b4269cfe9 100644
+index cee04bd..b4269cf 100644
 --- a/app/AppKernel.php
 +++ b/app/AppKernel.php
 @@ -29,6 +29,7 @@ class AppKernel extends Kernel
@@ -11,7 +11,7 @@ index cee04bd3d..b4269cfe9 100644
  
          return $bundles;
 diff --git a/app/config/config.yml b/app/config/config.yml
-index 4d12f1b7a..20d4525e6 100644
+index 4d12f1b..20d4525 100644
 --- a/app/config/config.yml
 +++ b/app/config/config.yml
 @@ -79,3 +79,6 @@ fos_user:
@@ -22,7 +22,7 @@ index 4d12f1b7a..20d4525e6 100644
 +        address: 'ryan@pumpup.example.com'
 +        sender_name: Ryan
 diff --git a/composer.json b/composer.json
-index 82f999d1c..36e5a02db 100644
+index 82f999d..36e5a02 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -18,7 +18,7 @@
@@ -44,7 +44,7 @@ index 82f999d1c..36e5a02db 100644
          "doctrine/doctrine-migrations-bundle": "^1.2",
          "friendsofsymfony/jsrouting-bundle": "^1.6",
 diff --git a/composer.lock b/composer.lock
-index 70aaf37fe..b2e1c5d93 100644
+index 70aaf37..b2e1c5d 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,8 +4,67 @@
@@ -1114,7 +1114,7 @@ index 70aaf37fe..b2e1c5d93 100644
      "prefer-lowest": false,
      "platform": {
 diff --git a/var/SymfonyRequirements.php b/var/SymfonyRequirements.php
-index 7e7a99de9..3b14a4022 100644
+index 7e7a99d..3b14a40 100644
 --- a/var/SymfonyRequirements.php
 +++ b/var/SymfonyRequirements.php
 @@ -633,12 +633,6 @@ class SymfonyRequirements extends RequirementCollection
@@ -1131,7 +1131,7 @@ index 7e7a99de9..3b14a4022 100644
              function_exists('utf8_decode'),
              'utf8_decode() should be available',
 diff --git a/web/config.php b/web/config.php
-index 69df43cf7..fd7e17e6b 100644
+index 69df43c..fd7e17e 100644
 --- a/web/config.php
 +++ b/web/config.php
 @@ -11,7 +11,7 @@
