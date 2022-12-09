@@ -99,6 +99,11 @@ PhpStorm, open the settings and search for `eslint` to find an ESLint section.
 Click to Enable this and hit Ok. Yep, PhpStorm will now *instantly* tell us when
 we've written code that violates our rules.
 
+***TIP
+If you have `node` installed via Docker, you *can* configure PhpStorm to find and use it.
+See https://www.jetbrains.com/help/phpstorm/node-with-docker.html#ws_node_docker_configure_interpreter.
+***
+
 Check this out: open `assets/js/rep_log.js`: this is the file that runs our existing
 LiftStuff frontend. Here, add `const foo = true` then `if (foo)`, but leave the
 body of the `if` statement empty. See that little red error? That comes from
