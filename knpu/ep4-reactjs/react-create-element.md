@@ -63,6 +63,24 @@ Awesome! Copy the `id` of the div. To render React to the DOM, we need to use th
 *other* package we installed: `import ReactDom` from `react-dom`. Then, just,
 `ReactDom.render()` to render our `el` into `document.getElementById('lift-stuff-app')`.
 
+***TIP
+In React 18, this part is a bit different. Use this instead:
+
+```js
+// A) the import is slightly different
+import { createRoot } from 'react-dom/client';
+
+
+// B) exactly the same as before
+const el = React.createElement('h2', null, 'Lift History!');
+
+// C) to render, you now create a "root" element
+//    then render into it
+const root = createRoot(document.getElementById('lift-stuff-app'));
+root.render(el);
+```
+***
+
 [[[ code('fcfceda5c2') ]]]
 
 That's it! Step 1: create a React element object and, step 2, use `ReactDom` and
