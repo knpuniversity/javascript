@@ -20,10 +20,55 @@ index 393dedd..e551555 100644
  
  You can use Nginx or Apache, but the built-in web server works
 diff --git a/composer.json b/composer.json
-index 31aad69..fa07baf 100644
+index 31aad69..605ad8d 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -52,6 +52,9 @@
+@@ -16,6 +16,7 @@
+         "php": "^7.2.0",
+         "ext-iconv": "*",
+         "composer/package-versions-deprecated": "^1.11",
++        "doctrine/annotations": "^1.0",
+         "doctrine/doctrine-bundle": "^1.6",
+         "doctrine/doctrine-cache-bundle": "^1.2",
+         "doctrine/doctrine-fixtures-bundle": "~3.0",
+@@ -23,8 +24,10 @@
+         "doctrine/orm": "^2.5",
+         "friendsofsymfony/jsrouting-bundle": "^2.2",
+         "friendsofsymfony/user-bundle": "dev-master#4125505ba6eba82ddf944378a3d636081c06da0c",
++        "phpdocumentor/reflection-docblock": "^3.0|^4.0",
+         "sensio/framework-extra-bundle": "^5.1",
+         "symfony/asset": "^4.0",
++        "symfony/cache": "^3.3|^4.0",
+         "symfony/console": "^4.0",
+         "symfony/flex": "^1.0",
+         "symfony/form": "^4.0",
+@@ -32,7 +35,9 @@
+         "symfony/lts": "^4@dev",
+         "symfony/monolog-bundle": "^3.1",
+         "symfony/polyfill-apcu": "^1.0",
+-        "symfony/serializer-pack": "^1.0",
++        "symfony/property-access": "^3.3|^4.0",
++        "symfony/property-info": "^3.3|^4.0",
++        "symfony/serializer": "^3.3|^4.0",
+         "symfony/swiftmailer-bundle": "^3.1",
+         "symfony/twig-bundle": "^4.0",
+         "symfony/validator": "^4.0",
+@@ -40,9 +45,13 @@
+         "twig/twig": "2.10.*"
+     },
+     "require-dev": {
+-        "symfony/debug-pack": "^1.0",
++        "easycorp/easy-log-handler": "^1.0.7",
++        "symfony/debug-bundle": "^3.3|^4.0",
+         "symfony/dotenv": "^4.0",
+         "symfony/phpunit-bridge": "^4.0",
++        "symfony/stopwatch": "^3.3|^4.0",
++        "symfony/var-dumper": "^3.3|^4.0",
++        "symfony/web-profiler-bundle": "^3.3|^4.0",
+         "symfony/web-server-bundle": "^4.0"
+     },
+     "config": {
+@@ -52,6 +61,9 @@
          "sort-packages": true,
          "platform": {
              "php": "7.2.0"
@@ -34,9 +79,18 @@ index 31aad69..fa07baf 100644
      },
      "replace": {
 diff --git a/composer.lock b/composer.lock
-index 4373f38..2c7bd19 100644
+index 4373f38..98ca9d5 100644
 --- a/composer.lock
 +++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "ab502f15084d4ae47d1aeb9898862dbb",
++    "content-hash": "284792c82e4d38480e01c206261cea76",
+     "packages": [
+         {
+             "name": "composer/package-versions-deprecated",
 @@ -1531,12 +1531,12 @@
              "source": {
                  "type": "git",
@@ -70,3 +124,193 @@ index 4373f38..2c7bd19 100644
          },
          {
              "name": "jdorn/sql-formatter",
+@@ -2943,16 +2944,16 @@
+         },
+         {
+             "name": "symfony/flex",
+-            "version": "v1.17.6",
++            "version": "v1.21.6",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/symfony/flex.git",
+-                "reference": "7a79135e1dc66b30042b4d968ecba0908f9374bc"
++                "reference": "06b58a5e5b4c6528fb12e0fac5fea0db3f1e7ae8"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/flex/zipball/7a79135e1dc66b30042b4d968ecba0908f9374bc",
+-                "reference": "7a79135e1dc66b30042b4d968ecba0908f9374bc",
++                "url": "https://api.github.com/repos/symfony/flex/zipball/06b58a5e5b4c6528fb12e0fac5fea0db3f1e7ae8",
++                "reference": "06b58a5e5b4c6528fb12e0fac5fea0db3f1e7ae8",
+                 "shasum": ""
+             },
+             "require": {
+@@ -2988,7 +2989,7 @@
+             "description": "Composer plugin for Symfony",
+             "support": {
+                 "issues": "https://github.com/symfony/flex/issues",
+-                "source": "https://github.com/symfony/flex/tree/v1.17.6"
++                "source": "https://github.com/symfony/flex/tree/v1.21.6"
+             },
+             "funding": [
+                 {
+@@ -3004,7 +3005,7 @@
+                     "type": "tidelift"
+                 }
+             ],
+-            "time": "2021-11-29T15:39:37+00:00"
++            "time": "2024-03-02T08:16:37+00:00"
+         },
+         {
+             "name": "symfony/form",
+@@ -4442,37 +4443,6 @@
+             "homepage": "https://symfony.com",
+             "time": "2018-07-26T09:10:45+00:00"
+         },
+-        {
+-            "name": "symfony/serializer-pack",
+-            "version": "v1.0.1",
+-            "source": {
+-                "type": "git",
+-                "url": "https://github.com/symfony/serializer-pack.git",
+-                "reference": "35cea385ea44d1f40ec12571996bf768fbe409de"
+-            },
+-            "dist": {
+-                "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/serializer-pack/zipball/35cea385ea44d1f40ec12571996bf768fbe409de",
+-                "reference": "35cea385ea44d1f40ec12571996bf768fbe409de",
+-                "shasum": ""
+-            },
+-            "require": {
+-                "doctrine/annotations": "^1.0",
+-                "php": "^7.0",
+-                "phpdocumentor/reflection-docblock": "^3.0|^4.0",
+-                "symfony/cache": "^3.3|^4.0",
+-                "symfony/property-access": "^3.3|^4.0",
+-                "symfony/property-info": "^3.3|^4.0",
+-                "symfony/serializer": "^3.3|^4.0"
+-            },
+-            "type": "symfony-pack",
+-            "notification-url": "https://packagist.org/downloads/",
+-            "license": [
+-                "MIT"
+-            ],
+-            "description": "A pack for the Symfony serializer",
+-            "time": "2017-12-12T01:48:53+00:00"
+-        },
+         {
+             "name": "symfony/swiftmailer-bundle",
+             "version": "v3.2.3",
+@@ -5357,36 +5327,6 @@
+             "homepage": "https://symfony.com",
+             "time": "2018-06-23T12:23:56+00:00"
+         },
+-        {
+-            "name": "symfony/debug-pack",
+-            "version": "v1.0.6",
+-            "source": {
+-                "type": "git",
+-                "url": "https://github.com/symfony/debug-pack.git",
+-                "reference": "630548c117a5f9e27d3385787641629945b6de50"
+-            },
+-            "dist": {
+-                "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/debug-pack/zipball/630548c117a5f9e27d3385787641629945b6de50",
+-                "reference": "630548c117a5f9e27d3385787641629945b6de50",
+-                "shasum": ""
+-            },
+-            "require": {
+-                "easycorp/easy-log-handler": "^1.0.7",
+-                "php": "^7.0",
+-                "symfony/debug-bundle": "^3.3|^4.0",
+-                "symfony/monolog-bundle": "^3.0",
+-                "symfony/profiler-pack": "^1.0",
+-                "symfony/var-dumper": "^3.3|^4.0"
+-            },
+-            "type": "symfony-pack",
+-            "notification-url": "https://packagist.org/downloads/",
+-            "license": [
+-                "MIT"
+-            ],
+-            "description": "A debug pack for Symfony projects",
+-            "time": "2018-08-10T15:18:32+00:00"
+-        },
+         {
+             "name": "symfony/dotenv",
+             "version": "v4.1.4",
+@@ -5614,34 +5554,6 @@
+             "homepage": "https://symfony.com",
+             "time": "2018-08-03T11:13:38+00:00"
+         },
+-        {
+-            "name": "symfony/profiler-pack",
+-            "version": "v1.0.3",
+-            "source": {
+-                "type": "git",
+-                "url": "https://github.com/symfony/profiler-pack.git",
+-                "reference": "fa2e2dad522a3bef322196abad28ffce6d0fdbc5"
+-            },
+-            "dist": {
+-                "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/profiler-pack/zipball/fa2e2dad522a3bef322196abad28ffce6d0fdbc5",
+-                "reference": "fa2e2dad522a3bef322196abad28ffce6d0fdbc5",
+-                "shasum": ""
+-            },
+-            "require": {
+-                "php": "^7.0",
+-                "symfony/stopwatch": "^3.3|^4.0",
+-                "symfony/twig-bundle": "^3.3|^4.0",
+-                "symfony/web-profiler-bundle": "^3.3|^4.0"
+-            },
+-            "type": "symfony-pack",
+-            "notification-url": "https://packagist.org/downloads/",
+-            "license": [
+-                "MIT"
+-            ],
+-            "description": "A pack for the Symfony web profiler",
+-            "time": "2017-12-12T01:48:24+00:00"
+-        },
+         {
+             "name": "symfony/stopwatch",
+             "version": "v4.1.4",
+@@ -5908,5 +5820,5 @@
+     "platform-overrides": {
+         "php": "7.2.0"
+     },
+-    "plugin-api-version": "2.1.0"
++    "plugin-api-version": "2.6.0"
+ }
+diff --git a/symfony.lock b/symfony.lock
+index 98de609..be2cd03 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -173,9 +173,6 @@
+             "ref": "71d29aaf710fd59cd3abff2b1ade907ed73103c6"
+         }
+     },
+-    "symfony/debug-pack": {
+-        "version": "v1.0.4"
+-    },
+     "symfony/dependency-injection": {
+         "version": "v3.4.4"
+     },
+@@ -272,9 +269,6 @@
+     "symfony/process": {
+         "version": "v4.0.4"
+     },
+-    "symfony/profiler-pack": {
+-        "version": "v1.0.3"
+-    },
+     "symfony/property-access": {
+         "version": "v4.0.4"
+     },
+@@ -305,9 +299,6 @@
+     "symfony/serializer": {
+         "version": "v4.0.4"
+     },
+-    "symfony/serializer-pack": {
+-        "version": "v1.0.1"
+-    },
+     "symfony/stopwatch": {
+         "version": "v4.0.4"
+     },
